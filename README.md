@@ -1,6 +1,6 @@
-# NAPALM HiOS Driver (v2)
+# CRUDE-engine
 
-NAPALM driver for Hirschmann HiOS industrial switches by Belden. YAML-driven declarative engine — four protocols (MOPS, SNMP, SSH, Offline), three-gate architecture, 174 methods across 45 schemas.
+This engine drives the NAPALM driver for Hirschmann HiOS industrial switches by Belden. YAML-driven declarative engine — four protocols (MOPS, SNMP, SSH, Offline), three-gate architecture, 174 methods across 45 schemas.
 
 ## Architecture
 
@@ -77,7 +77,7 @@ pytest tests/test_replay.py -v
 
 ## Contributing
 
-Issues and PRs welcome at [GitHub](https://github.com/AdamRickards/napalm-hios). Driver tested against BRS50 and GRS1042 hardware. If you have a HiOS device and find a bug, include firmware version and getter output.
+Issues and PRs welcome at [GitHub](https://github.com/AdamRickards/crude-engine). napalm-hios Driver tested against BRS50 and GRS1042 hardware. If you have a HiOS device and find a bug, include firmware version and getter output.
 
 ## License
 
