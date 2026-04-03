@@ -81,7 +81,7 @@ REGISTRY    = transport_registry.py
 ## File Structure
 
 ```
-napalm_hios/
+crude_engine/
   wire/                      # Generated from device (Gemini/MIB/MOPS)
     dns.yaml                 # MIB-named files for complete coverage
     if.yaml, bridge.yaml     # Context map sources (ifindex, bridge_port)
