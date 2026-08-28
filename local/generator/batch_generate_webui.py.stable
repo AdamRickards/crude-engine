@@ -1,0 +1,252 @@
+import os
+import xml.etree.ElementTree as ET
+import json
+import re
+import yaml
+
+captured_dir = '/home/adamr/obsidian-vault/Projects/LocalUI/captured'
+xml_schema_path = '/home/adamr/obsidian-vault/Projects/MOPS_Emulator/data/mops_schema.xml'
+master_schema_path = '/home/adamr/obsidian-vault/Projects/napalm-hios-v2/docs/napalm-hios-2-6-schema.md'
+output_dir = '/home/adamr/obsidian-vault/Projects/napalm-hios-v2/local/reference/webUI'
+
+def load_master_meta():
+    meta_db = {}
+    if not os.path.exists(master_schema_path): return {}
+    with open(master_schema_path, "r") as f:
+        lines = f.readlines()
+    for line in lines:
+        if "|" in line and "::" in line:
+            parts = [p.strip() for p in line.split("|") if p.strip()]
+            if len(parts) >= 5:
+                full_field = parts[1].lower()
+                meta = {
+                    "syntax": parts[3],
+                    "access": parts[4],
+                    "constraints": parts[5] if len(parts) > 5 else "",
+                    "oid": parts[2]
+                }
+                meta_db[full_field] = meta
+    return meta_db
+
+def parse_constraints(raw, syntax):
+    v = {}
+    if raw:
+        rm = re.search(r"Range: (\d+)\.\.(\d+)", raw)
+        if rm: v["min"] = int(rm.group(1)); v["max"] = int(rm.group(2))
+        em = re.search(r"Enums: \[(.*)\]", raw)
+        if em:
+            pairs = em.group(1).split(", "); v["allowed"] = [p.split(":")[1] for p in pairs if ":" in p]
+    if not v:
+        s = str(syntax)
+        if "Unsigned32" in s: v = {"min": 0, "max": 4294967295}
+        elif "Integer32" in s or "INTEGER" in s: v = {"min": -2147483648, "max": 2147483647}
+        elif "VlanIndex" in s: v = {"min": 1, "max": 4094}
+        elif "TruthValue" in s or "HmEnabledStatus" in s: v = {"allowed": [True, False]}
+    return v
+
+def syntax_to_type(syntax):
+    s = str(syntax).strip()
+    if any(x in s for x in ("TruthValue", "HmEnabledStatus", "EnabledStatus")): return "boolean"
+    if any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number")): return "integer"
+    if any(x in s for x in ("BITS", "PortList")) or s.startswith("Hm2"): return "list"
+    return "string"
+
+def get_default_for_type(stype):
+    if stype == "integer": return 0
+    if stype == "boolean": return False
+    if stype == "list": return []
+    return ""
+
+def build_lookup_tables(root):
+    obj_by_name = {}
+    for obj in root.findall('.//ObjectType'):
+        name = obj.get('name')
+        if name: obj_by_name[name] = obj
+
+    node_by_name = {}
+    for node in root.findall('.//*'):
+        if node.tag in ('ObjectIdentifier', 'ObjectType', 'ModuleIdentity'):
+            name = node.get('name')
+            if name:
+                node_by_name[name] = {
+                    'oid': node.get('OID', ''),
+                    'parent': node.get('Parent', ''),
+                    'tag': node.tag,
+                    'node': node,
+                }
+
+    table_for_entry = {}
+    for obj in root.findall('.//ObjectType'):
+        syntax = obj.find('Syntax')
+        if syntax is not None:
+            entry_name = syntax.get('name', '')
+            if entry_name:
+                table_for_entry[entry_name] = {
+                    'oid': obj.get('OID', ''),
+                    'parent': obj.get('Parent', ''),
+                    'name': obj.get('name', ''),
+                }
+
+    obj_to_mib = {}
+    for mib in root.findall('MIB'):
+        for definition in mib.findall('Definition'):
+            def_name = definition.get('name', '')
+            for child in definition:
+                child_name = child.get('name', '')
+                if child_name: obj_to_mib[child_name] = def_name
+
+    index_fields = {}
+    for obj in root.findall('.//ObjectType'):
+        idx_node = obj.find('Index')
+        if idx_node is not None:
+            entry_name = obj.get('name', '')
+            idx_names = [i.get('name', '') for i in idx_node.findall('Value')]
+            if idx_names: index_fields[entry_name] = idx_names
+
+    return obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields
+
+def resolve_meta(target_name, master_db, obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, root):
+    found_meta = {"mib": "Unknown", "table": "Unknown", "oid": "N/A", "syntax": "Unknown", "access": "r", "constraints": "", "is_table": False, "index_field": ""}
+    
+    target_obj = obj_by_name.get(target_name)
+    if target_obj is not None:
+        found_meta["mib"] = obj_to_mib.get(target_name, "Unknown")
+        parent_name = target_obj.get('Parent', '')
+        found_meta["table"] = parent_name
+
+        if parent_name and parent_name.endswith('Entry'):
+            found_meta["is_table"] = True
+            idx_cols = index_fields.get(parent_name, [])
+            if idx_cols: found_meta["index_field"] = idx_cols[0]
+        elif parent_name and parent_name in node_by_name:
+            pnode = node_by_name[parent_name]
+            if pnode.get('tag') == 'ObjectType' and pnode['node'].find('Index') is not None:
+                found_meta["is_table"] = True
+                idx_cols = index_fields.get(parent_name, [])
+                if idx_cols: found_meta["index_field"] = idx_cols[0]
+
+        oid_parts = []
+        curr_oid = target_obj.get('OID', '')
+        p = parent_name
+        
+        if curr_oid.startswith("1.3.6.1"):
+            full_oid = curr_oid
+        else:
+            oid_parts.append(curr_oid)
+            seen = {target_name}
+            while p and p not in seen:
+                seen.add(p)
+                info = node_by_name.get(p)
+                if not info:
+                    info = table_for_entry.get(p)
+                
+                if info:
+                    p_oid = info['oid']
+                    if p_oid.startswith("1.3.6.1"):
+                        oid_parts.insert(0, p_oid)
+                        p = None
+                    else:
+                        oid_parts.insert(0, p_oid)
+                        p = info['parent']
+                else: break
+            
+            full_oid = ".".join(part for part in oid_parts if part)
+            
+            # SMART PREFIXING:
+            if full_oid.startswith("1.3.6.1"):
+                pass
+            elif full_oid.startswith("3.6.1.4.1.248.11"):
+                full_oid = "1." + full_oid
+            elif full_oid.startswith("3.6.1.2.1"):
+                full_oid = "1." + full_oid
+            else:
+                if found_meta["mib"].startswith("HM2"): full_oid = "1.3.6.1.4.1.248.11." + full_oid
+                else: full_oid = "1.3.6.1.2.1." + full_oid
+                
+        found_meta["oid"] = full_oid
+        syntax_node = target_obj.find('Syntax')
+        found_meta["syntax"] = syntax_node.get('name') if syntax_node is not None else "Unknown"
+        mib_access = target_obj.get('access', 'read-only').lower().replace(' ', '-')
+        if "read-create" in mib_access or "read-write" in mib_access: found_meta["access"] = "ru"
+        if found_meta["syntax"] == "RowStatus": found_meta["access"] = "crud"
+
+    lookup_keys = []
+    if found_meta["mib"] != "Unknown":
+        lookup_keys.append(f"{found_meta['mib']}::{target_name}".lower())
+    for k in master_db:
+        if k.split("::")[-1] == target_name.lower():
+            lookup_keys.append(k)
+            break
+
+    for key in lookup_keys:
+        if key in master_db:
+            meta = master_db[key]
+            found_meta["syntax"] = meta["syntax"]
+            found_meta["access"] = meta["access"]
+            found_meta["constraints"] = meta["constraints"]
+            if found_meta["oid"] == "N/A": found_meta["oid"] = meta["oid"]
+            if found_meta["mib"] == "Unknown": found_meta["mib"] = key.split("::")[0]
+            break
+    
+    if found_meta["syntax"] == "BITS" and target_obj is not None:
+        bit_map = {}
+        syntax_node = target_obj.find('Syntax')
+        if syntax_node is not None:
+            for enum in syntax_node.findall('Enumeration'):
+                bit_map[int(enum.get('value'))] = enum.get('name')
+        if bit_map: found_meta["bit_map"] = bit_map
+
+    return found_meta
+
+def process_captured_pages():
+    if not os.path.exists(output_dir): os.makedirs(output_dir)
+    tree = ET.parse(xml_schema_path); root = tree.getroot()
+    master_db = load_master_meta()
+    obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields = build_lookup_tables(root)
+    
+    mib_features = {}
+    for name, obj in obj_by_name.items():
+        mib = obj_to_mib.get(name, "Unknown")
+        feature = mib.replace("HM2-", "").replace("-MIB", "").lower()
+        if feature not in mib_features: mib_features[feature] = []
+        mib_features[feature].append(name)
+
+    count = 0
+    all_features = set(os.listdir(captured_dir)) | set(mib_features.keys())
+    for page_name in sorted(all_features):
+        page_path = os.path.join(captured_dir, page_name)
+        attrs_found = {}
+        if os.path.isdir(page_path):
+            for msg in os.listdir(page_path):
+                if not msg.endswith('.xml'): continue
+                try:
+                    m_tree = ET.parse(os.path.join(page_path, msg)); m_root = m_tree.getroot()
+                    for attr in m_root.findall('.//{urn:x-mops:1.0}Attribute'):
+                        if attr.get('name'): attrs_found[attr.get('name')] = True
+                except: continue
+        if page_name in mib_features:
+            for attr in mib_features[page_name]: attrs_found[attr] = True
+        if not attrs_found: continue
+        
+        feature_data = {"version": "2.6.0", "feature": page_name, "schemas": {f"read_{page_name}": {"type": "dict", "defaults": {}}}, "attributes": {}}
+        for attr_name in sorted(attrs_found.keys()):
+            meta = resolve_meta(attr_name, master_db, obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, root)
+            if meta:
+                access = meta['access'].strip(); syntax = meta['syntax'].strip()
+                stype = syntax_to_type(syntax); validation = parse_constraints(meta['constraints'], syntax)
+                clean_name = attr_name.lower()
+                feature_data["schemas"][f"read_{page_name}"]["defaults"][clean_name] = get_default_for_type(stype)
+                snmp_read = {"oid": meta['oid']}; snmp_read["method"] = "walk" if meta["is_table"] else "get"
+                mops_read = {"mib": meta['mib'], "table": meta['table'], "field": attr_name}
+                if meta["is_table"] and meta["index_field"]: mops_read["index_field"] = meta["index_field"]
+                attr_entry = {"syntax": syntax, "type": stype, "access": access, "sources": {"snmp": {"read": snmp_read}, "mops": {"read": mops_read}}}
+                if validation: attr_entry["validation"] = validation
+                if "bit_map" in meta: attr_entry["bit_map"] = meta["bit_map"]
+                feature_data["attributes"][clean_name] = attr_entry
+        with open(os.path.join(output_dir, f"{page_name}.yaml"), 'w') as f:
+            yaml.dump(feature_data, f, sort_keys=False, default_flow_style=False)
+        count += 1
+    print(f"Generated {count} v2.6 Wire YAMLs with SMART PREFIXING.")
+
+if __name__ == "__main__":
+    process_captured_pages()

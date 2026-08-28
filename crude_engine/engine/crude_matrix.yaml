@@ -1,0 +1,173 @@
+# crude_matrix.yaml — (syntax, type) → function + optional args
+#
+# This is the lookup table. Functions are the verbs (fixed set in crude.py).
+# This file grows when new syntaxes appear in wire YAMLs. No Python changes needed.
+#
+# Format:
+#   SyntaxName:
+#     type: function_name                    # simple
+#     type: {function: name, args: {k: v}}   # with args passed to function
+
+# --- Boolean ---
+TruthValue:
+  boolean: crude_boolean
+HmEnabledStatus:
+  boolean: crude_boolean
+EnabledStatus:
+  boolean: crude_boolean
+
+# --- Numeric ---
+Counter32:
+  integer: crude_numeric
+  float: crude_numeric
+Counter64:
+  integer: crude_numeric
+  float: crude_numeric
+Gauge32:
+  integer: crude_numeric
+  float: crude_numeric
+Integer32:
+  integer: crude_numeric
+  float: crude_numeric
+Unsigned32:
+  integer: crude_numeric
+  float: crude_numeric
+RowStatus:
+  integer: crude_numeric
+  float: crude_numeric
+INTEGER:
+  integer: crude_numeric
+  float: crude_numeric
+InetAddressPrefixLength:
+  integer: crude_numeric
+  float: crude_numeric
+  string: crude_numeric  # generator gap: sometimes typed as string
+InetAddressType:
+  integer: crude_numeric
+  float: crude_numeric
+  string: crude_numeric  # generator gap
+InetPortNumber:
+  integer: crude_numeric
+  float: crude_numeric
+VlanIndex:
+  integer: crude_numeric
+  float: crude_numeric
+VlanIdOrNone:
+  integer: crude_numeric
+  float: crude_numeric
+Percent:
+  integer: crude_numeric
+  float: crude_numeric
+TimeTicks:
+  integer: crude_numeric
+  float: crude_numeric
+LldpPortNumber:
+  integer: crude_numeric
+TimeStamp:
+  integer: crude_numeric
+
+# --- Interface Index (context-dependent: resolves to port name) ---
+InterfaceIndex:
+  integer: to_port_name
+InterfaceIndexOrZero:
+  integer: to_port_name
+
+# --- Text ---
+DisplayString:
+  string: crude_text
+SnmpAdminString:
+  string: crude_text
+HmLargeDisplayString:
+  string: crude_text
+"OBJECT IDENTIFIER":
+  string: crude_text
+SFlowReceiver:
+  string: crude_text
+SnmpTagList:
+  string: crude_text
+
+# --- Octet (hex-formatted binary) ---
+"OCTET STRING":
+  string: crude_octet
+MacAddress:
+  string:
+    function: crude_octet
+    args: {expected_len: 6}
+PhysAddress:
+  string:
+    function: crude_octet
+    args: {expected_len: 6}
+LldpChassisId:
+  string: crude_octet
+LldpPortId:
+  string: crude_octet
+LldpLinkAggStatusMap:
+  string: crude_octet
+
+# --- Network Address ---
+IpAddress:
+  string:
+    function: crude_address
+    args: {encoding: dotted}
+InetAddressIPv4:
+  string: crude_address
+InetAddressIPv6:
+  string: crude_address
+InetAddress:
+  string: crude_address
+
+# --- Transport Address ---
+TAddress:
+  string: crude_taddress
+
+# --- Temporal ---
+DateAndTime:
+  string: crude_timestamp
+HmTimeSeconds1970:
+  string: crude_timestamp
+
+# --- BITS (named bit positions) ---
+BITS:
+  list: crude_bits
+Hm2SshEncryptionAlgorithms:
+  list: crude_bits
+Hm2SshHostKeyAlgorithms:
+  list: crude_bits
+Hm2SshKexAlgorithms:
+  list: crude_bits
+Hm2SshHmacAlgorithms:
+  list: crude_bits
+Hm2TlsVersions:
+  list: crude_bits
+Hm2TlsCipherSuites:
+  list: crude_bits
+
+# --- LLDP (named bit positions, same as BITS) ---
+LldpSystemCapabilitiesMap:
+  list: crude_bits
+LldpLinkAggStatusMap:
+  list: crude_bits
+
+# --- PortList (positional bitmask → port numbers, pipeline resolves names) ---
+PortList:
+  list:
+    function: crude_bits
+    args: {mode: portlist}
+
+# --- Enum ---
+INTEGER_ENUM:
+  string: crude_enum
+HmSntpClientServerStatus:
+  string: crude_enum
+Hm2FanModuleStatus:
+  string: crude_enum
+IANAipRouteProtocol:
+  string: crude_enum
+SnmpSecurityLevel:
+  string: crude_enum
+SnmpSecurityModel:
+  string: crude_enum
+
+# --- Special cases ---
+Hm2UserAccessRoles:
+  integer: crude_numeric

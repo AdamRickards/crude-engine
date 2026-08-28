@@ -1,0 +1,23 @@
+version: "2.9.0"
+feature: if-ssh
+description: "SSH CLI sources for IF-MIB"
+
+attributes:
+  ifname:
+    sources:
+      ssh:
+        read: {command: "show port", parser: paired_rows, column: 0}
+
+  ifadminstatus:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show port", parser: paired_rows, column: 2}
+        write: {command: "shutdown", level: config_interface}
+
+  ifalias:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show port", parser: paired_rows, line: 1, column: 0}
+        write: {command: "name {value}", level: config_interface}

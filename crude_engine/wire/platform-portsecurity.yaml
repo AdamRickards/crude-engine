@@ -1,0 +1,595 @@
+version: 2.6.0
+feature: platform-portsecurity
+schemas:
+  read_platform-portsecurity:
+    type: dict
+    defaults:
+      hm2agentglobalportsecuritymode: false
+      hm2agentportsecurityautodisable: false
+      hm2agentportsecuritydynamiccount: 0
+      hm2agentportsecuritydynamicentry: ''
+      hm2agentportsecuritydynamiclimit: 0
+      hm2agentportsecuritydynamicmacaddress: ''
+      hm2agentportsecuritydynamictable: ''
+      hm2agentportsecuritydynamicvlanid: 0
+      hm2agentportsecurityentry: ''
+      hm2agentportsecurityipaddressadd: ''
+      hm2agentportsecurityipaddressremove: ''
+      hm2agentportsecurityipstaticentry: ''
+      hm2agentportsecurityipstatictable: ''
+      hm2agentportsecuritylastdiscardedmac: ''
+      hm2agentportsecuritymacaddressadd: ''
+      hm2agentportsecuritymacaddressmove: false
+      hm2agentportsecuritymacaddressremove: ''
+      hm2agentportsecuritymode: false
+      hm2agentportsecurityoperationmode: 0
+      hm2agentportsecuritystaticcount: 0
+      hm2agentportsecuritystaticentry: ''
+      hm2agentportsecuritystaticips: ''
+      hm2agentportsecuritystaticipaddress: ''
+      hm2agentportsecuritystaticipcount: 0
+      hm2agentportsecuritystaticipvlanid: 0
+      hm2agentportsecuritystaticlimit: 0
+      hm2agentportsecuritystaticmacaddress: ''
+      hm2agentportsecuritystaticmacs: ''
+      hm2agentportsecuritystatictable: ''
+      hm2agentportsecuritystaticvlanid: 0
+      hm2agentportsecuritytable: ''
+      hm2agentportsecurityviolationtrapcount: 0
+      hm2agentportsecurityviolationtrapfrequency: 0
+      hm2agentportsecurityviolationtrapmode: false
+attributes:
+  hm2agentglobalportsecuritymode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityGroup
+          field: hm2AgentGlobalPortSecurityMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentportsecurityautodisable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityAutoDisable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentportsecuritydynamiccount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityDynamicCount
+          index_field: ifIndex
+  hm2agentportsecuritydynamicentry:
+    syntax: Hm2AgentPortSecurityDynamicEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityDynamicTable
+          field: hm2AgentPortSecurityDynamicEntry
+  hm2agentportsecuritydynamiclimit:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityDynamicLimit
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 600
+  hm2agentportsecuritydynamicmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityDynamicEntry
+          field: hm2AgentPortSecurityDynamicMACAddress
+          index_field: hm2AgentPortSecurityDynamicMACAddress
+          index_fields: &id001
+          - ifIndex
+          - hm2AgentPortSecurityDynamicVLANId
+          - hm2AgentPortSecurityDynamicMACAddress
+  hm2agentportsecuritydynamictable:
+    syntax: Hm2AgentPortSecurityDynamicEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityGroup
+          field: hm2AgentPortSecurityDynamicTable
+  hm2agentportsecuritydynamicvlanid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityDynamicEntry
+          field: hm2AgentPortSecurityDynamicVLANId
+          index_field: hm2AgentPortSecurityDynamicMACAddress
+          index_fields: *id001
+  hm2agentportsecurityentry:
+    syntax: Hm2AgentPortSecurityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityTable
+          field: hm2AgentPortSecurityEntry
+  hm2agentportsecurityipaddressadd:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.251
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityIPAddressAdd
+          index_field: ifIndex
+  hm2agentportsecurityipaddressremove:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.252
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityIPAddressRemove
+          index_field: ifIndex
+  hm2agentportsecurityipstaticentry:
+    syntax: Hm2AgentPortSecurityIpStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityIpStaticTable
+          field: hm2AgentPortSecurityIpStaticEntry
+  hm2agentportsecurityipstatictable:
+    syntax: Hm2AgentPortSecurityIpStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityGroup
+          field: hm2AgentPortSecurityIpStaticTable
+  hm2agentportsecuritylastdiscardedmac:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityLastDiscardedMAC
+          index_field: ifIndex
+  hm2agentportsecuritymacaddressadd:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityMACAddressAdd
+          index_field: ifIndex
+  hm2agentportsecuritymacaddressmove:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityMACAddressMove
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentportsecuritymacaddressremove:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityMACAddressRemove
+          index_field: ifIndex
+  hm2agentportsecuritymode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentportsecurityoperationmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityGroup
+          field: hm2AgentPortSecurityOperationMode
+    validation:
+      allowed:
+      - macAddressBased
+      - ipAddressBased
+  hm2agentportsecuritystaticcount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityStaticCount
+          index_field: ifIndex
+  hm2agentportsecuritystaticentry:
+    syntax: Hm2AgentPortSecurityStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityStaticTable
+          field: hm2AgentPortSecurityStaticEntry
+  hm2agentportsecuritystaticips:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.250
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityStaticIPs
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 1536
+  hm2agentportsecuritystaticipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.11.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityIpStaticEntry
+          field: hm2AgentPortSecurityStaticIpAddress
+          index_field: hm2AgentPortSecurityStaticIpAddress
+          index_fields: &id002
+          - ifIndex
+          - hm2AgentPortSecurityStaticIpVLANId
+          - hm2AgentPortSecurityStaticIpAddress
+  hm2agentportsecuritystaticipcount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.249
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityStaticIpCount
+          index_field: ifIndex
+  hm2agentportsecuritystaticipvlanid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.11.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityIpStaticEntry
+          field: hm2AgentPortSecurityStaticIpVLANId
+          index_field: hm2AgentPortSecurityStaticIpAddress
+          index_fields: *id002
+  hm2agentportsecuritystaticlimit:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityStaticLimit
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 64
+  hm2agentportsecuritystaticmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityStaticEntry
+          field: hm2AgentPortSecurityStaticMACAddress
+          index_field: hm2AgentPortSecurityStaticMACAddress
+          index_fields: &id003
+          - ifIndex
+          - hm2AgentPortSecurityStaticVLANId
+          - hm2AgentPortSecurityStaticMACAddress
+  hm2agentportsecuritystaticmacs:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityStaticMACs
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 1536
+  hm2agentportsecuritystatictable:
+    syntax: Hm2AgentPortSecurityStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityGroup
+          field: hm2AgentPortSecurityStaticTable
+  hm2agentportsecuritystaticvlanid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityStaticEntry
+          field: hm2AgentPortSecurityStaticVLANId
+          index_field: hm2AgentPortSecurityStaticMACAddress
+          index_fields: *id003
+  hm2agentportsecuritytable:
+    syntax: Hm2AgentPortSecurityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityGroup
+          field: hm2AgentPortSecurityTable
+  hm2agentportsecurityviolationtrapcount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityViolationTrapCount
+          index_field: ifIndex
+  hm2agentportsecurityviolationtrapfrequency:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityViolationTrapFrequency
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 3600
+  hm2agentportsecurityviolationtrapmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.20.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-PORTSECURITY-MIB
+          table: hm2AgentPortSecurityEntry
+          field: hm2AgentPortSecurityViolationTrapMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false

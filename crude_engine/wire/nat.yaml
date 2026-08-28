@@ -1,0 +1,2259 @@
+version: 2.6.0
+feature: nat
+schemas:
+  read_nat:
+    type: dict
+    defaults:
+      hm21to1alg: []
+      hm21to1commitpendingactions: ''
+      hm21to1description: ''
+      hm21to1egressintf: 0
+      hm21to1ifmappingrulecount: 0
+      hm21to1ingressintf: 0
+      hm21to1log: false
+      hm21to1newtargetaddress: ''
+      hm21to1priority: 0
+      hm21to1publicintf: 0
+      hm21to1rowstatus: 0
+      hm21to1rulecount: 0
+      hm21to1ruleentry: ''
+      hm21to1ruleindex: 0
+      hm21to1ruleparams: ''
+      hm21to1rulependingactions: false
+      hm21to1ruletable: ''
+      hm21to1statslastapplied: ''
+      hm21to1statspckcount: 0
+      hm21to1statspcksize: 0
+      hm21to1statsruletable: ''
+      hm21to1statsruletableentry: ''
+      hm21to1statstotalpck: 0
+      hm21to1statstotalpckaccepted: 0
+      hm21to1statstotalpckdendrop: 0
+      hm21to1statstotalpcksize: 0
+      hm21to1storagetype: 0
+      hm21to1targetaddress: ''
+      hm21to1trap: false
+      hm2dnatcommitpendingactions: ''
+      hm2dnatdescription: ''
+      hm2dnatifmappingrulecount: 0
+      hm2dnatifmdirection: 0
+      hm2dnatifminterface: 0
+      hm2dnatifmpriority: 0
+      hm2dnatifmrowstatus: 0
+      hm2dnatifmruleindex: 0
+      hm2dnatlog: false
+      hm2dnatmaxrules: 0
+      hm2dnatnewtargetaddress: ''
+      hm2dnatnewtargetport: ''
+      hm2dnatproto: 0
+      hm2dnatrowstatus: 0
+      hm2dnatrulecount: 0
+      hm2dnatruleentry: ''
+      hm2dnatruleifmappingentry: ''
+      hm2dnatruleifmappingtable: ''
+      hm2dnatruleindex: 0
+      hm2dnatruleparams: ''
+      hm2dnatrulependingactions: false
+      hm2dnatruletable: ''
+      hm2dnatsourceaddress: ''
+      hm2dnatsourceport: ''
+      hm2dnatstatslastapplied: ''
+      hm2dnatstatspckcount: 0
+      hm2dnatstatspcksize: 0
+      hm2dnatstatsruletable: ''
+      hm2dnatstatsruletableentry: ''
+      hm2dnatstatstotalpck: 0
+      hm2dnatstatstotalpckaccepted: 0
+      hm2dnatstatstotalpckdendrop: 0
+      hm2dnatstatstotalpcksize: 0
+      hm2dnattargetaddress: ''
+      hm2dnattargetport: ''
+      hm2dnattrap: false
+      hm2donatdescription: ''
+      hm2donatifmdirection: 0
+      hm2donatifminterface: 0
+      hm2donatifmpriority: 0
+      hm2donatifmrowstatus: 0
+      hm2donatifmruleindex: 0
+      hm2donatlocalexternalip: ''
+      hm2donatlocalinternalip: ''
+      hm2donatlog: false
+      hm2donatremoteexternalip: ''
+      hm2donatremoteinternalip: ''
+      hm2donatrowstatus: 0
+      hm2donatruleifmappingentry: ''
+      hm2donatruleifmappingtable: ''
+      hm2donatruleindex: 0
+      hm2donatruleparams: ''
+      hm2donatstatslastapplied: ''
+      hm2donatstatspckcount: 0
+      hm2donatstatspcksize: 0
+      hm2donatstatsruletable: ''
+      hm2donatstatsruletableentry: ''
+      hm2donatstatstotalpck: 0
+      hm2donatstatstotalpckacc: 0
+      hm2donatstatstotalpckdendrop: 0
+      hm2donatstatstotalpcksize: 0
+      hm2donattrap: false
+      hm2doublenatcommitpendingactions: ''
+      hm2doublenatifmappingrulecount: 0
+      hm2doublenatmaxrules: 0
+      hm2doublenatrulecount: 0
+      hm2doublenatruleentry: ''
+      hm2doublenatrulependingactions: false
+      hm2doublenatruletable: ''
+      hm2masqcommitpendingactions: ''
+      hm2masqdescription: ''
+      hm2masqifmappingrulecount: 0
+      hm2masqifmdirection: 0
+      hm2masqifminterface: 0
+      hm2masqifmpriority: 0
+      hm2masqifmrowstatus: 0
+      hm2masqifmruleindex: 0
+      hm2masqipsecexempt: false
+      hm2masqlog: false
+      hm2masqmaxrules: 0
+      hm2masqproto: 0
+      hm2masqrowstatus: 0
+      hm2masqrulecount: 0
+      hm2masqruleentry: ''
+      hm2masqruleifmappingentry: ''
+      hm2masqruleifmappingtable: ''
+      hm2masqruleindex: 0
+      hm2masqruleparams: ''
+      hm2masqrulependingactions: false
+      hm2masqruletable: ''
+      hm2masqsourceaddress: ''
+      hm2masqsourceport: ''
+      hm2masqstatslastapplied: ''
+      hm2masqstatspckcount: 0
+      hm2masqstatspcksize: 0
+      hm2masqstatsruletable: ''
+      hm2masqstatsruletableentry: ''
+      hm2masqstatstotalpck: 0
+      hm2masqstatstotalpckaccepted: 0
+      hm2masqstatstotalpckdendrop: 0
+      hm2masqstatstotalpcksize: 0
+      hm2masqtrap: false
+      hm2natresetstatistics: ''
+      hm2onetoonenatmaxrules: 0
+attributes:
+  hm21to1alg:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleObjects
+          field: hm21to1Alg
+    bit_map:
+      0: ftp
+      1: icmp
+  hm21to1commitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleObjects
+          field: hm21to1CommitPendingActions
+  hm21to1description:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1Description
+          index_field: hm21to1RuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm21to1egressintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1EgressIntf
+          index_field: hm21to1RuleIndex
+  hm21to1ifmappingrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleObjects
+          field: hm21to1IfMappingRuleCount
+  hm21to1ingressintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1IngressIntf
+          index_field: hm21to1RuleIndex
+  hm21to1log:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1Log
+          index_field: hm21to1RuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm21to1newtargetaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1NewTargetAddress
+          index_field: hm21to1RuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm21to1priority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1Priority
+          index_field: hm21to1RuleIndex
+    validation:
+      min: 0
+      max: 6500
+  hm21to1publicintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleObjects
+          field: hm21to1PublicIntf
+  hm21to1rowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1RowStatus
+          index_field: hm21to1RuleIndex
+    create_method: createAndWait
+  hm21to1rulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleObjects
+          field: hm21to1RuleCount
+  hm21to1ruleentry:
+    syntax: Hm21to1RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleTable
+          field: hm21to1RuleEntry
+  hm21to1ruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1RuleIndex
+          index_field: hm21to1RuleIndex
+    validation:
+      min: 1
+      max: 255
+  hm21to1ruleparams:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1RuleParams
+          index_field: hm21to1RuleIndex
+    validation:
+      min: 0
+      max: 50
+  hm21to1rulependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleObjects
+          field: hm21to1RulePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm21to1ruletable:
+    syntax: Hm21to1RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleTables
+          field: hm21to1RuleTable
+  hm21to1statslastapplied:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1StatsRuleTableEntry
+          field: hm21to1StatsLastApplied
+          index_field: hm21to1RuleIndex
+  hm21to1statspckcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1StatsRuleTableEntry
+          field: hm21to1StatsPckCount
+          index_field: hm21to1RuleIndex
+  hm21to1statspcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1StatsRuleTableEntry
+          field: hm21to1StatsPckSize
+          index_field: hm21to1RuleIndex
+  hm21to1statsruletable:
+    syntax: Hm2OtoStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1StatsTables
+          field: hm21to1StatsRuleTable
+  hm21to1statsruletableentry:
+    syntax: Hm2OtoStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1StatsRuleTable
+          field: hm21to1StatsRuleTableEntry
+  hm21to1statstotalpck:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1GeneralStats
+          field: hm21to1StatsTotalPck
+  hm21to1statstotalpckaccepted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1GeneralStats
+          field: hm21to1StatsTotalPckAccepted
+  hm21to1statstotalpckdendrop:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1GeneralStats
+          field: hm21to1StatsTotalPckDenDrop
+  hm21to1statstotalpcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1GeneralStats
+          field: hm21to1StatsTotalPckSize
+  hm21to1storagetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1StorageType
+          index_field: hm21to1RuleIndex
+  hm21to1targetaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1TargetAddress
+          index_field: hm21to1RuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm21to1trap:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.4.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm21to1RuleEntry
+          field: hm21to1Trap
+          index_field: hm21to1RuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dnatcommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRulesObjects
+          field: hm2DnatCommitPendingActions
+  hm2dnatdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatDescription
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dnatifmappingrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRulesObjects
+          field: hm2DnatIfMappingRuleCount
+  hm2dnatifmdirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleIfMappingEntry
+          field: hm2DnatIfmDirection
+          index_field: hm2DnatIfmRuleIndex
+          index_fields: &id001
+          - hm2DnatIfmInterface
+          - hm2DnatIfmDirection
+          - hm2DnatIfmRuleIndex
+  hm2dnatifminterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleIfMappingEntry
+          field: hm2DnatIfmInterface
+          index_field: hm2DnatIfmRuleIndex
+          index_fields: *id001
+  hm2dnatifmpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleIfMappingEntry
+          field: hm2DnatIfmPriority
+          index_field: hm2DnatIfmRuleIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 6500
+  hm2dnatifmrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleIfMappingEntry
+          field: hm2DnatIfmRowStatus
+          index_field: hm2DnatIfmRuleIndex
+          index_fields: *id001
+    create_method: createAndWait
+  hm2dnatifmruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleIfMappingEntry
+          field: hm2DnatIfmRuleIndex
+          index_field: hm2DnatIfmRuleIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 2048
+  hm2dnatlog:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatLog
+          index_field: hm2DnatRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dnatmaxrules:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2NatGeneralSettings
+          field: hm2DnatMaxRules
+  hm2dnatnewtargetaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatNewTargetAddress
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2dnatnewtargetport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatNewTargetPort
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 1
+      max: 50
+  hm2dnatproto:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatProto
+          index_field: hm2DnatRuleIndex
+  hm2dnatrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatRowStatus
+          index_field: hm2DnatRuleIndex
+    create_method: createAndWait
+  hm2dnatrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRulesObjects
+          field: hm2DnatRuleCount
+  hm2dnatruleentry:
+    syntax: Hm2DnatRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleTable
+          field: hm2DnatRuleEntry
+  hm2dnatruleifmappingentry:
+    syntax: Hm2DnatRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleIfMappingTable
+          field: hm2DnatRuleIfMappingEntry
+  hm2dnatruleifmappingtable:
+    syntax: Hm2DnatRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRulesTables
+          field: hm2DnatRuleIfMappingTable
+  hm2dnatruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatRuleIndex
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 1
+      max: 255
+  hm2dnatruleparams:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatRuleParams
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 0
+      max: 50
+  hm2dnatrulependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRulesObjects
+          field: hm2DnatRulePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dnatruletable:
+    syntax: Hm2DnatRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRulesTables
+          field: hm2DnatRuleTable
+  hm2dnatsourceaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatSourceAddress
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2dnatsourceport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatSourcePort
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 1
+      max: 50
+  hm2dnatstatslastapplied:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatStatsRuleTableEntry
+          field: hm2DnatStatsLastApplied
+          index_field: hm2DnatRuleIndex
+  hm2dnatstatspckcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatStatsRuleTableEntry
+          field: hm2DnatStatsPckCount
+          index_field: hm2DnatRuleIndex
+  hm2dnatstatspcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatStatsRuleTableEntry
+          field: hm2DnatStatsPckSize
+          index_field: hm2DnatRuleIndex
+  hm2dnatstatsruletable:
+    syntax: Hm2DnatStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleStats
+          field: hm2DnatStatsRuleTable
+  hm2dnatstatsruletableentry:
+    syntax: Hm2DnatStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatStatsRuleTable
+          field: hm2DnatStatsRuleTableEntry
+  hm2dnatstatstotalpck:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatGlobalStats
+          field: hm2DnatStatsTotalPck
+  hm2dnatstatstotalpckaccepted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatGlobalStats
+          field: hm2DnatStatsTotalPckAccepted
+  hm2dnatstatstotalpckdendrop:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatGlobalStats
+          field: hm2DnatStatsTotalPckDenDrop
+  hm2dnatstatstotalpcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.2.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatGlobalStats
+          field: hm2DnatStatsTotalPckSize
+  hm2dnattargetaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatTargetAddress
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2dnattargetport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatTargetPort
+          index_field: hm2DnatRuleIndex
+    validation:
+      min: 1
+      max: 50
+  hm2dnattrap:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.2.1.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DnatRuleEntry
+          field: hm2DnatTrap
+          index_field: hm2DnatRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2donatdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatDescription
+          index_field: hm2DonatRuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2donatifmdirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatRuleIfMappingEntry
+          field: hm2DonatIfmDirection
+          index_field: hm2DonatIfmRuleIndex
+          index_fields: &id002
+          - hm2DonatIfmInterface
+          - hm2DonatIfmDirection
+          - hm2DonatIfmRuleIndex
+  hm2donatifminterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatRuleIfMappingEntry
+          field: hm2DonatIfmInterface
+          index_field: hm2DonatIfmRuleIndex
+          index_fields: *id002
+  hm2donatifmpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatRuleIfMappingEntry
+          field: hm2DonatIfmPriority
+          index_field: hm2DonatIfmRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 6500
+  hm2donatifmrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatRuleIfMappingEntry
+          field: hm2DonatIfmRowStatus
+          index_field: hm2DonatIfmRuleIndex
+          index_fields: *id002
+    create_method: createAndWait
+  hm2donatifmruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatRuleIfMappingEntry
+          field: hm2DonatIfmRuleIndex
+          index_field: hm2DonatIfmRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 2048
+  hm2donatlocalexternalip:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatLocalExternalIp
+          index_field: hm2DonatRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2donatlocalinternalip:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatLocalInternalIp
+          index_field: hm2DonatRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2donatlog:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatLog
+          index_field: hm2DonatRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2donatremoteexternalip:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatRemoteExternalIp
+          index_field: hm2DonatRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2donatremoteinternalip:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatRemoteInternalIp
+          index_field: hm2DonatRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2donatrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatRowStatus
+          index_field: hm2DonatRuleIndex
+    create_method: createAndWait
+  hm2donatruleifmappingentry:
+    syntax: Hm2DonatRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatRuleIfMappingTable
+          field: hm2DonatRuleIfMappingEntry
+  hm2donatruleifmappingtable:
+    syntax: Hm2DonatRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleTables
+          field: hm2DonatRuleIfMappingTable
+  hm2donatruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatRuleIndex
+          index_field: hm2DonatRuleIndex
+    validation:
+      min: 1
+      max: 255
+  hm2donatruleparams:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatRuleParams
+          index_field: hm2DonatRuleIndex
+    validation:
+      min: 0
+      max: 50
+  hm2donatstatslastapplied:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatStatsRuleTableEntry
+          field: hm2DonatStatsLastApplied
+          index_field: hm2DonatRuleIndex
+  hm2donatstatspckcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatStatsRuleTableEntry
+          field: hm2DonatStatsPckCount
+          index_field: hm2DonatRuleIndex
+  hm2donatstatspcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatStatsRuleTableEntry
+          field: hm2DonatStatsPckSize
+          index_field: hm2DonatRuleIndex
+  hm2donatstatsruletable:
+    syntax: Hm2DonatStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatStatsRuleTables
+          field: hm2DonatStatsRuleTable
+  hm2donatstatsruletableentry:
+    syntax: Hm2DonatStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatStatsRuleTable
+          field: hm2DonatStatsRuleTableEntry
+  hm2donatstatstotalpck:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatGeneralStats
+          field: hm2DonatStatsTotalPck
+  hm2donatstatstotalpckacc:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatGeneralStats
+          field: hm2DonatStatsTotalPckAcc
+  hm2donatstatstotalpckdendrop:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatGeneralStats
+          field: hm2DonatStatsTotalPckDenDrop
+  hm2donatstatstotalpcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DonatGeneralStats
+          field: hm2DonatStatsTotalPckSize
+  hm2donattrap:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleEntry
+          field: hm2DonatTrap
+          index_field: hm2DonatRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2doublenatcommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleObjects
+          field: hm2DoubleNatCommitPendingActions
+  hm2doublenatifmappingrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleObjects
+          field: hm2DoubleNatIfMappingRuleCount
+  hm2doublenatmaxrules:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2NatGeneralSettings
+          field: hm2DoubleNatMaxRules
+  hm2doublenatrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleObjects
+          field: hm2DoubleNatRuleCount
+  hm2doublenatruleentry:
+    syntax: Hm2DoubleNatRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleTable
+          field: hm2DoubleNatRuleEntry
+  hm2doublenatrulependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleObjects
+          field: hm2DoubleNatRulePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2doublenatruletable:
+    syntax: Hm2DoubleNatRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.6.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2DoubleNatRuleTables
+          field: hm2DoubleNatRuleTable
+  hm2masqcommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleObjects
+          field: hm2MasqCommitPendingActions
+  hm2masqdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqDescription
+          index_field: hm2MasqRuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2masqifmappingrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleObjects
+          field: hm2MasqIfMappingRuleCount
+  hm2masqifmdirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleIfMappingEntry
+          field: hm2MasqIfmDirection
+          index_field: hm2MasqIfmRuleIndex
+          index_fields: &id003
+          - hm2MasqIfmInterface
+          - hm2MasqIfmDirection
+          - hm2MasqIfmRuleIndex
+  hm2masqifminterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleIfMappingEntry
+          field: hm2MasqIfmInterface
+          index_field: hm2MasqIfmRuleIndex
+          index_fields: *id003
+  hm2masqifmpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleIfMappingEntry
+          field: hm2MasqIfmPriority
+          index_field: hm2MasqIfmRuleIndex
+          index_fields: *id003
+    validation:
+      min: 1
+      max: 6500
+  hm2masqifmrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleIfMappingEntry
+          field: hm2MasqIfmRowStatus
+          index_field: hm2MasqIfmRuleIndex
+          index_fields: *id003
+    create_method: createAndWait
+  hm2masqifmruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleIfMappingEntry
+          field: hm2MasqIfmRuleIndex
+          index_field: hm2MasqIfmRuleIndex
+          index_fields: *id003
+    validation:
+      min: 1
+      max: 2048
+  hm2masqipsecexempt:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqIpsecExempt
+          index_field: hm2MasqRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2masqlog:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqLog
+          index_field: hm2MasqRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2masqmaxrules:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2NatGeneralSettings
+          field: hm2MasqMaxRules
+  hm2masqproto:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqProto
+          index_field: hm2MasqRuleIndex
+  hm2masqrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqRowStatus
+          index_field: hm2MasqRuleIndex
+    create_method: createAndWait
+  hm2masqrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleObjects
+          field: hm2MasqRuleCount
+  hm2masqruleentry:
+    syntax: Hm2MasqRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleTable
+          field: hm2MasqRuleEntry
+  hm2masqruleifmappingentry:
+    syntax: Hm2MasqRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleIfMappingTable
+          field: hm2MasqRuleIfMappingEntry
+  hm2masqruleifmappingtable:
+    syntax: Hm2MasqRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleTables
+          field: hm2MasqRuleIfMappingTable
+  hm2masqruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqRuleIndex
+          index_field: hm2MasqRuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2masqruleparams:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqRuleParams
+          index_field: hm2MasqRuleIndex
+    validation:
+      min: 0
+      max: 50
+  hm2masqrulependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleObjects
+          field: hm2MasqRulePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2masqruletable:
+    syntax: Hm2MasqRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleTables
+          field: hm2MasqRuleTable
+  hm2masqsourceaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqSourceAddress
+          index_field: hm2MasqRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2masqsourceport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqSourcePort
+          index_field: hm2MasqRuleIndex
+    validation:
+      min: 1
+      max: 50
+  hm2masqstatslastapplied:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqStatsRuleTableEntry
+          field: hm2MasqStatsLastApplied
+          index_field: hm2MasqRuleIndex
+  hm2masqstatspckcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqStatsRuleTableEntry
+          field: hm2MasqStatsPckCount
+          index_field: hm2MasqRuleIndex
+  hm2masqstatspcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqStatsRuleTableEntry
+          field: hm2MasqStatsPckSize
+          index_field: hm2MasqRuleIndex
+  hm2masqstatsruletable:
+    syntax: Hm2MasqStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqStatsRuleTables
+          field: hm2MasqStatsRuleTable
+  hm2masqstatsruletableentry:
+    syntax: Hm2MasqStatsRuleTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqStatsRuleTable
+          field: hm2MasqStatsRuleTableEntry
+  hm2masqstatstotalpck:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqGeneralStats
+          field: hm2MasqStatsTotalPck
+  hm2masqstatstotalpckaccepted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqGeneralStats
+          field: hm2MasqStatsTotalPckAccepted
+  hm2masqstatstotalpckdendrop:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqGeneralStats
+          field: hm2MasqStatsTotalPckDenDrop
+  hm2masqstatstotalpcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqGeneralStats
+          field: hm2MasqStatsTotalPckSize
+  hm2masqtrap:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.5.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2MasqRuleEntry
+          field: hm2MasqTrap
+          index_field: hm2MasqRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2natresetstatistics:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2NatGeneralSettings
+          field: hm2NatResetStatistics
+  hm2onetoonenatmaxrules:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.80.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NAT-MIB
+          table: hm2NatGeneralSettings
+          field: hm2OneToOneNatMaxRules

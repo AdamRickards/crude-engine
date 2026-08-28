@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>crude-engine — program status</title>
+<style>
+:root {
+  --bg:#0b0d12; --panel:#151922; --border:#2a3142; --text:#e8ecf4;
+  --muted:#8b93a7; --accent:#5b9dff;
+  --font:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+* { box-sizing:border-box; }
+html,body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font); }
+.wrap { max-width:1040px; margin:0 auto; padding:28px 20px 72px; }
+h1 { margin:0 0 6px; font-size:26px; }
+h2 { margin:32px 0 12px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.kicker { font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; }
+.lede { font-size:16px; color:#d5dae6; }
+.meta { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 8px; }
+.pill { --c:var(--muted); display:inline-block; border:1px solid var(--c); color:var(--c);
+  border-radius:999px; padding:2px 8px; font-family:var(--mono); font-size:11px; }
+.card { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--border); }
+th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; }
+th { color:var(--muted); font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.task { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:12px 14px; margin:0 0 10px; }
+.task header { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.task h3 { margin:0; font-size:15px; flex:1; }
+.lane { font-family:var(--mono); font-size:11px; color:var(--muted); }
+.tags,.proof { font-size:12px; color:var(--muted); }
+.notes { font-size:13px; color:#c8cedb; white-space:pre-wrap; }
+.mono { font-family:var(--mono); font-size:12px; }
+code { font-family:var(--mono); font-size:12px; color:#cde3ff; }
+a { color:var(--accent); }
+footer { margin-top:36px; color:var(--muted); font-family:var(--mono); font-size:11px; }
+@media (max-width:800px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">crude-engine program · generated 2026-08-17</p>
+  <h1>Cycle 0: Honest catalogue</h1>
+  <p class='lede'>Next task: <strong>Count Execute methods from protocol YAML in the generated header</strong></p><p class='proof'>Run: <code>python3 scripts/check_catalogue.py --e-count</code></p>
+  <div class="meta">
+    <span class="pill">now 2.9.0</span>
+    <span class="pill">target 2.10.0</span>
+    <span class="pill" style="--c:#f31260">matrix FAIL · 145 blocking</span>
+    <span class="pill">1 done / 11 open</span>
+    <span class="pill">host github</span>
+  </div>
+  <p class="mono">last matrix 2026-04-14T09:22:25Z · repo AdamRickards/crude-engine</p>
+
+  <h2>How this works</h2>
+  <div class="card">
+    <p>SEED → ROADMAP → cycle tasks → proof command → this page. Brain is the repo. GitHub is the host.</p>
+    <p class="mono">
+      <a href="program/SEED.md">SEED.md</a> ·
+      <a href="program/METHOD.md">METHOD.md</a> ·
+      <a href="ROADMAP.md">ROADMAP.md</a> ·
+      <a href="TODO.md">TODO.md</a> ·
+      <a href="program/cycles.yaml">cycles.yaml</a>
+    </p>
+  </div>
+
+  <h2>Offline next (do these first)</h2>
+  <article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Count Execute methods from protocol YAML in the generated header</h3></header><p class='mono tags'>#release #Docs-E-Count</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --e-count</code></p><p class='notes'>generate_docs.py only increments from schema type:. E lives in drivers/{MOPS,SNMP,SSH}.yaml execute_methods. METHOD_REFERENCE already says 186 = 174 + 12E.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Label derived/composed methods instead of Protocols None</h3></header><p class='mono tags'>#release #Docs-Composed-Label</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --composed</code></p><p class='notes'>get_config, get_ip_addresses, get_loop_protection, get_auto_disable, get_fan_status, delete_vrrp and siblings. Some are real contract holes (defaults keys ≠ attribute names) — those stay fail until the schema is fixed, not relabelled.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Flag cli() as the unbounded escape hatch</h3></header><p class='mono tags'>#release #Docs-Cli-Hatch</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --cli</code></p><p class='notes'>SSH.yaml lists cli next to ping. The catalogue must say this is the one call where undeclared capability becomes possible.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Close defaults/attribute mismatches that produce empty protocol sets</h3></header><p class='mono tags'>#schema #Defaults-Attr-Mismatch</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --composed</code></p><p class='notes'>Distinct from the generator label. If defaults name keys that are not attributes, the contract cannot execute what it prints. Fix the YAML.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Ban if-protocol and silent except Exception pass in crude_engine/</h3></header><p class='mono tags'>#engine #Principles-Grep</p><p class='proof'>proof: <code>python3 scripts/check_principles.py</code></p><p class='notes'>ENGINE_PRINCIPLES forbids both. if protocol == is already absent. except Exception: pass is in ssh_transport.py and snmp_transport.py.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Clear the 6 structural errors the validator now correctly fails on</h3></header><p class='mono tags'>#schema #Validate-Existing-Errors</p><p class='proof'>proof: <code>python3 local/generator/validate_schemas.py --errors</code></p><p class='notes'>interface.yaml / lldp.yaml alias methods missing type (schema: inherit). qos_mapping get missing defaults. software image_version compute.from uses sub_table names (major/minor/bugfix) not attribute names.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>SCHEMA_MODEL MUSTs that the validator still skips</h3></header><p class='mono tags'>#schema #Validate-MUSTs</p><p class='proof'>proof: <code>python3 local/generator/validate_schemas.py --errors</code></p><p class='notes'>Missing today: index_key MUST, setter wire+source MUST. Do not invent new MUSTs — implement the ones already written. After existing errors are green.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Regenerate API_REFERENCE / METHOD_REFERENCE after generator fixes</h3></header><p class='mono tags'>#release #Docs-Regen</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py</code></p><p class='notes'>Regeneration is the default. Do not hand-edit the 8k-line file.</p></article>
+
+  <h2>Lab (after offline is green)</h2>
+  <article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>lab</span><h3>SNMP compound index decode — the 139-cell parity bucket</h3></header><p class='mono tags'>#driver #SNMP-Compound-Index-Decode</p><p class='proof'>proof: <code>python3 tests/release_matrix.py --inspect --method get_mac_address_table --device 192.168.60.80 --trace</code></p><p class='notes'>P0.1. Start with --inspect on a passing sibling (get_arp_table) vs a failing table. Do not jump to interpreter.py. Not this week unless the lab is on and cycle 0 offline proofs are green.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>lab</span><h3>get_ntp.server_enabled MOPS vs SNMP mismatch</h3></header><p class='mono tags'>#wire #NTP-Server-Enabled-Mismatch</p><p class='proof'>proof: <code>python3 tests/release_matrix.py --inspect --method get_ntp --device 192.168.60.80 --trace</code></p><p class='notes'>Six cells. Isolated. After or beside compound-index.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>lab</span><h3>Run setter and CRUD matrix on lab fleet</h3></header><p class='mono tags'>#release #Setter-Matrix</p><p class='proof'>proof: <code>python3 tests/release_matrix.py --execute --kind setter</code></p><p class='notes'>Planned 260 jobs never in the April run. Lab devices .80–.85 only.</p></article>
+
+  <h2>All cycle tasks</h2>
+  <article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Count Execute methods from protocol YAML in the generated header</h3></header><p class='mono tags'>#release #Docs-E-Count</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --e-count</code></p><p class='notes'>generate_docs.py only increments from schema type:. E lives in drivers/{MOPS,SNMP,SSH}.yaml execute_methods. METHOD_REFERENCE already says 186 = 174 + 12E.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Label derived/composed methods instead of Protocols None</h3></header><p class='mono tags'>#release #Docs-Composed-Label</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --composed</code></p><p class='notes'>get_config, get_ip_addresses, get_loop_protection, get_auto_disable, get_fan_status, delete_vrrp and siblings. Some are real contract holes (defaults keys ≠ attribute names) — those stay fail until the schema is fixed, not relabelled.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Flag cli() as the unbounded escape hatch</h3></header><p class='mono tags'>#release #Docs-Cli-Hatch</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --cli</code></p><p class='notes'>SSH.yaml lists cli next to ping. The catalogue must say this is the one call where undeclared capability becomes possible.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Close defaults/attribute mismatches that produce empty protocol sets</h3></header><p class='mono tags'>#schema #Defaults-Attr-Mismatch</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py --composed</code></p><p class='notes'>Distinct from the generator label. If defaults name keys that are not attributes, the contract cannot execute what it prints. Fix the YAML.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Ban if-protocol and silent except Exception pass in crude_engine/</h3></header><p class='mono tags'>#engine #Principles-Grep</p><p class='proof'>proof: <code>python3 scripts/check_principles.py</code></p><p class='notes'>ENGINE_PRINCIPLES forbids both. if protocol == is already absent. except Exception: pass is in ssh_transport.py and snmp_transport.py.</p></article><article class='task'><header><span class='pill' style='--c:#3dd68c'>done</span><span class='lane'>offline</span><h3>validate_schemas.py exits 1 when it prints structural errors</h3></header><p class='mono tags'>#test #Validator-Exit-Code</p><p class='proof'>proof: <code>python3 local/generator/validate_schemas.py --errors</code></p><p class='notes'>Landed 2026-08-17. The script used to print &quot;6 errors (must fix)&quot; and return 0. A proof that cannot fail is not a proof.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Clear the 6 structural errors the validator now correctly fails on</h3></header><p class='mono tags'>#schema #Validate-Existing-Errors</p><p class='proof'>proof: <code>python3 local/generator/validate_schemas.py --errors</code></p><p class='notes'>interface.yaml / lldp.yaml alias methods missing type (schema: inherit). qos_mapping get missing defaults. software image_version compute.from uses sub_table names (major/minor/bugfix) not attribute names.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>SCHEMA_MODEL MUSTs that the validator still skips</h3></header><p class='mono tags'>#schema #Validate-MUSTs</p><p class='proof'>proof: <code>python3 local/generator/validate_schemas.py --errors</code></p><p class='notes'>Missing today: index_key MUST, setter wire+source MUST. Do not invent new MUSTs — implement the ones already written. After existing errors are green.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>offline</span><h3>Regenerate API_REFERENCE / METHOD_REFERENCE after generator fixes</h3></header><p class='mono tags'>#release #Docs-Regen</p><p class='proof'>proof: <code>python3 scripts/check_catalogue.py</code></p><p class='notes'>Regeneration is the default. Do not hand-edit the 8k-line file.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>lab</span><h3>SNMP compound index decode — the 139-cell parity bucket</h3></header><p class='mono tags'>#driver #SNMP-Compound-Index-Decode</p><p class='proof'>proof: <code>python3 tests/release_matrix.py --inspect --method get_mac_address_table --device 192.168.60.80 --trace</code></p><p class='notes'>P0.1. Start with --inspect on a passing sibling (get_arp_table) vs a failing table. Do not jump to interpreter.py. Not this week unless the lab is on and cycle 0 offline proofs are green.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>lab</span><h3>get_ntp.server_enabled MOPS vs SNMP mismatch</h3></header><p class='mono tags'>#wire #NTP-Server-Enabled-Mismatch</p><p class='proof'>proof: <code>python3 tests/release_matrix.py --inspect --method get_ntp --device 192.168.60.80 --trace</code></p><p class='notes'>Six cells. Isolated. After or beside compound-index.</p></article><article class='task'><header><span class='pill' style='--c:#f5a524'>open</span><span class='lane'>lab</span><h3>Run setter and CRUD matrix on lab fleet</h3></header><p class='mono tags'>#release #Setter-Matrix</p><p class='proof'>proof: <code>python3 tests/release_matrix.py --execute --kind setter</code></p><p class='notes'>Planned 260 jobs never in the April run. Lab devices .80–.85 only.</p></article>
+
+  <h2>Versions</h2>
+  <table>
+    <thead><tr><th>id</th><th>name</th><th>status</th><th>notes</th></tr></thead>
+    <tbody><tr><td class='mono'>2.9.0</td><td>Three-gate engine</td><td><span class='pill' style='--c:#3dd68c'>shipped</span></td><td>Architecture landed. Not the PyPI release.</td></tr><tr><td class='mono'>2.10.0</td><td>First PyPI — honest catalogue + release gate</td><td><span class='pill' style='--c:#5b9dff'>active</span></td><td></td></tr><tr><td class='mono'>2.11.0</td><td>SSH + Offline as 1st-class, or parked with exemptions</td><td><span class='pill' style='--c:#8b93a7'>later</span></td><td></td></tr><tr><td class='mono'>3.0.0</td><td>Second OS or second transport</td><td><span class='pill' style='--c:#8b93a7'>later</span></td><td>HiSecOS wire pack and/or Modbus. Proves multi-OS. Not a 2.10 problem.</td></tr><tr><td class='mono'>later</td><td>Out of this product&#x27;s critical path</td><td><span class='pill' style='--c:#8b93a7'>later</span></td><td>gNMI shim, tools inversion, NILS. Separate seeds.</td></tr></tbody>
+  </table>
+
+  <footer>
+    Regenerated by scripts/generate_status.py. Do not edit this file.
+    Offline proofs: scripts/ci_offline.sh
+  </footer>
+</div>
+</body>
+</html>

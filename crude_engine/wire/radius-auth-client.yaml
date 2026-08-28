@@ -1,0 +1,313 @@
+version: 2.6.0
+feature: radius-auth-client
+schemas:
+  read_radius-auth-client:
+    type: dict
+    defaults:
+      radiusauthclientaccessaccepts: 0
+      radiusauthclientaccesschallenges: 0
+      radiusauthclientaccessrejects: 0
+      radiusauthclientaccessrequests: 0
+      radiusauthclientaccessretransmissions: 0
+      radiusauthclientbadauthenticators: 0
+      radiusauthclientidentifier: ''
+      radiusauthclientinvalidserveraddresses: 0
+      radiusauthclientmalformedaccessresponses: 0
+      radiusauthclientpacketsdropped: 0
+      radiusauthclientpendingrequests: 0
+      radiusauthclientroundtriptime: 0
+      radiusauthclientserverportnumber: 0
+      radiusauthclienttimeouts: 0
+      radiusauthclientunknowntypes: 0
+      radiusauthserveraddress: ''
+      radiusauthserverentry: ''
+      radiusauthserverindex: 0
+      radiusauthservertable: ''
+attributes:
+  radiusauthclientaccessaccepts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientAccessAccepts
+          index_field: radiusAuthServerIndex
+  radiusauthclientaccesschallenges:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientAccessChallenges
+          index_field: radiusAuthServerIndex
+  radiusauthclientaccessrejects:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientAccessRejects
+          index_field: radiusAuthServerIndex
+  radiusauthclientaccessrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientAccessRequests
+          index_field: radiusAuthServerIndex
+  radiusauthclientaccessretransmissions:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientAccessRetransmissions
+          index_field: radiusAuthServerIndex
+  radiusauthclientbadauthenticators:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientBadAuthenticators
+          index_field: radiusAuthServerIndex
+  radiusauthclientidentifier:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.2
+          method: get
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthClient
+          field: radiusAuthClientIdentifier
+  radiusauthclientinvalidserveraddresses:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthClient
+          field: radiusAuthClientInvalidServerAddresses
+  radiusauthclientmalformedaccessresponses:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientMalformedAccessResponses
+          index_field: radiusAuthServerIndex
+  radiusauthclientpacketsdropped:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.15
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientPacketsDropped
+          index_field: radiusAuthServerIndex
+  radiusauthclientpendingrequests:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientPendingRequests
+          index_field: radiusAuthServerIndex
+  radiusauthclientroundtriptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientRoundTripTime
+          index_field: radiusAuthServerIndex
+  radiusauthclientserverportnumber:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientServerPortNumber
+          index_field: radiusAuthServerIndex
+    validation:
+      min: 0
+      max: 65535
+  radiusauthclienttimeouts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientTimeouts
+          index_field: radiusAuthServerIndex
+  radiusauthclientunknowntypes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.14
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthClientUnknownTypes
+          index_field: radiusAuthServerIndex
+  radiusauthserveraddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthServerAddress
+          index_field: radiusAuthServerIndex
+  radiusauthserverentry:
+    syntax: RadiusAuthServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerTable
+          field: radiusAuthServerEntry
+  radiusauthserverindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthServerEntry
+          field: radiusAuthServerIndex
+          index_field: radiusAuthServerIndex
+    validation:
+      min: 1
+      max: 2147483647
+  radiusauthservertable:
+    syntax: RadiusAuthServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2.1.1.3
+          method: get
+      mops:
+        read:
+          mib: RADIUS-AUTH-CLIENT-MIB
+          table: radiusAuthClient
+          field: radiusAuthServerTable

@@ -1,0 +1,194 @@
+version: 2.6.0
+feature: tsn
+schemas:
+  read_tsn:
+    type: dict
+    defaults:
+      hm2stadminbasetime: ''
+      hm2stconfigchangetime: ''
+      hm2stoperbasetime: ''
+      hm2stparametersentry: ''
+      hm2stparameterstable: ''
+      hm2stportstatus: 0
+      hm2tsnadminstate: false
+      hm2tsnadmintemplategcl: 0
+      hm2tsnopertemplategcl: 0
+      hm2tsntemplatebasedparametersentry: ''
+      hm2tsntemplatebasedparameterstable: ''
+attributes:
+  hm2stadminbasetime:
+    syntax: Hm2TsnBaseTime
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2STParametersEntry
+          field: hm2STAdminBaseTime
+  hm2stconfigchangetime:
+    syntax: Hm2TsnBaseTime
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2STParametersEntry
+          field: hm2STConfigChangeTime
+  hm2stoperbasetime:
+    syntax: Hm2TsnBaseTime
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2STParametersEntry
+          field: hm2STOperBaseTime
+  hm2stparametersentry:
+    syntax: Hm2STParametersEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2STParametersTable
+          field: hm2STParametersEntry
+  hm2stparameterstable:
+    syntax: Hm2STParametersEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2TsnMibObjects
+          field: hm2STParametersTable
+  hm2stportstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2STParametersEntry
+          field: hm2STPortStatus
+    validation:
+      allowed:
+      - running
+      - waitForTimeSync
+      - pending
+      - disabled
+      - error
+  hm2tsnadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2TsnGroup
+          field: hm2TsnAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2tsnadmintemplategcl:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2TsnTemplateBasedParametersEntry
+          field: hm2TsnAdminTemplateGcl
+  hm2tsnopertemplategcl:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2TsnTemplateBasedParametersEntry
+          field: hm2TsnOperTemplateGcl
+    validation:
+      allowed:
+      - noTemplate
+      - tc7Tc6to0Gb
+      - gbTc7Tc6to0
+      - tc6to0GbTc7
+      - gbTc7GbTc6Tc5to0
+      - tc5to0GbTc7GbTc6
+      - gbTc6GbTc7Tc5to0
+      - gbTc7Tc5to0GbTc6
+      - tc7GbTc6Tc5to0Gb
+  hm2tsntemplatebasedparametersentry:
+    syntax: Hm2TsnTemplateBasedParametersEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2TsnTemplateBasedParametersTable
+          field: hm2TsnTemplateBasedParametersEntry
+  hm2tsntemplatebasedparameterstable:
+    syntax: Hm2TsnTemplateBasedParametersEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.51.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TSN-MIB
+          table: hm2TsnTemplateBasedGroup
+          field: hm2TsnTemplateBasedParametersTable

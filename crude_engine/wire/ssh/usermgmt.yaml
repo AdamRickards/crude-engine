@@ -1,0 +1,80 @@
+version: "2.6.0"
+feature: usermgmt-ssh
+description: "SSH CLI sources for user management — hand-authored"
+
+attributes:
+  hm2username:
+    sources:
+      ssh:
+        read: {command: "show users", parser: paired_rows, column: 0}
+
+  hm2userpassword:
+    sources:
+      ssh:
+        write: {command: "users password {index} {password}", level: config}
+
+  hm2userstatus:
+    sources:
+      ssh:
+        create: {command: "users add {username}", level: config}
+        delete: {command: "users delete {index}", level: config}
+
+  hm2useraccessrole:
+    sources:
+      ssh:
+        read: {command: "show users", parser: paired_rows, line: 1, column: 0}
+
+  hm2userlockoutstatus:
+    sources:
+      ssh:
+        read: {command: "show users", parser: paired_rows, line: 1, column: 2}
+
+  hm2userpwdpolicychk:
+    sources:
+      ssh:
+        read: {command: "show users", parser: paired_rows, column: 2}
+
+  hm2usersnmpauthtype:
+    sources:
+      ssh:
+        read: {command: "show users", parser: paired_rows, column: 1}
+
+  hm2usersnmpenctype:
+    sources:
+      ssh:
+        read: {command: "show users", parser: paired_rows, line: 1, column: 1}
+
+  hm2pwdmgmtminlength:
+    sources:
+      ssh:
+        read: {command: "show passwords", field: "Minimum password length"}
+
+  hm2pwdmgmtloginattempts:
+    sources:
+      ssh:
+        read: {command: "show passwords", field: "Maximum login attempts"}
+
+  hm2pwdmgmtloginattemptstimeperiod:
+    sources:
+      ssh:
+        read: {command: "show passwords", field: "Login attempts period [min]"}
+
+  hm2pwdmgmtminuppercasechar:
+    sources:
+      ssh:
+        read: {command: "show passwords", field: "Minimum upper case characters"}
+
+  hm2pwdmgmtminlowercasechar:
+    sources:
+      ssh:
+        read: {command: "show passwords", field: "Minimum lower case characters"}
+
+  hm2pwdmgmtminnumericchar:
+    sources:
+      ssh:
+        read: {command: "show passwords", field: "Minimum numeric characters"}
+
+  hm2pwdmgmtminspecialchar:
+    sources:
+      ssh:
+        read: {command: "show passwords", field: "Minimum special characters"}

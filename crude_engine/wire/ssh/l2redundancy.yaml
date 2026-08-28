@@ -1,0 +1,95 @@
+version: "2.9.0"
+feature: l2redundancy-ssh
+description: "SSH CLI sources for MRP and SRM"
+
+attributes:
+  # MRP: show mrp
+  hm2mrpdomainid:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Domain ID"}
+
+  hm2mrpdomainname:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Domain name"}
+        write: {command: "mrp domain modify name {value}", level: config}
+
+  hm2mrprowstatus:
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Operation"}
+        write: {command: "mrp domain modify operation {value}", level: config}
+        create: {command: "mrp domain add default-domain", level: config}
+        delete: {command: "mrp domain delete {domain_id}", level: config}
+
+  hm2mrproleadminstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Mode (administrative setting)"}
+        write: {command: "mrp domain modify mode {value}", level: config}
+
+  hm2mrpvlanid:
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "VLAN ID"}
+        write: {command: "mrp domain modify vlan {value}", level: config}
+
+  hm2mrpringport1ifindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Port number, Primary"}
+        write: {command: "mrp domain modify port primary {value}", level: config}
+
+  hm2mrpringport2ifindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Port number, Secondary"}
+        write: {command: "mrp domain modify port secondary {value}", level: config}
+
+  hm2mrpringport1operstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Port oper state, Primary"}
+
+  hm2mrpringport2operstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Port oper state, Secondary"}
+
+  hm2mrpringoperstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Ring state"}
+
+  hm2mrprecoverydelay:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Recovery delay"}
+        write: {command: "mrp domain modify recovery-delay {value}", level: config}
+
+  hm2mrpfastmrp:
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Advanced mode"}
+        write: {command: "mrp domain modify advanced-mode {value}", level: config}
+
+  hm2mrpmrmpriority:
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Manager priority"}
+        write: {command: "mrp domain modify manager-priority {value}", level: config}
+
+  hm2mrpringport2fixedbackup:
+    sources:
+      ssh:
+        read: {command: "show mrp", field: "Fixed backup port"}

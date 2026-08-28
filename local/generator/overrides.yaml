@@ -1,0 +1,19 @@
+# Generator overrides — human-declared exceptions the MIB can't tell us.
+# These take priority over MIB-derived defaults.
+# Key: lowercase wire attribute name → override fields
+
+# create_method: device-proven via live SNMP testing (2026-03-23)
+# Default is createAndWait. Only list createAndGo exceptions here.
+create_method:
+  hm2dnsclientserverrowstatus: createAndGo
+  hm2dnsclientstatichoststatus: createAndGo
+  hm2logemailsubjectentrystatus: createAndGo
+  hm2useriasuserstatus: createAndGo
+  hm2agenttacacsserverstatus: createAndGo
+  dot1qvlanstaticrowstatus: createAndGo
+  hm2rmarowstatus: createAndGo
+
+# type: TextualConventions the generator can't resolve to base syntax
+# The MIB has TC definitions with base syntax, but syntax_to_type only sees the TC name
+type:
+  hm2useraccessrole: integer

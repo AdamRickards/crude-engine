@@ -1,0 +1,198 @@
+# audit_safety.yaml — Test definitions for write audit
+#
+# safe: automated, reversible, won't break connectivity
+# unsafe: manual only, may break access to device
+#
+# Each entry:
+#   method: the set_/create_/delete_ method name
+#   args: kwargs to pass
+#   verify: GET method to check result
+#   verify_field: field to check in GET result (dot path for nested)
+#   verify_value: expected value after SET
+#   revert: kwargs to restore original state (or "delete" for create ops)
+#   index: row index if needed (port name, vlan id, etc)
+#   requires: minimum sw_level (L2S, L2A, L3A)
+#   note: human-readable description
+
+safe:
+  # --- Global scalars (no index, always reversible) ---
+  - method: set_rstp
+    args: {bpdu_guard: true}
+    verify: get_rstp
+    verify_field: bpdu_guard
+    verify_value: true
+    revert: {bpdu_guard: false}
+    note: "RSTP BPDU Guard global toggle"
+
+  - method: set_rstp
+    args: {priority: 28672}
+    verify: get_rstp
+    verify_field: priority
+    verify_value: 28672
+    revert: {priority: 32768}
+    note: "RSTP bridge priority"
+
+  - method: set_lldp
+    args: {enabled: true}
+    verify: get_lldp_neighbors_detail
+    note: "LLDP global enable (should already be on)"
+    revert: {enabled: true}
+
+  - method: set_hidiscovery
+    args: {enabled: true}
+    verify: get_hidiscovery
+    verify_field: enabled
+    verify_value: true
+    revert: {enabled: true}
+    note: "HiDiscovery enable (already on in lab)"
+
+  - method: set_banner
+    args: {login_banner: "AUDIT TEST"}
+    verify: get_banner
+    verify_field: login_banner
+    verify_value: "AUDIT TEST"
+    revert: {login_banner: ""}
+    note: "Login banner text"
+
+  - method: set_system_info
+    args: {contact: "Audit Test"}
+    verify: get_system_info
+    verify_field: contact
+    verify_value: "Audit Test"
+    revert: {contact: ""}
+    note: "System contact string"
+
+  - method: set_ntp
+    args: {enabled: true}
+    verify: get_ntp
+    verify_field: enabled
+    verify_value: true
+    revert: {enabled: false}
+    note: "NTP/SNTP client enable"
+
+  - method: set_syslog
+    args: {enabled: true}
+    verify: get_syslog
+    verify_field: enabled
+    verify_value: true
+    revert: {enabled: true}
+    note: "Syslog enable (already on in lab)"
+
+  # --- Per-port (indexed, reversible) ---
+  - method: set_rstp_port
+    index: "1/3"
+    args: {edge_port: true}
+    verify: get_rstp_port
+    verify_field: edge_port
+    verify_value: true
+    revert: {edge_port: false}
+    note: "RSTP admin edge on non-ring port"
+
+  - method: set_rstp_port
+    index: "1/3"
+    args: {enabled: false}
+    verify: get_rstp_port
+    verify_field: enabled
+    verify_value: false
+    revert: {enabled: true}
+    note: "RSTP per-port disable on non-ring port"
+
+  - method: set_storm_control
+    index: "1/3"
+    args: {broadcast_enabled: true, broadcast_threshold: 500}
+    verify: get_storm_control
+    verify_field: broadcast_enabled
+    verify_value: true
+    revert: {broadcast_enabled: false}
+    note: "Storm control on non-ring port"
+
+  - method: set_auto_disable_reason
+    index: "bpdu-rate"
+    args: {enabled: true}
+    verify: get_auto_disable
+    revert: {enabled: false}
+    requires: L2A
+    note: "Auto-disable reason enable"
+
+  # --- CRUD (create + delete) ---
+  - method: create_vlan
+    args: {vlan_id: 999}
+    verify: get_vlans
+    verify_field: name
+    verify_value: ""
+    revert: delete
+    revert_method: delete_vlan
+    revert_args: {index: 999}
+    note: "Create and delete test VLAN"
+
+  - method: create_ntp_server
+    args: {address: "10.99.99.99"}
+    verify: get_ntp_servers
+    revert: delete
+    revert_method: delete_ntp_server
+    note: "Create and delete NTP server entry"
+
+  - method: set_snmp_config
+    args: {v1: false}
+    verify: get_snmp_config
+    verify_field: v1
+    verify_value: false
+    revert: {v1: false}
+    note: "SNMP v1 disable (already off in lab)"
+
+  - method: set_services
+    args: {"http.enabled": true}
+    verify: get_services
+    verify_field: http.enabled
+    verify_value: true
+    revert: {"http.enabled": true}
+    note: "HTTP enable via dotted path intent mapping"
+
+  - method: set_services
+    args:
+      http: {enabled: true, port: 80}
+    verify: get_services
+    verify_field: http.enabled
+    verify_value: true
+    revert:
+      http: {enabled: true, port: 80}
+    note: "HTTP via nested dict intent mapping"
+
+  # --- MRP (needs ring ports connected) ---
+  - method: create_mrp
+    args: {role: manager, ring_port1: "1/5", ring_port2: "1/6", vlan: 100, recovery_delay: "200ms"}
+    verify: get_mrp
+    revert: delete
+    revert_method: delete_mrp
+    note: "Create MRP domain (needs ports connected)"
+
+unsafe:
+  - method: set_management
+    reason: "Changes management IP, VLAN, or gateway — loses connectivity"
+
+  - method: set_interface
+    reason: "Disabling ports can isolate device from network"
+
+  - method: set_vlan_ingress
+    reason: "Changing PVID on management port breaks access"
+
+  - method: set_vlan_egress
+    reason: "Removing management VLAN egress breaks access"
+
+  - method: delete_vlan
+    reason: "Deleting management VLAN breaks access (create_vlan with test VLAN is safe)"
+
+  - method: set_login_policy
+    reason: "Lockout settings can lock out the test user"
+
+  - method: set_user
+    reason: "Changing admin password or roles can lock out access"
+
+  - method: set_remote_auth
+    reason: "Enabling RADIUS/TACACS without server configured locks out local auth"
+
+  - method: set_dns
+    reason: "DNS changes are safe but hard to verify automatically"
+
+  - method: set_snmp_information
+    reason: "Changing SNMP community strings breaks SNMP protocol access"

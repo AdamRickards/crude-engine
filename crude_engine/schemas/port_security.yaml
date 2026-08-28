@@ -1,0 +1,113 @@
+version: 2.7.0
+feature: port_security
+description: Port Security (MAC limiting) per-port configuration
+methods:
+  get_port_security:
+    type: dict
+    defaults:
+      global_enabled: false
+      mode: ''
+      auto_disable_enabled: false
+      ports: {}
+    sub_tables:
+      ports:
+        primary_key: enabled
+        key_map: ifindex
+        field_map:
+          enabled: enabled
+          dynamic_limit: dynamic_limit
+          static_limit: static_limit
+          auto_disable: auto_disable
+          violation_trap_mode: violation_trap_mode
+          violation_trap_frequency: violation_trap_frequency
+          dynamic_count: dynamic_count
+          static_count: static_count
+          last_discarded_mac: last_discarded_mac
+        defaults:
+          enabled: false
+          dynamic_limit: 0
+          static_limit: 0
+          auto_disable: false
+          violation_trap_mode: false
+          violation_trap_frequency: 0
+          dynamic_count: 0
+          static_count: 0
+          last_discarded_mac: ''
+  set_port_security:
+    type: upsert
+  create_port_security:
+    type: upsert
+    fields: [mac_add, ip_add]
+  delete_port_security:
+    type: upsert
+    fields: [mac_remove, ip_remove]
+attributes:
+  # --- Global scalars ---
+  global_enabled:
+    wire: hm2agentglobalportsecuritymode
+    source: platform-portsecurity
+  mode:
+    wire: hm2agentportsecurityoperationmode
+    source: platform-portsecurity
+    value_map:
+      '1': mac-based
+      '2': ip-based
+  auto_disable_enabled:
+    wire: hm2autodisablereasonoperation
+    source: devmgmt
+    index_filter: mac-based-port-security
+    value_map:
+      '7': mac-based-port-security
+  # --- Per-port table (keyed by ifIndex, remapped to port name via key_map) ---
+  enabled:
+    wire: hm2agentportsecuritymode
+    source: platform-portsecurity
+  dynamic_limit:
+    wire: hm2agentportsecuritydynamiclimit
+    source: platform-portsecurity
+  static_limit:
+    wire: hm2agentportsecuritystaticlimit
+    source: platform-portsecurity
+  auto_disable:
+    wire: hm2agentportsecurityautodisable
+    source: platform-portsecurity
+  violation_trap_mode:
+    wire: hm2agentportsecurityviolationtrapmode
+    source: platform-portsecurity
+  violation_trap_frequency:
+    wire: hm2agentportsecurityviolationtrapfrequency
+    source: platform-portsecurity
+  dynamic_count:
+    wire: hm2agentportsecuritydynamiccount
+    source: platform-portsecurity
+  static_count:
+    wire: hm2agentportsecuritystaticcount
+    source: platform-portsecurity
+  last_discarded_mac:
+    wire: hm2agentportsecuritylastdiscardedmac
+    source: platform-portsecurity
+  static_ip_count:
+    wire: hm2agentportsecuritystaticipcount
+    source: platform-portsecurity
+  static_macs:
+    wire: hm2agentportsecuritystaticmacs
+    source: platform-portsecurity
+  static_ips:
+    wire: hm2agentportsecuritystaticips
+    source: platform-portsecurity
+  mac_add:
+    wire: hm2agentportsecuritymacaddressadd
+    source: platform-portsecurity
+    set_format: "{vlan} {mac}"
+  mac_remove:
+    wire: hm2agentportsecuritymacaddressremove
+    source: platform-portsecurity
+    set_format: "{vlan} {mac}"
+  ip_add:
+    wire: hm2agentportsecurityipaddressadd
+    source: platform-portsecurity
+    set_format: "{vlan} {ip}"
+  ip_remove:
+    wire: hm2agentportsecurityipaddressremove
+    source: platform-portsecurity
+    set_format: "{vlan} {ip}"

@@ -1,0 +1,29 @@
+version: 2.7.0
+feature: hidiscovery
+description: HiDiscovery protocol settings
+methods:
+  get_hidiscovery:
+    type: dict
+    defaults:
+      enabled: false
+      mode: readOnly
+      relay_enabled: false
+      blinking: false
+  set_hidiscovery:
+    type: upsert
+attributes:
+  enabled:
+    wire: hm2nethidiscoveryoperation
+    source: netconfig
+  mode:
+    wire: hm2nethidiscoverymode
+    source: netconfig
+    value_map:
+      '1': readWrite
+      '2': readOnly
+  relay_enabled:
+    wire: hm2nethidiscoveryrelay
+    source: netconfig
+  blinking:
+    wire: hm2nethidiscoveryblinking
+    source: netconfig

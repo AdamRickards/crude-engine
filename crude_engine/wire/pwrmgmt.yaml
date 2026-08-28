@@ -1,0 +1,474 @@
+version: 2.6.0
+feature: pwrmgmt
+schemas:
+  read_pwrmgmt:
+    type: dict
+    defaults:
+      hm2psentry: ''
+      hm2psid: 0
+      hm2psstate: 0
+      hm2pstable: ''
+      hm2psuslotchassistypeid: 0
+      hm2psuslotcombinationtype: 0
+      hm2psuslotdescription: ''
+      hm2psuslotindex: 0
+      hm2psuslotinfoentry: ''
+      hm2psuslotinfotable: ''
+      hm2psuslotmanufacturerdate: ''
+      hm2psuslotmanufacturerid: 0
+      hm2psuslotproductcode: ''
+      hm2psuslotrevisionid: 0
+      hm2psuslotserialnumber: ''
+      hm2psuslottemperaturerange: 0
+      hm2psuunitconvertertype: 0
+      hm2psuunitfancount: 0
+      hm2psuunitindex: 0
+      hm2psuunitinfoentry: ''
+      hm2psuunitinfotable: ''
+      hm2psuunitnumberofinputs: 0
+      hm2psuunitoutputtype: 0
+      hm2psuunitpoebudget: 0
+      hm2psuunitpowerinterruption: 0
+      hm2psuunitsystembudget: 0
+      hm2psuunitvoltagerange: 0
+attributes:
+  hm2psentry:
+    syntax: Hm2PSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSTable
+          field: hm2PSEntry
+  hm2psid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSEntry
+          field: hm2PSID
+          index_field: hm2PSID
+    validation:
+      min: 1
+      max: 8
+  hm2psstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSEntry
+          field: hm2PSState
+          index_field: hm2PSID
+    validation:
+      allowed:
+      - present
+      - defective
+      - notInstalled
+      - unknown
+  hm2pstable:
+    syntax: Hm2PSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PowerSupplyGroup
+          field: hm2PSTable
+  hm2psuslotchassistypeid:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotChassisTypeId
+          index_field: hm2PSUSlotIndex
+  hm2psuslotcombinationtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotCombinationType
+          index_field: hm2PSUSlotIndex
+  hm2psuslotdescription:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotDescription
+          index_field: hm2PSUSlotIndex
+  hm2psuslotindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotIndex
+          index_field: hm2PSUSlotIndex
+    validation:
+      min: 1
+      max: 4
+  hm2psuslotinfoentry:
+    syntax: Hm2PSUSlotInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoTable
+          field: hm2PSUSlotInfoEntry
+  hm2psuslotinfotable:
+    syntax: Hm2PSUSlotInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PowerSupplyGroup
+          field: hm2PSUSlotInfoTable
+  hm2psuslotmanufacturerdate:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotManufacturerDate
+          index_field: hm2PSUSlotIndex
+  hm2psuslotmanufacturerid:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotManufacturerId
+          index_field: hm2PSUSlotIndex
+  hm2psuslotproductcode:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotProductCode
+          index_field: hm2PSUSlotIndex
+  hm2psuslotrevisionid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotRevisionId
+          index_field: hm2PSUSlotIndex
+    validation:
+      min: 0
+      max: 255
+  hm2psuslotserialnumber:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotSerialNumber
+          index_field: hm2PSUSlotIndex
+  hm2psuslottemperaturerange:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.10.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUSlotInfoEntry
+          field: hm2PSUSlotTemperatureRange
+          index_field: hm2PSUSlotIndex
+  hm2psuunitconvertertype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitConverterType
+          index_field: hm2PSUUnitIndex
+          index_fields: &id001
+          - hm2PSUSlotIndex
+          - hm2PSUUnitIndex
+  hm2psuunitfancount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitFanCount
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 2
+  hm2psuunitindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitIndex
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 2
+  hm2psuunitinfoentry:
+    syntax: Hm2PSUUnitInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoTable
+          field: hm2PSUUnitInfoEntry
+  hm2psuunitinfotable:
+    syntax: Hm2PSUUnitInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PowerSupplyGroup
+          field: hm2PSUUnitInfoTable
+  hm2psuunitnumberofinputs:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitNumberOfInputs
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 2
+  hm2psuunitoutputtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitOutputType
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001
+  hm2psuunitpoebudget:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitPoeBudget
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 1000
+  hm2psuunitpowerinterruption:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitPowerInterruption
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001
+  hm2psuunitsystembudget:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitSystemBudget
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 1000
+  hm2psuunitvoltagerange:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.11.1.1.20.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PWRMGMT-MIB
+          table: hm2PSUUnitInfoEntry
+          field: hm2PSUUnitVoltageRange
+          index_field: hm2PSUUnitIndex
+          index_fields: *id001

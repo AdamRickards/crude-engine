@@ -1,0 +1,954 @@
+version: 2.6.0
+feature: hc-rmon
+schemas:
+  read_hc-rmon:
+    type: dict
+    defaults:
+      etherhistoryhighcapacityentry: ''
+      etherhistoryhighcapacityoctets: 0
+      etherhistoryhighcapacityoverflowoctets: 0
+      etherhistoryhighcapacityoverflowpkts: 0
+      etherhistoryhighcapacitypkts: 0
+      etherhistoryhighcapacitytable: ''
+      etherstatshighcapacityentry: ''
+      etherstatshighcapacityoctets: 0
+      etherstatshighcapacityoverflowoctets: 0
+      etherstatshighcapacityoverflowpkts: 0
+      etherstatshighcapacityoverflowpkts1024to1518octets: 0
+      etherstatshighcapacityoverflowpkts128to255octets: 0
+      etherstatshighcapacityoverflowpkts256to511octets: 0
+      etherstatshighcapacityoverflowpkts512to1023octets: 0
+      etherstatshighcapacityoverflowpkts64octets: 0
+      etherstatshighcapacityoverflowpkts65to127octets: 0
+      etherstatshighcapacitypkts: 0
+      etherstatshighcapacitypkts1024to1518octets: 0
+      etherstatshighcapacitypkts128to255octets: 0
+      etherstatshighcapacitypkts256to511octets: 0
+      etherstatshighcapacitypkts512to1023octets: 0
+      etherstatshighcapacitypkts64octets: 0
+      etherstatshighcapacitypkts65to127octets: 0
+      etherstatshighcapacitytable: ''
+      hcrmoncapabilities: []
+      mediaindependentdatasource: ''
+      mediaindependentdropevents: 0
+      mediaindependentdroppedframes: 0
+      mediaindependentduplexchanges: 0
+      mediaindependentduplexlastchange: 0
+      mediaindependentduplexmode: 0
+      mediaindependententry: ''
+      mediaindependentinerrors: 0
+      mediaindependentinhighcapacityoctets: 0
+      mediaindependentinhighcapacitypkts: 0
+      mediaindependentinnucasthighcapacitypkts: 0
+      mediaindependentinnucastoverflowpkts: 0
+      mediaindependentinnucastpkts: 0
+      mediaindependentinoctets: 0
+      mediaindependentinoverflowoctets: 0
+      mediaindependentinoverflowpkts: 0
+      mediaindependentinpkts: 0
+      mediaindependentindex: 0
+      mediaindependentinputspeed: 0
+      mediaindependentouterrors: 0
+      mediaindependentouthighcapacityoctets: 0
+      mediaindependentouthighcapacitypkts: 0
+      mediaindependentoutnucasthighcapacitypkts: 0
+      mediaindependentoutnucastoverflowpkts: 0
+      mediaindependentoutnucastpkts: 0
+      mediaindependentoutoctets: 0
+      mediaindependentoutoverflowoctets: 0
+      mediaindependentoutoverflowpkts: 0
+      mediaindependentoutpkts: 0
+      mediaindependentoutputspeed: 0
+      mediaindependentowner: ''
+      mediaindependentstatus: 0
+      mediaindependenttable: ''
+attributes:
+  etherhistoryhighcapacityentry:
+    syntax: EtherHistoryHighCapacityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.6.1
+          method: get
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherHistoryHighCapacityTable
+          field: etherHistoryHighCapacityEntry
+  etherhistoryhighcapacityoctets:
+    syntax: CounterBasedGauge64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherHistoryHighCapacityEntry
+          field: etherHistoryHighCapacityOctets
+          index_field: etherHistorySampleIndex
+          index_fields: &id001
+          - etherHistoryIndex
+          - etherHistorySampleIndex
+  etherhistoryhighcapacityoverflowoctets:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherHistoryHighCapacityEntry
+          field: etherHistoryHighCapacityOverflowOctets
+          index_field: etherHistorySampleIndex
+          index_fields: *id001
+  etherhistoryhighcapacityoverflowpkts:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherHistoryHighCapacityEntry
+          field: etherHistoryHighCapacityOverflowPkts
+          index_field: etherHistorySampleIndex
+          index_fields: *id001
+  etherhistoryhighcapacitypkts:
+    syntax: CounterBasedGauge64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherHistoryHighCapacityEntry
+          field: etherHistoryHighCapacityPkts
+          index_field: etherHistorySampleIndex
+          index_fields: *id001
+  etherhistoryhighcapacitytable:
+    syntax: EtherHistoryHighCapacityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.6
+          method: get
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: history
+          field: etherHistoryHighCapacityTable
+  etherstatshighcapacityentry:
+    syntax: EtherStatsHighCapacityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityTable
+          field: etherStatsHighCapacityEntry
+  etherstatshighcapacityoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOctets
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowOctets
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowPkts
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowpkts1024to1518octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.15
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowPkts1024to1518Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowpkts128to255octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.9
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowPkts128to255Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowpkts256to511octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.11
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowPkts256to511Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowpkts512to1023octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.13
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowPkts512to1023Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowpkts64octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowPkts64Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacityoverflowpkts65to127octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityOverflowPkts65to127Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacitypkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityPkts
+          index_field: etherStatsIndex
+  etherstatshighcapacitypkts1024to1518octets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.16
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityPkts1024to1518Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacitypkts128to255octets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.10
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityPkts128to255Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacitypkts256to511octets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.12
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityPkts256to511Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacitypkts512to1023octets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.14
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityPkts512to1023Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacitypkts64octets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityPkts64Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacitypkts65to127octets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: etherStatsHighCapacityEntry
+          field: etherStatsHighCapacityPkts65to127Octets
+          index_field: etherStatsIndex
+  etherstatshighcapacitytable:
+    syntax: EtherStatsHighCapacityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.7
+          method: get
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: statistics
+          field: etherStatsHighCapacityTable
+  hcrmoncapabilities:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.19.16
+          method: get
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: probeConfig
+          field: hcRMONCapabilities
+    bit_map:
+      0: mediaIndependentGroup
+      1: etherStatsHighCapacityGroup
+      2: etherHistoryHighCapacityGroup
+      3: hostHighCapacityGroup
+      4: hostTopNHighCapacityGroup
+      5: matrixHighCapacityGroup
+      6: captureBufferHighCapacityGroup
+      7: protocolDistributionHighCapacityGroup
+      8: nlHostHighCapacityGroup
+      9: nlMatrixHighCapacityGroup
+      10: nlMatrixTopNHighCapacityGroup
+      11: alHostHighCapacityGroup
+      12: alMatrixHighCapacityGroup
+      13: alMatrixTopNHighCapacityGroup
+      14: usrHistoryHighCapacityGroup
+  mediaindependentdatasource:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentDataSource
+          index_field: mediaIndependentIndex
+  mediaindependentdropevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentDropEvents
+          index_field: mediaIndependentIndex
+  mediaindependentdroppedframes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentDroppedFrames
+          index_field: mediaIndependentIndex
+  mediaindependentduplexchanges:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.28
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentDuplexChanges
+          index_field: mediaIndependentIndex
+  mediaindependentduplexlastchange:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.29
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentDuplexLastChange
+          index_field: mediaIndependentIndex
+  mediaindependentduplexmode:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.27
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentDuplexMode
+          index_field: mediaIndependentIndex
+  mediaindependententry:
+    syntax: MediaIndependentEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1
+          method: get
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentTable
+          field: mediaIndependentEntry
+  mediaindependentinerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInErrors
+          index_field: mediaIndependentIndex
+  mediaindependentinhighcapacityoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInHighCapacityOctets
+          index_field: mediaIndependentIndex
+  mediaindependentinhighcapacitypkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInHighCapacityPkts
+          index_field: mediaIndependentIndex
+  mediaindependentinnucasthighcapacitypkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInNUCastHighCapacityPkts
+          index_field: mediaIndependentIndex
+  mediaindependentinnucastoverflowpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInNUCastOverflowPkts
+          index_field: mediaIndependentIndex
+  mediaindependentinnucastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInNUCastPkts
+          index_field: mediaIndependentIndex
+  mediaindependentinoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInOctets
+          index_field: mediaIndependentIndex
+  mediaindependentinoverflowoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInOverflowOctets
+          index_field: mediaIndependentIndex
+  mediaindependentinoverflowpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInOverflowPkts
+          index_field: mediaIndependentIndex
+  mediaindependentinpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInPkts
+          index_field: mediaIndependentIndex
+  mediaindependentindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentIndex
+          index_field: mediaIndependentIndex
+    validation:
+      min: 1
+      max: 65535
+  mediaindependentinputspeed:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentInputSpeed
+          index_field: mediaIndependentIndex
+  mediaindependentouterrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutErrors
+          index_field: mediaIndependentIndex
+  mediaindependentouthighcapacityoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutHighCapacityOctets
+          index_field: mediaIndependentIndex
+  mediaindependentouthighcapacitypkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutHighCapacityPkts
+          index_field: mediaIndependentIndex
+  mediaindependentoutnucasthighcapacitypkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutNUCastHighCapacityPkts
+          index_field: mediaIndependentIndex
+  mediaindependentoutnucastoverflowpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutNUCastOverflowPkts
+          index_field: mediaIndependentIndex
+  mediaindependentoutnucastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutNUCastPkts
+          index_field: mediaIndependentIndex
+  mediaindependentoutoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutOctets
+          index_field: mediaIndependentIndex
+  mediaindependentoutoverflowoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutOverflowOctets
+          index_field: mediaIndependentIndex
+  mediaindependentoutoverflowpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutOverflowPkts
+          index_field: mediaIndependentIndex
+  mediaindependentoutpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutPkts
+          index_field: mediaIndependentIndex
+  mediaindependentoutputspeed:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOutputSpeed
+          index_field: mediaIndependentIndex
+  mediaindependentowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.30
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentOwner
+          index_field: mediaIndependentIndex
+  mediaindependentstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1.1.31
+          method: walk
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentEntry
+          field: mediaIndependentStatus
+          index_field: mediaIndependentIndex
+    create_method: createAndWait
+  mediaindependenttable:
+    syntax: MediaIndependentEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.21.1
+          method: get
+      mops:
+        read:
+          mib: HC-RMON-MIB
+          table: mediaIndependentStats
+          field: mediaIndependentTable

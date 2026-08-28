@@ -1,0 +1,4280 @@
+version: 2.6.0
+feature: ip
+schemas:
+  read_ip:
+    type: dict
+    defaults:
+      icmpinaddrmaskreps: 0
+      icmpinaddrmasks: 0
+      icmpindestunreachs: 0
+      icmpinechoreps: 0
+      icmpinechos: 0
+      icmpinerrors: 0
+      icmpinmsgs: 0
+      icmpinparmprobs: 0
+      icmpinredirects: 0
+      icmpinsrcquenchs: 0
+      icmpintimeexcds: 0
+      icmpintimestampreps: 0
+      icmpintimestamps: 0
+      icmpmsgstatsentry: ''
+      icmpmsgstatsipversion: ''
+      icmpmsgstatsinpkts: 0
+      icmpmsgstatsoutpkts: 0
+      icmpmsgstatstable: ''
+      icmpmsgstatstype: 0
+      icmpoutaddrmaskreps: 0
+      icmpoutaddrmasks: 0
+      icmpoutdestunreachs: 0
+      icmpoutechoreps: 0
+      icmpoutechos: 0
+      icmpouterrors: 0
+      icmpoutmsgs: 0
+      icmpoutparmprobs: 0
+      icmpoutredirects: 0
+      icmpoutsrcquenchs: 0
+      icmpouttimeexcds: 0
+      icmpouttimestampreps: 0
+      icmpouttimestamps: 0
+      icmpstatsentry: ''
+      icmpstatsipversion: ''
+      icmpstatsinerrors: 0
+      icmpstatsinmsgs: 0
+      icmpstatsouterrors: 0
+      icmpstatsoutmsgs: 0
+      icmpstatstable: ''
+      ipadentaddr: ''
+      ipadentbcastaddr: 0
+      ipadentifindex: 0
+      ipadentnetmask: ''
+      ipadentreasmmaxsize: 0
+      ipaddrentry: ''
+      ipaddrtable: ''
+      ipaddressaddr: ''
+      ipaddressaddrtype: ''
+      ipaddresscreated: 0
+      ipaddressentry: ''
+      ipaddressifindex: 0
+      ipaddresslastchanged: 0
+      ipaddressorigin: ''
+      ipaddressprefix: ''
+      ipaddressprefixadvpreferredlifetime: 0
+      ipaddressprefixadvvalidlifetime: 0
+      ipaddressprefixautonomousflag: false
+      ipaddressprefixentry: ''
+      ipaddressprefixifindex: 0
+      ipaddressprefixlength: ''
+      ipaddressprefixonlinkflag: false
+      ipaddressprefixorigin: ''
+      ipaddressprefixprefix: ''
+      ipaddressprefixtable: ''
+      ipaddressprefixtype: ''
+      ipaddressrowstatus: 0
+      ipaddressspinlock: ''
+      ipaddressstatus: ''
+      ipaddressstoragetype: 0
+      ipaddresstable: ''
+      ipaddresstype: 0
+      ipdefaultrouteraddress: ''
+      ipdefaultrouteraddresstype: ''
+      ipdefaultrouterentry: ''
+      ipdefaultrouterifindex: 0
+      ipdefaultrouterlifetime: 0
+      ipdefaultrouterpreference: 0
+      ipdefaultroutertable: ''
+      ipdefaultttl: 0
+      ipforwdatagrams: 0
+      ipforwarding: 0
+      ipfragcreates: 0
+      ipfragfails: 0
+      ipfragoks: 0
+      ipifstatsdiscontinuitytime: 0
+      ipifstatsentry: ''
+      ipifstatshcinbcastpkts: 0
+      ipifstatshcindelivers: 0
+      ipifstatshcinforwdatagrams: 0
+      ipifstatshcinmcastoctets: 0
+      ipifstatshcinmcastpkts: 0
+      ipifstatshcinoctets: 0
+      ipifstatshcinreceives: 0
+      ipifstatshcoutbcastpkts: 0
+      ipifstatshcoutforwdatagrams: 0
+      ipifstatshcoutmcastoctets: 0
+      ipifstatshcoutmcastpkts: 0
+      ipifstatshcoutoctets: 0
+      ipifstatshcoutrequests: 0
+      ipifstatshcouttransmits: 0
+      ipifstatsipversion: ''
+      ipifstatsifindex: 0
+      ipifstatsinaddrerrors: 0
+      ipifstatsinbcastpkts: 0
+      ipifstatsindelivers: 0
+      ipifstatsindiscards: 0
+      ipifstatsinforwdatagrams: 0
+      ipifstatsinhdrerrors: 0
+      ipifstatsinmcastoctets: 0
+      ipifstatsinmcastpkts: 0
+      ipifstatsinnoroutes: 0
+      ipifstatsinoctets: 0
+      ipifstatsinreceives: 0
+      ipifstatsintruncatedpkts: 0
+      ipifstatsinunknownprotos: 0
+      ipifstatsoutbcastpkts: 0
+      ipifstatsoutdiscards: 0
+      ipifstatsoutforwdatagrams: 0
+      ipifstatsoutfragcreates: 0
+      ipifstatsoutfragfails: 0
+      ipifstatsoutfragoks: 0
+      ipifstatsoutfragreqds: 0
+      ipifstatsoutmcastoctets: 0
+      ipifstatsoutmcastpkts: 0
+      ipifstatsoutoctets: 0
+      ipifstatsoutrequests: 0
+      ipifstatsouttransmits: 0
+      ipifstatsreasmfails: 0
+      ipifstatsreasmoks: 0
+      ipifstatsreasmreqds: 0
+      ipifstatsrefreshrate: 0
+      ipifstatstable: ''
+      ipifstatstablelastchange: 0
+      ipinaddrerrors: 0
+      ipindelivers: 0
+      ipindiscards: 0
+      ipinhdrerrors: 0
+      ipinreceives: 0
+      ipinunknownprotos: 0
+      ipnettomediaentry: ''
+      ipnettomediaifindex: 0
+      ipnettomedianetaddress: ''
+      ipnettomediaphysaddress: ''
+      ipnettomediatable: ''
+      ipnettomediatype: 0
+      ipnettophysicalentry: ''
+      ipnettophysicalifindex: 0
+      ipnettophysicallastupdated: 0
+      ipnettophysicalnetaddress: ''
+      ipnettophysicalnetaddresstype: ''
+      ipnettophysicalphysaddress: ''
+      ipnettophysicalrowstatus: 0
+      ipnettophysicalstate: 0
+      ipnettophysicaltable: ''
+      ipnettophysicaltype: 0
+      ipoutdiscards: 0
+      ipoutnoroutes: 0
+      ipoutrequests: 0
+      ipreasmfails: 0
+      ipreasmoks: 0
+      ipreasmreqds: 0
+      ipreasmtimeout: 0
+      iproutingdiscards: 0
+      ipsystemstatsdiscontinuitytime: 0
+      ipsystemstatsentry: ''
+      ipsystemstatshcinbcastpkts: 0
+      ipsystemstatshcindelivers: 0
+      ipsystemstatshcinforwdatagrams: 0
+      ipsystemstatshcinmcastoctets: 0
+      ipsystemstatshcinmcastpkts: 0
+      ipsystemstatshcinoctets: 0
+      ipsystemstatshcinreceives: 0
+      ipsystemstatshcoutbcastpkts: 0
+      ipsystemstatshcoutforwdatagrams: 0
+      ipsystemstatshcoutmcastoctets: 0
+      ipsystemstatshcoutmcastpkts: 0
+      ipsystemstatshcoutoctets: 0
+      ipsystemstatshcoutrequests: 0
+      ipsystemstatshcouttransmits: 0
+      ipsystemstatsipversion: ''
+      ipsystemstatsinaddrerrors: 0
+      ipsystemstatsinbcastpkts: 0
+      ipsystemstatsindelivers: 0
+      ipsystemstatsindiscards: 0
+      ipsystemstatsinforwdatagrams: 0
+      ipsystemstatsinhdrerrors: 0
+      ipsystemstatsinmcastoctets: 0
+      ipsystemstatsinmcastpkts: 0
+      ipsystemstatsinnoroutes: 0
+      ipsystemstatsinoctets: 0
+      ipsystemstatsinreceives: 0
+      ipsystemstatsintruncatedpkts: 0
+      ipsystemstatsinunknownprotos: 0
+      ipsystemstatsoutbcastpkts: 0
+      ipsystemstatsoutdiscards: 0
+      ipsystemstatsoutforwdatagrams: 0
+      ipsystemstatsoutfragcreates: 0
+      ipsystemstatsoutfragfails: 0
+      ipsystemstatsoutfragoks: 0
+      ipsystemstatsoutfragreqds: 0
+      ipsystemstatsoutmcastoctets: 0
+      ipsystemstatsoutmcastpkts: 0
+      ipsystemstatsoutnoroutes: 0
+      ipsystemstatsoutoctets: 0
+      ipsystemstatsoutrequests: 0
+      ipsystemstatsouttransmits: 0
+      ipsystemstatsreasmfails: 0
+      ipsystemstatsreasmoks: 0
+      ipsystemstatsreasmreqds: 0
+      ipsystemstatsrefreshrate: 0
+      ipsystemstatstable: ''
+      ipv4interfaceenablestatus: 0
+      ipv4interfaceentry: ''
+      ipv4interfaceifindex: 0
+      ipv4interfacereasmmaxsize: 0
+      ipv4interfaceretransmittime: 0
+      ipv4interfacetable: ''
+      ipv4interfacetablelastchange: 0
+      ipv6interfaceenablestatus: 0
+      ipv6interfaceentry: ''
+      ipv6interfaceforwarding: 0
+      ipv6interfaceidentifier: ''
+      ipv6interfaceifindex: 0
+      ipv6interfacereachabletime: 0
+      ipv6interfacereasmmaxsize: 0
+      ipv6interfaceretransmittime: 0
+      ipv6interfacetable: ''
+      ipv6interfacetablelastchange: 0
+      ipv6ipdefaulthoplimit: 0
+      ipv6ipforwarding: 0
+      ipv6routeradvertcurhoplimit: 0
+      ipv6routeradvertdefaultlifetime: 0
+      ipv6routeradvertentry: ''
+      ipv6routeradvertifindex: 0
+      ipv6routeradvertlinkmtu: 0
+      ipv6routeradvertmanagedflag: false
+      ipv6routeradvertmaxinterval: 0
+      ipv6routeradvertmininterval: 0
+      ipv6routeradvertotherconfigflag: false
+      ipv6routeradvertreachabletime: 0
+      ipv6routeradvertretransmittime: 0
+      ipv6routeradvertrowstatus: 0
+      ipv6routeradvertsendadverts: false
+      ipv6routeradvertspinlock: ''
+      ipv6routeradverttable: ''
+      ipv6scopezoneindex3: 0
+      ipv6scopezoneindex6: 0
+      ipv6scopezoneindex7: 0
+      ipv6scopezoneindex9: 0
+      ipv6scopezoneindexa: 0
+      ipv6scopezoneindexadminlocal: 0
+      ipv6scopezoneindexb: 0
+      ipv6scopezoneindexc: 0
+      ipv6scopezoneindexd: 0
+      ipv6scopezoneindexentry: 0
+      ipv6scopezoneindexifindex: 0
+      ipv6scopezoneindexlinklocal: 0
+      ipv6scopezoneindexorganizationlocal: 0
+      ipv6scopezoneindexsitelocal: 0
+      ipv6scopezoneindextable: 0
+attributes:
+  icmpinaddrmaskreps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.13
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInAddrMaskReps
+  icmpinaddrmasks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.12
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInAddrMasks
+  icmpindestunreachs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.3
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInDestUnreachs
+  icmpinechoreps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.9
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInEchoReps
+  icmpinechos:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.8
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInEchos
+  icmpinerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.2
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInErrors
+  icmpinmsgs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInMsgs
+  icmpinparmprobs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.5
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInParmProbs
+  icmpinredirects:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.7
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInRedirects
+  icmpinsrcquenchs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.6
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInSrcQuenchs
+  icmpintimeexcds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.4
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInTimeExcds
+  icmpintimestampreps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.11
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInTimestampReps
+  icmpintimestamps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.10
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpInTimestamps
+  icmpmsgstatsentry:
+    syntax: IcmpMsgStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.30.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpMsgStatsTable
+          field: icmpMsgStatsEntry
+  icmpmsgstatsipversion:
+    syntax: InetVersion
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.30.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpMsgStatsEntry
+          field: icmpMsgStatsIPVersion
+          index_field: icmpMsgStatsType
+          index_fields: &id001
+          - icmpMsgStatsIPVersion
+          - icmpMsgStatsType
+  icmpmsgstatsinpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.30.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpMsgStatsEntry
+          field: icmpMsgStatsInPkts
+          index_field: icmpMsgStatsType
+          index_fields: *id001
+  icmpmsgstatsoutpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.30.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpMsgStatsEntry
+          field: icmpMsgStatsOutPkts
+          index_field: icmpMsgStatsType
+          index_fields: *id001
+  icmpmsgstatstable:
+    syntax: IcmpMsgStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.30
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpMsgStatsTable
+  icmpmsgstatstype:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.30.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpMsgStatsEntry
+          field: icmpMsgStatsType
+          index_field: icmpMsgStatsType
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  icmpoutaddrmaskreps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.26
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutAddrMaskReps
+  icmpoutaddrmasks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.25
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutAddrMasks
+  icmpoutdestunreachs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.16
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutDestUnreachs
+  icmpoutechoreps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.22
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutEchoReps
+  icmpoutechos:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.21
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutEchos
+  icmpouterrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.15
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutErrors
+  icmpoutmsgs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.14
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutMsgs
+  icmpoutparmprobs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.18
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutParmProbs
+  icmpoutredirects:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.20
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutRedirects
+  icmpoutsrcquenchs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.19
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutSrcQuenchs
+  icmpouttimeexcds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.17
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutTimeExcds
+  icmpouttimestampreps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.24
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutTimestampReps
+  icmpouttimestamps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.23
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpOutTimestamps
+  icmpstatsentry:
+    syntax: IcmpStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.29.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpStatsTable
+          field: icmpStatsEntry
+  icmpstatsipversion:
+    syntax: InetVersion
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.29.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpStatsEntry
+          field: icmpStatsIPVersion
+          index_field: icmpStatsIPVersion
+  icmpstatsinerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.29.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpStatsEntry
+          field: icmpStatsInErrors
+          index_field: icmpStatsIPVersion
+  icmpstatsinmsgs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.29.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpStatsEntry
+          field: icmpStatsInMsgs
+          index_field: icmpStatsIPVersion
+  icmpstatsouterrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.29.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpStatsEntry
+          field: icmpStatsOutErrors
+          index_field: icmpStatsIPVersion
+  icmpstatsoutmsgs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.29.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmpStatsEntry
+          field: icmpStatsOutMsgs
+          index_field: icmpStatsIPVersion
+  icmpstatstable:
+    syntax: IcmpStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.5.29
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: icmp
+          field: icmpStatsTable
+  ipadentaddr:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.20.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddrEntry
+          field: ipAdEntAddr
+          index_field: ipAdEntAddr
+  ipadentbcastaddr:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.20.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddrEntry
+          field: ipAdEntBcastAddr
+          index_field: ipAdEntAddr
+    validation:
+      min: 0
+      max: 1
+  ipadentifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.20.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddrEntry
+          field: ipAdEntIfIndex
+          index_field: ipAdEntAddr
+    validation:
+      min: 1
+      max: 2147483647
+  ipadentnetmask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.20.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddrEntry
+          field: ipAdEntNetMask
+          index_field: ipAdEntAddr
+  ipadentreasmmaxsize:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.20.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddrEntry
+          field: ipAdEntReasmMaxSize
+          index_field: ipAdEntAddr
+    validation:
+      min: 0
+      max: 65535
+  ipaddrentry:
+    syntax: IpAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.20.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddrTable
+          field: ipAddrEntry
+  ipaddrtable:
+    syntax: IpAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.20
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipAddrTable
+  ipaddressaddr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressAddr
+          index_field: ipAddressAddr
+          index_fields: &id002
+          - ipAddressAddrType
+          - ipAddressAddr
+  ipaddressaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressAddrType
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddresscreated:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressCreated
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddressentry:
+    syntax: IpAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressTable
+          field: ipAddressEntry
+  ipaddressifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressIfIndex
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddresslastchanged:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressLastChanged
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddressorigin:
+    syntax: IpAddressOriginTC
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressOrigin
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddressprefix:
+    syntax: RowPointer
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressPrefix
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddressprefixadvpreferredlifetime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixAdvPreferredLifetime
+          index_field: ipAddressPrefixLength
+          index_fields: &id003
+          - ipAddressPrefixIfIndex
+          - ipAddressPrefixType
+          - ipAddressPrefixPrefix
+          - ipAddressPrefixLength
+  ipaddressprefixadvvalidlifetime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixAdvValidLifetime
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+  ipaddressprefixautonomousflag:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixAutonomousFlag
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  ipaddressprefixentry:
+    syntax: IpAddressPrefixEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixTable
+          field: ipAddressPrefixEntry
+  ipaddressprefixifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixIfIndex
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+  ipaddressprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixLength
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+  ipaddressprefixonlinkflag:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixOnLinkFlag
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  ipaddressprefixorigin:
+    syntax: IpAddressPrefixOriginTC
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixOrigin
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+  ipaddressprefixprefix:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixPrefix
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+  ipaddressprefixtable:
+    syntax: IpAddressPrefixEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipAddressPrefixTable
+  ipaddressprefixtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.32.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressPrefixEntry
+          field: ipAddressPrefixType
+          index_field: ipAddressPrefixLength
+          index_fields: *id003
+  ipaddressrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressRowStatus
+          index_field: ipAddressAddr
+          index_fields: *id002
+    create_method: createAndWait
+    index_type: inet_address
+  ipaddressspinlock:
+    syntax: TestAndIncr
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.33
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipAddressSpinLock
+  ipaddressstatus:
+    syntax: IpAddressStatusTC
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressStatus
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddressstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressStorageType
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipaddresstable:
+    syntax: IpAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipAddressTable
+  ipaddresstype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.34.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipAddressEntry
+          field: ipAddressType
+          index_field: ipAddressAddr
+          index_fields: *id002
+  ipdefaultrouteraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.37.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipDefaultRouterEntry
+          field: ipDefaultRouterAddress
+          index_field: ipDefaultRouterIfIndex
+          index_fields: &id004
+          - ipDefaultRouterAddressType
+          - ipDefaultRouterAddress
+          - ipDefaultRouterIfIndex
+  ipdefaultrouteraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.37.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipDefaultRouterEntry
+          field: ipDefaultRouterAddressType
+          index_field: ipDefaultRouterIfIndex
+          index_fields: *id004
+  ipdefaultrouterentry:
+    syntax: IpDefaultRouterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.37.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipDefaultRouterTable
+          field: ipDefaultRouterEntry
+  ipdefaultrouterifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.37.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipDefaultRouterEntry
+          field: ipDefaultRouterIfIndex
+          index_field: ipDefaultRouterIfIndex
+          index_fields: *id004
+  ipdefaultrouterlifetime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.37.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipDefaultRouterEntry
+          field: ipDefaultRouterLifetime
+          index_field: ipDefaultRouterIfIndex
+          index_fields: *id004
+    validation:
+      min: 0
+      max: 65535
+  ipdefaultrouterpreference:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.37.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipDefaultRouterEntry
+          field: ipDefaultRouterPreference
+          index_field: ipDefaultRouterIfIndex
+          index_fields: *id004
+  ipdefaultroutertable:
+    syntax: IpDefaultRouterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.37
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipDefaultRouterTable
+  ipdefaultttl:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.2
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipDefaultTTL
+    validation:
+      min: 1
+      max: 255
+  ipforwdatagrams:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.6
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipForwDatagrams
+  ipforwarding:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipForwarding
+  ipfragcreates:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.19
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipFragCreates
+  ipfragfails:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.18
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipFragFails
+  ipfragoks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.17
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipFragOKs
+  ipifstatsdiscontinuitytime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.46
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsDiscontinuityTime
+          index_field: ipIfStatsIfIndex
+          index_fields: &id005
+          - ipIfStatsIPVersion
+          - ipIfStatsIfIndex
+  ipifstatsentry:
+    syntax: IpIfStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsTable
+          field: ipIfStatsEntry
+  ipifstatshcinbcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.43
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCInBcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcindelivers:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.19
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCInDelivers
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcinforwdatagrams:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCInForwDatagrams
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcinmcastoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.37
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCInMcastOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcinmcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.35
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCInMcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcinoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCInOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcinreceives:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCInReceives
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcoutbcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.45
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCOutBcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcoutforwdatagrams:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.24
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCOutForwDatagrams
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcoutmcastoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.41
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCOutMcastOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcoutmcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.39
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCOutMcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcoutoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.33
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCOutOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcoutrequests:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.21
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCOutRequests
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatshcouttransmits:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.31
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsHCOutTransmits
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsipversion:
+    syntax: InetVersion
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsIPVersion
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsIfIndex
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinaddrerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInAddrErrors
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinbcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.42
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInBcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsindelivers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.18
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInDelivers
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsindiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.17
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInDiscards
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinforwdatagrams:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInForwDatagrams
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinhdrerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInHdrErrors
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinmcastoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.36
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInMcastOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinmcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.34
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInMcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinnoroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInNoRoutes
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinreceives:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInReceives
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsintruncatedpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInTruncatedPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsinunknownprotos:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsInUnknownProtos
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutbcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.44
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutBcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutdiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.25
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutDiscards
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutforwdatagrams:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.23
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutForwDatagrams
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutfragcreates:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.29
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutFragCreates
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutfragfails:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.28
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutFragFails
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutfragoks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.27
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutFragOKs
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutfragreqds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.26
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutFragReqds
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutmcastoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.40
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutMcastOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutmcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.38
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutMcastPkts
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.32
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutOctets
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsoutrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.20
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutRequests
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsouttransmits:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.30
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsOutTransmits
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsreasmfails:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.16
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsReasmFails
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsreasmoks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.15
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsReasmOKs
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsreasmreqds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.14
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsReasmReqds
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatsrefreshrate:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3.1.47
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipIfStatsEntry
+          field: ipIfStatsRefreshRate
+          index_field: ipIfStatsIfIndex
+          index_fields: *id005
+  ipifstatstable:
+    syntax: IpIfStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.3
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipTrafficStats
+          field: ipIfStatsTable
+  ipifstatstablelastchange:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.2
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipTrafficStats
+          field: ipIfStatsTableLastChange
+  ipinaddrerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.5
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipInAddrErrors
+  ipindelivers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.9
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipInDelivers
+  ipindiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.8
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipInDiscards
+  ipinhdrerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.4
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipInHdrErrors
+  ipinreceives:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.3
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipInReceives
+  ipinunknownprotos:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.7
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipInUnknownProtos
+  ipnettomediaentry:
+    syntax: IpNetToMediaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.22.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToMediaTable
+          field: ipNetToMediaEntry
+  ipnettomediaifindex:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.22.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToMediaEntry
+          field: ipNetToMediaIfIndex
+          index_field: ipNetToMediaNetAddress
+          index_fields: &id006
+          - ipNetToMediaIfIndex
+          - ipNetToMediaNetAddress
+    validation:
+      min: 1
+      max: 2147483647
+  ipnettomedianetaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.22.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToMediaEntry
+          field: ipNetToMediaNetAddress
+          index_field: ipNetToMediaNetAddress
+          index_fields: *id006
+  ipnettomediaphysaddress:
+    syntax: PhysAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.22.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToMediaEntry
+          field: ipNetToMediaPhysAddress
+          index_field: ipNetToMediaNetAddress
+          index_fields: *id006
+    validation:
+      min: 0
+      max: 65535
+  ipnettomediatable:
+    syntax: IpNetToMediaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.22
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipNetToMediaTable
+  ipnettomediatype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.22.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToMediaEntry
+          field: ipNetToMediaType
+          index_field: ipNetToMediaNetAddress
+          index_fields: *id006
+  ipnettophysicalentry:
+    syntax: IpNetToPhysicalEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalTable
+          field: ipNetToPhysicalEntry
+  ipnettophysicalifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalIfIndex
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: &id007
+          - ipNetToPhysicalIfIndex
+          - ipNetToPhysicalNetAddressType
+          - ipNetToPhysicalNetAddress
+  ipnettophysicallastupdated:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalLastUpdated
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: *id007
+  ipnettophysicalnetaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalNetAddress
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: *id007
+  ipnettophysicalnetaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalNetAddressType
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: *id007
+  ipnettophysicalphysaddress:
+    syntax: PhysAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalPhysAddress
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: *id007
+    validation:
+      min: 0
+      max: 65535
+  ipnettophysicalrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalRowStatus
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: *id007
+    create_method: createAndWait
+    index_type: inet_address
+  ipnettophysicalstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalState
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: *id007
+    validation:
+      allowed:
+      - reachable
+      - stale
+      - delay
+      - probe
+      - invalid
+      - unknown
+      - incomplete
+  ipnettophysicaltable:
+    syntax: IpNetToPhysicalEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipNetToPhysicalTable
+  ipnettophysicaltype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.35.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipNetToPhysicalEntry
+          field: ipNetToPhysicalType
+          index_field: ipNetToPhysicalNetAddress
+          index_fields: *id007
+    validation:
+      allowed:
+      - other
+      - invalid
+      - dynamic
+      - static
+      - local
+  ipoutdiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.11
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipOutDiscards
+  ipoutnoroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.12
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipOutNoRoutes
+  ipoutrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.10
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipOutRequests
+  ipreasmfails:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.16
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipReasmFails
+  ipreasmoks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.15
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipReasmOKs
+  ipreasmreqds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.14
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipReasmReqds
+  ipreasmtimeout:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.13
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipReasmTimeout
+  iproutingdiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.23
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipRoutingDiscards
+  ipsystemstatsdiscontinuitytime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.46
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsDiscontinuityTime
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsentry:
+    syntax: IpSystemStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsTable
+          field: ipSystemStatsEntry
+  ipsystemstatshcinbcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.43
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCInBcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcindelivers:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCInDelivers
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcinforwdatagrams:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCInForwDatagrams
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcinmcastoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.37
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCInMcastOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcinmcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.35
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCInMcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcinoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCInOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcinreceives:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCInReceives
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcoutbcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.45
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCOutBcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcoutforwdatagrams:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCOutForwDatagrams
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcoutmcastoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.41
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCOutMcastOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcoutmcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.39
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCOutMcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcoutoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.33
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCOutOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcoutrequests:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCOutRequests
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatshcouttransmits:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.31
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsHCOutTransmits
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsipversion:
+    syntax: InetVersion
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsIPVersion
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinaddrerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInAddrErrors
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinbcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.42
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInBcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsindelivers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInDelivers
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsindiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInDiscards
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinforwdatagrams:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInForwDatagrams
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinhdrerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInHdrErrors
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinmcastoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.36
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInMcastOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinmcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.34
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInMcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinnoroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInNoRoutes
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinreceives:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInReceives
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsintruncatedpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInTruncatedPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsinunknownprotos:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsInUnknownProtos
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutbcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.44
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutBcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutdiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutDiscards
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutforwdatagrams:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutForwDatagrams
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutfragcreates:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.29
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutFragCreates
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutfragfails:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.28
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutFragFails
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutfragoks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.27
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutFragOKs
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutfragreqds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutFragReqds
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutmcastoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.40
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutMcastOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutmcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.38
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutMcastPkts
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutnoroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutNoRoutes
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.32
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutOctets
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsoutrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutRequests
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsouttransmits:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.30
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsOutTransmits
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsreasmfails:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsReasmFails
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsreasmoks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsReasmOKs
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsreasmreqds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsReasmReqds
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatsrefreshrate:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1.1.47
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipSystemStatsEntry
+          field: ipSystemStatsRefreshRate
+          index_field: ipSystemStatsIPVersion
+  ipsystemstatstable:
+    syntax: IpSystemStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.31.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipTrafficStats
+          field: ipSystemStatsTable
+  ipv4interfaceenablestatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.28.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv4InterfaceEntry
+          field: ipv4InterfaceEnableStatus
+          index_field: ipv4InterfaceIfIndex
+  ipv4interfaceentry:
+    syntax: Ipv4InterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.28.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv4InterfaceTable
+          field: ipv4InterfaceEntry
+  ipv4interfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.28.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv4InterfaceEntry
+          field: ipv4InterfaceIfIndex
+          index_field: ipv4InterfaceIfIndex
+  ipv4interfacereasmmaxsize:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.28.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv4InterfaceEntry
+          field: ipv4InterfaceReasmMaxSize
+          index_field: ipv4InterfaceIfIndex
+    validation:
+      min: 0
+      max: 65535
+  ipv4interfaceretransmittime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.28.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv4InterfaceEntry
+          field: ipv4InterfaceRetransmitTime
+          index_field: ipv4InterfaceIfIndex
+  ipv4interfacetable:
+    syntax: Ipv4InterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.28
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv4InterfaceTable
+  ipv4interfacetablelastchange:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.27
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv4InterfaceTableLastChange
+  ipv6interfaceenablestatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceEntry
+          field: ipv6InterfaceEnableStatus
+          index_field: ipv6InterfaceIfIndex
+  ipv6interfaceentry:
+    syntax: Ipv6InterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceTable
+          field: ipv6InterfaceEntry
+  ipv6interfaceforwarding:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceEntry
+          field: ipv6InterfaceForwarding
+          index_field: ipv6InterfaceIfIndex
+  ipv6interfaceidentifier:
+    syntax: Ipv6AddressIfIdentifierTC
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceEntry
+          field: ipv6InterfaceIdentifier
+          index_field: ipv6InterfaceIfIndex
+  ipv6interfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceEntry
+          field: ipv6InterfaceIfIndex
+          index_field: ipv6InterfaceIfIndex
+  ipv6interfacereachabletime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceEntry
+          field: ipv6InterfaceReachableTime
+          index_field: ipv6InterfaceIfIndex
+  ipv6interfacereasmmaxsize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceEntry
+          field: ipv6InterfaceReasmMaxSize
+          index_field: ipv6InterfaceIfIndex
+    validation:
+      min: 1500
+      max: 65535
+  ipv6interfaceretransmittime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6InterfaceEntry
+          field: ipv6InterfaceRetransmitTime
+          index_field: ipv6InterfaceIfIndex
+  ipv6interfacetable:
+    syntax: Ipv6InterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.30
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv6InterfaceTable
+  ipv6interfacetablelastchange:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.29
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv6InterfaceTableLastChange
+  ipv6ipdefaulthoplimit:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.26
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv6IpDefaultHopLimit
+    validation:
+      min: 0
+      max: 255
+  ipv6ipforwarding:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.25
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv6IpForwarding
+  ipv6routeradvertcurhoplimit:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertCurHopLimit
+          index_field: ipv6RouterAdvertIfIndex
+    validation:
+      min: 0
+      max: 255
+  ipv6routeradvertdefaultlifetime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertDefaultLifetime
+          index_field: ipv6RouterAdvertIfIndex
+  ipv6routeradvertentry:
+    syntax: Ipv6RouterAdvertEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertTable
+          field: ipv6RouterAdvertEntry
+  ipv6routeradvertifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertIfIndex
+          index_field: ipv6RouterAdvertIfIndex
+  ipv6routeradvertlinkmtu:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertLinkMTU
+          index_field: ipv6RouterAdvertIfIndex
+  ipv6routeradvertmanagedflag:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertManagedFlag
+          index_field: ipv6RouterAdvertIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  ipv6routeradvertmaxinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertMaxInterval
+          index_field: ipv6RouterAdvertIfIndex
+    validation:
+      min: 4
+      max: 1800
+  ipv6routeradvertmininterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertMinInterval
+          index_field: ipv6RouterAdvertIfIndex
+    validation:
+      min: 3
+      max: 1350
+  ipv6routeradvertotherconfigflag:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertOtherConfigFlag
+          index_field: ipv6RouterAdvertIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  ipv6routeradvertreachabletime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertReachableTime
+          index_field: ipv6RouterAdvertIfIndex
+    validation:
+      min: 0
+      max: 3600000
+  ipv6routeradvertretransmittime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertRetransmitTime
+          index_field: ipv6RouterAdvertIfIndex
+  ipv6routeradvertrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.12
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertRowStatus
+          index_field: ipv6RouterAdvertIfIndex
+    create_method: createAndWait
+  ipv6routeradvertsendadverts:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6RouterAdvertEntry
+          field: ipv6RouterAdvertSendAdverts
+          index_field: ipv6RouterAdvertIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  ipv6routeradvertspinlock:
+    syntax: TestAndIncr
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.38
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv6RouterAdvertSpinLock
+  ipv6routeradverttable:
+    syntax: Ipv6RouterAdvertEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.39
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv6RouterAdvertTable
+  ipv6scopezoneindex3:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndex3
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindex6:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndex6
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindex7:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndex7
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindex9:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndex9
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexa:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexA
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexadminlocal:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexAdminLocal
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexb:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexB
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexc:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.12
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexC
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexd:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.13
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexD
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexentry:
+    syntax: Ipv6ScopeZoneIndexEntry
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexTable
+          field: ipv6ScopeZoneIndexEntry
+  ipv6scopezoneindexifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexIfIndex
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexlinklocal:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexLinkLocal
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexorganizationlocal:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexOrganizationLocal
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindexsitelocal:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-MIB
+          table: ipv6ScopeZoneIndexEntry
+          field: ipv6ScopeZoneIndexSiteLocal
+          index_field: ipv6ScopeZoneIndexIfIndex
+  ipv6scopezoneindextable:
+    syntax: Ipv6ScopeZoneIndexEntry
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.36
+          method: get
+      mops:
+        read:
+          mib: IP-MIB
+          table: ip
+          field: ipv6ScopeZoneIndexTable

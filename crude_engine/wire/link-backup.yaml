@@ -1,0 +1,199 @@
+version: 2.6.0
+feature: link-backup
+schemas:
+  read_link-backup:
+    type: dict
+    defaults:
+      hm2linkbackupadminstatus: false
+      hm2linkbackupbackupinterface: 0
+      hm2linkbackupbackupinterfacestatus: ''
+      hm2linkbackupdescription: ''
+      hm2linkbackupfailbackdelay: 0
+      hm2linkbackupfailbackenable: false
+      hm2linkbackupinterfaceconfigentry: ''
+      hm2linkbackupinterfaceconfigtable: ''
+      hm2linkbackupprimaryinterface: 0
+      hm2linkbackupprimaryinterfacestatus: ''
+      hm2linkbackuprowstatus: 0
+attributes:
+  hm2linkbackupadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupGeneralGroup
+          field: hm2LinkBackupAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2linkbackupbackupinterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupBackupInterface
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: &id001
+          - hm2LinkBackupPrimaryInterface
+          - hm2LinkBackupBackupInterface
+  hm2linkbackupbackupinterfacestatus:
+    syntax: HmLinkBackupStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupBackupInterfaceStatus
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: *id001
+  hm2linkbackupdescription:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupDescription
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: *id001
+  hm2linkbackupfailbackdelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupFailBackDelay
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: *id001
+  hm2linkbackupfailbackenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupFailBackEnable
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2linkbackupinterfaceconfigentry:
+    syntax: Hm2LinkBackupInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigTable
+          field: hm2LinkBackupInterfaceConfigEntry
+  hm2linkbackupinterfaceconfigtable:
+    syntax: Hm2LinkBackupInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceGroup
+          field: hm2LinkBackupInterfaceConfigTable
+  hm2linkbackupprimaryinterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupPrimaryInterface
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: *id001
+  hm2linkbackupprimaryinterfacestatus:
+    syntax: HmLinkBackupStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupPrimaryInterfaceStatus
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: *id001
+  hm2linkbackuprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.3.1.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-LINK-BACKUP-MIB
+          table: hm2LinkBackupInterfaceConfigEntry
+          field: hm2LinkBackupRowStatus
+          index_field: hm2LinkBackupBackupInterface
+          index_fields: *id001
+    create_method: createAndWait

@@ -1,0 +1,46 @@
+version: 2.7.0
+feature: management
+description: Management interface and access configuration
+methods:
+  get_management:
+    type: dict
+    defaults:
+      ip_address: ''
+      prefix_length: 0
+      netmask: ''
+      gateway: ''
+      vlan_id: 1
+      protocol: ''
+  set_management:
+    type: upsert
+  get_management_priority:
+    type: dict
+    defaults:
+      source: local
+      priority: 1
+  set_management_priority:
+    type: upsert
+attributes:
+  ip_address:
+    wire: hm2netlocalipaddr
+    source: netconfig
+  prefix_length:
+    wire: hm2netprefixlength
+    source: netconfig
+  gateway:
+    wire: hm2netgatewayipaddr
+    source: netconfig
+  vlan_id:
+    wire: hm2netvlanid
+    source: netconfig
+  netmask:
+    compute:
+      from: [prefix_length]
+      expr: "'.'.join([str((0xffffffff << (32 - int(prefix_length)) >> i) & 0xff) for i in [24,16,8,0]]) if prefix_length else ''"
+  protocol:
+    wire: hm2netconfigprotocol
+    source: netconfig
+    value_map:
+      '1': static
+      '2': bootp
+      '3': dhcp

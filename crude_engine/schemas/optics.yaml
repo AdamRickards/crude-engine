@@ -1,0 +1,25 @@
+version: 2.7.0
+feature: optics
+description: SFP Transceiver digital diagnostics (DDM)
+methods:
+  get_optics:
+    type: dict
+    primary_key: name
+    key_map: ifindex
+    defaults:
+      tx_power: 0.0
+      rx_power: 0.0
+      temperature: 0.0
+attributes:
+  name:
+    wire: ifname
+    source: if
+  tx_power:
+    wire: hm2sfpcurrenttxpower
+    source: devmgmt
+  rx_power:
+    wire: hm2sfpcurrentrxpower
+    source: devmgmt
+  temperature:
+    wire: hm2sfpcurrenttemperature
+    source: devmgmt

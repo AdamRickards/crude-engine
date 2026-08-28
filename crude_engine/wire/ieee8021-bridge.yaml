@@ -1,0 +1,1488 @@
+version: 2.6.0
+feature: ieee8021-bridge
+schemas:
+  read_ieee8021-bridge:
+    type: dict
+    defaults:
+      ieee8021bridgebasebridgeaddress: ''
+      ieee8021bridgebasecomponenttype: 0
+      ieee8021bridgebasedevicecapabilities: []
+      ieee8021bridgebaseentry: ''
+      ieee8021bridgebasemmrpenabledstatus: false
+      ieee8021bridgebasenumports: 0
+      ieee8021bridgebaseportadminpointtopoint: 0
+      ieee8021bridgebaseportcapabilities: []
+      ieee8021bridgebaseportdelayexceededdiscards: 0
+      ieee8021bridgebaseportexternal: false
+      ieee8021bridgebaseportifindex: 0
+      ieee8021bridgebaseportmtuexceededdiscards: 0
+      ieee8021bridgebaseportname: ''
+      ieee8021bridgebaseportoperpointtopoint: false
+      ieee8021bridgebaseporttable: ''
+      ieee8021bridgebaseporttype: ''
+      ieee8021bridgebaseporttypecapabilities: []
+      ieee8021bridgebaserowstatus: 0
+      ieee8021bridgebasetable: ''
+      ieee8021bridgebasetrafficclassesenabled: false
+      ieee8021bridgedot1dportentry: ''
+      ieee8021bridgedot1dportrowstatus: 0
+      ieee8021bridgedot1dporttable: ''
+      ieee8021bridgeilanifentry: ''
+      ieee8021bridgeilanifrowstatus: 0
+      ieee8021bridgeilaniftable: ''
+      ieee8021bridgeportdecodingcomponentid: ''
+      ieee8021bridgeportdecodingdropeligible: false
+      ieee8021bridgeportdecodingentry: ''
+      ieee8021bridgeportdecodingportnum: 0
+      ieee8021bridgeportdecodingpriority: ''
+      ieee8021bridgeportdecodingprioritycodepoint: 0
+      ieee8021bridgeportdecodingprioritycodepointrow: ''
+      ieee8021bridgeportdecodingtable: ''
+      ieee8021bridgeportdefaultuserpriority: ''
+      ieee8021bridgeportencodingcomponentid: ''
+      ieee8021bridgeportencodingdropeligible: false
+      ieee8021bridgeportencodingentry: ''
+      ieee8021bridgeportencodingportnum: 0
+      ieee8021bridgeportencodingpriority: ''
+      ieee8021bridgeportencodingprioritycodepoint: 0
+      ieee8021bridgeportencodingprioritycodepointrow: ''
+      ieee8021bridgeportencodingtable: ''
+      ieee8021bridgeportmmrpenabledstatus: false
+      ieee8021bridgeportmmrpentry: ''
+      ieee8021bridgeportmmrpfailedregistrations: 0
+      ieee8021bridgeportmmrplastpduorigin: ''
+      ieee8021bridgeportmmrptable: ''
+      ieee8021bridgeportmrpentry: ''
+      ieee8021bridgeportmrpjointime: 0
+      ieee8021bridgeportmrpleavealltime: 0
+      ieee8021bridgeportmrpleavetime: 0
+      ieee8021bridgeportmrptable: ''
+      ieee8021bridgeportnumtrafficclasses: 0
+      ieee8021bridgeportoutboundaccesspriority: ''
+      ieee8021bridgeportoutboundaccesspriorityentry: ''
+      ieee8021bridgeportoutboundaccessprioritytable: ''
+      ieee8021bridgeportprioritycodepointselection: ''
+      ieee8021bridgeportpriorityentry: ''
+      ieee8021bridgeportprioritytable: ''
+      ieee8021bridgeportrequiredropencoding: false
+      ieee8021bridgeportrestrictedgroupregistration: false
+      ieee8021bridgeportserviceaccesspriorityselection: false
+      ieee8021bridgeportusedei: false
+      ieee8021bridgeregenuserpriority: ''
+      ieee8021bridgeserviceaccessprioritycomponentid: ''
+      ieee8021bridgeserviceaccesspriorityentry: ''
+      ieee8021bridgeserviceaccesspriorityportnum: 0
+      ieee8021bridgeserviceaccesspriorityreceived: ''
+      ieee8021bridgeserviceaccessprioritytable: ''
+      ieee8021bridgeserviceaccesspriorityvalue: ''
+      ieee8021bridgetpport: 0
+      ieee8021bridgetpportcomponentid: ''
+      ieee8021bridgetpportentry: ''
+      ieee8021bridgetpportindiscards: 0
+      ieee8021bridgetpportinframes: 0
+      ieee8021bridgetpportmaxinfo: 0
+      ieee8021bridgetpportoutframes: 0
+      ieee8021bridgetpporttable: ''
+      ieee8021bridgetrafficclass: 0
+      ieee8021bridgetrafficclassentry: ''
+      ieee8021bridgetrafficclasspriority: ''
+      ieee8021bridgetrafficclasstable: ''
+      ieee8021bridgeuserpriority: ''
+      ieee8021bridgeuserpriorityregenentry: ''
+      ieee8021bridgeuserpriorityregentable: ''
+attributes:
+  ieee8021bridgebasebridgeaddress:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseBridgeAddress
+          index_field: ieee8021BridgeBaseComponentId
+  ieee8021bridgebasecomponenttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseComponentType
+          index_field: ieee8021BridgeBaseComponentId
+  ieee8021bridgebasedevicecapabilities:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseDeviceCapabilities
+          index_field: ieee8021BridgeBaseComponentId
+    bit_map:
+      0: dot1dExtendedFilteringServices
+      1: dot1dTrafficClasses
+      2: dot1qStaticEntryIndividualPort
+      3: dot1qIVLCapable
+      4: dot1qSVLCapable
+      5: dot1qHybridCapable
+      6: dot1qConfigurablePvidTagging
+      7: dot1dLocalVlanCapable
+  ieee8021bridgebaseentry:
+    syntax: Ieee8021BridgeBaseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseTable
+          field: ieee8021BridgeBaseEntry
+  ieee8021bridgebasemmrpenabledstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseMmrpEnabledStatus
+          index_field: ieee8021BridgeBaseComponentId
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgebasenumports:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseNumPorts
+          index_field: ieee8021BridgeBaseComponentId
+  ieee8021bridgebaseportadminpointtopoint:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortAdminPointToPoint
+          index_field: ieee8021BridgeBasePort
+          index_fields: &id001
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+  ieee8021bridgebaseportcapabilities:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortCapabilities
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+    bit_map:
+      0: dot1qDot1qTagging
+      1: dot1qConfigurableAcceptableFrameTypes
+      2: dot1qIngressFiltering
+  ieee8021bridgebaseportdelayexceededdiscards:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortDelayExceededDiscards
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021bridgebaseportexternal:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortExternal
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgebaseportifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortIfIndex
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021bridgebaseportmtuexceededdiscards:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortMtuExceededDiscards
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021bridgebaseportname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortName
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021bridgebaseportoperpointtopoint:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortOperPointToPoint
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgebaseporttable:
+    syntax: Ieee8021BridgeBasePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBase
+          field: ieee8021BridgeBasePortTable
+  ieee8021bridgebaseporttype:
+    syntax: IEEE8021BridgePortType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortType
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021bridgebaseporttypecapabilities:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortTypeCapabilities
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+    bit_map:
+      0: customerVlanPort
+      1: providerNetworkPort
+      2: customerNetworkPort
+      3: customerEdgePort
+      4: customerBackbonePort
+      5: virtualInstancePort
+      6: dBridgePort
+  ieee8021bridgebaserowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseRowStatus
+          index_field: ieee8021BridgeBaseComponentId
+    create_method: createAndWait
+  ieee8021bridgebasetable:
+    syntax: Ieee8021BridgeBaseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBase
+          field: ieee8021BridgeBaseTable
+  ieee8021bridgebasetrafficclassesenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseTrafficClassesEnabled
+          index_field: ieee8021BridgeBaseComponentId
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgedot1dportentry:
+    syntax: Ieee8021BridgeDot1dPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.7.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeDot1dPortTable
+          field: ieee8021BridgeDot1dPortEntry
+  ieee8021bridgedot1dportrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.7.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeDot1dPortEntry
+          field: ieee8021BridgeDot1dPortRowStatus
+          index_field: ieee8021BridgeBasePort
+          index_fields:
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+    create_method: createAndWait
+  ieee8021bridgedot1dporttable:
+    syntax: Ieee8021BridgeDot1dPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.7.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeDot1d
+          field: ieee8021BridgeDot1dPortTable
+  ieee8021bridgeilanifentry:
+    syntax: Ieee8021BridgeILanIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.6.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeILanIfTable
+          field: ieee8021BridgeILanIfEntry
+  ieee8021bridgeilanifrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.6.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeILanIfEntry
+          field: ieee8021BridgeILanIfRowStatus
+          index_field: ifIndex
+    create_method: createAndWait
+  ieee8021bridgeilaniftable:
+    syntax: Ieee8021BridgeILanIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.6.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeInternalLan
+          field: ieee8021BridgeILanIfTable
+  ieee8021bridgeportdecodingcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortDecodingEntry
+          field: ieee8021BridgePortDecodingComponentId
+          index_field: ieee8021BridgePortDecodingPriorityCodePoint
+          index_fields: &id002
+          - ieee8021BridgePortDecodingComponentId
+          - ieee8021BridgePortDecodingPortNum
+          - ieee8021BridgePortDecodingPriorityCodePointRow
+          - ieee8021BridgePortDecodingPriorityCodePoint
+  ieee8021bridgeportdecodingdropeligible:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortDecodingEntry
+          field: ieee8021BridgePortDecodingDropEligible
+          index_field: ieee8021BridgePortDecodingPriorityCodePoint
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgeportdecodingentry:
+    syntax: Ieee8021BridgePortDecodingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortDecodingTable
+          field: ieee8021BridgePortDecodingEntry
+  ieee8021bridgeportdecodingportnum:
+    syntax: IEEE8021BridgePortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortDecodingEntry
+          field: ieee8021BridgePortDecodingPortNum
+          index_field: ieee8021BridgePortDecodingPriorityCodePoint
+          index_fields: *id002
+  ieee8021bridgeportdecodingpriority:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortDecodingEntry
+          field: ieee8021BridgePortDecodingPriority
+          index_field: ieee8021BridgePortDecodingPriorityCodePoint
+          index_fields: *id002
+  ieee8021bridgeportdecodingprioritycodepoint:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortDecodingEntry
+          field: ieee8021BridgePortDecodingPriorityCodePoint
+          index_field: ieee8021BridgePortDecodingPriorityCodePoint
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  ieee8021bridgeportdecodingprioritycodepointrow:
+    syntax: IEEE8021PriorityCodePoint
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortDecodingEntry
+          field: ieee8021BridgePortDecodingPriorityCodePointRow
+          index_field: ieee8021BridgePortDecodingPriorityCodePoint
+          index_fields: *id002
+  ieee8021bridgeportdecodingtable:
+    syntax: Ieee8021BridgePortDecodingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePriority
+          field: ieee8021BridgePortDecodingTable
+  ieee8021bridgeportdefaultuserpriority:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortPriorityEntry
+          field: ieee8021BridgePortDefaultUserPriority
+  ieee8021bridgeportencodingcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortEncodingEntry
+          field: ieee8021BridgePortEncodingComponentId
+          index_field: ieee8021BridgePortEncodingDropEligible
+          index_fields: &id003
+          - ieee8021BridgePortEncodingComponentId
+          - ieee8021BridgePortEncodingPortNum
+          - ieee8021BridgePortEncodingPriorityCodePointRow
+          - ieee8021BridgePortEncodingPriorityCodePoint
+          - ieee8021BridgePortEncodingDropEligible
+  ieee8021bridgeportencodingdropeligible:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortEncodingEntry
+          field: ieee8021BridgePortEncodingDropEligible
+          index_field: ieee8021BridgePortEncodingDropEligible
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgeportencodingentry:
+    syntax: Ieee8021BridgePortEncodingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortEncodingTable
+          field: ieee8021BridgePortEncodingEntry
+  ieee8021bridgeportencodingportnum:
+    syntax: IEEE8021BridgePortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortEncodingEntry
+          field: ieee8021BridgePortEncodingPortNum
+          index_field: ieee8021BridgePortEncodingDropEligible
+          index_fields: *id003
+  ieee8021bridgeportencodingpriority:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortEncodingEntry
+          field: ieee8021BridgePortEncodingPriority
+          index_field: ieee8021BridgePortEncodingDropEligible
+          index_fields: *id003
+  ieee8021bridgeportencodingprioritycodepoint:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortEncodingEntry
+          field: ieee8021BridgePortEncodingPriorityCodePoint
+          index_field: ieee8021BridgePortEncodingDropEligible
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 7
+  ieee8021bridgeportencodingprioritycodepointrow:
+    syntax: IEEE8021PriorityCodePoint
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortEncodingEntry
+          field: ieee8021BridgePortEncodingPriorityCodePointRow
+          index_field: ieee8021BridgePortEncodingDropEligible
+          index_fields: *id003
+  ieee8021bridgeportencodingtable:
+    syntax: Ieee8021BridgePortEncodingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePriority
+          field: ieee8021BridgePortEncodingTable
+  ieee8021bridgeportmmrpenabledstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMmrpEntry
+          field: ieee8021BridgePortMmrpEnabledStatus
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgeportmmrpentry:
+    syntax: Ieee8021BridgePortMmrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMmrpTable
+          field: ieee8021BridgePortMmrpEntry
+  ieee8021bridgeportmmrpfailedregistrations:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMmrpEntry
+          field: ieee8021BridgePortMmrpFailedRegistrations
+  ieee8021bridgeportmmrplastpduorigin:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMmrpEntry
+          field: ieee8021BridgePortMmrpLastPduOrigin
+  ieee8021bridgeportmmrptable:
+    syntax: Ieee8021BridgePortMmrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeMmrp
+          field: ieee8021BridgePortMmrpTable
+  ieee8021bridgeportmrpentry:
+    syntax: Ieee8021BridgePortMrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMrpTable
+          field: ieee8021BridgePortMrpEntry
+  ieee8021bridgeportmrpjointime:
+    syntax: TimeInterval
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMrpEntry
+          field: ieee8021BridgePortMrpJoinTime
+  ieee8021bridgeportmrpleavealltime:
+    syntax: TimeInterval
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMrpEntry
+          field: ieee8021BridgePortMrpLeaveAllTime
+  ieee8021bridgeportmrpleavetime:
+    syntax: TimeInterval
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMrpEntry
+          field: ieee8021BridgePortMrpLeaveTime
+  ieee8021bridgeportmrptable:
+    syntax: Ieee8021BridgePortMrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeMrp
+          field: ieee8021BridgePortMrpTable
+  ieee8021bridgeportnumtrafficclasses:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortPriorityEntry
+          field: ieee8021BridgePortNumTrafficClasses
+    validation:
+      min: 1
+      max: 8
+  ieee8021bridgeportoutboundaccesspriority:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortOutboundAccessPriorityEntry
+          field: ieee8021BridgePortOutboundAccessPriority
+          index_field: ieee8021BridgeRegenUserPriority
+          index_fields:
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+          - ieee8021BridgeRegenUserPriority
+  ieee8021bridgeportoutboundaccesspriorityentry:
+    syntax: Ieee8021BridgePortOutboundAccessPriorityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortOutboundAccessPriorityTable
+          field: ieee8021BridgePortOutboundAccessPriorityEntry
+  ieee8021bridgeportoutboundaccessprioritytable:
+    syntax: Ieee8021BridgePortOutboundAccessPriorityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePriority
+          field: ieee8021BridgePortOutboundAccessPriorityTable
+  ieee8021bridgeportprioritycodepointselection:
+    syntax: IEEE8021PriorityCodePoint
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortPriorityEntry
+          field: ieee8021BridgePortPriorityCodePointSelection
+  ieee8021bridgeportpriorityentry:
+    syntax: Ieee8021BridgePortPriorityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortPriorityTable
+          field: ieee8021BridgePortPriorityEntry
+  ieee8021bridgeportprioritytable:
+    syntax: Ieee8021BridgePortPriorityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePriority
+          field: ieee8021BridgePortPriorityTable
+  ieee8021bridgeportrequiredropencoding:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortPriorityEntry
+          field: ieee8021BridgePortRequireDropEncoding
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgeportrestrictedgroupregistration:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortMmrpEntry
+          field: ieee8021BridgePortRestrictedGroupRegistration
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgeportserviceaccesspriorityselection:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortPriorityEntry
+          field: ieee8021BridgePortServiceAccessPrioritySelection
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgeportusedei:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePortPriorityEntry
+          field: ieee8021BridgePortUseDEI
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021bridgeregenuserpriority:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeUserPriorityRegenEntry
+          field: ieee8021BridgeRegenUserPriority
+          index_field: ieee8021BridgeUserPriority
+          index_fields: &id007
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+          - ieee8021BridgeUserPriority
+  ieee8021bridgeserviceaccessprioritycomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeServiceAccessPriorityEntry
+          field: ieee8021BridgeServiceAccessPriorityComponentId
+          index_field: ieee8021BridgeServiceAccessPriorityReceived
+          index_fields: &id004
+          - ieee8021BridgeServiceAccessPriorityComponentId
+          - ieee8021BridgeServiceAccessPriorityPortNum
+          - ieee8021BridgeServiceAccessPriorityReceived
+  ieee8021bridgeserviceaccesspriorityentry:
+    syntax: Ieee8021BridgeServiceAccessPriorityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeServiceAccessPriorityTable
+          field: ieee8021BridgeServiceAccessPriorityEntry
+  ieee8021bridgeserviceaccesspriorityportnum:
+    syntax: IEEE8021BridgePortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeServiceAccessPriorityEntry
+          field: ieee8021BridgeServiceAccessPriorityPortNum
+          index_field: ieee8021BridgeServiceAccessPriorityReceived
+          index_fields: *id004
+  ieee8021bridgeserviceaccesspriorityreceived:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeServiceAccessPriorityEntry
+          field: ieee8021BridgeServiceAccessPriorityReceived
+          index_field: ieee8021BridgeServiceAccessPriorityReceived
+          index_fields: *id004
+  ieee8021bridgeserviceaccessprioritytable:
+    syntax: Ieee8021BridgeServiceAccessPriorityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePriority
+          field: ieee8021BridgeServiceAccessPriorityTable
+  ieee8021bridgeserviceaccesspriorityvalue:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeServiceAccessPriorityEntry
+          field: ieee8021BridgeServiceAccessPriorityValue
+          index_field: ieee8021BridgeServiceAccessPriorityReceived
+          index_fields: *id004
+  ieee8021bridgetpport:
+    syntax: IEEE8021BridgePortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTpPortEntry
+          field: ieee8021BridgeTpPort
+          index_field: ieee8021BridgeTpPort
+          index_fields: &id005
+          - ieee8021BridgeTpPortComponentId
+          - ieee8021BridgeTpPort
+  ieee8021bridgetpportcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTpPortEntry
+          field: ieee8021BridgeTpPortComponentId
+          index_field: ieee8021BridgeTpPort
+          index_fields: *id005
+  ieee8021bridgetpportentry:
+    syntax: Ieee8021BridgeTpPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTpPortTable
+          field: ieee8021BridgeTpPortEntry
+  ieee8021bridgetpportindiscards:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTpPortEntry
+          field: ieee8021BridgeTpPortInDiscards
+          index_field: ieee8021BridgeTpPort
+          index_fields: *id005
+  ieee8021bridgetpportinframes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTpPortEntry
+          field: ieee8021BridgeTpPortInFrames
+          index_field: ieee8021BridgeTpPort
+          index_fields: *id005
+  ieee8021bridgetpportmaxinfo:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTpPortEntry
+          field: ieee8021BridgeTpPortMaxInfo
+          index_field: ieee8021BridgeTpPort
+          index_fields: *id005
+  ieee8021bridgetpportoutframes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTpPortEntry
+          field: ieee8021BridgeTpPortOutFrames
+          index_field: ieee8021BridgeTpPort
+          index_fields: *id005
+  ieee8021bridgetpporttable:
+    syntax: Ieee8021BridgeTpPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTp
+          field: ieee8021BridgeTpPortTable
+  ieee8021bridgetrafficclass:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTrafficClassEntry
+          field: ieee8021BridgeTrafficClass
+          index_field: ieee8021BridgeTrafficClassPriority
+          index_fields: &id006
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+          - ieee8021BridgeTrafficClassPriority
+    validation:
+      min: 0
+      max: 7
+  ieee8021bridgetrafficclassentry:
+    syntax: Ieee8021BridgeTrafficClassEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTrafficClassTable
+          field: ieee8021BridgeTrafficClassEntry
+  ieee8021bridgetrafficclasspriority:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeTrafficClassEntry
+          field: ieee8021BridgeTrafficClassPriority
+          index_field: ieee8021BridgeTrafficClassPriority
+          index_fields: *id006
+  ieee8021bridgetrafficclasstable:
+    syntax: Ieee8021BridgeTrafficClassEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePriority
+          field: ieee8021BridgeTrafficClassTable
+  ieee8021bridgeuserpriority:
+    syntax: IEEE8021PriorityValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeUserPriorityRegenEntry
+          field: ieee8021BridgeUserPriority
+          index_field: ieee8021BridgeUserPriority
+          index_fields: *id007
+  ieee8021bridgeuserpriorityregenentry:
+    syntax: Ieee8021BridgeUserPriorityRegenEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgeUserPriorityRegenTable
+          field: ieee8021BridgeUserPriorityRegenEntry
+  ieee8021bridgeuserpriorityregentable:
+    syntax: Ieee8021BridgeUserPriorityRegenEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-BRIDGE-MIB
+          table: ieee8021BridgePriority
+          field: ieee8021BridgeUserPriorityRegenTable

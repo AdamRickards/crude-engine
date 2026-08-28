@@ -1,0 +1,119 @@
+version: 2.7.0
+feature: snmp
+description: SNMP configuration — versions, port, communities, trap destinations
+methods:
+  get_snmp_config:
+    type: dict
+    defaults:
+      v1_enabled: false
+      v2_enabled: false
+      v3_enabled: false
+      port: 161
+      trap_service: false
+      community_access: {}
+      trap_destinations: []
+  set_snmp_config:
+    type: upsert
+  get_snmp_trap_destinations:
+    type: dict
+    primary_key: name
+    defaults:
+      address: ''
+      security_model: ''
+      security_name: ''
+      security_level: ''
+  create_snmp_trap_dest:
+    type: create
+    required: [name, address]
+    defaults:
+      port: 162
+      security_model: 3
+      security_name: admin
+      security_level: auth-priv
+      tag_list: trap
+    linked_tables:
+      - row_status: params_row_status
+        fields: [security_model, security_name, security_level]
+      - row_status: addr_row_status
+        fields: [address, params_ref, tag_list]
+  delete_snmp_trap_dest:
+    type: delete
+    index_key: name
+    linked_tables:
+      - row_status: addr_row_status
+      - row_status: params_row_status
+attributes:
+  # --- Scalars (from mgmtaccess wire) ---
+  v1_enabled:
+    wire: hm2snmpv1adminstatus
+    source: mgmtaccess
+  v2_enabled:
+    wire: hm2snmpv2adminstatus
+    source: mgmtaccess
+  v3_enabled:
+    wire: hm2snmpv3adminstatus
+    source: mgmtaccess
+  port:
+    wire: hm2snmpportnumber
+    source: mgmtaccess
+  trap_service:
+    wire: hm2snmptrapserviceadminstatus
+    source: mgmtaccess
+  # --- Communities (VACM chain: name → securityName → group → writeView → ro/rw) ---
+  communities:
+    wire: snmpcommunityname
+    source: snmp-community
+  community_security_name:
+    wire: snmpcommunitysecurityname
+    source: snmp-community
+  community_group_name:
+    wire: vacmgroupname
+    source: snmp-view-based-acm
+    lookup:
+      from: community_security_name
+      index_field: vacmSecurityName
+  community_access:
+    wire: vacmaccesswriteviewname
+    source: snmp-view-based-acm
+    lookup:
+      from: community_group_name
+      index_field: vacmGroupName
+      resolve: "'rw' if value != 'none' and value != '' else 'ro'"
+  # --- Trap destination tables (linked: addr + params) ---
+  trap_destinations:
+    wire: snmptargetaddrname
+    source: snmp-target
+  name:
+    wire: snmptargetaddrname
+    source: snmp-target
+  address:
+    wire: snmptargetaddrtaddress
+    source: snmp-target
+  params_ref:
+    wire: snmptargetaddrparams
+    source: snmp-target
+    set_format: "{name}"
+  tag_list:
+    wire: snmptargetaddrtaglist
+    source: snmp-target
+  addr_row_status:
+    wire: snmptargetaddrrowstatus
+    source: snmp-target
+    access: crud
+  security_model:
+    wire: snmptargetparamssecuritymodel
+    source: snmp-target
+  security_name:
+    wire: snmptargetparamssecurityname
+    source: snmp-target
+  security_level:
+    wire: snmptargetparamssecuritylevel
+    source: snmp-target
+    value_map:
+      '1': no-auth
+      '2': auth-no-priv
+      '3': auth-priv
+  params_row_status:
+    wire: snmptargetparamsrowstatus
+    source: snmp-target
+    access: crud

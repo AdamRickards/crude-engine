@@ -1,0 +1,19 @@
+version: "2.9.0"
+feature: lldp-ssh
+description: "SSH CLI sources for LLDP — write-only (reads need block parser)"
+
+attributes:
+  hm2lldpadminstatus:
+    sources:
+      ssh:
+        write: {command: "lldp operation", level: config}
+
+  lldpmessagetxinterval:
+    sources:
+      ssh:
+        write: {command: "lldp config chassis tx-interval {value}", level: config}
+
+  lldpmessagetxholdmultiplier:
+    sources:
+      ssh:
+        write: {command: "lldp config chassis tx-hold-multiplier {value}", level: config}

@@ -1,0 +1,2109 @@
+version: 2.6.0
+feature: ospf
+schemas:
+  read_ospf:
+    type: dict
+    defaults:
+      ospfasbdrrtrstatus: false
+      ospfadminstat: ''
+      ospfareaaggregateareaid: ''
+      ospfareaaggregateeffect: 0
+      ospfareaaggregateentry: ''
+      ospfareaaggregatelsdbtype: 0
+      ospfareaaggregatemask: ''
+      ospfareaaggregatenet: ''
+      ospfareaaggregatestatus: 0
+      ospfareaaggregatetable: ''
+      ospfareabdrrtrcount: 0
+      ospfareabdrrtrstatus: false
+      ospfareaentry: ''
+      ospfareaid: ''
+      ospfarealsacksumsum: 0
+      ospfarealsacount: 0
+      ospfareanssatranslatorevents: 0
+      ospfareanssatranslatorrole: 0
+      ospfareanssatranslatorstabilityinterval: 0
+      ospfareanssatranslatorstate: 0
+      ospfarearangeareaid: ''
+      ospfarearangeeffect: 0
+      ospfarearangeentry: ''
+      ospfarearangemask: ''
+      ospfarearangenet: ''
+      ospfarearangestatus: 0
+      ospfarearangetable: ''
+      ospfareastatus: 0
+      ospfareasummary: 0
+      ospfareatable: ''
+      ospfasbdrrtrcount: 0
+      ospfauthtype: 0
+      ospfdemandextensions: false
+      ospfexitoverflowinterval: 0
+      ospfextlsdbadvertisement: ''
+      ospfextlsdbage: 0
+      ospfextlsdbchecksum: 0
+      ospfextlsdbentry: ''
+      ospfextlsdblsid: ''
+      ospfextlsdbrouterid: ''
+      ospfextlsdbsequence: 0
+      ospfextlsdbtable: ''
+      ospfextlsdbtype: 0
+      ospfexternlsacksumsum: 0
+      ospfexternlsacount: 0
+      ospfhostareaid: ''
+      ospfhostentry: ''
+      ospfhostipaddress: ''
+      ospfhostmetric: ''
+      ospfhoststatus: 0
+      ospfhosttos: ''
+      ospfhosttable: ''
+      ospfifadminstat: ''
+      ospfifareaid: ''
+      ospfifauthkey: ''
+      ospfifauthtype: 0
+      ospfifbackupdesignatedrouter: ''
+      ospfifdemand: false
+      ospfifdesignatedrouter: ''
+      ospfifentry: ''
+      ospfifevents: 0
+      ospfifhellointerval: ''
+      ospfifmetricaddresslessif: 0
+      ospfifmetricentry: ''
+      ospfifmetricipaddress: ''
+      ospfifmetricstatus: 0
+      ospfifmetrictos: ''
+      ospfifmetrictable: ''
+      ospfifmetricvalue: ''
+      ospfifmulticastforwarding: 0
+      ospfifpollinterval: 0
+      ospfifretransinterval: ''
+      ospfifrtrdeadinterval: 0
+      ospfifrtrpriority: ''
+      ospfifstatus: 0
+      ospfiftable: ''
+      ospfiftransitdelay: ''
+      ospfiftype: 0
+      ospfimportasextern: 0
+      ospflsdbadvertisement: ''
+      ospflsdbage: 0
+      ospflsdbchecksum: 0
+      ospflsdbentry: ''
+      ospflsdbsequence: 0
+      ospflsdbtable: ''
+      ospfmulticastextensions: 0
+      ospfnbmanbrpermanence: 0
+      ospfnbmanbrstatus: 0
+      ospfnbrentry: ''
+      ospfnbrevents: 0
+      ospfnbrhellosuppressed: false
+      ospfnbrlsretransqlen: 0
+      ospfnbroptions: 0
+      ospfnbrpriority: ''
+      ospfnbrtable: ''
+      ospforiginatenewlsas: 0
+      ospfrxnewlsas: 0
+      ospfspfruns: 0
+      ospfstubareaentry: ''
+      ospfstubareaid: ''
+      ospfstubareatable: ''
+      ospfstubmetric: ''
+      ospfstubmetrictype: 0
+      ospfstubstatus: 0
+      ospfstubtos: ''
+      ospftossupport: false
+      ospfversionnumber: 0
+      ospfvirtifauthkey: ''
+      ospfvirtifauthtype: 0
+      ospfvirtifentry: ''
+      ospfvirtifevents: 0
+      ospfvirtifhellointerval: ''
+      ospfvirtifretransinterval: ''
+      ospfvirtifrtrdeadinterval: 0
+      ospfvirtifstatus: 0
+      ospfvirtiftable: ''
+      ospfvirtiftransitdelay: ''
+      ospfvirtnbrentry: ''
+      ospfvirtnbrevents: 0
+      ospfvirtnbrhellosuppressed: false
+      ospfvirtnbripaddr: ''
+      ospfvirtnbrlsretransqlen: 0
+      ospfvirtnbroptions: 0
+      ospfvirtnbrtable: ''
+attributes:
+  ospfasbdrrtrstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.5
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfASBdrRtrStatus
+    validation:
+      allowed:
+      - true
+      - false
+  ospfadminstat:
+    syntax: Status
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.2
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfAdminStat
+  ospfareaaggregateareaid:
+    syntax: AreaID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14.1.1
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaAggregateEntry
+          field: ospfAreaAggregateAreaID
+          index_field: ospfAreaAggregateMask
+          index_fields: &id001
+          - ospfAreaAggregateAreaID
+          - ospfAreaAggregateLsdbType
+          - ospfAreaAggregateNet
+          - ospfAreaAggregateMask
+  ospfareaaggregateeffect:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14.1.6
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaAggregateEntry
+          field: ospfAreaAggregateEffect
+          index_field: ospfAreaAggregateMask
+          index_fields: *id001
+  ospfareaaggregateentry:
+    syntax: OspfAreaAggregateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaAggregateTable
+          field: ospfAreaAggregateEntry
+  ospfareaaggregatelsdbtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14.1.2
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaAggregateEntry
+          field: ospfAreaAggregateLsdbType
+          index_field: ospfAreaAggregateMask
+          index_fields: *id001
+  ospfareaaggregatemask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaAggregateEntry
+          field: ospfAreaAggregateMask
+          index_field: ospfAreaAggregateMask
+          index_fields: *id001
+  ospfareaaggregatenet:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaAggregateEntry
+          field: ospfAreaAggregateNet
+          index_field: ospfAreaAggregateMask
+          index_fields: *id001
+  ospfareaaggregatestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaAggregateEntry
+          field: ospfAreaAggregateStatus
+          index_field: ospfAreaAggregateMask
+          index_fields: *id001
+    create_method: createAndWait
+  ospfareaaggregatetable:
+    syntax: OspfAreaAggregateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.14
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfAreaAggregateTable
+  ospfareabdrrtrcount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaBdrRtrCount
+          index_field: ospfAreaId
+  ospfareabdrrtrstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.4
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfAreaBdrRtrStatus
+    validation:
+      allowed:
+      - true
+      - false
+  ospfareaentry:
+    syntax: OspfAreaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaTable
+          field: ospfAreaEntry
+  ospfareaid:
+    syntax: AreaID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaId
+          index_field: ospfAreaId
+  ospfarealsacksumsum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaLsaCksumSum
+          index_field: ospfAreaId
+  ospfarealsacount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaLsaCount
+          index_field: ospfAreaId
+  ospfareanssatranslatorevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaNssaTranslatorEvents
+          index_field: ospfAreaId
+  ospfareanssatranslatorrole:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaNssaTranslatorRole
+          index_field: ospfAreaId
+  ospfareanssatranslatorstabilityinterval:
+    syntax: PositiveInteger
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaNssaTranslatorStabilityInterval
+          index_field: ospfAreaId
+  ospfareanssatranslatorstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaNssaTranslatorState
+          index_field: ospfAreaId
+  ospfarearangeareaid:
+    syntax: AreaID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaRangeEntry
+          field: ospfAreaRangeAreaId
+          index_field: ospfAreaRangeNet
+          index_fields: &id002
+          - ospfAreaRangeAreaId
+          - ospfAreaRangeNet
+  ospfarearangeeffect:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaRangeEntry
+          field: ospfAreaRangeEffect
+          index_field: ospfAreaRangeNet
+          index_fields: *id002
+  ospfarearangeentry:
+    syntax: OspfAreaRangeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.5.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaRangeTable
+          field: ospfAreaRangeEntry
+  ospfarearangemask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaRangeEntry
+          field: ospfAreaRangeMask
+          index_field: ospfAreaRangeNet
+          index_fields: *id002
+  ospfarearangenet:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaRangeEntry
+          field: ospfAreaRangeNet
+          index_field: ospfAreaRangeNet
+          index_fields: *id002
+  ospfarearangestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaRangeEntry
+          field: ospfAreaRangeStatus
+          index_field: ospfAreaRangeNet
+          index_fields: *id002
+    create_method: createAndWait
+  ospfarearangetable:
+    syntax: OspfAreaRangeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.5
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfAreaRangeTable
+  ospfareastatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaStatus
+          index_field: ospfAreaId
+    create_method: createAndWait
+  ospfareasummary:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAreaSummary
+          index_field: ospfAreaId
+  ospfareatable:
+    syntax: OspfAreaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfAreaTable
+  ospfasbdrrtrcount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAsBdrRtrCount
+          index_field: ospfAreaId
+  ospfauthtype:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfAuthType
+          index_field: ospfAreaId
+  ospfdemandextensions:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.14
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfDemandExtensions
+    validation:
+      allowed:
+      - true
+      - false
+  ospfexitoverflowinterval:
+    syntax: PositiveInteger
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.13
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfExitOverflowInterval
+  ospfextlsdbadvertisement:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1.7
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbEntry
+          field: ospfExtLsdbAdvertisement
+          index_field: ospfExtLsdbRouterId
+          index_fields: &id003
+          - ospfExtLsdbType
+          - ospfExtLsdbLsid
+          - ospfExtLsdbRouterId
+  ospfextlsdbage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbEntry
+          field: ospfExtLsdbAge
+          index_field: ospfExtLsdbRouterId
+          index_fields: *id003
+  ospfextlsdbchecksum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1.6
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbEntry
+          field: ospfExtLsdbChecksum
+          index_field: ospfExtLsdbRouterId
+          index_fields: *id003
+  ospfextlsdbentry:
+    syntax: OspfExtLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbTable
+          field: ospfExtLsdbEntry
+  ospfextlsdblsid:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1.2
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbEntry
+          field: ospfExtLsdbLsid
+          index_field: ospfExtLsdbRouterId
+          index_fields: *id003
+  ospfextlsdbrouterid:
+    syntax: RouterID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbEntry
+          field: ospfExtLsdbRouterId
+          index_field: ospfExtLsdbRouterId
+          index_fields: *id003
+  ospfextlsdbsequence:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbEntry
+          field: ospfExtLsdbSequence
+          index_field: ospfExtLsdbRouterId
+          index_fields: *id003
+  ospfextlsdbtable:
+    syntax: OspfExtLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfExtLsdbTable
+  ospfextlsdbtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.12.1.1
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfExtLsdbEntry
+          field: ospfExtLsdbType
+          index_field: ospfExtLsdbRouterId
+          index_fields: *id003
+  ospfexternlsacksumsum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.7
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfExternLsaCksumSum
+  ospfexternlsacount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.6
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfExternLsaCount
+  ospfhostareaid:
+    syntax: AreaID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfHostEntry
+          field: ospfHostAreaID
+          index_field: ospfHostTOS
+          index_fields: &id004
+          - ospfHostIpAddress
+          - ospfHostTOS
+  ospfhostentry:
+    syntax: OspfHostEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.6.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfHostTable
+          field: ospfHostEntry
+  ospfhostipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfHostEntry
+          field: ospfHostIpAddress
+          index_field: ospfHostTOS
+          index_fields: *id004
+  ospfhostmetric:
+    syntax: Metric
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfHostEntry
+          field: ospfHostMetric
+          index_field: ospfHostTOS
+          index_fields: *id004
+  ospfhoststatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfHostEntry
+          field: ospfHostStatus
+          index_field: ospfHostTOS
+          index_fields: *id004
+    create_method: createAndWait
+  ospfhosttos:
+    syntax: TOSType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfHostEntry
+          field: ospfHostTOS
+          index_field: ospfHostTOS
+          index_fields: *id004
+  ospfhosttable:
+    syntax: OspfHostEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.6
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfHostTable
+  ospfifadminstat:
+    syntax: Status
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfAdminStat
+          index_field: ospfAddressLessIf
+          index_fields: &id005
+          - ospfIfIpAddress
+          - ospfAddressLessIf
+  ospfifareaid:
+    syntax: AreaID
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfAreaId
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifauthkey:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.16
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfAuthKey
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+    validation:
+      min: 0
+      max: 256
+  ospfifauthtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.20
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfAuthType
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+    validation:
+      min: 0
+      max: 255
+  ospfifbackupdesignatedrouter:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.14
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfBackupDesignatedRouter
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifdemand:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.19
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfDemand
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  ospfifdesignatedrouter:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.13
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfDesignatedRouter
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifentry:
+    syntax: OspfIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfTable
+          field: ospfIfEntry
+  ospfifevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.15
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfEvents
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifhellointerval:
+    syntax: HelloRange
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.9
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfHelloInterval
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifmetricaddresslessif:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfMetricEntry
+          field: ospfIfMetricAddressLessIf
+          index_field: ospfIfMetricTOS
+          index_fields: &id006
+          - ospfIfMetricIpAddress
+          - ospfIfMetricAddressLessIf
+          - ospfIfMetricTOS
+  ospfifmetricentry:
+    syntax: OspfIfMetricEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.8.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfMetricTable
+          field: ospfIfMetricEntry
+  ospfifmetricipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfMetricEntry
+          field: ospfIfMetricIpAddress
+          index_field: ospfIfMetricTOS
+          index_fields: *id006
+  ospfifmetricstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfMetricEntry
+          field: ospfIfMetricStatus
+          index_field: ospfIfMetricTOS
+          index_fields: *id006
+    create_method: createAndWait
+  ospfifmetrictos:
+    syntax: TOSType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfMetricEntry
+          field: ospfIfMetricTOS
+          index_field: ospfIfMetricTOS
+          index_fields: *id006
+  ospfifmetrictable:
+    syntax: OspfIfMetricEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.8
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfIfMetricTable
+  ospfifmetricvalue:
+    syntax: Metric
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfMetricEntry
+          field: ospfIfMetricValue
+          index_field: ospfIfMetricTOS
+          index_fields: *id006
+  ospfifmulticastforwarding:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.18
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfMulticastForwarding
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifpollinterval:
+    syntax: PositiveInteger
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.11
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfPollInterval
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifretransinterval:
+    syntax: UpToMaxAge
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfRetransInterval
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifrtrdeadinterval:
+    syntax: PositiveInteger
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.10
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfRtrDeadInterval
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifrtrpriority:
+    syntax: DesignatedRouterPriority
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfRtrPriority
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfifstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.17
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfStatus
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+    create_method: createAndWait
+  ospfiftable:
+    syntax: OspfIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfIfTable
+  ospfiftransitdelay:
+    syntax: UpToMaxAge
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfTransitDelay
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfiftype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfIfEntry
+          field: ospfIfType
+          index_field: ospfAddressLessIf
+          index_fields: *id005
+  ospfimportasextern:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfImportAsExtern
+          index_field: ospfAreaId
+  ospflsdbadvertisement:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfLsdbEntry
+          field: ospfLsdbAdvertisement
+          index_field: ospfLsdbRouterId
+          index_fields: &id007
+          - ospfLsdbAreaId
+          - ospfLsdbType
+          - ospfLsdbLsid
+          - ospfLsdbRouterId
+    validation:
+      min: 1
+      max: 65535
+  ospflsdbage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfLsdbEntry
+          field: ospfLsdbAge
+          index_field: ospfLsdbRouterId
+          index_fields: *id007
+  ospflsdbchecksum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfLsdbEntry
+          field: ospfLsdbChecksum
+          index_field: ospfLsdbRouterId
+          index_fields: *id007
+  ospflsdbentry:
+    syntax: OspfLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.4.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfLsdbTable
+          field: ospfLsdbEntry
+  ospflsdbsequence:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfLsdbEntry
+          field: ospfLsdbSequence
+          index_field: ospfLsdbRouterId
+          index_fields: *id007
+  ospflsdbtable:
+    syntax: OspfLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.4
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfLsdbTable
+  ospfmulticastextensions:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.12
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfMulticastExtensions
+  ospfnbmanbrpermanence:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1.10
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrEntry
+          field: ospfNbmaNbrPermanence
+          index_field: ospfNbrAddressLessIndex
+          index_fields: &id008
+          - ospfNbrIpAddr
+          - ospfNbrAddressLessIndex
+  ospfnbmanbrstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1.9
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrEntry
+          field: ospfNbmaNbrStatus
+          index_field: ospfNbrAddressLessIndex
+          index_fields: *id008
+    create_method: createAndWait
+  ospfnbrentry:
+    syntax: OspfNbrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrTable
+          field: ospfNbrEntry
+  ospfnbrevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrEntry
+          field: ospfNbrEvents
+          index_field: ospfNbrAddressLessIndex
+          index_fields: *id008
+  ospfnbrhellosuppressed:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1.11
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrEntry
+          field: ospfNbrHelloSuppressed
+          index_field: ospfNbrAddressLessIndex
+          index_fields: *id008
+    validation:
+      allowed:
+      - true
+      - false
+  ospfnbrlsretransqlen:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrEntry
+          field: ospfNbrLsRetransQLen
+          index_field: ospfNbrAddressLessIndex
+          index_fields: *id008
+  ospfnbroptions:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrEntry
+          field: ospfNbrOptions
+          index_field: ospfNbrAddressLessIndex
+          index_fields: *id008
+  ospfnbrpriority:
+    syntax: DesignatedRouterPriority
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfNbrEntry
+          field: ospfNbrPriority
+          index_field: ospfNbrAddressLessIndex
+          index_fields: *id008
+  ospfnbrtable:
+    syntax: OspfNbrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.10
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfNbrTable
+  ospforiginatenewlsas:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.9
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfOriginateNewLsas
+  ospfrxnewlsas:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.10
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfRxNewLsas
+  ospfspfruns:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfAreaEntry
+          field: ospfSpfRuns
+          index_field: ospfAreaId
+  ospfstubareaentry:
+    syntax: OspfStubAreaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.3.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfStubAreaTable
+          field: ospfStubAreaEntry
+  ospfstubareaid:
+    syntax: AreaID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfStubAreaEntry
+          field: ospfStubAreaId
+          index_field: ospfStubTOS
+          index_fields: &id009
+          - ospfStubAreaId
+          - ospfStubTOS
+  ospfstubareatable:
+    syntax: OspfStubAreaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.3
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfStubAreaTable
+  ospfstubmetric:
+    syntax: BigMetric
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfStubAreaEntry
+          field: ospfStubMetric
+          index_field: ospfStubTOS
+          index_fields: *id009
+  ospfstubmetrictype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfStubAreaEntry
+          field: ospfStubMetricType
+          index_field: ospfStubTOS
+          index_fields: *id009
+  ospfstubstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfStubAreaEntry
+          field: ospfStubStatus
+          index_field: ospfStubTOS
+          index_fields: *id009
+    create_method: createAndWait
+  ospfstubtos:
+    syntax: TOSType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfStubAreaEntry
+          field: ospfStubTOS
+          index_field: ospfStubTOS
+          index_fields: *id009
+  ospftossupport:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.8
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfTOSSupport
+    validation:
+      allowed:
+      - true
+      - false
+  ospfversionnumber:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.1.3
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfGeneralGroup
+          field: ospfVersionNumber
+  ospfvirtifauthkey:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.9
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfAuthKey
+          index_field: ospfVirtIfNeighbor
+          index_fields: &id010
+          - ospfVirtIfAreaId
+          - ospfVirtIfNeighbor
+    validation:
+      min: 0
+      max: 256
+  ospfvirtifauthtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.11
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfAuthType
+          index_field: ospfVirtIfNeighbor
+          index_fields: *id010
+    validation:
+      min: 0
+      max: 255
+  ospfvirtifentry:
+    syntax: OspfVirtIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfTable
+          field: ospfVirtIfEntry
+  ospfvirtifevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.8
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfEvents
+          index_field: ospfVirtIfNeighbor
+          index_fields: *id010
+  ospfvirtifhellointerval:
+    syntax: HelloRange
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.5
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfHelloInterval
+          index_field: ospfVirtIfNeighbor
+          index_fields: *id010
+  ospfvirtifretransinterval:
+    syntax: UpToMaxAge
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfRetransInterval
+          index_field: ospfVirtIfNeighbor
+          index_fields: *id010
+  ospfvirtifrtrdeadinterval:
+    syntax: PositiveInteger
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.6
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfRtrDeadInterval
+          index_field: ospfVirtIfNeighbor
+          index_fields: *id010
+  ospfvirtifstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.10
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfStatus
+          index_field: ospfVirtIfNeighbor
+          index_fields: *id010
+    create_method: createAndWait
+  ospfvirtiftable:
+    syntax: OspfVirtIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfVirtIfTable
+  ospfvirtiftransitdelay:
+    syntax: UpToMaxAge
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.9.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtIfEntry
+          field: ospfVirtIfTransitDelay
+          index_field: ospfVirtIfNeighbor
+          index_fields: *id010
+  ospfvirtnbrentry:
+    syntax: OspfVirtNbrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.11.1
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtNbrTable
+          field: ospfVirtNbrEntry
+  ospfvirtnbrevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.11.1.6
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtNbrEntry
+          field: ospfVirtNbrEvents
+          index_field: ospfVirtNbrRtrId
+          index_fields: &id011
+          - ospfVirtNbrArea
+          - ospfVirtNbrRtrId
+  ospfvirtnbrhellosuppressed:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.11.1.8
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtNbrEntry
+          field: ospfVirtNbrHelloSuppressed
+          index_field: ospfVirtNbrRtrId
+          index_fields: *id011
+    validation:
+      allowed:
+      - true
+      - false
+  ospfvirtnbripaddr:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.11.1.3
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtNbrEntry
+          field: ospfVirtNbrIpAddr
+          index_field: ospfVirtNbrRtrId
+          index_fields: *id011
+  ospfvirtnbrlsretransqlen:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.11.1.7
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtNbrEntry
+          field: ospfVirtNbrLsRetransQLen
+          index_field: ospfVirtNbrRtrId
+          index_fields: *id011
+  ospfvirtnbroptions:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.11.1.4
+          method: walk
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospfVirtNbrEntry
+          field: ospfVirtNbrOptions
+          index_field: ospfVirtNbrRtrId
+          index_fields: *id011
+  ospfvirtnbrtable:
+    syntax: OspfVirtNbrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.14.11
+          method: get
+      mops:
+        read:
+          mib: OSPF-MIB
+          table: ospf
+          field: ospfVirtNbrTable

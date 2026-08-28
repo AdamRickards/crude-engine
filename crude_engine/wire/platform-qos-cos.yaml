@@ -1,0 +1,742 @@
+version: 2.6.0
+feature: platform-qos-cos
+schemas:
+  read_platform-qos-cos:
+    type: dict
+    defaults:
+      hm2agentcosmapintftrustentry: ''
+      hm2agentcosmapintftrustintfindex: 0
+      hm2agentcosmapintftrustmode: 0
+      hm2agentcosmapintftrusttable: ''
+      hm2agentcosmapipdscpentry: ''
+      hm2agentcosmapipdscpintfindex: 0
+      hm2agentcosmapipdscptable: ''
+      hm2agentcosmapipdscptrafficclass: 0
+      hm2agentcosmapipdscpvalue: 0
+      hm2agentcosmapipprecentry: ''
+      hm2agentcosmapipprecintfindex: 0
+      hm2agentcosmapipprectable: ''
+      hm2agentcosmapipprectrafficclass: 0
+      hm2agentcosmapipprecvalue: 0
+      hm2agentcosmapuntrustedtrafficclass: 0
+      hm2agentcosqueuecontrolentry: ''
+      hm2agentcosqueuecontroltable: ''
+      hm2agentcosqueuedefaultsrestore: false
+      hm2agentcosqueuedropprecindex: 0
+      hm2agentcosqueueentry: ''
+      hm2agentcosqueueindex: 0
+      hm2agentcosqueueintfindex: 0
+      hm2agentcosqueueintfshapingrate: 0
+      hm2agentcosqueueintfshapingrateunits: 0
+      hm2agentcosqueuemaxbandwidth: 0
+      hm2agentcosqueuemgmtentry: ''
+      hm2agentcosqueuemgmtpercenttaildropthreshold: 0
+      hm2agentcosqueuemgmtpercentwredmaxthreshold: 0
+      hm2agentcosqueuemgmtpercentwredminthreshold: 0
+      hm2agentcosqueuemgmttable: ''
+      hm2agentcosqueuemgmttaildropthreshold: ''
+      hm2agentcosqueuemgmttype: 0
+      hm2agentcosqueuemgmttypeintf: 0
+      hm2agentcosqueuemgmtwreddropprobscale: 0
+      hm2agentcosqueuemgmtwreddropprobability: 0
+      hm2agentcosqueuemgmtwredmaxthreshold: ''
+      hm2agentcosqueuemgmtwredminthreshold: ''
+      hm2agentcosqueueminbandwidth: 0
+      hm2agentcosqueuenumdropprecedencelevels: 0
+      hm2agentcosqueuenumqueuesperport: 0
+      hm2agentcosqueueschedulertype: 0
+      hm2agentcosqueuetable: ''
+      hm2agentcosqueuewreddecayexponent: 0
+attributes:
+  hm2agentcosmapintftrustentry:
+    syntax: Hm2AgentCosMapIntfTrustEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIntfTrustTable
+          field: hm2AgentCosMapIntfTrustEntry
+  hm2agentcosmapintftrustintfindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIntfTrustEntry
+          field: hm2AgentCosMapIntfTrustIntfIndex
+          index_field: hm2AgentCosMapIntfTrustIntfIndex
+  hm2agentcosmapintftrustmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIntfTrustEntry
+          field: hm2AgentCosMapIntfTrustMode
+          index_field: hm2AgentCosMapIntfTrustIntfIndex
+    validation:
+      allowed:
+      - untrusted
+      - trustDot1p
+      - trustIpPrecedence
+      - trustIpDscp
+  hm2agentcosmapintftrusttable:
+    syntax: Hm2AgentCosMapIntfTrustEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapCfgGroup
+          field: hm2AgentCosMapIntfTrustTable
+  hm2agentcosmapipdscpentry:
+    syntax: Hm2AgentCosMapIpDscpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpDscpTable
+          field: hm2AgentCosMapIpDscpEntry
+  hm2agentcosmapipdscpintfindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpDscpEntry
+          field: hm2AgentCosMapIpDscpIntfIndex
+          index_field: hm2AgentCosMapIpDscpValue
+          index_fields: &id001
+          - hm2AgentCosMapIpDscpIntfIndex
+          - hm2AgentCosMapIpDscpValue
+  hm2agentcosmapipdscptable:
+    syntax: Hm2AgentCosMapIpDscpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapCfgGroup
+          field: hm2AgentCosMapIpDscpTable
+  hm2agentcosmapipdscptrafficclass:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpDscpEntry
+          field: hm2AgentCosMapIpDscpTrafficClass
+          index_field: hm2AgentCosMapIpDscpValue
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 7
+  hm2agentcosmapipdscpvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpDscpEntry
+          field: hm2AgentCosMapIpDscpValue
+          index_field: hm2AgentCosMapIpDscpValue
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 63
+  hm2agentcosmapipprecentry:
+    syntax: Hm2AgentCosMapIpPrecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpPrecTable
+          field: hm2AgentCosMapIpPrecEntry
+  hm2agentcosmapipprecintfindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpPrecEntry
+          field: hm2AgentCosMapIpPrecIntfIndex
+          index_field: hm2AgentCosMapIpPrecValue
+          index_fields: &id002
+          - hm2AgentCosMapIpPrecIntfIndex
+          - hm2AgentCosMapIpPrecValue
+  hm2agentcosmapipprectable:
+    syntax: Hm2AgentCosMapIpPrecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapCfgGroup
+          field: hm2AgentCosMapIpPrecTable
+  hm2agentcosmapipprectrafficclass:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpPrecEntry
+          field: hm2AgentCosMapIpPrecTrafficClass
+          index_field: hm2AgentCosMapIpPrecValue
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2agentcosmapipprecvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIpPrecEntry
+          field: hm2AgentCosMapIpPrecValue
+          index_field: hm2AgentCosMapIpPrecValue
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2agentcosmapuntrustedtrafficclass:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosMapIntfTrustEntry
+          field: hm2AgentCosMapUntrustedTrafficClass
+          index_field: hm2AgentCosMapIntfTrustIntfIndex
+  hm2agentcosqueuecontrolentry:
+    syntax: Hm2AgentCosQueueControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueControlTable
+          field: hm2AgentCosQueueControlEntry
+  hm2agentcosqueuecontroltable:
+    syntax: Hm2AgentCosQueueControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueCfgGroup
+          field: hm2AgentCosQueueControlTable
+  hm2agentcosqueuedefaultsrestore:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueControlEntry
+          field: hm2AgentCosQueueDefaultsRestore
+          index_field: hm2AgentCosQueueIntfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentcosqueuedropprecindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueDropPrecIndex
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: &id004
+          - hm2AgentCosQueueIntfIndex
+          - hm2AgentCosQueueIndex
+          - hm2AgentCosQueueDropPrecIndex
+  hm2agentcosqueueentry:
+    syntax: Hm2AgentCosQueueEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueTable
+          field: hm2AgentCosQueueEntry
+  hm2agentcosqueueindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueEntry
+          field: hm2AgentCosQueueIndex
+          index_field: hm2AgentCosQueueIndex
+          index_fields: &id003
+          - hm2AgentCosQueueIntfIndex
+          - hm2AgentCosQueueIndex
+  hm2agentcosqueueintfindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueControlEntry
+          field: hm2AgentCosQueueIntfIndex
+          index_field: hm2AgentCosQueueIntfIndex
+  hm2agentcosqueueintfshapingrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueControlEntry
+          field: hm2AgentCosQueueIntfShapingRate
+          index_field: hm2AgentCosQueueIntfIndex
+  hm2agentcosqueueintfshapingrateunits:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueControlEntry
+          field: hm2AgentCosQueueIntfShapingRateUnits
+          index_field: hm2AgentCosQueueIntfIndex
+  hm2agentcosqueuemaxbandwidth:
+    syntax: Percent
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueEntry
+          field: hm2AgentCosQueueMaxBandwidth
+          index_field: hm2AgentCosQueueIndex
+          index_fields: *id003
+  hm2agentcosqueuemgmtentry:
+    syntax: Hm2AgentCosQueueMgmtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtTable
+          field: hm2AgentCosQueueMgmtEntry
+  hm2agentcosqueuemgmtpercenttaildropthreshold:
+    syntax: Percent
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtPercentTailDropThreshold
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+  hm2agentcosqueuemgmtpercentwredmaxthreshold:
+    syntax: Percent
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtPercentWredMaxThreshold
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+  hm2agentcosqueuemgmtpercentwredminthreshold:
+    syntax: Percent
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtPercentWredMinThreshold
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+  hm2agentcosqueuemgmttable:
+    syntax: Hm2AgentCosQueueMgmtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueCfgGroup
+          field: hm2AgentCosQueueMgmtTable
+  hm2agentcosqueuemgmttaildropthreshold:
+    syntax: Sixteenths
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtTailDropThreshold
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+  hm2agentcosqueuemgmttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueEntry
+          field: hm2AgentCosQueueMgmtType
+          index_field: hm2AgentCosQueueIndex
+          index_fields: *id003
+  hm2agentcosqueuemgmttypeintf:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueControlEntry
+          field: hm2AgentCosQueueMgmtTypeIntf
+          index_field: hm2AgentCosQueueIntfIndex
+  hm2agentcosqueuemgmtwreddropprobscale:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtWredDropProbScale
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 15
+  hm2agentcosqueuemgmtwreddropprobability:
+    syntax: Percent
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtWredDropProbability
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+  hm2agentcosqueuemgmtwredmaxthreshold:
+    syntax: Sixteenths
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtWredMaxThreshold
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+  hm2agentcosqueuemgmtwredminthreshold:
+    syntax: Sixteenths
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueMgmtEntry
+          field: hm2AgentCosQueueMgmtWredMinThreshold
+          index_field: hm2AgentCosQueueDropPrecIndex
+          index_fields: *id004
+  hm2agentcosqueueminbandwidth:
+    syntax: Percent
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueEntry
+          field: hm2AgentCosQueueMinBandwidth
+          index_field: hm2AgentCosQueueIndex
+          index_fields: *id003
+  hm2agentcosqueuenumdropprecedencelevels:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueCfgGroup
+          field: hm2AgentCosQueueNumDropPrecedenceLevels
+  hm2agentcosqueuenumqueuesperport:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueCfgGroup
+          field: hm2AgentCosQueueNumQueuesPerPort
+  hm2agentcosqueueschedulertype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueEntry
+          field: hm2AgentCosQueueSchedulerType
+          index_field: hm2AgentCosQueueIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - strict
+      - weighted
+  hm2agentcosqueuetable:
+    syntax: Hm2AgentCosQueueEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueCfgGroup
+          field: hm2AgentCosQueueTable
+  hm2agentcosqueuewreddecayexponent:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.3.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-COS-MIB
+          table: hm2AgentCosQueueControlEntry
+          field: hm2AgentCosQueueWredDecayExponent
+          index_field: hm2AgentCosQueueIntfIndex
+    validation:
+      min: 0
+      max: 15

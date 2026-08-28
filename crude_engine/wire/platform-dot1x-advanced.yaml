@@ -1,0 +1,1026 @@
+version: 2.6.0
+feature: platform-dot1x-advanced
+schemas:
+  read_platform-dot1x-advanced:
+    type: dict
+    defaults:
+      hm2agentdot1xauthhistoryresultaccessstatus: 0
+      hm2agentdot1xauthhistoryresultage: 0
+      hm2agentdot1xauthhistoryresultauthstatus: 0
+      hm2agentdot1xauthhistoryresultfilterid: ''
+      hm2agentdot1xauthhistoryresultifindex: 0
+      hm2agentdot1xauthhistoryresultifaceindex: 0
+      hm2agentdot1xauthhistoryresultindex: 0
+      hm2agentdot1xauthhistoryresultmacaddress: ''
+      hm2agentdot1xauthhistoryresultreasoncode: 0
+      hm2agentdot1xauthhistoryresulttimestamp: ''
+      hm2agentdot1xauthhistoryresultvlanassigned: 0
+      hm2agentdot1xauthhistoryresultvlanassignedtype: 0
+      hm2agentdot1xauthhistoryresultvlanid: 0
+      hm2agentdot1xauthhistoryresultsclear: false
+      hm2agentdot1xclientauthpaestate: 0
+      hm2agentdot1xclientbackendstate: 0
+      hm2agentdot1xclientconfigentry: ''
+      hm2agentdot1xclientconfigtable: ''
+      hm2agentdot1xclientfilterid: ''
+      hm2agentdot1xclientmacaddress: ''
+      hm2agentdot1xclientsessiontime: 0
+      hm2agentdot1xclientsessiontimeout: 0
+      hm2agentdot1xclientterminationaction: ''
+      hm2agentdot1xclientusername: ''
+      hm2agentdot1xclientvlanassigned: 0
+      hm2agentdot1xclientvlanassignedreason: 0
+      hm2agentdot1xdynamicvlancreationmode: false
+      hm2agentdot1xguestvlanid: 0
+      hm2agentdot1xguestvlanperiod: 0
+      hm2agentdot1xinterface: 0
+      hm2agentdot1xlogicalport: 0
+      hm2agentdot1xmabformatgroupseparator: 0
+      hm2agentdot1xmabformatgroupsize: 0
+      hm2agentdot1xmabformatlettercase: 0
+      hm2agentdot1xmabpassword: ''
+      hm2agentdot1xmaxusers: 0
+      hm2agentdot1xmonitormodeclients: 0
+      hm2agentdot1xmonitormodeenabled: false
+      hm2agentdot1xnonmonitormodeclients: 0
+      hm2agentdot1xportauthhistoryresultclearentry: ''
+      hm2agentdot1xportauthhistoryresultcleartable: ''
+      hm2agentdot1xportauthhistoryresultentry: ''
+      hm2agentdot1xportauthhistoryresulttable: ''
+      hm2agentdot1xportauthhistoryresultsclear: false
+      hm2agentdot1xportconfigentry: ''
+      hm2agentdot1xportconfigtable: ''
+      hm2agentdot1xportcontrolmode: ''
+      hm2agentdot1xportmabenabled: false
+      hm2agentdot1xportmabenabledoperational: false
+      hm2agentdot1xportsessiontimeout: 0
+      hm2agentdot1xportstatsclear: false
+      hm2agentdot1xportstatsclearentry: ''
+      hm2agentdot1xportstatscleartable: ''
+      hm2agentdot1xportterminationaction: ''
+      hm2agentdot1xportvlanassigned: 0
+      hm2agentdot1xportvlanassignedreason: 0
+      hm2agentdot1xradiusvlanassignment: false
+      hm2agentdot1xstatisticsclear: false
+      hm2agentdot1xstatsifindex: 0
+      hm2agentdot1xunauthenticatedvlan: 0
+attributes:
+  hm2agentdot1xauthhistoryresultaccessstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultAccessStatus
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: &id001
+          - hm2AgentDot1xAuthHistoryResultIfaceIndex
+          - hm2AgentDot1xAuthHistoryResultIndex
+  hm2agentdot1xauthhistoryresultage:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultAge
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultauthstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultAuthStatus
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultfilterid:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultFilterID
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultifindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultClearEntry
+          field: hm2AgentDot1xAuthHistoryResultIfIndex
+          index_field: hm2AgentDot1xAuthHistoryResultIfIndex
+  hm2agentdot1xauthhistoryresultifaceindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultIfaceIndex
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultIndex
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultMacAddress
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultreasoncode:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultReasonCode
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresulttimestamp:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultTimeStamp
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultvlanassigned:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultVlanAssigned
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultvlanassignedtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultVlanAssignedType
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultvlanid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultEntry
+          field: hm2AgentDot1xAuthHistoryResultVlanId
+          index_field: hm2AgentDot1xAuthHistoryResultIndex
+          index_fields: *id001
+  hm2agentdot1xauthhistoryresultsclear:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xAuthHistoryResultsGroup
+          field: hm2AgentDot1xAuthHistoryResultsClear
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xclientauthpaestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientAuthPAEstate
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientbackendstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientBackendState
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientconfigentry:
+    syntax: Hm2AgentDot1xClientConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigTable
+          field: hm2AgentDot1xClientConfigEntry
+  hm2agentdot1xclientconfigtable:
+    syntax: Hm2AgentDot1xClientConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigGroup
+          field: hm2AgentDot1xClientConfigTable
+  hm2agentdot1xclientfilterid:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientFilterID
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientMacAddress
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientsessiontime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientSessionTime
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientsessiontimeout:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientSessionTimeout
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientterminationaction:
+    syntax: Dot1xSessionTerminationAction
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientTerminationAction
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientusername:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientUserName
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientvlanassigned:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientVlanAssigned
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xclientvlanassignedreason:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xClientVlanAssignedReason
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xdynamicvlancreationmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xDynamicVlanCreationMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xguestvlanid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xGuestVlanId
+          index_field: dot1xPaePortNumber
+  hm2agentdot1xguestvlanperiod:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xGuestVlanPeriod
+          index_field: dot1xPaePortNumber
+    validation:
+      min: 1
+      max: 300
+  hm2agentdot1xinterface:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xInterface
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xlogicalport:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xClientConfigEntry
+          field: hm2AgentDot1xLogicalPort
+          index_field: hm2AgentDot1xClientMacAddress
+  hm2agentdot1xmabformatgroupseparator:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.251
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xMABFormatGroupSeparator
+    validation:
+      allowed:
+      - hyphen
+      - colon
+      - dot
+  hm2agentdot1xmabformatgroupsize:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.250
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xMABFormatGroupSize
+    validation:
+      allowed:
+      - group-size-1
+      - group-size-2
+      - group-size-4
+      - group-size-12
+  hm2agentdot1xmabformatlettercase:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.252
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xMABFormatLetterCase
+    validation:
+      allowed:
+      - lower-case
+      - upper-case
+  hm2agentdot1xmabpassword:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.253
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xMABPassword
+    validation:
+      min: 0
+      max: 64
+  hm2agentdot1xmaxusers:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xMaxUsers
+          index_field: dot1xPaePortNumber
+  hm2agentdot1xmonitormodeclients:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xMonitorModeConfigGroup
+          field: hm2AgentDot1xMonitorModeClients
+  hm2agentdot1xmonitormodeenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xMonitorModeConfigGroup
+          field: hm2AgentDot1xMonitorModeEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xnonmonitormodeclients:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.4.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xMonitorModeConfigGroup
+          field: hm2AgentDot1xNonMonitorModeClients
+  hm2agentdot1xportauthhistoryresultclearentry:
+    syntax: Hm2AgentDot1xPortAuthHistoryResultClearEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultClearTable
+          field: hm2AgentDot1xPortAuthHistoryResultClearEntry
+  hm2agentdot1xportauthhistoryresultcleartable:
+    syntax: Hm2AgentDot1xPortAuthHistoryResultClearEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xAuthHistoryResultsGroup
+          field: hm2AgentDot1xPortAuthHistoryResultClearTable
+  hm2agentdot1xportauthhistoryresultentry:
+    syntax: Hm2AgentDot1xPortAuthHistoryResultEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultTable
+          field: hm2AgentDot1xPortAuthHistoryResultEntry
+  hm2agentdot1xportauthhistoryresulttable:
+    syntax: Hm2AgentDot1xPortAuthHistoryResultEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xAuthHistoryResultsGroup
+          field: hm2AgentDot1xPortAuthHistoryResultTable
+  hm2agentdot1xportauthhistoryresultsclear:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.5.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortAuthHistoryResultClearEntry
+          field: hm2AgentDot1xPortAuthHistoryResultsClear
+          index_field: hm2AgentDot1xAuthHistoryResultIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xportconfigentry:
+    syntax: Hm2AgentDot1xPortConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigTable
+          field: hm2AgentDot1xPortConfigEntry
+  hm2agentdot1xportconfigtable:
+    syntax: Hm2AgentDot1xPortConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigGroup
+          field: hm2AgentDot1xPortConfigTable
+  hm2agentdot1xportcontrolmode:
+    syntax: Dot1xPortControlMode
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xPortControlMode
+          index_field: dot1xPaePortNumber
+  hm2agentdot1xportmabenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xPortMABenabled
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xportmabenabledoperational:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xPortMABenabledOperational
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xportsessiontimeout:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xPortSessionTimeout
+          index_field: dot1xPaePortNumber
+  hm2agentdot1xportstatsclear:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.249.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortStatsClearEntry
+          field: hm2AgentDot1xPortStatsClear
+          index_field: hm2AgentDot1xStatsIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xportstatsclearentry:
+    syntax: Hm2AgentDot1xPortStatsClearEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.249.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortStatsClearTable
+          field: hm2AgentDot1xPortStatsClearEntry
+  hm2agentdot1xportstatscleartable:
+    syntax: Hm2AgentDot1xPortStatsClearEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.249
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xPortStatsClearTable
+  hm2agentdot1xportterminationaction:
+    syntax: Dot1xSessionTerminationAction
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xPortTerminationAction
+          index_field: dot1xPaePortNumber
+  hm2agentdot1xportvlanassigned:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xPortVlanAssigned
+          index_field: dot1xPaePortNumber
+  hm2agentdot1xportvlanassignedreason:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xPortVlanAssignedReason
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - default
+      - radius
+      - unauthenticatedVlan
+      - guestVlan
+      - voiceVlan
+      - monitorVlan
+      - notAssigned
+  hm2agentdot1xradiusvlanassignment:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xRadiusVlanAssignment
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xstatisticsclear:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xEnhancementConfigGroup
+          field: hm2AgentDot1xStatisticsClear
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1xstatsifindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.1.249.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortStatsClearEntry
+          field: hm2AgentDot1xStatsIfIndex
+          index_field: hm2AgentDot1xStatsIfIndex
+  hm2agentdot1xunauthenticatedvlan:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.36.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DOT1X-ADVANCED-MIB
+          table: hm2AgentDot1xPortConfigEntry
+          field: hm2AgentDot1xUnauthenticatedVlan
+          index_field: dot1xPaePortNumber

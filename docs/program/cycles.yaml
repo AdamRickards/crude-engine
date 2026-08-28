@@ -1,0 +1,132 @@
+# Current iteration. One cycle at a time.
+# status: open | doing | done | parked
+# lab: true means the proof needs a switch. Do not put lab proofs in PR CI.
+
+cycle: 0
+name: Honest catalogue
+target: "2.10.0"
+opened: "2026-08-17"
+why: >
+  The inversion landed. The generated page still lies (0E, Protocols: None).
+  Agents and humans cannot trust the catalogue. Fix the proofs first,
+  then the lab gate.
+
+tasks:
+  - id: catalogue-e-count
+    title: Count Execute methods from protocol YAML in the generated header
+    tags: ["#release", "#Docs-E-Count"]
+    proof: python3 scripts/check_catalogue.py --e-count
+    lab: false
+    status: open
+    notes: >
+      generate_docs.py only increments from schema type:. E lives in
+      drivers/{MOPS,SNMP,SSH}.yaml execute_methods. METHOD_REFERENCE already
+      says 186 = 174 + 12E.
+
+  - id: catalogue-composed
+    title: Label derived/composed methods instead of Protocols None
+    tags: ["#release", "#Docs-Composed-Label"]
+    proof: python3 scripts/check_catalogue.py --composed
+    lab: false
+    status: open
+    notes: >
+      get_config, get_ip_addresses, get_loop_protection, get_auto_disable,
+      get_fan_status, delete_vrrp and siblings. Some are real contract holes
+      (defaults keys ≠ attribute names) — those stay fail until the schema
+      is fixed, not relabelled.
+
+  - id: catalogue-cli-hatch
+    title: Flag cli() as the unbounded escape hatch
+    tags: ["#release", "#Docs-Cli-Hatch"]
+    proof: python3 scripts/check_catalogue.py --cli
+    lab: false
+    status: open
+    notes: SSH.yaml lists cli next to ping. The catalogue must say this is
+      the one call where undeclared capability becomes possible.
+
+  - id: schema-defaults-holes
+    title: Close defaults/attribute mismatches that produce empty protocol sets
+    tags: ["#schema", "#Defaults-Attr-Mismatch"]
+    proof: python3 scripts/check_catalogue.py --composed
+    lab: false
+    status: open
+    notes: >
+      Distinct from the generator label. If defaults name keys that are not
+      attributes, the contract cannot execute what it prints. Fix the YAML.
+
+  - id: principles-grep
+    title: Ban if-protocol and silent except Exception pass in crude_engine/
+    tags: ["#engine", "#Principles-Grep"]
+    proof: python3 scripts/check_principles.py
+    lab: false
+    status: open
+    notes: >
+      ENGINE_PRINCIPLES forbids both. if protocol == is already absent.
+      except Exception: pass is in ssh_transport.py and snmp_transport.py.
+
+  - id: validator-exit-code
+    title: validate_schemas.py exits 1 when it prints structural errors
+    tags: ["#test", "#Validator-Exit-Code"]
+    proof: python3 local/generator/validate_schemas.py --errors
+    lab: false
+    status: done
+    notes: >
+      Landed 2026-08-17. The script used to print "6 errors (must fix)" and
+      return 0. A proof that cannot fail is not a proof.
+
+  - id: validate-existing-errors
+    title: Clear the 6 structural errors the validator now correctly fails on
+    tags: ["#schema", "#Validate-Existing-Errors"]
+    proof: python3 local/generator/validate_schemas.py --errors
+    lab: false
+    status: open
+    notes: >
+      interface.yaml / lldp.yaml alias methods missing type (schema: inherit).
+      qos_mapping get missing defaults. software image_version compute.from
+      uses sub_table names (major/minor/bugfix) not attribute names.
+
+  - id: validate-musts
+    title: SCHEMA_MODEL MUSTs that the validator still skips
+    tags: ["#schema", "#Validate-MUSTs"]
+    proof: python3 local/generator/validate_schemas.py --errors
+    lab: false
+    status: open
+    notes: >
+      Missing today: index_key MUST, setter wire+source MUST. Do not invent
+      new MUSTs — implement the ones already written. After existing errors
+      are green.
+
+  - id: docs-sync
+    title: Regenerate API_REFERENCE / METHOD_REFERENCE after generator fixes
+    tags: ["#release", "#Docs-Regen"]
+    proof: python3 scripts/check_catalogue.py
+    lab: false
+    status: open
+    notes: Regeneration is the default. Do not hand-edit the 8k-line file.
+
+  - id: snmp-compound-index
+    title: SNMP compound index decode — the 139-cell parity bucket
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+    proof: python3 tests/release_matrix.py --inspect --method get_mac_address_table --device 192.168.60.80 --trace
+    lab: true
+    status: open
+    notes: >
+      P0.1. Start with --inspect on a passing sibling (get_arp_table) vs a
+      failing table. Do not jump to interpreter.py. Not this week unless
+      the lab is on and cycle 0 offline proofs are green.
+
+  - id: ntp-server-enabled
+    title: get_ntp.server_enabled MOPS vs SNMP mismatch
+    tags: ["#wire", "#NTP-Server-Enabled-Mismatch"]
+    proof: python3 tests/release_matrix.py --inspect --method get_ntp --device 192.168.60.80 --trace
+    lab: true
+    status: open
+    notes: Six cells. Isolated. After or beside compound-index.
+
+  - id: setter-crud-matrix
+    title: Run setter and CRUD matrix on lab fleet
+    tags: ["#release", "#Setter-Matrix"]
+    proof: python3 tests/release_matrix.py --execute --kind setter
+    lab: true
+    status: open
+    notes: Planned 260 jobs never in the April run. Lab devices .80–.85 only.

@@ -1,0 +1,66 @@
+version: "2.9.0"
+feature: vrrp-ssh
+description: "SSH CLI sources for VRRP-MIB (L3 only)"
+
+attributes:
+  # Per-instance: show ip vrrp interface table
+  vrrpoperadminstate:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp interface", parser: table, column: 4}
+        write: {command: "ip vrrp enable {vrid}", level: config_interface}
+
+  vrrpoperstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip vrrp interface", parser: table, column: 5}
+
+  vrrpoperrowstatus:
+    sources:
+      ssh:
+        create: {command: "ip vrrp add {vrid} priority {priority} advertisement-ip {primary_ip}", level: config_interface}
+        delete: {command: "ip vrrp delete {vrid}", level: config_interface}
+
+  # Global stats: show ip vrrp global
+  vrrprouterchecksumerrors:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp global", field: "Router Checksum Errors"}
+
+  vrrprouterversionerrors:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp global", field: "Router Version Errors"}
+
+  vrrproutervriderrors:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp global", field: "Router VRID Errors"}
+
+  # Per-instance attrs not in table — write-only via SSH
+  vrrpoperpriority:
+    sources:
+      ssh:
+        write: {command: "ip vrrp modify {vrid} priority {value}", level: config_interface}
+
+  vrrpoperpreemptmode:
+    sources:
+      ssh:
+        write: {command: "ip vrrp modify {vrid} preempt {value}", level: config_interface}
+
+  vrrpoperadvertisementinterval:
+    sources:
+      ssh:
+        write: {command: "ip vrrp modify {vrid} interval {value}", level: config_interface}
+
+  vrrpoperacceptmode:
+    sources:
+      ssh:
+        write: {command: "ip vrrp modify {vrid} accept-mode {value}", level: config_interface}
+
+  vrrpoperprimaryipaddr:
+    type: string
+    sources:
+      ssh:
+        write: {command: "ip vrrp modify {vrid} advertisement-ip {value}", level: config_interface}

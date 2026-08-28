@@ -1,0 +1,76 @@
+version: 2.6.0
+feature: snmp-framework
+schemas:
+  read_snmp-framework:
+    type: dict
+    defaults:
+      snmpengineboots: 0
+      snmpengineid: ''
+      snmpenginemaxmessagesize: 0
+      snmpenginetime: 0
+attributes:
+  snmpengineboots:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.10.2.1.2
+          method: get
+      mops:
+        read:
+          mib: SNMP-FRAMEWORK-MIB
+          table: snmpEngine
+          field: snmpEngineBoots
+    validation:
+      min: 1
+      max: 2147483647
+  snmpengineid:
+    syntax: SnmpEngineID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.10.2.1.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-FRAMEWORK-MIB
+          table: snmpEngine
+          field: snmpEngineID
+  snmpenginemaxmessagesize:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.10.2.1.4
+          method: get
+      mops:
+        read:
+          mib: SNMP-FRAMEWORK-MIB
+          table: snmpEngine
+          field: snmpEngineMaxMessageSize
+    validation:
+      min: 484
+      max: 2147483647
+  snmpenginetime:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.10.2.1.3
+          method: get
+      mops:
+        read:
+          mib: SNMP-FRAMEWORK-MIB
+          table: snmpEngine
+          field: snmpEngineTime
+    validation:
+      min: 0
+      max: 2147483647

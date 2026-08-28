@@ -1,0 +1,87 @@
+version: "2.6.0"
+feature: platform-portsecurity-ssh
+description: "SSH CLI sources for port security — hand-authored"
+
+attributes:
+  hm2agentglobalportsecuritymode:
+    sources:
+      ssh:
+        read: {command: "show port-security global", field: "Port Security"}
+        write: {command: "{'' if value else 'no '}port-security operation", level: config}
+
+  hm2agentportsecuritymode:
+    sources:
+      ssh:
+        read: {command: "show port-security interface", parser: table, column: 1}
+        write: {command: "{'' if value else 'no '}port-security operation", level: config_interface}
+
+  hm2agentportsecuritydynamiclimit:
+    sources:
+      ssh:
+        read: {command: "show port-security interface", parser: paired_rows, lines_per_record: 2, column: 2}
+        write: {command: "port-security dynamic-limit {value}", level: config_interface}
+
+  hm2agentportsecuritystaticlimit:
+    sources:
+      ssh:
+        read: {command: "show port-security interface", parser: paired_rows, lines_per_record: 2, column: 3}
+        write: {command: "port-security max-static {value}", level: config_interface}
+
+  hm2agentportsecurityoperationmode:
+    type: string
+    sources:
+      ssh:
+        write: {command: "port-security mode {value}", level: config}
+
+  hm2agentportsecurityautodisable:
+    sources:
+      ssh:
+        read: {command: "show port-security interface {index}", field: "Automatic disable"}
+
+  hm2agentportsecurityviolationtrapmode:
+    sources:
+      ssh:
+        read: {command: "show port-security interface {index}", field: "Violation trap mode"}
+        write: {command: "port-security violation-traps operation", level: config_interface}
+
+  hm2agentportsecurityviolationtrapfrequency:
+    sources:
+      ssh:
+        read: {command: "show port-security interface {index}", field: "Violation trap frequency"}
+        write: {command: "port-security violation-traps operation frequency {value}", level: config_interface}
+
+  hm2agentportsecuritydynamiccount:
+    sources:
+      ssh:
+        read: {command: "show port-security interface {index}", field: "Current dynamic"}
+
+  hm2agentportsecuritystaticcount:
+    sources:
+      ssh:
+        read: {command: "show port-security interface {index}", field: "Current static"}
+
+  hm2agentportsecuritylastdiscardedmac:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show port-security interface {index}", field: "Last violating VLAN ID/MAC"}
+
+  hm2agentportsecuritymacaddressadd:
+    sources:
+      ssh:
+        write: {command: "port-security mac-address add {mac} {vlan}", level: config_interface}
+
+  hm2agentportsecuritymacaddressremove:
+    sources:
+      ssh:
+        write: {command: "port-security mac-address delete {mac} {vlan}", level: config_interface}
+
+  hm2agentportsecurityipaddressadd:
+    sources:
+      ssh:
+        write: {command: "port-security ip-address add {ip} {vlan}", level: config_interface}
+
+  hm2agentportsecurityipaddressremove:
+    sources:
+      ssh:
+        write: {command: "port-security ip-address delete {ip} {vlan}", level: config_interface}

@@ -1,0 +1,440 @@
+version: 2.6.0
+feature: lldp-ext-pno
+schemas:
+  read_lldp-ext-pno:
+    type: dict
+    defaults:
+      lldpxpnoconfigaliastxenable: false
+      lldpxpnoconfigentry: ''
+      lldpxpnoconfigmrptxenable: false
+      lldpxpnoconfigportstatustxenable: false
+      lldpxpnoconfigspdtxenable: false
+      lldpxpnoconfigtable: ''
+      lldpxpnolocentry: ''
+      lldpxpnoloclpdvalue: 0
+      lldpxpnolocportmrpuuid: ''
+      lldpxpnolocportmrrtstatus: 0
+      lldpxpnolocportnos: ''
+      lldpxpnolocportrxdvalue: 0
+      lldpxpnolocportstatusrt2: 0
+      lldpxpnolocportstatusrt3: 0
+      lldpxpnolocporttxdvalue: 0
+      lldpxpnoloctable: ''
+      lldpxpnorementry: ''
+      lldpxpnoremlpdvalue: 0
+      lldpxpnoremportmrpuuid: ''
+      lldpxpnoremportmrrtstatus: 0
+      lldpxpnoremportnos: ''
+      lldpxpnoremportrxdvalue: 0
+      lldpxpnoremportstatusrt2: 0
+      lldpxpnoremportstatusrt3: 0
+      lldpxpnoremporttxdvalue: 0
+      lldpxpnoremtable: ''
+attributes:
+  lldpxpnoconfigaliastxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoConfigEntry
+          field: lldpXPnoConfigAliasTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxpnoconfigentry:
+    syntax: LldpXPnoConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoConfigTable
+          field: lldpXPnoConfigEntry
+  lldpxpnoconfigmrptxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoConfigEntry
+          field: lldpXPnoConfigMrpTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxpnoconfigportstatustxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoConfigEntry
+          field: lldpXPnoConfigPortStatusTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxpnoconfigspdtxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoConfigEntry
+          field: lldpXPnoConfigSPDTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxpnoconfigtable:
+    syntax: LldpXPnoConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoConfig
+          field: lldpXPnoConfigTable
+  lldpxpnolocentry:
+    syntax: LldpXPnoLocEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocTable
+          field: lldpXPnoLocEntry
+  lldpxpnoloclpdvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocLPDValue
+          index_field: lldpLocPortNum
+  lldpxpnolocportmrpuuid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocPortMrpUuId
+          index_field: lldpLocPortNum
+  lldpxpnolocportmrrtstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocPortMrrtStatus
+          index_field: lldpLocPortNum
+  lldpxpnolocportnos:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocPortNoS
+          index_field: lldpLocPortNum
+  lldpxpnolocportrxdvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocPortRxDValue
+          index_field: lldpLocPortNum
+  lldpxpnolocportstatusrt2:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocPortStatusRT2
+          index_field: lldpLocPortNum
+  lldpxpnolocportstatusrt3:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocPortStatusRT3
+          index_field: lldpLocPortNum
+  lldpxpnolocporttxdvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocEntry
+          field: lldpXPnoLocPortTxDValue
+          index_field: lldpLocPortNum
+  lldpxpnoloctable:
+    syntax: LldpXPnoLocEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoLocalData
+          field: lldpXPnoLocTable
+  lldpxpnorementry:
+    syntax: LldpXPnoRemEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemTable
+          field: lldpXPnoRemEntry
+  lldpxpnoremlpdvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemLPDValue
+          index_field: lldpRemIndex
+          index_fields: &id001
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpxpnoremportmrpuuid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemPortMrpUuId
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxpnoremportmrrtstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemPortMrrtStatus
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxpnoremportnos:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemPortNoS
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxpnoremportrxdvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemPortRxDValue
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxpnoremportstatusrt2:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemPortStatusRT2
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxpnoremportstatusrt3:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemPortStatusRT3
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxpnoremporttxdvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemEntry
+          field: lldpXPnoRemPortTxDValue
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxpnoremtable:
+    syntax: LldpXPnoRemEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.3791.1.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-PNO-MIB
+          table: lldpXPnoRemoteData
+          field: lldpXPnoRemTable

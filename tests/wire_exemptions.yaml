@@ -1,0 +1,87 @@
+# Wire source exemptions — attrs that are legitimately unavailable on specific protocols.
+# The gate check reads this file and treats these as accepted gaps, not failures.
+#
+# Format: wire_file:wire_attr → list of protocols where it's exempt
+# Reviewed 2026-04-04
+
+exemptions:
+  # MOPS: EtherLike-MIB not in MOPS schema (vendor ticket submitted)
+  etherlike:dot3statslatecollisions:
+    - mops
+
+  # SSH: addr_type fields — CLI shows IP directly, type is implicit from format
+  dns:hm2dnsclientserveraddresstype:
+    - ssh
+  timesync:hm2sntpclientserveraddrtype:
+    - ssh
+  logging:hm2logsyslogserveripaddrtype:
+    - ssh
+  platform-radius:hm2agentradiusserverinetaddrtype:
+    - ssh
+  platform-tacacsclient:hm2agenttacacsserveripaddrtype:
+    - ssh
+  remote-authentication:hm2ldapclientserveraddrtype:
+    - ssh
+
+  # SSH: SNMP VACM cross-reference tables — CLI exposes simplified view
+  snmp-community:snmpcommunitysecurityname:
+    - ssh
+  snmp-view-based-acm:vacmgroupname:
+    - ssh
+  snmp-view-based-acm:vacmaccesswriteviewname:
+    - ssh
+  snmp-target:snmptargetaddrparams:
+    - ssh
+  snmp-target:snmptargetaddrtaglist:
+    - ssh
+  snmp-target:snmptargetparamssecuritymodel:
+    - ssh
+  snmp-target:snmptargetparamssecurityname:
+    - ssh
+  snmp-target:snmptargetparamssecuritylevel:
+    - ssh
+
+  # SSH: secrets not displayed in CLI output
+  usermgmt:hm2usersnmpauthpassword:
+    - ssh
+  usermgmt:hm2usersnmpencpassword:
+    - ssh
+
+  # SSH: membership_of check — not a direct CLI field
+  usermgmt:hm2pwdmgmtdefaultpwdstatususername:
+    - ssh
+
+  # SSH: NTP server stratum — set-only command (ntp server localclock-stratum), no show
+  timesync:hm2ntpserverlocalclockstratum:
+    - ssh
+
+  # SSH: synchronized is duplicate of server_oper_status wire
+  timesync:hm2sntpclientserverstatus:
+    - ssh
+
+  # SSH: profile storage type — not in CLI output
+  filemgmt:hm2fmprofilestoragetype:
+    - ssh
+
+  # SSH: VLAN PortList bitmasks — needs custom parser for T/U/F/- format (TODO)
+  q-bridge:dot1qvlanstaticegressports:
+    - ssh
+  q-bridge:dot1qvlanstaticuntaggedports:
+    - ssh
+  q-bridge:dot1qvlanforbiddenegressports:
+    - ssh
+
+  # SSH: ip_restrict fields not in CLI output
+  mgmtaccess:hm2rmaloggingglobal:
+    - ssh
+  mgmtaccess:hm2rmainterface:
+    - ssh
+  mgmtaccess:hm2rmalogging:
+    - ssh
+  mgmtaccess:hm2rmaipaddrtype:
+    - ssh
+
+  # SSH: uptime returns human string, needs to_timeticks CRUDE transform (TODO)
+  snmpv2:sysuptime:
+    - ssh
+

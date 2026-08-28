@@ -1,0 +1,705 @@
+version: 2.6.0
+feature: l2redundancy-lre
+schemas:
+  read_l2redundancy-lre:
+    type: dict
+    defaults:
+      hm2lreduplicatedetectionaging: 0
+      hm2lreinterfacea: 0
+      hm2lreinterfaceb: 0
+      hm2lreinterfaceconfigentry: ''
+      hm2lreinterfaceconfigtable: ''
+      hm2lreinterfacestatsentry: ''
+      hm2lreinterfacestatstable: ''
+      hm2lremaxframesize: 0
+      hm2lremaxframesizelimit: 0
+      hm2lreproxynodetableaging: 0
+      hm2lreproxynodetableentries: 0
+      hm2lreproxynodetablesize: 0
+      hm2lrerxacrcerror: 0
+      hm2lrerxadiscard: 0
+      hm2lrerxaerror: 0
+      hm2lrerxawronglan: 0
+      hm2lrerxallframea: 0
+      hm2lrerxallframeb: 0
+      hm2lrerxallframeil: 0
+      hm2lrerxbcrcerror: 0
+      hm2lrerxbdiscard: 0
+      hm2lrerxberror: 0
+      hm2lrerxbwronglan: 0
+      hm2lrerxcpudiscard: 0
+      hm2lrerxicrcerror: 0
+      hm2lrerxierror: 0
+      hm2lrerxildiscard: 0
+      hm2lrerxlongframea: 0
+      hm2lrerxlongframeb: 0
+      hm2lrerxshortframea: 0
+      hm2lrerxshortframeb: 0
+      hm2lrespeed: 0
+      hm2lrestatisticsclear: 0
+      hm2lresupervisiontxenable: false
+      hm2lresupervisionvdanstxenable: false
+      hm2lretxahsr: 0
+      hm2lretxarct: 0
+      hm2lretxawithoutrct: 0
+      hm2lretxbhsr: 0
+      hm2lretxbrct: 0
+      hm2lretxbwithoutrct: 0
+      hm2lretxilrct: 0
+      hm2lretxilwithoutrct: 0
+attributes:
+  hm2lreduplicatedetectionaging:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreDuplicateDetectionAging
+          index_field: lreInterfaceConfigIndex
+    validation:
+      min: 10
+      max: 20000
+  hm2lreinterfacea:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreInterfaceA
+          index_field: lreInterfaceConfigIndex
+  hm2lreinterfaceb:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreInterfaceB
+          index_field: lreInterfaceConfigIndex
+  hm2lreinterfaceconfigentry:
+    syntax: HM2LREInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigTable
+          field: hm2LreInterfaceConfigEntry
+  hm2lreinterfaceconfigtable:
+    syntax: HM2LREInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreConfigurationInterfaces
+          field: hm2LreInterfaceConfigTable
+  hm2lreinterfacestatsentry:
+    syntax: HM2LREInterfaceStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsTable
+          field: hm2LreInterfaceStatsEntry
+  hm2lreinterfacestatstable:
+    syntax: HM2LREInterfaceStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreStatisticsInterfaces
+          field: hm2LreInterfaceStatsTable
+  hm2lremaxframesize:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreMaxFrameSize
+          index_field: lreInterfaceConfigIndex
+  hm2lremaxframesizelimit:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreMaxFrameSizeLimit
+          index_field: lreInterfaceConfigIndex
+  hm2lreproxynodetableaging:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreProxyNodeTableAging
+          index_field: lreInterfaceConfigIndex
+    validation:
+      min: 10
+      max: 300
+  hm2lreproxynodetableentries:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreProxyNodeTableEntries
+          index_field: lreInterfaceStatsIndex
+  hm2lreproxynodetablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreProxyNodeTableSize
+          index_field: lreInterfaceConfigIndex
+  hm2lrerxacrcerror:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxACrcError
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxadiscard:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxADiscard
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxaerror:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxAError
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxawronglan:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxAWrongLan
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxallframea:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxAllFrameA
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxallframeb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxAllFrameB
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxallframeil:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxAllFrameIl
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxbcrcerror:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxBCrcError
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxbdiscard:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxBDiscard
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxberror:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxBError
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxbwronglan:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxBWrongLan
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxcpudiscard:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxCpuDiscard
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxicrcerror:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxICrcError
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxierror:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxIError
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxildiscard:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxIlDiscard
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxlongframea:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxLongFrameA
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxlongframeb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxLongFrameB
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxshortframea:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxShortFrameA
+          index_field: lreInterfaceStatsIndex
+  hm2lrerxshortframeb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreRxShortFrameB
+          index_field: lreInterfaceStatsIndex
+  hm2lrespeed:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreSpeed
+          index_field: lreInterfaceConfigIndex
+  hm2lrestatisticsclear:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreStatisticsClear
+          index_field: lreInterfaceConfigIndex
+  hm2lresupervisiontxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreSupervisionTxEnable
+          index_field: lreInterfaceConfigIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2lresupervisionvdanstxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.1.2.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceConfigEntry
+          field: hm2LreSupervisionVDANsTxEnable
+          index_field: lreInterfaceConfigIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2lretxahsr:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxAHsr
+          index_field: lreInterfaceStatsIndex
+  hm2lretxarct:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxARct
+          index_field: lreInterfaceStatsIndex
+  hm2lretxawithoutrct:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxAWithoutRct
+          index_field: lreInterfaceStatsIndex
+  hm2lretxbhsr:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxBHsr
+          index_field: lreInterfaceStatsIndex
+  hm2lretxbrct:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxBRct
+          index_field: lreInterfaceStatsIndex
+  hm2lretxbwithoutrct:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxBWithoutRct
+          index_field: lreInterfaceStatsIndex
+  hm2lretxilrct:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.27
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxIlRct
+          index_field: lreInterfaceStatsIndex
+  hm2lretxilwithoutrct:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.2.1.2.1.1.1.1.28
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-LRE-MIB
+          table: hm2LreInterfaceStatsEntry
+          field: hm2LreTxIlWithoutRct
+          index_field: lreInterfaceStatsIndex

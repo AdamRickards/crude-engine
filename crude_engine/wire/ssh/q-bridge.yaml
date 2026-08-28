@@ -1,0 +1,59 @@
+version: "2.6.0"
+feature: q-bridge-ssh
+description: "SSH CLI sources for VLAN — hand-authored"
+
+attributes:
+  dot1qvlanindex:
+    sources:
+      ssh:
+        read: {command: "show vlan brief", parser: table, column: 0}
+
+  dot1qvlanstaticname:
+    sources:
+      ssh:
+        read: {command: "show vlan brief", parser: table, column: 1}
+
+  dot1qpvid:
+    sources:
+      ssh:
+        read: {command: "show vlan port", parser: table, column: 1}
+
+  dot1qportingressfiltering:
+    sources:
+      ssh:
+        read: {command: "show vlan port", parser: table, column: 3}
+
+  dot1qportacceptableframetypes:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show vlan port", parser: table, column: 2}
+
+  # MAC address table
+  dot1qtpfdbaddress:
+    sources:
+      ssh:
+        read: {command: "show mac-addr-table", parser: table, column: 1}
+
+  dot1qtpfdbport:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mac-addr-table", parser: table, column: 2}
+
+  dot1qfdbid:
+    sources:
+      ssh:
+        read: {command: "show mac-addr-table", parser: table, column: 0}
+
+  dot1qtpfdbstatus:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show mac-addr-table", parser: table, column: 4}
+
+  dot1qvlanstaticrowstatus:
+    sources:
+      ssh:
+        create: {command: "vlan add {index}", level: vlan_database}
+        delete: {command: "vlan delete {index}", level: vlan_database}

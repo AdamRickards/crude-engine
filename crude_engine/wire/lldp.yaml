@@ -1,0 +1,1525 @@
+version: 2.7.0
+feature: lldp
+value_maps:
+  lldp_capabilities:
+    0: other
+    1: repeater
+    2: bridge
+    3: wlan-access-point
+    4: router
+    5: telephone
+    6: docsis-cable-device
+    7: station
+schemas:
+  read_lldp:
+    type: dict
+    defaults:
+      hm2lldpadminstatus: false
+      hm2lldpifentry: ''
+      hm2lldpiffdbmode: 0
+      hm2lldpifmaxneighbors: 0
+      hm2lldpiftable: ''
+      lldpconfigmanaddrentry: ''
+      lldpconfigmanaddrportstxenable: []
+      lldpconfigmanaddrtable: ''
+      lldplocchassisid: ''
+      lldplocchassisidsubtype: ''
+      lldplocmanaddr: ''
+      lldplocmanaddrentry: ''
+      lldplocmanaddrifid: 0
+      lldplocmanaddrifsubtype: ''
+      lldplocmanaddrlen: 0
+      lldplocmanaddroid: ''
+      lldplocmanaddrsubtype: 0
+      lldplocmanaddrtable: ''
+      lldplocportdesc: ''
+      lldplocportentry: ''
+      lldplocportid: ''
+      lldplocportidsubtype: ''
+      lldplocportnum: 0
+      lldplocporttable: ''
+      lldplocsyscapenabled: ''
+      lldplocsyscapsupported: ''
+      lldplocsysdesc: ''
+      lldplocsysname: ''
+      lldpmessagetxholdmultiplier: 0
+      lldpmessagetxinterval: 0
+      lldpnotificationinterval: 0
+      lldpportconfigadminstatus: 0
+      lldpportconfigentry: ''
+      lldpportconfignotificationenable: false
+      lldpportconfigportnum: 0
+      lldpportconfigtlvstxenable: []
+      lldpportconfigtable: ''
+      lldpreinitdelay: 0
+      lldpremchassisid: ''
+      lldpremchassisidsubtype: ''
+      lldprementry: ''
+      lldpremindex: 0
+      lldpremlocalportnum: 0
+      lldpremmanaddr: ''
+      lldpremmanaddrentry: ''
+      lldpremmanaddrifid: 0
+      lldpremmanaddrifsubtype: ''
+      lldpremmanaddroid: ''
+      lldpremmanaddrsubtype: 0
+      lldpremmanaddrtable: ''
+      lldpremorgdefinfo: ''
+      lldpremorgdefinfoentry: ''
+      lldpremorgdefinfoindex: 0
+      lldpremorgdefinfooui: ''
+      lldpremorgdefinfosubtype: 0
+      lldpremorgdefinfotable: ''
+      lldpremportdesc: ''
+      lldpremportid: ''
+      lldpremportidsubtype: ''
+      lldpremsyscapenabled: ''
+      lldpremsyscapsupported: ''
+      lldpremsysdesc: ''
+      lldpremsysname: ''
+      lldpremtable: ''
+      lldpremtimemark: 0
+      lldpremunknowntlventry: ''
+      lldpremunknowntlvinfo: ''
+      lldpremunknowntlvtable: ''
+      lldpremunknowntlvtype: 0
+      lldpstatsremtablesageouts: 0
+      lldpstatsremtablesdeletes: 0
+      lldpstatsremtablesdrops: 0
+      lldpstatsremtablesinserts: 0
+      lldpstatsremtableslastchangetime: 0
+      lldpstatsrxportageoutstotal: 0
+      lldpstatsrxportentry: ''
+      lldpstatsrxportframesdiscardedtotal: 0
+      lldpstatsrxportframeserrors: 0
+      lldpstatsrxportframestotal: 0
+      lldpstatsrxportnum: 0
+      lldpstatsrxporttlvsdiscardedtotal: 0
+      lldpstatsrxporttlvsunrecognizedtotal: 0
+      lldpstatsrxporttable: ''
+      lldpstatstxportentry: ''
+      lldpstatstxportframestotal: 0
+      lldpstatstxportnum: 0
+      lldpstatstxporttable: ''
+      lldptxdelay: 0
+attributes:
+  hm2lldpadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.34.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LLDP-MIB
+          table: hm2LLDPConfigGroup
+          field: hm2LLDPAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2lldpifentry:
+    syntax: Hm2LLDPIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.34.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LLDP-MIB
+          table: hm2LLDPIfTable
+          field: hm2LLDPIfEntry
+  hm2lldpiffdbmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.34.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LLDP-MIB
+          table: hm2LLDPIfEntry
+          field: hm2LLDPIfFDBMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - lldpOnly
+      - macOnly
+      - both
+      - autoDetect
+  hm2lldpifmaxneighbors:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.34.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LLDP-MIB
+          table: hm2LLDPIfEntry
+          field: hm2LLDPIfMaxNeighbors
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 50
+  hm2lldpiftable:
+    syntax: Hm2LLDPIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.34.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LLDP-MIB
+          table: hm2LLDPConfigGroup
+          field: hm2LLDPIfTable
+  lldpconfigmanaddrentry:
+    syntax: LldpConfigManAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.7.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfigManAddrTable
+          field: lldpConfigManAddrEntry
+  lldpconfigmanaddrportstxenable:
+    syntax: LldpPortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfigManAddrEntry
+          field: lldpConfigManAddrPortsTxEnable
+  lldpconfigmanaddrtable:
+    syntax: LldpConfigManAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.7
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfiguration
+          field: lldpConfigManAddrTable
+  lldplocchassisid:
+    syntax: LldpChassisId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocChassisId
+  lldplocchassisidsubtype:
+    syntax: LldpChassisIdSubtype
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocChassisIdSubtype
+  lldplocmanaddr:
+    syntax: LldpManAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocManAddrEntry
+          field: lldpLocManAddr
+          index_field: lldpLocManAddr
+          index_fields: &id001
+          - lldpLocManAddrSubtype
+          - lldpLocManAddr
+  lldplocmanaddrentry:
+    syntax: LldpLocManAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocManAddrTable
+          field: lldpLocManAddrEntry
+  lldplocmanaddrifid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocManAddrEntry
+          field: lldpLocManAddrIfId
+          index_field: lldpLocManAddr
+          index_fields: *id001
+  lldplocmanaddrifsubtype:
+    syntax: LldpManAddrIfSubtype
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocManAddrEntry
+          field: lldpLocManAddrIfSubtype
+          index_field: lldpLocManAddr
+          index_fields: *id001
+  lldplocmanaddrlen:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocManAddrEntry
+          field: lldpLocManAddrLen
+          index_field: lldpLocManAddr
+          index_fields: *id001
+  lldplocmanaddroid:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocManAddrEntry
+          field: lldpLocManAddrOID
+          index_field: lldpLocManAddr
+          index_fields: *id001
+  lldplocmanaddrsubtype:
+    syntax: AddressFamilyNumbers
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocManAddrEntry
+          field: lldpLocManAddrSubtype
+          index_field: lldpLocManAddr
+          index_fields: *id001
+  lldplocmanaddrtable:
+    syntax: LldpLocManAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.8
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocManAddrTable
+  lldplocportdesc:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocPortEntry
+          field: lldpLocPortDesc
+          index_field: lldpLocPortNum
+    validation:
+      min: 0
+      max: 255
+  lldplocportentry:
+    syntax: LldpLocPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocPortTable
+          field: lldpLocPortEntry
+  lldplocportid:
+    syntax: LldpPortId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocPortEntry
+          field: lldpLocPortId
+          index_field: lldpLocPortNum
+  lldplocportidsubtype:
+    syntax: LldpPortIdSubtype
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocPortEntry
+          field: lldpLocPortIdSubtype
+          index_field: lldpLocPortNum
+  lldplocportnum:
+    syntax: LldpPortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocPortEntry
+          field: lldpLocPortNum
+          index_field: lldpLocPortNum
+  lldplocporttable:
+    syntax: LldpLocPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.7
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocPortTable
+  lldplocsyscapenabled:
+    syntax: LldpSystemCapabilitiesMap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.6
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocSysCapEnabled
+  lldplocsyscapsupported:
+    syntax: LldpSystemCapabilitiesMap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.5
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocSysCapSupported
+  lldplocsysdesc:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocSysDesc
+    validation:
+      min: 0
+      max: 255
+  lldplocsysname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.3.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpLocalSystemData
+          field: lldpLocSysName
+    validation:
+      min: 0
+      max: 255
+  lldpmessagetxholdmultiplier:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfiguration
+          field: lldpMessageTxHoldMultiplier
+    validation:
+      min: 2
+      max: 10
+  lldpmessagetxinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfiguration
+          field: lldpMessageTxInterval
+    validation:
+      min: 5
+      max: 32768
+  lldpnotificationinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.5
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfiguration
+          field: lldpNotificationInterval
+    validation:
+      min: 5
+      max: 3600
+  lldpportconfigadminstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpPortConfigEntry
+          field: lldpPortConfigAdminStatus
+          index_field: lldpPortConfigPortNum
+    validation:
+      allowed:
+      - txOnly
+      - rxOnly
+      - txAndRx
+      - disabled
+  lldpportconfigentry:
+    syntax: LldpPortConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpPortConfigTable
+          field: lldpPortConfigEntry
+  lldpportconfignotificationenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpPortConfigEntry
+          field: lldpPortConfigNotificationEnable
+          index_field: lldpPortConfigPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpportconfigportnum:
+    syntax: LldpPortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpPortConfigEntry
+          field: lldpPortConfigPortNum
+          index_field: lldpPortConfigPortNum
+  lldpportconfigtlvstxenable:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpPortConfigEntry
+          field: lldpPortConfigTLVsTxEnable
+          index_field: lldpPortConfigPortNum
+    validation:
+      allowed:
+      - portDesc
+      - sysName
+      - sysDesc
+      - sysCap
+    bit_map:
+      0: portDesc
+      1: sysName
+      2: sysDesc
+      3: sysCap
+  lldpportconfigtable:
+    syntax: LldpPortConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.6
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfiguration
+          field: lldpPortConfigTable
+  lldpreinitdelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfiguration
+          field: lldpReinitDelay
+    validation:
+      min: 1
+      max: 10
+  lldpremchassisid:
+    syntax: LldpChassisId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemChassisId
+          index_field: lldpRemIndex
+          index_fields: &id002
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpremchassisidsubtype:
+    syntax: LldpChassisIdSubtype
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemChassisIdSubtype
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldprementry:
+    syntax: LldpRemEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemTable
+          field: lldpRemEntry
+  lldpremindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemIndex
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 2147483647
+  lldpremlocalportnum:
+    syntax: LldpPortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemLocalPortNum
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldpremmanaddr:
+    syntax: LldpManAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemManAddrEntry
+          field: lldpRemManAddr
+          index_field: lldpRemManAddr
+          index_fields: &id003
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+          - lldpRemManAddrSubtype
+          - lldpRemManAddr
+  lldpremmanaddrentry:
+    syntax: LldpRemManAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemManAddrTable
+          field: lldpRemManAddrEntry
+  lldpremmanaddrifid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemManAddrEntry
+          field: lldpRemManAddrIfId
+          index_field: lldpRemManAddr
+          index_fields: *id003
+  lldpremmanaddrifsubtype:
+    syntax: LldpManAddrIfSubtype
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemManAddrEntry
+          field: lldpRemManAddrIfSubtype
+          index_field: lldpRemManAddr
+          index_fields: *id003
+  lldpremmanaddroid:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemManAddrEntry
+          field: lldpRemManAddrOID
+          index_field: lldpRemManAddr
+          index_fields: *id003
+  lldpremmanaddrsubtype:
+    syntax: AddressFamilyNumbers
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemManAddrEntry
+          field: lldpRemManAddrSubtype
+          index_field: lldpRemManAddr
+          index_fields: *id003
+  lldpremmanaddrtable:
+    syntax: LldpRemManAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemoteSystemsData
+          field: lldpRemManAddrTable
+  lldpremorgdefinfo:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemOrgDefInfoEntry
+          field: lldpRemOrgDefInfo
+          index_field: lldpRemOrgDefInfoIndex
+          index_fields: &id004
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+          - lldpRemOrgDefInfoOUI
+          - lldpRemOrgDefInfoSubtype
+          - lldpRemOrgDefInfoIndex
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 507
+  lldpremorgdefinfoentry:
+    syntax: LldpRemOrgDefInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemOrgDefInfoTable
+          field: lldpRemOrgDefInfoEntry
+  lldpremorgdefinfoindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemOrgDefInfoEntry
+          field: lldpRemOrgDefInfoIndex
+          index_field: lldpRemOrgDefInfoIndex
+          index_fields: *id004
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 2147483647
+  lldpremorgdefinfooui:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemOrgDefInfoEntry
+          field: lldpRemOrgDefInfoOUI
+          index_field: lldpRemOrgDefInfoIndex
+          index_fields: *id004
+          key_tag: to_hex_decode
+  lldpremorgdefinfosubtype:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemOrgDefInfoEntry
+          field: lldpRemOrgDefInfoSubtype
+          index_field: lldpRemOrgDefInfoIndex
+          index_fields: *id004
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 255
+  lldpremorgdefinfotable:
+    syntax: LldpRemOrgDefInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemoteSystemsData
+          field: lldpRemOrgDefInfoTable
+  lldpremportdesc:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemPortDesc
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  lldpremportid:
+    syntax: LldpPortId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemPortId
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldpremportidsubtype:
+    syntax: LldpPortIdSubtype
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemPortIdSubtype
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldpremsyscapenabled:
+    syntax: LldpSystemCapabilitiesMap
+    type: list
+    access: r
+    bit_map: lldp_capabilities
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemSysCapEnabled
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldpremsyscapsupported:
+    syntax: LldpSystemCapabilitiesMap
+    type: list
+    access: r
+    bit_map: lldp_capabilities
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemSysCapSupported
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldpremsysdesc:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemSysDesc
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  lldpremsysname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemSysName
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  lldpremtable:
+    syntax: LldpRemEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemoteSystemsData
+          field: lldpRemTable
+  lldpremtimemark:
+    syntax: TimeFilter
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemEntry
+          field: lldpRemTimeMark
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldpremunknowntlventry:
+    syntax: LldpRemUnknownTLVEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemUnknownTLVTable
+          field: lldpRemUnknownTLVEntry
+  lldpremunknowntlvinfo:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemUnknownTLVEntry
+          field: lldpRemUnknownTLVInfo
+          index_field: lldpRemUnknownTLVType
+          index_fields: &id005
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+          - lldpRemUnknownTLVType
+    validation:
+      min: 0
+      max: 511
+  lldpremunknowntlvtable:
+    syntax: LldpRemUnknownTLVEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemoteSystemsData
+          field: lldpRemUnknownTLVTable
+  lldpremunknowntlvtype:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpRemUnknownTLVEntry
+          field: lldpRemUnknownTLVType
+          index_field: lldpRemUnknownTLVType
+          index_fields: *id005
+    validation:
+      min: 9
+      max: 126
+  lldpstatsremtablesageouts:
+    syntax: ZeroBasedCounter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.5
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatistics
+          field: lldpStatsRemTablesAgeouts
+  lldpstatsremtablesdeletes:
+    syntax: ZeroBasedCounter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatistics
+          field: lldpStatsRemTablesDeletes
+  lldpstatsremtablesdrops:
+    syntax: ZeroBasedCounter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatistics
+          field: lldpStatsRemTablesDrops
+  lldpstatsremtablesinserts:
+    syntax: ZeroBasedCounter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatistics
+          field: lldpStatsRemTablesInserts
+  lldpstatsremtableslastchangetime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatistics
+          field: lldpStatsRemTablesLastChangeTime
+  lldpstatsrxportageoutstotal:
+    syntax: ZeroBasedCounter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortEntry
+          field: lldpStatsRxPortAgeoutsTotal
+          index_field: lldpStatsRxPortNum
+  lldpstatsrxportentry:
+    syntax: LldpRxStatsPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortTable
+          field: lldpStatsRxPortEntry
+  lldpstatsrxportframesdiscardedtotal:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortEntry
+          field: lldpStatsRxPortFramesDiscardedTotal
+          index_field: lldpStatsRxPortNum
+  lldpstatsrxportframeserrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortEntry
+          field: lldpStatsRxPortFramesErrors
+          index_field: lldpStatsRxPortNum
+  lldpstatsrxportframestotal:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortEntry
+          field: lldpStatsRxPortFramesTotal
+          index_field: lldpStatsRxPortNum
+  lldpstatsrxportnum:
+    syntax: LldpPortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortEntry
+          field: lldpStatsRxPortNum
+          index_field: lldpStatsRxPortNum
+  lldpstatsrxporttlvsdiscardedtotal:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortEntry
+          field: lldpStatsRxPortTLVsDiscardedTotal
+          index_field: lldpStatsRxPortNum
+  lldpstatsrxporttlvsunrecognizedtotal:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsRxPortEntry
+          field: lldpStatsRxPortTLVsUnrecognizedTotal
+          index_field: lldpStatsRxPortNum
+  lldpstatsrxporttable:
+    syntax: LldpRxStatsPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.7
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatistics
+          field: lldpStatsRxPortTable
+  lldpstatstxportentry:
+    syntax: LldpStatsTxPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.6.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsTxPortTable
+          field: lldpStatsTxPortEntry
+  lldpstatstxportframestotal:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsTxPortEntry
+          field: lldpStatsTxPortFramesTotal
+          index_field: lldpStatsTxPortNum
+  lldpstatstxportnum:
+    syntax: LldpPortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatsTxPortEntry
+          field: lldpStatsTxPortNum
+          index_field: lldpStatsTxPortNum
+  lldpstatstxporttable:
+    syntax: LldpStatsTxPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.2.6
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpStatistics
+          field: lldpStatsTxPortTable
+  lldptxdelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-MIB
+          table: lldpConfiguration
+          field: lldpTxDelay
+    validation:
+      min: 1
+      max: 8192

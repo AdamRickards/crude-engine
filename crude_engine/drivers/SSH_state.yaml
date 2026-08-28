@@ -1,0 +1,61 @@
+# SSH CLI state machine — vendor-specific level definitions.
+# Loaded by drivers/ssh.py (SSHDriver transport).
+# Separate from SSH.yaml (protocol wire_type_defaults).
+#
+# Defines: CLI levels, prompt patterns, navigation commands, auth gates.
+# The SSHDriver code is vendor-agnostic — vendor specificity lives here.
+---
+version: "1.0"
+vendor: hirschmann_hios
+initial_level: user
+
+levels:
+  user:
+    prompt_pattern: '[^#]>\s*$'
+    exit: {command: "logout", to: null}
+    gates:
+      - {detect: "Are you sure (Y/N)", response: "y", read_timeout: 2}
+      - {detect: "do you want to save", response: "n", read_timeout: 1}
+
+  priv:
+    prompt_pattern: '[^(]#\s*$'
+    parent: user
+    enter: {command: "enable", auth: true, auth_pattern: "Password:"}
+    exit: {command: "disable", to: user}
+    on_enter: ["cli numlines 0"]
+
+  config:
+    prompt_pattern: '\(config\)#\s*$'
+    parent: priv
+    enter: {command: "configure"}
+    exit: {command: "exit", to: priv}
+
+  config_interface:
+    prompt_pattern: '\(interface\s+\S+\)#\s*$'
+    parent: config
+    enter: {command: "interface {interface}", params: [interface]}
+    exit: {command: "exit", to: config}
+
+  vlan_config:
+    prompt_pattern: '\(vlan\d+\)#\s*$'
+    parent: config
+    enter: {command: "vlan {vlan}", params: [vlan]}
+    exit: {command: "exit", to: config}
+
+  vlan_database:
+    prompt_pattern: '\(Vlan\)#\s*$'
+    parent: priv
+    enter: {command: "vlan database"}
+    exit: {command: "exit", to: priv}
+
+level_inference:
+  default: config
+  patterns:
+    user: "^show\\b|^ping\\b|^help\\b|^history\\b"
+    config_interface: "^interface\\s+"
+    vlan_database: "^vlan\\s+(add|delete|database)"
+
+gates:
+  factory_default:
+    detect: "Enter new password"
+    action: abort

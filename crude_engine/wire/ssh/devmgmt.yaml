@@ -1,0 +1,78 @@
+version: "2.9.0"
+feature: devmgmt-ssh
+description: "SSH CLI sources for HM2-DEVMGMT-MIB"
+
+attributes:
+  hm2devmgmtswversion:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Firmware software release (RAM)"}
+
+  hm2devmgmtserialnumber:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Serial number"}
+
+  hm2devmgmtproductdescr:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Device hardware description"}
+
+  hm2devmgmttemperature:
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Current temperature", regex: '(\d+)'}
+
+  hm2devmgmthwversion:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Device hardware revision"}
+
+  hm2devmgmthumidity:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Current humidity"}
+
+  # Software: show system info + show firmware allow-unsigned
+  hm2devmgmtswversbootcode:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Bootcode software release (FLASH)"}
+
+  hm2devmgmtswsecurebootadminstatus:
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Secure Boot operational status"}
+
+  hm2devmgmtswsecurebootdevmodestatus:
+    sources:
+      ssh:
+        read: {command: "show system info", field: "Admin state of service shell"}
+
+  hm2devmgmtswversallowunsigned:
+    sources:
+      ssh:
+        read: {command: "show firmware allow-unsigned", field: "Allow unsigned firmware"}
+        write: {command: "firmware allow-unsigned {value}", level: config}
+
+  # Interface writes (HM2-DEVMGMT-MIB)
+  hm2ifacecablecrossing:
+    sources:
+      ssh:
+        write: {command: "cable-crossing {value}", level: config_interface}
+
+  hm2ifacepowerstate:
+    sources:
+      ssh:
+        write: {command: "power-state", level: config_interface}
+
+  hm2ifaceautopowerdown:
+    sources:
+      ssh:
+        write: {command: "auto-power-down {value}", level: config_interface}

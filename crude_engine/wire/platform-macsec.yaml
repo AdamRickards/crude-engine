@@ -1,0 +1,1155 @@
+version: 2.6.0
+feature: platform-macsec
+schemas:
+  read_platform-macsec:
+    type: dict
+    defaults:
+      hm2agentmacsemkadistributedsakglobal: 0
+      hm2agentmacsecdefaultsecureannouncements: 0
+      hm2agentmacsecinterfaceconfigentry: ''
+      hm2agentmacsecinterfaceconfigtable: ''
+      hm2agentmacsecinterfaceindex: 0
+      hm2agentmacsecinterfacekeychain: ''
+      hm2agentmacsecinterfacemkapolicy: ''
+      hm2agentmacsecinterfacenetworklink: 0
+      hm2agentmacsecinterfacereplayprotection: 0
+      hm2agentmacsecinterfacereplayprotectionwindowsize: 0
+      hm2agentmacseckeychainname: ''
+      hm2agentmacseckeyconfigentry: ''
+      hm2agentmacseckeyconfigtable: ''
+      hm2agentmacseckeycryptographicalgorithm: 0
+      hm2agentmacseckeyname: ''
+      hm2agentmacseckeyrowstatus: 0
+      hm2agentmacseckeystring: ''
+      hm2agentmacseckeytimerange: ''
+      hm2agentmacsecmkapolicyciphersuite: 0
+      hm2agentmacsecmkapolicyconfidentialityoffset: 0
+      hm2agentmacsecmkapolicyconfigentry: ''
+      hm2agentmacsecmkapolicyconfigtable: ''
+      hm2agentmacsecmkapolicykeyserverpriority: 0
+      hm2agentmacsecmkapolicyname: ''
+      hm2agentmacsecmkapolicyrowstatus: 0
+      hm2agentmacsecmkapolicysecureannouncements: 0
+      hm2agentmacsecmkackn: ''
+      hm2agentmacsecmkadistributedsaks: 0
+      hm2agentmacsecmkaformatingerrorpkts: 0
+      hm2agentmacsecmkaickderivationfailures: 0
+      hm2agentmacsecmkaicvmismatchpkts: 0
+      hm2agentmacsecmkainterfaceindex: 0
+      hm2agentmacsecmkainvaliddestinationpkts: 0
+      hm2agentmacsecmkainvalidpeercapability: 0
+      hm2agentmacsecmkakekderivationfailures: 0
+      hm2agentmacsecmkakeyserver: 0
+      hm2agentmacsecmkalocaltxsci: ''
+      hm2agentmacsecmkamiduplicatepkts: 0
+      hm2agentmacsecmkamkpdutransmittedglobal: 0
+      hm2agentmacsecmkamnduplicatepkts: 0
+      hm2agentmacsecmkapdurxpeermnvalidationfailures: 0
+      hm2agentmacsecmkapdurxvalidationfailures: 0
+      hm2agentmacsecmkapdutransmitted: 0
+      hm2agentmacsecmkapdutxfailures: 0
+      hm2agentmacsecmkapduvalidatedandrx: 0
+      hm2agentmacsecmkapduvalidatedandrxglobal: 0
+      hm2agentmacsecmkapeerrxsci: ''
+      hm2agentmacsecmkapeers: 0
+      hm2agentmacsecmkapolicy: ''
+      hm2agentmacsecmkarxsainstallationfailures: 0
+      hm2agentmacsecmkarxsccreationfailures: 0
+      hm2agentmacsecmkasakdecryptionfailures: 0
+      hm2agentmacsecmkasakencryptionfailures: 0
+      hm2agentmacsecmkasakgenerationfailures: 0
+      hm2agentmacsecmkasakresponsesreceivedglobal: 0
+      hm2agentmacsecmkasaksgenerated: 0
+      hm2agentmacsecmkasaksgeneratedglobal: 0
+      hm2agentmacsecmkasaksreceived: 0
+      hm2agentmacsecmkasaksrekeyed: 0
+      hm2agentmacsecmkasaksrekeyedglobal: 0
+      hm2agentmacsecmkasaksresponsesreceived: 0
+      hm2agentmacsecmkasaksrxglobal: 0
+      hm2agentmacsecmkasessionentry: ''
+      hm2agentmacsecmkasessiontable: ''
+      hm2agentmacsecmkasessionsdeleted: 0
+      hm2agentmacsecmkasessionssecured: 0
+      hm2agentmacsecmkastatisticsentry: ''
+      hm2agentmacsecmkastatisticstable: ''
+      hm2agentmacsecmkatxsainstallationfailures: 0
+      hm2agentmacsecmkatxsccreationfailures: 0
+      hm2agentmacsecmkaversionmismatchpkts: 0
+attributes:
+  hm2agentmacsemkadistributedsakglobal:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACseMkaDistributedSakGlobal
+  hm2agentmacsecdefaultsecureannouncements:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecGlobalConfigGroup
+          field: hm2AgentMACsecDefaultSecureAnnouncements
+  hm2agentmacsecinterfaceconfigentry:
+    syntax: Hm2AgentMACsecInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigTable
+          field: hm2AgentMACsecInterfaceConfigEntry
+  hm2agentmacsecinterfaceconfigtable:
+    syntax: Hm2AgentMACsecInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigGroup
+          field: hm2AgentMACsecInterfaceConfigTable
+  hm2agentmacsecinterfaceindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigEntry
+          field: hm2AgentMACsecInterfaceIndex
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecinterfacekeychain:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigEntry
+          field: hm2AgentMACsecInterfaceKeyChain
+          index_field: hm2AgentMACsecInterfaceIndex
+    validation:
+      min: 0
+      max: 16
+  hm2agentmacsecinterfacemkapolicy:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigEntry
+          field: hm2AgentMACsecInterfaceMKAPolicy
+          index_field: hm2AgentMACsecInterfaceIndex
+    validation:
+      min: 1
+      max: 16
+  hm2agentmacsecinterfacenetworklink:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigEntry
+          field: hm2AgentMACsecInterfaceNetworkLink
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecinterfacereplayprotection:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigEntry
+          field: hm2AgentMACsecInterfaceReplayProtection
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecinterfacereplayprotectionwindowsize:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecInterfaceConfigEntry
+          field: hm2AgentMACsecInterfaceReplayProtectionWindowSize
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacseckeychainname:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigEntry
+          field: hm2AgentMACsecKeyChainName
+          index_field: hm2AgentMACsecKeyName
+          index_fields: &id001
+          - hm2AgentMACsecKeyChainName
+          - hm2AgentMACsecKeyName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 16
+  hm2agentmacseckeyconfigentry:
+    syntax: Hm2AgentMACsecKeyConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigTable
+          field: hm2AgentMACsecKeyConfigEntry
+  hm2agentmacseckeyconfigtable:
+    syntax: Hm2AgentMACsecKeyConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigGroup
+          field: hm2AgentMACsecKeyConfigTable
+  hm2agentmacseckeycryptographicalgorithm:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigEntry
+          field: hm2AgentMACsecKeyCryptographicAlgorithm
+          index_field: hm2AgentMACsecKeyName
+          index_fields: *id001
+          key_tag: to_hex_decode
+  hm2agentmacseckeyname:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigEntry
+          field: hm2AgentMACsecKeyName
+          index_field: hm2AgentMACsecKeyName
+          index_fields: *id001
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 64
+  hm2agentmacseckeyrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigEntry
+          field: hm2AgentMACsecKeyRowStatus
+          index_field: hm2AgentMACsecKeyName
+          index_fields: *id001
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2agentmacseckeystring:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigEntry
+          field: hm2AgentMACsecKeyString
+          index_field: hm2AgentMACsecKeyName
+          index_fields: *id001
+          key_tag: to_hex_decode
+  hm2agentmacseckeytimerange:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecKeyConfigEntry
+          field: hm2AgentMACsecKeyTimeRange
+          index_field: hm2AgentMACsecKeyName
+          index_fields: *id001
+          key_tag: to_hex_decode
+  hm2agentmacsecmkapolicyciphersuite:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigEntry
+          field: hm2AgentMACsecMKAPolicyCipherSuite
+          index_field: hm2AgentMACsecMKAPolicyName
+          key_tag: to_hex_decode
+  hm2agentmacsecmkapolicyconfidentialityoffset:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigEntry
+          field: hm2AgentMACsecMKAPolicyConfidentialityOffset
+          index_field: hm2AgentMACsecMKAPolicyName
+          key_tag: to_hex_decode
+  hm2agentmacsecmkapolicyconfigentry:
+    syntax: Hm2AgentMACsecMKAPolicyConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigTable
+          field: hm2AgentMACsecMKAPolicyConfigEntry
+  hm2agentmacsecmkapolicyconfigtable:
+    syntax: Hm2AgentMACsecMKAPolicyConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigGroup
+          field: hm2AgentMACsecMKAPolicyConfigTable
+  hm2agentmacsecmkapolicykeyserverpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigEntry
+          field: hm2AgentMACsecMKAPolicyKeyServerPriority
+          index_field: hm2AgentMACsecMKAPolicyName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 255
+  hm2agentmacsecmkapolicyname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigEntry
+          field: hm2AgentMACsecMKAPolicyName
+          index_field: hm2AgentMACsecMKAPolicyName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 16
+  hm2agentmacsecmkapolicyrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigEntry
+          field: hm2AgentMACsecMKAPolicyRowStatus
+          index_field: hm2AgentMACsecMKAPolicyName
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2agentmacsecmkapolicysecureannouncements:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMKAPolicyConfigEntry
+          field: hm2AgentMACsecMKAPolicySecureAnnouncements
+          index_field: hm2AgentMACsecMKAPolicyName
+          key_tag: to_hex_decode
+  hm2agentmacsecmkackn:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionEntry
+          field: hm2AgentMACsecMkaCkn
+          index_field: hm2AgentMACsecMkaInterfaceIndex
+  hm2agentmacsecmkadistributedsaks:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaDistributedSAKs
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkaformatingerrorpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaFormatingErrorPkts
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkaickderivationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.13
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaIckDerivationFailures
+  hm2agentmacsecmkaicvmismatchpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaIcvMismatchPkts
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkainterfaceindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionEntry
+          field: hm2AgentMACsecMkaInterfaceIndex
+          index_field: hm2AgentMACsecMkaInterfaceIndex
+  hm2agentmacsecmkainvaliddestinationpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaInvalidDestinationPkts
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkainvalidpeercapability:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.15
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaInvalidPeerCapability
+  hm2agentmacsecmkakekderivationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.14
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaKekDerivationFailures
+  hm2agentmacsecmkakeyserver:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionEntry
+          field: hm2AgentMACsecMkaKeyServer
+          index_field: hm2AgentMACsecMkaInterfaceIndex
+  hm2agentmacsecmkalocaltxsci:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionEntry
+          field: hm2AgentMACsecMkaLocalTxSci
+          index_field: hm2AgentMACsecMkaInterfaceIndex
+  hm2agentmacsecmkamiduplicatepkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaMiDuplicatePkts
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkamkpdutransmittedglobal:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaMkpduTransmittedGlobal
+  hm2agentmacsecmkamnduplicatepkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaMnDuplicatePkts
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkapdurxpeermnvalidationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.22
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaPduRxPeerMnValidationFailures
+  hm2agentmacsecmkapdurxvalidationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.21
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaPduRxValidationFailures
+  hm2agentmacsecmkapdutransmitted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaPduTransmitted
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkapdutxfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.20
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaPduTxFailures
+  hm2agentmacsecmkapduvalidatedandrx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaPduValidatedandRx
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkapduvalidatedandrxglobal:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaPduValidatedandRxGlobal
+  hm2agentmacsecmkapeerrxsci:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionEntry
+          field: hm2AgentMACsecMkaPeerRxSci
+          index_field: hm2AgentMACsecMkaInterfaceIndex
+  hm2agentmacsecmkapeers:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionEntry
+          field: hm2AgentMACsecMkaPeers
+          index_field: hm2AgentMACsecMkaInterfaceIndex
+  hm2agentmacsecmkapolicy:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionEntry
+          field: hm2AgentMACsecMkaPolicy
+          index_field: hm2AgentMACsecMkaInterfaceIndex
+    validation:
+      min: 1
+      max: 16
+  hm2agentmacsecmkarxsainstallationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.18
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaRxSaInstallationFailures
+  hm2agentmacsecmkarxsccreationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.16
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaRxScCreationFailures
+  hm2agentmacsecmkasakdecryptionfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.12
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSakDecryptionFailures
+  hm2agentmacsecmkasakencryptionfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSakEncryptionFailures
+  hm2agentmacsecmkasakgenerationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSakGenerationFailures
+  hm2agentmacsecmkasakresponsesreceivedglobal:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSakResponsesReceivedGlobal
+  hm2agentmacsecmkasaksgenerated:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaSaksGenerated
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkasaksgeneratedglobal:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSaksGeneratedGlobal
+  hm2agentmacsecmkasaksreceived:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaSaksReceived
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkasaksrekeyed:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaSaksRekeyed
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkasaksrekeyedglobal:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSaksRekeyedGlobal
+  hm2agentmacsecmkasaksresponsesreceived:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaSaksResponsesReceived
+          index_field: hm2AgentMACsecInterfaceIndex
+  hm2agentmacsecmkasaksrxglobal:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSaksRxGlobal
+  hm2agentmacsecmkasessionentry:
+    syntax: Hm2AgentMACsecMkaSessionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionTable
+          field: hm2AgentMACsecMkaSessionEntry
+  hm2agentmacsecmkasessiontable:
+    syntax: Hm2AgentMACsecMkaSessionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaSessionGroup
+          field: hm2AgentMACsecMkaSessionTable
+  hm2agentmacsecmkasessionsdeleted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSessionsDeleted
+  hm2agentmacsecmkasessionssecured:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaSessionsSecured
+  hm2agentmacsecmkastatisticsentry:
+    syntax: Hm2AgentMACsecMkaStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsTable
+          field: hm2AgentMACsecMkaStatisticsEntry
+  hm2agentmacsecmkastatisticstable:
+    syntax: Hm2AgentMACsecMkaStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaPortStatisticsGroup
+          field: hm2AgentMACsecMkaStatisticsTable
+  hm2agentmacsecmkatxsainstallationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.19
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaTxSaInstallationFailures
+  hm2agentmacsecmkatxsccreationfailures:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.6.17
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaGlobalStatisticsGroup
+          field: hm2AgentMACsecMkaTxScCreationFailures
+  hm2agentmacsecmkaversionmismatchpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.78.5.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MACSEC-MIB
+          table: hm2AgentMACsecMkaStatisticsEntry
+          field: hm2AgentMACsecMkaVersionMismatchPkts
+          index_field: hm2AgentMACsecInterfaceIndex

@@ -1,0 +1,47 @@
+version: "2.6.0"
+feature: platform-radius-ssh
+description: "SSH CLI sources for RADIUS — hand-authored"
+
+attributes:
+  hm2agentradiusaccountingmode:
+    sources:
+      ssh:
+        read: {command: "show radius global", field: "RADIUS accounting mode"}
+
+  hm2agentradiustimeout:
+    sources:
+      ssh:
+        read: {command: "show radius global", field: "Timeout duration"}
+
+  hm2agentradiusmaxtransmit:
+    sources:
+      ssh:
+        read: {command: "show radius global", field: "Number of retransmits"}
+
+  hm2agentradiusserverindex:
+    sources:
+      ssh:
+        read: {command: "show radius auth servers", parser: paired_rows, column: 0}
+
+  hm2agentradiusserverinetaddress:
+    sources:
+      ssh:
+        read: {command: "show radius auth servers", parser: paired_rows, column: 1}
+        create: {command: "radius server auth add {index} ip {address}", level: config}
+        delete: {command: "radius server auth delete {index}", level: config, confirm: "y"}
+
+  hm2agentradiusserverport:
+    sources:
+      ssh:
+        read: {command: "show radius auth servers", parser: paired_rows, column: 2}
+
+  hm2agentradiusserversecret:
+    sources:
+      ssh:
+        read: {command: "show radius auth servers", parser: paired_rows, column: 3}
+
+  hm2agentradiusserverrowstatus:
+    sources:
+      ssh:
+        create: {command: "radius server auth add {index} ip {address}", level: config}
+        delete: {command: "radius server auth delete {index}", level: config, confirm: "y"}

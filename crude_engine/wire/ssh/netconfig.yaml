@@ -1,0 +1,55 @@
+version: "2.9.0"
+feature: netconfig-ssh
+description: "SSH CLI sources for network configuration"
+
+attributes:
+  hm2netlocalipaddr:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show network parms", field: "Local IP address"}
+        write: {command: "network parms {value} {netmask} {gateway}", level: priv}
+
+  hm2netgatewayipaddr:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show network parms", field: "Gateway address"}
+
+  hm2netvlanid:
+    sources:
+      ssh:
+        read: {command: "show network parms", field: "Management VLAN ID"}
+        write: {command: "network management vlan {value}", level: priv}
+
+  hm2netconfigprotocol:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show network parms", field: "Protocol"}
+
+  # HiDiscovery: show network hidiscovery
+  hm2nethidiscoveryoperation:
+    sources:
+      ssh:
+        read: {command: "show network hidiscovery", field: "Operating status"}
+        write: {command: "network hidiscovery operation {value}", level: priv}
+
+  hm2nethidiscoverymode:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show network hidiscovery", field: "Operating mode"}
+        write: {command: "network hidiscovery mode {value}", level: priv}
+
+  hm2nethidiscoveryblinking:
+    sources:
+      ssh:
+        read: {command: "show network hidiscovery", field: "Blinking status"}
+        write: {command: "network hidiscovery blinking", level: priv}
+
+  hm2nethidiscoveryrelay:
+    sources:
+      ssh:
+        read: {command: "show network hidiscovery", field: "Relay status"}
+        write: {command: "network hidiscovery relay", level: priv}

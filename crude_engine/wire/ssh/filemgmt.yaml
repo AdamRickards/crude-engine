@@ -1,0 +1,107 @@
+version: "2.6.0"
+feature: filemgmt-ssh
+description: "SSH CLI sources for profile management — hand-authored"
+# CLI output: 3 lines per record
+# Line 0: Index  Name  Date  Time  SW-Rel
+# Line 1: [x]  Fingerprint  FP-verified
+# Line 2: Encrypted  Key-verified
+
+attributes:
+  hm2fmprofileindex:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 0}
+
+  hm2fmprofilename:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 1}
+
+  hm2fmprofiledatetime:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, columns: [2, 3]}
+
+  hm2fmprofileswmajorrelnum:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 4, regex: '0*(\d+)\.(\d+)\.(\d+)', regex_format: "{0}.{1}.{2:0>2}", tag: to_str}
+
+  hm2fmprofileswminorrelnum:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 4, regex: '0*\d+\.(\d+)\.\d+', tag: to_str}
+
+  hm2fmprofileswbugfixrelnum:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 4, regex: '0*\d+\.\d+\.(\d+)', tag: to_str}
+
+  hm2fmprofileactive:
+    type: boolean
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 1, column: 0}
+        write: {command: "config profile select nvm {_row_index}", level: config, cmd_verify: false}
+
+  hm2fmprofilefingerprint:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, regex_extract: '([A-Fa-f0-9]{40})'}
+
+  hm2fmprofilefingerprintverified:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 1, column: 2}
+
+  hm2fmprofileencryptionactive:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 2, column: 0}
+
+  hm2fmprofileencryptionverified:
+    sources:
+      ssh:
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 2, column: 1}
+
+  # Config status: show config status
+  hm2fmnvmstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show config status", field: "running-config to NVM"}
+
+  hm2fmenvmstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show config status", field: "NVM to ACA"}
+
+  hm2fmbootparamstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show config status", field: "Boot parameters"}
+
+  # Watchdog: show config watchdog
+  hm2configwatchdogadminstatus:
+    sources:
+      ssh:
+        read: {command: "show config watchdog", field: "Admin State"}
+        write: {command: "config watchdog admin-state", level: config}
+
+  hm2configwatchdogtimeinterval:
+    sources:
+      ssh:
+        read: {command: "show config watchdog", field: "Timeout Interval"}
+        write: {command: "config watchdog timeout {value}", level: config}
+
+  hm2configwatchdogtimervalue:
+    sources:
+      ssh:
+        read: {command: "show config watchdog", field: "Current Timer Value"}
+
+  hm2fmprofileaction:
+    sources:
+      ssh:
+        write: {command: "config profile delete nvm num {_row_index}", level: config, confirm: "y"}

@@ -1,0 +1,1475 @@
+version: 2.6.0
+feature: ieee8021-pae
+schemas:
+  read_ieee8021-pae:
+    type: dict
+    defaults:
+      dot1xauthadmincontrolleddirections: ''
+      dot1xauthauthcontrolledportcontrol: ''
+      dot1xauthauthcontrolledportstatus: ''
+      dot1xauthautheaplogoffwhileauthenticated: 0
+      dot1xauthautheaplogoffwhileauthenticating: 0
+      dot1xauthautheapstartswhileauthenticated: 0
+      dot1xauthautheapstartswhileauthenticating: 0
+      dot1xauthauthfailwhileauthenticating: 0
+      dot1xauthauthreauthswhileauthenticated: 0
+      dot1xauthauthreauthswhileauthenticating: 0
+      dot1xauthauthsuccesswhileauthenticating: 0
+      dot1xauthauthtimeoutswhileauthenticating: 0
+      dot1xauthbackendaccesschallenges: 0
+      dot1xauthbackendauthfails: 0
+      dot1xauthbackendauthstate: 0
+      dot1xauthbackendauthsuccesses: 0
+      dot1xauthbackendnonnakresponsesfromsupplicant: 0
+      dot1xauthbackendotherrequeststosupplicant: 0
+      dot1xauthbackendresponses: 0
+      dot1xauthconfigentry: ''
+      dot1xauthconfigtable: ''
+      dot1xauthdiagentry: ''
+      dot1xauthdiagtable: ''
+      dot1xautheaplengtherrorframesrx: 0
+      dot1xautheaplogoffswhileconnecting: 0
+      dot1xautheapolframesrx: 0
+      dot1xautheapolframestx: 0
+      dot1xautheapollogoffframesrx: 0
+      dot1xautheapolreqframestx: 0
+      dot1xautheapolreqidframestx: 0
+      dot1xautheapolrespframesrx: 0
+      dot1xautheapolrespidframesrx: 0
+      dot1xautheapolstartframesrx: 0
+      dot1xauthentersauthenticating: 0
+      dot1xauthentersconnecting: 0
+      dot1xauthinvalideapolframesrx: 0
+      dot1xauthkeytxenabled: false
+      dot1xauthlasteapolframesource: ''
+      dot1xauthlasteapolframeversion: 0
+      dot1xauthmaxreq: 0
+      dot1xauthopercontrolleddirections: ''
+      dot1xauthpaestate: 0
+      dot1xauthquietperiod: 0
+      dot1xauthreauthenabled: false
+      dot1xauthreauthperiod: 0
+      dot1xauthservertimeout: 0
+      dot1xauthsessionauthenticmethod: 0
+      dot1xauthsessionframesrx: 0
+      dot1xauthsessionframestx: 0
+      dot1xauthsessionid: ''
+      dot1xauthsessionoctetsrx: 0
+      dot1xauthsessionoctetstx: 0
+      dot1xauthsessionstatsentry: ''
+      dot1xauthsessionstatstable: ''
+      dot1xauthsessionterminatecause: 0
+      dot1xauthsessiontime: 0
+      dot1xauthsessionusername: ''
+      dot1xauthstatsentry: ''
+      dot1xauthstatstable: ''
+      dot1xauthsupptimeout: 0
+      dot1xauthtxperiod: 0
+      dot1xpaeportcapabilities: []
+      dot1xpaeportentry: ''
+      dot1xpaeportinitialize: false
+      dot1xpaeportnumber: 0
+      dot1xpaeportprotocolversion: 0
+      dot1xpaeportreauthenticate: false
+      dot1xpaeporttable: ''
+      dot1xpaesystemauthcontrol: 0
+      dot1xsuppauthperiod: 0
+      dot1xsuppconfigentry: ''
+      dot1xsuppconfigtable: ''
+      dot1xsuppeaplengtherrorframesrx: 0
+      dot1xsuppeapolframesrx: 0
+      dot1xsuppeapolframestx: 0
+      dot1xsuppeapollogoffframestx: 0
+      dot1xsuppeapolreqframesrx: 0
+      dot1xsuppeapolreqidframesrx: 0
+      dot1xsuppeapolrespframestx: 0
+      dot1xsuppeapolrespidframestx: 0
+      dot1xsuppeapolstartframestx: 0
+      dot1xsuppheldperiod: 0
+      dot1xsuppinvalideapolframesrx: 0
+      dot1xsupplasteapolframesource: ''
+      dot1xsupplasteapolframeversion: 0
+      dot1xsuppmaxstart: 0
+      dot1xsupppaestate: 0
+      dot1xsuppstartperiod: 0
+      dot1xsuppstatsentry: ''
+      dot1xsuppstatstable: ''
+attributes:
+  dot1xauthadmincontrolleddirections:
+    syntax: PaeControlledDirections
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthAdminControlledDirections
+          index_field: dot1xPaePortNumber
+  dot1xauthauthcontrolledportcontrol:
+    syntax: PaeControlledPortControl
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthAuthControlledPortControl
+          index_field: dot1xPaePortNumber
+  dot1xauthauthcontrolledportstatus:
+    syntax: PaeControlledPortStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthAuthControlledPortStatus
+          index_field: dot1xPaePortNumber
+  dot1xauthautheaplogoffwhileauthenticated:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthEapLogoffWhileAuthenticated
+          index_field: dot1xPaePortNumber
+  dot1xauthautheaplogoffwhileauthenticating:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthEapLogoffWhileAuthenticating
+          index_field: dot1xPaePortNumber
+  dot1xauthautheapstartswhileauthenticated:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthEapStartsWhileAuthenticated
+          index_field: dot1xPaePortNumber
+  dot1xauthautheapstartswhileauthenticating:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthEapStartsWhileAuthenticating
+          index_field: dot1xPaePortNumber
+  dot1xauthauthfailwhileauthenticating:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthFailWhileAuthenticating
+          index_field: dot1xPaePortNumber
+  dot1xauthauthreauthswhileauthenticated:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthReauthsWhileAuthenticated
+          index_field: dot1xPaePortNumber
+  dot1xauthauthreauthswhileauthenticating:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthReauthsWhileAuthenticating
+          index_field: dot1xPaePortNumber
+  dot1xauthauthsuccesswhileauthenticating:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthSuccessWhileAuthenticating
+          index_field: dot1xPaePortNumber
+  dot1xauthauthtimeoutswhileauthenticating:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthAuthTimeoutsWhileAuthenticating
+          index_field: dot1xPaePortNumber
+  dot1xauthbackendaccesschallenges:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthBackendAccessChallenges
+          index_field: dot1xPaePortNumber
+  dot1xauthbackendauthfails:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthBackendAuthFails
+          index_field: dot1xPaePortNumber
+  dot1xauthbackendauthstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthBackendAuthState
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - request
+      - response
+      - success
+      - fail
+      - timeout
+      - idle
+      - initialize
+  dot1xauthbackendauthsuccesses:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthBackendAuthSuccesses
+          index_field: dot1xPaePortNumber
+  dot1xauthbackendnonnakresponsesfromsupplicant:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthBackendNonNakResponsesFromSupplicant
+          index_field: dot1xPaePortNumber
+  dot1xauthbackendotherrequeststosupplicant:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthBackendOtherRequestsToSupplicant
+          index_field: dot1xPaePortNumber
+  dot1xauthbackendresponses:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthBackendResponses
+          index_field: dot1xPaePortNumber
+  dot1xauthconfigentry:
+    syntax: Dot1xAuthConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigTable
+          field: dot1xAuthConfigEntry
+  dot1xauthconfigtable:
+    syntax: Dot1xAuthConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeAuthenticator
+          field: dot1xAuthConfigTable
+  dot1xauthdiagentry:
+    syntax: Dot1xAuthDiagEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagTable
+          field: dot1xAuthDiagEntry
+  dot1xauthdiagtable:
+    syntax: Dot1xAuthDiagEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeAuthenticator
+          field: dot1xAuthDiagTable
+  dot1xautheaplengtherrorframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapLengthErrorFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xautheaplogoffswhileconnecting:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthEapLogoffsWhileConnecting
+          index_field: dot1xPaePortNumber
+  dot1xautheapolframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xautheapolframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xautheapollogoffframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolLogoffFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xautheapolreqframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolReqFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xautheapolreqidframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolReqIdFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xautheapolrespframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolRespFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xautheapolrespidframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolRespIdFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xautheapolstartframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthEapolStartFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xauthentersauthenticating:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthEntersAuthenticating
+          index_field: dot1xPaePortNumber
+  dot1xauthentersconnecting:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthDiagEntry
+          field: dot1xAuthEntersConnecting
+          index_field: dot1xPaePortNumber
+  dot1xauthinvalideapolframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthInvalidEapolFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xauthkeytxenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthKeyTxEnabled
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  dot1xauthlasteapolframesource:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthLastEapolFrameSource
+          index_field: dot1xPaePortNumber
+  dot1xauthlasteapolframeversion:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsEntry
+          field: dot1xAuthLastEapolFrameVersion
+          index_field: dot1xPaePortNumber
+  dot1xauthmaxreq:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthMaxReq
+          index_field: dot1xPaePortNumber
+  dot1xauthopercontrolleddirections:
+    syntax: PaeControlledDirections
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthOperControlledDirections
+          index_field: dot1xPaePortNumber
+  dot1xauthpaestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthPaeState
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - initialize
+      - disconnected
+      - connecting
+      - authenticating
+      - authenticated
+      - aborting
+      - held
+      - forceAuth
+      - forceUnauth
+  dot1xauthquietperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthQuietPeriod
+          index_field: dot1xPaePortNumber
+  dot1xauthreauthenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthReAuthEnabled
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  dot1xauthreauthperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthReAuthPeriod
+          index_field: dot1xPaePortNumber
+  dot1xauthservertimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthServerTimeout
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionauthenticmethod:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionAuthenticMethod
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionid:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionId
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionoctetsrx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionOctetsRx
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionoctetstx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionOctetsTx
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionstatsentry:
+    syntax: Dot1xAuthSessionStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsTable
+          field: dot1xAuthSessionStatsEntry
+  dot1xauthsessionstatstable:
+    syntax: Dot1xAuthSessionStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeAuthenticator
+          field: dot1xAuthSessionStatsTable
+  dot1xauthsessionterminatecause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionTerminateCause
+          index_field: dot1xPaePortNumber
+  dot1xauthsessiontime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionTime
+          index_field: dot1xPaePortNumber
+  dot1xauthsessionusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthSessionStatsEntry
+          field: dot1xAuthSessionUserName
+          index_field: dot1xPaePortNumber
+  dot1xauthstatsentry:
+    syntax: Dot1xAuthStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthStatsTable
+          field: dot1xAuthStatsEntry
+  dot1xauthstatstable:
+    syntax: Dot1xAuthStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeAuthenticator
+          field: dot1xAuthStatsTable
+  dot1xauthsupptimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthSuppTimeout
+          index_field: dot1xPaePortNumber
+  dot1xauthtxperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xAuthConfigEntry
+          field: dot1xAuthTxPeriod
+          index_field: dot1xPaePortNumber
+  dot1xpaeportcapabilities:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaePortEntry
+          field: dot1xPaePortCapabilities
+          index_field: dot1xPaePortNumber
+    bit_map:
+      0: dot1xPaePortAuthCapable
+      1: dot1xPaePortSuppCapable
+  dot1xpaeportentry:
+    syntax: Dot1xPaePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaePortTable
+          field: dot1xPaePortEntry
+  dot1xpaeportinitialize:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaePortEntry
+          field: dot1xPaePortInitialize
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  dot1xpaeportnumber:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaePortEntry
+          field: dot1xPaePortNumber
+          index_field: dot1xPaePortNumber
+  dot1xpaeportprotocolversion:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaePortEntry
+          field: dot1xPaePortProtocolVersion
+          index_field: dot1xPaePortNumber
+  dot1xpaeportreauthenticate:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaePortEntry
+          field: dot1xPaePortReauthenticate
+          index_field: dot1xPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  dot1xpaeporttable:
+    syntax: Dot1xPaePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeSystem
+          field: dot1xPaePortTable
+  dot1xpaesystemauthcontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeSystem
+          field: dot1xPaeSystemAuthControl
+    validation:
+      allowed:
+      - enabled
+      - disabled
+  dot1xsuppauthperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppConfigEntry
+          field: dot1xSuppAuthPeriod
+          index_field: dot1xPaePortNumber
+  dot1xsuppconfigentry:
+    syntax: Dot1xSuppConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppConfigTable
+          field: dot1xSuppConfigEntry
+  dot1xsuppconfigtable:
+    syntax: Dot1xSuppConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeSupplicant
+          field: dot1xSuppConfigTable
+  dot1xsuppeaplengtherrorframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapLengthErrorFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapolframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapolframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapollogoffframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolLogoffFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapolreqframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolReqFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapolreqidframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolReqIdFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapolrespframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolRespFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapolrespidframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolRespIdFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xsuppeapolstartframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppEapolStartFramesTx
+          index_field: dot1xPaePortNumber
+  dot1xsuppheldperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppConfigEntry
+          field: dot1xSuppHeldPeriod
+          index_field: dot1xPaePortNumber
+  dot1xsuppinvalideapolframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppInvalidEapolFramesRx
+          index_field: dot1xPaePortNumber
+  dot1xsupplasteapolframesource:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppLastEapolFrameSource
+          index_field: dot1xPaePortNumber
+  dot1xsupplasteapolframeversion:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsEntry
+          field: dot1xSuppLastEapolFrameVersion
+          index_field: dot1xPaePortNumber
+  dot1xsuppmaxstart:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppConfigEntry
+          field: dot1xSuppMaxStart
+          index_field: dot1xPaePortNumber
+  dot1xsupppaestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppConfigEntry
+          field: dot1xSuppPaeState
+          index_field: dot1xPaePortNumber
+  dot1xsuppstartperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppConfigEntry
+          field: dot1xSuppStartPeriod
+          index_field: dot1xPaePortNumber
+  dot1xsuppstatsentry:
+    syntax: Dot1xSuppStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xSuppStatsTable
+          field: dot1xSuppStatsEntry
+  dot1xsuppstatstable:
+    syntax: Dot1xSuppStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.1.1.3.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-PAE-MIB
+          table: dot1xPaeSupplicant
+          field: dot1xSuppStatsTable

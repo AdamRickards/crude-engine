@@ -1,0 +1,772 @@
+version: 2.6.0
+feature: lldp-ext-dot1
+schemas:
+  read_lldp-ext-dot1:
+    type: dict
+    defaults:
+      lldpxdot1configportvlanentry: ''
+      lldpxdot1configportvlantable: ''
+      lldpxdot1configportvlantxenable: false
+      lldpxdot1configprotovlanentry: ''
+      lldpxdot1configprotovlantable: ''
+      lldpxdot1configprotovlantxenable: false
+      lldpxdot1configprotocolentry: ''
+      lldpxdot1configprotocoltable: ''
+      lldpxdot1configprotocoltxenable: false
+      lldpxdot1configvlannameentry: ''
+      lldpxdot1configvlannametable: ''
+      lldpxdot1configvlannametxenable: false
+      lldpxdot1locentry: ''
+      lldpxdot1locportvlanid: 0
+      lldpxdot1locprotovlanenabled: false
+      lldpxdot1locprotovlanentry: ''
+      lldpxdot1locprotovlanid: 0
+      lldpxdot1locprotovlansupported: false
+      lldpxdot1locprotovlantable: ''
+      lldpxdot1locprotocolentry: ''
+      lldpxdot1locprotocolid: ''
+      lldpxdot1locprotocolindex: 0
+      lldpxdot1locprotocoltable: ''
+      lldpxdot1loctable: ''
+      lldpxdot1locvlanid: ''
+      lldpxdot1locvlanname: ''
+      lldpxdot1locvlannameentry: ''
+      lldpxdot1locvlannametable: ''
+      lldpxdot1rementry: ''
+      lldpxdot1remportvlanid: 0
+      lldpxdot1remprotovlanenabled: false
+      lldpxdot1remprotovlanentry: ''
+      lldpxdot1remprotovlanid: 0
+      lldpxdot1remprotovlansupported: false
+      lldpxdot1remprotovlantable: ''
+      lldpxdot1remprotocolentry: ''
+      lldpxdot1remprotocolid: ''
+      lldpxdot1remprotocolindex: 0
+      lldpxdot1remprotocoltable: ''
+      lldpxdot1remtable: ''
+      lldpxdot1remvlanid: 0
+      lldpxdot1remvlanname: ''
+      lldpxdot1remvlannameentry: ''
+      lldpxdot1remvlannametable: ''
+attributes:
+  lldpxdot1configportvlanentry:
+    syntax: LldpXdot1ConfigPortVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigPortVlanTable
+          field: lldpXdot1ConfigPortVlanEntry
+  lldpxdot1configportvlantable:
+    syntax: LldpXdot1ConfigPortVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1Config
+          field: lldpXdot1ConfigPortVlanTable
+  lldpxdot1configportvlantxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigPortVlanEntry
+          field: lldpXdot1ConfigPortVlanTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1configprotovlanentry:
+    syntax: LldpXdot1ConfigProtoVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigProtoVlanTable
+          field: lldpXdot1ConfigProtoVlanEntry
+  lldpxdot1configprotovlantable:
+    syntax: LldpXdot1ConfigProtoVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1Config
+          field: lldpXdot1ConfigProtoVlanTable
+  lldpxdot1configprotovlantxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigProtoVlanEntry
+          field: lldpXdot1ConfigProtoVlanTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1configprotocolentry:
+    syntax: LldpXdot1ConfigProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigProtocolTable
+          field: lldpXdot1ConfigProtocolEntry
+  lldpxdot1configprotocoltable:
+    syntax: LldpXdot1ConfigProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1Config
+          field: lldpXdot1ConfigProtocolTable
+  lldpxdot1configprotocoltxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigProtocolEntry
+          field: lldpXdot1ConfigProtocolTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1configvlannameentry:
+    syntax: LldpXdot1ConfigVlanNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigVlanNameTable
+          field: lldpXdot1ConfigVlanNameEntry
+  lldpxdot1configvlannametable:
+    syntax: LldpXdot1ConfigVlanNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1Config
+          field: lldpXdot1ConfigVlanNameTable
+  lldpxdot1configvlannametxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1ConfigVlanNameEntry
+          field: lldpXdot1ConfigVlanNameTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1locentry:
+    syntax: LldpXdot1LocEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocTable
+          field: lldpXdot1LocEntry
+  lldpxdot1locportvlanid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocEntry
+          field: lldpXdot1LocPortVlanId
+          index_field: lldpLocPortNum
+  lldpxdot1locprotovlanenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocProtoVlanEntry
+          field: lldpXdot1LocProtoVlanEnabled
+          index_field: lldpXdot1LocProtoVlanId
+          index_fields: &id001
+          - lldpLocPortNum
+          - lldpXdot1LocProtoVlanId
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1locprotovlanentry:
+    syntax: LldpXdot1LocProtoVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocProtoVlanTable
+          field: lldpXdot1LocProtoVlanEntry
+  lldpxdot1locprotovlanid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocProtoVlanEntry
+          field: lldpXdot1LocProtoVlanId
+          index_field: lldpXdot1LocProtoVlanId
+          index_fields: *id001
+  lldpxdot1locprotovlansupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocProtoVlanEntry
+          field: lldpXdot1LocProtoVlanSupported
+          index_field: lldpXdot1LocProtoVlanId
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1locprotovlantable:
+    syntax: LldpXdot1LocProtoVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocalData
+          field: lldpXdot1LocProtoVlanTable
+  lldpxdot1locprotocolentry:
+    syntax: LldpXdot1LocProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocProtocolTable
+          field: lldpXdot1LocProtocolEntry
+  lldpxdot1locprotocolid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocProtocolEntry
+          field: lldpXdot1LocProtocolId
+          index_field: lldpXdot1LocProtocolIndex
+          index_fields: &id002
+          - lldpLocPortNum
+          - lldpXdot1LocProtocolIndex
+    validation:
+      min: 1
+      max: 255
+  lldpxdot1locprotocolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocProtocolEntry
+          field: lldpXdot1LocProtocolIndex
+          index_field: lldpXdot1LocProtocolIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 2147483647
+  lldpxdot1locprotocoltable:
+    syntax: LldpXdot1LocProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocalData
+          field: lldpXdot1LocProtocolTable
+  lldpxdot1loctable:
+    syntax: LldpXdot1LocEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocalData
+          field: lldpXdot1LocTable
+  lldpxdot1locvlanid:
+    syntax: VlanId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocVlanNameEntry
+          field: lldpXdot1LocVlanId
+          index_field: lldpXdot1LocVlanId
+          index_fields: &id003
+          - lldpLocPortNum
+          - lldpXdot1LocVlanId
+  lldpxdot1locvlanname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocVlanNameEntry
+          field: lldpXdot1LocVlanName
+          index_field: lldpXdot1LocVlanId
+          index_fields: *id003
+    validation:
+      min: 1
+      max: 32
+  lldpxdot1locvlannameentry:
+    syntax: LldpXdot1LocVlanNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocVlanNameTable
+          field: lldpXdot1LocVlanNameEntry
+  lldpxdot1locvlannametable:
+    syntax: LldpXdot1LocVlanNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.2.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1LocalData
+          field: lldpXdot1LocVlanNameTable
+  lldpxdot1rementry:
+    syntax: LldpXdot1RemEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemTable
+          field: lldpXdot1RemEntry
+  lldpxdot1remportvlanid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemEntry
+          field: lldpXdot1RemPortVlanId
+          index_field: lldpRemIndex
+          index_fields:
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpxdot1remprotovlanenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemProtoVlanEntry
+          field: lldpXdot1RemProtoVlanEnabled
+          index_field: lldpXdot1RemProtoVlanId
+          index_fields: &id004
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+          - lldpXdot1RemProtoVlanId
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1remprotovlanentry:
+    syntax: LldpXdot1RemProtoVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemProtoVlanTable
+          field: lldpXdot1RemProtoVlanEntry
+  lldpxdot1remprotovlanid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemProtoVlanEntry
+          field: lldpXdot1RemProtoVlanId
+          index_field: lldpXdot1RemProtoVlanId
+          index_fields: *id004
+  lldpxdot1remprotovlansupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemProtoVlanEntry
+          field: lldpXdot1RemProtoVlanSupported
+          index_field: lldpXdot1RemProtoVlanId
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot1remprotovlantable:
+    syntax: LldpXdot1RemProtoVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemoteData
+          field: lldpXdot1RemProtoVlanTable
+  lldpxdot1remprotocolentry:
+    syntax: LldpXdot1RemProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemProtocolTable
+          field: lldpXdot1RemProtocolEntry
+  lldpxdot1remprotocolid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemProtocolEntry
+          field: lldpXdot1RemProtocolId
+          index_field: lldpXdot1RemProtocolIndex
+          index_fields: &id005
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+          - lldpXdot1RemProtocolIndex
+    validation:
+      min: 1
+      max: 255
+  lldpxdot1remprotocolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemProtocolEntry
+          field: lldpXdot1RemProtocolIndex
+          index_field: lldpXdot1RemProtocolIndex
+          index_fields: *id005
+    validation:
+      min: 1
+      max: 2147483647
+  lldpxdot1remprotocoltable:
+    syntax: LldpXdot1RemProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemoteData
+          field: lldpXdot1RemProtocolTable
+  lldpxdot1remtable:
+    syntax: LldpXdot1RemEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemoteData
+          field: lldpXdot1RemTable
+  lldpxdot1remvlanid:
+    syntax: VlanIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemVlanNameEntry
+          field: lldpXdot1RemVlanId
+          index_field: lldpXdot1RemVlanId
+          index_fields: &id006
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+          - lldpXdot1RemVlanId
+    validation:
+      min: 1
+      max: 4094
+  lldpxdot1remvlanname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemVlanNameEntry
+          field: lldpXdot1RemVlanName
+          index_field: lldpXdot1RemVlanId
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 32
+  lldpxdot1remvlannameentry:
+    syntax: LldpXdot1RemVlanNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemVlanNameTable
+          field: lldpXdot1RemVlanNameEntry
+  lldpxdot1remvlannametable:
+    syntax: LldpXdot1RemVlanNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT1-MIB
+          table: lldpXdot1RemoteData
+          field: lldpXdot1RemVlanNameTable

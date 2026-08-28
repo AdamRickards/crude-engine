@@ -1,0 +1,6045 @@
+version: 2.6.0
+feature: platform-routing
+schemas:
+  read_platform-routing:
+    type: dict
+    defaults:
+      hm2agentalternateroutes: 0
+      hm2agentbestroutes: 0
+      hm2agentbestrouteshigh: 0
+      hm2agentbgproutes: 0
+      hm2agentbootpdhcprelaycircuitidoptionmode: false
+      hm2agentbootpdhcprelaymaxhopcount: 0
+      hm2agentbootpdhcprelayminwaittime: 0
+      hm2agentconnectedroutes: 0
+      hm2agentdhcpclientmode: 0
+      hm2agentdhcpclientmsgsreceived: 0
+      hm2agentdhcpclientmsgsrelayed: 0
+      hm2agentdhcpclientserveripaddress: ''
+      hm2agentdhcpclientserveripaddresstype: ''
+      hm2agentdhcpservermsgsreceived: 0
+      hm2agentdhcpservermsgsrelayed: 0
+      hm2agentdynamicneighbouraction: 0
+      hm2agentdynamicneighbouraddress: ''
+      hm2agentdynamicneighbouraddresstype: ''
+      hm2agentdynamicneighbourentry: ''
+      hm2agentdynamicneighbourifindex: 0
+      hm2agentdynamicneighbourphysaddress: ''
+      hm2agentdynamicneighbourtable: ''
+      hm2agentecmpospfmaxpaths: 0
+      hm2agentebgproutes: 0
+      hm2agentecmpcountentry: ''
+      hm2agentecmpcounttable: ''
+      hm2agentecmpgroups: 0
+      hm2agentecmpgroupshigh: 0
+      hm2agentecmpnexthopcount: 0
+      hm2agentecmpretries: 0
+      hm2agentecmproutecount: 0
+      hm2agentecmproutes: 0
+      hm2agentfailedrouteadds: 0
+      hm2agentibgproutes: 0
+      hm2agentinternalvlanbase: ''
+      hm2agentinternalvlanpolicy: 0
+      hm2agentinvalidrouteadds: 0
+      hm2agentiphelperadminmode: false
+      hm2agentlocalbgproutes: 0
+      hm2agentnexthopgroups: 0
+      hm2agentnexthopgroupshigh: 0
+      hm2agentospfareanssadefaultinfooriginate: false
+      hm2agentospfareanssadefaultmetric: 0
+      hm2agentospfareanssadefaultmetrictype: 0
+      hm2agentospfareanssaentry: ''
+      hm2agentospfareanssaimportsummaries: false
+      hm2agentospfareanssaredistribute: false
+      hm2agentospfareanssatable: ''
+      hm2agentospfareaopaquelsdbadvertisement: ''
+      hm2agentospfareaopaquelsdbage: 0
+      hm2agentospfareaopaquelsdbareaid: ''
+      hm2agentospfareaopaquelsdbchecksum: 0
+      hm2agentospfareaopaquelsdbentry: ''
+      hm2agentospfareaopaquelsdblsid: ''
+      hm2agentospfareaopaquelsdbrouterid: ''
+      hm2agentospfareaopaquelsdbsequence: 0
+      hm2agentospfareaopaquelsdbtable: ''
+      hm2agentospfareaopaquelsdbtype: 0
+      hm2agentospfaslsdbadvertisement: ''
+      hm2agentospfaslsdbage: 0
+      hm2agentospfaslsdbchecksum: 0
+      hm2agentospfaslsdbentry: ''
+      hm2agentospfaslsdblsid: ''
+      hm2agentospfaslsdbrouterid: ''
+      hm2agentospfaslsdbsequence: 0
+      hm2agentospfaslsdbtable: ''
+      hm2agentospfaslsdbtype: 0
+      hm2agentospfautocostrefbw: 0
+      hm2agentospfcounterscleared: 0
+      hm2agentospfddrx: 0
+      hm2agentospfddtx: 0
+      hm2agentospfdefaultinfooriginate: false
+      hm2agentospfdefaultinfooriginatealways: false
+      hm2agentospfdefaultinfooriginatemetric: 0
+      hm2agentospfdefaultinfooriginatemetricconfigured: false
+      hm2agentospfdefaultinfooriginatemetrictype: 0
+      hm2agentospfdefaultmetric: 0
+      hm2agentospfdefaultmetricconfigured: false
+      hm2agentospfdefaultpassivemode: false
+      hm2agentospfext1routes: 0
+      hm2agentospfext2routes: 0
+      hm2agentospfhellosrx: 0
+      hm2agentospfhellostx: 0
+      hm2agentospfifadvertisesecondaries: false
+      hm2agentospfifauthkeyid: 0
+      hm2agentospfifentry: ''
+      hm2agentospfiffasthellomode: false
+      hm2agentospfifipmtuignoreflag: false
+      hm2agentospfifmetriccalculatedcost: 0
+      hm2agentospfifmetricentry: ''
+      hm2agentospfifmetrictable: ''
+      hm2agentospfifpassivemode: false
+      hm2agentospfiftable: ''
+      hm2agentospfinterroutes: 0
+      hm2agentospfintraroutes: 0
+      hm2agentospflocallsdbaddresslessif: 0
+      hm2agentospflocallsdbadvertisement: ''
+      hm2agentospflocallsdbage: 0
+      hm2agentospflocallsdbchecksum: 0
+      hm2agentospflocallsdbentry: ''
+      hm2agentospflocallsdbipaddress: ''
+      hm2agentospflocallsdblsid: ''
+      hm2agentospflocallsdbrouterid: ''
+      hm2agentospflocallsdbsequence: 0
+      hm2agentospflocallsdbtable: ''
+      hm2agentospflocallsdbtype: 0
+      hm2agentospflsackrx: 0
+      hm2agentospflsacktx: 0
+      hm2agentospflsreqrx: 0
+      hm2agentospflsreqtx: 0
+      hm2agentospflsupdatesrx: 0
+      hm2agentospflsupdatesrxmax: 0
+      hm2agentospflsupdatestx: 0
+      hm2agentospflsupdatestxmax: 0
+      hm2agentospflsaretxcount: 0
+      hm2agentospfnbrdeadtime: 0
+      hm2agentospfnbrentry: ''
+      hm2agentospfnbrtable: ''
+      hm2agentospfopaquelsasupport: false
+      hm2agentospfqueuedrops: 0
+      hm2agentospfqueueentry: ''
+      hm2agentospfqueuehigh: 0
+      hm2agentospfqueueindex: 0
+      hm2agentospfqueuelength: 0
+      hm2agentospfqueuelimit: 0
+      hm2agentospfqueuename: ''
+      hm2agentospfqueuetable: ''
+      hm2agentospfroutecost: 0
+      hm2agentospfrouteentry: ''
+      hm2agentospfroutemask: ''
+      hm2agentospfroutenet: ''
+      hm2agentospfrouteprefexternal: 0
+      hm2agentospfrouteprefinterarea: 0
+      hm2agentospfrouteprefintraarea: 0
+      hm2agentospfrouteprototype: 0
+      hm2agentospfrouteredistdistlist: 0
+      hm2agentospfrouteredistdistlistconfigured: false
+      hm2agentospfrouteredistentry: ''
+      hm2agentospfrouteredistmetric: 0
+      hm2agentospfrouteredistmetricconfigured: false
+      hm2agentospfrouteredistmetrictype: 0
+      hm2agentospfrouteredistmode: false
+      hm2agentospfrouteredistsource: 0
+      hm2agentospfrouteredistsubnets: false
+      hm2agentospfrouteredisttable: ''
+      hm2agentospfrouteredisttag: 0
+      hm2agentospfroutetable: ''
+      hm2agentospfroutes: 0
+      hm2agentospfspfdelaytime: 0
+      hm2agentospfspfholdtime: 0
+      hm2agentospfspfindex: 0
+      hm2agentospfspfstatsdeltat: 0
+      hm2agentospfspfstatsentry: ''
+      hm2agentospfspfstatsext: 0
+      hm2agentospfspfstatsintra: 0
+      hm2agentospfspfstatsreason: ''
+      hm2agentospfspfstatsribupdate: 0
+      hm2agentospfspfstatsspftotal: 0
+      hm2agentospfspfstatssumm: 0
+      hm2agentospfspfstatstable: ''
+      hm2agentospfstubrouteradvertisement: 0
+      hm2agentospfstubrouterduration: 0
+      hm2agentospfstubrouterreason: 0
+      hm2agentospfstubrouterstartuptimeremaining: 0
+      hm2agentospftype10lsasrx: 0
+      hm2agentospftype11lsasrx: 0
+      hm2agentospftype1lsasrx: 0
+      hm2agentospftype2lsasrx: 0
+      hm2agentospftype3lsasrx: 0
+      hm2agentospftype4lsasrx: 0
+      hm2agentospftype5lsasrx: 0
+      hm2agentospftype7lsasrx: 0
+      hm2agentospftype9lsasrx: 0
+      hm2agentospfvirtifauthkeyid: 0
+      hm2agentospfvirtifentry: ''
+      hm2agentospfvirtiftable: ''
+      hm2agentrejectroutes: 0
+      hm2agentreservedlocals: 0
+      hm2agentrip2ifconfauthkeyid: 0
+      hm2agentrip2ifconfentry: ''
+      hm2agentrip2ifconftable: ''
+      hm2agentriprouteredistdistlist: 0
+      hm2agentriprouteredistdistlistconfigured: false
+      hm2agentriprouteredistentry: ''
+      hm2agentriprouteredistmatchexternal1: 0
+      hm2agentriprouteredistmatchexternal2: 0
+      hm2agentriprouteredistmatchinternal: 0
+      hm2agentriprouteredistmatchnssaexternal1: 0
+      hm2agentriprouteredistmatchnssaexternal2: 0
+      hm2agentriprouteredistmetric: 0
+      hm2agentriprouteredistmetricconfigured: false
+      hm2agentriprouteredistmode: false
+      hm2agentriprouteredistsource: 0
+      hm2agentriprouteredisttable: ''
+      hm2agentriproutes: 0
+      hm2agentrouteadds: 0
+      hm2agentroutedeletes: 0
+      hm2agentroutemodifies: 0
+      hm2agentrouterospfrfc1583compatibilitymode: false
+      hm2agentrouterripadminstate: false
+      hm2agentrouterripautosummarymode: false
+      hm2agentrouterripdefaultinfooriginate: false
+      hm2agentrouterripdefaultmetric: 0
+      hm2agentrouterripdefaultmetricconfigured: false
+      hm2agentrouterriphostroutesacceptmode: false
+      hm2agentrouterriproutepref: 0
+      hm2agentrouterripsplithorizonmode: 0
+      hm2agentrouterripupdatetimerinterval: 0
+      hm2agentroutervrrpadminstate: false
+      hm2agentroutervrrpnumberoffastinst: 0
+      hm2agentroutervrrpoperentry: ''
+      hm2agentroutervrrpoperpriority: 0
+      hm2agentroutervrrpopertable: ''
+      hm2agentroutingheaphigh: 0
+      hm2agentroutingheapinuse: 0
+      hm2agentroutingheapsize: 0
+      hm2agentsnmpvrrpauthfailuretrapflag: false
+      hm2agentsnmpvrrpnewmastertrapflag: false
+      hm2agentstaticneighbouraddress: ''
+      hm2agentstaticneighbouraddresstype: ''
+      hm2agentstaticneighbourentry: ''
+      hm2agentstaticneighbourifindex: 0
+      hm2agentstaticneighbourphysaddress: ''
+      hm2agentstaticneighbourrowstatus: 0
+      hm2agentstaticneighbourtable: ''
+      hm2agentstaticroutes: 0
+      hm2agentswitcharpageouttime: 0
+      hm2agentswitcharpcacheclear: 0
+      hm2agentswitcharpcachesize: 0
+      hm2agentswitcharpdynamicrenew: false
+      hm2agentswitcharpmaxretries: 0
+      hm2agentswitcharpresponsetime: 0
+      hm2agentswitcharpsparselearn: false
+      hm2agentswitcharpstaticentrycountcurrent: 0
+      hm2agentswitcharpstaticentrycountmax: 0
+      hm2agentswitcharptotalentrycountcurrent: 0
+      hm2agentswitcharptotalentrycountpeak: 0
+      hm2agentswitchclearipdefaultgateway: 0
+      hm2agentswitchdhcpoperation: 0
+      hm2agentswitchipaddressconfigmethod: 0
+      hm2agentswitchinternalvlanentry: ''
+      hm2agentswitchinternalvlanid: ''
+      hm2agentswitchinternalvlanifindex: 0
+      hm2agentswitchinternalvlantable: ''
+      hm2agentswitchintfarpage: 0
+      hm2agentswitchintfarpentry: ''
+      hm2agentswitchintfarpifindex: 0
+      hm2agentswitchintfarpipaddress: ''
+      hm2agentswitchintfarpmacaddress: ''
+      hm2agentswitchintfarpstatus: 0
+      hm2agentswitchintfarptable: ''
+      hm2agentswitchintfarptype: 0
+      hm2agentswitchintfiphelperaddressentry: ''
+      hm2agentswitchintfiphelperaddresstable: ''
+      hm2agentswitchintfiphelperhitcount: 0
+      hm2agentswitchintfiphelperipaddress: ''
+      hm2agentswitchintfiphelperstatus: 0
+      hm2agentswitchintfiphelperudpport: 0
+      hm2agentswitchipbestroutecount: 0
+      hm2agentswitchipdefaultgateway: ''
+      hm2agentswitchipfirstactiveaddress: ''
+      hm2agentswitchipfirstactiveaddresstype: ''
+      hm2agentswitchiphelperaddress: ''
+      hm2agentswitchiphelperaddressentry: ''
+      hm2agentswitchiphelperaddresstable: ''
+      hm2agentswitchiphelperhitcount: 0
+      hm2agentswitchiphelperstatus: 0
+      hm2agentswitchiphelperudpport: 0
+      hm2agentswitchipicmpechoreplymode: false
+      hm2agentswitchipicmpratelimitburstsize: 0
+      hm2agentswitchipicmpratelimitinterval: 0
+      hm2agentswitchipicmpredirectsmode: false
+      hm2agentswitchipinterfacebandwidth: 0
+      hm2agentswitchipinterfaceclearip: false
+      hm2agentswitchipinterfacecurrentpenalty: 0
+      hm2agentswitchipinterfacedhcpclientstatus: false
+      hm2agentswitchipinterfaceentry: ''
+      hm2agentswitchipinterfaceicmpredirects: false
+      hm2agentswitchipinterfaceicmpunreachables: false
+      hm2agentswitchipinterfaceifindex: 0
+      hm2agentswitchipinterfaceipaddress: ''
+      hm2agentswitchipinterfacemtuvalue: 0
+      hm2agentswitchipinterfacenetmask: ''
+      hm2agentswitchipinterfacenetdirectedbcmode: false
+      hm2agentswitchipinterfacenumberofflaps: 0
+      hm2agentswitchipinterfaceproxyarpmode: false
+      hm2agentswitchipinterfacereusetime: 0
+      hm2agentswitchipinterfaceremainingleasetime: 0
+      hm2agentswitchipinterfaceroutingmode: false
+      hm2agentswitchipinterfacesuppressed: 0
+      hm2agentswitchipinterfacetable: ''
+      hm2agentswitchipinterfaceunnumberedifindex: 0
+      hm2agentswitchiproutecount: 0
+      hm2agentswitchiprouterdiscoveryadvertisemode: false
+      hm2agentswitchiprouterdiscoveryadvertisementaddress: ''
+      hm2agentswitchiprouterdiscoveryadvertisementlifetime: 0
+      hm2agentswitchiprouterdiscoveryentry: ''
+      hm2agentswitchiprouterdiscoveryifindex: 0
+      hm2agentswitchiprouterdiscoverymaxadvertisementinterval: 0
+      hm2agentswitchiprouterdiscoveryminadvertisementinterval: 0
+      hm2agentswitchiprouterdiscoverypreferencelevel: 0
+      hm2agentswitchiprouterdiscoverytable: ''
+      hm2agentswitchiproutingmode: false
+      hm2agentswitchipsourceroutingmode: false
+      hm2agentswitchipstaticdefaultpref: 0
+      hm2agentswitchipvlanentry: ''
+      hm2agentswitchipvlanid: ''
+      hm2agentswitchipvlanifindex: 0
+      hm2agentswitchipvlanroutingstatus: 0
+      hm2agentswitchipvlantable: ''
+      hm2agentswitchlocalproxyarpentry: ''
+      hm2agentswitchlocalproxyarpmode: false
+      hm2agentswitchlocalproxyarptable: ''
+      hm2agentswitchproxyarpmaxresponsedelay: 0
+      hm2agentswitchsecondaryaddressentry: ''
+      hm2agentswitchsecondaryaddresstable: ''
+      hm2agentswitchsecondaryipaddress: ''
+      hm2agentswitchsecondarynetmask: ''
+      hm2agentswitchsecondarystatus: 0
+      hm2agenttotalroutes: 0
+      hm2agenttruncecmproutes: 0
+      hm2agentudpclientmsgsdiscarded: 0
+      hm2agentudpclientmsgsreceived: 0
+      hm2agentudpclientmsgsrelayed: 0
+      hm2agentudpclientmsgsttlexpired: 0
+      hm2agentuniquenexthops: 0
+      hm2agentuniquenexthopshigh: 0
+      hm2agentunresolvedrouteadds: 0
+      hm2agentvrrpdomainentry: ''
+      hm2agentvrrpdomainid: 0
+      hm2agentvrrpdomainmembersendadv: false
+      hm2agentvrrpdomainoperpriority: 0
+      hm2agentvrrpdomainstatus: 0
+      hm2agentvrrpdomainsupervisorifindex: 0
+      hm2agentvrrpdomainsupervisoroperstate: 0
+      hm2agentvrrpdomainsupervisorvrid: 0
+      hm2agentvrrpdomaintable: ''
+      hm2agentvrrpextadvertaddress: ''
+      hm2agentvrrpextadverttimer: 0
+      hm2agentvrrpextcfgpriority: 0
+      hm2agentvrrpextdomainid: 0
+      hm2agentvrrpextdomainrole: 0
+      hm2agentvrrpextdomainstatus: 0
+      hm2agentvrrpextentry: ''
+      hm2agentvrrpextifindex: 0
+      hm2agentvrrpextmethod: 0
+      hm2agentvrrpextnotifyaddress: ''
+      hm2agentvrrpextnotifylinkdown: false
+      hm2agentvrrpextpreemptiondelay: 0
+      hm2agentvrrpextproxyarp: false
+      hm2agentvrrpexttable: ''
+      hm2agentvrrpextvrid: 0
+      hm2agentvrrpprimaryvirtualaddress: ''
+      hm2agentvrrptrackdecrement: 0
+      hm2agentvrrptrackid: ''
+      hm2agentvrrptrackifindex: 0
+      hm2agentvrrptrackoperstatus: 0
+      hm2agentvrrptrackrowstatus: 0
+      hm2agentvrrptrackvrid: 0
+      hm2agentvrrptrackingentry: ''
+      hm2agentvrrptrackingtable: ''
+attributes:
+  hm2agentalternateroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.17
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentAlternateRoutes
+  hm2agentbestroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.15
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentBestRoutes
+  hm2agentbestrouteshigh:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.16
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentBestRoutesHigh
+  hm2agentbgproutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentBgpRoutes
+  hm2agentbootpdhcprelaycircuitidoptionmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.6.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentBootpDhcpRelayGroup
+          field: hm2AgentBootpDhcpRelayCircuitIdOptionMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentbootpdhcprelaymaxhopcount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentBootpDhcpRelayGroup
+          field: hm2AgentBootpDhcpRelayMaxHopCount
+    validation:
+      min: 1
+      max: 16
+  hm2agentbootpdhcprelayminwaittime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.6.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentBootpDhcpRelayGroup
+          field: hm2AgentBootpDhcpRelayMinWaitTime
+    validation:
+      min: 0
+      max: 100
+  hm2agentconnectedroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentConnectedRoutes
+  hm2agentdhcpclientmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.275.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDhcpClientGroup
+          field: hm2AgentDhcpClientMode
+  hm2agentdhcpclientmsgsreceived:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentDhcpClientMsgsReceived
+  hm2agentdhcpclientmsgsrelayed:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentDhcpClientMsgsRelayed
+  hm2agentdhcpclientserveripaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.275.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDhcpClientGroup
+          field: hm2AgentDhcpClientServerIPAddress
+  hm2agentdhcpclientserveripaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.275.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDhcpClientGroup
+          field: hm2AgentDhcpClientServerIPAddressType
+  hm2agentdhcpservermsgsreceived:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentDhcpServerMsgsReceived
+  hm2agentdhcpservermsgsrelayed:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentDhcpServerMsgsRelayed
+  hm2agentdynamicneighbouraction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.11.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDynamicNeighbourEntry
+          field: hm2AgentDynamicNeighbourAction
+          index_field: hm2AgentDynamicNeighbourAddress
+          index_fields: &id001
+          - hm2AgentDynamicNeighbourAddressType
+          - hm2AgentDynamicNeighbourAddress
+  hm2agentdynamicneighbouraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.11.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDynamicNeighbourEntry
+          field: hm2AgentDynamicNeighbourAddress
+          index_field: hm2AgentDynamicNeighbourAddress
+          index_fields: *id001
+  hm2agentdynamicneighbouraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.11.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDynamicNeighbourEntry
+          field: hm2AgentDynamicNeighbourAddressType
+          index_field: hm2AgentDynamicNeighbourAddress
+          index_fields: *id001
+  hm2agentdynamicneighbourentry:
+    syntax: Hm2AgentDynamicNeighbourEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDynamicNeighbourTable
+          field: hm2AgentDynamicNeighbourEntry
+  hm2agentdynamicneighbourifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.11.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDynamicNeighbourEntry
+          field: hm2AgentDynamicNeighbourIfIndex
+          index_field: hm2AgentDynamicNeighbourAddress
+          index_fields: *id001
+  hm2agentdynamicneighbourphysaddress:
+    syntax: PhysAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.11.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentDynamicNeighbourEntry
+          field: hm2AgentDynamicNeighbourPhysAddress
+          index_field: hm2AgentDynamicNeighbourAddress
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 65535
+  hm2agentdynamicneighbourtable:
+    syntax: Hm2AgentDynamicNeighbourEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentNeighbourGroup
+          field: hm2AgentDynamicNeighbourTable
+  hm2agentecmpospfmaxpaths:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentECMPGroup
+          field: hm2AgentECMPOspfMaxPaths
+  hm2agentebgproutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentEbgpRoutes
+  hm2agentecmpcountentry:
+    syntax: Hm2AgentEcmpCountEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.18.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentEcmpCountTable
+          field: hm2AgentEcmpCountEntry
+  hm2agentecmpcounttable:
+    syntax: Hm2AgentEcmpCountEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.18
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2PlatformRouting
+          field: hm2AgentEcmpCountTable
+  hm2agentecmpgroups:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.29
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentEcmpGroups
+  hm2agentecmpgroupshigh:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.30
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentEcmpGroupsHigh
+  hm2agentecmpnexthopcount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.18.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentEcmpCountEntry
+          field: hm2AgentEcmpNextHopCount
+          index_field: hm2AgentEcmpNextHopCount
+    validation:
+      min: 0
+      max: 128
+  hm2agentecmpretries:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.33
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentEcmpRetries
+  hm2agentecmproutecount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.18.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentEcmpCountEntry
+          field: hm2AgentEcmpRouteCount
+          index_field: hm2AgentEcmpNextHopCount
+  hm2agentecmproutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.31
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentEcmpRoutes
+  hm2agentfailedrouteadds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.23
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentFailedRouteAdds
+  hm2agentibgproutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentIbgpRoutes
+  hm2agentinternalvlanbase:
+    syntax: VlanId
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.12.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentInternalVlanGroup
+          field: hm2AgentInternalVlanBase
+  hm2agentinternalvlanpolicy:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.12.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentInternalVlanGroup
+          field: hm2AgentInternalVlanPolicy
+  hm2agentinvalidrouteadds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.22
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentInvalidRouteAdds
+  hm2agentiphelperadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentIpHelperAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentlocalbgproutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.12
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentLocalBgpRoutes
+  hm2agentnexthopgroups:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.27
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentNextHopGroups
+  hm2agentnexthopgroupshigh:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.28
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentNextHopGroupsHigh
+  hm2agentospfareanssadefaultinfooriginate:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.248.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaNSSAEntry
+          field: hm2AgentOspfAreaNSSADefaultInfoOriginate
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfareanssadefaultmetric:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.248.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaNSSAEntry
+          field: hm2AgentOspfAreaNSSADefaultMetric
+    validation:
+      min: 1
+      max: 16777214
+  hm2agentospfareanssadefaultmetrictype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.248.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaNSSAEntry
+          field: hm2AgentOspfAreaNSSADefaultMetricType
+  hm2agentospfareanssaentry:
+    syntax: Hm2AgentOspfAreaNSSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.248.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaNSSATable
+          field: hm2AgentOspfAreaNSSAEntry
+  hm2agentospfareanssaimportsummaries:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.248.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaNSSAEntry
+          field: hm2AgentOspfAreaNSSAImportSummaries
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfareanssaredistribute:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.248.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaNSSAEntry
+          field: hm2AgentOspfAreaNSSARedistribute
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfareanssatable:
+    syntax: Hm2AgentOspfAreaNSSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfAreaNSSATable
+  hm2agentospfareaopaquelsdbadvertisement:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbAdvertisement
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: &id002
+          - hm2AgentOspfAreaOpaqueLsdbAreaId
+          - hm2AgentOspfAreaOpaqueLsdbType
+          - hm2AgentOspfAreaOpaqueLsdbLsid
+          - hm2AgentOspfAreaOpaqueLsdbRouterId
+    validation:
+      min: 1
+      max: 65535
+  hm2agentospfareaopaquelsdbage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbAge
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: *id002
+  hm2agentospfareaopaquelsdbareaid:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbAreaId
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: *id002
+  hm2agentospfareaopaquelsdbchecksum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbChecksum
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: *id002
+  hm2agentospfareaopaquelsdbentry:
+    syntax: Hm2AgentOspfAreaOpaqueLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbTable
+          field: hm2AgentOspfAreaOpaqueLsdbEntry
+  hm2agentospfareaopaquelsdblsid:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbLsid
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: *id002
+  hm2agentospfareaopaquelsdbrouterid:
+    syntax: RouterID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: *id002
+  hm2agentospfareaopaquelsdbsequence:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbSequence
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: *id002
+  hm2agentospfareaopaquelsdbtable:
+    syntax: Hm2AgentOspfAreaOpaqueLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfAreaOpaqueLsdbTable
+  hm2agentospfareaopaquelsdbtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.16.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAreaOpaqueLsdbEntry
+          field: hm2AgentOspfAreaOpaqueLsdbType
+          index_field: hm2AgentOspfAreaOpaqueLsdbRouterId
+          index_fields: *id002
+  hm2agentospfaslsdbadvertisement:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbEntry
+          field: hm2AgentOspfAsLsdbAdvertisement
+          index_field: hm2AgentOspfAsLsdbRouterId
+          index_fields: &id003
+          - hm2AgentOspfAsLsdbType
+          - hm2AgentOspfAsLsdbLsid
+          - hm2AgentOspfAsLsdbRouterId
+    validation:
+      min: 1
+      max: 65535
+  hm2agentospfaslsdbage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbEntry
+          field: hm2AgentOspfAsLsdbAge
+          index_field: hm2AgentOspfAsLsdbRouterId
+          index_fields: *id003
+  hm2agentospfaslsdbchecksum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbEntry
+          field: hm2AgentOspfAsLsdbChecksum
+          index_field: hm2AgentOspfAsLsdbRouterId
+          index_fields: *id003
+  hm2agentospfaslsdbentry:
+    syntax: Hm2AgentOspfAsLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbTable
+          field: hm2AgentOspfAsLsdbEntry
+  hm2agentospfaslsdblsid:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbEntry
+          field: hm2AgentOspfAsLsdbLsid
+          index_field: hm2AgentOspfAsLsdbRouterId
+          index_fields: *id003
+  hm2agentospfaslsdbrouterid:
+    syntax: RouterID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbEntry
+          field: hm2AgentOspfAsLsdbRouterId
+          index_field: hm2AgentOspfAsLsdbRouterId
+          index_fields: *id003
+  hm2agentospfaslsdbsequence:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbEntry
+          field: hm2AgentOspfAsLsdbSequence
+          index_field: hm2AgentOspfAsLsdbRouterId
+          index_fields: *id003
+  hm2agentospfaslsdbtable:
+    syntax: Hm2AgentOspfAsLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfAsLsdbTable
+  hm2agentospfaslsdbtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.18.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfAsLsdbEntry
+          field: hm2AgentOspfAsLsdbType
+          index_field: hm2AgentOspfAsLsdbRouterId
+          index_fields: *id003
+  hm2agentospfautocostrefbw:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.14
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfAutoCostRefBw
+    validation:
+      min: 1
+      max: 4294967
+  hm2agentospfcounterscleared:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfCountersCleared
+  hm2agentospfddrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfDdRx
+  hm2agentospfddtx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfDdTx
+  hm2agentospfdefaultinfooriginate:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultInfoOriginate
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfdefaultinfooriginatealways:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultInfoOriginateAlways
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfdefaultinfooriginatemetric:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultInfoOriginateMetric
+  hm2agentospfdefaultinfooriginatemetricconfigured:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultInfoOriginateMetricConfigured
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfdefaultinfooriginatemetrictype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultInfoOriginateMetricType
+  hm2agentospfdefaultmetric:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultMetric
+  hm2agentospfdefaultmetricconfigured:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultMetricConfigured
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfdefaultpassivemode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.19
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfDefaultPassiveMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfext1routes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentOspfExt1Routes
+  hm2agentospfext2routes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentOspfExt2Routes
+  hm2agentospfhellosrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfHellosRx
+  hm2agentospfhellostx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfHellosTx
+  hm2agentospfifadvertisesecondaries:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.9.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfEntry
+          field: hm2AgentOspfIfAdvertiseSecondaries
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfifauthkeyid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfEntry
+          field: hm2AgentOspfIfAuthKeyId
+    validation:
+      min: 0
+      max: 255
+  hm2agentospfifentry:
+    syntax: Hm2AgentOspfIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.9.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfTable
+          field: hm2AgentOspfIfEntry
+  hm2agentospfiffasthellomode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.9.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfEntry
+          field: hm2AgentOspfIfFastHelloMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfifipmtuignoreflag:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.9.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfEntry
+          field: hm2AgentOspfIfIpMtuIgnoreFlag
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfifmetriccalculatedcost:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.249.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfMetricEntry
+          field: hm2AgentOspfIfMetricCalculatedCost
+    validation:
+      min: 1
+      max: 65535
+  hm2agentospfifmetricentry:
+    syntax: Hm2AgentOspfIfMetricEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.249.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfMetricTable
+          field: hm2AgentOspfIfMetricEntry
+  hm2agentospfifmetrictable:
+    syntax: Hm2AgentOspfIfMetricEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.249
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfIfMetricTable
+  hm2agentospfifpassivemode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.9.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfIfEntry
+          field: hm2AgentOspfIfPassiveMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfiftable:
+    syntax: Hm2AgentOspfIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfIfTable
+  hm2agentospfinterroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentOspfInterRoutes
+  hm2agentospfintraroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentOspfIntraRoutes
+  hm2agentospflocallsdbaddresslessif:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbAddressLessIf
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: &id004
+          - hm2AgentOspfLocalLsdbIpAddress
+          - hm2AgentOspfLocalLsdbAddressLessIf
+          - hm2AgentOspfLocalLsdbType
+          - hm2AgentOspfLocalLsdbLsid
+          - hm2AgentOspfLocalLsdbRouterId
+  hm2agentospflocallsdbadvertisement:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbAdvertisement
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 65535
+  hm2agentospflocallsdbage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbAge
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+  hm2agentospflocallsdbchecksum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbChecksum
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+  hm2agentospflocallsdbentry:
+    syntax: Hm2AgentOspfLocalLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbTable
+          field: hm2AgentOspfLocalLsdbEntry
+  hm2agentospflocallsdbipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbIpAddress
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+  hm2agentospflocallsdblsid:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbLsid
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+  hm2agentospflocallsdbrouterid:
+    syntax: RouterID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbRouterId
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+  hm2agentospflocallsdbsequence:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbSequence
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+  hm2agentospflocallsdbtable:
+    syntax: Hm2AgentOspfLocalLsdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfLocalLsdbTable
+  hm2agentospflocallsdbtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.17.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfLocalLsdbEntry
+          field: hm2AgentOspfLocalLsdbType
+          index_field: hm2AgentOspfLocalLsdbRouterId
+          index_fields: *id004
+  hm2agentospflsackrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsAckRx
+  hm2agentospflsacktx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.12
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsAckTx
+  hm2agentospflsreqrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsReqRx
+  hm2agentospflsreqtx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsReqTx
+  hm2agentospflsupdatesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsUpdatesRx
+  hm2agentospflsupdatesrxmax:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.13
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsUpdatesRxMax
+  hm2agentospflsupdatestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsUpdatesTx
+  hm2agentospflsupdatestxmax:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.14
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsUpdatesTxMax
+  hm2agentospflsaretxcount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfLsaRetxCount
+  hm2agentospfnbrdeadtime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.249.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfNbrEntry
+          field: hm2AgentOspfNbrDeadTime
+  hm2agentospfnbrentry:
+    syntax: Hm2AgentOspfNbrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.249.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfNbrTable
+          field: hm2AgentOspfNbrEntry
+  hm2agentospfnbrtable:
+    syntax: Hm2AgentOspfNbrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.249
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2PlatformRouting
+          field: hm2AgentOspfNbrTable
+  hm2agentospfopaquelsasupport:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.15
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfOpaqueLsaSupport
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfqueuedrops:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueEntry
+          field: hm2AgentOspfQueueDrops
+          index_field: hm2AgentOspfQueueIndex
+  hm2agentospfqueueentry:
+    syntax: Hm2AgentOspfQueueEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueTable
+          field: hm2AgentOspfQueueEntry
+  hm2agentospfqueuehigh:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueEntry
+          field: hm2AgentOspfQueueHigh
+          index_field: hm2AgentOspfQueueIndex
+  hm2agentospfqueueindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueEntry
+          field: hm2AgentOspfQueueIndex
+          index_field: hm2AgentOspfQueueIndex
+  hm2agentospfqueuelength:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueEntry
+          field: hm2AgentOspfQueueLength
+          index_field: hm2AgentOspfQueueIndex
+  hm2agentospfqueuelimit:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueEntry
+          field: hm2AgentOspfQueueLimit
+          index_field: hm2AgentOspfQueueIndex
+  hm2agentospfqueuename:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueEntry
+          field: hm2AgentOspfQueueName
+          index_field: hm2AgentOspfQueueIndex
+  hm2agentospfqueuetable:
+    syntax: Hm2AgentOspfQueueEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.13.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfQueueGroup
+          field: hm2AgentOspfQueueTable
+  hm2agentospfroutecost:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.250.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteEntry
+          field: hm2AgentOspfRouteCost
+          index_field: hm2AgentOspfRouteMask
+          index_fields: &id005
+          - hm2AgentOspfRouteNet
+          - hm2AgentOspfRouteMask
+  hm2agentospfrouteentry:
+    syntax: Hm2AgentOspfRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.250.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteTable
+          field: hm2AgentOspfRouteEntry
+  hm2agentospfroutemask:
+    syntax: InetAddressIPv4
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.250.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteEntry
+          field: hm2AgentOspfRouteMask
+          index_field: hm2AgentOspfRouteMask
+          index_fields: *id005
+  hm2agentospfroutenet:
+    syntax: InetAddressIPv4
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.250.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteEntry
+          field: hm2AgentOspfRouteNet
+          index_field: hm2AgentOspfRouteMask
+          index_fields: *id005
+  hm2agentospfrouteprefexternal:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.22
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfRoutePrefExternal
+    validation:
+      min: 1
+      max: 255
+  hm2agentospfrouteprefinterarea:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.21
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfRoutePrefInterArea
+    validation:
+      min: 1
+      max: 255
+  hm2agentospfrouteprefintraarea:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.20
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfRoutePrefIntraArea
+    validation:
+      min: 1
+      max: 255
+  hm2agentospfrouteprototype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.250.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteEntry
+          field: hm2AgentOspfRouteProtoType
+          index_field: hm2AgentOspfRouteMask
+          index_fields: *id005
+  hm2agentospfrouteredistdistlist:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistDistList
+          index_field: hm2AgentOspfRouteRedistSource
+  hm2agentospfrouteredistdistlistconfigured:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistDistListConfigured
+          index_field: hm2AgentOspfRouteRedistSource
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfrouteredistentry:
+    syntax: Hm2AgentOspfRouteRedistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistTable
+          field: hm2AgentOspfRouteRedistEntry
+  hm2agentospfrouteredistmetric:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistMetric
+          index_field: hm2AgentOspfRouteRedistSource
+    validation:
+      min: 0
+      max: 16777214
+  hm2agentospfrouteredistmetricconfigured:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistMetricConfigured
+          index_field: hm2AgentOspfRouteRedistSource
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfrouteredistmetrictype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistMetricType
+          index_field: hm2AgentOspfRouteRedistSource
+  hm2agentospfrouteredistmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistMode
+          index_field: hm2AgentOspfRouteRedistSource
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfrouteredistsource:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistSource
+          index_field: hm2AgentOspfRouteRedistSource
+  hm2agentospfrouteredistsubnets:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistSubnets
+          index_field: hm2AgentOspfRouteRedistSource
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentospfrouteredisttable:
+    syntax: Hm2AgentOspfRouteRedistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfRouteRedistTable
+  hm2agentospfrouteredisttag:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfRouteRedistEntry
+          field: hm2AgentOspfRouteRedistTag
+          index_field: hm2AgentOspfRouteRedistSource
+  hm2agentospfroutetable:
+    syntax: Hm2AgentOspfRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.250
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2PlatformRouting
+          field: hm2AgentOspfRouteTable
+  hm2agentospfroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentOspfRoutes
+  hm2agentospfspfdelaytime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.12
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfSpfDelayTime
+    validation:
+      min: 0
+      max: 65535
+  hm2agentospfspfholdtime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.13
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfSpfHoldTime
+    validation:
+      min: 0
+      max: 65535
+  hm2agentospfspfindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfIndex
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatsdeltat:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfStatsDeltaT
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatsentry:
+    syntax: Hm2AgentOspfSpfStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsTable
+          field: hm2AgentOspfSpfStatsEntry
+  hm2agentospfspfstatsext:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfStatsExt
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatsintra:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfStatsIntra
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatsreason:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfStatsReason
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatsribupdate:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfStatsRibUpdate
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatsspftotal:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfStatsSpfTotal
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatssumm:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfSpfStatsEntry
+          field: hm2AgentOspfSpfStatsSumm
+          index_field: hm2AgentOspfSpfIndex
+  hm2agentospfspfstatstable:
+    syntax: Hm2AgentOspfSpfStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.15
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2PlatformRouting
+          field: hm2AgentOspfSpfStatsTable
+  hm2agentospfstubrouteradvertisement:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.19.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfStubRouterGroup
+          field: hm2AgentOspfStubRouterAdvertisement
+  hm2agentospfstubrouterduration:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.19.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfStubRouterGroup
+          field: hm2AgentOspfStubRouterDuration
+  hm2agentospfstubrouterreason:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.19.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfStubRouterGroup
+          field: hm2AgentOspfStubRouterReason
+  hm2agentospfstubrouterstartuptimeremaining:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.19.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfStubRouterGroup
+          field: hm2AgentOspfStubRouterStartupTimeRemaining
+  hm2agentospftype10lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.22
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType10LsasRx
+  hm2agentospftype11lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.23
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType11LsasRx
+  hm2agentospftype1lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.15
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType1LsasRx
+  hm2agentospftype2lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.16
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType2LsasRx
+  hm2agentospftype3lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.17
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType3LsasRx
+  hm2agentospftype4lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.18
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType4LsasRx
+  hm2agentospftype5lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.19
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType5LsasRx
+  hm2agentospftype7lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.20
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType7LsasRx
+  hm2agentospftype9lsasrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.14.21
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfPacketStatsGroup
+          field: hm2AgentOspfType9LsasRx
+  hm2agentospfvirtifauthkeyid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfVirtIfEntry
+          field: hm2AgentOspfVirtIfAuthKeyId
+    validation:
+      min: 0
+      max: 255
+  hm2agentospfvirtifentry:
+    syntax: Hm2AgentOspfVirtIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentOspfVirtIfTable
+          field: hm2AgentOspfVirtIfEntry
+  hm2agentospfvirtiftable:
+    syntax: Hm2AgentOspfVirtIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentOspfVirtIfTable
+  hm2agentrejectroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.13
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentRejectRoutes
+  hm2agentreservedlocals:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.24
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentReservedLocals
+  hm2agentrip2ifconfauthkeyid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRip2IfConfEntry
+          field: hm2AgentRip2IfConfAuthKeyId
+    validation:
+      min: 0
+      max: 255
+  hm2agentrip2ifconfentry:
+    syntax: Hm2AgentRip2IfConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.9.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRip2IfConfTable
+          field: hm2AgentRip2IfConfEntry
+  hm2agentrip2ifconftable:
+    syntax: Hm2AgentRip2IfConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRip2IfConfTable
+  hm2agentriprouteredistdistlist:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistDistList
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredistdistlistconfigured:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistDistListConfigured
+          index_field: hm2AgentRipRouteRedistSource
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentriprouteredistentry:
+    syntax: Hm2AgentRipRouteRedistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistTable
+          field: hm2AgentRipRouteRedistEntry
+  hm2agentriprouteredistmatchexternal1:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMatchExternal1
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredistmatchexternal2:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMatchExternal2
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredistmatchinternal:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMatchInternal
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredistmatchnssaexternal1:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMatchNSSAExternal1
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredistmatchnssaexternal2:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMatchNSSAExternal2
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredistmetric:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMetric
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredistmetricconfigured:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMetricConfigured
+          index_field: hm2AgentRipRouteRedistSource
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentriprouteredistmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistMode
+          index_field: hm2AgentRipRouteRedistSource
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentriprouteredistsource:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRipRouteRedistEntry
+          field: hm2AgentRipRouteRedistSource
+          index_field: hm2AgentRipRouteRedistSource
+  hm2agentriprouteredisttable:
+    syntax: Hm2AgentRipRouteRedistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRipRouteRedistTable
+  hm2agentriproutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentRipRoutes
+  hm2agentrouteadds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.18
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentRouteAdds
+  hm2agentroutedeletes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.20
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentRouteDeletes
+  hm2agentroutemodifies:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.19
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentRouteModifies
+  hm2agentrouterospfrfc1583compatibilitymode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.4.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterOspfConfigGroup
+          field: hm2AgentRouterOspfRFC1583CompatibilityMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentrouterripadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentrouterripautosummarymode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipAutoSummaryMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentrouterripdefaultinfooriginate:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipDefaultInfoOriginate
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentrouterripdefaultmetric:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipDefaultMetric
+  hm2agentrouterripdefaultmetricconfigured:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipDefaultMetricConfigured
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentrouterriphostroutesacceptmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipHostRoutesAcceptMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentrouterriproutepref:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipRoutePref
+    validation:
+      min: 1
+      max: 255
+  hm2agentrouterripsplithorizonmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipSplitHorizonMode
+  hm2agentrouterripupdatetimerinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.3.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterRipConfigGroup
+          field: hm2AgentRouterRipUpdateTimerInterval
+    validation:
+      min: 1
+      max: 1000
+  hm2agentroutervrrpadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterVrrpConfigGroup
+          field: hm2AgentRouterVrrpAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentroutervrrpnumberoffastinst:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.9.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpOperations
+          field: hm2AgentRouterVrrpNumberOfFastInst
+    validation:
+      min: 0
+      max: 16
+  hm2agentroutervrrpoperentry:
+    syntax: Hm2AgentRouterVrrpOperEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.9.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterVrrpOperTable
+          field: hm2AgentRouterVrrpOperEntry
+  hm2agentroutervrrpoperpriority:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.9.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRouterVrrpOperEntry
+          field: hm2AgentRouterVrrpOperPriority
+          index_field: vrrpOperVrId
+          index_fields:
+          - ifIndex
+          - vrrpOperVrId
+    validation:
+      min: 0
+      max: 255
+  hm2agentroutervrrpopertable:
+    syntax: Hm2AgentRouterVrrpOperEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.9.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpOperations
+          field: hm2AgentRouterVrrpOperTable
+  hm2agentroutingheaphigh:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.16.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingHeapGroup
+          field: hm2AgentRoutingHeapHigh
+  hm2agentroutingheapinuse:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.16.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingHeapGroup
+          field: hm2AgentRoutingHeapInUse
+  hm2agentroutingheapsize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.16.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingHeapGroup
+          field: hm2AgentRoutingHeapSize
+  hm2agentsnmpvrrpauthfailuretrapflag:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSnmpTrapFlagsConfigGroupLayer3
+          field: hm2AgentSnmpVRRPAuthFailureTrapFlag
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentsnmpvrrpnewmastertrapflag:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSnmpTrapFlagsConfigGroupLayer3
+          field: hm2AgentSnmpVRRPNewMasterTrapFlag
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentstaticneighbouraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentStaticNeighbourEntry
+          field: hm2AgentStaticNeighbourAddress
+          index_field: hm2AgentStaticNeighbourAddress
+          index_fields: &id006
+          - hm2AgentStaticNeighbourAddressType
+          - hm2AgentStaticNeighbourAddress
+  hm2agentstaticneighbouraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentStaticNeighbourEntry
+          field: hm2AgentStaticNeighbourAddressType
+          index_field: hm2AgentStaticNeighbourAddress
+          index_fields: *id006
+  hm2agentstaticneighbourentry:
+    syntax: Hm2AgentStaticNeighbourEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentStaticNeighbourTable
+          field: hm2AgentStaticNeighbourEntry
+  hm2agentstaticneighbourifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentStaticNeighbourEntry
+          field: hm2AgentStaticNeighbourIfIndex
+          index_field: hm2AgentStaticNeighbourAddress
+          index_fields: *id006
+  hm2agentstaticneighbourphysaddress:
+    syntax: PhysAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentStaticNeighbourEntry
+          field: hm2AgentStaticNeighbourPhysAddress
+          index_field: hm2AgentStaticNeighbourAddress
+          index_fields: *id006
+    validation:
+      min: 0
+      max: 65535
+  hm2agentstaticneighbourrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentStaticNeighbourEntry
+          field: hm2AgentStaticNeighbourRowStatus
+          index_field: hm2AgentStaticNeighbourAddress
+          index_fields: *id006
+    create_method: createAndWait
+    index_type: inet_address
+  hm2agentstaticneighbourtable:
+    syntax: Hm2AgentStaticNeighbourEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.270.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentNeighbourGroup
+          field: hm2AgentStaticNeighbourTable
+  hm2agentstaticroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentStaticRoutes
+  hm2agentswitcharpageouttime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpAgeoutTime
+    validation:
+      min: 15
+      max: 21600
+  hm2agentswitcharpcacheclear:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.101
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpCacheClear
+  hm2agentswitcharpcachesize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpCacheSize
+  hm2agentswitcharpdynamicrenew:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpDynamicRenew
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitcharpmaxretries:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpMaxRetries
+    validation:
+      min: 0
+      max: 10
+  hm2agentswitcharpresponsetime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpResponseTime
+    validation:
+      min: 1
+      max: 10
+  hm2agentswitcharpsparselearn:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.100
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpSparseLearn
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitcharpstaticentrycountcurrent:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpStaticEntryCountCurrent
+  hm2agentswitcharpstaticentrycountmax:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpStaticEntryCountMax
+  hm2agentswitcharptotalentrycountcurrent:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpTotalEntryCountCurrent
+  hm2agentswitcharptotalentrycountpeak:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchArpTotalEntryCountPeak
+  hm2agentswitchclearipdefaultgateway:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchClearIpDefaultGateway
+  hm2agentswitchdhcpoperation:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchDhcpOperation
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchipaddressconfigmethod:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIPAddressConfigMethod
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchinternalvlanentry:
+    syntax: Hm2AgentSwitchInternalVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.12.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchInternalVlanTable
+          field: hm2AgentSwitchInternalVlanEntry
+  hm2agentswitchinternalvlanid:
+    syntax: VlanId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.12.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchInternalVlanEntry
+          field: hm2AgentSwitchInternalVlanId
+          index_field: hm2AgentSwitchInternalVlanId
+  hm2agentswitchinternalvlanifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.12.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchInternalVlanEntry
+          field: hm2AgentSwitchInternalVlanIfIndex
+          index_field: hm2AgentSwitchInternalVlanId
+  hm2agentswitchinternalvlantable:
+    syntax: Hm2AgentSwitchInternalVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.12.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentInternalVlanGroup
+          field: hm2AgentSwitchInternalVlanTable
+  hm2agentswitchintfarpage:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfArpEntry
+          field: hm2AgentSwitchIntfArpAge
+          index_field: hm2AgentSwitchIntfArpIfIndex
+          index_fields: &id007
+          - hm2AgentSwitchIntfArpIpAddress
+          - hm2AgentSwitchIntfArpIfIndex
+  hm2agentswitchintfarpentry:
+    syntax: Hm2AgentSwitchIntfArpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfArpTable
+          field: hm2AgentSwitchIntfArpEntry
+  hm2agentswitchintfarpifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfArpEntry
+          field: hm2AgentSwitchIntfArpIfIndex
+          index_field: hm2AgentSwitchIntfArpIfIndex
+          index_fields: *id007
+  hm2agentswitchintfarpipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfArpEntry
+          field: hm2AgentSwitchIntfArpIpAddress
+          index_field: hm2AgentSwitchIntfArpIfIndex
+          index_fields: *id007
+  hm2agentswitchintfarpmacaddress:
+    syntax: PhysAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfArpEntry
+          field: hm2AgentSwitchIntfArpMacAddress
+          index_field: hm2AgentSwitchIntfArpIfIndex
+          index_fields: *id007
+  hm2agentswitchintfarpstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfArpEntry
+          field: hm2AgentSwitchIntfArpStatus
+          index_field: hm2AgentSwitchIntfArpIfIndex
+          index_fields: *id007
+    create_method: createAndWait
+  hm2agentswitchintfarptable:
+    syntax: Hm2AgentSwitchIntfArpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchIntfArpTable
+  hm2agentswitchintfarptype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.12.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfArpEntry
+          field: hm2AgentSwitchIntfArpType
+          index_field: hm2AgentSwitchIntfArpIfIndex
+          index_fields: *id007
+  hm2agentswitchintfiphelperaddressentry:
+    syntax: Hm2AgentSwitchIntfIpHelperAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfIpHelperAddressTable
+          field: hm2AgentSwitchIntfIpHelperAddressEntry
+  hm2agentswitchintfiphelperaddresstable:
+    syntax: Hm2AgentSwitchIntfIpHelperAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIntfIpHelperAddressTable
+  hm2agentswitchintfiphelperhitcount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfIpHelperAddressEntry
+          field: hm2AgentSwitchIntfIpHelperHitCount
+          index_field: hm2AgentSwitchIntfIpHelperIpAddress
+          index_fields: &id008
+          - hm2AgentSwitchIpInterfaceIfIndex
+          - hm2AgentSwitchIntfIpHelperUdpPort
+          - hm2AgentSwitchIntfIpHelperIpAddress
+  hm2agentswitchintfiphelperipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfIpHelperAddressEntry
+          field: hm2AgentSwitchIntfIpHelperIpAddress
+          index_field: hm2AgentSwitchIntfIpHelperIpAddress
+          index_fields: *id008
+  hm2agentswitchintfiphelperstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfIpHelperAddressEntry
+          field: hm2AgentSwitchIntfIpHelperStatus
+          index_field: hm2AgentSwitchIntfIpHelperIpAddress
+          index_fields: *id008
+    create_method: createAndWait
+  hm2agentswitchintfiphelperudpport:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIntfIpHelperAddressEntry
+          field: hm2AgentSwitchIntfIpHelperUdpPort
+          index_field: hm2AgentSwitchIntfIpHelperIpAddress
+          index_fields: *id008
+    validation:
+      min: 0
+      max: 65535
+  hm2agentswitchipbestroutecount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.252
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpBestRouteCount
+  hm2agentswitchipdefaultgateway:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpDefaultGateway
+  hm2agentswitchipfirstactiveaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.249
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpFirstActiveAddress
+  hm2agentswitchipfirstactiveaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpFirstActiveAddressType
+  hm2agentswitchiphelperaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpHelperAddressEntry
+          field: hm2AgentSwitchIpHelperAddress
+          index_field: hm2AgentSwitchIpHelperAddress
+          index_fields: &id009
+          - hm2AgentSwitchIpHelperUdpPort
+          - hm2AgentSwitchIpHelperAddress
+  hm2agentswitchiphelperaddressentry:
+    syntax: Hm2AgentSwitchIpHelperAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpHelperAddressTable
+          field: hm2AgentSwitchIpHelperAddressEntry
+  hm2agentswitchiphelperaddresstable:
+    syntax: Hm2AgentSwitchIpHelperAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentSwitchIpHelperAddressTable
+  hm2agentswitchiphelperhitcount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpHelperAddressEntry
+          field: hm2AgentSwitchIpHelperHitCount
+          index_field: hm2AgentSwitchIpHelperAddress
+          index_fields: *id009
+  hm2agentswitchiphelperstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpHelperAddressEntry
+          field: hm2AgentSwitchIpHelperStatus
+          index_field: hm2AgentSwitchIpHelperAddress
+          index_fields: *id009
+    create_method: createAndWait
+  hm2agentswitchiphelperudpport:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpHelperAddressEntry
+          field: hm2AgentSwitchIpHelperUdpPort
+          index_field: hm2AgentSwitchIpHelperAddress
+          index_fields: *id009
+    validation:
+      min: 0
+      max: 65535
+  hm2agentswitchipicmpechoreplymode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpIcmpControlGroup
+          field: hm2AgentSwitchIpIcmpEchoReplyMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipicmpratelimitburstsize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.8.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpIcmpControlGroup
+          field: hm2AgentSwitchIpIcmpRateLimitBurstSize
+    validation:
+      min: 1
+      max: 200
+  hm2agentswitchipicmpratelimitinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.8.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpIcmpControlGroup
+          field: hm2AgentSwitchIpIcmpRateLimitInterval
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentswitchipicmpredirectsmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.8.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpIcmpControlGroup
+          field: hm2AgentSwitchIpIcmpRedirectsMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfacebandwidth:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceBandwidth
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      min: 0
+      max: 10000000
+  hm2agentswitchipinterfaceclearip:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceClearIp
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfacecurrentpenalty:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceCurrentPenalty
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      min: 0
+      max: 20000
+  hm2agentswitchipinterfacedhcpclientstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.249
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceDHCPClientStatus
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfaceentry:
+    syntax: Hm2AgentSwitchIpInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceTable
+          field: hm2AgentSwitchIpInterfaceEntry
+  hm2agentswitchipinterfaceicmpredirects:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceIcmpRedirects
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfaceicmpunreachables:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceIcmpUnreachables
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceIfIndex
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchipinterfaceipaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceIpAddress
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchipinterfacemtuvalue:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceMtuValue
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchipinterfacenetmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceNetMask
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchipinterfacenetdirectedbcmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceNetdirectedBCMode
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfacenumberofflaps:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceNumberOfFlaps
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      min: 0
+      max: 4294967295
+  hm2agentswitchipinterfaceproxyarpmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceProxyARPMode
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfacereusetime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceReUseTime
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      min: 0
+      max: 255
+  hm2agentswitchipinterfaceremainingleasetime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.250
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceRemainingLeaseTime
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchipinterfaceroutingmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceRoutingMode
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipinterfacesuppressed:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceSuppressed
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchipinterfacetable:
+    syntax: Hm2AgentSwitchIpInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpInterfaceTable
+  hm2agentswitchipinterfaceunnumberedifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpInterfaceEntry
+          field: hm2AgentSwitchIpInterfaceUnnumberedIfIndex
+          index_field: hm2AgentSwitchIpInterfaceIfIndex
+  hm2agentswitchiproutecount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.251
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpRouteCount
+  hm2agentswitchiprouterdiscoveryadvertisemode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryEntry
+          field: hm2AgentSwitchIpRouterDiscoveryAdvertiseMode
+          index_field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchiprouterdiscoveryadvertisementaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryEntry
+          field: hm2AgentSwitchIpRouterDiscoveryAdvertisementAddress
+          index_field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+  hm2agentswitchiprouterdiscoveryadvertisementlifetime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryEntry
+          field: hm2AgentSwitchIpRouterDiscoveryAdvertisementLifetime
+          index_field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+    validation:
+      min: 4
+      max: 9000
+  hm2agentswitchiprouterdiscoveryentry:
+    syntax: Hm2AgentSwitchIpRouterDiscoveryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryTable
+          field: hm2AgentSwitchIpRouterDiscoveryEntry
+  hm2agentswitchiprouterdiscoveryifindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryEntry
+          field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+          index_field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentswitchiprouterdiscoverymaxadvertisementinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryEntry
+          field: hm2AgentSwitchIpRouterDiscoveryMaxAdvertisementInterval
+          index_field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+    validation:
+      min: 4
+      max: 1800
+  hm2agentswitchiprouterdiscoveryminadvertisementinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryEntry
+          field: hm2AgentSwitchIpRouterDiscoveryMinAdvertisementInterval
+          index_field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+    validation:
+      min: 3
+      max: 1800
+  hm2agentswitchiprouterdiscoverypreferencelevel:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpRouterDiscoveryEntry
+          field: hm2AgentSwitchIpRouterDiscoveryPreferenceLevel
+          index_field: hm2AgentSwitchIpRouterDiscoveryIfIndex
+  hm2agentswitchiprouterdiscoverytable:
+    syntax: Hm2AgentSwitchIpRouterDiscoveryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpRouterDiscoveryTable
+  hm2agentswitchiproutingmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpRoutingMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipsourceroutingmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.253
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpSourceRoutingMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchipstaticdefaultpref:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.250
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpStaticDefaultPref
+    validation:
+      min: 1
+      max: 255
+  hm2agentswitchipvlanentry:
+    syntax: Hm2AgentSwitchIpVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpVlanTable
+          field: hm2AgentSwitchIpVlanEntry
+  hm2agentswitchipvlanid:
+    syntax: VlanId
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpVlanEntry
+          field: hm2AgentSwitchIpVlanId
+          index_field: hm2AgentSwitchIpVlanId
+  hm2agentswitchipvlanifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpVlanEntry
+          field: hm2AgentSwitchIpVlanIfIndex
+          index_field: hm2AgentSwitchIpVlanId
+  hm2agentswitchipvlanroutingstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpVlanEntry
+          field: hm2AgentSwitchIpVlanRoutingStatus
+          index_field: hm2AgentSwitchIpVlanId
+    create_method: createAndWait
+  hm2agentswitchipvlantable:
+    syntax: Hm2AgentSwitchIpVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchIpVlanTable
+  hm2agentswitchlocalproxyarpentry:
+    syntax: Hm2AgentSwitchLocalProxyArpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchLocalProxyArpTable
+          field: hm2AgentSwitchLocalProxyArpEntry
+  hm2agentswitchlocalproxyarpmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.11.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchLocalProxyArpEntry
+          field: hm2AgentSwitchLocalProxyArpMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentswitchlocalproxyarptable:
+    syntax: Hm2AgentSwitchLocalProxyArpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchLocalProxyArpTable
+  hm2agentswitchproxyarpmaxresponsedelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.1.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchArpGroup
+          field: hm2AgentSwitchProxyArpMaxResponseDelay
+  hm2agentswitchsecondaryaddressentry:
+    syntax: Hm2AgentSwitchSecondaryAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchSecondaryAddressTable
+          field: hm2AgentSwitchSecondaryAddressEntry
+  hm2agentswitchsecondaryaddresstable:
+    syntax: Hm2AgentSwitchSecondaryAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchIpGroup
+          field: hm2AgentSwitchSecondaryAddressTable
+  hm2agentswitchsecondaryipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchSecondaryAddressEntry
+          field: hm2AgentSwitchSecondaryIpAddress
+          index_field: hm2AgentSwitchSecondaryIpAddress
+          index_fields: &id010
+          - hm2AgentSwitchIpInterfaceIfIndex
+          - hm2AgentSwitchSecondaryIpAddress
+  hm2agentswitchsecondarynetmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchSecondaryAddressEntry
+          field: hm2AgentSwitchSecondaryNetMask
+          index_field: hm2AgentSwitchSecondaryIpAddress
+          index_fields: *id010
+  hm2agentswitchsecondarystatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.2.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentSwitchSecondaryAddressEntry
+          field: hm2AgentSwitchSecondaryStatus
+          index_field: hm2AgentSwitchSecondaryIpAddress
+          index_fields: *id010
+    create_method: createAndWait
+  hm2agenttotalroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.14
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentTotalRoutes
+  hm2agenttruncecmproutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.32
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentTruncEcmpRoutes
+  hm2agentudpclientmsgsdiscarded:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentUdpClientMsgsDiscarded
+  hm2agentudpclientmsgsreceived:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentUdpClientMsgsReceived
+  hm2agentudpclientmsgsrelayed:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentUdpClientMsgsRelayed
+  hm2agentudpclientmsgsttlexpired:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.11.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentIpHelperGroup
+          field: hm2AgentUdpClientMsgsTtlExpired
+  hm2agentuniquenexthops:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.25
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentUniqueNextHops
+  hm2agentuniquenexthopshigh:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.26
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentUniqueNextHopsHigh
+  hm2agentunresolvedrouteadds:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.17.21
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentRoutingTableSummaryGroup
+          field: hm2AgentUnresolvedRouteAdds
+  hm2agentvrrpdomainentry:
+    syntax: Hm2AgentVrrpDomainEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainTable
+          field: hm2AgentVrrpDomainEntry
+  hm2agentvrrpdomainid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainEntry
+          field: hm2AgentVrrpDomainId
+          index_field: hm2AgentVrrpDomainId
+    validation:
+      min: 0
+      max: 8
+  hm2agentvrrpdomainmembersendadv:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainEntry
+          field: hm2AgentVrrpDomainMemberSendAdv
+          index_field: hm2AgentVrrpDomainId
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentvrrpdomainoperpriority:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainEntry
+          field: hm2AgentVrrpDomainOperPriority
+          index_field: hm2AgentVrrpDomainId
+    validation:
+      min: 0
+      max: 255
+  hm2agentvrrpdomainstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainEntry
+          field: hm2AgentVrrpDomainStatus
+          index_field: hm2AgentVrrpDomainId
+  hm2agentvrrpdomainsupervisorifindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainEntry
+          field: hm2AgentVrrpDomainSupervisorIfIndex
+          index_field: hm2AgentVrrpDomainId
+  hm2agentvrrpdomainsupervisoroperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainEntry
+          field: hm2AgentVrrpDomainSupervisorOperState
+          index_field: hm2AgentVrrpDomainId
+  hm2agentvrrpdomainsupervisorvrid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpDomainEntry
+          field: hm2AgentVrrpDomainSupervisorVrid
+          index_field: hm2AgentVrrpDomainId
+    validation:
+      min: 0
+      max: 255
+  hm2agentvrrpdomaintable:
+    syntax: Hm2AgentVrrpDomainEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtGroup
+          field: hm2AgentVrrpDomainTable
+  hm2agentvrrpextadvertaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtAdvertAddress
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: &id011
+          - hm2AgentVrrpExtIfIndex
+          - hm2AgentVrrpExtVrid
+  hm2agentvrrpextadverttimer:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtAdvertTimer
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+    validation:
+      min: 100
+      max: 255000
+  hm2agentvrrpextcfgpriority:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtCfgPriority
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+    validation:
+      min: 1
+      max: 254
+  hm2agentvrrpextdomainid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtDomainId
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+    validation:
+      min: 0
+      max: 8
+  hm2agentvrrpextdomainrole:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtDomainRole
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+  hm2agentvrrpextdomainstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtDomainStatus
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+  hm2agentvrrpextentry:
+    syntax: Hm2AgentVrrpExtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtTable
+          field: hm2AgentVrrpExtEntry
+  hm2agentvrrpextifindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtIfIndex
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+  hm2agentvrrpextmethod:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtMethod
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+  hm2agentvrrpextnotifyaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtNotifyAddress
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+  hm2agentvrrpextnotifylinkdown:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtNotifyLinkdown
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentvrrpextpreemptiondelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtPreemptionDelay
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+    validation:
+      min: 0
+      max: 65535
+  hm2agentvrrpextproxyarp:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtProxyarp
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentvrrpexttable:
+    syntax: Hm2AgentVrrpExtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtGroup
+          field: hm2AgentVrrpExtTable
+  hm2agentvrrpextvrid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpExtVrid
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+    validation:
+      min: 1
+      max: 255
+  hm2agentvrrpprimaryvirtualaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtEntry
+          field: hm2AgentVrrpPrimaryVirtualAddress
+          index_field: hm2AgentVrrpExtVrid
+          index_fields: *id011
+  hm2agentvrrptrackdecrement:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpTrackingEntry
+          field: hm2AgentVrrpTrackDecrement
+          index_field: hm2AgentVrrpTrackId
+          index_fields: &id012
+          - hm2AgentVrrpTrackIfIndex
+          - hm2AgentVrrpTrackVrid
+          - hm2AgentVrrpTrackId
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 253
+  hm2agentvrrptrackid:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpTrackingEntry
+          field: hm2AgentVrrpTrackId
+          index_field: hm2AgentVrrpTrackId
+          index_fields: *id012
+          key_tag: to_hex_decode
+  hm2agentvrrptrackifindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpTrackingEntry
+          field: hm2AgentVrrpTrackIfIndex
+          index_field: hm2AgentVrrpTrackId
+          index_fields: *id012
+          key_tag: to_hex_decode
+  hm2agentvrrptrackoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpTrackingEntry
+          field: hm2AgentVrrpTrackOperStatus
+          index_field: hm2AgentVrrpTrackId
+          index_fields: *id012
+          key_tag: to_hex_decode
+  hm2agentvrrptrackrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpTrackingEntry
+          field: hm2AgentVrrpTrackRowStatus
+          index_field: hm2AgentVrrpTrackId
+          index_fields: *id012
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2agentvrrptrackvrid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpTrackingEntry
+          field: hm2AgentVrrpTrackVrid
+          index_field: hm2AgentVrrpTrackId
+          index_fields: *id012
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 255
+  hm2agentvrrptrackingentry:
+    syntax: Hm2AgentVrrpTrackingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpTrackingTable
+          field: hm2AgentVrrpTrackingEntry
+  hm2agentvrrptrackingtable:
+    syntax: Hm2AgentVrrpTrackingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.2.260.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-ROUTING-MIB
+          table: hm2AgentVrrpExtGroup
+          field: hm2AgentVrrpTrackingTable

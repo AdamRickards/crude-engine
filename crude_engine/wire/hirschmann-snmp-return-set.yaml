@@ -1,0 +1,168 @@
+version: 2.6.0
+feature: hirschmann-snmp-return-set
+schemas:
+  read_hirschmann-snmp-return-set:
+    type: dict
+    defaults:
+      hmmgmtseparameterentry: ''
+      hmmgmtseparameterid: 0
+      hmmgmtseparametertable: ''
+      hmmgmtseparametervalue: ''
+      hmmgmtsereturnentry: ''
+      hmmgmtsereturntable: ''
+      hmmgmtsespinlock: ''
+      hmmgmtsetestvar: ''
+      hmmgmtsereturncode: ''
+      hmmgmtsereturnkey: 0
+attributes:
+  hmmgmtseparameterentry:
+    syntax: HmMgmtSEParameterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEParameterTable
+          field: hmMgmtSEParameterEntry
+  hmmgmtseparameterid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEParameterEntry
+          field: hmMgmtSEParameterID
+          index_field: hmMgmtSEParameterID
+          index_fields: &id001
+          - hmMgmtSeReturnKey
+          - hmMgmtSEParameterID
+  hmmgmtseparametertable:
+    syntax: HmMgmtSEParameterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEReturnSetGroup
+          field: hmMgmtSEParameterTable
+  hmmgmtseparametervalue:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEParameterEntry
+          field: hmMgmtSEParameterValue
+          index_field: hmMgmtSEParameterID
+          index_fields: *id001
+  hmmgmtsereturnentry:
+    syntax: HmMgmtSEReturnEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEReturnTable
+          field: hmMgmtSEReturnEntry
+  hmmgmtsereturntable:
+    syntax: HmMgmtSEReturnEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEReturnSetGroup
+          field: hmMgmtSEReturnTable
+  hmmgmtsespinlock:
+    syntax: TestAndIncr
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEReturnSetGroup
+          field: hmMgmtSESpinLock
+  hmmgmtsetestvar:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.100.1
+          method: get
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSETestGroup
+          field: hmMgmtSETestVar
+  hmmgmtsereturncode:
+    syntax: AutonomousType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEReturnEntry
+          field: hmMgmtSeReturnCode
+          index_field: hmMgmtSeReturnKey
+  hmmgmtsereturnkey:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.16.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HIRSCHMANN-SNMP-RETURN-SET-MIB
+          table: hmMgmtSEReturnEntry
+          field: hmMgmtSeReturnKey
+          index_field: hmMgmtSeReturnKey
+    validation:
+      min: 0
+      max: 2147483647

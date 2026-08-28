@@ -1,0 +1,2718 @@
+version: 2.6.0
+feature: ieee8021x-pae
+schemas:
+  read_ieee8021x-pae:
+    type: dict
+    defaults:
+      ieee8021xannounceaccessstatus: ''
+      ieee8021xannounceentry: ''
+      ieee8021xannouncenid: ''
+      ieee8021xannouncetable: ''
+      ieee8021xannouncementaccessrequested: false
+      ieee8021xannouncementaccessstatus: ''
+      ieee8021xannouncementcapabilities: ''
+      ieee8021xannouncementciphercapability: 0
+      ieee8021xannouncementciphersuite: ''
+      ieee8021xannouncementciphersuitesentry: ''
+      ieee8021xannouncementciphersuitestable: ''
+      ieee8021xannouncemententry: ''
+      ieee8021xannouncementkmd: ''
+      ieee8021xannouncementnid: ''
+      ieee8021xannouncementspecific: false
+      ieee8021xannouncementtable: ''
+      ieee8021xannouncementunauthaccess: ''
+      ieee8021xauthpaeauthenticate: false
+      ieee8021xauthpaeauthenticated: false
+      ieee8021xauthpaefailed: false
+      ieee8021xauthpaequietperiod: 0
+      ieee8021xauthpaereauthenabled: false
+      ieee8021xauthpaereauthperiod: 0
+      ieee8021xauthpaeretrycount: 0
+      ieee8021xauthpaeretrymax: 0
+      ieee8021xauthenticatorentry: ''
+      ieee8021xauthenticatortable: ''
+      ieee8021xeapolannouncementframesrx: 0
+      ieee8021xeapolannouncementframestx: 0
+      ieee8021xeapolannouncementreqframesrx: 0
+      ieee8021xeapolannouncementreqframestx: 0
+      ieee8021xeapolautheapframestx: 0
+      ieee8021xeapoleapframesrx: 0
+      ieee8021xeapoleaplengtherrorframesrx: 0
+      ieee8021xeapolinvalidframesrx: 0
+      ieee8021xeapollastrxframesource: ''
+      ieee8021xeapollastrxframeversion: 0
+      ieee8021xeapollogoffframesrx: 0
+      ieee8021xeapollogoffframestx: 0
+      ieee8021xeapolmkinvalidframesrx: 0
+      ieee8021xeapolmknocknframesrx: 0
+      ieee8021xeapolmkaframestx: 0
+      ieee8021xeapolportunavailableframesrx: 0
+      ieee8021xeapolstartframesrx: 0
+      ieee8021xeapolstartframestx: 0
+      ieee8021xeapolstatsentry: ''
+      ieee8021xeapolstatstable: ''
+      ieee8021xeapolsuppeapframestx: 0
+      ieee8021xkayallowedformgroup: false
+      ieee8021xkayallowedjoingroup: false
+      ieee8021xkaycreatenewgroup: false
+      ieee8021xkaymacseccapability: 0
+      ieee8021xkaymacsecconfidentialityoffset: 0
+      ieee8021xkaymacsecdesired: false
+      ieee8021xkaymacsecprotect: false
+      ieee8021xkaymacsecreplayprotect: false
+      ieee8021xkaymacsecvalidate: false
+      ieee8021xkaymkaactive: false
+      ieee8021xkaymkaactorsci: ''
+      ieee8021xkaymkaactorspriority: ''
+      ieee8021xkaymkaauthenticated: false
+      ieee8021xkaymkaentry: ''
+      ieee8021xkaymkafailed: false
+      ieee8021xkaymkakeyserverpriority: ''
+      ieee8021xkaymkakeyserversci: ''
+      ieee8021xkaymkapartactivatecontrol: 0
+      ieee8021xkaymkapartactive: false
+      ieee8021xkaymkapartckn: ''
+      ieee8021xkaymkapartcached: false
+      ieee8021xkaymkapartdistckn: ''
+      ieee8021xkaymkapartkmd: ''
+      ieee8021xkaymkapartnid: ''
+      ieee8021xkaymkapartprincipal: false
+      ieee8021xkaymkapartretain: false
+      ieee8021xkaymkapartrowstatus: 0
+      ieee8021xkaymkaparticipantentry: ''
+      ieee8021xkaymkaparticipanttable: ''
+      ieee8021xkaymkapeerlistentry: ''
+      ieee8021xkaymkapeerlistmi: ''
+      ieee8021xkaymkapeerlistmn: ''
+      ieee8021xkaymkapeerlistsci: ''
+      ieee8021xkaymkapeerlisttable: ''
+      ieee8021xkaymkapeerlisttype: 0
+      ieee8021xkaymkarxan: ''
+      ieee8021xkaymkarxkn: ''
+      ieee8021xkaymkasecured: false
+      ieee8021xkaymkatable: ''
+      ieee8021xkaymkatxan: ''
+      ieee8021xkaymkatxkn: ''
+      ieee8021xlogonnidconnectednid: ''
+      ieee8021xlogonnidentry: ''
+      ieee8021xlogonnidrequestednid: ''
+      ieee8021xlogonnidselectednid: ''
+      ieee8021xlogonnidtable: ''
+      ieee8021xnidaccesscapabilities: ''
+      ieee8021xnidconfigentry: ''
+      ieee8021xnidconfigtable: ''
+      ieee8021xnidkmd: ''
+      ieee8021xnidnid: ''
+      ieee8021xnidrowstatus: 0
+      ieee8021xnidunauthallowed: 0
+      ieee8021xnidunauthenticatedaccess: ''
+      ieee8021xnidunsecuredallowed: 0
+      ieee8021xniduseeap: 0
+      ieee8021xpacportadminpt2ptmac: 0
+      ieee8021xpacportcontrolledportnumber: 0
+      ieee8021xpacportentry: ''
+      ieee8021xpacportoperpt2ptmac: false
+      ieee8021xpacporttable: ''
+      ieee8021xpaecommonportnumber: 0
+      ieee8021xpaecontrolledportnumber: 0
+      ieee8021xpaeportannouncerenable: false
+      ieee8021xpaeportauthenticatorenable: false
+      ieee8021xpaeportcapabilities: []
+      ieee8021xpaeportcurrentvirtualports: 0
+      ieee8021xpaeportentry: ''
+      ieee8021xpaeportinitialize: false
+      ieee8021xpaeportkaymkaenable: false
+      ieee8021xpaeportlistenerenable: false
+      ieee8021xpaeportlogonconnectstatus: 0
+      ieee8021xpaeportlogonenable: false
+      ieee8021xpaeportlogonentry: ''
+      ieee8021xpaeportlogontable: ''
+      ieee8021xpaeportmaxvirtualports: 0
+      ieee8021xpaeportnumber: 0
+      ieee8021xpaeportportvalid: false
+      ieee8021xpaeportsessionentry: ''
+      ieee8021xpaeportsessionid: ''
+      ieee8021xpaeportsessionintervaltime: 0
+      ieee8021xpaeportsessionoctetsrx: 0
+      ieee8021xpaeportsessionoctetstx: 0
+      ieee8021xpaeportsessionpktsrx: 0
+      ieee8021xpaeportsessionpktstx: 0
+      ieee8021xpaeportsessionstarttime: 0
+      ieee8021xpaeportsessiontable: ''
+      ieee8021xpaeportsessionterminate: 0
+      ieee8021xpaeportsessionusername: ''
+      ieee8021xpaeportsupplicantenable: false
+      ieee8021xpaeporttable: ''
+      ieee8021xpaeporttype: 0
+      ieee8021xpaeportvirtualportpeermac: ''
+      ieee8021xpaeportvirtualportstart: false
+      ieee8021xpaeportvirtualportsenable: false
+      ieee8021xpaesessioncontrolledportnumber: 0
+      ieee8021xpaesysaccesscontrol: false
+      ieee8021xpaesysannouncements: false
+      ieee8021xpaesyseapolversion: 0
+      ieee8021xpaesysmkaversion: 0
+      ieee8021xpaeuncontrolledportnumber: 0
+      ieee8021xsupppaeauthenticate: false
+      ieee8021xsupppaeauthenticated: false
+      ieee8021xsupppaefailed: false
+      ieee8021xsupppaehelloperiod: 0
+      ieee8021xsupppaeretrycount: 0
+      ieee8021xsupppaeretrymax: 0
+      ieee8021xsupplicantentry: ''
+      ieee8021xsupplicanttable: ''
+attributes:
+  ieee8021xannounceaccessstatus:
+    syntax: Ieee8021XPaeNIDAccessStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnounceEntry
+          field: ieee8021XAnnounceAccessStatus
+          index_field: ieee8021XAnnounceNID
+          index_fields: &id001
+          - ieee8021XPaePortNumber
+          - ieee8021XAnnounceNID
+          key_tag: to_hex_decode
+  ieee8021xannounceentry:
+    syntax: Ieee8021XAnnounceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnounceTable
+          field: ieee8021XAnnounceEntry
+  ieee8021xannouncenid:
+    syntax: Ieee8021XPaeNID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnounceEntry
+          field: ieee8021XAnnounceNID
+          index_field: ieee8021XAnnounceNID
+          index_fields: *id001
+          key_tag: to_hex_decode
+  ieee8021xannouncetable:
+    syntax: Ieee8021XAnnounceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeNetworkIdentifier
+          field: ieee8021XAnnounceTable
+  ieee8021xannouncementaccessrequested:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementEntry
+          field: ieee8021XAnnouncementAccessRequested
+          index_field: ieee8021XAnnouncementNID
+          index_fields: &id002
+          - ieee8021XPaePortNumber
+          - ieee8021XAnnouncementNID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xannouncementaccessstatus:
+    syntax: Ieee8021XPaeNIDAccessStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementEntry
+          field: ieee8021XAnnouncementAccessStatus
+          index_field: ieee8021XAnnouncementNID
+          index_fields: *id002
+          key_tag: to_hex_decode
+  ieee8021xannouncementcapabilities:
+    syntax: Ieee8021XPaeNIDCapabilites
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementEntry
+          field: ieee8021XAnnouncementCapabilities
+          index_field: ieee8021XAnnouncementNID
+          index_fields: *id002
+          key_tag: to_hex_decode
+  ieee8021xannouncementciphercapability:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementCipherSuitesEntry
+          field: ieee8021XAnnouncementCipherCapability
+          index_field: ieee8021XAnnouncementCipherSuite
+          index_fields: &id003
+          - ieee8021XPaePortNumber
+          - ieee8021XAnnouncementNID
+          - ieee8021XAnnouncementCipherSuite
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 65535
+  ieee8021xannouncementciphersuite:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementCipherSuitesEntry
+          field: ieee8021XAnnouncementCipherSuite
+          index_field: ieee8021XAnnouncementCipherSuite
+          index_fields: *id003
+          key_tag: to_hex_decode
+  ieee8021xannouncementciphersuitesentry:
+    syntax: Ieee8021XAnnouncementCipherSuitesEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementCipherSuitesTable
+          field: ieee8021XAnnouncementCipherSuitesEntry
+  ieee8021xannouncementciphersuitestable:
+    syntax: Ieee8021XAnnouncementCipherSuitesEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeNetworkIdentifier
+          field: ieee8021XAnnouncementCipherSuitesTable
+  ieee8021xannouncemententry:
+    syntax: Ieee8021XAnnouncementEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementTable
+          field: ieee8021XAnnouncementEntry
+  ieee8021xannouncementkmd:
+    syntax: Ieee8021XPaeKMD
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementEntry
+          field: ieee8021XAnnouncementKMD
+          index_field: ieee8021XAnnouncementNID
+          index_fields: *id002
+          key_tag: to_hex_decode
+  ieee8021xannouncementnid:
+    syntax: Ieee8021XPaeNID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementEntry
+          field: ieee8021XAnnouncementNID
+          index_field: ieee8021XAnnouncementNID
+          index_fields: *id002
+          key_tag: to_hex_decode
+  ieee8021xannouncementspecific:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementEntry
+          field: ieee8021XAnnouncementSpecific
+          index_field: ieee8021XAnnouncementNID
+          index_fields: *id002
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xannouncementtable:
+    syntax: Ieee8021XAnnouncementEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeNetworkIdentifier
+          field: ieee8021XAnnouncementTable
+  ieee8021xannouncementunauthaccess:
+    syntax: Ieee8021XPaeNIDUnauthenticatedStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAnnouncementEntry
+          field: ieee8021XAnnouncementUnauthAccess
+          index_field: ieee8021XAnnouncementNID
+          index_fields: *id002
+          key_tag: to_hex_decode
+  ieee8021xauthpaeauthenticate:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeAuthenticate
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xauthpaeauthenticated:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeAuthenticated
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xauthpaefailed:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeFailed
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xauthpaequietperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeQuietPeriod
+          index_field: ieee8021XPaePortNumber
+    validation:
+      min: 0
+      max: 65535
+  ieee8021xauthpaereauthenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeReAuthEnabled
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xauthpaereauthperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeReauthPeriod
+          index_field: ieee8021XPaePortNumber
+    validation:
+      min: 0
+      max: 65535
+  ieee8021xauthpaeretrycount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeRetryCount
+          index_field: ieee8021XPaePortNumber
+  ieee8021xauthpaeretrymax:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorEntry
+          field: ieee8021XAuthPaeRetryMax
+          index_field: ieee8021XPaePortNumber
+  ieee8021xauthenticatorentry:
+    syntax: Ieee8021XAuthenticatorEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XAuthenticatorTable
+          field: ieee8021XAuthenticatorEntry
+  ieee8021xauthenticatortable:
+    syntax: Ieee8021XAuthenticatorEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeAuthenticator
+          field: ieee8021XAuthenticatorTable
+  ieee8021xeapolannouncementframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolAnnouncementFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolannouncementframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolAnnouncementFramesTx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolannouncementreqframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolAnnouncementReqFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolannouncementreqframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolAnnouncementReqFramesTx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolautheapframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolAuthEapFramesTx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapoleapframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolEapFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapoleaplengtherrorframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolEapLengthErrorFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolinvalidframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolInvalidFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapollastrxframesource:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolLastRxFrameSource
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapollastrxframeversion:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolLastRxFrameVersion
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapollogoffframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolLogoffFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapollogoffframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolLogoffFramesTx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolmkinvalidframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolMkInvalidFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolmknocknframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolMkNoCknFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolmkaframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolMkaFramesTx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolportunavailableframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolPortUnavailableFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolstartframesrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolStartFramesRx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolstartframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolStartFramesTx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xeapolstatsentry:
+    syntax: Ieee8021XEapolStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsTable
+          field: ieee8021XEapolStatsEntry
+  ieee8021xeapolstatstable:
+    syntax: Ieee8021XEapolStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeEapol
+          field: ieee8021XEapolStatsTable
+  ieee8021xeapolsuppeapframestx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.5.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XEapolStatsEntry
+          field: ieee8021XEapolSuppEapFramesTx
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkayallowedformgroup:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayAllowedFormGroup
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkayallowedjoingroup:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayAllowedJoinGroup
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaycreatenewgroup:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayCreateNewGroup
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymacseccapability:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMacSecCapability
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymacsecconfidentialityoffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMacSecConfidentialityOffset
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymacsecdesired:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMacSecDesired
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymacsecprotect:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMacSecProtect
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymacsecreplayprotect:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMacSecReplayProtect
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymacsecvalidate:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMacSecValidate
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkaactive:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaActive
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkaactorsci:
+    syntax: SecySCI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaActorSCI
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymkaactorspriority:
+    syntax: Ieee8021XMkaKeyServerPriority
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaActorsPriority
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymkaauthenticated:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaAuthenticated
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkaentry:
+    syntax: Ieee8021XKayMkaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaTable
+          field: ieee8021XKayMkaEntry
+  ieee8021xkaymkafailed:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaFailed
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkakeyserverpriority:
+    syntax: Ieee8021XMkaKeyServerPriority
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaKeyServerPriority
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymkakeyserversci:
+    syntax: SecySCI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaKeyServerSCI
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymkapartactivatecontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartActivateControl
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: &id004
+          - ieee8021XPaePortNumber
+          - ieee8021XKayMkaPartCKN
+  ieee8021xkaymkapartactive:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartActive
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkapartckn:
+    syntax: Ieee8021XPaeCKN
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartCKN
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+  ieee8021xkaymkapartcached:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartCached
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkapartdistckn:
+    syntax: Ieee8021XPaeCKNOrNull
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartDistCKN
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+  ieee8021xkaymkapartkmd:
+    syntax: Ieee8021XPaeKMD
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartKMD
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+  ieee8021xkaymkapartnid:
+    syntax: Ieee8021XPaeNID
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartNID
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+  ieee8021xkaymkapartprincipal:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartPrincipal
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkapartretain:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartRetain
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkapartrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantEntry
+          field: ieee8021XKayMkaPartRowStatus
+          index_field: ieee8021XKayMkaPartCKN
+          index_fields: *id004
+    create_method: createAndWait
+  ieee8021xkaymkaparticipantentry:
+    syntax: Ieee8021XKayMkaParticipantEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaParticipantTable
+          field: ieee8021XKayMkaParticipantEntry
+  ieee8021xkaymkaparticipanttable:
+    syntax: Ieee8021XKayMkaParticipantEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeKaY
+          field: ieee8021XKayMkaParticipantTable
+  ieee8021xkaymkapeerlistentry:
+    syntax: Ieee8021XKayMkaPeerListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaPeerListTable
+          field: ieee8021XKayMkaPeerListEntry
+  ieee8021xkaymkapeerlistmi:
+    syntax: Ieee8021XMkaMI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaPeerListEntry
+          field: ieee8021XKayMkaPeerListMI
+          index_field: ieee8021XKayMkaPeerListMI
+          index_fields: &id005
+          - ieee8021XPaePortNumber
+          - ieee8021XKayMkaPartCKN
+          - ieee8021XKayMkaPeerListMI
+  ieee8021xkaymkapeerlistmn:
+    syntax: Ieee8021XMkaMN
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaPeerListEntry
+          field: ieee8021XKayMkaPeerListMN
+          index_field: ieee8021XKayMkaPeerListMI
+          index_fields: *id005
+  ieee8021xkaymkapeerlistsci:
+    syntax: SecySCI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaPeerListEntry
+          field: ieee8021XKayMkaPeerListSCI
+          index_field: ieee8021XKayMkaPeerListMI
+          index_fields: *id005
+  ieee8021xkaymkapeerlisttable:
+    syntax: Ieee8021XKayMkaPeerListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeKaY
+          field: ieee8021XKayMkaPeerListTable
+  ieee8021xkaymkapeerlisttype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaPeerListEntry
+          field: ieee8021XKayMkaPeerListType
+          index_field: ieee8021XKayMkaPeerListMI
+          index_fields: *id005
+  ieee8021xkaymkarxan:
+    syntax: RowPointer
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaRxAN
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymkarxkn:
+    syntax: Ieee8021XMkaKN
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaRxKN
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymkasecured:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaSecured
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xkaymkatable:
+    syntax: Ieee8021XKayMkaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeKaY
+          field: ieee8021XKayMkaTable
+  ieee8021xkaymkatxan:
+    syntax: RowPointer
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaTxAN
+          index_field: ieee8021XPaePortNumber
+  ieee8021xkaymkatxkn:
+    syntax: Ieee8021XMkaKN
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.6.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XKayMkaEntry
+          field: ieee8021XKayMkaTxKN
+          index_field: ieee8021XPaePortNumber
+  ieee8021xlogonnidconnectednid:
+    syntax: Ieee8021XPaeNID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XLogonNIDEntry
+          field: ieee8021XLogonNIDConnectedNID
+          index_field: ieee8021XPaePortNumber
+  ieee8021xlogonnidentry:
+    syntax: Ieee8021XLogonNIDEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XLogonNIDTable
+          field: ieee8021XLogonNIDEntry
+  ieee8021xlogonnidrequestednid:
+    syntax: Ieee8021XPaeNIDOrNull
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XLogonNIDEntry
+          field: ieee8021XLogonNIDRequestedNID
+          index_field: ieee8021XPaePortNumber
+  ieee8021xlogonnidselectednid:
+    syntax: Ieee8021XPaeNIDOrNull
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XLogonNIDEntry
+          field: ieee8021XLogonNIDSelectedNID
+          index_field: ieee8021XPaePortNumber
+  ieee8021xlogonnidtable:
+    syntax: Ieee8021XLogonNIDEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeLogon
+          field: ieee8021XLogonNIDTable
+  ieee8021xnidaccesscapabilities:
+    syntax: Ieee8021XPaeNIDCapabilites
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidAccessCapabilities
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+  ieee8021xnidconfigentry:
+    syntax: Ieee8021XNidConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigTable
+          field: ieee8021XNidConfigEntry
+  ieee8021xnidconfigtable:
+    syntax: Ieee8021XNidConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeNetworkIdentifier
+          field: ieee8021XNidConfigTable
+  ieee8021xnidkmd:
+    syntax: Ieee8021XPaeKMD
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidKMD
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+  ieee8021xnidnid:
+    syntax: Ieee8021XPaeNID
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidNID
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+  ieee8021xnidrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidRowStatus
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  ieee8021xnidunauthallowed:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidUnauthAllowed
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+  ieee8021xnidunauthenticatedaccess:
+    syntax: Ieee8021XPaeNIDUnauthenticatedStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidUnauthenticatedAccess
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+  ieee8021xnidunsecuredallowed:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidUnsecuredAllowed
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+  ieee8021xniduseeap:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.7.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XNidConfigEntry
+          field: ieee8021XNidUseEap
+          index_field: ieee8021XNidNID
+          key_tag: to_hex_decode
+  ieee8021xpacportadminpt2ptmac:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPacPortEntry
+          field: ieee8021XPacPortAdminPt2PtMAC
+          index_field: ieee8021XPacPortControlledPortNumber
+  ieee8021xpacportcontrolledportnumber:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPacPortEntry
+          field: ieee8021XPacPortControlledPortNumber
+          index_field: ieee8021XPacPortControlledPortNumber
+  ieee8021xpacportentry:
+    syntax: Ieee8021XPacPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPacPortTable
+          field: ieee8021XPacPortEntry
+  ieee8021xpacportoperpt2ptmac:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPacPortEntry
+          field: ieee8021XPacPortOperPt2PtMAC
+          index_field: ieee8021XPacPortControlledPortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpacporttable:
+    syntax: Ieee8021XPacPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeSystem
+          field: ieee8021XPacPortTable
+  ieee8021xpaecommonportnumber:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaeCommonPortNumber
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaecontrolledportnumber:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaeControlledPortNumber
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaeportannouncerenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortAnnouncerEnable
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportauthenticatorenable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortAuthenticatorEnable
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportcapabilities:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortCapabilities
+          index_field: ieee8021XPaePortNumber
+    bit_map:
+      0: suppImplemented
+      1: authImplemented
+      2: mkaImplemented
+      3: macsecImplemented
+      4: announcementsImplemented
+      5: listenerImplemented
+      6: virtualPortsImplemented
+  ieee8021xpaeportcurrentvirtualports:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortCurrentVirtualPorts
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaeportentry:
+    syntax: Ieee8021XPaePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortTable
+          field: ieee8021XPaePortEntry
+  ieee8021xpaeportinitialize:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortInitialize
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportkaymkaenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortKayMkaEnable
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportlistenerenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortListenerEnable
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportlogonconnectstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortLogonEntry
+          field: ieee8021XPaePortLogonConnectStatus
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaeportlogonenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortLogonEnable
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportlogonentry:
+    syntax: Ieee8021XPaePortLogonEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortLogonTable
+          field: ieee8021XPaePortLogonEntry
+  ieee8021xpaeportlogontable:
+    syntax: Ieee8021XPaePortLogonEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeLogon
+          field: ieee8021XPaePortLogonTable
+  ieee8021xpaeportmaxvirtualports:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortMaxVirtualPorts
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaeportnumber:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortNumber
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaeportportvalid:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortLogonEntry
+          field: ieee8021XPaePortPortValid
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportsessionentry:
+    syntax: Ieee8021XPaePortSessionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionTable
+          field: ieee8021XPaePortSessionEntry
+  ieee8021xpaeportsessionid:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionId
+          index_field: ieee8021XPaeSessionControlledPortNumber
+    validation:
+      min: 3
+      max: 253
+  ieee8021xpaeportsessionintervaltime:
+    syntax: TimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionIntervalTime
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaeportsessionoctetsrx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionOctetsRx
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaeportsessionoctetstx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionOctetsTx
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaeportsessionpktsrx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionPktsRx
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaeportsessionpktstx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionPktsTx
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaeportsessionstarttime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionStartTime
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaeportsessiontable:
+    syntax: Ieee8021XPaePortSessionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeLogon
+          field: ieee8021XPaePortSessionTable
+  ieee8021xpaeportsessionterminate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionTerminate
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaeportsessionusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaePortSessionUserName
+          index_field: ieee8021XPaeSessionControlledPortNumber
+    validation:
+      min: 0
+      max: 253
+  ieee8021xpaeportsupplicantenable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortSupplicantEnable
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeporttable:
+    syntax: Ieee8021XPaePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeSystem
+          field: ieee8021XPaePortTable
+  ieee8021xpaeporttype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortType
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaeportvirtualportpeermac:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortVirtualPortPeerMAC
+          index_field: ieee8021XPaePortNumber
+  ieee8021xpaeportvirtualportstart:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortVirtualPortStart
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaeportvirtualportsenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaePortVirtualPortsEnable
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaesessioncontrolledportnumber:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortSessionEntry
+          field: ieee8021XPaeSessionControlledPortNumber
+          index_field: ieee8021XPaeSessionControlledPortNumber
+  ieee8021xpaesysaccesscontrol:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeSystem
+          field: ieee8021XPaeSysAccessControl
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaesysannouncements:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeSystem
+          field: ieee8021XPaeSysAnnouncements
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xpaesyseapolversion:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeSystem
+          field: ieee8021XPaeSysEapolVersion
+  ieee8021xpaesysmkaversion:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeSystem
+          field: ieee8021XPaeSysMkaVersion
+  ieee8021xpaeuncontrolledportnumber:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaePortEntry
+          field: ieee8021XPaeUncontrolledPortNumber
+          index_field: ieee8021XPaePortNumber
+  ieee8021xsupppaeauthenticate:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XSupplicantEntry
+          field: ieee8021XSuppPaeAuthenticate
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xsupppaeauthenticated:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XSupplicantEntry
+          field: ieee8021XSuppPaeAuthenticated
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xsupppaefailed:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XSupplicantEntry
+          field: ieee8021XSuppPaeFailed
+          index_field: ieee8021XPaePortNumber
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021xsupppaehelloperiod:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XSupplicantEntry
+          field: ieee8021XSuppPaeHelloPeriod
+          index_field: ieee8021XPaePortNumber
+    validation:
+      min: 0
+      max: 65535
+  ieee8021xsupppaeretrycount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XSupplicantEntry
+          field: ieee8021XSuppPaeRetryCount
+          index_field: ieee8021XPaePortNumber
+  ieee8021xsupppaeretrymax:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XSupplicantEntry
+          field: ieee8021XSuppPaeRetryMax
+          index_field: ieee8021XPaePortNumber
+  ieee8021xsupplicantentry:
+    syntax: Ieee8021XSupplicantEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XSupplicantTable
+          field: ieee8021XSupplicantEntry
+  ieee8021xsupplicanttable:
+    syntax: Ieee8021XSupplicantEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.15.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021X-PAE-MIB
+          table: ieee8021XPaeSupplicant
+          field: ieee8021XSupplicantTable

@@ -1,0 +1,123 @@
+version: 2.9.0
+feature: arp
+description: ARP table and Dynamic ARP Inspection (DAI) configuration
+methods:
+  get_arp_table:
+    type: dict
+    primary_key: ip
+    defaults:
+      interface: ''
+      mac: ''
+      ip: ''
+      age: 0.0
+  get_arp_inspection:
+    type: dict
+    defaults:
+      validate_src_mac: false
+      validate_dst_mac: false
+      validate_ip: false
+      auto_disable: false
+      ports: {}
+      vlans: {}
+    sub_tables:
+      ports:
+        primary_key: port_ifindex
+        key_map: ifindex
+        field_map:
+          trusted: dai_trusted
+          rate_limit: dai_rate_limit
+          burst_interval: dai_burst_interval
+          auto_disable: dai_port_auto_disable
+        defaults:
+          trusted: false
+          rate_limit: -1
+          burst_interval: 1
+          auto_disable: true
+      vlans:
+        primary_key: dai_vlan_index
+        field_map:
+          enabled: dai_vlan_enabled
+          logging: dai_vlan_logging
+          binding_check: dai_vlan_binding_check
+          acl_static: dai_vlan_acl_static
+          acl_name: dai_vlan_acl_name
+        defaults:
+          enabled: false
+          logging: false
+          binding_check: false
+          acl_static: false
+          acl_name: ''
+  set_arp_inspection:
+    type: upsert
+    fields: [validate_src_mac, validate_dst_mac, validate_ip]
+  set_arp_inspection_port:
+    type: upsert
+    fields: [dai_trusted, dai_rate_limit, dai_burst_interval, dai_port_auto_disable]
+  set_arp_inspection_vlan:
+    type: upsert
+    fields: [dai_vlan_enabled, dai_vlan_logging, dai_vlan_binding_check, dai_vlan_acl_static, dai_vlan_acl_name]
+attributes:
+  # ARP table (get_arp_table)
+  interface:
+    wire: ipnettophysicalifindex
+    source: ip
+  mac:
+    wire: ipnettophysicalphysaddress
+    source: ip
+  ip:
+    wire: ipnettophysicalnetaddress
+    source: ip
+  age:
+    wire: ipnettophysicallastupdated
+    source: ip
+  # DAI global
+  validate_src_mac:
+    wire: hm2agentdaisrcmacvalidate
+    source: platform-switching
+  validate_dst_mac:
+    wire: hm2agentdaidstmacvalidate
+    source: platform-switching
+  validate_ip:
+    wire: hm2agentdaiipvalidate
+    source: platform-switching
+  auto_disable:
+    wire: hm2autodisablereasonoperation
+    source: devmgmt
+    index_filter: arp-rate
+    value_map:
+      '5': arp-rate
+  # DAI per-port
+  port_ifindex:
+    wire: ifname
+    source: if
+  dai_trusted:
+    wire: hm2agentdaiiftrustenable
+    source: platform-switching
+  dai_rate_limit:
+    wire: hm2agentdaiifratelimit
+    source: platform-switching
+  dai_burst_interval:
+    wire: hm2agentdaiifburstinterval
+    source: platform-switching
+  dai_port_auto_disable:
+    wire: hm2agentdaiifautodisable
+    source: platform-switching
+  # DAI per-VLAN
+  dai_vlan_index:
+    wire: hm2agentdaivlanindex
+    source: platform-switching
+  dai_vlan_enabled:
+    wire: hm2agentdaivlandynarpinspenable
+    source: platform-switching
+  dai_vlan_logging:
+    wire: hm2agentdaivlanloggingenable
+    source: platform-switching
+  dai_vlan_binding_check:
+    wire: hm2agentdaivlanbindingcheckenable
+    source: platform-switching
+  dai_vlan_acl_static:
+    wire: hm2agentdaivlanarpaclstaticflag
+    source: platform-switching
+  dai_vlan_acl_name:
+    wire: hm2agentdaivlanarpaclname
+    source: platform-switching

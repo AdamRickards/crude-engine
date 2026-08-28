@@ -1,0 +1,33 @@
+version: 2.7.0
+feature: qos_mapping
+description: Global dot1p and DSCP to traffic class mapping tables
+methods:
+  get_qos_mapping:
+    type: dict
+    defaults:
+      dot1p: {}
+      dscp: {}
+    sub_tables:
+      dot1p:
+        primary_key: dot1p_priority
+        field_map:
+          value: dot1p_traffic_class
+      dscp:
+        primary_key: dscp_value
+        field_map:
+          value: dscp_traffic_class
+  set_qos_mapping:
+    type: upsert
+attributes:
+  dot1p_priority:
+    wire: hm2trafficclasspriority
+    source: l2forwarding
+  dot1p_traffic_class:
+    wire: hm2trafficclass
+    source: l2forwarding
+  dscp_value:
+    wire: hm2cosmapipdscpvalue
+    source: l2forwarding
+  dscp_traffic_class:
+    wire: hm2cosmapipdscptrafficclass
+    source: l2forwarding

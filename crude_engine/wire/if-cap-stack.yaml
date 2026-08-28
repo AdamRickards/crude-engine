@@ -1,0 +1,113 @@
+version: 2.6.0
+feature: if-cap-stack
+schemas:
+  read_if-cap-stack:
+    type: dict
+    defaults:
+      ifcapstackentry: ''
+      ifcapstackstatus: false
+      ifcapstacktable: ''
+      ifinvcapstackentry: ''
+      ifinvcapstackstatus: false
+      ifinvcapstacktable: ''
+attributes:
+  ifcapstackentry:
+    syntax: IfCapStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.166.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IF-CAP-STACK-MIB
+          table: ifCapStackTable
+          field: ifCapStackEntry
+  ifcapstackstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.166.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IF-CAP-STACK-MIB
+          table: ifCapStackEntry
+          field: ifCapStackStatus
+          index_field: ifStackLowerLayer
+          index_fields:
+          - ifStackHigherLayer
+          - ifStackLowerLayer
+    validation:
+      allowed:
+      - true
+      - false
+  ifcapstacktable:
+    syntax: IfCapStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.166.1.1
+          method: get
+      mops:
+        read:
+          mib: IF-CAP-STACK-MIB
+          table: ifCapStackObjects
+          field: ifCapStackTable
+  ifinvcapstackentry:
+    syntax: IfInvCapStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.166.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IF-CAP-STACK-MIB
+          table: ifInvCapStackTable
+          field: ifInvCapStackEntry
+  ifinvcapstackstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.166.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IF-CAP-STACK-MIB
+          table: ifInvCapStackEntry
+          field: ifInvCapStackStatus
+          index_field: ifStackHigherLayer
+          index_fields:
+          - ifStackLowerLayer
+          - ifStackHigherLayer
+    validation:
+      allowed:
+      - true
+      - false
+  ifinvcapstacktable:
+    syntax: IfInvCapStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.166.1.2
+          method: get
+      mops:
+        read:
+          mib: IF-CAP-STACK-MIB
+          table: ifCapStackObjects
+          field: ifInvCapStackTable

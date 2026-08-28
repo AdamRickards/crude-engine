@@ -1,0 +1,26 @@
+version: 2.7.0
+feature: dhcp_snooping
+description: DHCP Snooping global settings and port configuration
+methods:
+  get_dhcp_snooping:
+    type: dict
+    defaults:
+      enabled: false
+      verify_mac: false
+      database_file: ''
+      ports: {}
+  set_dhcp_snooping:
+    type: upsert
+attributes:
+  enabled:
+    wire: hm2agentdhcpsnoopingadminmode
+    source: platform-switching
+  verify_mac:
+    wire: hm2agentdhcpsnoopingverifymac
+    source: platform-switching
+  database_file:
+    wire: hm2agentdhcpsnoopingremotefilename
+    source: platform-switching
+  port_trusted:
+    wire: hm2agentdhcpsnoopingiftrustenable
+    source: platform-switching

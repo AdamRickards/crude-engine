@@ -1,0 +1,64 @@
+version: "2.6.0"
+feature: timesync-ssh
+description: "SSH CLI sources for SNTP — hand-authored"
+
+attributes:
+  hm2sntpclientadminstate:
+    sources:
+      ssh:
+        read: {command: "show sntp global", field: "Client operation"}
+        write: {command: "{'' if value else 'no '}sntp client operation"}
+
+  hm2sntpclientrequestinterval:
+    sources:
+      ssh:
+        read: {command: "show sntp global", field: "Client request-interval"}
+
+  hm2sntpclientstatus:
+    sources:
+      ssh:
+        read: {command: "show sntp global", field: "Client status"}
+
+  hm2ntpserveradminstate:
+    sources:
+      ssh:
+        read: {command: "show sntp global", field: "Server operation"}
+
+  hm2sntpclientserverindex:
+    sources:
+      ssh:
+        read: {command: "show sntp client server", parser: paired_rows, column: 0}
+
+  hm2sntpclientserveraddrtype:
+    sources:
+      ssh:
+        read: {command: "show sntp client server", parser: paired_rows, column: 1}
+
+  hm2sntpclientserverport:
+    sources:
+      ssh:
+        read: {command: "show sntp client server", parser: paired_rows, column: 2}
+
+  hm2sntpclientserveraddr:
+    sources:
+      ssh:
+        read: {command: "show sntp client server", parser: paired_rows, column: 3}
+        create: {command: "sntp client server add {index} {address}", level: config}
+        delete: {command: "sntp client server delete {index}", level: config}
+
+  hm2sntpclientserverstatus:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sntp client server", parser: paired_rows, column: 4}
+
+  hm2sntpclientserverdescr:
+    sources:
+      ssh:
+        read: {command: "show sntp client server", parser: paired_rows, column: 7}
+
+  hm2sntpclientserverrowstatus:
+    sources:
+      ssh:
+        create: {command: "sntp client server add {index} {address}", level: config}
+        delete: {command: "sntp client server delete {index}", level: config}

@@ -1,0 +1,79 @@
+version: "2.9.0"
+feature: sflow-ssh
+description: "SSH CLI sources for sFlow"
+
+attributes:
+  # Receivers: show sflow receivers
+  sflowrcvrowner:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow receivers", parser: table, column: 1}
+
+  sflowrcvrtimeout:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow receivers", parser: table, column: 2}
+
+  sflowrcvrmaxdatagramsize:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow receivers", parser: table, column: 3}
+
+  sflowrcvraddresstype:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow receivers", parser: table, column: 4}
+
+  sflowrcvraddress:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow receivers", parser: table, column: 5}
+
+  # Samplers: show sflow samplers
+  sflowfsdatasource:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow samplers", parser: table, column: 0}
+
+  sflowfsreceiver:
+    sources:
+      ssh:
+        read: {command: "show sflow samplers", parser: table, column: 1}
+        write: {command: "sflow sampler receiver {value}", level: config_interface}
+
+  sflowfspacketsamplingrate:
+    sources:
+      ssh:
+        read: {command: "show sflow samplers", parser: table, column: 2}
+        write: {command: "sflow sampler rate {value}", level: config_interface}
+
+  sflowfsmaxheadersize:
+    sources:
+      ssh:
+        read: {command: "show sflow samplers", parser: table, column: 3}
+        write: {command: "sflow sampler maxheadersize {value}", level: config_interface}
+
+  # Pollers: show sflow pollers
+  sflowcpdatasource:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow pollers", parser: table, column: 0}
+
+  sflowcpreceiver:
+    sources:
+      ssh:
+        read: {command: "show sflow pollers", parser: table, column: 1}
+        write: {command: "sflow poller receiver {value}", level: config_interface}
+
+  sflowcpinterval:
+    sources:
+      ssh:
+        read: {command: "show sflow pollers", parser: table, column: 2}
+        write: {command: "sflow poller interval {value}", level: config_interface}

@@ -1,0 +1,95 @@
+version: 2.7.0
+feature: system
+description: System identity and hardware monitoring
+methods:
+  get_system_info:
+    type: dict
+    defaults:
+      hostname: ''
+      contact: ''
+      location: ''
+      uptime: 0
+  get_facts:
+    type: dict
+    defaults:
+      hostname: ''
+      fqdn: ''
+      vendor: ''
+      model: ''
+      serial_number: ''
+      os_version: ''
+      uptime: 0
+      interface_list: []
+  get_environment:
+    type: dict
+    defaults:
+      temperature: {}
+      fans: {}
+      power: {}
+      cpu: {}
+      memory: {}
+    sub_tables:
+      temperature:
+        primary_key: temperature
+        child_key: chassis
+        defaults:
+          temperature: 0.0
+          is_alert: false
+          is_critical: false
+  get_system_health:
+    type: dict
+    defaults:
+      temperature: 0
+      humidity: 0
+      hardware_version: ''
+      product_description: ''
+  set_system_info:
+    type: upsert
+attributes:
+  hostname:
+    wire: sysname
+    source: snmpv2
+  contact:
+    wire: syscontact
+    source: snmpv2
+  location:
+    wire: syslocation
+    source: snmpv2
+  uptime:
+    wire: sysuptime
+    source: snmpv2
+  os_version:
+    wire: hm2devmgmtswversion
+    source: devmgmt
+    collect: value
+    regex: '(\S+)'
+  serial_number:
+    wire: hm2devmgmtserialnumber
+    source: devmgmt
+  model:
+    wire: hm2devmgmtproductdescr
+    source: devmgmt
+  vendor:
+    compute:
+      from: [hostname]
+      expr: "'Belden'"
+  fqdn:
+    compute:
+      from: [hostname]
+      format: "{hostname}"
+  interface_list:
+    wire: ifname
+    source: if
+    collect: list
+  temperature:
+    wire: hm2devmgmttemperature
+    source: devmgmt
+  humidity:
+    wire: hm2devmgmthumidity
+    source: devmgmt
+  hardware_version:
+    wire: hm2devmgmthwversion
+    source: devmgmt
+  product_description:
+    wire: hm2devmgmtproductdescr
+    source: devmgmt

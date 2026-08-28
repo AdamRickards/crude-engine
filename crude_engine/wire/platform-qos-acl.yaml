@@ -1,0 +1,2054 @@
+version: 2.6.0
+feature: platform-qos-acl
+schemas:
+  read_platform-qos-acl:
+    type: dict
+    defaults:
+      hm2agentaclentry: ''
+      hm2agentaclifaclid: 0
+      hm2agentaclifacltype: 0
+      hm2agentaclifdirection: 0
+      hm2agentaclifentry: ''
+      hm2agentaclifindex: 0
+      hm2agentaclifsequence: 0
+      hm2agentaclifstatus: 0
+      hm2agentacliftable: ''
+      hm2agentaclindex: 0
+      hm2agentaclmacentry: ''
+      hm2agentaclmacindex: 0
+      hm2agentaclmacindexnextfree: 0
+      hm2agentaclmacname: ''
+      hm2agentaclmacruleaction: 0
+      hm2agentaclmacruleassignqueueid: 0
+      hm2agentaclmacrulecos: 0
+      hm2agentaclmacrulecos2: 0
+      hm2agentaclmacruledestmacaddr: ''
+      hm2agentaclmacruledestmacmask: ''
+      hm2agentaclmacruleentry: ''
+      hm2agentaclmacruleetypekey: 0
+      hm2agentaclmacruleetypevalue: ''
+      hm2agentaclmacrulehitcount: 0
+      hm2agentaclmacrulehitcountdiscontinuitytime: 0
+      hm2agentaclmacruleindex: 0
+      hm2agentaclmacruleindexnextfree: 0
+      hm2agentaclmacrulelogging: false
+      hm2agentaclmacrulematchevery: false
+      hm2agentaclmacrulemirrorintf: 0
+      hm2agentaclmacruleratelimitcburst: ''
+      hm2agentaclmacruleratelimitcrate: 0
+      hm2agentaclmacruleratelimitcrateunit: 0
+      hm2agentaclmacruleredirectintf: 0
+      hm2agentaclmacrulesrcmacaddr: ''
+      hm2agentaclmacrulesrcmacmask: ''
+      hm2agentaclmacrulestatsaction: 0
+      hm2agentaclmacrulestatus: 0
+      hm2agentaclmacruletable: ''
+      hm2agentaclmacruletimerangename: ''
+      hm2agentaclmacruletimerangestatus: 0
+      hm2agentaclmacrulevlanid: 0
+      hm2agentaclmacrulevlanid2: 0
+      hm2agentaclmacrulevlanid2rangeend: 0
+      hm2agentaclmacrulevlanid2rangestart: 0
+      hm2agentaclmacrulevlanidrangeend: 0
+      hm2agentaclmacrulevlanidrangestart: 0
+      hm2agentaclmacstatsaction: 0
+      hm2agentaclmacstatus: 0
+      hm2agentaclmactable: ''
+      hm2agentaclname: ''
+      hm2agentaclnamedipv4indexnextfree: 0
+      hm2agentaclruleaction: 0
+      hm2agentaclruleassignqueueid: 0
+      hm2agentaclruledestipaddress: ''
+      hm2agentaclruledestipmask: ''
+      hm2agentaclruledestl4port: 0
+      hm2agentaclruledestl4portrangeend: 0
+      hm2agentaclruledestl4portrangestart: 0
+      hm2agentaclruledstl4portoperator: ''
+      hm2agentaclruleentry: ''
+      hm2agentaclruleestablished: false
+      hm2agentaclrulefragments: false
+      hm2agentaclrulehitcount: 0
+      hm2agentaclrulehitcountdiscontinuitytime: 0
+      hm2agentaclruleipdscp: 0
+      hm2agentaclruleicmpcode: 0
+      hm2agentaclruleicmptype: 0
+      hm2agentaclruleigmptype: 0
+      hm2agentaclruleindex: 0
+      hm2agentaclruleindexnextfree: 0
+      hm2agentaclruleipprecedence: 0
+      hm2agentaclruleiptosbits: 0
+      hm2agentaclruleiptosmask: 0
+      hm2agentaclrulelogging: false
+      hm2agentaclrulematchevery: false
+      hm2agentaclrulemirrorintf: 0
+      hm2agentaclruleprotocol: 0
+      hm2agentaclruleratelimitcburst: ''
+      hm2agentaclruleratelimitcrate: 0
+      hm2agentaclruleratelimitcrateunit: 0
+      hm2agentaclruleredirectextagentid: 0
+      hm2agentaclruleredirectintf: 0
+      hm2agentaclrulesrcipaddress: ''
+      hm2agentaclrulesrcipmask: ''
+      hm2agentaclrulesrcl4port: 0
+      hm2agentaclrulesrcl4portoperator: ''
+      hm2agentaclrulesrcl4portrangeend: 0
+      hm2agentaclrulesrcl4portrangestart: 0
+      hm2agentaclrulestatsaction: 0
+      hm2agentaclrulestatus: 0
+      hm2agentaclruletable: ''
+      hm2agentaclruletcpflagbits: 0
+      hm2agentaclruletcpflagmask: 0
+      hm2agentaclruletimerangename: ''
+      hm2agentaclruletimerangestatus: 0
+      hm2agentaclstatsaction: 0
+      hm2agentaclstatus: 0
+      hm2agentacltable: ''
+      hm2agentacltrapflag: false
+      hm2agentacltrapruleaction: 0
+      hm2agentacltraprulehitcount: 0
+      hm2agentacltraprulehitcounthigh: 0
+      hm2agentacltraprulehitcountlow: 0
+      hm2agentacltrapruleindex: 0
+      hm2agentacltrapruleinstallationstatus: 0
+      hm2agentacltrapruletimerangename: ''
+      hm2agentacltrapruletimerangenotification: 0
+      hm2agentaclvlanaclid: 0
+      hm2agentaclvlanacltype: 0
+      hm2agentaclvlandirection: 0
+      hm2agentaclvlanentry: ''
+      hm2agentaclvlanindex: 0
+      hm2agentaclvlansequence: 0
+      hm2agentaclvlanstatus: 0
+      hm2agentaclvlantable: ''
+attributes:
+  hm2agentaclentry:
+    syntax: Hm2AgentAclEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclTable
+          field: hm2AgentAclEntry
+  hm2agentaclifaclid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclIfEntry
+          field: hm2AgentAclIfAclId
+          index_field: hm2AgentAclIfAclId
+          index_fields: &id001
+          - hm2AgentAclIfIndex
+          - hm2AgentAclIfDirection
+          - hm2AgentAclIfSequence
+          - hm2AgentAclIfAclType
+          - hm2AgentAclIfAclId
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclifacltype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclIfEntry
+          field: hm2AgentAclIfAclType
+          index_field: hm2AgentAclIfAclId
+          index_fields: *id001
+  hm2agentaclifdirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclIfEntry
+          field: hm2AgentAclIfDirection
+          index_field: hm2AgentAclIfAclId
+          index_fields: *id001
+  hm2agentaclifentry:
+    syntax: Hm2AgentAclIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclIfTable
+          field: hm2AgentAclIfEntry
+  hm2agentaclifindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclIfEntry
+          field: hm2AgentAclIfIndex
+          index_field: hm2AgentAclIfAclId
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclifsequence:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclIfEntry
+          field: hm2AgentAclIfSequence
+          index_field: hm2AgentAclIfAclId
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 4294967295
+  hm2agentaclifstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclIfEntry
+          field: hm2AgentAclIfStatus
+          index_field: hm2AgentAclIfAclId
+          index_fields: *id001
+    create_method: createAndWait
+  hm2agentacliftable:
+    syntax: Hm2AgentAclIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclIfTable
+  hm2agentaclindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclEntry
+          field: hm2AgentAclIndex
+          index_field: hm2AgentAclIndex
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclmacentry:
+    syntax: Hm2AgentAclMacEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacTable
+          field: hm2AgentAclMacEntry
+  hm2agentaclmacindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacEntry
+          field: hm2AgentAclMacIndex
+          index_field: hm2AgentAclMacIndex
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclmacindexnextfree:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclMacIndexNextFree
+  hm2agentaclmacname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacEntry
+          field: hm2AgentAclMacName
+          index_field: hm2AgentAclMacIndex
+    validation:
+      min: 1
+      max: 31
+  hm2agentaclmacruleaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleAction
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: &id002
+          - hm2AgentAclMacIndex
+          - hm2AgentAclMacRuleIndex
+  hm2agentaclmacruleassignqueueid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleAssignQueueId
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2agentaclmacrulecos:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleCos
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulecos2:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleCos2
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2agentaclmacruledestmacaddr:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleDestMacAddr
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacruledestmacmask:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleDestMacMask
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacruleentry:
+    syntax: Hm2AgentAclMacRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleTable
+          field: hm2AgentAclMacRuleEntry
+  hm2agentaclmacruleetypekey:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleEtypeKey
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacruleetypevalue:
+    syntax: EtypeValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleEtypeValue
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulehitcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.253
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleHitCount
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulehitcountdiscontinuitytime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.254
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleHitCountDiscontinuityTime
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleIndex
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclmacruleindexnextfree:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleIndexNextFree
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulelogging:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleLogging
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentaclmacrulematchevery:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleMatchEvery
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentaclmacrulemirrorintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleMirrorIntf
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacruleratelimitcburst:
+    syntax: AclBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.251
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleRateLimitCburst
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacruleratelimitcrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.250
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleRateLimitCrate
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 10000000
+  hm2agentaclmacruleratelimitcrateunit:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.249
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleRateLimitCrateUnit
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacruleredirectintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleRedirectIntf
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulesrcmacaddr:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleSrcMacAddr
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulesrcmacmask:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleSrcMacMask
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulestatsaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.252
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleStatsAction
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleStatus
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    create_method: createAndWait
+  hm2agentaclmacruletable:
+    syntax: Hm2AgentAclMacRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclMacRuleTable
+  hm2agentaclmacruletimerangename:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleTimeRangeName
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 31
+  hm2agentaclmacruletimerangestatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleTimeRangeStatus
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+  hm2agentaclmacrulevlanid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleVlanId
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 4042
+  hm2agentaclmacrulevlanid2:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleVlanId2
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 4042
+  hm2agentaclmacrulevlanid2rangeend:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleVlanId2RangeEnd
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 4042
+  hm2agentaclmacrulevlanid2rangestart:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleVlanId2RangeStart
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 4042
+  hm2agentaclmacrulevlanidrangeend:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleVlanIdRangeEnd
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 4042
+  hm2agentaclmacrulevlanidrangestart:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.7.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacRuleEntry
+          field: hm2AgentAclMacRuleVlanIdRangeStart
+          index_field: hm2AgentAclMacRuleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 4042
+  hm2agentaclmacstatsaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.6.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacEntry
+          field: hm2AgentAclMacStatsAction
+          index_field: hm2AgentAclMacIndex
+  hm2agentaclmacstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclMacEntry
+          field: hm2AgentAclMacStatus
+          index_field: hm2AgentAclMacIndex
+    create_method: createAndWait
+  hm2agentaclmactable:
+    syntax: Hm2AgentAclMacEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclMacTable
+  hm2agentaclname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclEntry
+          field: hm2AgentAclName
+          index_field: hm2AgentAclIndex
+    validation:
+      min: 1
+      max: 31
+  hm2agentaclnamedipv4indexnextfree:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.14
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclNamedIpv4IndexNextFree
+  hm2agentaclruleaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleAction
+          index_field: hm2AgentAclRuleIndex
+          index_fields: &id003
+          - hm2AgentAclIndex
+          - hm2AgentAclRuleIndex
+  hm2agentaclruleassignqueueid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleAssignQueueId
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 7
+  hm2agentaclruledestipaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleDestIpAddress
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruledestipmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleDestIpMask
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruledestl4port:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleDestL4Port
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruledestl4portrangeend:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleDestL4PortRangeEnd
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruledestl4portrangestart:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleDestL4PortRangeStart
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruledstl4portoperator:
+    syntax: Hm2PortOperator
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.258
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleDstL4PortOperator
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleentry:
+    syntax: Hm2AgentAclRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleTable
+          field: hm2AgentAclRuleEntry
+  hm2agentaclruleestablished:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.32
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleEstablished
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentaclrulefragments:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.33
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleFragments
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentaclrulehitcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.253
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleHitCount
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulehitcountdiscontinuitytime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.254
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleHitCountDiscontinuityTime
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleipdscp:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIPDSCP
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleicmpcode:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.30
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIcmpCode
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleicmptype:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.29
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIcmpType
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleigmptype:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.31
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIgmpType
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIndex
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclruleindexnextfree:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIndexNextFree
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleipprecedence:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIpPrecedence
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleiptosbits:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIpTosBits
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleiptosmask:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleIpTosMask
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulelogging:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleLogging
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentaclrulematchevery:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleMatchEvery
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentaclrulemirrorintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleMirrorIntf
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleprotocol:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleProtocol
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleratelimitcburst:
+    syntax: AclBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.251
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleRateLimitCburst
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleratelimitcrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.250
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleRateLimitCrate
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 10000000
+  hm2agentaclruleratelimitcrateunit:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.249
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleRateLimitCrateUnit
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleredirectextagentid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.28
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleRedirectExtAgentId
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruleredirectintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleRedirectIntf
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulesrcipaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleSrcIpAddress
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulesrcipmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleSrcIpMask
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulesrcl4port:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleSrcL4Port
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulesrcl4portoperator:
+    syntax: Hm2PortOperator
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.257
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleSrcL4PortOperator
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulesrcl4portrangeend:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleSrcL4PortRangeEnd
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulesrcl4portrangestart:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleSrcL4PortRangeStart
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulestatsaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.252
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleStatsAction
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclrulestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleStatus
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    create_method: createAndWait
+  hm2agentaclruletable:
+    syntax: Hm2AgentAclRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclRuleTable
+  hm2agentaclruletcpflagbits:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.255
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleTcpFlagBits
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruletcpflagmask:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.256
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleTcpFlagMask
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclruletimerangename:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleTimeRangeName
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 31
+  hm2agentaclruletimerangestatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.4.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclRuleEntry
+          field: hm2AgentAclRuleTimeRangeStatus
+          index_field: hm2AgentAclRuleIndex
+          index_fields: *id003
+  hm2agentaclstatsaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.1.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclEntry
+          field: hm2AgentAclStatsAction
+          index_field: hm2AgentAclIndex
+  hm2agentaclstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclEntry
+          field: hm2AgentAclStatus
+          index_field: hm2AgentAclIndex
+    create_method: createAndWait
+  hm2agentacltable:
+    syntax: Hm2AgentAclEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclTable
+  hm2agentacltrapflag:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapFlag
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentacltrapruleaction:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleAction
+  hm2agentacltraprulehitcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleHitCount
+  hm2agentacltraprulehitcounthigh:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleHitCountHigh
+  hm2agentacltraprulehitcountlow:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.249
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleHitCountLow
+  hm2agentacltrapruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleIndex
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentacltrapruleinstallationstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleInstallationStatus
+  hm2agentacltrapruletimerangename:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleTimeRangeName
+    validation:
+      min: 1
+      max: 31
+  hm2agentacltrapruletimerangenotification:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.9.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclLoggingGroup
+          field: hm2AgentAclTrapRuleTimeRangeNotification
+  hm2agentaclvlanaclid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclVlanEntry
+          field: hm2AgentAclVlanAclId
+          index_field: hm2AgentAclVlanAclId
+          index_fields: &id004
+          - hm2AgentAclVlanIndex
+          - hm2AgentAclVlanDirection
+          - hm2AgentAclVlanSequence
+          - hm2AgentAclVlanAclType
+          - hm2AgentAclVlanAclId
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclvlanacltype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclVlanEntry
+          field: hm2AgentAclVlanAclType
+          index_field: hm2AgentAclVlanAclId
+          index_fields: *id004
+  hm2agentaclvlandirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclVlanEntry
+          field: hm2AgentAclVlanDirection
+          index_field: hm2AgentAclVlanAclId
+          index_fields: *id004
+  hm2agentaclvlanentry:
+    syntax: Hm2AgentAclVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclVlanTable
+          field: hm2AgentAclVlanEntry
+  hm2agentaclvlanindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclVlanEntry
+          field: hm2AgentAclVlanIndex
+          index_field: hm2AgentAclVlanAclId
+          index_fields: *id004
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentaclvlansequence:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclVlanEntry
+          field: hm2AgentAclVlanSequence
+          index_field: hm2AgentAclVlanAclId
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 4294967295
+  hm2agentaclvlanstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2AgentAclVlanEntry
+          field: hm2AgentAclVlanStatus
+          index_field: hm2AgentAclVlanAclId
+          index_fields: *id004
+    create_method: createAndWait
+  hm2agentaclvlantable:
+    syntax: Hm2AgentAclVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.3.2.13
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-ACL-MIB
+          table: hm2PlatformQosAcl
+          field: hm2AgentAclVlanTable

@@ -1,0 +1,66 @@
+version: 2.7.0
+feature: config
+description: Configuration management and watchdog status
+methods:
+  get_config:
+    type: dict
+    defaults:
+      running: ''
+      startup: ''
+  get_config_status:
+    type: dict
+    defaults:
+      saved: true
+      last_changed: ''
+      nvm: ok
+      aca: absent
+      boot: ok
+  get_config_remote:
+    type: dict
+    defaults:
+      url: ''
+      status: idle
+  set_config_remote:
+    type: upsert
+  get_watchdog_status:
+    type: dict
+    defaults:
+      watchdog_enabled: false
+      watchdog_interval: 0
+      watchdog_remaining: 0
+  set_watchdog:
+    type: upsert
+attributes:
+  nvm:
+    wire: hm2fmnvmstate
+    source: filemgmt
+    value_map:
+      '1': ok
+      '2': outOfSync
+      '3': busy
+  aca:
+    wire: hm2fmenvmstate
+    source: filemgmt
+    value_map:
+      '1': ok
+      '2': outOfSync
+      '3': absent
+  boot:
+    wire: hm2fmbootparamstate
+    source: filemgmt
+    value_map:
+      '1': ok
+      '2': outOfSync
+  saved:
+    compute:
+      from: [nvm]
+      expr: "nvm == 'ok'"
+  watchdog_enabled:
+    wire: hm2configwatchdogadminstatus
+    source: filemgmt
+  watchdog_interval:
+    wire: hm2configwatchdogtimeinterval
+    source: filemgmt
+  watchdog_remaining:
+    wire: hm2configwatchdogtimervalue
+    source: filemgmt

@@ -1,0 +1,30 @@
+version: 2.7.0
+feature: gvrp
+description: GVRP (GARP VLAN Registration Protocol) configuration
+methods:
+  get_gvrp:
+    type: dict
+    defaults:
+      enabled: false
+      ports: {}
+    sub_tables:
+      ports:
+        primary_key: port_enabled
+        key_map: bridge_port
+        field_map:
+          enabled: port_enabled
+        defaults:
+          enabled: false
+  set_gvrp:
+    type: upsert
+    fields: [enabled]
+  set_gvrp_port:
+    type: upsert
+    fields: [port_enabled]
+attributes:
+  enabled:
+    wire: dot1qgvrpstatus
+    source: q-bridge
+  port_enabled:
+    wire: dot1qportgvrpstatus
+    source: q-bridge

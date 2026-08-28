@@ -1,0 +1,36 @@
+version: "2.6.0"
+feature: platform-tacacsclient-ssh
+description: "SSH CLI sources for TACACS+ — hand-authored"
+
+attributes:
+  hm2agenttacacscmdaccountingmode:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show tacacs global", field: "command accounting mode"}
+
+  # hm2agenttacacstimeout is per-server in TACACS table, but there's also a global
+  # show tacacs global shows "TACACS+ global timeout" — this is the global default
+
+  hm2agenttacacsserveripaddress:
+    sources:
+      ssh:
+        read: {command: "show tacacs server", parser: table, column: 0}
+        create: {command: "tacacs server add {tacacs_address}", level: config}
+        delete: {command: "tacacs server delete {index}", level: config}
+
+  hm2agenttacacsportnumber:
+    sources:
+      ssh:
+        read: {command: "show tacacs server", parser: table, column: 1}
+
+  hm2agenttacacstimeout:
+    sources:
+      ssh:
+        read: {command: "show tacacs server", parser: table, column: 2}
+
+  hm2agenttacacsserverstatus:
+    sources:
+      ssh:
+        create: {command: "tacacs server add {tacacs_address}", level: config}
+        delete: {command: "tacacs server delete {index}", level: config}

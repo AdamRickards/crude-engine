@@ -1,0 +1,544 @@
+version: 2.6.0
+feature: ieee8021-st
+schemas:
+  read_ieee8021-st:
+    type: dict
+    defaults:
+      ieee8021bridgebasecomponentid: ''
+      ieee8021bridgebaseport: 0
+      ieee8021stadminbasetime: ''
+      ieee8021stadmincontrollist: ''
+      ieee8021stadmincontrollistlength: 0
+      ieee8021stadmincycletimedenominator: 0
+      ieee8021stadmincycletimeextension: 0
+      ieee8021stadmincycletimenumerator: 0
+      ieee8021stadmingatestates: ''
+      ieee8021stconfigchange: false
+      ieee8021stconfigchangeerror: 0
+      ieee8021stconfigchangetime: ''
+      ieee8021stconfigpending: false
+      ieee8021stcurrenttime: ''
+      ieee8021stgateenabled: false
+      ieee8021stmaxsdu: 0
+      ieee8021stmaxsduentry: ''
+      ieee8021stmaxsdutable: ''
+      ieee8021stoperbasetime: ''
+      ieee8021stopercontrollist: ''
+      ieee8021stopercontrollistlength: 0
+      ieee8021stopercycletimedenominator: 0
+      ieee8021stopercycletimeextension: 0
+      ieee8021stopercycletimenumerator: 0
+      ieee8021stopergatestates: ''
+      ieee8021stparametersentry: ''
+      ieee8021stparameterstable: ''
+      ieee8021stsupportedlistmax: 0
+      ieee8021sttickgranularity: 0
+      ieee8021sttrafficclass: ''
+      ieee8021transmissionoverrun: 0
+attributes:
+  ieee8021bridgebasecomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021BridgeBaseEntry
+          field: ieee8021BridgeBaseComponentId
+          index_field: ieee8021BridgeBaseComponentId
+  ieee8021bridgebaseport:
+    syntax: IEEE8021BridgePortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePort
+          index_field: ieee8021BridgeBasePort
+          index_fields:
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+  ieee8021stadminbasetime:
+    syntax: IEEE8021STPTPtimeValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STAdminBaseTime
+          index_field: ieee8021BridgeBasePort
+          index_fields: &id001
+          - ieee8021BridgeBaseComponentId
+          - ieee8021BridgeBasePort
+  ieee8021stadmincontrollist:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STAdminControlList
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stadmincontrollistlength:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STAdminControlListLength
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stadmincycletimedenominator:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STAdminCycleTimeDenominator
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stadmincycletimeextension:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STAdminCycleTimeExtension
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stadmincycletimenumerator:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STAdminCycleTimeNumerator
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stadmingatestates:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STAdminGateStates
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stconfigchange:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STConfigChange
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021stconfigchangeerror:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STConfigChangeError
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stconfigchangetime:
+    syntax: IEEE8021STPTPtimeValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STConfigChangeTime
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stconfigpending:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STConfigPending
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021stcurrenttime:
+    syntax: IEEE8021STPTPtimeValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STCurrentTime
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stgateenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STGateEnabled
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021stmaxsdu:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STMaxSDUEntry
+          field: ieee8021STMaxSDU
+          index_field: ieee8021STTrafficClass
+          index_fields: &id002
+          - ieee8021BridgeBaseComponentId
+          - ieee8021BridgeBasePort
+          - ieee8021STTrafficClass
+  ieee8021stmaxsduentry:
+    syntax: Ieee8021STMaxSDUEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STMaxSDUTable
+          field: ieee8021STMaxSDUEntry
+  ieee8021stmaxsdutable:
+    syntax: Ieee8021STMaxSDUEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STMaxSDUSubtree
+          field: ieee8021STMaxSDUTable
+  ieee8021stoperbasetime:
+    syntax: IEEE8021STPTPtimeValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STOperBaseTime
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stopercontrollist:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STOperControlList
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stopercontrollistlength:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STOperControlListLength
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stopercycletimedenominator:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STOperCycleTimeDenominator
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stopercycletimeextension:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STOperCycleTimeExtension
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stopercycletimenumerator:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STOperCycleTimeNumerator
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stopergatestates:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STOperGateStates
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021stparametersentry:
+    syntax: Ieee8021STParametersEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersTable
+          field: ieee8021STParametersEntry
+  ieee8021stparameterstable:
+    syntax: Ieee8021STParametersEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParameters
+          field: ieee8021STParametersTable
+  ieee8021stsupportedlistmax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STSupportedListMax
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021sttickgranularity:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.2.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STParametersEntry
+          field: ieee8021STTickGranularity
+          index_field: ieee8021BridgeBasePort
+          index_fields: *id001
+  ieee8021sttrafficclass:
+    syntax: IEEE8021STTrafficClassValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STMaxSDUEntry
+          field: ieee8021STTrafficClass
+          index_field: ieee8021STTrafficClass
+          index_fields: *id002
+  ieee8021transmissionoverrun:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.30.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-ST-MIB
+          table: ieee8021STMaxSDUEntry
+          field: ieee8021TransmissionOverrun
+          index_field: ieee8021STTrafficClass
+          index_fields: *id002

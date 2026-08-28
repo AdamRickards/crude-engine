@@ -1,0 +1,973 @@
+version: 2.6.0
+feature: ipmroute-std
+schemas:
+  read_ipmroute-std:
+    type: dict
+    defaults:
+      ipmrouteboundaryaddress: ''
+      ipmrouteboundaryaddressmask: ''
+      ipmrouteboundaryentry: ''
+      ipmrouteboundaryifindex: 0
+      ipmrouteboundarystatus: 0
+      ipmrouteboundarytable: ''
+      ipmroutedifferentinifpackets: 0
+      ipmrouteenable: 0
+      ipmrouteentry: ''
+      ipmrouteentrycount: 0
+      ipmrouteexpirytime: 0
+      ipmroutegroup: ''
+      ipmroutehcoctets: 0
+      ipmrouteinifindex: 0
+      ipmrouteinterfaceentry: ''
+      ipmrouteinterfacehcinmcastoctets: 0
+      ipmrouteinterfacehcoutmcastoctets: 0
+      ipmrouteinterfaceifindex: 0
+      ipmrouteinterfaceinmcastoctets: 0
+      ipmrouteinterfaceoutmcastoctets: 0
+      ipmrouteinterfaceprotocol: ''
+      ipmrouteinterfaceratelimit: 0
+      ipmrouteinterfacetable: ''
+      ipmrouteinterfacettl: 0
+      ipmroutenexthopaddress: ''
+      ipmroutenexthopclosestmemberhops: 0
+      ipmroutenexthopentry: ''
+      ipmroutenexthopexpirytime: 0
+      ipmroutenexthopgroup: ''
+      ipmroutenexthopifindex: 0
+      ipmroutenexthoppkts: 0
+      ipmroutenexthopprotocol: ''
+      ipmroutenexthopsource: ''
+      ipmroutenexthopsourcemask: ''
+      ipmroutenexthopstate: 0
+      ipmroutenexthoptable: ''
+      ipmroutenexthopuptime: 0
+      ipmrouteoctets: 0
+      ipmroutepkts: 0
+      ipmrouteprotocol: ''
+      ipmroutertaddress: ''
+      ipmroutertmask: ''
+      ipmroutertproto: ''
+      ipmrouterttype: 0
+      ipmroutescopenameaddress: ''
+      ipmroutescopenameaddressmask: ''
+      ipmroutescopenamedefault: false
+      ipmroutescopenameentry: ''
+      ipmroutescopenamelanguage: ''
+      ipmroutescopenamestatus: 0
+      ipmroutescopenamestring: ''
+      ipmroutescopenametable: ''
+      ipmroutesource: ''
+      ipmroutesourcemask: ''
+      ipmroutetable: ''
+      ipmrouteuptime: 0
+      ipmrouteupstreamneighbor: ''
+attributes:
+  ipmrouteboundaryaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteBoundaryEntry
+          field: ipMRouteBoundaryAddress
+          index_field: ipMRouteBoundaryAddressMask
+          index_fields: &id001
+          - ipMRouteBoundaryIfIndex
+          - ipMRouteBoundaryAddress
+          - ipMRouteBoundaryAddressMask
+  ipmrouteboundaryaddressmask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteBoundaryEntry
+          field: ipMRouteBoundaryAddressMask
+          index_field: ipMRouteBoundaryAddressMask
+          index_fields: *id001
+  ipmrouteboundaryentry:
+    syntax: IpMRouteBoundaryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteBoundaryTable
+          field: ipMRouteBoundaryEntry
+  ipmrouteboundaryifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteBoundaryEntry
+          field: ipMRouteBoundaryIfIndex
+          index_field: ipMRouteBoundaryAddressMask
+          index_fields: *id001
+  ipmrouteboundarystatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteBoundaryEntry
+          field: ipMRouteBoundaryStatus
+          index_field: ipMRouteBoundaryAddressMask
+          index_fields: *id001
+    create_method: createAndWait
+  ipmrouteboundarytable:
+    syntax: IpMRouteBoundaryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.5
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRoute
+          field: ipMRouteBoundaryTable
+  ipmroutedifferentinifpackets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteDifferentInIfPackets
+          index_field: ipMRouteSource
+          index_fields: &id002
+          - ipMRouteGroup
+          - ipMRouteSource
+  ipmrouteenable:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRoute
+          field: ipMRouteEnable
+  ipmrouteentry:
+    syntax: IpMRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteTable
+          field: ipMRouteEntry
+  ipmrouteentrycount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.7
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRoute
+          field: ipMRouteEntryCount
+  ipmrouteexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteExpiryTime
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutegroup:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteGroup
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutehcoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.16
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteHCOctets
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmrouteinifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteInIfIndex
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmrouteinterfaceentry:
+    syntax: IpMRouteInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceTable
+          field: ipMRouteInterfaceEntry
+  ipmrouteinterfacehcinmcastoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceHCInMcastOctets
+          index_field: ipMRouteInterfaceIfIndex
+  ipmrouteinterfacehcoutmcastoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceHCOutMcastOctets
+          index_field: ipMRouteInterfaceIfIndex
+  ipmrouteinterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceIfIndex
+          index_field: ipMRouteInterfaceIfIndex
+  ipmrouteinterfaceinmcastoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceInMcastOctets
+          index_field: ipMRouteInterfaceIfIndex
+  ipmrouteinterfaceoutmcastoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceOutMcastOctets
+          index_field: ipMRouteInterfaceIfIndex
+  ipmrouteinterfaceprotocol:
+    syntax: IANAipMRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceProtocol
+          index_field: ipMRouteInterfaceIfIndex
+  ipmrouteinterfaceratelimit:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceRateLimit
+          index_field: ipMRouteInterfaceIfIndex
+  ipmrouteinterfacetable:
+    syntax: IpMRouteInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRoute
+          field: ipMRouteInterfaceTable
+  ipmrouteinterfacettl:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteInterfaceEntry
+          field: ipMRouteInterfaceTtl
+          index_field: ipMRouteInterfaceIfIndex
+    validation:
+      min: 0
+      max: 255
+  ipmroutenexthopaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopAddress
+          index_field: ipMRouteNextHopAddress
+          index_fields: &id003
+          - ipMRouteNextHopGroup
+          - ipMRouteNextHopSource
+          - ipMRouteNextHopSourceMask
+          - ipMRouteNextHopIfIndex
+          - ipMRouteNextHopAddress
+  ipmroutenexthopclosestmemberhops:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopClosestMemberHops
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthopentry:
+    syntax: IpMRouteNextHopEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopTable
+          field: ipMRouteNextHopEntry
+  ipmroutenexthopexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopExpiryTime
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthopgroup:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopGroup
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthopifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopIfIndex
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthoppkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopPkts
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthopprotocol:
+    syntax: IANAipMRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopProtocol
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthopsource:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopSource
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthopsourcemask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopSourceMask
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthopstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopState
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmroutenexthoptable:
+    syntax: IpMRouteNextHopEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRoute
+          field: ipMRouteNextHopTable
+  ipmroutenexthopuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteNextHopEntry
+          field: ipMRouteNextHopUpTime
+          index_field: ipMRouteNextHopAddress
+          index_fields: *id003
+  ipmrouteoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteOctets
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutepkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRoutePkts
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmrouteprotocol:
+    syntax: IANAipMRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteProtocol
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutertaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteRtAddress
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutertmask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteRtMask
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutertproto:
+    syntax: IANAipRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteRtProto
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmrouterttype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.15
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteRtType
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutescopenameaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteScopeNameEntry
+          field: ipMRouteScopeNameAddress
+          index_field: ipMRouteScopeNameLanguage
+          index_fields: &id004
+          - ipMRouteScopeNameAddress
+          - ipMRouteScopeNameAddressMask
+          - ipMRouteScopeNameLanguage
+          key_tag: to_hex_decode
+  ipmroutescopenameaddressmask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteScopeNameEntry
+          field: ipMRouteScopeNameAddressMask
+          index_field: ipMRouteScopeNameLanguage
+          index_fields: *id004
+          key_tag: to_hex_decode
+  ipmroutescopenamedefault:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteScopeNameEntry
+          field: ipMRouteScopeNameDefault
+          index_field: ipMRouteScopeNameLanguage
+          index_fields: *id004
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false
+  ipmroutescopenameentry:
+    syntax: IpMRouteScopeNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteScopeNameTable
+          field: ipMRouteScopeNameEntry
+  ipmroutescopenamelanguage:
+    syntax: LanguageTag
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteScopeNameEntry
+          field: ipMRouteScopeNameLanguage
+          index_field: ipMRouteScopeNameLanguage
+          index_fields: *id004
+          key_tag: to_hex_decode
+  ipmroutescopenamestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteScopeNameEntry
+          field: ipMRouteScopeNameStatus
+          index_field: ipMRouteScopeNameLanguage
+          index_fields: *id004
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  ipmroutescopenamestring:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteScopeNameEntry
+          field: ipMRouteScopeNameString
+          index_field: ipMRouteScopeNameLanguage
+          index_fields: *id004
+          key_tag: to_hex_decode
+  ipmroutescopenametable:
+    syntax: IpMRouteScopeNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.6
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRoute
+          field: ipMRouteScopeNameTable
+  ipmroutesource:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteSource
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutesourcemask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteSourceMask
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmroutetable:
+    syntax: IpMRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2
+          method: get
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRoute
+          field: ipMRouteTable
+  ipmrouteuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteUpTime
+          index_field: ipMRouteSource
+          index_fields: *id002
+  ipmrouteupstreamneighbor:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.83.1.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMROUTE-STD-MIB
+          table: ipMRouteEntry
+          field: ipMRouteUpstreamNeighbor
+          index_field: ipMRouteSource
+          index_fields: *id002

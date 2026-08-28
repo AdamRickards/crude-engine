@@ -1,0 +1,1518 @@
+version: 2.6.0
+feature: q-bridge
+schemas:
+  read_q-bridge:
+    type: dict
+    defaults:
+      dot1dbaseport: 0
+      dot1dbaseportentry: ''
+      dot1qconstraintset: 0
+      dot1qconstraintsetdefault: 0
+      dot1qconstraintstatus: 0
+      dot1qconstrainttype: 0
+      dot1qconstrainttypedefault: 0
+      dot1qconstraintvlan: 0
+      dot1qfdbdynamiccount: 0
+      dot1qfdbentry: ''
+      dot1qfdbid: 0
+      dot1qfdbtable: ''
+      dot1qforwardallentry: ''
+      dot1qforwardallforbiddenports: []
+      dot1qforwardallports: []
+      dot1qforwardallstaticports: []
+      dot1qforwardalltable: ''
+      dot1qforwardunregisteredentry: ''
+      dot1qforwardunregisteredforbiddenports: []
+      dot1qforwardunregisteredports: []
+      dot1qforwardunregisteredstaticports: []
+      dot1qforwardunregisteredtable: ''
+      dot1qgvrpstatus: false
+      dot1qlearningconstraintsentry: ''
+      dot1qlearningconstraintstable: ''
+      dot1qmaxsupportedvlans: 0
+      dot1qmaxvlanid: ''
+      dot1qnextfreelocalvlanindex: 0
+      dot1qnumvlans: 0
+      dot1qportacceptableframetypes: 0
+      dot1qportgvrpfailedregistrations: 0
+      dot1qportgvrplastpduorigin: ''
+      dot1qportgvrpstatus: false
+      dot1qportingressfiltering: false
+      dot1qportvlanentry: ''
+      dot1qportvlanhcstatisticsentry: ''
+      dot1qportvlanhcstatisticstable: ''
+      dot1qportvlanstatisticsentry: ''
+      dot1qportvlanstatisticstable: ''
+      dot1qportvlantable: ''
+      dot1qpvid: 0
+      dot1qstaticmulticastaddress: ''
+      dot1qstaticmulticastentry: ''
+      dot1qstaticmulticastforbiddenegressports: []
+      dot1qstaticmulticastreceiveport: 0
+      dot1qstaticmulticaststaticegressports: []
+      dot1qstaticmulticaststatus: 0
+      dot1qstaticmulticasttable: ''
+      dot1qstaticunicastaddress: ''
+      dot1qstaticunicastallowedtogoto: []
+      dot1qstaticunicastentry: ''
+      dot1qstaticunicastreceiveport: 0
+      dot1qstaticunicaststatus: 0
+      dot1qstaticunicasttable: ''
+      dot1qtpfdbaddress: ''
+      dot1qtpfdbentry: ''
+      dot1qtpfdbport: 0
+      dot1qtpfdbstatus: 0
+      dot1qtpfdbtable: ''
+      dot1qtpgroupaddress: ''
+      dot1qtpgroupegressports: []
+      dot1qtpgroupentry: ''
+      dot1qtpgrouplearnt: []
+      dot1qtpgrouptable: ''
+      dot1qtpvlanporthcindiscards: 0
+      dot1qtpvlanporthcinframes: 0
+      dot1qtpvlanporthcoutframes: 0
+      dot1qtpvlanportindiscards: 0
+      dot1qtpvlanportinframes: 0
+      dot1qtpvlanportinoverflowdiscards: 0
+      dot1qtpvlanportinoverflowframes: 0
+      dot1qtpvlanportoutframes: 0
+      dot1qtpvlanportoutoverflowframes: 0
+      dot1qvlancreationtime: 0
+      dot1qvlancurrentegressports: []
+      dot1qvlancurrententry: ''
+      dot1qvlancurrenttable: ''
+      dot1qvlancurrentuntaggedports: []
+      dot1qvlanfdbid: 0
+      dot1qvlanforbiddenegressports: []
+      dot1qvlanindex: 0
+      dot1qvlannumdeletes: 0
+      dot1qvlanstaticegressports: []
+      dot1qvlanstaticentry: ''
+      dot1qvlanstaticname: ''
+      dot1qvlanstaticrowstatus: 0
+      dot1qvlanstatictable: ''
+      dot1qvlanstaticuntaggedports: []
+      dot1qvlanstatus: 0
+      dot1qvlantimemark: 0
+      dot1qvlanversionnumber: 0
+attributes:
+  dot1dbaseport:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1dBasePortEntry
+          field: dot1dBasePort
+          index_field: dot1dBasePort
+    validation:
+      min: 1
+      max: 65535
+  dot1dbaseportentry:
+    syntax: Dot1dBasePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.1.4.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1dBasePortTable
+          field: dot1dBasePortEntry
+  dot1qconstraintset:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qLearningConstraintsEntry
+          field: dot1qConstraintSet
+          index_field: dot1qConstraintSet
+          index_fields: &id001
+          - dot1qConstraintVlan
+          - dot1qConstraintSet
+    validation:
+      min: 0
+      max: 65535
+  dot1qconstraintsetdefault:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.9
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qConstraintSetDefault
+    validation:
+      min: 0
+      max: 65535
+  dot1qconstraintstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qLearningConstraintsEntry
+          field: dot1qConstraintStatus
+          index_field: dot1qConstraintSet
+          index_fields: *id001
+    create_method: createAndWait
+  dot1qconstrainttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qLearningConstraintsEntry
+          field: dot1qConstraintType
+          index_field: dot1qConstraintSet
+          index_fields: *id001
+  dot1qconstrainttypedefault:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.10
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qConstraintTypeDefault
+  dot1qconstraintvlan:
+    syntax: VlanIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qLearningConstraintsEntry
+          field: dot1qConstraintVlan
+          index_field: dot1qConstraintSet
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 4094
+  dot1qfdbdynamiccount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qFdbEntry
+          field: dot1qFdbDynamicCount
+          index_field: dot1qFdbId
+  dot1qfdbentry:
+    syntax: Dot1qFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qFdbTable
+          field: dot1qFdbEntry
+  dot1qfdbid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qFdbEntry
+          field: dot1qFdbId
+          index_field: dot1qFdbId
+  dot1qfdbtable:
+    syntax: Dot1qFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTp
+          field: dot1qFdbTable
+  dot1qforwardallentry:
+    syntax: Dot1qForwardAllEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.4.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardAllTable
+          field: dot1qForwardAllEntry
+  dot1qforwardallforbiddenports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardAllEntry
+          field: dot1qForwardAllForbiddenPorts
+          index_field: dot1qVlanIndex
+  dot1qforwardallports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardAllEntry
+          field: dot1qForwardAllPorts
+          index_field: dot1qVlanIndex
+  dot1qforwardallstaticports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardAllEntry
+          field: dot1qForwardAllStaticPorts
+          index_field: dot1qVlanIndex
+  dot1qforwardalltable:
+    syntax: Dot1qForwardAllEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.4
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTp
+          field: dot1qForwardAllTable
+  dot1qforwardunregisteredentry:
+    syntax: Dot1qForwardUnregisteredEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.5.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardUnregisteredTable
+          field: dot1qForwardUnregisteredEntry
+  dot1qforwardunregisteredforbiddenports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardUnregisteredEntry
+          field: dot1qForwardUnregisteredForbiddenPorts
+          index_field: dot1qVlanIndex
+  dot1qforwardunregisteredports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardUnregisteredEntry
+          field: dot1qForwardUnregisteredPorts
+          index_field: dot1qVlanIndex
+  dot1qforwardunregisteredstaticports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qForwardUnregisteredEntry
+          field: dot1qForwardUnregisteredStaticPorts
+          index_field: dot1qVlanIndex
+  dot1qforwardunregisteredtable:
+    syntax: Dot1qForwardUnregisteredEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.5
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTp
+          field: dot1qForwardUnregisteredTable
+  dot1qgvrpstatus:
+    syntax: EnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.1.5
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qBase
+          field: dot1qGvrpStatus
+  dot1qlearningconstraintsentry:
+    syntax: Dot1qLearningConstraintsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.8.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qLearningConstraintsTable
+          field: dot1qLearningConstraintsEntry
+  dot1qlearningconstraintstable:
+    syntax: Dot1qLearningConstraintsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.8
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qLearningConstraintsTable
+  dot1qmaxsupportedvlans:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.1.3
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qBase
+          field: dot1qMaxSupportedVlans
+  dot1qmaxvlanid:
+    syntax: VlanId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.1.2
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qBase
+          field: dot1qMaxVlanId
+  dot1qnextfreelocalvlanindex:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.4
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qNextFreeLocalVlanIndex
+  dot1qnumvlans:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.1.4
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qBase
+          field: dot1qNumVlans
+  dot1qportacceptableframetypes:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanEntry
+          field: dot1qPortAcceptableFrameTypes
+          index_field: dot1dBasePort
+    validation:
+      allowed:
+      - admitAll
+      - admitOnlyVlanTagged
+  dot1qportgvrpfailedregistrations:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanEntry
+          field: dot1qPortGvrpFailedRegistrations
+  dot1qportgvrplastpduorigin:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanEntry
+          field: dot1qPortGvrpLastPduOrigin
+  dot1qportgvrpstatus:
+    syntax: EnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanEntry
+          field: dot1qPortGvrpStatus
+          index_field: dot1dBasePort
+  dot1qportingressfiltering:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanEntry
+          field: dot1qPortIngressFiltering
+          index_field: dot1dBasePort
+    validation:
+      allowed:
+      - true
+      - false
+  dot1qportvlanentry:
+    syntax: Dot1qPortVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanTable
+          field: dot1qPortVlanEntry
+  dot1qportvlanhcstatisticsentry:
+    syntax: Dot1qPortVlanHCStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.7.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanHCStatisticsTable
+          field: dot1qPortVlanHCStatisticsEntry
+  dot1qportvlanhcstatisticstable:
+    syntax: Dot1qPortVlanHCStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.7
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qPortVlanHCStatisticsTable
+  dot1qportvlanstatisticsentry:
+    syntax: Dot1qPortVlanStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanStatisticsTable
+          field: dot1qPortVlanStatisticsEntry
+  dot1qportvlanstatisticstable:
+    syntax: Dot1qPortVlanStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qPortVlanStatisticsTable
+  dot1qportvlantable:
+    syntax: Dot1qPortVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qPortVlanTable
+  dot1qpvid:
+    syntax: VlanIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanEntry
+          field: dot1qPvid
+          index_field: dot1dBasePort
+    validation:
+      min: 1
+      max: 4094
+  dot1qstaticmulticastaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticMulticastEntry
+          field: dot1qStaticMulticastAddress
+          index_field: dot1qStaticMulticastReceivePort
+          index_fields: &id002
+          - dot1qVlanIndex
+          - dot1qStaticMulticastAddress
+          - dot1qStaticMulticastReceivePort
+  dot1qstaticmulticastentry:
+    syntax: Dot1qStaticMulticastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticMulticastTable
+          field: dot1qStaticMulticastEntry
+  dot1qstaticmulticastforbiddenegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticMulticastEntry
+          field: dot1qStaticMulticastForbiddenEgressPorts
+          index_field: dot1qStaticMulticastReceivePort
+          index_fields: *id002
+  dot1qstaticmulticastreceiveport:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticMulticastEntry
+          field: dot1qStaticMulticastReceivePort
+          index_field: dot1qStaticMulticastReceivePort
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 65535
+  dot1qstaticmulticaststaticegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticMulticastEntry
+          field: dot1qStaticMulticastStaticEgressPorts
+          index_field: dot1qStaticMulticastReceivePort
+          index_fields: *id002
+  dot1qstaticmulticaststatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticMulticastEntry
+          field: dot1qStaticMulticastStatus
+          index_field: dot1qStaticMulticastReceivePort
+          index_fields: *id002
+  dot1qstaticmulticasttable:
+    syntax: Dot1qStaticMulticastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.2
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStatic
+          field: dot1qStaticMulticastTable
+  dot1qstaticunicastaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticUnicastEntry
+          field: dot1qStaticUnicastAddress
+          index_field: dot1qStaticUnicastReceivePort
+          index_fields: &id003
+          - dot1qFdbId
+          - dot1qStaticUnicastAddress
+          - dot1qStaticUnicastReceivePort
+  dot1qstaticunicastallowedtogoto:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticUnicastEntry
+          field: dot1qStaticUnicastAllowedToGoTo
+          index_field: dot1qStaticUnicastReceivePort
+          index_fields: *id003
+  dot1qstaticunicastentry:
+    syntax: Dot1qStaticUnicastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticUnicastTable
+          field: dot1qStaticUnicastEntry
+  dot1qstaticunicastreceiveport:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticUnicastEntry
+          field: dot1qStaticUnicastReceivePort
+          index_field: dot1qStaticUnicastReceivePort
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 65535
+  dot1qstaticunicaststatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStaticUnicastEntry
+          field: dot1qStaticUnicastStatus
+          index_field: dot1qStaticUnicastReceivePort
+          index_fields: *id003
+  dot1qstaticunicasttable:
+    syntax: Dot1qStaticUnicastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.3.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qStatic
+          field: dot1qStaticUnicastTable
+  dot1qtpfdbaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpFdbEntry
+          field: dot1qTpFdbAddress
+          index_field: dot1qTpFdbAddress
+          index_fields: &id004
+          - dot1qFdbId
+          - dot1qTpFdbAddress
+  dot1qtpfdbentry:
+    syntax: Dot1qTpFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpFdbTable
+          field: dot1qTpFdbEntry
+  dot1qtpfdbport:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpFdbEntry
+          field: dot1qTpFdbPort
+          index_field: dot1qTpFdbAddress
+          index_fields: *id004
+    validation:
+      min: 0
+      max: 65535
+  dot1qtpfdbstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpFdbEntry
+          field: dot1qTpFdbStatus
+          index_field: dot1qTpFdbAddress
+          index_fields: *id004
+  dot1qtpfdbtable:
+    syntax: Dot1qTpFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.2
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTp
+          field: dot1qTpFdbTable
+  dot1qtpgroupaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpGroupEntry
+          field: dot1qTpGroupAddress
+          index_field: dot1qTpGroupAddress
+          index_fields: &id005
+          - dot1qVlanIndex
+          - dot1qTpGroupAddress
+  dot1qtpgroupegressports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpGroupEntry
+          field: dot1qTpGroupEgressPorts
+          index_field: dot1qTpGroupAddress
+          index_fields: *id005
+  dot1qtpgroupentry:
+    syntax: Dot1qTpGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpGroupTable
+          field: dot1qTpGroupEntry
+  dot1qtpgrouplearnt:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTpGroupEntry
+          field: dot1qTpGroupLearnt
+          index_field: dot1qTpGroupAddress
+          index_fields: *id005
+  dot1qtpgrouptable:
+    syntax: Dot1qTpGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.2.3
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qTp
+          field: dot1qTpGroupTable
+  dot1qtpvlanporthcindiscards:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanHCStatisticsEntry
+          field: dot1qTpVlanPortHCInDiscards
+          index_field: dot1qVlanIndex
+          index_fields: &id006
+          - dot1dBasePort
+          - dot1qVlanIndex
+  dot1qtpvlanporthcinframes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanHCStatisticsEntry
+          field: dot1qTpVlanPortHCInFrames
+          index_field: dot1qVlanIndex
+          index_fields: *id006
+  dot1qtpvlanporthcoutframes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanHCStatisticsEntry
+          field: dot1qTpVlanPortHCOutFrames
+          index_field: dot1qVlanIndex
+          index_fields: *id006
+  dot1qtpvlanportindiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanStatisticsEntry
+          field: dot1qTpVlanPortInDiscards
+          index_field: dot1qVlanIndex
+          index_fields: &id007
+          - dot1dBasePort
+          - dot1qVlanIndex
+  dot1qtpvlanportinframes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanStatisticsEntry
+          field: dot1qTpVlanPortInFrames
+          index_field: dot1qVlanIndex
+          index_fields: *id007
+  dot1qtpvlanportinoverflowdiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanStatisticsEntry
+          field: dot1qTpVlanPortInOverflowDiscards
+          index_field: dot1qVlanIndex
+          index_fields: *id007
+  dot1qtpvlanportinoverflowframes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanStatisticsEntry
+          field: dot1qTpVlanPortInOverflowFrames
+          index_field: dot1qVlanIndex
+          index_fields: *id007
+  dot1qtpvlanportoutframes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanStatisticsEntry
+          field: dot1qTpVlanPortOutFrames
+          index_field: dot1qVlanIndex
+          index_fields: *id007
+  dot1qtpvlanportoutoverflowframes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qPortVlanStatisticsEntry
+          field: dot1qTpVlanPortOutOverflowFrames
+          index_field: dot1qVlanIndex
+          index_fields: *id007
+  dot1qvlancreationtime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentEntry
+          field: dot1qVlanCreationTime
+          index_field: dot1qVlanIndex
+          index_fields: &id008
+          - dot1qVlanTimeMark
+          - dot1qVlanIndex
+  dot1qvlancurrentegressports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentEntry
+          field: dot1qVlanCurrentEgressPorts
+          index_field: dot1qVlanIndex
+          index_fields: *id008
+  dot1qvlancurrententry:
+    syntax: Dot1qVlanCurrentEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentTable
+          field: dot1qVlanCurrentEntry
+  dot1qvlancurrenttable:
+    syntax: Dot1qVlanCurrentEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qVlanCurrentTable
+  dot1qvlancurrentuntaggedports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentEntry
+          field: dot1qVlanCurrentUntaggedPorts
+          index_field: dot1qVlanIndex
+          index_fields: *id008
+  dot1qvlanfdbid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentEntry
+          field: dot1qVlanFdbId
+          index_field: dot1qVlanIndex
+          index_fields: *id008
+  dot1qvlanforbiddenegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanStaticEntry
+          field: dot1qVlanForbiddenEgressPorts
+          index_field: dot1qVlanIndex
+  dot1qvlanindex:
+    syntax: VlanIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentEntry
+          field: dot1qVlanIndex
+          index_field: dot1qVlanIndex
+          index_fields: *id008
+    validation:
+      min: 1
+      max: 4094
+  dot1qvlannumdeletes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qVlanNumDeletes
+  dot1qvlanstaticegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanStaticEntry
+          field: dot1qVlanStaticEgressPorts
+          index_field: dot1qVlanIndex
+  dot1qvlanstaticentry:
+    syntax: Dot1qVlanStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.3.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanStaticTable
+          field: dot1qVlanStaticEntry
+  dot1qvlanstaticname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanStaticEntry
+          field: dot1qVlanStaticName
+          index_field: dot1qVlanIndex
+    validation:
+      min: 0
+      max: 32
+  dot1qvlanstaticrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanStaticEntry
+          field: dot1qVlanStaticRowStatus
+          index_field: dot1qVlanIndex
+    create_method: createAndGo
+  dot1qvlanstatictable:
+    syntax: Dot1qVlanStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.3
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlan
+          field: dot1qVlanStaticTable
+  dot1qvlanstaticuntaggedports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanStaticEntry
+          field: dot1qVlanStaticUntaggedPorts
+          index_field: dot1qVlanIndex
+  dot1qvlanstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentEntry
+          field: dot1qVlanStatus
+          index_field: dot1qVlanIndex
+          index_fields: *id008
+  dot1qvlantimemark:
+    syntax: TimeFilter
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.4.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qVlanCurrentEntry
+          field: dot1qVlanTimeMark
+          index_field: dot1qVlanIndex
+          index_fields: *id008
+  dot1qvlanversionnumber:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.17.7.1.1.1
+          method: get
+      mops:
+        read:
+          mib: Q-BRIDGE-MIB
+          table: dot1qBase
+          field: dot1qVlanVersionNumber

@@ -1,0 +1,1694 @@
+version: 2.6.0
+feature: ipmcast
+schemas:
+  read_ipmcast:
+    type: dict
+    defaults:
+      ipmcastboundaryaddress: ''
+      ipmcastboundaryaddressprefixlength: ''
+      ipmcastboundaryaddresstype: ''
+      ipmcastboundarydroppedmcastoctets: 0
+      ipmcastboundarydroppedmcastpkts: 0
+      ipmcastboundaryentry: ''
+      ipmcastboundaryifindex: 0
+      ipmcastboundarystatus: 0
+      ipmcastboundarystoragetype: 0
+      ipmcastboundarytable: ''
+      ipmcastboundarytimestamp: 0
+      ipmcastdeviceconfigstoragetype: 0
+      ipmcastenabled: false
+      ipmcastinterfaceentry: ''
+      ipmcastinterfaceipversion: ''
+      ipmcastinterfaceifindex: 0
+      ipmcastinterfaceratelimit: 0
+      ipmcastinterfacestoragetype: 0
+      ipmcastinterfacetable: ''
+      ipmcastinterfacettl: 0
+      ipmcastlocallistenerentry: ''
+      ipmcastlocallistenergroupaddress: ''
+      ipmcastlocallistenergroupaddresstype: ''
+      ipmcastlocallistenerifindex: 0
+      ipmcastlocallistenerrunindex: 0
+      ipmcastlocallistenersourceaddress: ''
+      ipmcastlocallistenersourceaddresstype: ''
+      ipmcastlocallistenersourceprefixlength: ''
+      ipmcastlocallistenertable: ''
+      ipmcastroutebps: 0
+      ipmcastroutedifferentinifoctets: 0
+      ipmcastroutedifferentinifpackets: 0
+      ipmcastrouteentry: ''
+      ipmcastrouteentrycount: 0
+      ipmcastrouteexpirytime: 0
+      ipmcastroutegroup: ''
+      ipmcastroutegroupaddresstype: ''
+      ipmcastroutegroupprefixlength: ''
+      ipmcastrouteinifindex: 0
+      ipmcastroutenexthopaddress: ''
+      ipmcastroutenexthopaddresstype: ''
+      ipmcastroutenexthopclosestmemberhops: 0
+      ipmcastroutenexthopentry: ''
+      ipmcastroutenexthopexpirytime: 0
+      ipmcastroutenexthopgroup: ''
+      ipmcastroutenexthopgroupaddresstype: ''
+      ipmcastroutenexthopgroupprefixlength: ''
+      ipmcastroutenexthopifindex: 0
+      ipmcastroutenexthopoctets: 0
+      ipmcastroutenexthoppkts: 0
+      ipmcastroutenexthopprotocol: ''
+      ipmcastroutenexthopsource: ''
+      ipmcastroutenexthopsourceaddresstype: ''
+      ipmcastroutenexthopsourceprefixlength: ''
+      ipmcastroutenexthopstate: 0
+      ipmcastroutenexthoptable: ''
+      ipmcastroutenexthoptimestamp: 0
+      ipmcastrouteoctets: 0
+      ipmcastroutepkts: 0
+      ipmcastrouteprotocol: ''
+      ipmcastroutertaddress: ''
+      ipmcastroutertaddresstype: ''
+      ipmcastroutertprefixlength: ''
+      ipmcastroutertprotocol: ''
+      ipmcastrouterttype: 0
+      ipmcastroutesource: ''
+      ipmcastroutesourceaddresstype: ''
+      ipmcastroutesourceprefixlength: ''
+      ipmcastroutetable: ''
+      ipmcastroutetimestamp: 0
+      ipmcastroutettldropoctets: 0
+      ipmcastroutettldroppackets: 0
+      ipmcastrouteupstreamneighbor: ''
+      ipmcastrouteupstreamneighbortype: ''
+      ipmcastscopenameaddress: ''
+      ipmcastscopenameaddressprefixlength: ''
+      ipmcastscopenameaddresstype: ''
+      ipmcastscopenamedefault: false
+      ipmcastscopenameentry: ''
+      ipmcastscopenamelanguage: ''
+      ipmcastscopenamestatus: 0
+      ipmcastscopenamestoragetype: 0
+      ipmcastscopenamestring: ''
+      ipmcastscopenametable: ''
+      ipmcastssmrangeaddress: ''
+      ipmcastssmrangeaddresstype: ''
+      ipmcastssmrangeentry: ''
+      ipmcastssmrangeprefixlength: ''
+      ipmcastssmrangerowstatus: 0
+      ipmcastssmrangestoragetype: 0
+      ipmcastssmrangetable: ''
+      ipmcastzoneentry: ''
+      ipmcastzoneindex: 0
+      ipmcastzonescopeaddress: ''
+      ipmcastzonescopeaddressprefixlength: ''
+      ipmcastzonescopeaddresstype: ''
+      ipmcastzonescopedefaultzoneindex: 0
+      ipmcastzonetable: ''
+attributes:
+  ipmcastboundaryaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryAddress
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: &id001
+          - ipMcastBoundaryIfIndex
+          - ipMcastBoundaryAddressType
+          - ipMcastBoundaryAddress
+          - ipMcastBoundaryAddressPrefixLength
+  ipmcastboundaryaddressprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryAddressPrefixLength
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+  ipmcastboundaryaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryAddressType
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+  ipmcastboundarydroppedmcastoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryDroppedMcastOctets
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+  ipmcastboundarydroppedmcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryDroppedMcastPkts
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+  ipmcastboundaryentry:
+    syntax: IpMcastBoundaryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryTable
+          field: ipMcastBoundaryEntry
+  ipmcastboundaryifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryIfIndex
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+  ipmcastboundarystatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryStatus
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+    create_method: createAndWait
+    index_type: inet_address
+  ipmcastboundarystoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.9
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryStorageType
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+  ipmcastboundarytable:
+    syntax: IpMcastBoundaryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastBoundaryTable
+  ipmcastboundarytimestamp:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastBoundaryEntry
+          field: ipMcastBoundaryTimeStamp
+          index_field: ipMcastBoundaryAddressPrefixLength
+          index_fields: *id001
+  ipmcastdeviceconfigstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.11
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastDeviceConfigStorageType
+  ipmcastenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  ipmcastinterfaceentry:
+    syntax: IpMcastInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastInterfaceTable
+          field: ipMcastInterfaceEntry
+  ipmcastinterfaceipversion:
+    syntax: InetVersion
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastInterfaceEntry
+          field: ipMcastInterfaceIPVersion
+          index_field: ipMcastInterfaceIfIndex
+          index_fields: &id002
+          - ipMcastInterfaceIPVersion
+          - ipMcastInterfaceIfIndex
+  ipmcastinterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastInterfaceEntry
+          field: ipMcastInterfaceIfIndex
+          index_field: ipMcastInterfaceIfIndex
+          index_fields: *id002
+  ipmcastinterfaceratelimit:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastInterfaceEntry
+          field: ipMcastInterfaceRateLimit
+          index_field: ipMcastInterfaceIfIndex
+          index_fields: *id002
+  ipmcastinterfacestoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastInterfaceEntry
+          field: ipMcastInterfaceStorageType
+          index_field: ipMcastInterfaceIfIndex
+          index_fields: *id002
+  ipmcastinterfacetable:
+    syntax: IpMcastInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.3
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastInterfaceTable
+  ipmcastinterfacettl:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastInterfaceEntry
+          field: ipMcastInterfaceTtl
+          index_field: ipMcastInterfaceIfIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 256
+  ipmcastlocallistenerentry:
+    syntax: IpMcastLocalListenerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerTable
+          field: ipMcastLocalListenerEntry
+  ipmcastlocallistenergroupaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerEntry
+          field: ipMcastLocalListenerGroupAddress
+          index_field: ipMcastLocalListenerRunIndex
+          index_fields: &id003
+          - ipMcastLocalListenerGroupAddressType
+          - ipMcastLocalListenerGroupAddress
+          - ipMcastLocalListenerSourceAddressType
+          - ipMcastLocalListenerSourceAddress
+          - ipMcastLocalListenerSourcePrefixLength
+          - ipMcastLocalListenerIfIndex
+          - ipMcastLocalListenerRunIndex
+  ipmcastlocallistenergroupaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerEntry
+          field: ipMcastLocalListenerGroupAddressType
+          index_field: ipMcastLocalListenerRunIndex
+          index_fields: *id003
+  ipmcastlocallistenerifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerEntry
+          field: ipMcastLocalListenerIfIndex
+          index_field: ipMcastLocalListenerRunIndex
+          index_fields: *id003
+  ipmcastlocallistenerrunindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerEntry
+          field: ipMcastLocalListenerRunIndex
+          index_field: ipMcastLocalListenerRunIndex
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 2147483647
+  ipmcastlocallistenersourceaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerEntry
+          field: ipMcastLocalListenerSourceAddress
+          index_field: ipMcastLocalListenerRunIndex
+          index_fields: *id003
+  ipmcastlocallistenersourceaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerEntry
+          field: ipMcastLocalListenerSourceAddressType
+          index_field: ipMcastLocalListenerRunIndex
+          index_fields: *id003
+  ipmcastlocallistenersourceprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastLocalListenerEntry
+          field: ipMcastLocalListenerSourcePrefixLength
+          index_field: ipMcastLocalListenerRunIndex
+          index_fields: *id003
+  ipmcastlocallistenertable:
+    syntax: IpMcastLocalListenerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.9
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastLocalListenerTable
+  ipmcastroutebps:
+    syntax: CounterBasedGauge64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.24
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteBps
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: &id004
+          - ipMcastRouteGroupAddressType
+          - ipMcastRouteGroup
+          - ipMcastRouteGroupPrefixLength
+          - ipMcastRouteSourceAddressType
+          - ipMcastRouteSource
+          - ipMcastRouteSourcePrefixLength
+  ipmcastroutedifferentinifoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.22
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteDifferentInIfOctets
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutedifferentinifpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.23
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteDifferentInIfPackets
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastrouteentry:
+    syntax: IpMcastRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteTable
+          field: ipMcastRouteEntry
+  ipmcastrouteentrycount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.2
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastRouteEntryCount
+  ipmcastrouteexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteExpiryTime
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutegroup:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteGroup
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutegroupaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteGroupAddressType
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutegroupprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteGroupPrefixLength
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastrouteinifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteInIfIndex
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutenexthopaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.9
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopAddress
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: &id005
+          - ipMcastRouteNextHopGroupAddressType
+          - ipMcastRouteNextHopGroup
+          - ipMcastRouteNextHopGroupPrefixLength
+          - ipMcastRouteNextHopSourceAddressType
+          - ipMcastRouteNextHopSource
+          - ipMcastRouteNextHopSourcePrefixLength
+          - ipMcastRouteNextHopIfIndex
+          - ipMcastRouteNextHopAddressType
+          - ipMcastRouteNextHopAddress
+  ipmcastroutenexthopaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.8
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopAddressType
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopclosestmemberhops:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.13
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopClosestMemberHops
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+    validation:
+      min: 0
+      max: 256
+  ipmcastroutenexthopentry:
+    syntax: IpMcastRouteNextHopEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopTable
+          field: ipMcastRouteNextHopEntry
+  ipmcastroutenexthopexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.12
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopExpiryTime
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopgroup:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopGroup
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopgroupaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopGroupAddressType
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopgroupprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopGroupPrefixLength
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopIfIndex
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.15
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopOctets
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthoppkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.16
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopPkts
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopprotocol:
+    syntax: IANAipMRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.14
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopProtocol
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopsource:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopSource
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopsourceaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopSourceAddressType
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopsourceprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopSourcePrefixLength
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthopstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.10
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopState
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastroutenexthoptable:
+    syntax: IpMcastRouteNextHopEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastRouteNextHopTable
+  ipmcastroutenexthoptimestamp:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.6.1.11
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteNextHopEntry
+          field: ipMcastRouteNextHopTimeStamp
+          index_field: ipMcastRouteNextHopAddress
+          index_fields: *id005
+  ipmcastrouteoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.18
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteOctets
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutepkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.19
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRoutePkts
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastrouteprotocol:
+    syntax: IANAipMRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.12
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteProtocol
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutertaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.15
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteRtAddress
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutertaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.14
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteRtAddressType
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutertprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.16
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteRtPrefixLength
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutertprotocol:
+    syntax: IANAipRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.13
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteRtProtocol
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastrouterttype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.17
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteRtType
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutesource:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteSource
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutesourceaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteSourceAddressType
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutesourceprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteSourcePrefixLength
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutetable:
+    syntax: IpMcastRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastRouteTable
+  ipmcastroutetimestamp:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteTimeStamp
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutettldropoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.20
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteTtlDropOctets
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastroutettldroppackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.21
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteTtlDropPackets
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastrouteupstreamneighbor:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteUpstreamNeighbor
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastrouteupstreamneighbortype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastRouteEntry
+          field: ipMcastRouteUpstreamNeighborType
+          index_field: ipMcastRouteSourcePrefixLength
+          index_fields: *id004
+  ipmcastscopenameaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameAddress
+          index_field: ipMcastScopeNameLanguage
+          index_fields: &id006
+          - ipMcastScopeNameAddressType
+          - ipMcastScopeNameAddress
+          - ipMcastScopeNameAddressPrefixLength
+          - ipMcastScopeNameLanguage
+  ipmcastscopenameaddressprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameAddressPrefixLength
+          index_field: ipMcastScopeNameLanguage
+          index_fields: *id006
+  ipmcastscopenameaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameAddressType
+          index_field: ipMcastScopeNameLanguage
+          index_fields: *id006
+  ipmcastscopenamedefault:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameDefault
+          index_field: ipMcastScopeNameLanguage
+          index_fields: *id006
+    validation:
+      allowed:
+      - true
+      - false
+  ipmcastscopenameentry:
+    syntax: IpMcastScopeNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameTable
+          field: ipMcastScopeNameEntry
+  ipmcastscopenamelanguage:
+    syntax: LangTag
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameLanguage
+          index_field: ipMcastScopeNameLanguage
+          index_fields: *id006
+  ipmcastscopenamestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.7
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameStatus
+          index_field: ipMcastScopeNameLanguage
+          index_fields: *id006
+    create_method: createAndWait
+    index_type: inet_address
+  ipmcastscopenamestoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.8
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameStorageType
+          index_field: ipMcastScopeNameLanguage
+          index_fields: *id006
+  ipmcastscopenamestring:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastScopeNameEntry
+          field: ipMcastScopeNameString
+          index_field: ipMcastScopeNameLanguage
+          index_fields: *id006
+  ipmcastscopenametable:
+    syntax: IpMcastScopeNameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.8
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastScopeNameTable
+  ipmcastssmrangeaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastSsmRangeEntry
+          field: ipMcastSsmRangeAddress
+          index_field: ipMcastSsmRangePrefixLength
+          index_fields: &id007
+          - ipMcastSsmRangeAddressType
+          - ipMcastSsmRangeAddress
+          - ipMcastSsmRangePrefixLength
+  ipmcastssmrangeaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastSsmRangeEntry
+          field: ipMcastSsmRangeAddressType
+          index_field: ipMcastSsmRangePrefixLength
+          index_fields: *id007
+  ipmcastssmrangeentry:
+    syntax: IpMcastSsmRangeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastSsmRangeTable
+          field: ipMcastSsmRangeEntry
+  ipmcastssmrangeprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastSsmRangeEntry
+          field: ipMcastSsmRangePrefixLength
+          index_field: ipMcastSsmRangePrefixLength
+          index_fields: *id007
+  ipmcastssmrangerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastSsmRangeEntry
+          field: ipMcastSsmRangeRowStatus
+          index_field: ipMcastSsmRangePrefixLength
+          index_fields: *id007
+    create_method: createAndWait
+    index_type: inet_address
+  ipmcastssmrangestoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastSsmRangeEntry
+          field: ipMcastSsmRangeStorageType
+          index_field: ipMcastSsmRangePrefixLength
+          index_fields: *id007
+  ipmcastssmrangetable:
+    syntax: IpMcastSsmRangeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.4
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastSsmRangeTable
+  ipmcastzoneentry:
+    syntax: IpMcastZoneEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.10.1
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastZoneTable
+          field: ipMcastZoneEntry
+  ipmcastzoneindex:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastZoneEntry
+          field: ipMcastZoneIndex
+          index_field: ipMcastZoneIndex
+    validation:
+      min: 1
+      max: 4294967295
+  ipmcastzonescopeaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastZoneEntry
+          field: ipMcastZoneScopeAddress
+          index_field: ipMcastZoneIndex
+  ipmcastzonescopeaddressprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastZoneEntry
+          field: ipMcastZoneScopeAddressPrefixLength
+          index_field: ipMcastZoneIndex
+  ipmcastzonescopeaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastZoneEntry
+          field: ipMcastZoneScopeAddressType
+          index_field: ipMcastZoneIndex
+  ipmcastzonescopedefaultzoneindex:
+    syntax: InetZoneIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcastZoneEntry
+          field: ipMcastZoneScopeDefaultZoneIndex
+          index_field: ipMcastZoneIndex
+    validation:
+      min: 1
+      max: 4294967295
+  ipmcastzonetable:
+    syntax: IpMcastZoneEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.168.1.10
+          method: get
+      mops:
+        read:
+          mib: IPMCAST-MIB
+          table: ipMcast
+          field: ipMcastZoneTable

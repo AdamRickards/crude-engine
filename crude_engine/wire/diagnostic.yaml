@@ -1,0 +1,3873 @@
+version: 2.6.0
+feature: diagnostic
+schemas:
+  read_diagnostic:
+    type: dict
+    defaults:
+      hm2bootconfigpushbutton: false
+      hm2bootdefaultconfigonerror: false
+      hm2bootsystemmonitor: false
+      hm2devmoncommonentry: ''
+      hm2devmoncommontable: ''
+      hm2devmonfanmodid: 0
+      hm2devmonfanmoduleentry: ''
+      hm2devmonfanmoduletable: ''
+      hm2devmonid: 0
+      hm2devmoninterfaceentry: ''
+      hm2devmoninterfacetable: ''
+      hm2devmonmodid: 0
+      hm2devmonmoduleentry: ''
+      hm2devmonmoduletable: ''
+      hm2devmonoperstate: 0
+      hm2devmonopertimestamp: ''
+      hm2devmonpsentry: ''
+      hm2devmonpstable: ''
+      hm2devmonsenseextnvmnotinsync: false
+      hm2devmonsenseextnvmremoval: false
+      hm2devmonsensefan: false
+      hm2devmonsensefanmodule: false
+      hm2devmonsensehumidity: false
+      hm2devmonsenseiflinkalarm: false
+      hm2devmonsenselinkfailure: false
+      hm2devmonsensemodule: false
+      hm2devmonsensemoduleremoval: false
+      hm2devmonsensepsstate: false
+      hm2devmonsenseringredundancy: false
+      hm2devmonsensestpportblock: false
+      hm2devmonsensetemperature: false
+      hm2devmonstatusentry: ''
+      hm2devmonstatusindex: 0
+      hm2devmonstatustable: ''
+      hm2devmonstatustimestamp: ''
+      hm2devmonstatustrapcause: 0
+      hm2devmonstatustrapcauseindex: 0
+      hm2devmontrapcause: 0
+      hm2devmontrapcauseindex: 0
+      hm2devmontrapenable: false
+      hm2devsecinterfaceentry: ''
+      hm2devsecinterfacetable: ''
+      hm2devsecoperstate: 0
+      hm2devsecopertimestamp: ''
+      hm2devsecsensebypasspasswordstrength: false
+      hm2devsecsensedevmodeenabled: false
+      hm2devsecsenseethernetipenabled: false
+      hm2devsecsenseextnvmconfigloadunsecure: false
+      hm2devsecsenseextnvmupdateenabled: false
+      hm2devsecsensehidiscoveryenabled: false
+      hm2devsecsensehttpenabled: false
+      hm2devsecsensehttpscertificatewarning: false
+      hm2devsecsenseiec61850mmsenabled: false
+      hm2devsecsenseifnolink: false
+      hm2devsecsensemodbustcpenabled: false
+      hm2devsecsensenolinkenabled: false
+      hm2devsecsensepmldisabled: false
+      hm2devsecsensepasswordchange: false
+      hm2devsecsensepasswordminlength: false
+      hm2devsecsensepasswordstrengthnotconfigured: false
+      hm2devsecsenseprofinetioenabled: false
+      hm2devsecsensesecurebootdisabled: false
+      hm2devsecsensesnmpunsecure: false
+      hm2devsecsensesysmonenabled: false
+      hm2devsecsensetelnetenabled: false
+      hm2devsecstatusentry: ''
+      hm2devsecstatusindex: 0
+      hm2devsecstatustable: ''
+      hm2devsecstatustimestamp: ''
+      hm2devsecstatustrapcause: 0
+      hm2devsecstatustrapcauseindex: 0
+      hm2devsectrapcause: 0
+      hm2devsectrapcauseindex: 0
+      hm2devsectrapenable: false
+      hm2diagcabletestercableentry: ''
+      hm2diagcabletestercablefailurelocation: 0
+      hm2diagcabletestercablemaximumlength: 0
+      hm2diagcabletestercableminimumlength: 0
+      hm2diagcabletestercablepair: 0
+      hm2diagcabletestercablestatus: 0
+      hm2diagcabletestercabletable: ''
+      hm2diagcabletesterifindex: 0
+      hm2diagcabletesterstatus: 0
+      hm2diagcpuaverageutilization: 0
+      hm2diagcpumaxrunningprocesses: 0
+      hm2diagcpurunningprocesses: 0
+      hm2diagcpuutilization: 0
+      hm2diagegressifaceutilization: 0
+      hm2diagegressifaceutilizationalarmcondition: false
+      hm2diagegressifaceutilizationalarmlowerthreshold: 0
+      hm2diagegressifaceutilizationalarmupperthreshold: 0
+      hm2diagegressifaceutilizationcontrolinterval: 0
+      hm2diagegressifaceutilizationentry: ''
+      hm2diagegressifaceutilizationtable: ''
+      hm2diagenablemeasurement: false
+      hm2diagifaceutilization: 0
+      hm2diagifaceutilizationalarmcondition: false
+      hm2diagifaceutilizationalarmlowerthreshold: 0
+      hm2diagifaceutilizationalarmupperthreshold: 0
+      hm2diagifaceutilizationcontrolinterval: 0
+      hm2diagifaceutilizationentry: ''
+      hm2diagifaceutilizationtable: ''
+      hm2diagmemoryflashfilesystemallocated: 0
+      hm2diagmemoryflashfilesystemfree: 0
+      hm2diagmemoryramallocated: 0
+      hm2diagmemoryramallocatedaverage: 0
+      hm2diagmemoryramfree: 0
+      hm2diagmemoryramfreeaverage: 0
+      hm2diagmemoryrawflashmainallocated: 0
+      hm2diagmemoryrawflashmainfree: 0
+      hm2diagnetworkcpuifaverageutilization: 0
+      hm2diagnetworkcpuifutilization: 0
+      hm2diagselftestaction: 0
+      hm2diagselftestactioncause: 0
+      hm2diagselftestactionentry: ''
+      hm2diagselftestactiontable: ''
+      hm2diagselftestboottime: 0
+      hm2diagselftestram: false
+      hm2fastlinkflapoperstate: false
+      hm2ledglobalentry: ''
+      hm2ledgloballedtype: ''
+      hm2ledglobalstatus: ''
+      hm2ledglobaltable: ''
+      hm2ledportentry: ''
+      hm2ledportmode: 0
+      hm2ledportpoestatus: ''
+      hm2ledportsignaling: false
+      hm2ledportstatus: ''
+      hm2ledporttable: ''
+      hm2portmonitoradminmode: false
+      hm2portmonitorconditioncrcfragmentscount: 0
+      hm2portmonitorconditioncrcfragmentscountinterval: 0
+      hm2portmonitorconditioncrcfragmentscounttotal: 0
+      hm2portmonitorconditioncrcfragmentsinterval: 0
+      hm2portmonitorconditioncrcfragmentsintfentry: ''
+      hm2portmonitorconditioncrcfragmentsintftable: ''
+      hm2portmonitorconditioncrcfragmentsmode: false
+      hm2portmonitorconditionduplexmismatchdetectionmode: false
+      hm2portmonitorconditionfield: []
+      hm2portmonitorconditionintfentry: ''
+      hm2portmonitorconditionintftable: ''
+      hm2portmonitorconditionlinkflapcount: 0
+      hm2portmonitorconditionlinkflapcountinterval: 0
+      hm2portmonitorconditionlinkflapcounttotal: 0
+      hm2portmonitorconditionlinkflapinterval: 0
+      hm2portmonitorconditionlinkflapintfentry: ''
+      hm2portmonitorconditionlinkflapintftable: ''
+      hm2portmonitorconditionlinkflapmode: false
+      hm2portmonitorconditionoverloaddetectionmode: false
+      hm2portmonitorconditionovlddetintfentry: ''
+      hm2portmonitorconditionovlddetintftable: ''
+      hm2portmonitorconditionovlddetintvl: 0
+      hm2portmonitorconditionovlddetlwrtholdval: 0
+      hm2portmonitorconditionovlddetpkgcntall: 0
+      hm2portmonitorconditionovlddetpkgcntbc: 0
+      hm2portmonitorconditionovlddetpkgcntkbit: 0
+      hm2portmonitorconditionovlddetpkgcntmc: 0
+      hm2portmonitorconditionovlddettholdtype: 0
+      hm2portmonitorconditionovlddettrfctype: 0
+      hm2portmonitorconditionovlddetuprtholdval: 0
+      hm2portmonitorconditionspeedduplexentry: ''
+      hm2portmonitorconditionspeedduplexmode: false
+      hm2portmonitorconditionspeedduplextable: ''
+      hm2portmonitorconditionspeedduplexvalue: []
+      hm2portmonitorintfaction: 0
+      hm2portmonitorintfentry: ''
+      hm2portmonitorintfreset: false
+      hm2portmonitorintftable: ''
+      hm2sigconcommonentry: ''
+      hm2sigconcommontable: ''
+      hm2sigconfanmodid: 0
+      hm2sigconfanmoduleentry: ''
+      hm2sigconfanmoduletable: ''
+      hm2sigconid: 0
+      hm2sigconinterfaceentry: ''
+      hm2sigconinterfacetable: ''
+      hm2sigconmanualactivate: 0
+      hm2sigconmodid: 0
+      hm2sigconmode: 0
+      hm2sigconmoduleentry: ''
+      hm2sigconmoduletable: ''
+      hm2sigconoperstate: 0
+      hm2sigconopertimestamp: ''
+      hm2sigconpsentry: ''
+      hm2sigconpstable: ''
+      hm2sigconsenseethernetloops: false
+      hm2sigconsenseextnvmnotinsync: false
+      hm2sigconsenseextnvmremoval: false
+      hm2sigconsensefan: false
+      hm2sigconsensefanmodule: false
+      hm2sigconsensehumidity: false
+      hm2sigconsenseiflinkalarm: false
+      hm2sigconsenselinkfailure: false
+      hm2sigconsensemodule: false
+      hm2sigconsensemoduleremoval: false
+      hm2sigconsensepsstate: false
+      hm2sigconsenseringredundancy: false
+      hm2sigconsensestpportblock: false
+      hm2sigconsensetemperature: false
+      hm2sigconstatusentry: ''
+      hm2sigconstatusindex: 0
+      hm2sigconstatustable: ''
+      hm2sigconstatustimestamp: ''
+      hm2sigconstatustrapcause: 0
+      hm2sigconstatustrapcauseindex: 0
+      hm2sigcontrapcause: 0
+      hm2sigcontrapcauseindex: 0
+      hm2sigcontrapenable: false
+attributes:
+  hm2bootconfigpushbutton:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagBootGroup
+          field: hm2BootConfigPushButton
+    validation:
+      allowed:
+      - true
+      - false
+  hm2bootdefaultconfigonerror:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagBootGroup
+          field: hm2BootDefaultConfigOnError
+    validation:
+      allowed:
+      - true
+      - false
+  hm2bootsystemmonitor:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagBootGroup
+          field: hm2BootSystemMonitor
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmoncommonentry:
+    syntax: Hm2DevMonCommonEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonTable
+          field: hm2DevMonCommonEntry
+  hm2devmoncommontable:
+    syntax: Hm2DevMonCommonEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceMonitorGroup
+          field: hm2DevMonCommonTable
+  hm2devmonfanmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonFanModuleEntry
+          field: hm2DevMonFanModID
+          index_field: hm2DevMonFanModID
+          index_fields: &id001
+          - hm2DevMonID
+          - hm2DevMonFanModID
+    validation:
+      min: 1
+      max: 7
+  hm2devmonfanmoduleentry:
+    syntax: Hm2DevMonFanModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonFanModuleTable
+          field: hm2DevMonFanModuleEntry
+  hm2devmonfanmoduletable:
+    syntax: Hm2DevMonFanModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceMonitorGroup
+          field: hm2DevMonFanModuleTable
+  hm2devmonid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonID
+          index_field: hm2DevMonID
+    validation:
+      min: 1
+      max: 1
+  hm2devmoninterfaceentry:
+    syntax: Hm2DevMonInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonInterfaceTable
+          field: hm2DevMonInterfaceEntry
+  hm2devmoninterfacetable:
+    syntax: Hm2DevMonInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceMonitorGroup
+          field: hm2DevMonInterfaceTable
+  hm2devmonmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonModuleEntry
+          field: hm2DevMonModID
+          index_field: hm2DevMonModID
+          index_fields: &id002
+          - hm2DevMonID
+          - hm2DevMonModID
+    validation:
+      min: 1
+      max: 7
+  hm2devmonmoduleentry:
+    syntax: Hm2DevMonModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonModuleTable
+          field: hm2DevMonModuleEntry
+  hm2devmonmoduletable:
+    syntax: Hm2DevMonModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceMonitorGroup
+          field: hm2DevMonModuleTable
+  hm2devmonoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonOperState
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - noerror
+      - error
+  hm2devmonopertimestamp:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonOperTimeStamp
+          index_field: hm2DevMonID
+  hm2devmonpsentry:
+    syntax: Hm2DevMonPSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonPSTable
+          field: hm2DevMonPSEntry
+  hm2devmonpstable:
+    syntax: Hm2DevMonPSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceMonitorGroup
+          field: hm2DevMonPSTable
+  hm2devmonsenseextnvmnotinsync:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseExtNvmNotInSync
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsenseextnvmremoval:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseExtNvmRemoval
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensefan:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseFan
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensefanmodule:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonFanModuleEntry
+          field: hm2DevMonSenseFanModule
+          index_field: hm2DevMonFanModID
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensehumidity:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseHumidity
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsenseiflinkalarm:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonInterfaceEntry
+          field: hm2DevMonSenseIfLinkAlarm
+          index_field: ifIndex
+          index_fields:
+          - hm2DevMonID
+          - ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsenselinkfailure:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseLinkFailure
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensemodule:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonModuleEntry
+          field: hm2DevMonSenseModule
+          index_field: hm2DevMonModID
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensemoduleremoval:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseModuleRemoval
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensepsstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonPSEntry
+          field: hm2DevMonSensePSState
+          index_field: hm2PSID
+          index_fields:
+          - hm2DevMonID
+          - hm2PSID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsenseringredundancy:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseRingRedundancy
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensestpportblock:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseStpPortBlock
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonsensetemperature:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonSenseTemperature
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devmonstatusentry:
+    syntax: Hm2DevMonStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonStatusTable
+          field: hm2DevMonStatusEntry
+  hm2devmonstatusindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonStatusEntry
+          field: hm2DevMonStatusIndex
+          index_field: hm2DevMonStatusIndex
+          index_fields: &id003
+          - hm2DevMonID
+          - hm2DevMonStatusIndex
+  hm2devmonstatustable:
+    syntax: Hm2DevMonStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceMonitorGroup
+          field: hm2DevMonStatusTable
+  hm2devmonstatustimestamp:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonStatusEntry
+          field: hm2DevMonStatusTimeStamp
+          index_field: hm2DevMonStatusIndex
+          index_fields: *id003
+  hm2devmonstatustrapcause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonStatusEntry
+          field: hm2DevMonStatusTrapCause
+          index_field: hm2DevMonStatusIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - none
+      - power-supply
+      - link-failure
+      - temperature
+      - fan-failure
+      - module-removal
+      - ext-nvm-removal
+      - ext-nvm-not-in-sync
+      - ring-redundancy
+      - humidity
+      - stp-port-blocked
+  hm2devmonstatustrapcauseindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonStatusEntry
+          field: hm2DevMonStatusTrapCauseIndex
+          index_field: hm2DevMonStatusIndex
+          index_fields: *id003
+  hm2devmontrapcause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonTrapCause
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - none
+      - power-supply
+      - link-failure
+      - temperature
+      - fan-failure
+      - module-removal
+      - ext-nvm-removal
+      - ext-nvm-not-in-sync
+      - ring-redundancy
+      - humidity
+      - stp-port-blocked
+  hm2devmontrapcauseindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonTrapCauseIndex
+          index_field: hm2DevMonID
+  hm2devmontrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevMonCommonEntry
+          field: hm2DevMonTrapEnable
+          index_field: hm2DevMonID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecinterfaceentry:
+    syntax: Hm2DevSecInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecInterfaceTable
+          field: hm2DevSecInterfaceEntry
+  hm2devsecinterfacetable:
+    syntax: Hm2DevSecInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceSecurityGroup
+          field: hm2DevSecInterfaceTable
+  hm2devsecoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecOperState
+    validation:
+      allowed:
+      - noerror
+      - error
+  hm2devsecopertimestamp:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecOperTimeStamp
+  hm2devsecsensebypasspasswordstrength:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseBypassPasswordStrength
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensedevmodeenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.25
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseDevModeEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsenseethernetipenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.21
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseEtherNetIpEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsenseextnvmconfigloadunsecure:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.17
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseExtNvmConfigLoadUnsecure
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsenseextnvmupdateenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.14
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseExtNvmUpdateEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensehidiscoveryenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.16
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseHiDiscoveryEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensehttpenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseHttpEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensehttpscertificatewarning:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.19
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseHttpsCertificateWarning
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsenseiec61850mmsenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.18
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseIec61850MmsEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsenseifnolink:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecInterfaceEntry
+          field: hm2DevSecSenseIfNoLink
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensemodbustcpenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseModbusTcpEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensenolinkenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.15
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseNoLinkEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensepmldisabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.23
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSensePMLDisabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensepasswordchange:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSensePasswordChange
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensepasswordminlength:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSensePasswordMinLength
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensepasswordstrengthnotconfigured:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSensePasswordStrengthNotConfigured
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsenseprofinetioenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.22
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseProfinetIOEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensesecurebootdisabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.24
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseSecureBootDisabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensesnmpunsecure:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseSnmpUnsecure
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensesysmonenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseSysmonEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecsensetelnetenabled:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecSenseTelnetEnabled
+    validation:
+      allowed:
+      - true
+      - false
+  hm2devsecstatusentry:
+    syntax: Hm2DevSecStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecStatusTable
+          field: hm2DevSecStatusEntry
+  hm2devsecstatusindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecStatusEntry
+          field: hm2DevSecStatusIndex
+          index_field: hm2DevSecStatusIndex
+  hm2devsecstatustable:
+    syntax: Hm2DevSecStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DeviceSecurityGroup
+          field: hm2DevSecStatusTable
+  hm2devsecstatustimestamp:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecStatusEntry
+          field: hm2DevSecStatusTimeStamp
+          index_field: hm2DevSecStatusIndex
+  hm2devsecstatustrapcause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecStatusEntry
+          field: hm2DevSecStatusTrapCause
+          index_field: hm2DevSecStatusIndex
+    validation:
+      allowed:
+      - none
+      - password-change
+      - password-min-length
+      - password-policy-not-configured
+      - password-policy-inactive
+      - telnet-enabled
+      - http-enabled
+      - snmp-unsecure
+      - sysmon-enabled
+      - ext-nvm-update-enabled
+      - no-link
+      - hidisc-enabled
+      - ext-nvm-config-load-unsecure
+      - iec61850-mms-enabled
+      - https-certificate-warning
+      - modbus-tcp-enabled
+      - ethernet-ip-enabled
+      - profinet-io-enabled
+      - pml-disabled
+      - secure-boot-disabled
+      - dev-mode-enabled
+  hm2devsecstatustrapcauseindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecStatusEntry
+          field: hm2DevSecStatusTrapCauseIndex
+          index_field: hm2DevSecStatusIndex
+  hm2devsectrapcause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecTrapCause
+    validation:
+      allowed:
+      - none
+      - password-change
+      - password-min-length
+      - password-policy-not-configured
+      - password-policy-inactive
+      - telnet-enabled
+      - http-enabled
+      - snmp-unsecure
+      - sysmon-enabled
+      - ext-nvm-update-enabled
+      - no-link
+      - hidisc-enabled
+      - ext-nvm-config-load-unsecure
+      - iec61850-mms-enabled
+      - https-certificate-warning
+      - modbus-tcp-enabled
+      - ethernet-ip-enabled
+      - profinet-io-enabled
+      - pml-disabled
+      - secure-boot-disabled
+      - dev-mode-enabled
+  hm2devsectrapcauseindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecTrapCauseIndex
+  hm2devsectrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DevSecConfigGroup
+          field: hm2DevSecTrapEnable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2diagcabletestercableentry:
+    syntax: Hm2DiagCableTesterCableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterCableTable
+          field: hm2DiagCableTesterCableEntry
+  hm2diagcabletestercablefailurelocation:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterCableEntry
+          field: hm2DiagCableTesterCableFailureLocation
+          index_field: hm2DiagCableTesterCablePair
+  hm2diagcabletestercablemaximumlength:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterCableEntry
+          field: hm2DiagCableTesterCableMaximumLength
+          index_field: hm2DiagCableTesterCablePair
+  hm2diagcabletestercableminimumlength:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterCableEntry
+          field: hm2DiagCableTesterCableMinimumLength
+          index_field: hm2DiagCableTesterCablePair
+  hm2diagcabletestercablepair:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterCableEntry
+          field: hm2DiagCableTesterCablePair
+          index_field: hm2DiagCableTesterCablePair
+    validation:
+      min: 1
+      max: 4
+  hm2diagcabletestercablestatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterCableEntry
+          field: hm2DiagCableTesterCableStatus
+          index_field: hm2DiagCableTesterCablePair
+  hm2diagcabletestercabletable:
+    syntax: Hm2DiagCableTesterCableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterGroup
+          field: hm2DiagCableTesterCableTable
+  hm2diagcabletesterifindex:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterGroup
+          field: hm2DiagCableTesterIfIndex
+  hm2diagcabletesterstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCableTesterGroup
+          field: hm2DiagCableTesterStatus
+    validation:
+      allowed:
+      - active
+      - success
+      - failure
+      - uninitialized
+  hm2diagcpuaverageutilization:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.10.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCpuResourcesGroup
+          field: hm2DiagCpuAverageUtilization
+    validation:
+      min: 0
+      max: 100
+  hm2diagcpumaxrunningprocesses:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.10.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCpuResourcesGroup
+          field: hm2DiagCpuMaxRunningProcesses
+    validation:
+      min: 0
+      max: 32768
+  hm2diagcpurunningprocesses:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.10.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCpuResourcesGroup
+          field: hm2DiagCpuRunningProcesses
+    validation:
+      min: 0
+      max: 32768
+  hm2diagcpuutilization:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagCpuResourcesGroup
+          field: hm2DiagCpuUtilization
+    validation:
+      min: 0
+      max: 100
+  hm2diagegressifaceutilization:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagEgressIfaceUtilizationEntry
+          field: hm2DiagEgressIfaceUtilization
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000
+  hm2diagegressifaceutilizationalarmcondition:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagEgressIfaceUtilizationEntry
+          field: hm2DiagEgressIfaceUtilizationAlarmCondition
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2diagegressifaceutilizationalarmlowerthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagEgressIfaceUtilizationEntry
+          field: hm2DiagEgressIfaceUtilizationAlarmLowerThreshold
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000
+  hm2diagegressifaceutilizationalarmupperthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagEgressIfaceUtilizationEntry
+          field: hm2DiagEgressIfaceUtilizationAlarmUpperThreshold
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000
+  hm2diagegressifaceutilizationcontrolinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagEgressIfaceUtilizationEntry
+          field: hm2DiagEgressIfaceUtilizationControlInterval
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 3600
+  hm2diagegressifaceutilizationentry:
+    syntax: Hm2DiagEgressIfaceUtilizationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagEgressIfaceUtilizationTable
+          field: hm2DiagEgressIfaceUtilizationEntry
+  hm2diagegressifaceutilizationtable:
+    syntax: Hm2DiagEgressIfaceUtilizationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationGroup
+          field: hm2DiagEgressIfaceUtilizationTable
+  hm2diagenablemeasurement:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagResourcesGroup
+          field: hm2DiagEnableMeasurement
+    validation:
+      allowed:
+      - true
+      - false
+  hm2diagifaceutilization:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationEntry
+          field: hm2DiagIfaceUtilization
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000
+  hm2diagifaceutilizationalarmcondition:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationEntry
+          field: hm2DiagIfaceUtilizationAlarmCondition
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2diagifaceutilizationalarmlowerthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationEntry
+          field: hm2DiagIfaceUtilizationAlarmLowerThreshold
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000
+  hm2diagifaceutilizationalarmupperthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationEntry
+          field: hm2DiagIfaceUtilizationAlarmUpperThreshold
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000
+  hm2diagifaceutilizationcontrolinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationEntry
+          field: hm2DiagIfaceUtilizationControlInterval
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 3600
+  hm2diagifaceutilizationentry:
+    syntax: Hm2DiagIfaceUtilizationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationTable
+          field: hm2DiagIfaceUtilizationEntry
+  hm2diagifaceutilizationtable:
+    syntax: Hm2DiagIfaceUtilizationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagIfaceUtilizationGroup
+          field: hm2DiagIfaceUtilizationTable
+  hm2diagmemoryflashfilesystemallocated:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.12
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryFlashFileSystemAllocated
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagmemoryflashfilesystemfree:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.13
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryFlashFileSystemFree
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagmemoryramallocated:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryRamAllocated
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagmemoryramallocatedaverage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryRamAllocatedAverage
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagmemoryramfree:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryRamFree
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagmemoryramfreeaverage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryRamFreeAverage
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagmemoryrawflashmainallocated:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryRawFlashMainAllocated
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagmemoryrawflashmainfree:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.11.11
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagMemoryResourcesGroup
+          field: hm2DiagMemoryRawFlashMainFree
+    validation:
+      min: 0
+      max: 2147483647
+  hm2diagnetworkcpuifaverageutilization:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.12.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagNetworkResourcesGroup
+          field: hm2DiagNetworkCpuIfAverageUtilization
+    validation:
+      min: 0
+      max: 100
+  hm2diagnetworkcpuifutilization:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.8.12.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagNetworkResourcesGroup
+          field: hm2DiagNetworkCpuIfUtilization
+    validation:
+      min: 0
+      max: 100
+  hm2diagselftestaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagSelftestActionEntry
+          field: hm2DiagSelftestAction
+          index_field: hm2DiagSelftestActionCause
+    validation:
+      allowed:
+      - logOnly
+      - sendTrap
+      - reboot
+  hm2diagselftestactioncause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagSelftestActionEntry
+          field: hm2DiagSelftestActionCause
+          index_field: hm2DiagSelftestActionCause
+    validation:
+      allowed:
+      - task
+      - resource
+      - software
+      - hardware
+  hm2diagselftestactionentry:
+    syntax: Hm2DiagSelftestActionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagSelftestActionTable
+          field: hm2DiagSelftestActionEntry
+  hm2diagselftestactiontable:
+    syntax: Hm2DiagSelftestActionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagSelftestGroup
+          field: hm2DiagSelftestActionTable
+  hm2diagselftestboottime:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagSelftestGroup
+          field: hm2DiagSelftestBootTime
+  hm2diagselftestram:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagSelftestGroup
+          field: hm2DiagSelftestRAM
+    validation:
+      allowed:
+      - true
+      - false
+  hm2fastlinkflapoperstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.9.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2FastLinkMonitorControlGroup
+          field: hm2FastLinkFlapOperState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ledglobalentry:
+    syntax: Hm2LedGlobalEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedGlobalTable
+          field: hm2LedGlobalEntry
+  hm2ledgloballedtype:
+    syntax: Hm2LedType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedGlobalEntry
+          field: hm2LedGlobalLedType
+          index_field: hm2LedGlobalLedType
+  hm2ledglobalstatus:
+    syntax: Hm2LedStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedGlobalEntry
+          field: hm2LedGlobalStatus
+          index_field: hm2LedGlobalLedType
+  hm2ledglobaltable:
+    syntax: Hm2LedGlobalEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagLedGroup
+          field: hm2LedGlobalTable
+  hm2ledportentry:
+    syntax: Hm2LedPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedPortTable
+          field: hm2LedPortEntry
+  hm2ledportmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedControlGroup
+          field: hm2LedPortMode
+  hm2ledportpoestatus:
+    syntax: Hm2LedStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedPortEntry
+          field: hm2LedPortPoeStatus
+          index_field: hm2IfacePhysIndex
+  hm2ledportsignaling:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedPortEntry
+          field: hm2LedPortSignaling
+          index_field: hm2IfacePhysIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ledportstatus:
+    syntax: Hm2LedStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2LedPortEntry
+          field: hm2LedPortStatus
+          index_field: hm2IfacePhysIndex
+  hm2ledporttable:
+    syntax: Hm2LedPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2DiagLedGroup
+          field: hm2LedPortTable
+  hm2portmonitoradminmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorGroup
+          field: hm2PortMonitorAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2portmonitorconditioncrcfragmentscount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionCrcFragmentsIntfEntry
+          field: hm2PortMonitorConditionCrcFragmentsCount
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 1000000
+  hm2portmonitorconditioncrcfragmentscountinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionCrcFragmentsIntfEntry
+          field: hm2PortMonitorConditionCrcFragmentsCountInterval
+          index_field: ifIndex
+  hm2portmonitorconditioncrcfragmentscounttotal:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionCrcFragmentsIntfEntry
+          field: hm2PortMonitorConditionCrcFragmentsCountTotal
+          index_field: ifIndex
+  hm2portmonitorconditioncrcfragmentsinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionCrcFragmentsIntfEntry
+          field: hm2PortMonitorConditionCrcFragmentsInterval
+          index_field: ifIndex
+    validation:
+      min: 5
+      max: 180
+  hm2portmonitorconditioncrcfragmentsintfentry:
+    syntax: Hm2PortMonitorConditionCrcFragmentsIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionCrcFragmentsIntfTable
+          field: hm2PortMonitorConditionCrcFragmentsIntfEntry
+  hm2portmonitorconditioncrcfragmentsintftable:
+    syntax: Hm2PortMonitorConditionCrcFragmentsIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionCrcFragmentsGroup
+          field: hm2PortMonitorConditionCrcFragmentsIntfTable
+  hm2portmonitorconditioncrcfragmentsmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionIntfEntry
+          field: hm2PortMonitorConditionCrcFragmentsMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2portmonitorconditionduplexmismatchdetectionmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionIntfEntry
+          field: hm2PortMonitorConditionDuplexMismatchDetectionMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2portmonitorconditionfield:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionIntfEntry
+          field: hm2PortMonitorConditionField
+          index_field: ifIndex
+    validation:
+      allowed:
+      - none
+      - link-flap
+      - crcFragments
+      - duplexMismatch
+      - overload-detection
+      - speed-duplex
+    bit_map:
+      0: none
+      1: link-flap
+      2: crcFragments
+      3: duplexMismatch
+      4: overload-detection
+      5: speed-duplex
+  hm2portmonitorconditionintfentry:
+    syntax: Hm2PortMonitorConditionIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionIntfTable
+          field: hm2PortMonitorConditionIntfEntry
+  hm2portmonitorconditionintftable:
+    syntax: Hm2PortMonitorConditionIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionGroup
+          field: hm2PortMonitorConditionIntfTable
+  hm2portmonitorconditionlinkflapcount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionLinkFlapIntfEntry
+          field: hm2PortMonitorConditionLinkFlapCount
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 100
+  hm2portmonitorconditionlinkflapcountinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionLinkFlapIntfEntry
+          field: hm2PortMonitorConditionLinkFlapCountInterval
+          index_field: ifIndex
+  hm2portmonitorconditionlinkflapcounttotal:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionLinkFlapIntfEntry
+          field: hm2PortMonitorConditionLinkFlapCountTotal
+          index_field: ifIndex
+  hm2portmonitorconditionlinkflapinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionLinkFlapIntfEntry
+          field: hm2PortMonitorConditionLinkFlapInterval
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 180
+  hm2portmonitorconditionlinkflapintfentry:
+    syntax: Hm2PortMonitorConditionLinkFlapIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionLinkFlapIntfTable
+          field: hm2PortMonitorConditionLinkFlapIntfEntry
+  hm2portmonitorconditionlinkflapintftable:
+    syntax: Hm2PortMonitorConditionLinkFlapIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionLinkFlapGroup
+          field: hm2PortMonitorConditionLinkFlapIntfTable
+  hm2portmonitorconditionlinkflapmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionIntfEntry
+          field: hm2PortMonitorConditionLinkFlapMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2portmonitorconditionoverloaddetectionmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionIntfEntry
+          field: hm2PortMonitorConditionOverloadDetectionMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2portmonitorconditionovlddetintfentry:
+    syntax: Hm2PortMonitorConditionOvldDetIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfTable
+          field: hm2PortMonitorConditionOvldDetIntfEntry
+  hm2portmonitorconditionovlddetintftable:
+    syntax: Hm2PortMonitorConditionOvldDetIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOverloadDetectionGroup
+          field: hm2PortMonitorConditionOvldDetIntfTable
+  hm2portmonitorconditionovlddetintvl:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetIntvl
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 20
+  hm2portmonitorconditionovlddetlwrtholdval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetLwrTholdVal
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000000
+  hm2portmonitorconditionovlddetpkgcntall:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetPkgCntAll
+          index_field: ifIndex
+  hm2portmonitorconditionovlddetpkgcntbc:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetPkgCntBC
+          index_field: ifIndex
+  hm2portmonitorconditionovlddetpkgcntkbit:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetPkgCntKbit
+          index_field: ifIndex
+  hm2portmonitorconditionovlddetpkgcntmc:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetPkgCntMC
+          index_field: ifIndex
+  hm2portmonitorconditionovlddettholdtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetTholdType
+          index_field: ifIndex
+    validation:
+      allowed:
+      - pps
+      - kbps
+  hm2portmonitorconditionovlddettrfctype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetTrfcType
+          index_field: ifIndex
+    validation:
+      allowed:
+      - all
+      - bc
+      - bc-mc
+  hm2portmonitorconditionovlddetuprtholdval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionOvldDetIntfEntry
+          field: hm2PortMonitorConditionOvldDetUprTholdVal
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 10000000
+  hm2portmonitorconditionspeedduplexentry:
+    syntax: Hm2PortMonitorConditionSpeedDuplexEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionSpeedDuplexTable
+          field: hm2PortMonitorConditionSpeedDuplexEntry
+  hm2portmonitorconditionspeedduplexmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionIntfEntry
+          field: hm2PortMonitorConditionSpeedDuplexMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2portmonitorconditionspeedduplextable:
+    syntax: Hm2PortMonitorConditionSpeedDuplexEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionSpeedDuplexGroup
+          field: hm2PortMonitorConditionSpeedDuplexTable
+  hm2portmonitorconditionspeedduplexvalue:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.3.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorConditionSpeedDuplexEntry
+          field: hm2PortMonitorConditionSpeedDuplexValue
+          index_field: ifIndex
+    validation:
+      allowed:
+      - hdx-10
+      - fdx-10
+      - hdx-100
+      - fdx-100
+      - hdx-1000
+      - fdx-1000
+      - fdx-2500
+      - fdx-10000
+    bit_map:
+      0: hdx-10
+      1: fdx-10
+      2: hdx-100
+      3: fdx-100
+      4: hdx-1000
+      5: fdx-1000
+      6: fdx-2500
+      7: fdx-10000
+  hm2portmonitorintfaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorIntfEntry
+          field: hm2PortMonitorIntfAction
+          index_field: ifIndex
+    validation:
+      allowed:
+      - port-disable
+      - trap-only
+      - auto-disable
+  hm2portmonitorintfentry:
+    syntax: Hm2PortMonitorIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorIntfTable
+          field: hm2PortMonitorIntfEntry
+  hm2portmonitorintfreset:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorIntfEntry
+          field: hm2PortMonitorIntfReset
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2portmonitorintftable:
+    syntax: Hm2PortMonitorIntfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.7.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2PortMonitorGroup
+          field: hm2PortMonitorIntfTable
+  hm2sigconcommonentry:
+    syntax: Hm2SigConCommonEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonTable
+          field: hm2SigConCommonEntry
+  hm2sigconcommontable:
+    syntax: Hm2SigConCommonEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SignalContactGroup
+          field: hm2SigConCommonTable
+  hm2sigconfanmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConFanModuleEntry
+          field: hm2SigConFanModID
+          index_field: hm2SigConFanModID
+          index_fields: &id004
+          - hm2SigConID
+          - hm2SigConFanModID
+    validation:
+      min: 1
+      max: 7
+  hm2sigconfanmoduleentry:
+    syntax: Hm2SigConFanModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConFanModuleTable
+          field: hm2SigConFanModuleEntry
+  hm2sigconfanmoduletable:
+    syntax: Hm2SigConFanModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SignalContactGroup
+          field: hm2SigConFanModuleTable
+  hm2sigconid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConID
+          index_field: hm2SigConID
+    validation:
+      min: 1
+      max: 2
+  hm2sigconinterfaceentry:
+    syntax: Hm2SigConInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConInterfaceTable
+          field: hm2SigConInterfaceEntry
+  hm2sigconinterfacetable:
+    syntax: Hm2SigConInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SignalContactGroup
+          field: hm2SigConInterfaceTable
+  hm2sigconmanualactivate:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConManualActivate
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - open
+      - close
+  hm2sigconmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConModuleEntry
+          field: hm2SigConModID
+          index_field: hm2SigConModID
+          index_fields: &id005
+          - hm2SigConID
+          - hm2SigConModID
+    validation:
+      min: 1
+      max: 7
+  hm2sigconmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConMode
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - manual
+      - monitor
+      - deviceState
+      - deviceSecurity
+      - deviceStateAndSecurity
+  hm2sigconmoduleentry:
+    syntax: Hm2SigConModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConModuleTable
+          field: hm2SigConModuleEntry
+  hm2sigconmoduletable:
+    syntax: Hm2SigConModuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SignalContactGroup
+          field: hm2SigConModuleTable
+  hm2sigconoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConOperState
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - open
+      - close
+  hm2sigconopertimestamp:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConOperTimeStamp
+          index_field: hm2SigConID
+  hm2sigconpsentry:
+    syntax: Hm2SigConPSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConPSTable
+          field: hm2SigConPSEntry
+  hm2sigconpstable:
+    syntax: Hm2SigConPSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SignalContactGroup
+          field: hm2SigConPSTable
+  hm2sigconsenseethernetloops:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseEthernetLoops
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsenseextnvmnotinsync:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseExtNvmNotInSync
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsenseextnvmremoval:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseExtNvmRemoval
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensefan:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseFan
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensefanmodule:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConFanModuleEntry
+          field: hm2SigConSenseFanModule
+          index_field: hm2SigConFanModID
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensehumidity:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseHumidity
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsenseiflinkalarm:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConInterfaceEntry
+          field: hm2SigConSenseIfLinkAlarm
+          index_field: ifIndex
+          index_fields:
+          - hm2SigConID
+          - ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsenselinkfailure:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseLinkFailure
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensemodule:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConModuleEntry
+          field: hm2SigConSenseModule
+          index_field: hm2SigConModID
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensemoduleremoval:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseModuleRemoval
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensepsstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConPSEntry
+          field: hm2SigConSensePSState
+          index_field: hm2PSID
+          index_fields:
+          - hm2SigConID
+          - hm2PSID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsenseringredundancy:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseRingRedundancy
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensestpportblock:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseStpPortBlock
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconsensetemperature:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConSenseTemperature
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sigconstatusentry:
+    syntax: Hm2SigConStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConStatusTable
+          field: hm2SigConStatusEntry
+  hm2sigconstatusindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConStatusEntry
+          field: hm2SigConStatusIndex
+          index_field: hm2SigConStatusIndex
+          index_fields: &id006
+          - hm2SigConID
+          - hm2SigConStatusIndex
+  hm2sigconstatustable:
+    syntax: Hm2SigConStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SignalContactGroup
+          field: hm2SigConStatusTable
+  hm2sigconstatustimestamp:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConStatusEntry
+          field: hm2SigConStatusTimeStamp
+          index_field: hm2SigConStatusIndex
+          index_fields: *id006
+  hm2sigconstatustrapcause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConStatusEntry
+          field: hm2SigConStatusTrapCause
+          index_field: hm2SigConStatusIndex
+          index_fields: *id006
+    validation:
+      allowed:
+      - none
+      - power-supply
+      - link-failure
+      - temperature
+      - fan-failure
+      - module-removal
+      - ext-nvm-removal
+      - ext-nvm-not-in-sync
+      - ring-redundancy
+      - password-change
+      - password-min-length
+      - password-policy-not-configured
+      - password-policy-inactive
+      - telnet-enabled
+      - http-enabled
+      - snmp-unsecure
+      - sysmon-enabled
+      - ext-nvm-update-enabled
+      - no-link
+      - hidisc-enabled
+      - ext-nvm-config-load-unsecure
+      - iec61850-mms-enabled
+      - https-certificate-warning
+      - modbus-tcp-enabled
+      - ethernet-ip-enabled
+      - profinet-io-enabled
+      - ethernet-loops
+      - humidity
+      - stp-port-blocked
+  hm2sigconstatustrapcauseindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConStatusEntry
+          field: hm2SigConStatusTrapCauseIndex
+          index_field: hm2SigConStatusIndex
+          index_fields: *id006
+  hm2sigcontrapcause:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConTrapCause
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - none
+      - power-supply
+      - link-failure
+      - temperature
+      - fan-failure
+      - module-removal
+      - ext-nvm-removal
+      - ext-nvm-not-in-sync
+      - ring-redundancy
+      - password-change
+      - password-min-length
+      - password-policy-not-configured
+      - password-policy-inactive
+      - telnet-enabled
+      - http-enabled
+      - snmp-unsecure
+      - sysmon-enabled
+      - ext-nvm-update-enabled
+      - no-link
+      - hidisc-enabled
+      - ext-nvm-config-load-unsecure
+      - https-certificate-warning
+      - modbus-tcp-enabled
+      - ethernet-ip-enabled
+      - profinet-io-enabled
+      - ethernet-loops
+      - humidity
+      - pml-disabled
+      - stp-port-blocked
+      - secure-boot-disabled
+      - dev-mode-enabled
+  hm2sigcontrapcauseindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConTrapCauseIndex
+          index_field: hm2SigConID
+  hm2sigcontrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DIAGNOSTIC-MIB
+          table: hm2SigConCommonEntry
+          field: hm2SigConTrapEnable
+          index_field: hm2SigConID
+    validation:
+      allowed:
+      - true
+      - false

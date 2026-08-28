@@ -1,0 +1,283 @@
+version: 2.6.0
+feature: etb
+schemas:
+  read_etb:
+    type: dict
+    defaults:
+      hm2ttdpadminstate: false
+      hm2ttdpbackboneid: 0
+      hm2ttdpcntoetbncntableidx: 0
+      hm2ttdpcntoetbnentry: ''
+      hm2ttdpcntoetbnintf: 0
+      hm2ttdpcntoetbnrowstatus: 0
+      hm2ttdpcntoetbntable: ''
+      hm2ttdpcntoetbntableidx: 0
+      hm2ttdpcntoetbnusedhcpserver: 0
+      hm2ttdpcstcncnt: 0
+      hm2ttdpcstcurrentetbnnumber: 0
+      hm2ttdpcstetbncnt: 0
+      hm2ttdpcstuuid: ''
+      hm2ttdpetbnrole: 0
+      hm2ttdplocaletbninhibit: false
+      hm2ttdpoperstate: 0
+attributes:
+  hm2ttdpadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ttdpbackboneid:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpBackboneId
+  hm2ttdpcntoetbncntableidx:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.20.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpCnToEtbnEntry
+          field: hm2TtdpCnToEtbnCnTableIdx
+          index_field: hm2TtdpCnToEtbnCnTableIdx
+          index_fields: &id001
+          - hm2TtdpCnToEtbnTableIdx
+          - hm2TtdpCnToEtbnCnTableIdx
+    validation:
+      min: 1
+      max: 32
+  hm2ttdpcntoetbnentry:
+    syntax: Hm2TtdpCnToEtbnEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.20.1
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpCnToEtbnTable
+          field: hm2TtdpCnToEtbnEntry
+  hm2ttdpcntoetbnintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.20.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpCnToEtbnEntry
+          field: hm2TtdpCnToEtbnIntf
+          index_field: hm2TtdpCnToEtbnCnTableIdx
+          index_fields: *id001
+  hm2ttdpcntoetbnrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.20.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpCnToEtbnEntry
+          field: hm2TtdpCnToEtbnRowStatus
+          index_field: hm2TtdpCnToEtbnCnTableIdx
+          index_fields: *id001
+    create_method: createAndWait
+  hm2ttdpcntoetbntable:
+    syntax: Hm2TtdpCnToEtbnEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpCnToEtbnTable
+  hm2ttdpcntoetbntableidx:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.20.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpCnToEtbnEntry
+          field: hm2TtdpCnToEtbnTableIdx
+          index_field: hm2TtdpCnToEtbnCnTableIdx
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 63
+  hm2ttdpcntoetbnusedhcpserver:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.20.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpCnToEtbnEntry
+          field: hm2TtdpCnToEtbnUseDHCPServer
+          index_field: hm2TtdpCnToEtbnCnTableIdx
+          index_fields: *id001
+  hm2ttdpcstcncnt:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpCstCnCnt
+    validation:
+      min: 0
+      max: 32
+  hm2ttdpcstcurrentetbnnumber:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpCstCurrentEtbnNumber
+    validation:
+      min: 1
+      max: 63
+  hm2ttdpcstetbncnt:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpCstEtbnCnt
+    validation:
+      min: 0
+      max: 63
+  hm2ttdpcstuuid:
+    syntax: Hm2CstUuid
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpCstUuid
+  hm2ttdpetbnrole:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpETBNRole
+  hm2ttdplocaletbninhibit:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpLocalEtbnInhibit
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ttdpoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.130.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-ETB-MIB
+          table: hm2TtdpGroup
+          field: hm2TtdpOperState

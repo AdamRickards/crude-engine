@@ -1,0 +1,75 @@
+version: 2.7.0
+feature: dns
+description: DNS client configuration and server table
+methods:
+  get_dns:
+    type: dict
+    defaults:
+      enabled: false
+      config_source: protocol
+      domain_name: ''
+      timeout: 3
+      retransmits: 2
+      cache_enabled: false
+      servers: {}
+    sub_tables:
+      servers:
+        primary_key: address
+        field_map:
+          address: address
+          addr_type: addr_type
+        defaults:
+          address: ''
+          addr_type: 1
+  set_dns:
+    type: upsert
+  create_dns_server:
+    type: create
+    row_status: server_status
+    index_key: server_index
+    required: [address]
+    defaults:
+      addr_type: 1
+  delete_dns_server:
+    type: delete
+    row_status: server_status
+    index_key: server_index
+attributes:
+  enabled:
+    wire: hm2dnsclientadminstate
+    source: dns
+  config_source:
+    wire: hm2dnsclientconfigsource
+    source: dns
+    value_map:
+      '1': user
+      '2': mgmt-dhcp
+      '3': provider
+  domain_name:
+    wire: hm2dnsclientdefaultdomainname
+    source: dns
+  timeout:
+    wire: hm2dnsclientrequesttimeout
+    source: dns
+  retransmits:
+    wire: hm2dnsclientrequestretransmits
+    source: dns
+  cache_enabled:
+    wire: hm2dnscacheadminstate
+    source: dns
+  servers:
+    wire: hm2dnsclientserveraddress
+    source: dns
+  server_index:
+    wire: hm2dnsclientserverindex
+    source: dns
+  address:
+    wire: hm2dnsclientserveraddress
+    source: dns
+  addr_type:
+    wire: hm2dnsclientserveraddresstype
+    source: dns
+  server_status:
+    wire: hm2dnsclientserverrowstatus
+    source: dns
+    access: crud

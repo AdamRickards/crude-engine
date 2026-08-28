@@ -1,0 +1,113 @@
+version: 2.6.0
+feature: platform-mrp
+schemas:
+  read_platform-mrp:
+    type: dict
+    defaults:
+      hm2agentdot1qmrpport: 0
+      hm2agentdot1qportmrpentry: ''
+      hm2agentdot1qportmrpjointime: 0
+      hm2agentdot1qportmrpleavealltime: 0
+      hm2agentdot1qportmrpleavetime: 0
+      hm2agentdot1qportmrptable: ''
+attributes:
+  hm2agentdot1qmrpport:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MRP-MIB
+          table: hm2AgentDot1qPortMrpEntry
+          field: hm2AgentDot1qMrpPort
+          index_field: hm2AgentDot1qMrpPort
+    validation:
+      min: 1
+      max: 65535
+  hm2agentdot1qportmrpentry:
+    syntax: Hm2AgentDot1qPortMrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MRP-MIB
+          table: hm2AgentDot1qPortMrpTable
+          field: hm2AgentDot1qPortMrpEntry
+  hm2agentdot1qportmrpjointime:
+    syntax: TimeInterval
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MRP-MIB
+          table: hm2AgentDot1qPortMrpEntry
+          field: hm2AgentDot1qPortMrpJoinTime
+          index_field: hm2AgentDot1qMrpPort
+    validation:
+      min: 10
+      max: 100
+  hm2agentdot1qportmrpleavealltime:
+    syntax: TimeInterval
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MRP-MIB
+          table: hm2AgentDot1qPortMrpEntry
+          field: hm2AgentDot1qPortMrpLeaveAllTime
+          index_field: hm2AgentDot1qMrpPort
+    validation:
+      min: 200
+      max: 6000
+  hm2agentdot1qportmrpleavetime:
+    syntax: TimeInterval
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MRP-MIB
+          table: hm2AgentDot1qPortMrpEntry
+          field: hm2AgentDot1qPortMrpLeaveTime
+          index_field: hm2AgentDot1qMrpPort
+    validation:
+      min: 20
+      max: 600
+  hm2agentdot1qportmrptable:
+    syntax: Hm2AgentDot1qPortMrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MRP-MIB
+          table: hm2AgentDot1qMrp
+          field: hm2AgentDot1qPortMrpTable

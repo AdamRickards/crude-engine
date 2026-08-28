@@ -1,0 +1,36 @@
+version: "2.9.0"
+feature: ip-forward-ssh
+description: "SSH CLI sources for IP routing table (L3 only)"
+
+attributes:
+  # show ip route all — table parser
+  inetcidrroutedest:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip route all", parser: table, column: 0}
+
+  inetcidrrouteproto:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip route all", parser: table, column: 1}
+
+  inetcidrroutenexthop:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip route all", parser: table, column: 2}
+
+  inetcidrrouteifindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip route all", parser: table, column: 3}
+
+  inetcidrroutemetric1:
+    sources:
+      ssh:
+        read: {command: "show ip route all", parser: table, column: 4}
+
+  # age not available in SSH output

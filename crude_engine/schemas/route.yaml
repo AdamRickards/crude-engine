@@ -1,0 +1,43 @@
+# crude_engine/schemas/route.yaml
+version: 2.7.0
+feature: route
+description: "IP routing table mapping"
+
+methods:
+  get_route_to:
+    type: dict
+    primary_key: destination
+    defaults:
+      protocol: "other"
+      next_hop: ""
+      outgoing_interface: ""
+      preference: 0
+      age: 0
+
+attributes:
+  destination:
+    wire: inetcidrroutedest
+    source: ip-forward
+  next_hop:
+    wire: inetcidrroutenexthop
+    source: ip-forward
+  outgoing_interface:
+    wire: inetcidrrouteifindex
+    source: ip-forward
+  protocol:
+    wire: inetcidrrouteproto
+    source: ip-forward
+    value_map:
+      "1": "other"
+      "2": "local"
+      "3": "netmgmt"
+      "4": "icmp"
+      "8": "rip"
+      "13": "ospf"
+      "14": "bgp"
+  preference:
+    wire: inetcidrroutemetric1
+    source: ip-forward
+  age:
+    wire: inetcidrrouteage
+    source: ip-forward

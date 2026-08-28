@@ -1,0 +1,119 @@
+version: 2.9.0
+feature: mrp_sub_ring
+description: MRP Sub-Ring (SRM) configuration and status
+methods:
+  get_mrp_sub_ring:
+    type: dict
+    defaults:
+      enabled: false
+      instances: {}
+    sub_tables:
+      instances:
+        primary_key: ring_id
+        field_map:
+          ring_id: ring_id
+          oper_enabled: oper_enabled
+          admin_state: admin_state
+          oper_state: oper_state
+          vlan: vlan
+          domain_id: domain_id
+          sub_ring_name: sub_ring_name
+          sub_ring_port: sub_ring_port
+          sub_ring_port_state: sub_ring_port_state
+          sub_ring_state: sub_ring_state
+          redundancy: redundancy
+        defaults:
+          ring_id: 0
+          oper_enabled: false
+          admin_state: manager
+          oper_state: disabled
+          vlan: 0
+          domain_id: ''
+          sub_ring_name: ''
+          sub_ring_port: ''
+          sub_ring_port_state: not-connected
+          sub_ring_state: undefined
+          redundancy: false
+  set_mrp_sub_ring:
+    type: upsert
+    attributes:
+      enabled:
+        wire: hm2srmglobaladminstate
+        source: l2redundancy
+  create_mrp_sub_ring:
+    type: create
+    row_status: srm_status
+    index_key: ring_id
+  delete_mrp_sub_ring:
+    type: delete
+    row_status: srm_status
+    index_key: ring_id
+attributes:
+  ring_id:
+    wire: hm2srmringid
+    source: l2redundancy
+  enabled:
+    wire: hm2srmglobaladminstate
+    source: l2redundancy
+    value_map:
+      '1': true
+      '2': false
+  oper_enabled:
+    wire: hm2srmconfigoperstate
+    source: l2redundancy
+    value_map:
+      '1': true
+      '2': false
+  admin_state:
+    wire: hm2srmadminstate
+    source: l2redundancy
+    value_map:
+      '1': manager
+      '2': redundantManager
+      '3': singleManager
+  oper_state:
+    wire: hm2srmoperstate
+    source: l2redundancy
+    value_map:
+      '1': manager
+      '2': redundantManager
+      '3': singleManager
+      '4': disabled
+  vlan:
+    wire: hm2srmvlanid
+    source: l2redundancy
+  domain_id:
+    wire: hm2srmmrpdomainid
+    source: l2redundancy
+  sub_ring_name:
+    wire: hm2srmsubringname
+    source: l2redundancy
+  sub_ring_port:
+    wire: hm2srmsubringportifindex
+    source: l2redundancy
+    value_map: ifindex
+  sub_ring_port_state:
+    wire: hm2srmsubringportoperstate
+    source: l2redundancy
+    value_map:
+      '1': disabled
+      '2': blocked
+      '3': forwarding
+      '4': not-connected
+  sub_ring_state:
+    wire: hm2srmsubringoperstate
+    source: l2redundancy
+    value_map:
+      '1': undefined
+      '2': open
+      '3': closed
+  redundancy:
+    wire: hm2srmredundancyoperstate
+    source: l2redundancy
+    value_map:
+      '1': true
+      '2': false
+  srm_status:
+    wire: hm2srmrowstatus
+    source: l2redundancy
+    access: crud

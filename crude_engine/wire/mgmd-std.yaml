@@ -1,0 +1,1286 @@
+version: 2.6.0
+feature: mgmd-std
+schemas:
+  read_mgmd-std:
+    type: dict
+    defaults:
+      mgmdhostcacheaddress: ''
+      mgmdhostcacheaddresstype: ''
+      mgmdhostcacheentry: ''
+      mgmdhostcacheifindex: 0
+      mgmdhostcachelastreporter: ''
+      mgmdhostcachesourcefiltermode: 0
+      mgmdhostcachetable: ''
+      mgmdhostcacheuptime: 0
+      mgmdhostinterfaceentry: ''
+      mgmdhostinterfaceifindex: 0
+      mgmdhostinterfacequerier: ''
+      mgmdhostinterfacequeriertype: ''
+      mgmdhostinterfacestatus: 0
+      mgmdhostinterfacetable: ''
+      mgmdhostinterfaceversion: 0
+      mgmdhostinterfaceversion1queriertimer: 0
+      mgmdhostinterfaceversion2queriertimer: 0
+      mgmdhostinterfaceversion3robustness: 0
+      mgmdhostsrclistaddress: ''
+      mgmdhostsrclistaddresstype: ''
+      mgmdhostsrclistentry: ''
+      mgmdhostsrclistexpire: 0
+      mgmdhostsrclisthostaddress: ''
+      mgmdhostsrclistifindex: 0
+      mgmdhostsrclisttable: ''
+      mgmdinversehostcacheaddress: ''
+      mgmdinversehostcacheaddresstype: ''
+      mgmdinversehostcacheentry: ''
+      mgmdinversehostcacheifindex: 0
+      mgmdinversehostcachetable: ''
+      mgmdinverseroutercacheaddress: ''
+      mgmdinverseroutercacheaddresstype: ''
+      mgmdinverseroutercacheentry: ''
+      mgmdinverseroutercacheifindex: 0
+      mgmdinverseroutercachetable: ''
+      mgmdroutercacheaddress: ''
+      mgmdroutercacheaddresstype: ''
+      mgmdroutercacheentry: ''
+      mgmdroutercacheexcludemodeexpirytimer: 0
+      mgmdroutercacheexpirytime: 0
+      mgmdroutercacheifindex: 0
+      mgmdroutercachelastreporter: ''
+      mgmdroutercachesourcefiltermode: 0
+      mgmdroutercachetable: ''
+      mgmdroutercacheuptime: 0
+      mgmdroutercacheversion1hosttimer: 0
+      mgmdroutercacheversion2hosttimer: 0
+      mgmdrouterinterfaceentry: ''
+      mgmdrouterinterfacegroups: 0
+      mgmdrouterinterfaceifindex: 0
+      mgmdrouterinterfacejoins: 0
+      mgmdrouterinterfacelastmemberquerycount: 0
+      mgmdrouterinterfacelastmemberqueryinterval: 0
+      mgmdrouterinterfaceproxyifindex: 0
+      mgmdrouterinterfacequerier: ''
+      mgmdrouterinterfacequerierexpirytime: 0
+      mgmdrouterinterfacequeriertype: ''
+      mgmdrouterinterfacequerieruptime: 0
+      mgmdrouterinterfacequeryinterval: 0
+      mgmdrouterinterfacequerymaxresponsetime: 0
+      mgmdrouterinterfacerobustness: 0
+      mgmdrouterinterfacestartupquerycount: 0
+      mgmdrouterinterfacestartupqueryinterval: 0
+      mgmdrouterinterfacestatus: 0
+      mgmdrouterinterfacetable: ''
+      mgmdrouterinterfaceversion: 0
+      mgmdrouterinterfacewrongversionqueries: 0
+      mgmdroutersrclistaddress: ''
+      mgmdroutersrclistaddresstype: ''
+      mgmdroutersrclistentry: ''
+      mgmdroutersrclistexpire: 0
+      mgmdroutersrclisthostaddress: ''
+      mgmdroutersrclistifindex: 0
+      mgmdroutersrclisttable: ''
+attributes:
+  mgmdhostcacheaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostCacheEntry
+          field: mgmdHostCacheAddress
+          index_field: mgmdHostCacheIfIndex
+          index_fields: &id001
+          - mgmdHostCacheAddressType
+          - mgmdHostCacheAddress
+          - mgmdHostCacheIfIndex
+  mgmdhostcacheaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostCacheEntry
+          field: mgmdHostCacheAddressType
+          index_field: mgmdHostCacheIfIndex
+          index_fields: *id001
+  mgmdhostcacheentry:
+    syntax: MgmdHostCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostCacheTable
+          field: mgmdHostCacheEntry
+  mgmdhostcacheifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostCacheEntry
+          field: mgmdHostCacheIfIndex
+          index_field: mgmdHostCacheIfIndex
+          index_fields: *id001
+  mgmdhostcachelastreporter:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostCacheEntry
+          field: mgmdHostCacheLastReporter
+          index_field: mgmdHostCacheIfIndex
+          index_fields: *id001
+  mgmdhostcachesourcefiltermode:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostCacheEntry
+          field: mgmdHostCacheSourceFilterMode
+          index_field: mgmdHostCacheIfIndex
+          index_fields: *id001
+  mgmdhostcachetable:
+    syntax: MgmdHostCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdHostCacheTable
+  mgmdhostcacheuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostCacheEntry
+          field: mgmdHostCacheUpTime
+          index_field: mgmdHostCacheIfIndex
+          index_fields: *id001
+  mgmdhostinterfaceentry:
+    syntax: MgmdHostInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceTable
+          field: mgmdHostInterfaceEntry
+  mgmdhostinterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceIfIndex
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: &id002
+          - mgmdHostInterfaceIfIndex
+          - mgmdHostInterfaceQuerierType
+  mgmdhostinterfacequerier:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceQuerier
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+  mgmdhostinterfacequeriertype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceQuerierType
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+  mgmdhostinterfacestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceStatus
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+    create_method: createAndWait
+  mgmdhostinterfacetable:
+    syntax: MgmdHostInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdHostInterfaceTable
+  mgmdhostinterfaceversion:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceVersion
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 3
+  mgmdhostinterfaceversion1queriertimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceVersion1QuerierTimer
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+  mgmdhostinterfaceversion2queriertimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceVersion2QuerierTimer
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+  mgmdhostinterfaceversion3robustness:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostInterfaceEntry
+          field: mgmdHostInterfaceVersion3Robustness
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+  mgmdhostsrclistaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostSrcListEntry
+          field: mgmdHostSrcListAddress
+          index_field: mgmdHostSrcListHostAddress
+          index_fields: &id003
+          - mgmdHostSrcListAddressType
+          - mgmdHostSrcListAddress
+          - mgmdHostSrcListIfIndex
+          - mgmdHostSrcListHostAddress
+  mgmdhostsrclistaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostSrcListEntry
+          field: mgmdHostSrcListAddressType
+          index_field: mgmdHostSrcListHostAddress
+          index_fields: *id003
+  mgmdhostsrclistentry:
+    syntax: MgmdHostSrcListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.7.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostSrcListTable
+          field: mgmdHostSrcListEntry
+  mgmdhostsrclistexpire:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostSrcListEntry
+          field: mgmdHostSrcListExpire
+          index_field: mgmdHostSrcListHostAddress
+          index_fields: *id003
+  mgmdhostsrclisthostaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostSrcListEntry
+          field: mgmdHostSrcListHostAddress
+          index_field: mgmdHostSrcListHostAddress
+          index_fields: *id003
+  mgmdhostsrclistifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdHostSrcListEntry
+          field: mgmdHostSrcListIfIndex
+          index_field: mgmdHostSrcListHostAddress
+          index_fields: *id003
+  mgmdhostsrclisttable:
+    syntax: MgmdHostSrcListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.7
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdHostSrcListTable
+  mgmdinversehostcacheaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseHostCacheEntry
+          field: mgmdInverseHostCacheAddress
+          index_field: mgmdInverseHostCacheAddress
+          index_fields: &id004
+          - mgmdInverseHostCacheIfIndex
+          - mgmdInverseHostCacheAddressType
+          - mgmdInverseHostCacheAddress
+  mgmdinversehostcacheaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseHostCacheEntry
+          field: mgmdInverseHostCacheAddressType
+          index_field: mgmdInverseHostCacheAddress
+          index_fields: *id004
+  mgmdinversehostcacheentry:
+    syntax: MgmdInverseHostCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.5.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseHostCacheTable
+          field: mgmdInverseHostCacheEntry
+  mgmdinversehostcacheifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseHostCacheEntry
+          field: mgmdInverseHostCacheIfIndex
+          index_field: mgmdInverseHostCacheAddress
+          index_fields: *id004
+  mgmdinversehostcachetable:
+    syntax: MgmdInverseHostCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.5
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdInverseHostCacheTable
+  mgmdinverseroutercacheaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseRouterCacheEntry
+          field: mgmdInverseRouterCacheAddress
+          index_field: mgmdInverseRouterCacheAddress
+          index_fields: &id005
+          - mgmdInverseRouterCacheIfIndex
+          - mgmdInverseRouterCacheAddressType
+          - mgmdInverseRouterCacheAddress
+  mgmdinverseroutercacheaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseRouterCacheEntry
+          field: mgmdInverseRouterCacheAddressType
+          index_field: mgmdInverseRouterCacheAddress
+          index_fields: *id005
+  mgmdinverseroutercacheentry:
+    syntax: MgmdInverseRouterCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.6.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseRouterCacheTable
+          field: mgmdInverseRouterCacheEntry
+  mgmdinverseroutercacheifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdInverseRouterCacheEntry
+          field: mgmdInverseRouterCacheIfIndex
+          index_field: mgmdInverseRouterCacheAddress
+          index_fields: *id005
+  mgmdinverseroutercachetable:
+    syntax: MgmdInverseRouterCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.6
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdInverseRouterCacheTable
+  mgmdroutercacheaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheAddress
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: &id006
+          - mgmdRouterCacheAddressType
+          - mgmdRouterCacheAddress
+          - mgmdRouterCacheIfIndex
+  mgmdroutercacheaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheAddressType
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercacheentry:
+    syntax: MgmdRouterCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheTable
+          field: mgmdRouterCacheEntry
+  mgmdroutercacheexcludemodeexpirytimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheExcludeModeExpiryTimer
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercacheexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheExpiryTime
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercacheifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheIfIndex
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercachelastreporter:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheLastReporter
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercachesourcefiltermode:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheSourceFilterMode
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercachetable:
+    syntax: MgmdRouterCacheEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdRouterCacheTable
+  mgmdroutercacheuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheUpTime
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercacheversion1hosttimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheVersion1HostTimer
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdroutercacheversion2hosttimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterCacheEntry
+          field: mgmdRouterCacheVersion2HostTimer
+          index_field: mgmdRouterCacheIfIndex
+          index_fields: *id006
+  mgmdrouterinterfaceentry:
+    syntax: MgmdRouterInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceTable
+          field: mgmdRouterInterfaceEntry
+  mgmdrouterinterfacegroups:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceGroups
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: &id007
+          - mgmdRouterInterfaceIfIndex
+          - mgmdRouterInterfaceQuerierType
+  mgmdrouterinterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceIfIndex
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdrouterinterfacejoins:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceJoins
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdrouterinterfacelastmemberquerycount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.16
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceLastMemberQueryCount
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 1
+      max: 255
+  mgmdrouterinterfacelastmemberqueryinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.15
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceLastMemberQueryInterval
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 0
+      max: 31744
+  mgmdrouterinterfaceproxyifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceProxyIfIndex
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdrouterinterfacequerier:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceQuerier
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdrouterinterfacequerierexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceQuerierExpiryTime
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdrouterinterfacequeriertype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceQuerierType
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdrouterinterfacequerieruptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceQuerierUpTime
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdrouterinterfacequeryinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceQueryInterval
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 1
+      max: 31744
+  mgmdrouterinterfacequerymaxresponsetime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceQueryMaxResponseTime
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 0
+      max: 31744
+  mgmdrouterinterfacerobustness:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceRobustness
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 1
+      max: 255
+  mgmdrouterinterfacestartupquerycount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.17
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceStartupQueryCount
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 1
+      max: 255
+  mgmdrouterinterfacestartupqueryinterval:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.18
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceStartupQueryInterval
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 0
+      max: 31744
+  mgmdrouterinterfacestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceStatus
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    create_method: createAndWait
+  mgmdrouterinterfacetable:
+    syntax: MgmdRouterInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdRouterInterfaceTable
+  mgmdrouterinterfaceversion:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceVersion
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+    validation:
+      min: 1
+      max: 3
+  mgmdrouterinterfacewrongversionqueries:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterInterfaceEntry
+          field: mgmdRouterInterfaceWrongVersionQueries
+          index_field: mgmdRouterInterfaceQuerierType
+          index_fields: *id007
+  mgmdroutersrclistaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterSrcListEntry
+          field: mgmdRouterSrcListAddress
+          index_field: mgmdRouterSrcListHostAddress
+          index_fields: &id008
+          - mgmdRouterSrcListAddressType
+          - mgmdRouterSrcListAddress
+          - mgmdRouterSrcListIfIndex
+          - mgmdRouterSrcListHostAddress
+  mgmdroutersrclistaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterSrcListEntry
+          field: mgmdRouterSrcListAddressType
+          index_field: mgmdRouterSrcListHostAddress
+          index_fields: *id008
+  mgmdroutersrclistentry:
+    syntax: MgmdRouterSrcListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.8.1
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterSrcListTable
+          field: mgmdRouterSrcListEntry
+  mgmdroutersrclistexpire:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterSrcListEntry
+          field: mgmdRouterSrcListExpire
+          index_field: mgmdRouterSrcListHostAddress
+          index_fields: *id008
+  mgmdroutersrclisthostaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterSrcListEntry
+          field: mgmdRouterSrcListHostAddress
+          index_field: mgmdRouterSrcListHostAddress
+          index_fields: *id008
+  mgmdroutersrclistifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdRouterSrcListEntry
+          field: mgmdRouterSrcListIfIndex
+          index_field: mgmdRouterSrcListHostAddress
+          index_fields: *id008
+  mgmdroutersrclisttable:
+    syntax: MgmdRouterSrcListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.185.1.8
+          method: get
+      mops:
+        read:
+          mib: MGMD-STD-MIB
+          table: mgmdMIBObjects
+          field: mgmdRouterSrcListTable

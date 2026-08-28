@@ -1,0 +1,571 @@
+version: 2.6.0
+feature: snmp-view-based-acm
+schemas:
+  read_snmp-view-based-acm:
+    type: dict
+    defaults:
+      vacmaccesscontextmatch: 0
+      vacmaccesscontextprefix: ''
+      vacmaccessentry: ''
+      vacmaccessnotifyviewname: ''
+      vacmaccessreadviewname: ''
+      vacmaccesssecuritylevel: ''
+      vacmaccesssecuritymodel: ''
+      vacmaccessstatus: 0
+      vacmaccessstoragetype: 0
+      vacmaccesstable: ''
+      vacmaccesswriteviewname: ''
+      vacmcontextentry: ''
+      vacmcontextname: ''
+      vacmcontexttable: ''
+      vacmgroupname: ''
+      vacmsecuritymodel: ''
+      vacmsecurityname: ''
+      vacmsecuritytogroupentry: ''
+      vacmsecuritytogroupstatus: 0
+      vacmsecuritytogroupstoragetype: 0
+      vacmsecuritytogrouptable: ''
+      vacmviewspinlock: ''
+      vacmviewtreefamilyentry: ''
+      vacmviewtreefamilymask: ''
+      vacmviewtreefamilystatus: 0
+      vacmviewtreefamilystoragetype: 0
+      vacmviewtreefamilysubtree: ''
+      vacmviewtreefamilytable: ''
+      vacmviewtreefamilytype: 0
+      vacmviewtreefamilyviewname: ''
+attributes:
+  vacmaccesscontextmatch:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessContextMatch
+          index_field: vacmAccessSecurityLevel
+          index_fields: &id001
+          - vacmGroupName
+          - vacmAccessContextPrefix
+          - vacmAccessSecurityModel
+          - vacmAccessSecurityLevel
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - exact
+      - prefix
+  vacmaccesscontextprefix:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessContextPrefix
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 32
+  vacmaccessentry:
+    syntax: VacmAccessEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessTable
+          field: vacmAccessEntry
+  vacmaccessnotifyviewname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessNotifyViewName
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 32
+  vacmaccessreadviewname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessReadViewName
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 32
+  vacmaccesssecuritylevel:
+    syntax: SnmpSecurityLevel
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessSecurityLevel
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+  vacmaccesssecuritymodel:
+    syntax: SnmpSecurityModel
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessSecurityModel
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+  vacmaccessstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessStatus
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  vacmaccessstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessStorageType
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+  vacmaccesstable:
+    syntax: VacmAccessEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmMIBObjects
+          field: vacmAccessTable
+  vacmaccesswriteviewname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmAccessEntry
+          field: vacmAccessWriteViewName
+          index_field: vacmAccessSecurityLevel
+          index_fields: *id001
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 32
+  vacmcontextentry:
+    syntax: VacmContextEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.1.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmContextTable
+          field: vacmContextEntry
+  vacmcontextname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmContextEntry
+          field: vacmContextName
+          index_field: vacmContextName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 32
+  vacmcontexttable:
+    syntax: VacmContextEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmMIBObjects
+          field: vacmContextTable
+  vacmgroupname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmSecurityToGroupEntry
+          field: vacmGroupName
+          index_field: vacmSecurityName
+          index_fields: &id002
+          - vacmSecurityModel
+          - vacmSecurityName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  vacmsecuritymodel:
+    syntax: SnmpSecurityModel
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmSecurityToGroupEntry
+          field: vacmSecurityModel
+          index_field: vacmSecurityName
+          index_fields: *id002
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 2147483647
+  vacmsecurityname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmSecurityToGroupEntry
+          field: vacmSecurityName
+          index_field: vacmSecurityName
+          index_fields: *id002
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  vacmsecuritytogroupentry:
+    syntax: VacmSecurityToGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.2.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmSecurityToGroupTable
+          field: vacmSecurityToGroupEntry
+  vacmsecuritytogroupstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmSecurityToGroupEntry
+          field: vacmSecurityToGroupStatus
+          index_field: vacmSecurityName
+          index_fields: *id002
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  vacmsecuritytogroupstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmSecurityToGroupEntry
+          field: vacmSecurityToGroupStorageType
+          index_field: vacmSecurityName
+          index_fields: *id002
+          key_tag: to_hex_decode
+  vacmsecuritytogrouptable:
+    syntax: VacmSecurityToGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.2
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmMIBObjects
+          field: vacmSecurityToGroupTable
+  vacmviewspinlock:
+    syntax: TestAndIncr
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmMIBViews
+          field: vacmViewSpinLock
+  vacmviewtreefamilyentry:
+    syntax: VacmViewTreeFamilyEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmViewTreeFamilyTable
+          field: vacmViewTreeFamilyEntry
+  vacmviewtreefamilymask:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmViewTreeFamilyEntry
+          field: vacmViewTreeFamilyMask
+          index_field: vacmViewTreeFamilySubtree
+          index_fields: &id003
+          - vacmViewTreeFamilyViewName
+          - vacmViewTreeFamilySubtree
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 16
+  vacmviewtreefamilystatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmViewTreeFamilyEntry
+          field: vacmViewTreeFamilyStatus
+          index_field: vacmViewTreeFamilySubtree
+          index_fields: *id003
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  vacmviewtreefamilystoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmViewTreeFamilyEntry
+          field: vacmViewTreeFamilyStorageType
+          index_field: vacmViewTreeFamilySubtree
+          index_fields: *id003
+          key_tag: to_hex_decode
+  vacmviewtreefamilysubtree:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmViewTreeFamilyEntry
+          field: vacmViewTreeFamilySubtree
+          index_field: vacmViewTreeFamilySubtree
+          index_fields: *id003
+          key_tag: to_hex_decode
+  vacmviewtreefamilytable:
+    syntax: VacmViewTreeFamilyEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2
+          method: get
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmMIBViews
+          field: vacmViewTreeFamilyTable
+  vacmviewtreefamilytype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmViewTreeFamilyEntry
+          field: vacmViewTreeFamilyType
+          index_field: vacmViewTreeFamilySubtree
+          index_fields: *id003
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - included
+      - excluded
+  vacmviewtreefamilyviewname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.16.1.5.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMP-VIEW-BASED-ACM-MIB
+          table: vacmViewTreeFamilyEntry
+          field: vacmViewTreeFamilyViewName
+          index_field: vacmViewTreeFamilySubtree
+          index_fields: *id003
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32

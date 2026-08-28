@@ -1,0 +1,27 @@
+version: "2.6.0"
+feature: snmp-target-ssh
+description: "SSH CLI sources for SNMP trap destinations — hand-authored"
+
+attributes:
+  # trap address is combined as "ip:port" in CLI output
+  snmptargetaddrtaddress:
+    sources:
+      ssh:
+        read: {command: "show snmp trap", parser: table, section: 1, column: 1}
+
+  snmptargetaddrname:
+    sources:
+      ssh:
+        read: {command: "show snmp trap", parser: table, section: 1, key_column: 0, column: 0}
+
+  snmptargetaddrrowstatus:
+    sources:
+      ssh:
+        create: {command: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}", level: config}
+        delete: {command: "snmp notification host delete {index}", level: config}
+
+  snmptargetparamsrowstatus:
+    sources:
+      ssh:
+        create: {command: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}", level: config}
+        delete: {command: "snmp notification host delete {index}", level: config}

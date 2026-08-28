@@ -1,0 +1,22 @@
+version: 2.7.0
+feature: dai_global
+description: Dynamic ARP Inspection global validation settings
+methods:
+  get_dai_global:
+    type: dict
+    defaults:
+      validate_src_mac: false
+      validate_dst_mac: false
+      validate_ip: false
+  set_dai_global:
+    type: upsert
+attributes:
+  validate_src_mac:
+    wire: hm2agentdaisrcmacvalidate
+    source: platform-switching
+  validate_dst_mac:
+    wire: hm2agentdaidstmacvalidate
+    source: platform-switching
+  validate_ip:
+    wire: hm2agentdaiipvalidate
+    source: platform-switching

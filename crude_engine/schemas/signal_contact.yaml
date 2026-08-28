@@ -1,0 +1,92 @@
+version: 2.8.0
+feature: signal_contact
+description: Signal contact (relay) per-contact configuration, sense flags, and status
+methods:
+  get_signal_contact:
+    type: dict
+    primary_key: contact_id
+    defaults:
+      contact_id: 0
+      mode: monitor
+      state: closed
+      trap_enabled: false
+      sense_link_failure: false
+      sense_temperature: false
+      sense_fan: false
+      sense_fan_module: false
+      sense_module: false
+      sense_module_removal: false
+      sense_ps_state: false
+      sense_envm_removal: false
+      sense_envm_not_in_sync: false
+      sense_ring_redundancy: false
+      sense_ethernet_loops: false
+      sense_humidity: false
+      sense_stp_port_block: false
+      sense_if_link_alarm: false
+  set_signal_contact:
+    type: upsert
+attributes:
+  contact_id:
+    wire: hm2sigconid
+    source: diagnostic
+  mode:
+    wire: hm2sigconmode
+    source: diagnostic
+    value_map:
+      '1': manual
+      '2': monitor
+      '3': deviceState
+      '4': deviceSecurity
+      '5': deviceStateAndSecurity
+  state:
+    wire: hm2sigconoperstate
+    source: diagnostic
+    value_map:
+      '1': open
+      '2': closed
+  trap_enabled:
+    wire: hm2sigcontrapenable
+    source: diagnostic
+  sense_link_failure:
+    wire: hm2sigconsenselinkfailure
+    source: diagnostic
+  sense_temperature:
+    wire: hm2sigconsensetemperature
+    source: diagnostic
+  sense_fan:
+    wire: hm2sigconsensefan
+    source: diagnostic
+  sense_fan_module:
+    wire: hm2sigconsensefanmodule
+    source: diagnostic
+  sense_module:
+    wire: hm2sigconsensemodule
+    source: diagnostic
+  sense_module_removal:
+    wire: hm2sigconsensemoduleremoval
+    source: diagnostic
+  sense_ps_state:
+    wire: hm2sigconsensepsstate
+    source: diagnostic
+  sense_envm_removal:
+    wire: hm2sigconsenseextnvmremoval
+    source: diagnostic
+  sense_envm_not_in_sync:
+    wire: hm2sigconsenseextnvmnotinsync
+    source: diagnostic
+  sense_ring_redundancy:
+    wire: hm2sigconsenseringredundancy
+    source: diagnostic
+  sense_ethernet_loops:
+    wire: hm2sigconsenseethernetloops
+    source: diagnostic
+  sense_humidity:
+    wire: hm2sigconsensehumidity
+    source: diagnostic
+  sense_stp_port_block:
+    wire: hm2sigconsensestpportblock
+    source: diagnostic
+  sense_if_link_alarm:
+    wire: hm2sigconsenseiflinkalarm
+    source: diagnostic

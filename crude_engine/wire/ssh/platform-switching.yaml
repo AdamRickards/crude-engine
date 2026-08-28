@@ -1,0 +1,123 @@
+version: "2.9.0"
+feature: platform-switching-ssh
+description: "SSH CLI sources for platform-switching attrs"
+
+attributes:
+  # IP Source Guard: show ip source-guard interfaces
+  hm2agentipsgifverifysource:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip source-guard interfaces", parser: table, column: 1}
+
+  hm2agentipsgifportsecurity:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip source-guard interfaces", parser: table, column: 2}
+
+  # RSTP global: show spanning-tree global
+  hm2agentstpadminmode:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree global", field: "Spanning Tree Mode"}
+        write: {command: "spanning-tree operation", level: config}
+
+  hm2agentstpcstbridgepriority:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree global", field: "Bridge priority"}
+        write: {command: "spanning-tree drstp mst priority 0 {value}", level: config}
+
+  hm2agentstpcstbridgehellotime:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree global", field: "Bridge hello time"}
+        write: {command: "spanning-tree drstp hello-time {value}", level: config}
+
+  hm2agentstpcstbridgemaxage:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree global", field: "Bridge max age"}
+        write: {command: "spanning-tree drstp max-age {value}", level: config}
+
+  hm2agentstpcstbridgefwddelay:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree global", field: "Bridge forward delay"}
+        write: {command: "spanning-tree drstp forward-time {value}", level: config}
+
+  hm2agentstpbpduguardmode:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree global", field: "BPDU-Guard mode"}
+        write: {command: "spanning-tree bpdu-guard", level: config}
+
+  # RSTP per-port: show spanning-tree port {port}
+  hm2agentstpportstate:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree port {index}", field: "Port mode"}
+        write: {command: "spanning-tree mode", level: config_interface}
+
+  hm2agentstpcstportedge:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree port {index}", field: "Edge Port"}
+        write: {command: "spanning-tree edge-port", level: config_interface}
+
+  hm2agentstpcstportpriority:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree port {index}", field: "Port priority"}
+        write: {command: "spanning-tree priority {value}", level: config_interface}
+
+  hm2agentstpcstportpathcost:
+    sources:
+      ssh:
+        read: {command: "show spanning-tree port {index}", field: "Port path cost"}
+        write: {command: "spanning-tree cost {value}", level: config_interface}
+
+  # DAI global: show ip arp-inspection global
+  hm2agentdaisrcmacvalidate:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection global", field: "Source MAC Verification"}
+        write: {command: "ip arp-inspection verify src-mac", level: config}
+
+  hm2agentdaidstmacvalidate:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection global", field: "Destination MAC Verification"}
+        write: {command: "ip arp-inspection verify dst-mac", level: config}
+
+  hm2agentdaiipvalidate:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection global", field: "IP Address Verification"}
+        write: {command: "ip arp-inspection verify ip", level: config}
+
+  # DHCP Snooping: show ip dhcp-snooping global / interfaces
+  hm2agentdhcpsnoopingadminmode:
+    sources:
+      ssh:
+        read: {command: "show ip dhcp-snooping global", field: "DHCP Snooping Mode"}
+        write: {command: "ip dhcp-snooping mode", level: config}
+
+  hm2agentdhcpsnoopingverifymac:
+    sources:
+      ssh:
+        read: {command: "show ip dhcp-snooping global", field: "Source MAC Verification"}
+        write: {command: "ip dhcp-snooping verify-mac", level: config}
+
+  hm2agentdhcpsnoopingremotefilename:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip dhcp-snooping global", field: "Bindings Database Location"}
+        write: {command: "ip dhcp-snooping database storage {value}", level: config}
+
+  hm2agentdhcpsnoopingiftrustenable:
+    sources:
+      ssh:
+        read: {command: "show ip dhcp-snooping interfaces", parser: table, column: 1}

@@ -1,0 +1,344 @@
+version: 2.6.0
+feature: snmp-notification
+schemas:
+  read_snmp-notification:
+    type: dict
+    defaults:
+      snmpnotifyentry: ''
+      snmpnotifyfilterentry: ''
+      snmpnotifyfiltermask: ''
+      snmpnotifyfilterprofileentry: ''
+      snmpnotifyfilterprofilename: ''
+      snmpnotifyfilterprofilerowstatus: 0
+      snmpnotifyfilterprofilestortype: 0
+      snmpnotifyfilterprofiletable: ''
+      snmpnotifyfilterrowstatus: 0
+      snmpnotifyfilterstoragetype: 0
+      snmpnotifyfiltersubtree: ''
+      snmpnotifyfiltertable: ''
+      snmpnotifyfiltertype: 0
+      snmpnotifyname: ''
+      snmpnotifyrowstatus: 0
+      snmpnotifystoragetype: 0
+      snmpnotifytable: ''
+      snmpnotifytag: ''
+      snmpnotifytype: 0
+attributes:
+  snmpnotifyentry:
+    syntax: SnmpNotifyEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.1.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyTable
+          field: snmpNotifyEntry
+  snmpnotifyfilterentry:
+    syntax: SnmpNotifyFilterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.3.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterTable
+          field: snmpNotifyFilterEntry
+  snmpnotifyfiltermask:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterEntry
+          field: snmpNotifyFilterMask
+          index_field: snmpNotifyFilterSubtree
+          index_fields: &id001
+          - snmpNotifyFilterProfileName
+          - snmpNotifyFilterSubtree
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 16
+  snmpnotifyfilterprofileentry:
+    syntax: SnmpNotifyFilterProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.2.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterProfileTable
+          field: snmpNotifyFilterProfileEntry
+  snmpnotifyfilterprofilename:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterProfileEntry
+          field: snmpNotifyFilterProfileName
+          index_field: snmpTargetParamsName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  snmpnotifyfilterprofilerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterProfileEntry
+          field: snmpNotifyFilterProfileRowStatus
+          index_field: snmpTargetParamsName
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  snmpnotifyfilterprofilestortype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterProfileEntry
+          field: snmpNotifyFilterProfileStorType
+          index_field: snmpTargetParamsName
+          key_tag: to_hex_decode
+  snmpnotifyfilterprofiletable:
+    syntax: SnmpNotifyFilterProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.2
+          method: get
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyObjects
+          field: snmpNotifyFilterProfileTable
+  snmpnotifyfilterrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterEntry
+          field: snmpNotifyFilterRowStatus
+          index_field: snmpNotifyFilterSubtree
+          index_fields: *id001
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  snmpnotifyfilterstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterEntry
+          field: snmpNotifyFilterStorageType
+          index_field: snmpNotifyFilterSubtree
+          index_fields: *id001
+          key_tag: to_hex_decode
+  snmpnotifyfiltersubtree:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterEntry
+          field: snmpNotifyFilterSubtree
+          index_field: snmpNotifyFilterSubtree
+          index_fields: *id001
+          key_tag: to_hex_decode
+  snmpnotifyfiltertable:
+    syntax: SnmpNotifyFilterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.3
+          method: get
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyObjects
+          field: snmpNotifyFilterTable
+  snmpnotifyfiltertype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyFilterEntry
+          field: snmpNotifyFilterType
+          index_field: snmpNotifyFilterSubtree
+          index_fields: *id001
+          key_tag: to_hex_decode
+  snmpnotifyname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyEntry
+          field: snmpNotifyName
+          index_field: snmpNotifyName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  snmpnotifyrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyEntry
+          field: snmpNotifyRowStatus
+          index_field: snmpNotifyName
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  snmpnotifystoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyEntry
+          field: snmpNotifyStorageType
+          index_field: snmpNotifyName
+          key_tag: to_hex_decode
+  snmpnotifytable:
+    syntax: SnmpNotifyEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.1
+          method: get
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyObjects
+          field: snmpNotifyTable
+  snmpnotifytag:
+    syntax: SnmpTagValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyEntry
+          field: snmpNotifyTag
+          index_field: snmpNotifyName
+          key_tag: to_hex_decode
+  snmpnotifytype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.13.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: SNMP-NOTIFICATION-MIB
+          table: snmpNotifyEntry
+          field: snmpNotifyType
+          index_field: snmpNotifyName
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - trap
+      - inform

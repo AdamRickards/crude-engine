@@ -1,0 +1,24 @@
+# Positive fixture — both MUSTs satisfied (control: 0 errors)
+version: "2.9.0"
+feature: ok_crud_and_setter
+description: Offline positive fixture — index_key + setter wire+source present
+methods:
+  create_row:
+    type: create
+    row_status: status
+    index_key: row_index
+  delete_row:
+    type: delete
+    row_status: status
+    index_key: row_index
+  set_thing:
+    type: upsert
+    fields: [payload]
+attributes:
+  row_index: {}
+  status:
+    wire: dummy_rowstatus
+    source: dummy
+  payload:
+    wire: dummy_payload
+    source: dummy

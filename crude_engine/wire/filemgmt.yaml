@@ -1,0 +1,950 @@
+version: 2.6.0
+feature: filemgmt
+schemas:
+  read_filemgmt:
+    type: dict
+    defaults:
+      hm2configwatchdogadminstatus: false
+      hm2configwatchdogipaddress: ''
+      hm2configwatchdogipaddresstype: ''
+      hm2configwatchdogoperstatus: false
+      hm2configwatchdogtimeinterval: 0
+      hm2configwatchdogtimervalue: 0
+      hm2fmactionactivate: 0
+      hm2fmactionactivatekey: 0
+      hm2fmactionactivateresult: 0
+      hm2fmactionactivateresulttext: ''
+      hm2fmactioncontainerpassword: ''
+      hm2fmactiondestinationdata: ''
+      hm2fmactiondestinationtype: 0
+      hm2fmactionentry: ''
+      hm2fmactionitemtype: 0
+      hm2fmactionparameter: 0
+      hm2fmactionpercentready: 0
+      hm2fmactionresult: 0
+      hm2fmactionresulttext: ''
+      hm2fmactionsourcedata: ''
+      hm2fmactionsourceinterface: 0
+      hm2fmactionsourcetype: 0
+      hm2fmactionstatus: 0
+      hm2fmactiontable: ''
+      hm2fmactiontype: 0
+      hm2fmbootparamstate: 0
+      hm2fmconfigremotesaveadminstatus: false
+      hm2fmconfigremotesavedestination: ''
+      hm2fmconfigremotesavepassword: ''
+      hm2fmconfigremotesaveusername: ''
+      hm2fmenvmstate: 0
+      hm2fmnvmstate: 0
+      hm2fmprofileaction: 0
+      hm2fmprofileactive: 0
+      hm2fmprofiledatetime: ''
+      hm2fmprofiledevicetype: ''
+      hm2fmprofileencryptionactive: false
+      hm2fmprofileencryptionverified: false
+      hm2fmprofileentry: ''
+      hm2fmprofilefingerprint: ''
+      hm2fmprofilefingerprintverified: false
+      hm2fmprofileindex: 0
+      hm2fmprofilename: ''
+      hm2fmprofilestoragetype: 0
+      hm2fmprofileswbugfixrelnum: 0
+      hm2fmprofileswmajorrelnum: 0
+      hm2fmprofileswminorrelnum: 0
+      hm2fmprofiletable: ''
+      hm2fmserverpassword: ''
+      hm2fmserverusername: ''
+      hm2filemgmtconfigcompatibilitymode: 0
+      hm2filemgmtconfigpasswordchange: ''
+      hm2filemgmtconfigpasswordstatus: false
+      hm2filemgmtglobalsourceinterface: 0
+attributes:
+  hm2configwatchdogadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigWatchdogControl
+          field: hm2ConfigWatchdogAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2configwatchdogipaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigWatchdogControl
+          field: hm2ConfigWatchdogIPAddress
+  hm2configwatchdogipaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigWatchdogControl
+          field: hm2ConfigWatchdogIPAddressType
+  hm2configwatchdogoperstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigWatchdogControl
+          field: hm2ConfigWatchdogOperStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2configwatchdogtimeinterval:
+    syntax: Integer32 (30..600)
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigWatchdogControl
+          field: hm2ConfigWatchdogTimeInterval
+    validation:
+      min: 30
+      max: 600
+  hm2configwatchdogtimervalue:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigWatchdogControl
+          field: hm2ConfigWatchdogTimerValue
+  hm2fmactionactivate:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMActionEntry
+          field: hm2FMActionActivate
+          index_field: hm2FMActionDestinationType
+          index_fields: &id001
+          - hm2FMActionType
+          - hm2FMActionItemType
+          - hm2FMActionSourceType
+          - hm2FMActionDestinationType
+  hm2fmactionactivatekey:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.18
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionActivateKey
+  hm2fmactionactivateresult:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.12
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionActivateResult
+  hm2fmactionactivateresulttext:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.13
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionActivateResultText
+  hm2fmactioncontainerpassword:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.19
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionContainerPassword
+    validation:
+      min: 0
+      max: 100
+  hm2fmactiondestinationdata:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.11
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionDestinationData
+    validation:
+      min: 0
+      max: 128
+  hm2fmactiondestinationtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMActionEntry
+          field: hm2FMActionDestinationType
+          index_field: hm2FMActionDestinationType
+          index_fields: *id001
+  hm2fmactionentry:
+    syntax: Hm2FMActionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMActionTable
+          field: hm2FMActionEntry
+  hm2fmactionitemtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMActionEntry
+          field: hm2FMActionItemType
+          index_field: hm2FMActionDestinationType
+          index_fields: *id001
+  hm2fmactionparameter:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.20
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionParameter
+  hm2fmactionpercentready:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.15
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionPercentReady
+    validation:
+      min: 0
+      max: 100
+  hm2fmactionresult:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.16
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionResult
+  hm2fmactionresulttext:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.17
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionResultText
+  hm2fmactionsourcedata:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionSourceData
+    validation:
+      min: 0
+      max: 128
+  hm2fmactionsourceinterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.21
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionSourceInterface
+  hm2fmactionsourcetype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMActionEntry
+          field: hm2FMActionSourceType
+          index_field: hm2FMActionDestinationType
+          index_fields: *id001
+  hm2fmactionstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.14
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionStatus
+  hm2fmactiontable:
+    syntax: Hm2FMActionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtActionGroup
+          field: hm2FMActionTable
+  hm2fmactiontype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMActionEntry
+          field: hm2FMActionType
+          index_field: hm2FMActionDestinationType
+          index_fields: *id001
+  hm2fmbootparamstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtStatusGroup
+          field: hm2FMBootParamState
+    validation:
+      allowed:
+      - ok
+      - outOfSync
+  hm2fmconfigremotesaveadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigRemoteSaveGroup
+          field: hm2FMConfigRemoteSaveAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2fmconfigremotesavedestination:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigRemoteSaveGroup
+          field: hm2FMConfigRemoteSaveDestination
+    validation:
+      min: 0
+      max: 128
+  hm2fmconfigremotesavepassword:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.5.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigRemoteSaveGroup
+          field: hm2FMConfigRemoteSavePassword
+    validation:
+      min: 0
+      max: 128
+  hm2fmconfigremotesaveusername:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.5.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigRemoteSaveGroup
+          field: hm2FMConfigRemoteSaveUsername
+    validation:
+      min: 0
+      max: 128
+  hm2fmenvmstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtStatusGroup
+          field: hm2FMEnvmState
+    validation:
+      allowed:
+      - ok
+      - outOfSync
+      - absent
+  hm2fmnvmstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtStatusGroup
+          field: hm2FMNvmState
+    validation:
+      allowed:
+      - ok
+      - outOfSync
+      - busy
+  hm2fmprofileaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileAction
+          index_field: hm2FMProfileIndex
+          index_fields: &id002
+          - hm2FMProfileStorageType
+          - hm2FMProfileIndex
+  hm2fmprofileactive:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileActive
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - active
+      - inactive
+  hm2fmprofiledatetime:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileDateTime
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+  hm2fmprofiledevicetype:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileDeviceType
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+  hm2fmprofileencryptionactive:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileEncryptionActive
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2fmprofileencryptionverified:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileEncryptionVerified
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2fmprofileentry:
+    syntax: Hm2FMProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileTable
+          field: hm2FMProfileEntry
+  hm2fmprofilefingerprint:
+    syntax: DisplayString (SIZE(40))
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileFingerprint
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+  hm2fmprofilefingerprintverified:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileFingerprintVerified
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2fmprofileindex:
+    syntax: Integer32 (1..100)
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileIndex
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 100
+  hm2fmprofilename:
+    syntax: DisplayString (SIZE(0..32))
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileName
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 32
+  hm2fmprofilestoragetype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileStorageType
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - nvm
+      - envm
+  hm2fmprofileswbugfixrelnum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileSwBugfixRelNum
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+  hm2fmprofileswmajorrelnum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileSwMajorRelNum
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+  hm2fmprofileswminorrelnum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FMProfileEntry
+          field: hm2FMProfileSwMinorRelNum
+          index_field: hm2FMProfileIndex
+          index_fields: *id002
+  hm2fmprofiletable:
+    syntax: Hm2FMProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtProfileGroup
+          field: hm2FMProfileTable
+  hm2fmserverpassword:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtServerAccessGroup
+          field: hm2FMServerPassword
+    validation:
+      min: 0
+      max: 32
+  hm2fmserverusername:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtServerAccessGroup
+          field: hm2FMServerUserName
+    validation:
+      min: 0
+      max: 32
+  hm2filemgmtconfigcompatibilitymode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.10
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigGroup
+          field: hm2FileMgmtConfigCompatibilityMode
+  hm2filemgmtconfigpasswordchange:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtSecurityGroup
+          field: hm2FileMgmtConfigPasswordChange
+    validation:
+      min: 0
+      max: 255
+  hm2filemgmtconfigpasswordstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtSecurityGroup
+          field: hm2FileMgmtConfigPasswordStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2filemgmtglobalsourceinterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.21.1.4.9
+          method: get
+      mops:
+        read:
+          mib: HM2-FILEMGMT-MIB
+          table: hm2FileMgmtConfigGroup
+          field: hm2FileMgmtGlobalSourceInterface

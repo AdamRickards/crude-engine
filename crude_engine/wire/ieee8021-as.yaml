@@ -1,0 +1,1912 @@
+version: 2.6.0
+feature: ieee8021-as
+schemas:
+  read_ieee8021-as:
+    type: dict
+    defaults:
+      ieee8021asacceptablemasteralternatepriority1: 0
+      ieee8021asacceptablemasterclockidentity: ''
+      ieee8021asacceptablemasterportnumber: 0
+      ieee8021asacceptablemasterrowstatus: 0
+      ieee8021asacceptablemastertabledsactualtablesize: 0
+      ieee8021asacceptablemastertabledsmasterentry: ''
+      ieee8021asacceptablemastertabledsmasterid: 0
+      ieee8021asacceptablemastertabledsmastertable: ''
+      ieee8021asacceptablemastertabledsmaxtablesize: 0
+      ieee8021asbridgebaseport: 0
+      ieee8021ascurrentdsgmchangecount: 0
+      ieee8021ascurrentdsgmtimebaseindicator: 0
+      ieee8021ascurrentdslastgmfreqchangels: 0
+      ieee8021ascurrentdslastgmfreqchangems: 0
+      ieee8021ascurrentdslastgmphasechangehs: 0
+      ieee8021ascurrentdslastgmphasechangels: 0
+      ieee8021ascurrentdslastgmphasechangems: 0
+      ieee8021ascurrentdsoffsetfrommasterhs: 0
+      ieee8021ascurrentdsoffsetfrommasterls: 0
+      ieee8021ascurrentdsoffsetfrommasterms: 0
+      ieee8021ascurrentdsstepsremoved: 0
+      ieee8021ascurrentdstimeoflastgmchangeevent: 0
+      ieee8021ascurrentdstimeoflastgmfreqchangeevent: 0
+      ieee8021ascurrentdstimeoflastgmphasechangeevent: 0
+      ieee8021asdefaultdsclockaccuracy: ''
+      ieee8021asdefaultdsclockclass: ''
+      ieee8021asdefaultdsclockidentity: ''
+      ieee8021asdefaultdscurrentutcoffset: 0
+      ieee8021asdefaultdscurrentutcoffsetvalid: false
+      ieee8021asdefaultdsfrequencytraceable: false
+      ieee8021asdefaultdsgmcapable: false
+      ieee8021asdefaultdsleap59: false
+      ieee8021asdefaultdsleap61: false
+      ieee8021asdefaultdsnumberports: 0
+      ieee8021asdefaultdsoffsetscaledlogvariance: 0
+      ieee8021asdefaultdspriority1: 0
+      ieee8021asdefaultdspriority2: 0
+      ieee8021asdefaultdstimesource: ''
+      ieee8021asdefaultdstimetraceable: false
+      ieee8021asparentdscumlativerateratio: 0
+      ieee8021asparentdsgrandmasterclockaccuracy: ''
+      ieee8021asparentdsgrandmasterclockclass: ''
+      ieee8021asparentdsgrandmasteridentity: ''
+      ieee8021asparentdsgrandmasteroffsetscaledlogvariance: 0
+      ieee8021asparentdsgrandmasterpriority1: 0
+      ieee8021asparentdsgrandmasterpriority2: 0
+      ieee8021asparentdsparentclockidentity: ''
+      ieee8021asparentdsparentportnumber: 0
+      ieee8021asportdsacceptablemastertableenabled: false
+      ieee8021asportdsallowedlostresponses: 0
+      ieee8021asportdsannouncereceipttimeout: 0
+      ieee8021asportdsascapable: false
+      ieee8021asportdsasifindex: 0
+      ieee8021asportdsclockidentity: ''
+      ieee8021asportdscurrentlogannounceinterval: 0
+      ieee8021asportdscurrentlogpdelayreqinterval: 0
+      ieee8021asportdscurrentlogsyncinterval: 0
+      ieee8021asportdsdelayasymmetryhs: 0
+      ieee8021asportdsdelayasymmetryls: 0
+      ieee8021asportdsdelayasymmetryms: 0
+      ieee8021asportdsifentry: ''
+      ieee8021asportdsiftable: ''
+      ieee8021asportdsinitiallogannounceinterval: 0
+      ieee8021asportdsinitiallogpdelayreqinterval: 0
+      ieee8021asportdsinitiallogsyncinterval: 0
+      ieee8021asportdsismeasuringdelay: false
+      ieee8021asportdsndownls: 0
+      ieee8021asportdsndownms: 0
+      ieee8021asportdsneighborpropdelayhs: 0
+      ieee8021asportdsneighborpropdelayls: 0
+      ieee8021asportdsneighborpropdelayms: 0
+      ieee8021asportdsneighborpropdelaythreshhs: 0
+      ieee8021asportdsneighborpropdelaythreshls: 0
+      ieee8021asportdsneighborpropdelaythreshms: 0
+      ieee8021asportdsneighborrateratio: 0
+      ieee8021asportdsnupls: 0
+      ieee8021asportdsnupms: 0
+      ieee8021asportdsportnumber: 0
+      ieee8021asportdsportrole: 0
+      ieee8021asportdspttportenabled: false
+      ieee8021asportdssyncreceipttimeout: 0
+      ieee8021asportdssyncreceipttimeouttimeintervalhs: 0
+      ieee8021asportdssyncreceipttimeouttimeintervalls: 0
+      ieee8021asportdssyncreceipttimeouttimeintervalms: 0
+      ieee8021asportdsversionnumber: 0
+      ieee8021asportstatannouncereceipttimeouts: 0
+      ieee8021asportstatifentry: ''
+      ieee8021asportstatiftable: ''
+      ieee8021asportstatpdelayallowedlostresponsesexceeded: 0
+      ieee8021asportstatrxannounce: 0
+      ieee8021asportstatrxfollowupcount: 0
+      ieee8021asportstatrxptppacketdiscard: 0
+      ieee8021asportstatrxpdelayrequest: 0
+      ieee8021asportstatrxpdelayresponse: 0
+      ieee8021asportstatrxpdelayresponsefollowup: 0
+      ieee8021asportstatrxsynccount: 0
+      ieee8021asportstatrxsyncreceipttimeouts: 0
+      ieee8021asportstattxannounce: 0
+      ieee8021asportstattxfollowupcount: 0
+      ieee8021asportstattxpdelayrequest: 0
+      ieee8021asportstattxpdelayresponse: 0
+      ieee8021asportstattxpdelayresponsefollowup: 0
+      ieee8021asportstattxsynccount: 0
+      ieee8021astimepropertiesdscurrentutcoffset: 0
+      ieee8021astimepropertiesdscurrentutcoffsetvalid: false
+      ieee8021astimepropertiesdsfrequencytraceable: false
+      ieee8021astimepropertiesdsleap59: false
+      ieee8021astimepropertiesdsleap61: false
+      ieee8021astimepropertiesdstimesource: ''
+      ieee8021astimepropertiesdstimetraceable: false
+attributes:
+  ieee8021asacceptablemasteralternatepriority1:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSMasterEntry
+          field: ieee8021AsAcceptableMasterAlternatePriority1
+          index_field: ieee8021AsAcceptableMasterTableDSMasterId
+    validation:
+      min: 0
+      max: 255
+  ieee8021asacceptablemasterclockidentity:
+    syntax: ClockIdentity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSMasterEntry
+          field: ieee8021AsAcceptableMasterClockIdentity
+          index_field: ieee8021AsAcceptableMasterTableDSMasterId
+  ieee8021asacceptablemasterportnumber:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSMasterEntry
+          field: ieee8021AsAcceptableMasterPortNumber
+          index_field: ieee8021AsAcceptableMasterTableDSMasterId
+    validation:
+      min: 0
+      max: 65535
+  ieee8021asacceptablemasterrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSMasterEntry
+          field: ieee8021AsAcceptableMasterRowStatus
+          index_field: ieee8021AsAcceptableMasterTableDSMasterId
+    create_method: createAndWait
+  ieee8021asacceptablemastertabledsactualtablesize:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.1.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSBase
+          field: ieee8021AsAcceptableMasterTableDSActualTableSize
+    validation:
+      min: 0
+      max: 65535
+  ieee8021asacceptablemastertabledsmasterentry:
+    syntax: Ieee8021AsAcceptableMasterTableDSMasterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.2.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSMasterTable
+          field: ieee8021AsAcceptableMasterTableDSMasterEntry
+  ieee8021asacceptablemastertabledsmasterid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSMasterEntry
+          field: ieee8021AsAcceptableMasterTableDSMasterId
+          index_field: ieee8021AsAcceptableMasterTableDSMasterId
+  ieee8021asacceptablemastertabledsmastertable:
+    syntax: Ieee8021AsAcceptableMasterTableDSMasterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSMaster
+          field: ieee8021AsAcceptableMasterTableDSMasterTable
+  ieee8021asacceptablemastertabledsmaxtablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.7.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsAcceptableMasterTableDSBase
+          field: ieee8021AsAcceptableMasterTableDSMaxTableSize
+    validation:
+      min: 0
+      max: 65535
+  ieee8021asbridgebaseport:
+    syntax: IEEE8021BridgePortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsBridgeBasePort
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: &id001
+          - ieee8021AsBridgeBasePort
+          - ieee8021AsPortDSAsIfIndex
+  ieee8021ascurrentdsgmchangecount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.11
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSGmChangeCount
+  ieee8021ascurrentdsgmtimebaseindicator:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.10
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSGmTimebaseIndicator
+    validation:
+      min: 0
+      max: 65535
+  ieee8021ascurrentdslastgmfreqchangels:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.9
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSLastGmFreqChangeLs
+  ieee8021ascurrentdslastgmfreqchangems:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.8
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSLastGmFreqChangeMs
+  ieee8021ascurrentdslastgmphasechangehs:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSLastGmPhaseChangeHs
+  ieee8021ascurrentdslastgmphasechangels:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.7
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSLastGmPhaseChangeLs
+  ieee8021ascurrentdslastgmphasechangems:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSLastGmPhaseChangeMs
+  ieee8021ascurrentdsoffsetfrommasterhs:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSOffsetFromMasterHs
+  ieee8021ascurrentdsoffsetfrommasterls:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSOffsetFromMasterLs
+  ieee8021ascurrentdsoffsetfrommasterms:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSOffsetFromMasterMs
+  ieee8021ascurrentdsstepsremoved:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSStepsRemoved
+    validation:
+      min: -32768
+      max: 32767
+  ieee8021ascurrentdstimeoflastgmchangeevent:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.12
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSTimeOfLastGmChangeEvent
+  ieee8021ascurrentdstimeoflastgmfreqchangeevent:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.13
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSTimeOfLastGmFreqChangeEvent
+  ieee8021ascurrentdstimeoflastgmphasechangeevent:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.2.14
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsCurrentDS
+          field: ieee8021AsCurrentDSTimeOfLastGmPhaseChangeEvent
+  ieee8021asdefaultdsclockaccuracy:
+    syntax: IEEE8021ASClockAccuracyValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSClockAccuracy
+  ieee8021asdefaultdsclockclass:
+    syntax: IEEE8021ASClockClassValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSClockClass
+  ieee8021asdefaultdsclockidentity:
+    syntax: ClockIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSClockIdentity
+  ieee8021asdefaultdscurrentutcoffset:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.9
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSCurrentUTCOffset
+    validation:
+      min: -32768
+      max: 32767
+  ieee8021asdefaultdscurrentutcoffsetvalid:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.10
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSCurrentUTCOffsetValid
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asdefaultdsfrequencytraceable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.14
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSFrequencyTraceable
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asdefaultdsgmcapable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.8
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSGmCapable
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asdefaultdsleap59:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.11
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSLeap59
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asdefaultdsleap61:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.12
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSLeap61
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asdefaultdsnumberports:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSNumberPorts
+    validation:
+      min: 0
+      max: 255
+  ieee8021asdefaultdsoffsetscaledlogvariance:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSOffsetScaledLogVariance
+    validation:
+      min: -32768
+      max: 32767
+  ieee8021asdefaultdspriority1:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSPriority1
+    validation:
+      min: 0
+      max: 255
+  ieee8021asdefaultdspriority2:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.7
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSPriority2
+    validation:
+      min: 0
+      max: 255
+  ieee8021asdefaultdstimesource:
+    syntax: IEEE8021ASTimeSourceValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.15
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSTimeSource
+  ieee8021asdefaultdstimetraceable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.1.13
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsDefaultDS
+          field: ieee8021AsDefaultDSTimeTraceable
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asparentdscumlativerateratio:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSCumlativeRateRatio
+  ieee8021asparentdsgrandmasterclockaccuracy:
+    syntax: IEEE8021ASClockAccuracyValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSGrandmasterClockAccuracy
+  ieee8021asparentdsgrandmasterclockclass:
+    syntax: IEEE8021ASClockClassValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSGrandmasterClockClass
+  ieee8021asparentdsgrandmasteridentity:
+    syntax: ClockIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSGrandmasterIdentity
+  ieee8021asparentdsgrandmasteroffsetscaledlogvariance:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.7
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSGrandmasterOffsetScaledLogVariance
+    validation:
+      min: -32768
+      max: 32767
+  ieee8021asparentdsgrandmasterpriority1:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.8
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSGrandmasterPriority1
+    validation:
+      min: 0
+      max: 255
+  ieee8021asparentdsgrandmasterpriority2:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.9
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSGrandmasterPriority2
+    validation:
+      min: 0
+      max: 255
+  ieee8021asparentdsparentclockidentity:
+    syntax: ClockIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSParentClockIdentity
+  ieee8021asparentdsparentportnumber:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.3.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsParentDS
+          field: ieee8021AsParentDSParentPortNumber
+    validation:
+      min: 0
+      max: 65535
+  ieee8021asportdsacceptablemastertableenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.36
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSAcceptableMasterTableEnabled
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asportdsallowedlostresponses:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.30
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSAllowedLostResponses
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 65535
+  ieee8021asportdsannouncereceipttimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.21
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSAnnounceReceiptTimeout
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  ieee8021asportdsascapable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSAsCapable
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asportdsasifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSAsIfIndex
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsclockidentity:
+    syntax: ClockIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSClockIdentity
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdscurrentlogannounceinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.20
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSCurrentLogAnnounceInterval
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: -128
+      max: 127
+  ieee8021asportdscurrentlogpdelayreqinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.29
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSCurrentLogPdelayReqInterval
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: -128
+      max: 127
+  ieee8021asportdscurrentlogsyncinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.23
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSCurrentLogSyncInterval
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: -128
+      max: 127
+  ieee8021asportdsdelayasymmetryhs:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSDelayAsymmetryHs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsdelayasymmetryls:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSDelayAsymmetryLs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsdelayasymmetryms:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSDelayAsymmetryMs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsifentry:
+    syntax: Ieee8021AsPortDSIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfTable
+          field: ieee8021AsPortDSIfEntry
+  ieee8021asportdsiftable:
+    syntax: Ieee8021AsPortDSIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsMIBObjects
+          field: ieee8021AsPortDSIfTable
+  ieee8021asportdsinitiallogannounceinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.19
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSInitialLogAnnounceInterval
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: -128
+      max: 127
+  ieee8021asportdsinitiallogpdelayreqinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.28
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSInitialLogPdelayReqInterval
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: -128
+      max: 127
+  ieee8021asportdsinitiallogsyncinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.22
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSInitialLogSyncInterval
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: -128
+      max: 127
+  ieee8021asportdsismeasuringdelay:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSIsMeasuringDelay
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asportdsndownls:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.35
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNdownLs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsndownms:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.34
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNdownMs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsneighborpropdelayhs:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNeighborPropDelayHs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsneighborpropdelayls:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNeighborPropDelayLs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsneighborpropdelayms:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNeighborPropDelayMs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsneighborpropdelaythreshhs:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNeighborPropDelayThreshHs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsneighborpropdelaythreshls:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNeighborPropDelayThreshLs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsneighborpropdelaythreshms:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNeighborPropDelayThreshMs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsneighborrateratio:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNeighborRateRatio
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsnupls:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.33
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNupLs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsnupms:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.32
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSNupMs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsportnumber:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSPortNumber
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 65535
+  ieee8021asportdsportrole:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSPortRole
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdspttportenabled:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSPttPortEnabled
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021asportdssyncreceipttimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.24
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSSyncReceiptTimeout
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: 2
+      max: 255
+  ieee8021asportdssyncreceipttimeouttimeintervalhs:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.25
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSSyncReceiptTimeoutTimeIntervalHs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdssyncreceipttimeouttimeintervalls:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.27
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSSyncReceiptTimeoutTimeIntervalLs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdssyncreceipttimeouttimeintervalms:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.26
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSSyncReceiptTimeoutTimeIntervalMs
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+  ieee8021asportdsversionnumber:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.5.1.31
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortDSIfEntry
+          field: ieee8021AsPortDSVersionNumber
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 63
+  ieee8021asportstatannouncereceipttimeouts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatAnnounceReceiptTimeouts
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: &id002
+          - ieee8021AsBridgeBasePort
+          - ieee8021AsPortDSAsIfIndex
+  ieee8021asportstatifentry:
+    syntax: Ieee8021AsPortStatIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfTable
+          field: ieee8021AsPortStatIfEntry
+  ieee8021asportstatiftable:
+    syntax: Ieee8021AsPortStatIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsMIBObjects
+          field: ieee8021AsPortStatIfTable
+  ieee8021asportstatpdelayallowedlostresponsesexceeded:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatPdelayAllowedLostResponsesExceeded
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxannounce:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxAnnounce
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxfollowupcount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxFollowUpCount
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxptppacketdiscard:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxPTPPacketDiscard
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxpdelayrequest:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxPdelayRequest
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxpdelayresponse:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxPdelayResponse
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxpdelayresponsefollowup:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxPdelayResponseFollowUp
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxsynccount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxSyncCount
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstatrxsyncreceipttimeouts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatRxSyncReceiptTimeouts
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstattxannounce:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatTxAnnounce
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstattxfollowupcount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatTxFollowUpCount
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstattxpdelayrequest:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatTxPdelayRequest
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstattxpdelayresponse:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatTxPdelayResponse
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstattxpdelayresponsefollowup:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatTxPdelayResponseFollowUp
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021asportstattxsynccount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.6.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsPortStatIfEntry
+          field: ieee8021AsPortStatTxSyncCount
+          index_field: ieee8021AsPortDSAsIfIndex
+          index_fields: *id002
+  ieee8021astimepropertiesdscurrentutcoffset:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsTimePropertiesDS
+          field: ieee8021AsTimePropertiesDSCurrentUtcOffset
+    validation:
+      min: -32768
+      max: 32767
+  ieee8021astimepropertiesdscurrentutcoffsetvalid:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.4.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsTimePropertiesDS
+          field: ieee8021AsTimePropertiesDSCurrentUtcOffsetValid
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021astimepropertiesdsfrequencytraceable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.4.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsTimePropertiesDS
+          field: ieee8021AsTimePropertiesDSFrequencyTraceable
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021astimepropertiesdsleap59:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.4.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsTimePropertiesDS
+          field: ieee8021AsTimePropertiesDSLeap59
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021astimepropertiesdsleap61:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.4.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsTimePropertiesDS
+          field: ieee8021AsTimePropertiesDSLeap61
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021astimepropertiesdstimesource:
+    syntax: IEEE8021ASTimeSourceValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.4.7
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsTimePropertiesDS
+          field: ieee8021AsTimePropertiesDSTimeSource
+  ieee8021astimepropertiesdstimetraceable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.20.1.4.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-AS-MIB
+          table: ieee8021AsTimePropertiesDS
+          field: ieee8021AsTimePropertiesDSTimeTraceable
+    validation:
+      allowed:
+      - true
+      - false

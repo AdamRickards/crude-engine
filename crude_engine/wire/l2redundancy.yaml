@@ -1,0 +1,1620 @@
+version: 2.6.0
+feature: l2redundancy
+schemas:
+  read_l2redundancy:
+    type: dict
+    defaults:
+      hm2mrpconfigoperstate: 0
+      hm2mrpdomainid: ''
+      hm2mrpdomainname: ''
+      hm2mrpentry: ''
+      hm2mrpfastmrp: 0
+      hm2mrpmrcblockedsupported: 0
+      hm2mrpmrmlastringopenchange: 0
+      hm2mrpmrmnonblockingmrcsupported: 0
+      hm2mrpmrmpriority: 0
+      hm2mrpmrmreactonlinkchange: 0
+      hm2mrpmrmringopencount: 0
+      hm2mrpmrmroundtripdelaymax: 0
+      hm2mrpmrmroundtripdelaymin: 0
+      hm2mrpmrmroundtripdelayreset: 0
+      hm2mrprecoverydelay: 0
+      hm2mrprecoverydelaysupported: 0
+      hm2mrpredundancyoperstate: 0
+      hm2mrpringoperstate: 0
+      hm2mrpringport1groupid: 0
+      hm2mrpringport1ifindex: 0
+      hm2mrpringport1operstate: 0
+      hm2mrpringport2fixedbackup: false
+      hm2mrpringport2groupid: 0
+      hm2mrpringport2ifindex: 0
+      hm2mrpringport2operstate: 0
+      hm2mrproleadminstate: 0
+      hm2mrproleoperstate: 0
+      hm2mrprowstatus: 0
+      hm2mrptable: ''
+      hm2mrpvlanid: 0
+      hm2redundantcplactiveprotprimaryring: ''
+      hm2redundantcplactiveprotsecondaryring: ''
+      hm2redundantcpladminstate: false
+      hm2redundantcplcurrentrole: 0
+      hm2redundantcplinprimaryport: 0
+      hm2redundantcplinsecondaryport: 0
+      hm2redundantcploutprimaryport: 0
+      hm2redundantcploutsecondaryport: 0
+      hm2redundantcplpartner: ''
+      hm2redundantcplpartneripaddr: ''
+      hm2redundantcplpartneripaddrtype: ''
+      hm2redundantcplpartnerprimaryport: 0
+      hm2redundantcplpartnersecondaryport: 0
+      hm2redundantcplredundancystate: 0
+      hm2redundantcplrole: 0
+      hm2redundantcplstate: 0
+      hm2redundantcpltimeout: 0
+      hm2ringcouplingentry: ''
+      hm2ringcouplingtable: ''
+      hm2ringcplconfigoperstate: 0
+      hm2ringcplcontrolifindex: 0
+      hm2ringcplcontrolifopstate: ''
+      hm2ringcplcontrolmodeoperstate: 0
+      hm2ringcplcouplinglinks: 0
+      hm2ringcplcouplingmode: 0
+      hm2ringcplextendeddiag: 0
+      hm2ringcplinterconnifindex: 0
+      hm2ringcplinterconnifopstate: ''
+      hm2ringcplmodeoperstate: 0
+      hm2ringcplnetcoupling: 0
+      hm2ringcploperstate: 0
+      hm2ringcplpartnerinterconnifindex: 0
+      hm2ringcplpartnerinterconnifopstate: ''
+      hm2ringcplpartneripaddr: ''
+      hm2ringcplpartneripaddrtype: ''
+      hm2ringcplredoperstate: 0
+      hm2ringcplrowstatus: 0
+      hm2ringredadminstate: false
+      hm2ringredmode: 0
+      hm2ringredprimaryintf: 0
+      hm2ringredprimaryintfstate: 0
+      hm2ringredsecondaryintf: 0
+      hm2ringredsecondaryintfstate: 0
+      hm2srmadminstate: 0
+      hm2srmconfigoperstate: 0
+      hm2srmentry: ''
+      hm2srmglobaladminstate: false
+      hm2srmmrpdomainid: ''
+      hm2srmmaxinstances: 0
+      hm2srmoperstate: 0
+      hm2srmpartnermac: ''
+      hm2srmredundancyoperstate: 0
+      hm2srmringid: 0
+      hm2srmrowstatus: 0
+      hm2srmsubringname: ''
+      hm2srmsubringoperstate: 0
+      hm2srmsubringportifindex: 0
+      hm2srmsubringportoperstate: 0
+      hm2srmsubringprotocol: 0
+      hm2srmtable: ''
+      hm2srmvlanid: 0
+attributes:
+  hm2mrpconfigoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpConfigOperState
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - noError
+      - ringportLinkError
+      - multipleMRM
+      - singleSideReceive
+  hm2mrpdomainid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpDomainID
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpdomainname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpDomainName
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpentry:
+    syntax: Hm2MrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpTable
+          field: hm2MrpEntry
+  hm2mrpfastmrp:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpMibGroup
+          field: hm2MrpFastMrp
+    validation:
+      allowed:
+      - supported
+      - notSupported
+  hm2mrpmrcblockedsupported:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRCBlockedSupported
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - enabled
+      - disabled
+  hm2mrpmrmlastringopenchange:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMLastRingOpenChange
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpmrmnonblockingmrcsupported:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMNonBlockingMRCSupported
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpmrmpriority:
+    syntax: Integer32 (0..65535)
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMPriority
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 65535
+  hm2mrpmrmreactonlinkchange:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMReactOnLinkChange
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - enabled
+      - disabled
+  hm2mrpmrmringopencount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMRingOpenCount
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpmrmroundtripdelaymax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMRoundTripDelayMax
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpmrmroundtripdelaymin:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMRoundTripDelayMin
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpmrmroundtripdelayreset:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpMRMRoundTripDelayReset
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrprecoverydelay:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRecoveryDelay
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - delay500
+      - delay200
+      - delay30
+      - delay10
+  hm2mrprecoverydelaysupported:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRecoveryDelaySupported
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - supportedAll
+      - supported200500
+  hm2mrpredundancyoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRedundancyOperState
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - available
+      - notAvailable
+  hm2mrpringoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingOperState
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - open
+      - closed
+      - undefined
+  hm2mrpringport1groupid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingport1GroupID
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpringport1ifindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingport1IfIndex
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpringport1operstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingport1OperState
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - disabled
+      - blocked
+      - forwarding
+      - notConnected
+  hm2mrpringport2fixedbackup:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.27
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingport2FixedBackup
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2mrpringport2groupid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingport2GroupID
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpringport2ifindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingport2IfIndex
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2mrpringport2operstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRingport2OperState
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - disabled
+      - blocked
+      - forwarding
+      - notConnected
+  hm2mrproleadminstate:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRoleAdminState
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - client
+      - manager
+  hm2mrproleoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRoleOperState
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - client
+      - manager
+      - undefined
+  hm2mrprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpRowStatus
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2mrptable:
+    syntax: Hm2MrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpMibGroup
+          field: hm2MrpTable
+  hm2mrpvlanid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2MrpEntry
+          field: hm2MrpVlanID
+          index_field: hm2MrpDomainID
+          key_tag: to_hex_decode
+  hm2redundantcplactiveprotprimaryring:
+    syntax: Hm2CplRingActiveProt
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.16
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplActiveProtPrimaryRing
+  hm2redundantcplactiveprotsecondaryring:
+    syntax: Hm2CplRingActiveProt
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.17
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplActiveProtSecondaryRing
+  hm2redundantcpladminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2redundantcplcurrentrole:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.7
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplCurrentRole
+    validation:
+      allowed:
+      - master
+      - slave
+      - listening
+      - error
+      - disabled
+      - single
+  hm2redundantcplinprimaryport:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplInPrimaryPort
+  hm2redundantcplinsecondaryport:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.4
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplInSecondaryPort
+  hm2redundantcploutprimaryport:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.3
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplOutPrimaryPort
+  hm2redundantcploutsecondaryport:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.5
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplOutSecondaryPort
+  hm2redundantcplpartner:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.9
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplPartner
+  hm2redundantcplpartneripaddr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.15
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplPartnerIPAddr
+  hm2redundantcplpartneripaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.14
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplPartnerIPAddrType
+  hm2redundantcplpartnerprimaryport:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.10
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplPartnerPrimaryPort
+  hm2redundantcplpartnersecondaryport:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.11
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplPartnerSecondaryPort
+  hm2redundantcplredundancystate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.13
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplRedundancyState
+    validation:
+      allowed:
+      - redAvailable
+      - redNotAvailable
+  hm2redundantcplrole:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.6
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplRole
+    validation:
+      allowed:
+      - master
+      - slave
+      - single
+      - auto
+  hm2redundantcplstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.12
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplState
+    validation:
+      allowed:
+      - forwarding
+      - blocking
+  hm2redundantcpltimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.9.8
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RedundantCplConfigMibGroup
+          field: hm2RedundantCplTimeout
+    validation:
+      min: 5
+      max: 60000
+  hm2ringcouplingentry:
+    syntax: Hm2RingCouplingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingTable
+          field: hm2RingCouplingEntry
+  hm2ringcouplingtable:
+    syntax: Hm2RingCouplingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingMibGroup
+          field: hm2RingCouplingTable
+  hm2ringcplconfigoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplConfigOperState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplcontrolifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplControlIfIndex
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplcontrolifopstate:
+    syntax: Hm2CplPortOpState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplControlIfOpState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplcontrolmodeoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplControlModeOperState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplcouplinglinks:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplCouplingLinks
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplcouplingmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplCouplingMode
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplextendeddiag:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplExtendedDiag
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplinterconnifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplInterconnIfIndex
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplinterconnifopstate:
+    syntax: Hm2CplPortOpState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplInterconnIfOpState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplmodeoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplModeOperState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplnetcoupling:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplNetCoupling
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcploperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplOperState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplpartnerinterconnifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplPartnerInterconnIfIndex
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplpartnerinterconnifopstate:
+    syntax: Hm2CplPortOpState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplPartnerInterconnIfOpState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplpartneripaddr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplPartnerIpAddr
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplpartneripaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplPartnerIpAddrType
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplredoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplRedOperState
+          index_field: hm2RingCplInterconnIfIndex
+  hm2ringcplrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.8.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingCouplingEntry
+          field: hm2RingCplRowStatus
+          index_field: hm2RingCplInterconnIfIndex
+    create_method: createAndWait
+  hm2ringredadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingRedMibGroup
+          field: hm2RingRedAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ringredmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.7.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingRedMibGroup
+          field: hm2RingRedMode
+    validation:
+      allowed:
+      - ring-switch
+  hm2ringredprimaryintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.7.3
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingRedMibGroup
+          field: hm2RingRedPrimaryIntf
+  hm2ringredprimaryintfstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.7.4
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingRedMibGroup
+          field: hm2RingRedPrimaryIntfState
+    validation:
+      allowed:
+      - not-available
+      - active
+      - inactive
+  hm2ringredsecondaryintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.7.5
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingRedMibGroup
+          field: hm2RingRedSecondaryIntf
+  hm2ringredsecondaryintfstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.7.6
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2RingRedMibGroup
+          field: hm2RingRedSecondaryIntfState
+    validation:
+      allowed:
+      - not-available
+      - active
+      - inactive
+  hm2srmadminstate:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmAdminState
+          index_field: hm2SrmRingID
+    validation:
+      allowed:
+      - manager
+      - redundantManager
+      - singleManager
+  hm2srmconfigoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmConfigOperState
+          index_field: hm2SrmRingID
+    validation:
+      allowed:
+      - noError
+      - ringPortLinkError
+      - multipleSRM
+      - noPartnerManager
+      - concurrentVLAN
+      - concurrentPort
+      - concurrentRedundancy
+      - trunkMember
+      - sharedVLAN
+  hm2srmentry:
+    syntax: Hm2SrmEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmTable
+          field: hm2SrmEntry
+  hm2srmglobaladminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmMibGroup
+          field: hm2SrmGlobalAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2srmmrpdomainid:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmMRPDomainID
+          index_field: hm2SrmRingID
+  hm2srmmaxinstances:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmMibGroup
+          field: hm2SrmMaxInstances
+  hm2srmoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmOperState
+          index_field: hm2SrmRingID
+    validation:
+      allowed:
+      - manager
+      - redundantManager
+      - singleManager
+      - disabled
+  hm2srmpartnermac:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmPartnerMAC
+          index_field: hm2SrmRingID
+  hm2srmredundancyoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmRedundancyOperState
+          index_field: hm2SrmRingID
+    validation:
+      allowed:
+      - redGuaranteed
+      - redNotGuaranteed
+  hm2srmringid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmRingID
+          index_field: hm2SrmRingID
+  hm2srmrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmRowStatus
+          index_field: hm2SrmRingID
+    create_method: createAndWait
+  hm2srmsubringname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmSubRingName
+          index_field: hm2SrmRingID
+  hm2srmsubringoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmSubRingOperState
+          index_field: hm2SrmRingID
+    validation:
+      allowed:
+      - undefined
+      - open
+      - closed
+  hm2srmsubringportifindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmSubRingPortIfIndex
+          index_field: hm2SrmRingID
+  hm2srmsubringportoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmSubRingPortOperState
+          index_field: hm2SrmRingID
+    validation:
+      allowed:
+      - disabled
+      - blocked
+      - forwarding
+      - not-connected
+  hm2srmsubringprotocol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmSubRingProtocol
+          index_field: hm2SrmRingID
+    validation:
+      allowed:
+      - iec-62439-mrp
+  hm2srmtable:
+    syntax: Hm2SrmEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmMibGroup
+          field: hm2SrmTable
+  hm2srmvlanid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-MIB
+          table: hm2SrmEntry
+          field: hm2SrmVlanID
+          index_field: hm2SrmRingID
+    validation:
+      min: 0
+      max: 4042

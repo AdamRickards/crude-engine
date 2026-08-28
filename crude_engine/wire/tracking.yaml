@@ -1,0 +1,803 @@
+version: 2.6.0
+feature: tracking
+schemas:
+  read_tracking:
+    type: dict
+    defaults:
+      hm2trackappid: 0
+      hm2trackappname: ''
+      hm2trackappobjectname: ''
+      hm2trackdescription: ''
+      hm2trackid: 0
+      hm2trackiflinkdowndelay: 0
+      hm2trackiflinkupdelay: 0
+      hm2trackifnumber: 0
+      hm2trackinterfaceid: 0
+      hm2trackinterfacestatusentry: ''
+      hm2trackinterfacestatustable: ''
+      hm2trackinterfacestatustrackid: ''
+      hm2trackinterfacestatustrackstate: 0
+      hm2tracklogicalid: 0
+      hm2tracklogicalinstanceentry: ''
+      hm2tracklogicalinstancetable: ''
+      hm2tracklogicaloperandnamea: ''
+      hm2tracklogicaloperandnameb: ''
+      hm2tracklogicaloperator: 0
+      hm2trackname: ''
+      hm2tracknumberofchanges: 0
+      hm2trackoperstate: 0
+      hm2trackpingbestrouteifnumber: 0
+      hm2trackpingid: 0
+      hm2trackpingifnumber: 0
+      hm2trackpinginetaddr: ''
+      hm2trackpinginetaddrtype: ''
+      hm2trackpinginterval: 0
+      hm2trackpingmiss: 0
+      hm2trackpingsuccess: 0
+      hm2trackpingttl: 0
+      hm2trackpingtimeout: 0
+      hm2tracksendstatechangetrap: false
+      hm2trackstaticrouteentry: ''
+      hm2trackstaticroutetable: ''
+      hm2trackstaticroutetrackid: ''
+      hm2trackstaticroutetrackstate: 0
+      hm2trackstatus: 0
+      hm2tracktimelastchange: ''
+      hm2tracktype: 0
+      hm2trackingapplicationentry: ''
+      hm2trackingapplicationtable: ''
+      hm2trackingconfigentry: ''
+      hm2trackingconfigtable: ''
+      hm2trackinginterfaceentry: ''
+      hm2trackinginterfacetable: ''
+      hm2trackingpingentry: ''
+      hm2trackingpingtable: ''
+attributes:
+  hm2trackappid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingApplicationEntry
+          field: hm2TrackAppId
+          index_field: hm2TrackId
+          index_fields: &id001
+          - hm2TrackAppId
+          - hm2TrackType
+          - hm2TrackId
+  hm2trackappname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingApplicationEntry
+          field: hm2TrackAppName
+          index_field: hm2TrackId
+          index_fields: *id001
+  hm2trackappobjectname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingApplicationEntry
+          field: hm2TrackAppObjectName
+          index_field: hm2TrackId
+          index_fields: *id001
+  hm2trackdescription:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackDescription
+          index_field: hm2TrackId
+          index_fields: &id002
+          - hm2TrackType
+          - hm2TrackId
+  hm2trackid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackId
+          index_field: hm2TrackId
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 256
+  hm2trackiflinkdowndelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingInterfaceEntry
+          field: hm2TrackIfLinkDownDelay
+          index_field: hm2TrackInterfaceId
+    validation:
+      min: 0
+      max: 255
+  hm2trackiflinkupdelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingInterfaceEntry
+          field: hm2TrackIfLinkUpDelay
+          index_field: hm2TrackInterfaceId
+    validation:
+      min: 0
+      max: 255
+  hm2trackifnumber:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingInterfaceEntry
+          field: hm2TrackIfNumber
+          index_field: hm2TrackInterfaceId
+  hm2trackinterfaceid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingInterfaceEntry
+          field: hm2TrackInterfaceId
+          index_field: hm2TrackInterfaceId
+  hm2trackinterfacestatusentry:
+    syntax: Hm2TrackInterfaceStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.8.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackInterfaceStatusTable
+          field: hm2TrackInterfaceStatusEntry
+  hm2trackinterfacestatustable:
+    syntax: Hm2TrackInterfaceStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingInterfaceStatusGroup
+          field: hm2TrackInterfaceStatusTable
+  hm2trackinterfacestatustrackid:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackInterfaceStatusEntry
+          field: hm2TrackInterfaceStatusTrackId
+  hm2trackinterfacestatustrackstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackInterfaceStatusEntry
+          field: hm2TrackInterfaceStatusTrackState
+  hm2tracklogicalid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackLogicalInstanceEntry
+          field: hm2TrackLogicalId
+          index_field: hm2TrackLogicalId
+  hm2tracklogicalinstanceentry:
+    syntax: Hm2TrackLogicalInstanceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackLogicalInstanceTable
+          field: hm2TrackLogicalInstanceEntry
+  hm2tracklogicalinstancetable:
+    syntax: Hm2TrackLogicalInstanceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingLogicalGroup
+          field: hm2TrackLogicalInstanceTable
+  hm2tracklogicaloperandnamea:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackLogicalInstanceEntry
+          field: hm2TrackLogicalOperandNameA
+          index_field: hm2TrackLogicalId
+  hm2tracklogicaloperandnameb:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackLogicalInstanceEntry
+          field: hm2TrackLogicalOperandNameB
+          index_field: hm2TrackLogicalId
+  hm2tracklogicaloperator:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackLogicalInstanceEntry
+          field: hm2TrackLogicalOperator
+          index_field: hm2TrackLogicalId
+  hm2trackname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackName
+          index_field: hm2TrackId
+          index_fields: *id002
+  hm2tracknumberofchanges:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackNumberOfChanges
+          index_field: hm2TrackId
+          index_fields: *id002
+  hm2trackoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackOperState
+          index_field: hm2TrackId
+          index_fields: *id002
+  hm2trackpingbestrouteifnumber:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingBestRouteIfNumber
+          index_field: hm2TrackPingId
+  hm2trackpingid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingId
+          index_field: hm2TrackPingId
+  hm2trackpingifnumber:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingIfNumber
+          index_field: hm2TrackPingId
+  hm2trackpinginetaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingInetAddr
+          index_field: hm2TrackPingId
+  hm2trackpinginetaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingInetAddrType
+          index_field: hm2TrackPingId
+  hm2trackpinginterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingInterval
+          index_field: hm2TrackPingId
+    validation:
+      min: 100
+      max: 20000
+  hm2trackpingmiss:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingMiss
+          index_field: hm2TrackPingId
+    validation:
+      min: 1
+      max: 10
+  hm2trackpingsuccess:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingSuccess
+          index_field: hm2TrackPingId
+    validation:
+      min: 1
+      max: 10
+  hm2trackpingttl:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingTTL
+          index_field: hm2TrackPingId
+    validation:
+      min: 1
+      max: 255
+  hm2trackpingtimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingEntry
+          field: hm2TrackPingTimeout
+          index_field: hm2TrackPingId
+    validation:
+      min: 10
+      max: 10000
+  hm2tracksendstatechangetrap:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackSendStateChangeTrap
+          index_field: hm2TrackId
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2trackstaticrouteentry:
+    syntax: Hm2TrackStaticRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.6.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackStaticRouteTable
+          field: hm2TrackStaticRouteEntry
+  hm2trackstaticroutetable:
+    syntax: Hm2TrackStaticRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingStaticRouteGroup
+          field: hm2TrackStaticRouteTable
+  hm2trackstaticroutetrackid:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.6.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackStaticRouteEntry
+          field: hm2TrackStaticRouteTrackId
+  hm2trackstaticroutetrackstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.6.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackStaticRouteEntry
+          field: hm2TrackStaticRouteTrackState
+  hm2trackstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackStatus
+          index_field: hm2TrackId
+          index_fields: *id002
+    create_method: createAndWait
+  hm2tracktimelastchange:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackTimeLastChange
+          index_field: hm2TrackId
+          index_fields: *id002
+  hm2tracktype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigEntry
+          field: hm2TrackType
+          index_field: hm2TrackId
+          index_fields: *id002
+  hm2trackingapplicationentry:
+    syntax: Hm2TrackingApplicationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingApplicationTable
+          field: hm2TrackingApplicationEntry
+  hm2trackingapplicationtable:
+    syntax: Hm2TrackingApplicationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingApplicationGroup
+          field: hm2TrackingApplicationTable
+  hm2trackingconfigentry:
+    syntax: Hm2TrackingConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigTable
+          field: hm2TrackingConfigEntry
+  hm2trackingconfigtable:
+    syntax: Hm2TrackingConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingConfigGroup
+          field: hm2TrackingConfigTable
+  hm2trackinginterfaceentry:
+    syntax: Hm2TrackingInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingInterfaceTable
+          field: hm2TrackingInterfaceEntry
+  hm2trackinginterfacetable:
+    syntax: Hm2TrackingInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingInterfaceGroup
+          field: hm2TrackingInterfaceTable
+  hm2trackingpingentry:
+    syntax: Hm2TrackingPingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingTable
+          field: hm2TrackingPingEntry
+  hm2trackingpingtable:
+    syntax: Hm2TrackingPingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.115.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRACKING-MIB
+          table: hm2TrackingPingGroup
+          field: hm2TrackingPingTable

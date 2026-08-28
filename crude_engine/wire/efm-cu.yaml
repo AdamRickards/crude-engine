@@ -1,0 +1,1611 @@
+version: 2.6.0
+feature: efm-cu
+schemas:
+  read_efm-cu:
+    type: dict
+    defaults:
+      efmcuadaptivespectra: false
+      efmcuadminprofile: 0
+      efmcufltstatus: []
+      efmculowratecrossingenable: false
+      efmcunumpmes: 0
+      efmcupafadminstate: 0
+      efmcupafcapacity: 0
+      efmcupafdiscoverycode: ''
+      efmcupafinbadfragments: 0
+      efmcupafinerrors: 0
+      efmcupafinlargefragments: 0
+      efmcupafinlostends: 0
+      efmcupafinlostfragments: 0
+      efmcupafinloststarts: 0
+      efmcupafinoverflows: 0
+      efmcupafinsmallfragments: 0
+      efmcupafremotediscoverycode: ''
+      efmcupafsupported: false
+      efmcupeerpafcapacity: 0
+      efmcupeerpafsupported: false
+      efmcupme10pbandnotchprofiles: []
+      efmcupme10pbandplanpsdmskprofile: 0
+      efmcupme10pfeccorrectedblocks: 0
+      efmcupme10pfecuncorrectedblocks: 0
+      efmcupme10ppayloaddrateprofile: 0
+      efmcupme10ppayloadurateprofile: 0
+      efmcupme10pprofiledescr: ''
+      efmcupme10pprofileentry: ''
+      efmcupme10pprofileindex: 0
+      efmcupme10pprofilerowstatus: 0
+      efmcupme10pprofiletable: ''
+      efmcupme10pstatusentry: ''
+      efmcupme10pstatustable: ''
+      efmcupme10pupboreferenceprofile: 0
+      efmcupme2bconstellation: 0
+      efmcupme2bequivalentlength: 0
+      efmcupme2bmaxdatarate: 0
+      efmcupme2bmaxdataratepam16: 0
+      efmcupme2bmaxdataratepam32: 0
+      efmcupme2bmindatarate: 0
+      efmcupme2bpower: 0
+      efmcupme2bprofiledescr: ''
+      efmcupme2bprofileentry: ''
+      efmcupme2bprofileindex: 0
+      efmcupme2bprofilerowstatus: 0
+      efmcupme2bprofiletable: ''
+      efmcupme2breachrateentry: ''
+      efmcupme2breachrateindex: 0
+      efmcupme2breachraterowstatus: 0
+      efmcupme2breachratetable: ''
+      efmcupme2bregion: 0
+      efmcupme2bsmode: 0
+      efmcupme2bsmodedescr: ''
+      efmcupme2bsmodeentry: ''
+      efmcupme2bsmodeindex: 0
+      efmcupme2bsmoderowstatus: 0
+      efmcupme2bsmodetable: ''
+      efmcupmeadminprofile: 0
+      efmcupmeadminsubtype: 0
+      efmcupmecapabilityentry: ''
+      efmcupmecapabilitytable: ''
+      efmcupmeconfentry: ''
+      efmcupmeconftable: ''
+      efmcupmeconfiginitfailenable: false
+      efmcupmedevicefaultenable: false
+      efmcupmeequivalentlength: 0
+      efmcupmefltstatus: []
+      efmcupmelineatn: 0
+      efmcupmelineatncrossingenable: false
+      efmcupmeoperprofile: 0
+      efmcupmeoperstatus: 0
+      efmcupmeopersubtype: 0
+      efmcupmepeerlineatn: 0
+      efmcupmepeersnrmgn: 0
+      efmcupmeprotocolinitfailenable: false
+      efmcupmesnrmgn: 0
+      efmcupmesnrmgncrossingenable: false
+      efmcupmestatusentry: ''
+      efmcupmestatustable: ''
+      efmcupmesubtypessupported: []
+      efmcupmetccodingerrors: 0
+      efmcupmetccrcerrors: 0
+      efmcupmethreshlineatn: 0
+      efmcupmethreshsnrmgn: 0
+      efmcuportcapabilityentry: ''
+      efmcuportcapabilitytable: ''
+      efmcuportconfentry: ''
+      efmcuportconftable: ''
+      efmcuportside: 0
+      efmcuportstatusentry: ''
+      efmcuportstatustable: ''
+      efmcutargetdatarate: 0
+      efmcutargetsnrmgn: 0
+      efmcuthreshlowrate: 0
+attributes:
+  efmcuadaptivespectra:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuAdaptiveSpectra
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcuadminprofile:
+    syntax: EfmProfileIndexList
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuAdminProfile
+          index_field: ifIndex
+  efmcufltstatus:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuFltStatus
+          index_field: ifIndex
+    bit_map:
+      0: noPeer
+      1: peerPowerLoss
+      2: pmeSubTypeMismatch
+      3: lowRate
+  efmculowratecrossingenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuLowRateCrossingEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcunumpmes:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuNumPMEs
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 32
+  efmcupafadminstate:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuPAFAdminState
+          index_field: ifIndex
+  efmcupafcapacity:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortCapabilityEntry
+          field: efmCuPAFCapacity
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 32
+  efmcupafdiscoverycode:
+    syntax: PhysAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuPAFDiscoveryCode
+          index_field: ifIndex
+  efmcupafinbadfragments:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInBadFragments
+          index_field: ifIndex
+  efmcupafinerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInErrors
+          index_field: ifIndex
+  efmcupafinlargefragments:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInLargeFragments
+          index_field: ifIndex
+  efmcupafinlostends:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInLostEnds
+          index_field: ifIndex
+  efmcupafinlostfragments:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInLostFragments
+          index_field: ifIndex
+  efmcupafinloststarts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInLostStarts
+          index_field: ifIndex
+  efmcupafinoverflows:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInOverflows
+          index_field: ifIndex
+  efmcupafinsmallfragments:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPAFInSmallFragments
+          index_field: ifIndex
+  efmcupafremotediscoverycode:
+    syntax: PhysAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPAFRemoteDiscoveryCode
+          index_field: ifIndex
+  efmcupafsupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortCapabilityEntry
+          field: efmCuPAFSupported
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcupeerpafcapacity:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortCapabilityEntry
+          field: efmCuPeerPAFCapacity
+          index_field: ifIndex
+  efmcupeerpafsupported:
+    syntax: EfmTruthValueOrUnknown
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortCapabilityEntry
+          field: efmCuPeerPAFSupported
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcupme10pbandnotchprofiles:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PBandNotchProfiles
+          index_field: efmCuPme10PProfileIndex
+    bit_map:
+      0: profile0
+      1: profile1
+      2: profile2
+      3: profile3
+      4: profile4
+      5: profile5
+      6: profile6
+      7: profile7
+      8: profile8
+      9: profile9
+      10: profile10
+      11: profile11
+  efmcupme10pbandplanpsdmskprofile:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PBandplanPSDMskProfile
+          index_field: efmCuPme10PProfileIndex
+  efmcupme10pfeccorrectedblocks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PStatusEntry
+          field: efmCuPme10PFECCorrectedBlocks
+          index_field: ifIndex
+  efmcupme10pfecuncorrectedblocks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PStatusEntry
+          field: efmCuPme10PFECUncorrectedBlocks
+          index_field: ifIndex
+  efmcupme10ppayloaddrateprofile:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PPayloadDRateProfile
+          index_field: efmCuPme10PProfileIndex
+  efmcupme10ppayloadurateprofile:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PPayloadURateProfile
+          index_field: efmCuPme10PProfileIndex
+  efmcupme10pprofiledescr:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PProfileDescr
+          index_field: efmCuPme10PProfileIndex
+  efmcupme10pprofileentry:
+    syntax: EfmCuPme10PProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileTable
+          field: efmCuPme10PProfileEntry
+  efmcupme10pprofileindex:
+    syntax: EfmProfileIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PProfileIndex
+          index_field: efmCuPme10PProfileIndex
+  efmcupme10pprofilerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PProfileRowStatus
+          index_field: efmCuPme10PProfileIndex
+    create_method: createAndWait
+  efmcupme10pprofiletable:
+    syntax: EfmCuPme10PProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10P
+          field: efmCuPme10PProfileTable
+  efmcupme10pstatusentry:
+    syntax: EfmCuPme10PStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.2.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PStatusTable
+          field: efmCuPme10PStatusEntry
+  efmcupme10pstatustable:
+    syntax: EfmCuPme10PStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.2
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10P
+          field: efmCuPme10PStatusTable
+  efmcupme10pupboreferenceprofile:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.6.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme10PProfileEntry
+          field: efmCuPme10PUPBOReferenceProfile
+          index_field: efmCuPme10PProfileIndex
+  efmcupme2bconstellation:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BConstellation
+          index_field: efmCuPme2BProfileIndex
+  efmcupme2bequivalentlength:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BReachRateEntry
+          field: efmCuPme2BEquivalentLength
+          index_field: efmCuPme2BReachRateIndex
+          index_fields: &id001
+          - efmCuPme2BsModeIndex
+          - efmCuPme2BReachRateIndex
+    validation:
+      min: 0
+      max: 8192
+  efmcupme2bmaxdatarate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BMaxDataRate
+          index_field: efmCuPme2BProfileIndex
+    validation:
+      min: 192
+      max: 5696
+  efmcupme2bmaxdataratepam16:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BReachRateEntry
+          field: efmCuPme2BMaxDataRatePam16
+          index_field: efmCuPme2BReachRateIndex
+          index_fields: *id001
+  efmcupme2bmaxdataratepam32:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BReachRateEntry
+          field: efmCuPme2BMaxDataRatePam32
+          index_field: efmCuPme2BReachRateIndex
+          index_fields: *id001
+  efmcupme2bmindatarate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BMinDataRate
+          index_field: efmCuPme2BProfileIndex
+    validation:
+      min: 192
+      max: 5696
+  efmcupme2bpower:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BPower
+          index_field: efmCuPme2BProfileIndex
+  efmcupme2bprofiledescr:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BProfileDescr
+          index_field: efmCuPme2BProfileIndex
+  efmcupme2bprofileentry:
+    syntax: EfmCuPme2BProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileTable
+          field: efmCuPme2BProfileEntry
+  efmcupme2bprofileindex:
+    syntax: EfmProfileIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BProfileIndex
+          index_field: efmCuPme2BProfileIndex
+  efmcupme2bprofilerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BProfileRowStatus
+          index_field: efmCuPme2BProfileIndex
+    create_method: createAndWait
+  efmcupme2bprofiletable:
+    syntax: EfmCuPme2BProfileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2B
+          field: efmCuPme2BProfileTable
+  efmcupme2breachrateentry:
+    syntax: EfmCuPme2BReachRateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.4.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BReachRateTable
+          field: efmCuPme2BReachRateEntry
+  efmcupme2breachrateindex:
+    syntax: EfmProfileIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BReachRateEntry
+          field: efmCuPme2BReachRateIndex
+          index_field: efmCuPme2BReachRateIndex
+          index_fields: *id001
+  efmcupme2breachraterowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BReachRateEntry
+          field: efmCuPme2BReachRateRowStatus
+          index_field: efmCuPme2BReachRateIndex
+          index_fields: *id001
+    create_method: createAndWait
+  efmcupme2breachratetable:
+    syntax: EfmCuPme2BReachRateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.4
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2B
+          field: efmCuPme2BReachRateTable
+  efmcupme2bregion:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BRegion
+          index_field: efmCuPme2BProfileIndex
+  efmcupme2bsmode:
+    syntax: EfmProfileIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BProfileEntry
+          field: efmCuPme2BsMode
+          index_field: efmCuPme2BProfileIndex
+  efmcupme2bsmodedescr:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BsModeEntry
+          field: efmCuPme2BsModeDescr
+          index_field: efmCuPme2BsModeIndex
+  efmcupme2bsmodeentry:
+    syntax: EfmCuPme2BsModeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.3.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BsModeTable
+          field: efmCuPme2BsModeEntry
+  efmcupme2bsmodeindex:
+    syntax: EfmProfileIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BsModeEntry
+          field: efmCuPme2BsModeIndex
+          index_field: efmCuPme2BsModeIndex
+  efmcupme2bsmoderowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2BsModeEntry
+          field: efmCuPme2BsModeRowStatus
+          index_field: efmCuPme2BsModeIndex
+    create_method: createAndWait
+  efmcupme2bsmodetable:
+    syntax: EfmCuPme2BsModeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.5.3
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme2B
+          field: efmCuPme2BsModeTable
+  efmcupmeadminprofile:
+    syntax: EfmProfileIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeAdminProfile
+          index_field: ifIndex
+  efmcupmeadminsubtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeAdminSubType
+          index_field: ifIndex
+  efmcupmecapabilityentry:
+    syntax: EfmCuPmeCapabilityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeCapabilityTable
+          field: efmCuPmeCapabilityEntry
+  efmcupmecapabilitytable:
+    syntax: EfmCuPmeCapabilityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.2
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme
+          field: efmCuPmeCapabilityTable
+  efmcupmeconfentry:
+    syntax: EfmCuPmeConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfTable
+          field: efmCuPmeConfEntry
+  efmcupmeconftable:
+    syntax: EfmCuPmeConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme
+          field: efmCuPmeConfTable
+  efmcupmeconfiginitfailenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeConfigInitFailEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcupmedevicefaultenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeDeviceFaultEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcupmeequivalentlength:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeEquivalentLength
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 8192
+  efmcupmefltstatus:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeFltStatus
+          index_field: ifIndex
+    bit_map:
+      0: lossOfFraming
+      1: snrMgnDefect
+      2: lineAtnDefect
+      3: deviceFault
+      4: configInitFailure
+      5: protocolInitFailure
+  efmcupmelineatn:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeLineAtn
+          index_field: ifIndex
+    validation:
+      min: -127
+      max: 128
+  efmcupmelineatncrossingenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeLineAtnCrossingEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcupmeoperprofile:
+    syntax: EfmProfileIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeOperProfile
+          index_field: ifIndex
+  efmcupmeoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeOperStatus
+          index_field: ifIndex
+  efmcupmeopersubtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeOperSubType
+          index_field: ifIndex
+  efmcupmepeerlineatn:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmePeerLineAtn
+          index_field: ifIndex
+    validation:
+      min: -127
+      max: 128
+  efmcupmepeersnrmgn:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmePeerSnrMgn
+          index_field: ifIndex
+    validation:
+      min: -127
+      max: 128
+  efmcupmeprotocolinitfailenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeProtocolInitFailEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcupmesnrmgn:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeSnrMgn
+          index_field: ifIndex
+    validation:
+      min: -127
+      max: 128
+  efmcupmesnrmgncrossingenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeSnrMgnCrossingEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  efmcupmestatusentry:
+    syntax: EfmCuPmeStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusTable
+          field: efmCuPmeStatusEntry
+  efmcupmestatustable:
+    syntax: EfmCuPmeStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPme
+          field: efmCuPmeStatusTable
+  efmcupmesubtypessupported:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeCapabilityEntry
+          field: efmCuPmeSubTypesSupported
+          index_field: ifIndex
+    bit_map:
+      0: ieee2BaseTLO
+      1: ieee2BaseTLR
+      2: ieee10PassTSO
+      3: ieee10PassTSR
+  efmcupmetccodingerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeTCCodingErrors
+          index_field: ifIndex
+  efmcupmetccrcerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeStatusEntry
+          field: efmCuPmeTCCrcErrors
+          index_field: ifIndex
+  efmcupmethreshlineatn:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeThreshLineAtn
+          index_field: ifIndex
+    validation:
+      min: -127
+      max: 128
+  efmcupmethreshsnrmgn:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPmeConfEntry
+          field: efmCuPmeThreshSnrMgn
+          index_field: ifIndex
+    validation:
+      min: -127
+      max: 128
+  efmcuportcapabilityentry:
+    syntax: EfmCuPortCapabilityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortCapabilityTable
+          field: efmCuPortCapabilityEntry
+  efmcuportcapabilitytable:
+    syntax: EfmCuPortCapabilityEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.2
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPort
+          field: efmCuPortCapabilityTable
+  efmcuportconfentry:
+    syntax: EfmCuPortConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfTable
+          field: efmCuPortConfEntry
+  efmcuportconftable:
+    syntax: EfmCuPortConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPort
+          field: efmCuPortConfTable
+  efmcuportside:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusEntry
+          field: efmCuPortSide
+          index_field: ifIndex
+  efmcuportstatusentry:
+    syntax: EfmCuPortStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortStatusTable
+          field: efmCuPortStatusEntry
+  efmcuportstatustable:
+    syntax: EfmCuPortStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.3
+          method: get
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPort
+          field: efmCuPortStatusTable
+  efmcutargetdatarate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuTargetDataRate
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 100000
+  efmcutargetsnrmgn:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuTargetSnrMgn
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 21
+  efmcuthreshlowrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.167.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: EFM-CU-MIB
+          table: efmCuPortConfEntry
+          field: efmCuThreshLowRate
+          index_field: ifIndex
+    validation:
+      min: 1
+      max: 100000

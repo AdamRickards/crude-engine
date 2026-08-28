@@ -1,0 +1,59 @@
+version: "2.6.0"
+feature: dns-ssh
+description: "SSH CLI sources for DNS client — hand-authored, generator ignores *-ssh.yaml"
+
+attributes:
+  hm2dnsclientadminstate:
+    sources:
+      ssh:
+        read: {command: "show dns client info", field: "client status"}
+        write: {command: "{'' if value else 'no '}dns client adminstate"}
+
+  hm2dnsclientconfigsource:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show dns client info", field: "configuration source"}
+        write: {command: "dns client source {value}"}
+
+  hm2dnsclientdefaultdomainname:
+    sources:
+      ssh:
+        read: {command: "show dns client info", field: "domain name"}
+        write: {command: "dns client domain-name {value}"}
+
+  hm2dnsclientrequesttimeout:
+    sources:
+      ssh:
+        read: {command: "show dns client info", field: "timeout"}
+        write: {command: "dns client timeout {value}"}
+
+  hm2dnsclientrequestretransmits:
+    sources:
+      ssh:
+        read: {command: "show dns client info", field: "retransmit"}
+        write: {command: "dns client retry {value}"}
+
+  hm2dnscacheadminstate:
+    sources:
+      ssh:
+        read: {command: "show dns client info", field: "cache status"}
+        write: {command: "{'' if value else 'no '}dns client cache adminstate"}
+
+  hm2dnsclientserveraddress:
+    sources:
+      ssh:
+        read: {command: "show dns client servers", parser: table, column: 1}
+        create: {command: "dns client servers add {index} ip {address}", level: config}
+        delete: {command: "dns client servers delete {index}", level: config, confirm: "y"}
+
+  hm2dnsclientserverindex:
+    sources:
+      ssh:
+        read: {command: "show dns client servers", parser: table, column: 0}
+
+  hm2dnsclientserverrowstatus:
+    sources:
+      ssh:
+        create: {command: "dns client servers add {index} ip {address}", level: config}
+        delete: {command: "dns client servers delete {index}", level: config, confirm: "y"}

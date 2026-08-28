@@ -1,0 +1,2138 @@
+version: 2.6.0
+feature: ieee8021-q-bridge
+schemas:
+  read_ieee8021-q-bridge:
+    type: dict
+    defaults:
+      ieee8021bridgebaseportcomponentid: ''
+      ieee8021bridgebaseportentry: ''
+      ieee8021qbridgecvlanportcomponentid: ''
+      ieee8021qbridgecvlanportentry: ''
+      ieee8021qbridgecvlanportnumber: 0
+      ieee8021qbridgecvlanportrowstatus: 0
+      ieee8021qbridgecvlanporttable: ''
+      ieee8021qbridgecomponentid: ''
+      ieee8021qbridgeentry: ''
+      ieee8021qbridgefdbagingtime: 0
+      ieee8021qbridgefdbcomponentid: ''
+      ieee8021qbridgefdbdynamiccount: 0
+      ieee8021qbridgefdbentry: ''
+      ieee8021qbridgefdbid: 0
+      ieee8021qbridgefdblearnedentrydiscards: 0
+      ieee8021qbridgefdbtable: ''
+      ieee8021qbridgeforwardallentry: ''
+      ieee8021qbridgeforwardallforbiddenports: []
+      ieee8021qbridgeforwardallports: []
+      ieee8021qbridgeforwardallstaticports: []
+      ieee8021qbridgeforwardalltable: ''
+      ieee8021qbridgeforwardallvlanindex: 0
+      ieee8021qbridgeforwardunregisteredentry: ''
+      ieee8021qbridgeforwardunregisteredforbiddenports: []
+      ieee8021qbridgeforwardunregisteredports: []
+      ieee8021qbridgeforwardunregisteredstaticports: []
+      ieee8021qbridgeforwardunregisteredtable: ''
+      ieee8021qbridgeforwardunregisteredvlanindex: 0
+      ieee8021qbridgelearningconstraintdefaultscomponentid: ''
+      ieee8021qbridgelearningconstraintdefaultsentry: ''
+      ieee8021qbridgelearningconstraintdefaultsset: 0
+      ieee8021qbridgelearningconstraintdefaultstable: ''
+      ieee8021qbridgelearningconstraintdefaultstype: 0
+      ieee8021qbridgelearningconstraintscomponentid: ''
+      ieee8021qbridgelearningconstraintsentry: ''
+      ieee8021qbridgelearningconstraintsset: 0
+      ieee8021qbridgelearningconstraintsstatus: 0
+      ieee8021qbridgelearningconstraintstable: ''
+      ieee8021qbridgelearningconstraintstype: 0
+      ieee8021qbridgelearningconstraintsvlan: 0
+      ieee8021qbridgemaxsupportedvlans: 0
+      ieee8021qbridgemaxvlanid: ''
+      ieee8021qbridgemvrpenabledstatus: false
+      ieee8021qbridgenextfreelocalvlancomponentid: ''
+      ieee8021qbridgenextfreelocalvlanentry: ''
+      ieee8021qbridgenextfreelocalvlanindex: 0
+      ieee8021qbridgenextfreelocalvlantable: ''
+      ieee8021qbridgenumvlans: 0
+      ieee8021qbridgeportacceptableframetypes: ''
+      ieee8021qbridgeportingressfiltering: false
+      ieee8021qbridgeportmvrpenabledstatus: false
+      ieee8021qbridgeportmvrpfailedregistrations: 0
+      ieee8021qbridgeportmvrplastpduorigin: ''
+      ieee8021qbridgeportrestrictedvlanregistration: false
+      ieee8021qbridgeportvlanentry: ''
+      ieee8021qbridgeportvlanstatisticsentry: ''
+      ieee8021qbridgeportvlanstatisticstable: ''
+      ieee8021qbridgeportvlantable: ''
+      ieee8021qbridgeprotocolgroupcomponentid: ''
+      ieee8021qbridgeprotocolgroupentry: ''
+      ieee8021qbridgeprotocolgroupid: 0
+      ieee8021qbridgeprotocolgrouprowstatus: 0
+      ieee8021qbridgeprotocolgrouptable: ''
+      ieee8021qbridgeprotocolportentry: ''
+      ieee8021qbridgeprotocolportgroupid: 0
+      ieee8021qbridgeprotocolportgroupvid: ''
+      ieee8021qbridgeprotocolportrowstatus: 0
+      ieee8021qbridgeprotocolporttable: ''
+      ieee8021qbridgeprotocoltemplateframetype: 0
+      ieee8021qbridgeprotocoltemplateprotocolvalue: ''
+      ieee8021qbridgepvid: 0
+      ieee8021qbridgestaticmulticastaddress: ''
+      ieee8021qbridgestaticmulticastentry: ''
+      ieee8021qbridgestaticmulticastforbiddenegressports: []
+      ieee8021qbridgestaticmulticastreceiveport: 0
+      ieee8021qbridgestaticmulticastrowstatus: 0
+      ieee8021qbridgestaticmulticaststaticegressports: []
+      ieee8021qbridgestaticmulticaststoragetype: 0
+      ieee8021qbridgestaticmulticasttable: ''
+      ieee8021qbridgestaticunicastaddress: ''
+      ieee8021qbridgestaticunicastcomponentid: ''
+      ieee8021qbridgestaticunicastentry: ''
+      ieee8021qbridgestaticunicastforbiddenegressports: []
+      ieee8021qbridgestaticunicastreceiveport: 0
+      ieee8021qbridgestaticunicastrowstatus: 0
+      ieee8021qbridgestaticunicaststaticegressports: []
+      ieee8021qbridgestaticunicaststoragetype: 0
+      ieee8021qbridgestaticunicasttable: ''
+      ieee8021qbridgestaticunicastvlanindex: 0
+      ieee8021qbridgetable: ''
+      ieee8021qbridgetpfdbaddress: ''
+      ieee8021qbridgetpfdbentry: ''
+      ieee8021qbridgetpfdbport: 0
+      ieee8021qbridgetpfdbstatus: 0
+      ieee8021qbridgetpfdbtable: ''
+      ieee8021qbridgetpgroupaddress: ''
+      ieee8021qbridgetpgroupegressports: []
+      ieee8021qbridgetpgroupentry: ''
+      ieee8021qbridgetpgrouplearnt: []
+      ieee8021qbridgetpgrouptable: ''
+      ieee8021qbridgetpvlanportindiscards: 0
+      ieee8021qbridgetpvlanportinframes: 0
+      ieee8021qbridgetpvlanportoutframes: 0
+      ieee8021qbridgevlancreationtime: 0
+      ieee8021qbridgevlancurrentcomponentid: ''
+      ieee8021qbridgevlancurrentegressports: []
+      ieee8021qbridgevlancurrententry: ''
+      ieee8021qbridgevlancurrenttable: ''
+      ieee8021qbridgevlancurrentuntaggedports: []
+      ieee8021qbridgevlanfdbid: 0
+      ieee8021qbridgevlanforbiddenegressports: []
+      ieee8021qbridgevlanindex: 0
+      ieee8021qbridgevlannumdeletes: 0
+      ieee8021qbridgevlanstaticcomponentid: ''
+      ieee8021qbridgevlanstaticegressports: []
+      ieee8021qbridgevlanstaticentry: ''
+      ieee8021qbridgevlanstaticname: ''
+      ieee8021qbridgevlanstaticrowstatus: 0
+      ieee8021qbridgevlanstatictable: ''
+      ieee8021qbridgevlanstaticuntaggedports: []
+      ieee8021qbridgevlanstaticvlanindex: 0
+      ieee8021qbridgevlanstatus: 0
+      ieee8021qbridgevlantimemark: 0
+      ieee8021qbridgevlanversionnumber: 0
+attributes:
+  ieee8021bridgebaseportcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021BridgeBasePortEntry
+          field: ieee8021BridgeBasePortComponentId
+          index_field: ieee8021BridgeBasePort
+          index_fields:
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+  ieee8021bridgebaseportentry:
+    syntax: Ieee8021BridgeBasePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021BridgeBasePortTable
+          field: ieee8021BridgeBasePortEntry
+  ieee8021qbridgecvlanportcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeCVlanPortEntry
+          field: ieee8021QBridgeCVlanPortComponentId
+          index_field: ieee8021QBridgeCVlanPortNumber
+          index_fields: &id001
+          - ieee8021QBridgeCVlanPortComponentId
+          - ieee8021QBridgeCVlanPortNumber
+  ieee8021qbridgecvlanportentry:
+    syntax: Ieee8021QBridgeCVlanPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeCVlanPortTable
+          field: ieee8021QBridgeCVlanPortEntry
+  ieee8021qbridgecvlanportnumber:
+    syntax: IEEE8021BridgePortNumber
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeCVlanPortEntry
+          field: ieee8021QBridgeCVlanPortNumber
+          index_field: ieee8021QBridgeCVlanPortNumber
+          index_fields: *id001
+  ieee8021qbridgecvlanportrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeCVlanPortEntry
+          field: ieee8021QBridgeCVlanPortRowStatus
+          index_field: ieee8021QBridgeCVlanPortNumber
+          index_fields: *id001
+    create_method: createAndWait
+  ieee8021qbridgecvlanporttable:
+    syntax: Ieee8021QBridgeCVlanPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeBase
+          field: ieee8021QBridgeCVlanPortTable
+  ieee8021qbridgecomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeEntry
+          field: ieee8021QBridgeComponentId
+          index_field: ieee8021QBridgeComponentId
+  ieee8021qbridgeentry:
+    syntax: Ieee8021QBridgeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTable
+          field: ieee8021QBridgeEntry
+  ieee8021qbridgefdbagingtime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeFdbEntry
+          field: ieee8021QBridgeFdbAgingTime
+          index_field: ieee8021QBridgeFdbId
+          index_fields: &id002
+          - ieee8021QBridgeFdbComponentId
+          - ieee8021QBridgeFdbId
+    validation:
+      min: 10
+      max: 1000000
+  ieee8021qbridgefdbcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeFdbEntry
+          field: ieee8021QBridgeFdbComponentId
+          index_field: ieee8021QBridgeFdbId
+          index_fields: *id002
+  ieee8021qbridgefdbdynamiccount:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeFdbEntry
+          field: ieee8021QBridgeFdbDynamicCount
+          index_field: ieee8021QBridgeFdbId
+          index_fields: *id002
+  ieee8021qbridgefdbentry:
+    syntax: Ieee8021QBridgeFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeFdbTable
+          field: ieee8021QBridgeFdbEntry
+  ieee8021qbridgefdbid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeFdbEntry
+          field: ieee8021QBridgeFdbId
+          index_field: ieee8021QBridgeFdbId
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 4294967295
+  ieee8021qbridgefdblearnedentrydiscards:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeFdbEntry
+          field: ieee8021QBridgeFdbLearnedEntryDiscards
+          index_field: ieee8021QBridgeFdbId
+          index_fields: *id002
+  ieee8021qbridgefdbtable:
+    syntax: Ieee8021QBridgeFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTp
+          field: ieee8021QBridgeFdbTable
+  ieee8021qbridgeforwardallentry:
+    syntax: Ieee8021QBridgeForwardAllEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardAllTable
+          field: ieee8021QBridgeForwardAllEntry
+  ieee8021qbridgeforwardallforbiddenports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardAllEntry
+          field: ieee8021QBridgeForwardAllForbiddenPorts
+          index_field: ieee8021QBridgeForwardAllVlanIndex
+          index_fields: &id003
+          - ieee8021QBridgeVlanCurrentComponentId
+          - ieee8021QBridgeForwardAllVlanIndex
+  ieee8021qbridgeforwardallports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardAllEntry
+          field: ieee8021QBridgeForwardAllPorts
+          index_field: ieee8021QBridgeForwardAllVlanIndex
+          index_fields: *id003
+  ieee8021qbridgeforwardallstaticports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardAllEntry
+          field: ieee8021QBridgeForwardAllStaticPorts
+          index_field: ieee8021QBridgeForwardAllVlanIndex
+          index_fields: *id003
+  ieee8021qbridgeforwardalltable:
+    syntax: Ieee8021QBridgeForwardAllEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTp
+          field: ieee8021QBridgeForwardAllTable
+  ieee8021qbridgeforwardallvlanindex:
+    syntax: IEEE8021VlanIndexOrWildcard
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardAllEntry
+          field: ieee8021QBridgeForwardAllVlanIndex
+          index_field: ieee8021QBridgeForwardAllVlanIndex
+          index_fields: *id003
+    validation:
+      min: 1
+      max: 4094
+  ieee8021qbridgeforwardunregisteredentry:
+    syntax: Ieee8021QBridgeForwardUnregisteredEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardUnregisteredTable
+          field: ieee8021QBridgeForwardUnregisteredEntry
+  ieee8021qbridgeforwardunregisteredforbiddenports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardUnregisteredEntry
+          field: ieee8021QBridgeForwardUnregisteredForbiddenPorts
+          index_field: ieee8021QBridgeForwardUnregisteredVlanIndex
+          index_fields: &id004
+          - ieee8021QBridgeVlanCurrentComponentId
+          - ieee8021QBridgeForwardUnregisteredVlanIndex
+  ieee8021qbridgeforwardunregisteredports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardUnregisteredEntry
+          field: ieee8021QBridgeForwardUnregisteredPorts
+          index_field: ieee8021QBridgeForwardUnregisteredVlanIndex
+          index_fields: *id004
+  ieee8021qbridgeforwardunregisteredstaticports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardUnregisteredEntry
+          field: ieee8021QBridgeForwardUnregisteredStaticPorts
+          index_field: ieee8021QBridgeForwardUnregisteredVlanIndex
+          index_fields: *id004
+  ieee8021qbridgeforwardunregisteredtable:
+    syntax: Ieee8021QBridgeForwardUnregisteredEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTp
+          field: ieee8021QBridgeForwardUnregisteredTable
+  ieee8021qbridgeforwardunregisteredvlanindex:
+    syntax: IEEE8021VlanIndexOrWildcard
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeForwardUnregisteredEntry
+          field: ieee8021QBridgeForwardUnregisteredVlanIndex
+          index_field: ieee8021QBridgeForwardUnregisteredVlanIndex
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 4094
+  ieee8021qbridgelearningconstraintdefaultscomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintDefaultsEntry
+          field: ieee8021QBridgeLearningConstraintDefaultsComponentId
+          index_field: ieee8021QBridgeLearningConstraintDefaultsComponentId
+  ieee8021qbridgelearningconstraintdefaultsentry:
+    syntax: Ieee8021QBridgeLearningConstraintDefaultsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.9.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintDefaultsTable
+          field: ieee8021QBridgeLearningConstraintDefaultsEntry
+  ieee8021qbridgelearningconstraintdefaultsset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.9.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintDefaultsEntry
+          field: ieee8021QBridgeLearningConstraintDefaultsSet
+          index_field: ieee8021QBridgeLearningConstraintDefaultsComponentId
+    validation:
+      min: 0
+      max: 65535
+  ieee8021qbridgelearningconstraintdefaultstable:
+    syntax: Ieee8021QBridgeLearningConstraintDefaultsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.9
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgeLearningConstraintDefaultsTable
+  ieee8021qbridgelearningconstraintdefaultstype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.9.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintDefaultsEntry
+          field: ieee8021QBridgeLearningConstraintDefaultsType
+          index_field: ieee8021QBridgeLearningConstraintDefaultsComponentId
+  ieee8021qbridgelearningconstraintscomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintsEntry
+          field: ieee8021QBridgeLearningConstraintsComponentId
+          index_field: ieee8021QBridgeLearningConstraintsSet
+          index_fields: &id005
+          - ieee8021QBridgeLearningConstraintsComponentId
+          - ieee8021QBridgeLearningConstraintsVlan
+          - ieee8021QBridgeLearningConstraintsSet
+  ieee8021qbridgelearningconstraintsentry:
+    syntax: Ieee8021QBridgeLearningConstraintsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.8.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintsTable
+          field: ieee8021QBridgeLearningConstraintsEntry
+  ieee8021qbridgelearningconstraintsset:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintsEntry
+          field: ieee8021QBridgeLearningConstraintsSet
+          index_field: ieee8021QBridgeLearningConstraintsSet
+          index_fields: *id005
+    validation:
+      min: 0
+      max: 65535
+  ieee8021qbridgelearningconstraintsstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintsEntry
+          field: ieee8021QBridgeLearningConstraintsStatus
+          index_field: ieee8021QBridgeLearningConstraintsSet
+          index_fields: *id005
+    create_method: createAndWait
+  ieee8021qbridgelearningconstraintstable:
+    syntax: Ieee8021QBridgeLearningConstraintsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.8
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgeLearningConstraintsTable
+  ieee8021qbridgelearningconstraintstype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintsEntry
+          field: ieee8021QBridgeLearningConstraintsType
+          index_field: ieee8021QBridgeLearningConstraintsSet
+          index_fields: *id005
+  ieee8021qbridgelearningconstraintsvlan:
+    syntax: IEEE8021VlanIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeLearningConstraintsEntry
+          field: ieee8021QBridgeLearningConstraintsVlan
+          index_field: ieee8021QBridgeLearningConstraintsSet
+          index_fields: *id005
+    validation:
+      min: 1
+      max: 4094
+  ieee8021qbridgemaxsupportedvlans:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeEntry
+          field: ieee8021QBridgeMaxSupportedVlans
+          index_field: ieee8021QBridgeComponentId
+  ieee8021qbridgemaxvlanid:
+    syntax: VlanId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeEntry
+          field: ieee8021QBridgeMaxVlanId
+          index_field: ieee8021QBridgeComponentId
+  ieee8021qbridgemvrpenabledstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeEntry
+          field: ieee8021QBridgeMvrpEnabledStatus
+          index_field: ieee8021QBridgeComponentId
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021qbridgenextfreelocalvlancomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeNextFreeLocalVlanEntry
+          field: ieee8021QBridgeNextFreeLocalVlanComponentId
+          index_field: ieee8021QBridgeNextFreeLocalVlanComponentId
+  ieee8021qbridgenextfreelocalvlanentry:
+    syntax: Ieee8021QBridgeNextFreeLocalVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeNextFreeLocalVlanTable
+          field: ieee8021QBridgeNextFreeLocalVlanEntry
+  ieee8021qbridgenextfreelocalvlanindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeNextFreeLocalVlanEntry
+          field: ieee8021QBridgeNextFreeLocalVlanIndex
+          index_field: ieee8021QBridgeNextFreeLocalVlanComponentId
+  ieee8021qbridgenextfreelocalvlantable:
+    syntax: Ieee8021QBridgeNextFreeLocalVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgeNextFreeLocalVlanTable
+  ieee8021qbridgenumvlans:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeEntry
+          field: ieee8021QBridgeNumVlans
+          index_field: ieee8021QBridgeComponentId
+  ieee8021qbridgeportacceptableframetypes:
+    syntax: IEEE8021PortAcceptableFrameTypes
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanEntry
+          field: ieee8021QBridgePortAcceptableFrameTypes
+  ieee8021qbridgeportingressfiltering:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanEntry
+          field: ieee8021QBridgePortIngressFiltering
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021qbridgeportmvrpenabledstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanEntry
+          field: ieee8021QBridgePortMvrpEnabledStatus
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021qbridgeportmvrpfailedregistrations:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanEntry
+          field: ieee8021QBridgePortMvrpFailedRegistrations
+  ieee8021qbridgeportmvrplastpduorigin:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanEntry
+          field: ieee8021QBridgePortMvrpLastPduOrigin
+  ieee8021qbridgeportrestrictedvlanregistration:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanEntry
+          field: ieee8021QBridgePortRestrictedVlanRegistration
+    validation:
+      allowed:
+      - true
+      - false
+  ieee8021qbridgeportvlanentry:
+    syntax: Ieee8021QBridgePortVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanTable
+          field: ieee8021QBridgePortVlanEntry
+  ieee8021qbridgeportvlanstatisticsentry:
+    syntax: Ieee8021QBridgePortVlanStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.6.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanStatisticsTable
+          field: ieee8021QBridgePortVlanStatisticsEntry
+  ieee8021qbridgeportvlanstatisticstable:
+    syntax: Ieee8021QBridgePortVlanStatisticsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgePortVlanStatisticsTable
+  ieee8021qbridgeportvlantable:
+    syntax: Ieee8021QBridgePortVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgePortVlanTable
+  ieee8021qbridgeprotocolgroupcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolGroupEntry
+          field: ieee8021QBridgeProtocolGroupComponentId
+          index_field: ieee8021QBridgeProtocolTemplateProtocolValue
+          index_fields: &id006
+          - ieee8021QBridgeProtocolGroupComponentId
+          - ieee8021QBridgeProtocolTemplateFrameType
+          - ieee8021QBridgeProtocolTemplateProtocolValue
+          key_tag: to_hex_decode
+  ieee8021qbridgeprotocolgroupentry:
+    syntax: Ieee8021QBridgeProtocolGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolGroupTable
+          field: ieee8021QBridgeProtocolGroupEntry
+  ieee8021qbridgeprotocolgroupid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolGroupEntry
+          field: ieee8021QBridgeProtocolGroupId
+          index_field: ieee8021QBridgeProtocolTemplateProtocolValue
+          index_fields: *id006
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 2147483647
+  ieee8021qbridgeprotocolgrouprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolGroupEntry
+          field: ieee8021QBridgeProtocolGroupRowStatus
+          index_field: ieee8021QBridgeProtocolTemplateProtocolValue
+          index_fields: *id006
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  ieee8021qbridgeprotocolgrouptable:
+    syntax: Ieee8021QBridgeProtocolGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocol
+          field: ieee8021QBridgeProtocolGroupTable
+  ieee8021qbridgeprotocolportentry:
+    syntax: Ieee8021QBridgeProtocolPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolPortTable
+          field: ieee8021QBridgeProtocolPortEntry
+  ieee8021qbridgeprotocolportgroupid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolPortEntry
+          field: ieee8021QBridgeProtocolPortGroupId
+          index_field: ieee8021QBridgeProtocolPortGroupId
+          index_fields: &id007
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+          - ieee8021QBridgeProtocolPortGroupId
+    validation:
+      min: 1
+      max: 2147483647
+  ieee8021qbridgeprotocolportgroupvid:
+    syntax: VlanId
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolPortEntry
+          field: ieee8021QBridgeProtocolPortGroupVid
+          index_field: ieee8021QBridgeProtocolPortGroupId
+          index_fields: *id007
+  ieee8021qbridgeprotocolportrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolPortEntry
+          field: ieee8021QBridgeProtocolPortRowStatus
+          index_field: ieee8021QBridgeProtocolPortGroupId
+          index_fields: *id007
+    create_method: createAndWait
+  ieee8021qbridgeprotocolporttable:
+    syntax: Ieee8021QBridgeProtocolPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocol
+          field: ieee8021QBridgeProtocolPortTable
+  ieee8021qbridgeprotocoltemplateframetype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolGroupEntry
+          field: ieee8021QBridgeProtocolTemplateFrameType
+          index_field: ieee8021QBridgeProtocolTemplateProtocolValue
+          index_fields: *id006
+          key_tag: to_hex_decode
+  ieee8021qbridgeprotocoltemplateprotocolvalue:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeProtocolGroupEntry
+          field: ieee8021QBridgeProtocolTemplateProtocolValue
+          index_field: ieee8021QBridgeProtocolTemplateProtocolValue
+          index_fields: *id006
+          key_tag: to_hex_decode
+  ieee8021qbridgepvid:
+    syntax: IEEE8021VlanIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanEntry
+          field: ieee8021QBridgePvid
+    validation:
+      min: 1
+      max: 4094
+  ieee8021qbridgestaticmulticastaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticMulticastEntry
+          field: ieee8021QBridgeStaticMulticastAddress
+          index_field: ieee8021QBridgeStaticMulticastReceivePort
+          index_fields: &id008
+          - ieee8021QBridgeVlanCurrentComponentId
+          - ieee8021QBridgeVlanIndex
+          - ieee8021QBridgeStaticMulticastAddress
+          - ieee8021QBridgeStaticMulticastReceivePort
+  ieee8021qbridgestaticmulticastentry:
+    syntax: Ieee8021QBridgeStaticMulticastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticMulticastTable
+          field: ieee8021QBridgeStaticMulticastEntry
+  ieee8021qbridgestaticmulticastforbiddenegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticMulticastEntry
+          field: ieee8021QBridgeStaticMulticastForbiddenEgressPorts
+          index_field: ieee8021QBridgeStaticMulticastReceivePort
+          index_fields: *id008
+  ieee8021qbridgestaticmulticastreceiveport:
+    syntax: IEEE8021BridgePortNumberOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticMulticastEntry
+          field: ieee8021QBridgeStaticMulticastReceivePort
+          index_field: ieee8021QBridgeStaticMulticastReceivePort
+          index_fields: *id008
+  ieee8021qbridgestaticmulticastrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticMulticastEntry
+          field: ieee8021QBridgeStaticMulticastRowStatus
+          index_field: ieee8021QBridgeStaticMulticastReceivePort
+          index_fields: *id008
+    create_method: createAndWait
+  ieee8021qbridgestaticmulticaststaticegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticMulticastEntry
+          field: ieee8021QBridgeStaticMulticastStaticEgressPorts
+          index_field: ieee8021QBridgeStaticMulticastReceivePort
+          index_fields: *id008
+  ieee8021qbridgestaticmulticaststoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticMulticastEntry
+          field: ieee8021QBridgeStaticMulticastStorageType
+          index_field: ieee8021QBridgeStaticMulticastReceivePort
+          index_fields: *id008
+  ieee8021qbridgestaticmulticasttable:
+    syntax: Ieee8021QBridgeStaticMulticastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStatic
+          field: ieee8021QBridgeStaticMulticastTable
+  ieee8021qbridgestaticunicastaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastAddress
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: &id009
+          - ieee8021QBridgeStaticUnicastComponentId
+          - ieee8021QBridgeStaticUnicastVlanIndex
+          - ieee8021QBridgeStaticUnicastAddress
+          - ieee8021QBridgeStaticUnicastReceivePort
+  ieee8021qbridgestaticunicastcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastComponentId
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: *id009
+  ieee8021qbridgestaticunicastentry:
+    syntax: Ieee8021QBridgeStaticUnicastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastTable
+          field: ieee8021QBridgeStaticUnicastEntry
+  ieee8021qbridgestaticunicastforbiddenegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastForbiddenEgressPorts
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: *id009
+  ieee8021qbridgestaticunicastreceiveport:
+    syntax: IEEE8021BridgePortNumberOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastReceivePort
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: *id009
+  ieee8021qbridgestaticunicastrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastRowStatus
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: *id009
+    create_method: createAndWait
+  ieee8021qbridgestaticunicaststaticegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastStaticEgressPorts
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: *id009
+  ieee8021qbridgestaticunicaststoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastStorageType
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: *id009
+  ieee8021qbridgestaticunicasttable:
+    syntax: Ieee8021QBridgeStaticUnicastEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStatic
+          field: ieee8021QBridgeStaticUnicastTable
+  ieee8021qbridgestaticunicastvlanindex:
+    syntax: IEEE8021VlanIndexOrWildcard
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeStaticUnicastEntry
+          field: ieee8021QBridgeStaticUnicastVlanIndex
+          index_field: ieee8021QBridgeStaticUnicastReceivePort
+          index_fields: *id009
+    validation:
+      min: 1
+      max: 4094
+  ieee8021qbridgetable:
+    syntax: Ieee8021QBridgeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeBase
+          field: ieee8021QBridgeTable
+  ieee8021qbridgetpfdbaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpFdbEntry
+          field: ieee8021QBridgeTpFdbAddress
+          index_field: ieee8021QBridgeTpFdbAddress
+          index_fields: &id010
+          - ieee8021QBridgeFdbComponentId
+          - ieee8021QBridgeFdbId
+          - ieee8021QBridgeTpFdbAddress
+  ieee8021qbridgetpfdbentry:
+    syntax: Ieee8021QBridgeTpFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpFdbTable
+          field: ieee8021QBridgeTpFdbEntry
+  ieee8021qbridgetpfdbport:
+    syntax: IEEE8021BridgePortNumberOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpFdbEntry
+          field: ieee8021QBridgeTpFdbPort
+          index_field: ieee8021QBridgeTpFdbAddress
+          index_fields: *id010
+  ieee8021qbridgetpfdbstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpFdbEntry
+          field: ieee8021QBridgeTpFdbStatus
+          index_field: ieee8021QBridgeTpFdbAddress
+          index_fields: *id010
+    validation:
+      allowed:
+      - other
+      - invalid
+      - learned
+      - self
+      - mgmt
+  ieee8021qbridgetpfdbtable:
+    syntax: Ieee8021QBridgeTpFdbEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTp
+          field: ieee8021QBridgeTpFdbTable
+  ieee8021qbridgetpgroupaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpGroupEntry
+          field: ieee8021QBridgeTpGroupAddress
+          index_field: ieee8021QBridgeTpGroupAddress
+          index_fields: &id011
+          - ieee8021QBridgeVlanCurrentComponentId
+          - ieee8021QBridgeVlanIndex
+          - ieee8021QBridgeTpGroupAddress
+  ieee8021qbridgetpgroupegressports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpGroupEntry
+          field: ieee8021QBridgeTpGroupEgressPorts
+          index_field: ieee8021QBridgeTpGroupAddress
+          index_fields: *id011
+  ieee8021qbridgetpgroupentry:
+    syntax: Ieee8021QBridgeTpGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpGroupTable
+          field: ieee8021QBridgeTpGroupEntry
+  ieee8021qbridgetpgrouplearnt:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTpGroupEntry
+          field: ieee8021QBridgeTpGroupLearnt
+          index_field: ieee8021QBridgeTpGroupAddress
+          index_fields: *id011
+  ieee8021qbridgetpgrouptable:
+    syntax: Ieee8021QBridgeTpGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.2.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeTp
+          field: ieee8021QBridgeTpGroupTable
+  ieee8021qbridgetpvlanportindiscards:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanStatisticsEntry
+          field: ieee8021QBridgeTpVlanPortInDiscards
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: &id012
+          - ieee8021BridgeBasePortComponentId
+          - ieee8021BridgeBasePort
+          - ieee8021QBridgeVlanIndex
+  ieee8021qbridgetpvlanportinframes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanStatisticsEntry
+          field: ieee8021QBridgeTpVlanPortInFrames
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id012
+  ieee8021qbridgetpvlanportoutframes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgePortVlanStatisticsEntry
+          field: ieee8021QBridgeTpVlanPortOutFrames
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id012
+  ieee8021qbridgevlancreationtime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanCreationTime
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: &id013
+          - ieee8021QBridgeVlanTimeMark
+          - ieee8021QBridgeVlanCurrentComponentId
+          - ieee8021QBridgeVlanIndex
+  ieee8021qbridgevlancurrentcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanCurrentComponentId
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id013
+  ieee8021qbridgevlancurrentegressports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanCurrentEgressPorts
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id013
+  ieee8021qbridgevlancurrententry:
+    syntax: Ieee8021QBridgeVlanCurrentEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentTable
+          field: ieee8021QBridgeVlanCurrentEntry
+  ieee8021qbridgevlancurrenttable:
+    syntax: Ieee8021QBridgeVlanCurrentEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgeVlanCurrentTable
+  ieee8021qbridgevlancurrentuntaggedports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanCurrentUntaggedPorts
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id013
+  ieee8021qbridgevlanfdbid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanFdbId
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id013
+  ieee8021qbridgevlanforbiddenegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticEntry
+          field: ieee8021QBridgeVlanForbiddenEgressPorts
+          index_field: ieee8021QBridgeVlanStaticVlanIndex
+          index_fields: &id014
+          - ieee8021QBridgeVlanStaticComponentId
+          - ieee8021QBridgeVlanStaticVlanIndex
+  ieee8021qbridgevlanindex:
+    syntax: IEEE8021VlanIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanIndex
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id013
+    validation:
+      min: 1
+      max: 4094
+  ieee8021qbridgevlannumdeletes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgeVlanNumDeletes
+  ieee8021qbridgevlanstaticcomponentid:
+    syntax: IEEE8021PbbComponentIdentifier
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticEntry
+          field: ieee8021QBridgeVlanStaticComponentId
+          index_field: ieee8021QBridgeVlanStaticVlanIndex
+          index_fields: *id014
+  ieee8021qbridgevlanstaticegressports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticEntry
+          field: ieee8021QBridgeVlanStaticEgressPorts
+          index_field: ieee8021QBridgeVlanStaticVlanIndex
+          index_fields: *id014
+  ieee8021qbridgevlanstaticentry:
+    syntax: Ieee8021QBridgeVlanStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticTable
+          field: ieee8021QBridgeVlanStaticEntry
+  ieee8021qbridgevlanstaticname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticEntry
+          field: ieee8021QBridgeVlanStaticName
+          index_field: ieee8021QBridgeVlanStaticVlanIndex
+          index_fields: *id014
+    validation:
+      min: 0
+      max: 32
+  ieee8021qbridgevlanstaticrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticEntry
+          field: ieee8021QBridgeVlanStaticRowStatus
+          index_field: ieee8021QBridgeVlanStaticVlanIndex
+          index_fields: *id014
+    create_method: createAndWait
+  ieee8021qbridgevlanstatictable:
+    syntax: Ieee8021QBridgeVlanStaticEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlan
+          field: ieee8021QBridgeVlanStaticTable
+  ieee8021qbridgevlanstaticuntaggedports:
+    syntax: PortList
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticEntry
+          field: ieee8021QBridgeVlanStaticUntaggedPorts
+          index_field: ieee8021QBridgeVlanStaticVlanIndex
+          index_fields: *id014
+  ieee8021qbridgevlanstaticvlanindex:
+    syntax: IEEE8021VlanIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanStaticEntry
+          field: ieee8021QBridgeVlanStaticVlanIndex
+          index_field: ieee8021QBridgeVlanStaticVlanIndex
+          index_fields: *id014
+    validation:
+      min: 1
+      max: 4094
+  ieee8021qbridgevlanstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanStatus
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id013
+    validation:
+      allowed:
+      - other
+      - permanent
+      - dynamicMvrp
+  ieee8021qbridgevlantimemark:
+    syntax: TimeFilter
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.4.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeVlanCurrentEntry
+          field: ieee8021QBridgeVlanTimeMark
+          index_field: ieee8021QBridgeVlanIndex
+          index_fields: *id013
+  ieee8021qbridgevlanversionnumber:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.4.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-Q-BRIDGE-MIB
+          table: ieee8021QBridgeEntry
+          field: ieee8021QBridgeVlanVersionNumber
+          index_field: ieee8021QBridgeComponentId

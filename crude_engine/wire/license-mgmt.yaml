@@ -1,0 +1,476 @@
+version: 2.6.0
+feature: license-mgmt
+schemas:
+  read_license-mgmt:
+    type: dict
+    defaults:
+      hm2lmfeaturebinaryid: 0
+      hm2lmfeaturecount: 0
+      hm2lmfeaturedescription: ''
+      hm2lmfeatureentry: ''
+      hm2lmfeatureid: ''
+      hm2lmfeaturelicenseid: 0
+      hm2lmfeaturestatus: 0
+      hm2lmfeatureswliccap: ''
+      hm2lmfeatureswlvlcap: ''
+      hm2lmfeaturetable: ''
+      hm2lmlicenseadminstatus: 0
+      hm2lmlicensedescription: ''
+      hm2lmlicenseentry: ''
+      hm2lmlicenseexpiryperiod: 0
+      hm2lmlicenseid: 0
+      hm2lmlicensekey: ''
+      hm2lmlicensekeydelete: ''
+      hm2lmlicensekeyinstall: ''
+      hm2lmlicensekeyudi: ''
+      hm2lmlicensemodel: 0
+      hm2lmlicenseoperstatus: 0
+      hm2lmlicenseswlvlcap: ''
+      hm2lmlicensetable: ''
+      hm2lmlicenseversion: ''
+      hm2lmswlvladminstatus: ''
+      hm2lmswlvlcap: ''
+      hm2lmswlvldescription: ''
+      hm2lmswlvloperstatus: ''
+attributes:
+  hm2lmfeaturebinaryid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureBinaryID
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+  hm2lmfeaturecount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureCount
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+  hm2lmfeaturedescription:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureDescription
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+  hm2lmfeatureentry:
+    syntax: Hm2LMFeatureEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureTable
+          field: hm2LMFeatureEntry
+  hm2lmfeatureid:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureId
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+  hm2lmfeaturelicenseid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureLicenseId
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+  hm2lmfeaturestatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureStatus
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - active
+      - inactive
+      - expired
+      - error
+  hm2lmfeatureswliccap:
+    syntax: HmLmLicenseLvlCap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureSwLicCap
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+  hm2lmfeatureswlvlcap:
+    syntax: HmLmSwLvlCap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureEntry
+          field: hm2LMFeatureSwLvlCap
+          index_field: hm2LMFeatureId
+          key_tag: to_hex_decode
+  hm2lmfeaturetable:
+    syntax: Hm2LMFeatureEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMFeatureGroup
+          field: hm2LMFeatureTable
+  hm2lmlicenseadminstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseAdminStatus
+          index_field: hm2LMLicenseId
+  hm2lmlicensedescription:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseDescription
+          index_field: hm2LMLicenseId
+    validation:
+      min: 0
+      max: 80
+  hm2lmlicenseentry:
+    syntax: Hm2LMLicenseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseTable
+          field: hm2LMLicenseEntry
+  hm2lmlicenseexpiryperiod:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseExpiryPeriod
+          index_field: hm2LMLicenseId
+  hm2lmlicenseid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseId
+          index_field: hm2LMLicenseId
+  hm2lmlicensekey:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseKey
+          index_field: hm2LMLicenseId
+    validation:
+      min: 0
+      max: 255
+  hm2lmlicensekeydelete:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseKeyGroup
+          field: hm2LMLicenseKeyDelete
+    validation:
+      min: 0
+      max: 255
+  hm2lmlicensekeyinstall:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseKeyGroup
+          field: hm2LMLicenseKeyInstall
+    validation:
+      min: 0
+      max: 255
+  hm2lmlicensekeyudi:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseKeyGroup
+          field: hm2LMLicenseKeyUdi
+    validation:
+      min: 0
+      max: 255
+  hm2lmlicensemodel:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseModel
+          index_field: hm2LMLicenseId
+  hm2lmlicenseoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseOperStatus
+          index_field: hm2LMLicenseId
+  hm2lmlicenseswlvlcap:
+    syntax: HmLmSwLvlCap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseSwLvlCap
+          index_field: hm2LMLicenseId
+  hm2lmlicensetable:
+    syntax: Hm2LMLicenseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseGroup
+          field: hm2LMLicenseTable
+  hm2lmlicenseversion:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMLicenseEntry
+          field: hm2LMLicenseVersion
+          index_field: hm2LMLicenseId
+    validation:
+      min: 0
+      max: 16
+  hm2lmswlvladminstatus:
+    syntax: HmLmSwLvlCap
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.4.3
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMSwLvlGroup
+          field: hm2LMSwLvlAdminStatus
+  hm2lmswlvlcap:
+    syntax: HmLmSwLvlCap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMSwLvlGroup
+          field: hm2LMSwLvlCap
+  hm2lmswlvldescription:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMSwLvlGroup
+          field: hm2LMSwLvlDescription
+  hm2lmswlvloperstatus:
+    syntax: HmLmSwLvlCap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.3.1.4.4
+          method: get
+      mops:
+        read:
+          mib: HM2-LICENSE-MGMT-MIB
+          table: hm2LMSwLvlGroup
+          field: hm2LMSwLvlOperStatus

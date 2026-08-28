@@ -1,0 +1,43 @@
+---
+# SNMP protocol defaults.
+# Feature declarations override these — declare exceptions, not rules.
+
+version: "1.0"
+protocol: snmp
+
+defaults:
+  method: walk
+
+scalar_suffix: ".0"
+
+index_encodings:
+  inet_address:
+    format: oid_suffix
+    # InetAddressType.length.InetAddress bytes → "1.4.10.77.77.77"
+  implied_string:
+    format: oid_suffix
+    # ASCII bytes without length prefix → "112.117.98.108.105.99" (for "public")
+  compound:
+    format: oid_suffix
+    # Multiple index values joined with dots → "1.1" (storage_type.index)
+
+create_method_default: createAndWait
+
+unsigned_syntaxes:
+  - Unsigned32
+  - Gauge32
+  - Counter32
+  - Counter64
+  - InetPortNumber
+  - InetAddressPrefixLength
+
+execute_methods:
+  - save_config
+  - clear_config
+  - clear_factory
+
+wire_type_defaults:
+  boolean: crude_boolean
+  integer: crude_numeric
+  float: {function: crude_numeric, args: {type: float}}
+  string: crude_text

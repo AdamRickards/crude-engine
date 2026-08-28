@@ -1,0 +1,2290 @@
+version: 2.6.0
+feature: platform-qos-diffserv-private
+schemas:
+  read_platform-qos-diffserv-private:
+    type: dict
+    defaults:
+      hm2agentdiffservclassentry: ''
+      hm2agentdiffservclassindex: 0
+      hm2agentdiffservclassindexnextfree: 0
+      hm2agentdiffservclassname: ''
+      hm2agentdiffservclassprototype: 0
+      hm2agentdiffservclassrowstatus: 0
+      hm2agentdiffservclassruleentry: ''
+      hm2agentdiffservclassruleindex: 0
+      hm2agentdiffservclassruleindexnextfree: 0
+      hm2agentdiffservclassrulematchcos: 0
+      hm2agentdiffservclassrulematchcos2: 0
+      hm2agentdiffservclassrulematchdstipaddr: ''
+      hm2agentdiffservclassrulematchdstipmask: ''
+      hm2agentdiffservclassrulematchdstl4portend: 0
+      hm2agentdiffservclassrulematchdstl4portstart: 0
+      hm2agentdiffservclassrulematchdstmacaddr: ''
+      hm2agentdiffservclassrulematchdstmacmask: ''
+      hm2agentdiffservclassrulematchentrytype: 0
+      hm2agentdiffservclassrulematchetypekey: 0
+      hm2agentdiffservclassrulematchetypevalue: ''
+      hm2agentdiffservclassrulematchevery: false
+      hm2agentdiffservclassrulematchexcludeflag: false
+      hm2agentdiffservclassrulematchipdscp: 0
+      hm2agentdiffservclassrulematchipprecedence: 0
+      hm2agentdiffservclassrulematchiptosbits: ''
+      hm2agentdiffservclassrulematchiptosmask: ''
+      hm2agentdiffservclassrulematchprotocolnum: 0
+      hm2agentdiffservclassrulematchrefclassindex: 0
+      hm2agentdiffservclassrulematchsrcipaddr: ''
+      hm2agentdiffservclassrulematchsrcipmask: ''
+      hm2agentdiffservclassrulematchsrcl4portend: 0
+      hm2agentdiffservclassrulematchsrcl4portstart: 0
+      hm2agentdiffservclassrulematchsrcmacaddr: ''
+      hm2agentdiffservclassrulematchsrcmacmask: ''
+      hm2agentdiffservclassrulematchvlanid2end: 0
+      hm2agentdiffservclassrulematchvlanid2start: 0
+      hm2agentdiffservclassrulematchvlanidend: 0
+      hm2agentdiffservclassrulematchvlanidstart: 0
+      hm2agentdiffservclassrulerowstatus: 0
+      hm2agentdiffservclassrulestoragetype: 0
+      hm2agentdiffservclassruletable: ''
+      hm2agentdiffservclassstoragetype: 0
+      hm2agentdiffservclasstable: ''
+      hm2agentdiffservclasstype: 0
+      hm2agentdiffservgenstatusadminmode: false
+      hm2agentdiffservgenstatusclassruletablemax: 0
+      hm2agentdiffservgenstatusclassruletablesize: 0
+      hm2agentdiffservgenstatusclasstablemax: 0
+      hm2agentdiffservgenstatusclasstablesize: 0
+      hm2agentdiffservgenstatuspolicyattrtablemax: 0
+      hm2agentdiffservgenstatuspolicyattrtablesize: 0
+      hm2agentdiffservgenstatuspolicyinsttablemax: 0
+      hm2agentdiffservgenstatuspolicyinsttablesize: 0
+      hm2agentdiffservgenstatuspolicytablemax: 0
+      hm2agentdiffservgenstatuspolicytablesize: 0
+      hm2agentdiffservgenstatusservicetablemax: 0
+      hm2agentdiffservgenstatusservicetablesize: 0
+      hm2agentdiffservpolicyattrentry: ''
+      hm2agentdiffservpolicyattrindex: 0
+      hm2agentdiffservpolicyattrrowstatus: 0
+      hm2agentdiffservpolicyattrstmtassignqueueid: 0
+      hm2agentdiffservpolicyattrstmtdrop: false
+      hm2agentdiffservpolicyattrstmtentrytype: 0
+      hm2agentdiffservpolicyattrstmtmarkcos2val: 0
+      hm2agentdiffservpolicyattrstmtmarkcosasseccos: false
+      hm2agentdiffservpolicyattrstmtmarkcosval: 0
+      hm2agentdiffservpolicyattrstmtmarkipdscpval: 0
+      hm2agentdiffservpolicyattrstmtmarkipprecedenceval: 0
+      hm2agentdiffservpolicyattrstmtmirrorintf: 0
+      hm2agentdiffservpolicyattrstmtpolicecolorconformindex: 0
+      hm2agentdiffservpolicyattrstmtpolicecolorconformmode: 0
+      hm2agentdiffservpolicyattrstmtpolicecolorconformval: 0
+      hm2agentdiffservpolicyattrstmtpolicecolorexceedindex: 0
+      hm2agentdiffservpolicyattrstmtpolicecolorexceedmode: 0
+      hm2agentdiffservpolicyattrstmtpolicecolorexceedval: 0
+      hm2agentdiffservpolicyattrstmtpoliceconformact: ''
+      hm2agentdiffservpolicyattrstmtpoliceconformval: 0
+      hm2agentdiffservpolicyattrstmtpoliceexceedact: ''
+      hm2agentdiffservpolicyattrstmtpoliceexceedval: 0
+      hm2agentdiffservpolicyattrstmtpolicenonconformact: ''
+      hm2agentdiffservpolicyattrstmtpolicenonconformval: 0
+      hm2agentdiffservpolicyattrstmtpolicesimplecburst: ''
+      hm2agentdiffservpolicyattrstmtpolicesimplecrate: 0
+      hm2agentdiffservpolicyattrstmtpolicesingleratecburst: ''
+      hm2agentdiffservpolicyattrstmtpolicesingleratecrate: 0
+      hm2agentdiffservpolicyattrstmtpolicesinglerateeburst: ''
+      hm2agentdiffservpolicyattrstmtpolicetworatecburst: ''
+      hm2agentdiffservpolicyattrstmtpolicetworatecrate: 0
+      hm2agentdiffservpolicyattrstmtpolicetworatepburst: ''
+      hm2agentdiffservpolicyattrstmtpolicetworateprate: 0
+      hm2agentdiffservpolicyattrstmtredirectintf: 0
+      hm2agentdiffservpolicyattrstoragetype: 0
+      hm2agentdiffservpolicyattrtable: ''
+      hm2agentdiffservpolicyentry: ''
+      hm2agentdiffservpolicyindex: 0
+      hm2agentdiffservpolicyindexnextfree: 0
+      hm2agentdiffservpolicyinstattrindexnextfree: 0
+      hm2agentdiffservpolicyinstclassindex: 0
+      hm2agentdiffservpolicyinstentry: ''
+      hm2agentdiffservpolicyinstindex: 0
+      hm2agentdiffservpolicyinstindexnextfree: 0
+      hm2agentdiffservpolicyinstrowstatus: 0
+      hm2agentdiffservpolicyinststoragetype: 0
+      hm2agentdiffservpolicyinsttable: ''
+      hm2agentdiffservpolicyname: ''
+      hm2agentdiffservpolicyperfindiscardedpackets: 0
+      hm2agentdiffservpolicyperfinentry: ''
+      hm2agentdiffservpolicyperfinhcdiscardedpackets: 0
+      hm2agentdiffservpolicyperfinhcofferedpackets: 0
+      hm2agentdiffservpolicyperfinofferedpackets: 0
+      hm2agentdiffservpolicyperfinrowstatus: 0
+      hm2agentdiffservpolicyperfinstoragetype: 0
+      hm2agentdiffservpolicyperfintable: ''
+      hm2agentdiffservpolicyperfoutdiscardedpackets: 0
+      hm2agentdiffservpolicyperfoutentry: ''
+      hm2agentdiffservpolicyperfouthcdiscardedpackets: 0
+      hm2agentdiffservpolicyperfouthcofferedpackets: 0
+      hm2agentdiffservpolicyperfoutofferedpackets: 0
+      hm2agentdiffservpolicyperfoutrowstatus: 0
+      hm2agentdiffservpolicyperfoutstoragetype: 0
+      hm2agentdiffservpolicyperfouttable: ''
+      hm2agentdiffservpolicyrowstatus: 0
+      hm2agentdiffservpolicystoragetype: 0
+      hm2agentdiffservpolicytable: ''
+      hm2agentdiffservpolicytype: ''
+      hm2agentdiffservserviceentry: ''
+      hm2agentdiffservserviceifdirection: ''
+      hm2agentdiffservserviceifindex: 0
+      hm2agentdiffservserviceifoperstatus: 0
+      hm2agentdiffservservicepolicyindex: 0
+      hm2agentdiffservservicerowstatus: 0
+      hm2agentdiffservservicestoragetype: 0
+      hm2agentdiffservservicetable: ''
+attributes:
+  hm2agentdiffservclassentry:
+    syntax: Hm2AgentDiffServClassEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassTable
+          field: hm2AgentDiffServClassEntry
+  hm2agentdiffservclassindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassEntry
+          field: hm2AgentDiffServClassIndex
+          index_field: hm2AgentDiffServClassIndex
+  hm2agentdiffservclassindexnextfree:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassGroup
+          field: hm2AgentDiffServClassIndexNextFree
+  hm2agentdiffservclassname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassEntry
+          field: hm2AgentDiffServClassName
+          index_field: hm2AgentDiffServClassIndex
+    validation:
+      min: 1
+      max: 31
+  hm2agentdiffservclassprototype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassEntry
+          field: hm2AgentDiffServClassProtoType
+          index_field: hm2AgentDiffServClassIndex
+  hm2agentdiffservclassrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassEntry
+          field: hm2AgentDiffServClassRowStatus
+          index_field: hm2AgentDiffServClassIndex
+    create_method: createAndWait
+  hm2agentdiffservclassruleentry:
+    syntax: Hm2AgentDiffServClassRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleTable
+          field: hm2AgentDiffServClassRuleEntry
+  hm2agentdiffservclassruleindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleIndex
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: &id001
+          - hm2AgentDiffServClassIndex
+          - hm2AgentDiffServClassRuleIndex
+  hm2agentdiffservclassruleindexnextfree:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassEntry
+          field: hm2AgentDiffServClassRuleIndexNextFree
+          index_field: hm2AgentDiffServClassIndex
+  hm2agentdiffservclassrulematchcos:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchCos
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 7
+  hm2agentdiffservclassrulematchcos2:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.27
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchCos2
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 7
+  hm2agentdiffservclassrulematchdstipaddr:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchDstIpAddr
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchdstipmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchDstIpMask
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchdstl4portend:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchDstL4PortEnd
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchdstl4portstart:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchDstL4PortStart
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchdstmacaddr:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchDstMacAddr
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchdstmacmask:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchDstMacMask
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchentrytype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchEntryType
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchetypekey:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.28
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchEtypeKey
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchetypevalue:
+    syntax: EtypeValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.29
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchEtypeValue
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchevery:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchEvery
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdiffservclassrulematchexcludeflag:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchExcludeFlag
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdiffservclassrulematchipdscp:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchIpDscp
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 63
+  hm2agentdiffservclassrulematchipprecedence:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchIpPrecedence
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 7
+  hm2agentdiffservclassrulematchiptosbits:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchIpTosBits
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchiptosmask:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchIpTosMask
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchprotocolnum:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchProtocolNum
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  hm2agentdiffservclassrulematchrefclassindex:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchRefClassIndex
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchsrcipaddr:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchSrcIpAddr
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchsrcipmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchSrcIpMask
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchsrcl4portend:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchSrcL4PortEnd
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchsrcl4portstart:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchSrcL4PortStart
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchsrcmacaddr:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchSrcMacAddr
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchsrcmacmask:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchSrcMacMask
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassrulematchvlanid2end:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.33
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchVlanId2End
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 4042
+  hm2agentdiffservclassrulematchvlanid2start:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.32
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchVlanId2Start
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 4042
+  hm2agentdiffservclassrulematchvlanidend:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.31
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchVlanIdEnd
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 4042
+  hm2agentdiffservclassrulematchvlanidstart:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.30
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleMatchVlanIdStart
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 4042
+  hm2agentdiffservclassrulerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleRowStatus
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+    create_method: createAndWait
+  hm2agentdiffservclassrulestoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassRuleEntry
+          field: hm2AgentDiffServClassRuleStorageType
+          index_field: hm2AgentDiffServClassRuleIndex
+          index_fields: *id001
+  hm2agentdiffservclassruletable:
+    syntax: Hm2AgentDiffServClassRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassGroup
+          field: hm2AgentDiffServClassRuleTable
+  hm2agentdiffservclassstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassEntry
+          field: hm2AgentDiffServClassStorageType
+          index_field: hm2AgentDiffServClassIndex
+  hm2agentdiffservclasstable:
+    syntax: Hm2AgentDiffServClassEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassGroup
+          field: hm2AgentDiffServClassTable
+  hm2agentdiffservclasstype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServClassEntry
+          field: hm2AgentDiffServClassType
+          index_field: hm2AgentDiffServClassIndex
+  hm2agentdiffservgenstatusadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdiffservgenstatusclassruletablemax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusClassRuleTableMax
+  hm2agentdiffservgenstatusclassruletablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusClassRuleTableSize
+  hm2agentdiffservgenstatusclasstablemax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusClassTableMax
+  hm2agentdiffservgenstatusclasstablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusClassTableSize
+  hm2agentdiffservgenstatuspolicyattrtablemax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusPolicyAttrTableMax
+  hm2agentdiffservgenstatuspolicyattrtablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusPolicyAttrTableSize
+  hm2agentdiffservgenstatuspolicyinsttablemax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusPolicyInstTableMax
+  hm2agentdiffservgenstatuspolicyinsttablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusPolicyInstTableSize
+  hm2agentdiffservgenstatuspolicytablemax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusPolicyTableMax
+  hm2agentdiffservgenstatuspolicytablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusPolicyTableSize
+  hm2agentdiffservgenstatusservicetablemax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusServiceTableMax
+  hm2agentdiffservgenstatusservicetablesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServGenStatusGroup
+          field: hm2AgentDiffServGenStatusServiceTableSize
+  hm2agentdiffservpolicyattrentry:
+    syntax: Hm2AgentDiffServPolicyAttrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrTable
+          field: hm2AgentDiffServPolicyAttrEntry
+  hm2agentdiffservpolicyattrindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrIndex
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: &id002
+          - hm2AgentDiffServPolicyIndex
+          - hm2AgentDiffServPolicyInstIndex
+          - hm2AgentDiffServPolicyAttrIndex
+  hm2agentdiffservpolicyattrrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.35
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrRowStatus
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    create_method: createAndWait
+  hm2agentdiffservpolicyattrstmtassignqueueid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.36
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtAssignQueueId
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtdrop:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.37
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtDrop
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdiffservpolicyattrstmtentrytype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtEntryType
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtmarkcos2val:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.38
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtMarkCos2Val
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2agentdiffservpolicyattrstmtmarkcosasseccos:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.47
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtMarkCosAsSecCos
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdiffservpolicyattrstmtmarkcosval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtMarkCosVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2agentdiffservpolicyattrstmtmarkipdscpval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtMarkIpDscpVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 63
+  hm2agentdiffservpolicyattrstmtmarkipprecedenceval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtMarkIpPrecedenceVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2agentdiffservpolicyattrstmtmirrorintf:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.46
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtMirrorIntf
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicecolorconformindex:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.39
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceColorConformIndex
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicecolorconformmode:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.40
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceColorConformMode
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicecolorconformval:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.41
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceColorConformVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicecolorexceedindex:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.42
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceColorExceedIndex
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicecolorexceedmode:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.43
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceColorExceedMode
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicecolorexceedval:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.44
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceColorExceedVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpoliceconformact:
+    syntax: PolicingAction
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceConformAct
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpoliceconformval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceConformVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 63
+  hm2agentdiffservpolicyattrstmtpoliceexceedact:
+    syntax: PolicingAction
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceExceedAct
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpoliceexceedval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceExceedVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 63
+  hm2agentdiffservpolicyattrstmtpolicenonconformact:
+    syntax: PolicingAction
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceNonconformAct
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicenonconformval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceNonconformVal
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 63
+  hm2agentdiffservpolicyattrstmtpolicesimplecburst:
+    syntax: QosBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceSimpleCburst
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicesimplecrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceSimpleCrate
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicesingleratecburst:
+    syntax: QosBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceSinglerateCburst
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicesingleratecrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceSinglerateCrate
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicesinglerateeburst:
+    syntax: QosBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceSinglerateEburst
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicetworatecburst:
+    syntax: QosBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceTworateCburst
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicetworatecrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceTworateCrate
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicetworatepburst:
+    syntax: QosBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceTworatePburst
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtpolicetworateprate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtPoliceTworatePrate
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstmtredirectintf:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.45
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStmtRedirectIntf
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4.1.34
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyAttrEntry
+          field: hm2AgentDiffServPolicyAttrStorageType
+          index_field: hm2AgentDiffServPolicyAttrIndex
+          index_fields: *id002
+  hm2agentdiffservpolicyattrtable:
+    syntax: Hm2AgentDiffServPolicyAttrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyGroup
+          field: hm2AgentDiffServPolicyAttrTable
+  hm2agentdiffservpolicyentry:
+    syntax: Hm2AgentDiffServPolicyEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyTable
+          field: hm2AgentDiffServPolicyEntry
+  hm2agentdiffservpolicyindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyEntry
+          field: hm2AgentDiffServPolicyIndex
+          index_field: hm2AgentDiffServPolicyIndex
+  hm2agentdiffservpolicyindexnextfree:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyGroup
+          field: hm2AgentDiffServPolicyIndexNextFree
+  hm2agentdiffservpolicyinstattrindexnextfree:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyInstEntry
+          field: hm2AgentDiffServPolicyInstAttrIndexNextFree
+          index_field: hm2AgentDiffServPolicyInstIndex
+          index_fields: &id003
+          - hm2AgentDiffServPolicyIndex
+          - hm2AgentDiffServPolicyInstIndex
+  hm2agentdiffservpolicyinstclassindex:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyInstEntry
+          field: hm2AgentDiffServPolicyInstClassIndex
+          index_field: hm2AgentDiffServPolicyInstIndex
+          index_fields: *id003
+  hm2agentdiffservpolicyinstentry:
+    syntax: Hm2AgentDiffServPolicyInstEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyInstTable
+          field: hm2AgentDiffServPolicyInstEntry
+  hm2agentdiffservpolicyinstindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyInstEntry
+          field: hm2AgentDiffServPolicyInstIndex
+          index_field: hm2AgentDiffServPolicyInstIndex
+          index_fields: *id003
+  hm2agentdiffservpolicyinstindexnextfree:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyEntry
+          field: hm2AgentDiffServPolicyInstIndexNextFree
+          index_field: hm2AgentDiffServPolicyIndex
+  hm2agentdiffservpolicyinstrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyInstEntry
+          field: hm2AgentDiffServPolicyInstRowStatus
+          index_field: hm2AgentDiffServPolicyInstIndex
+          index_fields: *id003
+    create_method: createAndWait
+  hm2agentdiffservpolicyinststoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyInstEntry
+          field: hm2AgentDiffServPolicyInstStorageType
+          index_field: hm2AgentDiffServPolicyInstIndex
+          index_fields: *id003
+  hm2agentdiffservpolicyinsttable:
+    syntax: Hm2AgentDiffServPolicyInstEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyGroup
+          field: hm2AgentDiffServPolicyInstTable
+  hm2agentdiffservpolicyname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyEntry
+          field: hm2AgentDiffServPolicyName
+          index_field: hm2AgentDiffServPolicyIndex
+    validation:
+      min: 1
+      max: 31
+  hm2agentdiffservpolicyperfindiscardedpackets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfInEntry
+          field: hm2AgentDiffServPolicyPerfInDiscardedPackets
+          index_field: ifIndex
+          index_fields: &id004
+          - hm2AgentDiffServPolicyIndex
+          - hm2AgentDiffServPolicyInstIndex
+          - ifIndex
+  hm2agentdiffservpolicyperfinentry:
+    syntax: Hm2AgentDiffServPolicyPerfInEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfInTable
+          field: hm2AgentDiffServPolicyPerfInEntry
+  hm2agentdiffservpolicyperfinhcdiscardedpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfInEntry
+          field: hm2AgentDiffServPolicyPerfInHCDiscardedPackets
+          index_field: ifIndex
+          index_fields: *id004
+  hm2agentdiffservpolicyperfinhcofferedpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfInEntry
+          field: hm2AgentDiffServPolicyPerfInHCOfferedPackets
+          index_field: ifIndex
+          index_fields: *id004
+  hm2agentdiffservpolicyperfinofferedpackets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfInEntry
+          field: hm2AgentDiffServPolicyPerfInOfferedPackets
+          index_field: ifIndex
+          index_fields: *id004
+  hm2agentdiffservpolicyperfinrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfInEntry
+          field: hm2AgentDiffServPolicyPerfInRowStatus
+          index_field: ifIndex
+          index_fields: *id004
+    create_method: createAndWait
+  hm2agentdiffservpolicyperfinstoragetype:
+    syntax: StorageType
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfInEntry
+          field: hm2AgentDiffServPolicyPerfInStorageType
+          index_field: ifIndex
+          index_fields: *id004
+  hm2agentdiffservpolicyperfintable:
+    syntax: Hm2AgentDiffServPolicyPerfInEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyGroup
+          field: hm2AgentDiffServPolicyPerfInTable
+  hm2agentdiffservpolicyperfoutdiscardedpackets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfOutEntry
+          field: hm2AgentDiffServPolicyPerfOutDiscardedPackets
+          index_field: ifIndex
+          index_fields: &id005
+          - hm2AgentDiffServPolicyIndex
+          - hm2AgentDiffServPolicyInstIndex
+          - ifIndex
+  hm2agentdiffservpolicyperfoutentry:
+    syntax: Hm2AgentDiffServPolicyPerfOutEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfOutTable
+          field: hm2AgentDiffServPolicyPerfOutEntry
+  hm2agentdiffservpolicyperfouthcdiscardedpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfOutEntry
+          field: hm2AgentDiffServPolicyPerfOutHCDiscardedPackets
+          index_field: ifIndex
+          index_fields: *id005
+  hm2agentdiffservpolicyperfouthcofferedpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfOutEntry
+          field: hm2AgentDiffServPolicyPerfOutHCOfferedPackets
+          index_field: ifIndex
+          index_fields: *id005
+  hm2agentdiffservpolicyperfoutofferedpackets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfOutEntry
+          field: hm2AgentDiffServPolicyPerfOutOfferedPackets
+          index_field: ifIndex
+          index_fields: *id005
+  hm2agentdiffservpolicyperfoutrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfOutEntry
+          field: hm2AgentDiffServPolicyPerfOutRowStatus
+          index_field: ifIndex
+          index_fields: *id005
+    create_method: createAndWait
+  hm2agentdiffservpolicyperfoutstoragetype:
+    syntax: StorageType
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyPerfOutEntry
+          field: hm2AgentDiffServPolicyPerfOutStorageType
+          index_field: ifIndex
+          index_fields: *id005
+  hm2agentdiffservpolicyperfouttable:
+    syntax: Hm2AgentDiffServPolicyPerfOutEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyGroup
+          field: hm2AgentDiffServPolicyPerfOutTable
+  hm2agentdiffservpolicyrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyEntry
+          field: hm2AgentDiffServPolicyRowStatus
+          index_field: hm2AgentDiffServPolicyIndex
+    create_method: createAndWait
+  hm2agentdiffservpolicystoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyEntry
+          field: hm2AgentDiffServPolicyStorageType
+          index_field: hm2AgentDiffServPolicyIndex
+  hm2agentdiffservpolicytable:
+    syntax: Hm2AgentDiffServPolicyEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyGroup
+          field: hm2AgentDiffServPolicyTable
+  hm2agentdiffservpolicytype:
+    syntax: IntfDirection
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServPolicyEntry
+          field: hm2AgentDiffServPolicyType
+          index_field: hm2AgentDiffServPolicyIndex
+  hm2agentdiffservserviceentry:
+    syntax: Hm2AgentDiffServServiceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceTable
+          field: hm2AgentDiffServServiceEntry
+  hm2agentdiffservserviceifdirection:
+    syntax: IntfDirection
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceEntry
+          field: hm2AgentDiffServServiceIfDirection
+          index_field: hm2AgentDiffServServiceIfDirection
+          index_fields: &id006
+          - hm2AgentDiffServServiceIfIndex
+          - hm2AgentDiffServServiceIfDirection
+  hm2agentdiffservserviceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceEntry
+          field: hm2AgentDiffServServiceIfIndex
+          index_field: hm2AgentDiffServServiceIfDirection
+          index_fields: *id006
+  hm2agentdiffservserviceifoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceEntry
+          field: hm2AgentDiffServServiceIfOperStatus
+          index_field: hm2AgentDiffServServiceIfDirection
+          index_fields: *id006
+  hm2agentdiffservservicepolicyindex:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceEntry
+          field: hm2AgentDiffServServicePolicyIndex
+          index_field: hm2AgentDiffServServiceIfDirection
+          index_fields: *id006
+  hm2agentdiffservservicerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceEntry
+          field: hm2AgentDiffServServiceRowStatus
+          index_field: hm2AgentDiffServServiceIfDirection
+          index_fields: *id006
+    create_method: createAndWait
+  hm2agentdiffservservicestoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceEntry
+          field: hm2AgentDiffServServiceStorageType
+          index_field: hm2AgentDiffServServiceIfDirection
+          index_fields: *id006
+  hm2agentdiffservservicetable:
+    syntax: Hm2AgentDiffServServiceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.7.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-QOS-DIFFSERV-PRIVATE-MIB
+          table: hm2AgentDiffServServiceGroup
+          field: hm2AgentDiffServServiceTable

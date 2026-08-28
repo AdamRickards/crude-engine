@@ -1,0 +1,1037 @@
+version: 2.6.0
+feature: platform-msrp
+schemas:
+  read_platform-msrp:
+    type: dict
+    defaults:
+      hm2agentdot1qbridgemsrpboundarypropagate: false
+      hm2agentdot1qbridgemsrpenabledstatus: false
+      hm2agentdot1qbridgemsrpmaxfaninports: 0
+      hm2agentdot1qbridgemsrptalkerpruning: false
+      hm2agentdot1qfqtssadminidleslopels: 0
+      hm2agentdot1qfqtssadminidleslopems: 0
+      hm2agentdot1qfqtssbapentry: ''
+      hm2agentdot1qfqtssbaptable: ''
+      hm2agentdot1qfqtssdeltabandwidth: ''
+      hm2agentdot1qfqtssoperidleslopels: 0
+      hm2agentdot1qfqtssoperidleslopems: 0
+      hm2agentdot1qfqtsspriorityregenoverride: ''
+      hm2agentdot1qfqtsssrclasspriority: ''
+      hm2agentdot1qfqtsssrpboundaryport: false
+      hm2agentdot1qfqtsssrpregenoverrideentry: ''
+      hm2agentdot1qfqtsssrpregenoverridetable: ''
+      hm2agentdot1qfqtsstrafficclass: ''
+      hm2agentdot1qfqtsstxselectionalgorithmentry: ''
+      hm2agentdot1qfqtsstxselectionalgorithmid: ''
+      hm2agentdot1qfqtsstxselectionalgorithmtable: ''
+      hm2agentdot1qmrpmsrpintf: 0
+      hm2agentdot1qmrpmsrppktmessagefailure: 0
+      hm2agentdot1qmrpmsrppktrx: 0
+      hm2agentdot1qmrpmsrppktrxbadformat: 0
+      hm2agentdot1qmrpmsrppktrxbadheader: 0
+      hm2agentdot1qmrpmsrppkttx: 0
+      hm2agentdot1qmrpmsrppkttxfailure: 0
+      hm2agentdot1qmrpmsrpportpktregfailure: 0
+      hm2agentdot1qmrpmsrpportpktrx: 0
+      hm2agentdot1qmrpmsrpportpktrxbadformat: 0
+      hm2agentdot1qmrpmsrpportpktrxbadheader: 0
+      hm2agentdot1qmrpmsrpportpkttx: 0
+      hm2agentdot1qmrpmsrpportpkttxfailure: 0
+      hm2agentdot1qmrpmsrpstatsentry: ''
+      hm2agentdot1qmrpmsrpstatstable: ''
+      hm2agentdot1qmsrpport: 0
+      hm2agentdot1qmsrpreservationaccumulatedlatency: 0
+      hm2agentdot1qmsrpreservationdeclarationtype: ''
+      hm2agentdot1qmsrpreservationdirection: ''
+      hm2agentdot1qmsrpreservationdroppedstreamframes: 0
+      hm2agentdot1qmsrpreservationentry: ''
+      hm2agentdot1qmsrpreservationfailurebridgeid: ''
+      hm2agentdot1qmsrpreservationfailurecode: ''
+      hm2agentdot1qmsrpreservationstreamage: 0
+      hm2agentdot1qmsrpreservationstreamid: ''
+      hm2agentdot1qmsrpreservationtable: ''
+      hm2agentdot1qmsrpstreamdataframepriority: ''
+      hm2agentdot1qmsrpstreamdestmacaddr: ''
+      hm2agentdot1qmsrpstreamentry: ''
+      hm2agentdot1qmsrpstreamid: ''
+      hm2agentdot1qmsrpstreamindex: 0
+      hm2agentdot1qmsrpstreamrank: ''
+      hm2agentdot1qmsrpstreamtable: ''
+      hm2agentdot1qmsrpstreamtspecmaxframesize: 0
+      hm2agentdot1qmsrpstreamtspecmaxintervalframes: 0
+      hm2agentdot1qmsrpstreamvlanid: 0
+      hm2agentdot1qportmsrpenabledstatus: false
+      hm2agentdot1qportmsrpentry: ''
+      hm2agentdot1qportmsrpfailedregistrations: 0
+      hm2agentdot1qportmsrplastpduorigin: ''
+      hm2agentdot1qportmsrppvid: ''
+      hm2agentdot1qportmsrptable: ''
+attributes:
+  hm2agentdot1qbridgemsrpboundarypropagate:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrp
+          field: hm2AgentDot1qBridgeMsrpBoundaryPropagate
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1qbridgemsrpenabledstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrp
+          field: hm2AgentDot1qBridgeMsrpEnabledStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1qbridgemsrpmaxfaninports:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrp
+          field: hm2AgentDot1qBridgeMsrpMaxFanInPorts
+  hm2agentdot1qbridgemsrptalkerpruning:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrp
+          field: hm2AgentDot1qBridgeMsrpTalkerPruning
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1qfqtssadminidleslopels:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBapEntry
+          field: hm2AgentDot1qFqtssAdminIdleSlopeLs
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: &id001
+          - hm2AgentDot1qMsrpPort
+          - hm2AgentDot1qFqtssTrafficClass
+  hm2agentdot1qfqtssadminidleslopems:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBapEntry
+          field: hm2AgentDot1qFqtssAdminIdleSlopeMs
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: *id001
+  hm2agentdot1qfqtssbapentry:
+    syntax: Hm2AgentDot1qFqtssBapEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBapTable
+          field: hm2AgentDot1qFqtssBapEntry
+  hm2agentdot1qfqtssbaptable:
+    syntax: Hm2AgentDot1qFqtssBapEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBap
+          field: hm2AgentDot1qFqtssBapTable
+  hm2agentdot1qfqtssdeltabandwidth:
+    syntax: Hm2AgentDot1qFqtssDeltaBandwidthValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBapEntry
+          field: hm2AgentDot1qFqtssDeltaBandwidth
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: *id001
+  hm2agentdot1qfqtssoperidleslopels:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBapEntry
+          field: hm2AgentDot1qFqtssOperIdleSlopeLs
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: *id001
+  hm2agentdot1qfqtssoperidleslopems:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBapEntry
+          field: hm2AgentDot1qFqtssOperIdleSlopeMs
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: *id001
+  hm2agentdot1qfqtsspriorityregenoverride:
+    syntax: Hm2AgentDot1qPriorityValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssSrpRegenOverrideEntry
+          field: hm2AgentDot1qFqtssPriorityRegenOverride
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: &id002
+          - hm2AgentDot1qMsrpPort
+          - hm2AgentDot1qFqtssTrafficClass
+  hm2agentdot1qfqtsssrclasspriority:
+    syntax: Hm2AgentDot1qPriorityValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssSrpRegenOverrideEntry
+          field: hm2AgentDot1qFqtssSrClassPriority
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: *id002
+  hm2agentdot1qfqtsssrpboundaryport:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssSrpRegenOverrideEntry
+          field: hm2AgentDot1qFqtssSrpBoundaryPort
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1qfqtsssrpregenoverrideentry:
+    syntax: Hm2AgentDot1qFqtssSrpRegenOverrideEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssSrpRegenOverrideTable
+          field: hm2AgentDot1qFqtssSrpRegenOverrideEntry
+  hm2agentdot1qfqtsssrpregenoverridetable:
+    syntax: Hm2AgentDot1qFqtssSrpRegenOverrideEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssMappings
+          field: hm2AgentDot1qFqtssSrpRegenOverrideTable
+  hm2agentdot1qfqtsstrafficclass:
+    syntax: Hm2AgentDot1qFqtssTrafficClassValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssBapEntry
+          field: hm2AgentDot1qFqtssTrafficClass
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields: *id001
+  hm2agentdot1qfqtsstxselectionalgorithmentry:
+    syntax: Hm2AgentDot1qFqtssTxSelectionAlgorithmEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssTxSelectionAlgorithmTable
+          field: hm2AgentDot1qFqtssTxSelectionAlgorithmEntry
+  hm2agentdot1qfqtsstxselectionalgorithmid:
+    syntax: Hm2AgentDot1qFtqssTxSelectionAlgorithmIDValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssTxSelectionAlgorithmEntry
+          field: hm2AgentDot1qFqtssTxSelectionAlgorithmID
+          index_field: hm2AgentDot1qFqtssTrafficClass
+          index_fields:
+          - hm2AgentDot1qMsrpPort
+          - hm2AgentDot1qFqtssTrafficClass
+  hm2agentdot1qfqtsstxselectionalgorithmtable:
+    syntax: Hm2AgentDot1qFqtssTxSelectionAlgorithmEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.3.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qFqtssMappings
+          field: hm2AgentDot1qFqtssTxSelectionAlgorithmTable
+  hm2agentdot1qmrpmsrpintf:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsEntry
+          field: hm2AgentDot1qMrpMsrpIntf
+          index_field: hm2AgentDot1qMrpMsrpIntf
+    validation:
+      min: 1
+      max: 65535
+  hm2agentdot1qmrpmsrppktmessagefailure:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStats
+          field: hm2AgentDot1qMrpMsrpPktMessageFailure
+  hm2agentdot1qmrpmsrppktrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStats
+          field: hm2AgentDot1qMrpMsrpPktRx
+  hm2agentdot1qmrpmsrppktrxbadformat:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStats
+          field: hm2AgentDot1qMrpMsrpPktRxBadFormat
+  hm2agentdot1qmrpmsrppktrxbadheader:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStats
+          field: hm2AgentDot1qMrpMsrpPktRxBadHeader
+  hm2agentdot1qmrpmsrppkttx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStats
+          field: hm2AgentDot1qMrpMsrpPktTx
+  hm2agentdot1qmrpmsrppkttxfailure:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStats
+          field: hm2AgentDot1qMrpMsrpPktTxFailure
+  hm2agentdot1qmrpmsrpportpktregfailure:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsEntry
+          field: hm2AgentDot1qMrpMsrpPortPktRegFailure
+          index_field: hm2AgentDot1qMrpMsrpIntf
+  hm2agentdot1qmrpmsrpportpktrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsEntry
+          field: hm2AgentDot1qMrpMsrpPortPktRx
+          index_field: hm2AgentDot1qMrpMsrpIntf
+  hm2agentdot1qmrpmsrpportpktrxbadformat:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsEntry
+          field: hm2AgentDot1qMrpMsrpPortPktRxBadFormat
+          index_field: hm2AgentDot1qMrpMsrpIntf
+  hm2agentdot1qmrpmsrpportpktrxbadheader:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsEntry
+          field: hm2AgentDot1qMrpMsrpPortPktRxBadHeader
+          index_field: hm2AgentDot1qMrpMsrpIntf
+  hm2agentdot1qmrpmsrpportpkttx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsEntry
+          field: hm2AgentDot1qMrpMsrpPortPktTx
+          index_field: hm2AgentDot1qMrpMsrpIntf
+  hm2agentdot1qmrpmsrpportpkttxfailure:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsEntry
+          field: hm2AgentDot1qMrpMsrpPortPktTxFailure
+          index_field: hm2AgentDot1qMrpMsrpIntf
+  hm2agentdot1qmrpmsrpstatsentry:
+    syntax: Hm2AgentDot1qMrpMsrpStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStatsTable
+          field: hm2AgentDot1qMrpMsrpStatsEntry
+  hm2agentdot1qmrpmsrpstatstable:
+    syntax: Hm2AgentDot1qMrpMsrpStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.2.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMrpMsrpStats
+          field: hm2AgentDot1qMrpMsrpStatsTable
+  hm2agentdot1qmsrpport:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qPortMsrpEntry
+          field: hm2AgentDot1qMsrpPort
+          index_field: hm2AgentDot1qMsrpPort
+    validation:
+      min: 1
+      max: 65535
+  hm2agentdot1qmsrpreservationaccumulatedlatency:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationAccumulatedLatency
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: &id003
+          - hm2AgentDot1qMsrpReservationStreamId
+          - hm2AgentDot1qMsrpReservationDirection
+          - hm2AgentDot1qMsrpPort
+  hm2agentdot1qmsrpreservationdeclarationtype:
+    syntax: Hm2AgentDot1qMsrpReservationDeclarationTypeValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationDeclarationType
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: *id003
+  hm2agentdot1qmsrpreservationdirection:
+    syntax: Hm2AgentDot1qMsrpReservationDirectionValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationDirection
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: *id003
+  hm2agentdot1qmsrpreservationdroppedstreamframes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationDroppedStreamFrames
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: *id003
+  hm2agentdot1qmsrpreservationentry:
+    syntax: Hm2AgentDot1qMsrpReservationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationTable
+          field: hm2AgentDot1qMsrpReservationEntry
+  hm2agentdot1qmsrpreservationfailurebridgeid:
+    syntax: BridgeId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationFailureBridgeId
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: *id003
+  hm2agentdot1qmsrpreservationfailurecode:
+    syntax: Hm2AgentDot1qMsrpReservationFailureCodeValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationFailureCode
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: *id003
+  hm2agentdot1qmsrpreservationstreamage:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationStreamAge
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: *id003
+  hm2agentdot1qmsrpreservationstreamid:
+    syntax: Hm2AgentDot1qMsrpStreamIdValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpReservationEntry
+          field: hm2AgentDot1qMsrpReservationStreamId
+          index_field: hm2AgentDot1qMsrpPort
+          index_fields: *id003
+  hm2agentdot1qmsrpreservationtable:
+    syntax: Hm2AgentDot1qMsrpReservationEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrp
+          field: hm2AgentDot1qMsrpReservationTable
+  hm2agentdot1qmsrpstreamdataframepriority:
+    syntax: Hm2AgentDot1qPriorityValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamDataFramePriority
+          index_field: hm2AgentDot1qMsrpStreamIndex
+  hm2agentdot1qmsrpstreamdestmacaddr:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamDestMacAddr
+          index_field: hm2AgentDot1qMsrpStreamIndex
+  hm2agentdot1qmsrpstreamentry:
+    syntax: Hm2AgentDot1qMsrpStreamEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamTable
+          field: hm2AgentDot1qMsrpStreamEntry
+  hm2agentdot1qmsrpstreamid:
+    syntax: Hm2AgentDot1qMsrpStreamIdValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamID
+          index_field: hm2AgentDot1qMsrpStreamIndex
+  hm2agentdot1qmsrpstreamindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamIndex
+          index_field: hm2AgentDot1qMsrpStreamIndex
+    validation:
+      min: 0
+      max: 65535
+  hm2agentdot1qmsrpstreamrank:
+    syntax: Hm2AgentDot1qMsrpStreamRankValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamRank
+          index_field: hm2AgentDot1qMsrpStreamIndex
+  hm2agentdot1qmsrpstreamtable:
+    syntax: Hm2AgentDot1qMsrpStreamEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrp
+          field: hm2AgentDot1qMsrpStreamTable
+  hm2agentdot1qmsrpstreamtspecmaxframesize:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamTspecMaxFrameSize
+          index_field: hm2AgentDot1qMsrpStreamIndex
+    validation:
+      min: 0
+      max: 65535
+  hm2agentdot1qmsrpstreamtspecmaxintervalframes:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamTspecMaxIntervalFrames
+          index_field: hm2AgentDot1qMsrpStreamIndex
+    validation:
+      min: 0
+      max: 65535
+  hm2agentdot1qmsrpstreamvlanid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrpStreamEntry
+          field: hm2AgentDot1qMsrpStreamVlanId
+          index_field: hm2AgentDot1qMsrpStreamIndex
+  hm2agentdot1qportmsrpenabledstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qPortMsrpEntry
+          field: hm2AgentDot1qPortMsrpEnabledStatus
+          index_field: hm2AgentDot1qMsrpPort
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentdot1qportmsrpentry:
+    syntax: Hm2AgentDot1qPortMsrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qPortMsrpTable
+          field: hm2AgentDot1qPortMsrpEntry
+  hm2agentdot1qportmsrpfailedregistrations:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qPortMsrpEntry
+          field: hm2AgentDot1qPortMsrpFailedRegistrations
+          index_field: hm2AgentDot1qMsrpPort
+  hm2agentdot1qportmsrplastpduorigin:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qPortMsrpEntry
+          field: hm2AgentDot1qPortMsrpLastPduOrigin
+          index_field: hm2AgentDot1qMsrpPort
+  hm2agentdot1qportmsrppvid:
+    syntax: VlanId
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qPortMsrpEntry
+          field: hm2AgentDot1qPortMsrpPvid
+          index_field: hm2AgentDot1qMsrpPort
+  hm2agentdot1qportmsrptable:
+    syntax: Hm2AgentDot1qPortMsrpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.60.2.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MSRP-MIB
+          table: hm2AgentDot1qMsrp
+          field: hm2AgentDot1qPortMsrpTable

@@ -1,0 +1,67 @@
+version: 2.8.0
+feature: ip_source_guard
+description: IP Source Guard per-port settings and static binding table
+methods:
+  get_ip_source_guard_port:
+    type: dict
+    primary_key: enabled
+    key_map: ifindex
+    defaults:
+      enabled: false
+      port_security: false
+  set_ip_source_guard_port:
+    type: upsert
+  get_ip_source_guard_bindings:
+    type: dict
+    primary_key: binding_ip
+    defaults:
+      binding_ifindex: ''
+      binding_vlan: 0
+      binding_mac: ''
+      binding_ip: ''
+      binding_active: false
+      binding_hw_status: false
+  set_ip_source_guard_binding:
+    type: upsert
+  create_static_binding:
+    type: create
+    row_status: binding_status
+    required: [binding_ifindex]
+    defaults:
+      binding_vlan: 1
+  delete_static_binding:
+    type: delete
+    row_status: binding_status
+attributes:
+  # --- Per-port table (keyed by ifIndex → port name) ---
+  enabled:
+    wire: hm2agentipsgifverifysource
+    source: platform-switching
+  port_security:
+    wire: hm2agentipsgifportsecurity
+    source: platform-switching
+  # --- Static binding table ---
+  binding_ifindex:
+    wire: hm2agentstaticipsgbindingifindex
+    source: platform-switching
+  binding_vlan:
+    wire: hm2agentstaticipsgbindingvlanid
+    source: platform-switching
+  binding_mac:
+    wire: hm2agentstaticipsgbindingmacaddr
+    source: platform-switching
+  binding_ip:
+    wire: hm2agentstaticipsgbindingipaddr
+    source: platform-switching
+  binding_active:
+    wire: hm2agentstaticipsgbindingrowstatus
+    source: platform-switching
+    value_map:
+      '1': true
+  binding_hw_status:
+    wire: hm2agentstaticipsgbindinghwstatus
+    source: platform-switching
+  binding_status:
+    wire: hm2agentstaticipsgbindingrowstatus
+    source: platform-switching
+    access: crud

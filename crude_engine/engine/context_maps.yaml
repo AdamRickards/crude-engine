@@ -1,0 +1,15 @@
+# Context map declarations — resolved lazily by _resolve_context_map
+# Points at real generated wire files. No separate context-sources needed.
+# index_field is a gather hint passed via extra_hints to gather_and_decode.
+maps:
+  ifindex:
+    wire_source: if
+    wire_attr: ifname
+    index_field: ifIndex
+
+  bridge_port:
+    wire_source: bridge
+    wire_attr: dot1dbaseportifindex
+    index_field: dot1dBasePort
+    depends_on: ifindex
+    cross_ref: ifindex

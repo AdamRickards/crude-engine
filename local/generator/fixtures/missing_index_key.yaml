@@ -1,0 +1,17 @@
+# Negative fixture — SCHEMA_MODEL CRUD index_key MUST
+# create/delete have row_status but no index_key / index_fields /
+# linked_tables / required. Validator must error.
+version: "2.9.0"
+feature: missing_index_key
+description: Offline negative fixture — CRUD missing index_key
+methods:
+  create_row:
+    type: create
+    row_status: status
+  delete_row:
+    type: delete
+    row_status: status
+attributes:
+  status:
+    wire: dummy_rowstatus
+    source: dummy

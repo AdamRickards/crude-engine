@@ -1,0 +1,100 @@
+version: 2.6.0
+feature: gui
+schemas:
+  read_gui:
+    type: dict
+    defaults:
+      hm2guifeatureentry: ''
+      hm2guifeaturename: ''
+      hm2guifeatureroleindex: 0
+      hm2guifeaturetable: ''
+      hm2guifeaturevisible: false
+attributes:
+  hm2guifeatureentry:
+    syntax: Hm2GuiFeatureEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.17.1.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-GUI-MIB
+          table: hm2GuiFeatureTable
+          field: hm2GuiFeatureEntry
+  hm2guifeaturename:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.17.1.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-GUI-MIB
+          table: hm2GuiFeatureEntry
+          field: hm2GuiFeatureName
+          index_field: hm2GuiFeatureName
+          index_fields: &id001
+          - hm2GuiFeatureRoleIndex
+          - hm2GuiFeatureName
+          key_tag: to_hex_decode
+  hm2guifeatureroleindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.17.1.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-GUI-MIB
+          table: hm2GuiFeatureEntry
+          field: hm2GuiFeatureRoleIndex
+          index_field: hm2GuiFeatureName
+          index_fields: *id001
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 128
+  hm2guifeaturetable:
+    syntax: Hm2GuiFeatureEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.17.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-GUI-MIB
+          table: hm2GuiFeatureGroup
+          field: hm2GuiFeatureTable
+  hm2guifeaturevisible:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.17.1.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-GUI-MIB
+          table: hm2GuiFeatureEntry
+          field: hm2GuiFeatureVisible
+          index_field: hm2GuiFeatureName
+          index_fields: *id001
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false

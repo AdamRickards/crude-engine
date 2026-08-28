@@ -1,0 +1,864 @@
+version: 2.6.0
+feature: platform-dvmrp
+schemas:
+  read_platform-dvmrp:
+    type: dict
+    defaults:
+      hm2agentdvmrpgenerationid: 0
+      hm2agentdvmrpinterfaceentry: ''
+      hm2agentdvmrpinterfacegenerationid: 0
+      hm2agentdvmrpinterfaceifindex: 0
+      hm2agentdvmrpinterfaceinterfacekey: ''
+      hm2agentdvmrpinterfaceinterfacekeyversion: 0
+      hm2agentdvmrpinterfacelocaladdress: ''
+      hm2agentdvmrpinterfacemetric: 0
+      hm2agentdvmrpinterfacercvbadpkts: 0
+      hm2agentdvmrpinterfacercvbadroutes: 0
+      hm2agentdvmrpinterfacesentroutes: 0
+      hm2agentdvmrpinterfacestatus: 0
+      hm2agentdvmrpinterfacetable: ''
+      hm2agentdvmrpneighboraddress: ''
+      hm2agentdvmrpneighborcapabilities: []
+      hm2agentdvmrpneighborentry: ''
+      hm2agentdvmrpneighborexpirytime: 0
+      hm2agentdvmrpneighborgenerationid: 0
+      hm2agentdvmrpneighborifindex: 0
+      hm2agentdvmrpneighbormajorversion: 0
+      hm2agentdvmrpneighborminorversion: 0
+      hm2agentdvmrpneighborrcvbadpkts: 0
+      hm2agentdvmrpneighborrcvbadroutes: 0
+      hm2agentdvmrpneighborrcvroutes: 0
+      hm2agentdvmrpneighborstate: 0
+      hm2agentdvmrpneighbortable: ''
+      hm2agentdvmrpneighboruptime: 0
+      hm2agentdvmrpnumroutes: 0
+      hm2agentdvmrppruneentry: ''
+      hm2agentdvmrppruneexpirytime: 0
+      hm2agentdvmrpprunegroup: ''
+      hm2agentdvmrpprunesource: ''
+      hm2agentdvmrpprunesourcemask: ''
+      hm2agentdvmrpprunetable: ''
+      hm2agentdvmrpreachableroutes: 0
+      hm2agentdvmrprouteentry: ''
+      hm2agentdvmrprouteexpirytime: 0
+      hm2agentdvmrprouteifindex: 0
+      hm2agentdvmrproutemetric: 0
+      hm2agentdvmrproutenexthopentry: ''
+      hm2agentdvmrproutenexthopifindex: 0
+      hm2agentdvmrproutenexthopsource: ''
+      hm2agentdvmrproutenexthopsourcemask: ''
+      hm2agentdvmrproutenexthoptable: ''
+      hm2agentdvmrproutenexthoptype: 0
+      hm2agentdvmrproutesource: ''
+      hm2agentdvmrproutesourcemask: ''
+      hm2agentdvmrproutetable: ''
+      hm2agentdvmrprouteuptime: 0
+      hm2agentdvmrprouteupstreamneighbor: ''
+      hm2agentdvmrpversionstring: ''
+attributes:
+  hm2agentdvmrpgenerationid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpScalar
+          field: hm2AgentDvmrpGenerationId
+  hm2agentdvmrpinterfaceentry:
+    syntax: Hm2AgentDvmrpInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceTable
+          field: hm2AgentDvmrpInterfaceEntry
+  hm2agentdvmrpinterfacegenerationid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceGenerationId
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceIfIndex
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfaceinterfacekey:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceInterfaceKey
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfaceinterfacekeyversion:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceInterfaceKeyVersion
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfacelocaladdress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceLocalAddress
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfacemetric:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceMetric
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+    validation:
+      min: 1
+      max: 31
+  hm2agentdvmrpinterfacercvbadpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceRcvBadPkts
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfacercvbadroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceRcvBadRoutes
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfacesentroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceSentRoutes
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+  hm2agentdvmrpinterfacestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpInterfaceEntry
+          field: hm2AgentDvmrpInterfaceStatus
+          index_field: hm2AgentDvmrpInterfaceIfIndex
+    create_method: createAndWait
+  hm2agentdvmrpinterfacetable:
+    syntax: Hm2AgentDvmrpInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpGroup
+          field: hm2AgentDvmrpInterfaceTable
+  hm2agentdvmrpneighboraddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborAddress
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: &id001
+          - hm2AgentDvmrpNeighborIfIndex
+          - hm2AgentDvmrpNeighborAddress
+  hm2agentdvmrpneighborcapabilities:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborCapabilities
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+    bit_map:
+      0: leaf
+      1: prune
+      2: generationID
+      3: mtrace
+  hm2agentdvmrpneighborentry:
+    syntax: Hm2AgentDvmrpNeighborEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborTable
+          field: hm2AgentDvmrpNeighborEntry
+  hm2agentdvmrpneighborexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborExpiryTime
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpneighborgenerationid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborGenerationId
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpneighborifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborIfIndex
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpneighbormajorversion:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborMajorVersion
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  hm2agentdvmrpneighborminorversion:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborMinorVersion
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  hm2agentdvmrpneighborrcvbadpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborRcvBadPkts
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpneighborrcvbadroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborRcvBadRoutes
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpneighborrcvroutes:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborRcvRoutes
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpneighborstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborState
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpneighbortable:
+    syntax: Hm2AgentDvmrpNeighborEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpGroup
+          field: hm2AgentDvmrpNeighborTable
+  hm2agentdvmrpneighboruptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpNeighborEntry
+          field: hm2AgentDvmrpNeighborUpTime
+          index_field: hm2AgentDvmrpNeighborAddress
+          index_fields: *id001
+  hm2agentdvmrpnumroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpScalar
+          field: hm2AgentDvmrpNumRoutes
+  hm2agentdvmrppruneentry:
+    syntax: Hm2AgentDvmrpPruneEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpPruneTable
+          field: hm2AgentDvmrpPruneEntry
+  hm2agentdvmrppruneexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpPruneEntry
+          field: hm2AgentDvmrpPruneExpiryTime
+          index_field: hm2AgentDvmrpPruneSourceMask
+          index_fields: &id002
+          - hm2AgentDvmrpPruneGroup
+          - hm2AgentDvmrpPruneSource
+          - hm2AgentDvmrpPruneSourceMask
+  hm2agentdvmrpprunegroup:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpPruneEntry
+          field: hm2AgentDvmrpPruneGroup
+          index_field: hm2AgentDvmrpPruneSourceMask
+          index_fields: *id002
+  hm2agentdvmrpprunesource:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpPruneEntry
+          field: hm2AgentDvmrpPruneSource
+          index_field: hm2AgentDvmrpPruneSourceMask
+          index_fields: *id002
+  hm2agentdvmrpprunesourcemask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpPruneEntry
+          field: hm2AgentDvmrpPruneSourceMask
+          index_field: hm2AgentDvmrpPruneSourceMask
+          index_fields: *id002
+  hm2agentdvmrpprunetable:
+    syntax: Hm2AgentDvmrpPruneEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpGroup
+          field: hm2AgentDvmrpPruneTable
+  hm2agentdvmrpreachableroutes:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpScalar
+          field: hm2AgentDvmrpReachableRoutes
+  hm2agentdvmrprouteentry:
+    syntax: Hm2AgentDvmrpRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteTable
+          field: hm2AgentDvmrpRouteEntry
+  hm2agentdvmrprouteexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteEntry
+          field: hm2AgentDvmrpRouteExpiryTime
+          index_field: hm2AgentDvmrpRouteSourceMask
+          index_fields: &id003
+          - hm2AgentDvmrpRouteSource
+          - hm2AgentDvmrpRouteSourceMask
+  hm2agentdvmrprouteifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteEntry
+          field: hm2AgentDvmrpRouteIfIndex
+          index_field: hm2AgentDvmrpRouteSourceMask
+          index_fields: *id003
+  hm2agentdvmrproutemetric:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteEntry
+          field: hm2AgentDvmrpRouteMetric
+          index_field: hm2AgentDvmrpRouteSourceMask
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 32
+  hm2agentdvmrproutenexthopentry:
+    syntax: Hm2AgentDvmrpRouteNextHopEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteNextHopTable
+          field: hm2AgentDvmrpRouteNextHopEntry
+  hm2agentdvmrproutenexthopifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteNextHopEntry
+          field: hm2AgentDvmrpRouteNextHopIfIndex
+          index_field: hm2AgentDvmrpRouteNextHopIfIndex
+          index_fields: &id004
+          - hm2AgentDvmrpRouteNextHopSource
+          - hm2AgentDvmrpRouteNextHopSourceMask
+          - hm2AgentDvmrpRouteNextHopIfIndex
+  hm2agentdvmrproutenexthopsource:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteNextHopEntry
+          field: hm2AgentDvmrpRouteNextHopSource
+          index_field: hm2AgentDvmrpRouteNextHopIfIndex
+          index_fields: *id004
+  hm2agentdvmrproutenexthopsourcemask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteNextHopEntry
+          field: hm2AgentDvmrpRouteNextHopSourceMask
+          index_field: hm2AgentDvmrpRouteNextHopIfIndex
+          index_fields: *id004
+  hm2agentdvmrproutenexthoptable:
+    syntax: Hm2AgentDvmrpRouteNextHopEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpGroup
+          field: hm2AgentDvmrpRouteNextHopTable
+  hm2agentdvmrproutenexthoptype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteNextHopEntry
+          field: hm2AgentDvmrpRouteNextHopType
+          index_field: hm2AgentDvmrpRouteNextHopIfIndex
+          index_fields: *id004
+  hm2agentdvmrproutesource:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteEntry
+          field: hm2AgentDvmrpRouteSource
+          index_field: hm2AgentDvmrpRouteSourceMask
+          index_fields: *id003
+  hm2agentdvmrproutesourcemask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteEntry
+          field: hm2AgentDvmrpRouteSourceMask
+          index_field: hm2AgentDvmrpRouteSourceMask
+          index_fields: *id003
+  hm2agentdvmrproutetable:
+    syntax: Hm2AgentDvmrpRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpGroup
+          field: hm2AgentDvmrpRouteTable
+  hm2agentdvmrprouteuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteEntry
+          field: hm2AgentDvmrpRouteUpTime
+          index_field: hm2AgentDvmrpRouteSourceMask
+          index_fields: *id003
+  hm2agentdvmrprouteupstreamneighbor:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpRouteEntry
+          field: hm2AgentDvmrpRouteUpstreamNeighbor
+          index_field: hm2AgentDvmrpRouteSourceMask
+          index_fields: *id003
+  hm2agentdvmrpversionstring:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.249.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-DVMRP-MIB
+          table: hm2AgentDvmrpScalar
+          field: hm2AgentDvmrpVersionString

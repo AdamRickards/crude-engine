@@ -1,0 +1,70 @@
+# Machine roadmap. Human twin: docs/ROADMAP.md
+# Change this when a version's exit criteria change, then regenerate status.
+
+current: "2.9.0"
+target: "2.10.0"
+host: github
+repo: AdamRickards/crude-engine
+last_matrix: "2026-04-14T09:22:25Z"
+gate: FAIL
+gate_blocking: 145
+
+versions:
+  - id: "2.9.0"
+    name: Three-gate engine
+    status: shipped
+    citizens: [mops, snmp, ssh, offline]
+    notes: "Architecture landed. Not the PyPI release."
+
+  - id: "2.10.0"
+    name: First PyPI — honest catalogue + release gate
+    status: active
+    citizens: [mops, snmp]
+    post_release_citizens: [ssh, offline]
+    exit:
+      - id: catalogue-honest
+        title: Generated catalogue matches live YAML (E counted, composed labelled, cli flagged)
+        proof: scripts/check_catalogue.py
+        lane: offline
+      - id: schema-musts
+        title: Every SCHEMA_MODEL MUST is a validator error; validator in CI
+        proof: python3 local/generator/validate_schemas.py --errors
+        lane: offline
+      - id: principles-grep
+        title: if protocol == and except Exception pass banned in crude_engine/
+        proof: scripts/check_principles.py
+        lane: offline
+      - id: parity-gate
+        title: MOPS↔SNMP parity gate PASS (or remaining cells exempt with reason)
+        proof: python3 tests/release_matrix.py --execute --kind parity --render
+        lane: lab
+      - id: setter-crud-fleet
+        title: Setter + CRUD matrix executed on lab fleet (.80–.85)
+        proof: python3 tests/release_matrix.py --execute --kind setter && python3 tests/release_matrix.py --execute --kind crud --render
+        lane: lab
+      - id: docs-curated
+        title: TODO.md and ROADMAP.md exist and match cycles.yaml / this file
+        proof: scripts/generate_status.py --check
+        lane: offline
+
+  - id: "2.11.0"
+    name: SSH + Offline as 1st-class, or parked with exemptions
+    status: later
+    citizens: [mops, snmp, ssh, offline]
+    exit:
+      - id: ssh-matrix
+        title: SSH verdicts on methods that have CLI equivalents
+        lane: lab
+      - id: offline-verdict
+        title: Offline XML path given a real matrix run
+        lane: lab
+
+  - id: "3.0.0"
+    name: Second OS or second transport
+    status: later
+    notes: "HiSecOS wire pack and/or Modbus. Proves multi-OS. Not a 2.10 problem."
+
+  - id: later
+    name: Out of this product's critical path
+    status: later
+    notes: "gNMI shim, tools inversion, NILS. Separate seeds."

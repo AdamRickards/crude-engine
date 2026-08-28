@@ -1,0 +1,26 @@
+version: 2.7.0
+feature: session_config
+description: Management session timeouts and limits
+methods:
+  get_session_config:
+    type: dict
+    defaults:
+      ssh_timeout: 0
+      telnet_timeout: 0
+      web_timeout: 0
+      max_ssh_sessions: 0
+  set_session_config:
+    type: upsert
+attributes:
+  ssh_timeout:
+    wire: hm2sshsessiontimeout
+    source: mgmtaccess
+  telnet_timeout:
+    wire: hm2telnetserversessionstimeout
+    source: mgmtaccess
+  web_timeout:
+    wire: hm2webintftimeout
+    source: mgmtaccess
+  max_ssh_sessions:
+    wire: hm2sshmaxsessionscount
+    source: mgmtaccess

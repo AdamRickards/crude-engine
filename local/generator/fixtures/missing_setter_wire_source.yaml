@@ -1,0 +1,19 @@
+# Negative fixture — SCHEMA_MODEL setter wire + source MUST
+# upsert fields lists payload, which has neither wire nor source.
+# Compute-only sibling is legal to omit. Validator must error on payload.
+version: "2.9.0"
+feature: missing_setter_wire_source
+description: Offline negative fixture — setter attr missing wire+source
+methods:
+  set_thing:
+    type: upsert
+    fields: [payload, derived]
+attributes:
+  payload:
+    value_map:
+      '1': on
+      '2': off
+  derived:
+    compute:
+      from: [payload]
+      expr: "payload"

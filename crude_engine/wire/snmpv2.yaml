@@ -1,0 +1,734 @@
+version: 2.6.0
+feature: snmpv2
+schemas:
+  read_snmpv2:
+    type: dict
+    defaults:
+      snmpenableauthentraps: 0
+      snmpinasnparseerrs: 0
+      snmpinbadcommunitynames: 0
+      snmpinbadcommunityuses: 0
+      snmpinbadvalues: 0
+      snmpinbadversions: 0
+      snmpingenerrs: 0
+      snmpingetnexts: 0
+      snmpingetrequests: 0
+      snmpingetresponses: 0
+      snmpinnosuchnames: 0
+      snmpinpkts: 0
+      snmpinreadonlys: 0
+      snmpinsetrequests: 0
+      snmpintoobigs: 0
+      snmpintotalreqvars: 0
+      snmpintotalsetvars: 0
+      snmpintraps: 0
+      snmpoutbadvalues: 0
+      snmpoutgenerrs: 0
+      snmpoutgetnexts: 0
+      snmpoutgetrequests: 0
+      snmpoutgetresponses: 0
+      snmpoutnosuchnames: 0
+      snmpoutpkts: 0
+      snmpoutsetrequests: 0
+      snmpouttoobigs: 0
+      snmpouttraps: 0
+      snmpproxydrops: 0
+      snmpsetserialno: ''
+      snmpsilentdrops: 0
+      snmptrapenterprise: ''
+      snmptrapoid: ''
+      syscontact: ''
+      sysdescr: ''
+      syslocation: ''
+      sysname: ''
+      sysordescr: ''
+      sysorentry: ''
+      sysorid: ''
+      sysorindex: 0
+      sysorlastchange: 0
+      sysortable: ''
+      sysoruptime: 0
+      sysobjectid: ''
+      sysservices: 0
+      sysuptime: 0
+attributes:
+  snmpenableauthentraps:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.30
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpEnableAuthenTraps
+  snmpinasnparseerrs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.6
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInASNParseErrs
+  snmpinbadcommunitynames:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.4
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInBadCommunityNames
+  snmpinbadcommunityuses:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.5
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInBadCommunityUses
+  snmpinbadvalues:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.10
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInBadValues
+  snmpinbadversions:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.3
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInBadVersions
+  snmpingenerrs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.12
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInGenErrs
+  snmpingetnexts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.16
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInGetNexts
+  snmpingetrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.15
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInGetRequests
+  snmpingetresponses:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.18
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInGetResponses
+  snmpinnosuchnames:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.9
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInNoSuchNames
+  snmpinpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.1
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInPkts
+  snmpinreadonlys:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.11
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInReadOnlys
+  snmpinsetrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.17
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInSetRequests
+  snmpintoobigs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.8
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInTooBigs
+  snmpintotalreqvars:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.13
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInTotalReqVars
+  snmpintotalsetvars:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.14
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInTotalSetVars
+  snmpintraps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.19
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpInTraps
+  snmpoutbadvalues:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.22
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutBadValues
+  snmpoutgenerrs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.24
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutGenErrs
+  snmpoutgetnexts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.26
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutGetNexts
+  snmpoutgetrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.25
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutGetRequests
+  snmpoutgetresponses:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.28
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutGetResponses
+  snmpoutnosuchnames:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.21
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutNoSuchNames
+  snmpoutpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.2
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutPkts
+  snmpoutsetrequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.27
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutSetRequests
+  snmpouttoobigs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.20
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutTooBigs
+  snmpouttraps:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.29
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpOutTraps
+  snmpproxydrops:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.32
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpProxyDrops
+  snmpsetserialno:
+    syntax: TestAndIncr
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmpSet
+          field: snmpSetSerialNo
+  snmpsilentdrops:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.11.31
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmp
+          field: snmpSilentDrops
+  snmptrapenterprise:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.1.1.4.3
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmpTrap
+          field: snmpTrapEnterprise
+  snmptrapoid:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.6.3.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: snmpTrap
+          field: snmpTrapOID
+  syscontact:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.4
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysContact
+    validation:
+      min: 0
+      max: 255
+  sysdescr:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysDescr
+    validation:
+      min: 0
+      max: 255
+  syslocation:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.6
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysLocation
+    validation:
+      min: 0
+      max: 255
+  sysname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.5
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysName
+    validation:
+      min: 0
+      max: 255
+  sysordescr:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.9.1.3
+          method: walk
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: sysOREntry
+          field: sysORDescr
+          index_field: sysORIndex
+  sysorentry:
+    syntax: SysOREntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.9.1
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: sysORTable
+          field: sysOREntry
+  sysorid:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.9.1.2
+          method: walk
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: sysOREntry
+          field: sysORID
+          index_field: sysORIndex
+  sysorindex:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: sysOREntry
+          field: sysORIndex
+          index_field: sysORIndex
+    validation:
+      min: 1
+      max: 2147483647
+  sysorlastchange:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.8
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysORLastChange
+  sysortable:
+    syntax: SysOREntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.9
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysORTable
+  sysoruptime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.9.1.4
+          method: walk
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: sysOREntry
+          field: sysORUpTime
+          index_field: sysORIndex
+  sysobjectid:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.2
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysObjectID
+  sysservices:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.7
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysServices
+    validation:
+      min: 0
+      max: 127
+  sysuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.1.3
+          method: get
+      mops:
+        read:
+          mib: SNMPv2-MIB
+          table: system
+          field: sysUpTime

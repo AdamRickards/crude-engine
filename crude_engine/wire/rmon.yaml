@@ -1,0 +1,3354 @@
+version: 2.6.0
+feature: rmon
+schemas:
+  read_rmon:
+    type: dict
+    defaults:
+      alarmentry: ''
+      alarmfallingeventindex: 0
+      alarmfallingthreshold: 0
+      alarmindex: 0
+      alarminterval: 0
+      alarmowner: ''
+      alarmrisingeventindex: 0
+      alarmrisingthreshold: 0
+      alarmsampletype: 0
+      alarmstartupalarm: 0
+      alarmstatus: ''
+      alarmtable: ''
+      alarmvalue: 0
+      alarmvariable: ''
+      buffercontrolcaptureslicesize: 0
+      buffercontrolcapturedpackets: 0
+      buffercontrolchannelindex: 0
+      buffercontroldownloadoffset: 0
+      buffercontroldownloadslicesize: 0
+      buffercontrolentry: ''
+      buffercontrolfullaction: 0
+      buffercontrolfullstatus: 0
+      buffercontrolindex: 0
+      buffercontrolmaxoctetsgranted: 0
+      buffercontrolmaxoctetsrequested: 0
+      buffercontrolowner: ''
+      buffercontrolstatus: ''
+      buffercontroltable: ''
+      buffercontrolturnontime: 0
+      capturebuffercontrolindex: 0
+      capturebufferentry: ''
+      capturebufferindex: 0
+      capturebufferpacketdata: ''
+      capturebufferpacketid: 0
+      capturebufferpacketlength: 0
+      capturebufferpacketstatus: 0
+      capturebufferpackettime: 0
+      capturebuffertable: ''
+      channelaccepttype: 0
+      channeldatacontrol: 0
+      channeldescription: ''
+      channeleventindex: 0
+      channeleventstatus: 0
+      channelifindex: 0
+      channelindex: 0
+      channelmatches: 0
+      channelowner: ''
+      channelstatus: ''
+      channeltable: ''
+      channelturnoffeventindex: 0
+      channelturnoneventindex: 0
+      etherhistorybroadcastpkts: 0
+      etherhistorycrcalignerrors: 0
+      etherhistorycollisions: 0
+      etherhistorydropevents: 0
+      etherhistoryentry: ''
+      etherhistoryfragments: 0
+      etherhistoryindex: 0
+      etherhistoryintervalstart: 0
+      etherhistoryjabbers: 0
+      etherhistorymulticastpkts: 0
+      etherhistoryoctets: 0
+      etherhistoryoversizepkts: 0
+      etherhistorypkts: 0
+      etherhistorysampleindex: 0
+      etherhistorytable: ''
+      etherhistoryundersizepkts: 0
+      etherhistoryutilization: 0
+      etherstatsbroadcastpkts: 0
+      etherstatscrcalignerrors: 0
+      etherstatscollisions: 0
+      etherstatsdatasource: ''
+      etherstatsdropevents: 0
+      etherstatsfragments: 0
+      etherstatsindex: 0
+      etherstatsjabbers: 0
+      etherstatsmulticastpkts: 0
+      etherstatsoctets: 0
+      etherstatsoversizepkts: 0
+      etherstatsowner: ''
+      etherstatspkts: 0
+      etherstatspkts1024to1518octets: 0
+      etherstatspkts128to255octets: 0
+      etherstatspkts256to511octets: 0
+      etherstatspkts512to1023octets: 0
+      etherstatspkts64octets: 0
+      etherstatspkts65to127octets: 0
+      etherstatsstatus: ''
+      etherstatstable: ''
+      etherstatsundersizepkts: 0
+      eventcommunity: ''
+      eventdescription: ''
+      evententry: ''
+      eventindex: 0
+      eventlasttimesent: 0
+      eventowner: ''
+      eventstatus: ''
+      eventtable: ''
+      eventtype: 0
+      filterchannelindex: 0
+      filterindex: 0
+      filterowner: ''
+      filterpktdata: ''
+      filterpktdatamask: ''
+      filterpktdatanotmask: ''
+      filterpktdataoffset: 0
+      filterpktstatus: 0
+      filterpktstatusmask: 0
+      filterpktstatusnotmask: 0
+      filterstatus: ''
+      filtertable: ''
+      historycontrolbucketsgranted: 0
+      historycontrolbucketsrequested: 0
+      historycontroldatasource: ''
+      historycontrolindex: 0
+      historycontrolinterval: 0
+      historycontrolowner: ''
+      historycontrolstatus: ''
+      historycontroltable: ''
+      hostaddress: ''
+      hostcontroldatasource: ''
+      hostcontrolindex: 0
+      hostcontrollastdeletetime: 0
+      hostcontrolowner: ''
+      hostcontrolstatus: ''
+      hostcontroltable: ''
+      hostcontroltablesize: 0
+      hostcreationorder: 0
+      hostentry: ''
+      hostinoctets: 0
+      hostinpkts: 0
+      hostindex: 0
+      hostoutbroadcastpkts: 0
+      hostouterrors: 0
+      hostoutmulticastpkts: 0
+      hostoutoctets: 0
+      hostoutpkts: 0
+      hosttable: ''
+      hosttimeaddress: ''
+      hosttimecreationorder: 0
+      hosttimeentry: ''
+      hosttimeinoctets: 0
+      hosttimeinpkts: 0
+      hosttimeindex: 0
+      hosttimeoutbroadcastpkts: 0
+      hosttimeouterrors: 0
+      hosttimeoutmulticastpkts: 0
+      hosttimeoutoctets: 0
+      hosttimeoutpkts: 0
+      hosttimetable: ''
+      hosttopnaddress: ''
+      hosttopncontrolentry: ''
+      hosttopncontrolindex: 0
+      hosttopncontroltable: ''
+      hosttopnduration: 0
+      hosttopnentry: ''
+      hosttopngrantedsize: 0
+      hosttopnhostindex: 0
+      hosttopnindex: 0
+      hosttopnowner: ''
+      hosttopnrate: 0
+      hosttopnratebase: 0
+      hosttopnreport: 0
+      hosttopnrequestedsize: 0
+      hosttopnstarttime: 0
+      hosttopnstatus: ''
+      hosttopntable: ''
+      hosttopntimeremaining: 0
+      logdescription: ''
+      logentry: ''
+      logeventindex: 0
+      logindex: 0
+      logtable: ''
+      logtime: 0
+      matrixcontroldatasource: ''
+      matrixcontrolindex: 0
+      matrixcontrollastdeletetime: 0
+      matrixcontrolowner: ''
+      matrixcontrolstatus: ''
+      matrixcontroltable: ''
+      matrixcontroltablesize: 0
+      matrixdsdestaddress: ''
+      matrixdsentry: ''
+      matrixdserrors: 0
+      matrixdsindex: 0
+      matrixdsoctets: 0
+      matrixdspkts: 0
+      matrixdssourceaddress: ''
+      matrixdstable: ''
+      matrixsddestaddress: ''
+      matrixsdentry: ''
+      matrixsderrors: 0
+      matrixsdindex: 0
+      matrixsdoctets: 0
+      matrixsdpkts: 0
+      matrixsdsourceaddress: ''
+      matrixsdtable: ''
+attributes:
+  alarmentry:
+    syntax: AlarmEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmTable
+          field: alarmEntry
+  alarmfallingeventindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmFallingEventIndex
+          index_field: alarmIndex
+    validation:
+      min: 0
+      max: 65535
+  alarmfallingthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmFallingThreshold
+          index_field: alarmIndex
+  alarmindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmIndex
+          index_field: alarmIndex
+    validation:
+      min: 1
+      max: 65535
+  alarminterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmInterval
+          index_field: alarmIndex
+  alarmowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmOwner
+          index_field: alarmIndex
+  alarmrisingeventindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmRisingEventIndex
+          index_field: alarmIndex
+    validation:
+      min: 0
+      max: 65535
+  alarmrisingthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmRisingThreshold
+          index_field: alarmIndex
+  alarmsampletype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmSampleType
+          index_field: alarmIndex
+  alarmstartupalarm:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmStartupAlarm
+          index_field: alarmIndex
+  alarmstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmStatus
+          index_field: alarmIndex
+  alarmtable:
+    syntax: AlarmEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarm
+          field: alarmTable
+  alarmvalue:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmValue
+          index_field: alarmIndex
+  alarmvariable:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: alarmEntry
+          field: alarmVariable
+          index_field: alarmIndex
+  buffercontrolcaptureslicesize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlCaptureSliceSize
+          index_field: bufferControlIndex
+  buffercontrolcapturedpackets:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlCapturedPackets
+          index_field: bufferControlIndex
+  buffercontrolchannelindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlChannelIndex
+          index_field: bufferControlIndex
+    validation:
+      min: 1
+      max: 65535
+  buffercontroldownloadoffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlDownloadOffset
+          index_field: bufferControlIndex
+  buffercontroldownloadslicesize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlDownloadSliceSize
+          index_field: bufferControlIndex
+  buffercontrolentry:
+    syntax: BufferControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlTable
+          field: bufferControlEntry
+  buffercontrolfullaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlFullAction
+          index_field: bufferControlIndex
+  buffercontrolfullstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlFullStatus
+          index_field: bufferControlIndex
+  buffercontrolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlIndex
+          index_field: bufferControlIndex
+    validation:
+      min: 1
+      max: 65535
+  buffercontrolmaxoctetsgranted:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlMaxOctetsGranted
+          index_field: bufferControlIndex
+  buffercontrolmaxoctetsrequested:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlMaxOctetsRequested
+          index_field: bufferControlIndex
+  buffercontrolowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlOwner
+          index_field: bufferControlIndex
+  buffercontrolstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlStatus
+          index_field: bufferControlIndex
+  buffercontroltable:
+    syntax: BufferControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: capture
+          field: bufferControlTable
+  buffercontrolturnontime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: bufferControlEntry
+          field: bufferControlTurnOnTime
+          index_field: bufferControlIndex
+  capturebuffercontrolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferEntry
+          field: captureBufferControlIndex
+          index_field: captureBufferIndex
+          index_fields: &id001
+          - captureBufferControlIndex
+          - captureBufferIndex
+    validation:
+      min: 1
+      max: 65535
+  capturebufferentry:
+    syntax: CaptureBufferEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferTable
+          field: captureBufferEntry
+  capturebufferindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferEntry
+          field: captureBufferIndex
+          index_field: captureBufferIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 2147483647
+  capturebufferpacketdata:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferEntry
+          field: captureBufferPacketData
+          index_field: captureBufferIndex
+          index_fields: *id001
+  capturebufferpacketid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferEntry
+          field: captureBufferPacketID
+          index_field: captureBufferIndex
+          index_fields: *id001
+  capturebufferpacketlength:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferEntry
+          field: captureBufferPacketLength
+          index_field: captureBufferIndex
+          index_fields: *id001
+  capturebufferpacketstatus:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferEntry
+          field: captureBufferPacketStatus
+          index_field: captureBufferIndex
+          index_fields: *id001
+  capturebufferpackettime:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: captureBufferEntry
+          field: captureBufferPacketTime
+          index_field: captureBufferIndex
+          index_fields: *id001
+  capturebuffertable:
+    syntax: CaptureBufferEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.8.2
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: capture
+          field: captureBufferTable
+  channelaccepttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelAcceptType
+          index_field: channelIndex
+  channeldatacontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelDataControl
+          index_field: channelIndex
+  channeldescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelDescription
+          index_field: channelIndex
+    validation:
+      min: 0
+      max: 127
+  channeleventindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelEventIndex
+          index_field: channelIndex
+    validation:
+      min: 0
+      max: 65535
+  channeleventstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelEventStatus
+          index_field: channelIndex
+  channelifindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelIfIndex
+          index_field: channelIndex
+    validation:
+      min: 1
+      max: 65535
+  channelindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelIndex
+          index_field: channelIndex
+    validation:
+      min: 1
+      max: 65535
+  channelmatches:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelMatches
+          index_field: channelIndex
+  channelowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelOwner
+          index_field: channelIndex
+  channelstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelStatus
+          index_field: channelIndex
+  channeltable:
+    syntax: ChannelEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filter
+          field: channelTable
+  channelturnoffeventindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelTurnOffEventIndex
+          index_field: channelIndex
+    validation:
+      min: 0
+      max: 65535
+  channelturnoneventindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: channelEntry
+          field: channelTurnOnEventIndex
+          index_field: channelIndex
+    validation:
+      min: 0
+      max: 65535
+  etherhistorybroadcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryBroadcastPkts
+          index_field: etherHistorySampleIndex
+          index_fields: &id002
+          - etherHistoryIndex
+          - etherHistorySampleIndex
+  etherhistorycrcalignerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryCRCAlignErrors
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistorycollisions:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryCollisions
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistorydropevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryDropEvents
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistoryentry:
+    syntax: EtherHistoryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryTable
+          field: etherHistoryEntry
+  etherhistoryfragments:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryFragments
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistoryindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryIndex
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 65535
+  etherhistoryintervalstart:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryIntervalStart
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistoryjabbers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryJabbers
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistorymulticastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryMulticastPkts
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistoryoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryOctets
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistoryoversizepkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryOversizePkts
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistorypkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryPkts
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistorysampleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistorySampleIndex
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 2147483647
+  etherhistorytable:
+    syntax: EtherHistoryEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: history
+          field: etherHistoryTable
+  etherhistoryundersizepkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryUndersizePkts
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+  etherhistoryutilization:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.2.1.15
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherHistoryEntry
+          field: etherHistoryUtilization
+          index_field: etherHistorySampleIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 10000
+  etherstatsbroadcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsBroadcastPkts
+          index_field: etherStatsIndex
+  etherstatscrcalignerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsCRCAlignErrors
+          index_field: etherStatsIndex
+  etherstatscollisions:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsCollisions
+          index_field: etherStatsIndex
+  etherstatsdatasource:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsDataSource
+          index_field: etherStatsIndex
+  etherstatsdropevents:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsDropEvents
+          index_field: etherStatsIndex
+  etherstatsfragments:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsFragments
+          index_field: etherStatsIndex
+  etherstatsindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsIndex
+          index_field: etherStatsIndex
+    validation:
+      min: 1
+      max: 65535
+  etherstatsjabbers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsJabbers
+          index_field: etherStatsIndex
+  etherstatsmulticastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsMulticastPkts
+          index_field: etherStatsIndex
+  etherstatsoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsOctets
+          index_field: etherStatsIndex
+  etherstatsoversizepkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsOversizePkts
+          index_field: etherStatsIndex
+  etherstatsowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsOwner
+          index_field: etherStatsIndex
+  etherstatspkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsPkts
+          index_field: etherStatsIndex
+  etherstatspkts1024to1518octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsPkts1024to1518Octets
+          index_field: etherStatsIndex
+  etherstatspkts128to255octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsPkts128to255Octets
+          index_field: etherStatsIndex
+  etherstatspkts256to511octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsPkts256to511Octets
+          index_field: etherStatsIndex
+  etherstatspkts512to1023octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsPkts512to1023Octets
+          index_field: etherStatsIndex
+  etherstatspkts64octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsPkts64Octets
+          index_field: etherStatsIndex
+  etherstatspkts65to127octets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsPkts65to127Octets
+          index_field: etherStatsIndex
+  etherstatsstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsStatus
+          index_field: etherStatsIndex
+  etherstatstable:
+    syntax: EtherStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: statistics
+          field: etherStatsTable
+  etherstatsundersizepkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: etherStatsEntry
+          field: etherStatsUndersizePkts
+          index_field: etherStatsIndex
+  eventcommunity:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventEntry
+          field: eventCommunity
+          index_field: eventIndex
+    validation:
+      min: 0
+      max: 127
+  eventdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventEntry
+          field: eventDescription
+          index_field: eventIndex
+    validation:
+      min: 0
+      max: 127
+  evententry:
+    syntax: EventEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventTable
+          field: eventEntry
+  eventindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventEntry
+          field: eventIndex
+          index_field: eventIndex
+    validation:
+      min: 1
+      max: 65535
+  eventlasttimesent:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventEntry
+          field: eventLastTimeSent
+          index_field: eventIndex
+  eventowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventEntry
+          field: eventOwner
+          index_field: eventIndex
+  eventstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventEntry
+          field: eventStatus
+          index_field: eventIndex
+  eventtable:
+    syntax: EventEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: event
+          field: eventTable
+  eventtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: eventEntry
+          field: eventType
+          index_field: eventIndex
+  filterchannelindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterChannelIndex
+          index_field: filterIndex
+    validation:
+      min: 1
+      max: 65535
+  filterindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterIndex
+          index_field: filterIndex
+    validation:
+      min: 1
+      max: 65535
+  filterowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterOwner
+          index_field: filterIndex
+  filterpktdata:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterPktData
+          index_field: filterIndex
+  filterpktdatamask:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterPktDataMask
+          index_field: filterIndex
+  filterpktdatanotmask:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterPktDataNotMask
+          index_field: filterIndex
+  filterpktdataoffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterPktDataOffset
+          index_field: filterIndex
+  filterpktstatus:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterPktStatus
+          index_field: filterIndex
+  filterpktstatusmask:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterPktStatusMask
+          index_field: filterIndex
+  filterpktstatusnotmask:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterPktStatusNotMask
+          index_field: filterIndex
+  filterstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filterEntry
+          field: filterStatus
+          index_field: filterIndex
+  filtertable:
+    syntax: FilterEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.7.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: filter
+          field: filterTable
+  historycontrolbucketsgranted:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: historyControlEntry
+          field: historyControlBucketsGranted
+          index_field: historyControlIndex
+    validation:
+      min: 1
+      max: 65535
+  historycontrolbucketsrequested:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: historyControlEntry
+          field: historyControlBucketsRequested
+          index_field: historyControlIndex
+    validation:
+      min: 1
+      max: 65535
+  historycontroldatasource:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: historyControlEntry
+          field: historyControlDataSource
+          index_field: historyControlIndex
+  historycontrolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: historyControlEntry
+          field: historyControlIndex
+          index_field: historyControlIndex
+    validation:
+      min: 1
+      max: 65535
+  historycontrolinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: historyControlEntry
+          field: historyControlInterval
+          index_field: historyControlIndex
+    validation:
+      min: 1
+      max: 3600
+  historycontrolowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: historyControlEntry
+          field: historyControlOwner
+          index_field: historyControlIndex
+  historycontrolstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: historyControlEntry
+          field: historyControlStatus
+          index_field: historyControlIndex
+  historycontroltable:
+    syntax: HistoryControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.2.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: history
+          field: historyControlTable
+  hostaddress:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostAddress
+          index_field: hostAddress
+          index_fields: &id003
+          - hostIndex
+          - hostAddress
+          key_tag: to_hex_decode
+  hostcontroldatasource:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostControlEntry
+          field: hostControlDataSource
+          index_field: hostControlIndex
+  hostcontrolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostControlEntry
+          field: hostControlIndex
+          index_field: hostControlIndex
+    validation:
+      min: 1
+      max: 65535
+  hostcontrollastdeletetime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostControlEntry
+          field: hostControlLastDeleteTime
+          index_field: hostControlIndex
+  hostcontrolowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostControlEntry
+          field: hostControlOwner
+          index_field: hostControlIndex
+  hostcontrolstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostControlEntry
+          field: hostControlStatus
+          index_field: hostControlIndex
+  hostcontroltable:
+    syntax: HostControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hosts
+          field: hostControlTable
+  hostcontroltablesize:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostControlEntry
+          field: hostControlTableSize
+          index_field: hostControlIndex
+  hostcreationorder:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostCreationOrder
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 65535
+  hostentry:
+    syntax: HostEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTable
+          field: hostEntry
+  hostinoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostInOctets
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+  hostinpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostInPkts
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+  hostindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostIndex
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 65535
+  hostoutbroadcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostOutBroadcastPkts
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+  hostouterrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostOutErrors
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+  hostoutmulticastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostOutMulticastPkts
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+  hostoutoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostOutOctets
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+  hostoutpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostEntry
+          field: hostOutPkts
+          index_field: hostAddress
+          index_fields: *id003
+          key_tag: to_hex_decode
+  hosttable:
+    syntax: HostEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.2
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hosts
+          field: hostTable
+  hosttimeaddress:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeAddress
+          index_field: hostTimeCreationOrder
+          index_fields: &id004
+          - hostTimeIndex
+          - hostTimeCreationOrder
+  hosttimecreationorder:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeCreationOrder
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 65535
+  hosttimeentry:
+    syntax: HostTimeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeTable
+          field: hostTimeEntry
+  hosttimeinoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeInOctets
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+  hosttimeinpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeInPkts
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+  hosttimeindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeIndex
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 65535
+  hosttimeoutbroadcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeOutBroadcastPkts
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+  hosttimeouterrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeOutErrors
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+  hosttimeoutmulticastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeOutMulticastPkts
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+  hosttimeoutoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeOutOctets
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+  hosttimeoutpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTimeEntry
+          field: hostTimeOutPkts
+          index_field: hostTimeCreationOrder
+          index_fields: *id004
+  hosttimetable:
+    syntax: HostTimeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.4.3
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hosts
+          field: hostTimeTable
+  hosttopnaddress:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNEntry
+          field: hostTopNAddress
+          index_field: hostTopNIndex
+          index_fields: &id005
+          - hostTopNReport
+          - hostTopNIndex
+  hosttopncontrolentry:
+    syntax: HostTopNControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlTable
+          field: hostTopNControlEntry
+  hosttopncontrolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNControlIndex
+          index_field: hostTopNControlIndex
+    validation:
+      min: 1
+      max: 65535
+  hosttopncontroltable:
+    syntax: HostTopNControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopN
+          field: hostTopNControlTable
+  hosttopnduration:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNDuration
+          index_field: hostTopNControlIndex
+  hosttopnentry:
+    syntax: HostTopNEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.2.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNTable
+          field: hostTopNEntry
+  hosttopngrantedsize:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNGrantedSize
+          index_field: hostTopNControlIndex
+  hosttopnhostindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNHostIndex
+          index_field: hostTopNControlIndex
+    validation:
+      min: 1
+      max: 65535
+  hosttopnindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNEntry
+          field: hostTopNIndex
+          index_field: hostTopNIndex
+          index_fields: *id005
+    validation:
+      min: 1
+      max: 65535
+  hosttopnowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNOwner
+          index_field: hostTopNControlIndex
+  hosttopnrate:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNEntry
+          field: hostTopNRate
+          index_field: hostTopNIndex
+          index_fields: *id005
+  hosttopnratebase:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNRateBase
+          index_field: hostTopNControlIndex
+  hosttopnreport:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNEntry
+          field: hostTopNReport
+          index_field: hostTopNIndex
+          index_fields: *id005
+    validation:
+      min: 1
+      max: 65535
+  hosttopnrequestedsize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNRequestedSize
+          index_field: hostTopNControlIndex
+  hosttopnstarttime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNStartTime
+          index_field: hostTopNControlIndex
+  hosttopnstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNStatus
+          index_field: hostTopNControlIndex
+  hosttopntable:
+    syntax: HostTopNEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.2
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopN
+          field: hostTopNTable
+  hosttopntimeremaining:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: hostTopNControlEntry
+          field: hostTopNTimeRemaining
+          index_field: hostTopNControlIndex
+  logdescription:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: logEntry
+          field: logDescription
+          index_field: logIndex
+          index_fields: &id006
+          - logEventIndex
+          - logIndex
+    validation:
+      min: 0
+      max: 255
+  logentry:
+    syntax: LogEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.2.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: logTable
+          field: logEntry
+  logeventindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: logEntry
+          field: logEventIndex
+          index_field: logIndex
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 65535
+  logindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: logEntry
+          field: logIndex
+          index_field: logIndex
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 2147483647
+  logtable:
+    syntax: LogEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.2
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: event
+          field: logTable
+  logtime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.9.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: logEntry
+          field: logTime
+          index_field: logIndex
+          index_fields: *id006
+  matrixcontroldatasource:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixControlEntry
+          field: matrixControlDataSource
+          index_field: matrixControlIndex
+  matrixcontrolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixControlEntry
+          field: matrixControlIndex
+          index_field: matrixControlIndex
+    validation:
+      min: 1
+      max: 65535
+  matrixcontrollastdeletetime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixControlEntry
+          field: matrixControlLastDeleteTime
+          index_field: matrixControlIndex
+  matrixcontrolowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixControlEntry
+          field: matrixControlOwner
+          index_field: matrixControlIndex
+  matrixcontrolstatus:
+    syntax: EntryStatus
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixControlEntry
+          field: matrixControlStatus
+          index_field: matrixControlIndex
+  matrixcontroltable:
+    syntax: MatrixControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrix
+          field: matrixControlTable
+  matrixcontroltablesize:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixControlEntry
+          field: matrixControlTableSize
+          index_field: matrixControlIndex
+  matrixdsdestaddress:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixDSEntry
+          field: matrixDSDestAddress
+          index_field: matrixDSSourceAddress
+          index_fields: &id007
+          - matrixDSIndex
+          - matrixDSDestAddress
+          - matrixDSSourceAddress
+          key_tag: to_hex_decode
+  matrixdsentry:
+    syntax: MatrixDSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixDSTable
+          field: matrixDSEntry
+  matrixdserrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixDSEntry
+          field: matrixDSErrors
+          index_field: matrixDSSourceAddress
+          index_fields: *id007
+          key_tag: to_hex_decode
+  matrixdsindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixDSEntry
+          field: matrixDSIndex
+          index_field: matrixDSSourceAddress
+          index_fields: *id007
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 65535
+  matrixdsoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixDSEntry
+          field: matrixDSOctets
+          index_field: matrixDSSourceAddress
+          index_fields: *id007
+          key_tag: to_hex_decode
+  matrixdspkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixDSEntry
+          field: matrixDSPkts
+          index_field: matrixDSSourceAddress
+          index_fields: *id007
+          key_tag: to_hex_decode
+  matrixdssourceaddress:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixDSEntry
+          field: matrixDSSourceAddress
+          index_field: matrixDSSourceAddress
+          index_fields: *id007
+          key_tag: to_hex_decode
+  matrixdstable:
+    syntax: MatrixDSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.3
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrix
+          field: matrixDSTable
+  matrixsddestaddress:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixSDEntry
+          field: matrixSDDestAddress
+          index_field: matrixSDDestAddress
+          index_fields: &id008
+          - matrixSDIndex
+          - matrixSDSourceAddress
+          - matrixSDDestAddress
+          key_tag: to_hex_decode
+  matrixsdentry:
+    syntax: MatrixSDEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2.1
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixSDTable
+          field: matrixSDEntry
+  matrixsderrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixSDEntry
+          field: matrixSDErrors
+          index_field: matrixSDDestAddress
+          index_fields: *id008
+          key_tag: to_hex_decode
+  matrixsdindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixSDEntry
+          field: matrixSDIndex
+          index_field: matrixSDDestAddress
+          index_fields: *id008
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 65535
+  matrixsdoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixSDEntry
+          field: matrixSDOctets
+          index_field: matrixSDDestAddress
+          index_fields: *id008
+          key_tag: to_hex_decode
+  matrixsdpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixSDEntry
+          field: matrixSDPkts
+          index_field: matrixSDDestAddress
+          index_fields: *id008
+          key_tag: to_hex_decode
+  matrixsdsourceaddress:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrixSDEntry
+          field: matrixSDSourceAddress
+          index_field: matrixSDDestAddress
+          index_fields: *id008
+          key_tag: to_hex_decode
+  matrixsdtable:
+    syntax: MatrixSDEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.16.6.2
+          method: get
+      mops:
+        read:
+          mib: RMON-MIB
+          table: matrix
+          field: matrixSDTable

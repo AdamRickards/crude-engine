@@ -1,0 +1,1419 @@
+version: 2.6.0
+feature: platform-multicast
+schemas:
+  read_platform-multicast:
+    type: dict
+    defaults:
+      hm2agentigmpquerieradminmode: false
+      hm2agentigmpquerierinterfaceentry: ''
+      hm2agentigmpquerierinterfaceifindex: 0
+      hm2agentigmpquerierinterfaceigmpversion: 0
+      hm2agentigmpquerierinterfaceoperation: false
+      hm2agentigmpquerierinterfacetable: ''
+      hm2agentigmpquerierinterval: 0
+      hm2agentigmpquerierlastmemberinterval: 0
+      hm2agentigmpquerierresponseinterval: 0
+      hm2agentigmpquerierrobustness: 0
+      hm2agentipstaticmrouteentry: ''
+      hm2agentipstaticmrouteextrpfipaddr: ''
+      hm2agentipstaticmrouteextrpfipaddrtype: ''
+      hm2agentipstaticmrouteifindex: 0
+      hm2agentipstaticmroutepreference: 0
+      hm2agentipstaticmrouterpfipaddr: ''
+      hm2agentipstaticmroutesrcaddresstype: ''
+      hm2agentipstaticmroutesrcipaddr: ''
+      hm2agentipstaticmroutesrcnetmask: 0
+      hm2agentipstaticmroutestatus: 0
+      hm2agentipstaticmroutetable: ''
+      hm2agentmulticastdvmrpadminmode: false
+      hm2agentmulticastdvmrprouteexpirytime: 0
+      hm2agentmulticastigmpadminmode: false
+      hm2agentmulticastigmpproxyoperstatus: false
+      hm2agentmulticastmgmdextentry: ''
+      hm2agentmulticastmgmdexttable: ''
+      hm2agentmulticastmgmdhostcacheextentry: ''
+      hm2agentmulticastmgmdhostcacheexttable: ''
+      hm2agentmulticastmgmdhoststatus: 0
+      hm2agentmulticastmgmdnumberofgroups: 0
+      hm2agentmulticastmgmdunsolicitrprtinterval: 0
+      hm2agentmulticastpimdmadminmode: false
+      hm2agentmulticastpimdmpruneassertholdtime: 0
+      hm2agentmulticastpimsmadminmode: false
+      hm2agentmulticastpimsmgroupmappingentry: ''
+      hm2agentmulticastpimsmgroupmappingexpirytime: 0
+      hm2agentmulticastpimsmgroupmappinggrpaddr: ''
+      hm2agentmulticastpimsmgroupmappinggrpaddrtype: ''
+      hm2agentmulticastpimsmgroupmappinggrpprefixlen: ''
+      hm2agentmulticastpimsmgroupmappingorigin: ''
+      hm2agentmulticastpimsmgroupmappingrpaddr: ''
+      hm2agentmulticastpimsmgroupmappingrpaddrtype: ''
+      hm2agentmulticastpimsmgroupmappingtable: ''
+      hm2agentmulticastroutingadminmode: false
+      hm2agentmulticastsoftwaredscp: 0
+      hm2agentpimbsrcandidateconfentry: ''
+      hm2agentpimbsrcandidateconftable: ''
+      hm2agentsnmpdvmrptrapflag: false
+      hm2agentsnmppimtrapflag: false
+      hm2agentstaticmulticastgroupaddress: ''
+      hm2agentstaticmulticastgroupaddresstype: ''
+      hm2agentstaticmulticastgroupentry: ''
+      hm2agentstaticmulticastgroupindex: 0
+      hm2agentstaticmulticastgroupingressinterface: 0
+      hm2agentstaticmulticastgroupmask: ''
+      hm2agentstaticmulticastgroupmasktype: ''
+      hm2agentstaticmulticastgrouprowstatus: 0
+      hm2agentstaticmulticastgroupsrcaddress: ''
+      hm2agentstaticmulticastgroupsrcaddresstype: ''
+      hm2agentstaticmulticastgroupsrcmask: ''
+      hm2agentstaticmulticastgroupsrcmasktype: ''
+      hm2agentstaticmulticastgrouptable: ''
+      hm2agentstaticmulticastrouteaddress: ''
+      hm2agentstaticmulticastrouteaddresstype: ''
+      hm2agentstaticmulticastrouteegressinterface: ''
+      hm2agentstaticmulticastrouteentry: ''
+      hm2agentstaticmulticastrouteindex: 0
+      hm2agentstaticmulticastrouteingressinterface: 0
+      hm2agentstaticmulticastroutemask: ''
+      hm2agentstaticmulticastroutemasktype: ''
+      hm2agentstaticmulticastrouterowstatus: 0
+      hm2agentstaticmulticastroutesrcaddress: ''
+      hm2agentstaticmulticastroutesrcaddresstype: ''
+      hm2agentstaticmulticastroutesrcmask: ''
+      hm2agentstaticmulticastroutesrcmasktype: ''
+      hm2agentstaticmulticastroutetable: ''
+      hm2agentstaticmulticastroutingadminmode: false
+      hm2agentstaticmulticastroutinginterfaceentry: ''
+      hm2agentstaticmulticastroutinginterfaceifindex: 0
+      hm2agentstaticmulticastroutinginterfacemode: false
+      hm2agentstaticmulticastroutinginterfacetable: ''
+      pimbsrcandidatebsradvinterval: 0
+attributes:
+  hm2agentigmpquerieradminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierGroup
+          field: hm2AgentIGMPQuerierAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentigmpquerierinterfaceentry:
+    syntax: Hm2AgentIGMPQuerierInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierInterfaceTable
+          field: hm2AgentIGMPQuerierInterfaceEntry
+  hm2agentigmpquerierinterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierInterfaceEntry
+          field: hm2AgentIGMPQuerierInterfaceIfIndex
+          index_field: hm2AgentIGMPQuerierInterfaceIfIndex
+  hm2agentigmpquerierinterfaceigmpversion:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierInterfaceEntry
+          field: hm2AgentIGMPQuerierInterfaceIgmpVersion
+          index_field: hm2AgentIGMPQuerierInterfaceIfIndex
+  hm2agentigmpquerierinterfaceoperation:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierInterfaceEntry
+          field: hm2AgentIGMPQuerierInterfaceOperation
+          index_field: hm2AgentIGMPQuerierInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentigmpquerierinterfacetable:
+    syntax: Hm2AgentIGMPQuerierInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierGroup
+          field: hm2AgentIGMPQuerierInterfaceTable
+  hm2agentigmpquerierinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierGroup
+          field: hm2AgentIGMPQuerierInterval
+    validation:
+      min: 1
+      max: 1024
+  hm2agentigmpquerierlastmemberinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierGroup
+          field: hm2AgentIGMPQuerierLastMemberInterval
+    validation:
+      min: 1
+      max: 1024
+  hm2agentigmpquerierresponseinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierGroup
+          field: hm2AgentIGMPQuerierResponseInterval
+    validation:
+      min: 1
+      max: 1024
+  hm2agentigmpquerierrobustness:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.253.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIGMPQuerierGroup
+          field: hm2AgentIGMPQuerierRobustness
+    validation:
+      min: 2
+      max: 10
+  hm2agentipstaticmrouteentry:
+    syntax: Hm2AgentIpStaticMRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteTable
+          field: hm2AgentIpStaticMRouteEntry
+  hm2agentipstaticmrouteextrpfipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.249
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteExtRpfIpAddr
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: &id001
+          - hm2AgentIpStaticMRouteSrcAddressType
+          - hm2AgentIpStaticMRouteSrcIpAddr
+          - hm2AgentIpStaticMRouteSrcNetMask
+  hm2agentipstaticmrouteextrpfipaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.248
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteExtRpfIpAddrType
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+  hm2agentipstaticmrouteifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteIfIndex
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+  hm2agentipstaticmroutepreference:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRoutePreference
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 255
+  hm2agentipstaticmrouterpfipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteRpfIpAddr
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+  hm2agentipstaticmroutesrcaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteSrcAddressType
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+  hm2agentipstaticmroutesrcipaddr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteSrcIpAddr
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+  hm2agentipstaticmroutesrcnetmask:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteSrcNetMask
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 128
+  hm2agentipstaticmroutestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentIpStaticMRouteEntry
+          field: hm2AgentIpStaticMRouteStatus
+          index_field: hm2AgentIpStaticMRouteSrcNetMask
+          index_fields: *id001
+    create_method: createAndWait
+    index_type: inet_address
+  hm2agentipstaticmroutetable:
+    syntax: Hm2AgentIpStaticMRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2PlatformMulticast
+          field: hm2AgentIpStaticMRouteTable
+  hm2agentmulticastdvmrpadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastDVMRPConfigGroup
+          field: hm2AgentMulticastDVMRPAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentmulticastdvmrprouteexpirytime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.6.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastDVMRPConfigGroup
+          field: hm2AgentMulticastDVMRPRouteExpiryTime
+    validation:
+      min: 0
+      max: 200
+  hm2agentmulticastigmpadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastIGMPConfigGroup
+          field: hm2AgentMulticastIGMPAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentmulticastigmpproxyoperstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.1.249
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastIGMPConfigGroup
+          field: hm2AgentMulticastIGMPProxyOperStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentmulticastmgmdextentry:
+    syntax: Hm2AgentMulticastMgmdExtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.250.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastMgmdExtTable
+          field: hm2AgentMulticastMgmdExtEntry
+  hm2agentmulticastmgmdexttable:
+    syntax: Hm2AgentMulticastMgmdExtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.250.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastMgmdExtConfigGroup
+          field: hm2AgentMulticastMgmdExtTable
+  hm2agentmulticastmgmdhostcacheextentry:
+    syntax: Hm2AgentMulticastMgmdHostCacheExtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.251.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastMgmdHostCacheExtTable
+          field: hm2AgentMulticastMgmdHostCacheExtEntry
+  hm2agentmulticastmgmdhostcacheexttable:
+    syntax: Hm2AgentMulticastMgmdHostCacheExtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.251.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastMgmdHostCacheExtGroup
+          field: hm2AgentMulticastMgmdHostCacheExtTable
+  hm2agentmulticastmgmdhoststatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.251.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastMgmdHostCacheExtEntry
+          field: hm2AgentMulticastMgmdHostStatus
+          index_field: mgmdHostCacheIfIndex
+          index_fields:
+          - mgmdHostCacheAddressType
+          - mgmdHostCacheAddress
+          - mgmdHostCacheIfIndex
+  hm2agentmulticastmgmdnumberofgroups:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.250.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastMgmdExtEntry
+          field: hm2AgentMulticastMgmdNumberOfGroups
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: &id002
+          - mgmdHostInterfaceIfIndex
+          - mgmdHostInterfaceQuerierType
+  hm2agentmulticastmgmdunsolicitrprtinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.250.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastMgmdExtEntry
+          field: hm2AgentMulticastMgmdUnsolicitRprtInterval
+          index_field: mgmdHostInterfaceQuerierType
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 260
+  hm2agentmulticastpimdmadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMDMConfigGroup
+          field: hm2AgentMulticastPIMDMAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentmulticastpimdmpruneassertholdtime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.4.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMDMConfigGroup
+          field: hm2AgentMulticastPIMDMPruneAssertHoldtime
+    validation:
+      min: 60
+      max: 64800
+  hm2agentmulticastpimsmadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMConfigGroup
+          field: hm2AgentMulticastPIMSMAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentmulticastpimsmgroupmappingentry:
+    syntax: Hm2AgentMulticastPIMSMGroupMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingTable
+          field: hm2AgentMulticastPIMSMGroupMappingEntry
+  hm2agentmulticastpimsmgroupmappingexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingEntry
+          field: hm2AgentMulticastPIMSMGroupMappingExpiryTime
+          index_field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_fields: &id003
+          - hm2AgentMulticastPIMSMGroupMappingGrpAddrType
+          - hm2AgentMulticastPIMSMGroupMappingGrpAddr
+  hm2agentmulticastpimsmgroupmappinggrpaddr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingEntry
+          field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_fields: *id003
+  hm2agentmulticastpimsmgroupmappinggrpaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingEntry
+          field: hm2AgentMulticastPIMSMGroupMappingGrpAddrType
+          index_field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_fields: *id003
+  hm2agentmulticastpimsmgroupmappinggrpprefixlen:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingEntry
+          field: hm2AgentMulticastPIMSMGroupMappingGrpPrefixLen
+          index_field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_fields: *id003
+    validation:
+      min: 4
+      max: 128
+  hm2agentmulticastpimsmgroupmappingorigin:
+    syntax: PimGroupMappingOriginType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingEntry
+          field: hm2AgentMulticastPIMSMGroupMappingOrigin
+          index_field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_fields: *id003
+  hm2agentmulticastpimsmgroupmappingrpaddr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingEntry
+          field: hm2AgentMulticastPIMSMGroupMappingRPAddr
+          index_field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_fields: *id003
+  hm2agentmulticastpimsmgroupmappingrpaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMGroupMappingEntry
+          field: hm2AgentMulticastPIMSMGroupMappingRPAddrType
+          index_field: hm2AgentMulticastPIMSMGroupMappingGrpAddr
+          index_fields: *id003
+  hm2agentmulticastpimsmgroupmappingtable:
+    syntax: Hm2AgentMulticastPIMSMGroupMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.249
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMConfigGroup
+          field: hm2AgentMulticastPIMSMGroupMappingTable
+  hm2agentmulticastroutingadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastRoutingConfigGroup
+          field: hm2AgentMulticastRoutingAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentmulticastsoftwaredscp:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.5.248
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastRoutingConfigGroup
+          field: hm2AgentMulticastSoftwareDSCP
+    validation:
+      min: 0
+      max: 64
+  hm2agentpimbsrcandidateconfentry:
+    syntax: Hm2AgentPIMBsrCandidateConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentPIMBsrCandidateConfTable
+          field: hm2AgentPIMBsrCandidateConfEntry
+  hm2agentpimbsrcandidateconftable:
+    syntax: Hm2AgentPIMBsrCandidateConfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentMulticastPIMSMConfigGroup
+          field: hm2AgentPIMBsrCandidateConfTable
+  hm2agentsnmpdvmrptrapflag:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentSnmpTrapFlagsConfigGroupMulticast
+          field: hm2AgentSnmpDVMRPTrapFlag
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentsnmppimtrapflag:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.7.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentSnmpTrapFlagsConfigGroupMulticast
+          field: hm2AgentSnmpPIMTrapFlag
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentstaticmulticastgroupaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupAddress
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupAddressType
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupentry:
+    syntax: Hm2AgentStaticMulticastGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupTable
+          field: hm2AgentStaticMulticastGroupEntry
+  hm2agentstaticmulticastgroupindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupIndex
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupingressinterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupIngressInterface
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupmask:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupMask
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupmasktype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupMaskType
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgrouprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupRowStatus
+          index_field: hm2AgentStaticMulticastGroupIndex
+    create_method: createAndWait
+  hm2agentstaticmulticastgroupsrcaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupSrcAddress
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupsrcaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupSrcAddressType
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupsrcmask:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupSrcMask
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgroupsrcmasktype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastGroupEntry
+          field: hm2AgentStaticMulticastGroupSrcMaskType
+          index_field: hm2AgentStaticMulticastGroupIndex
+  hm2agentstaticmulticastgrouptable:
+    syntax: Hm2AgentStaticMulticastGroupEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRoutingConfigGroup
+          field: hm2AgentStaticMulticastGroupTable
+  hm2agentstaticmulticastrouteaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteAddress
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastrouteaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteAddressType
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastrouteegressinterface:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteEgressInterface
+          index_field: hm2AgentStaticMulticastRouteIndex
+    validation:
+      min: 1
+      max: 255
+  hm2agentstaticmulticastrouteentry:
+    syntax: Hm2AgentStaticMulticastRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteTable
+          field: hm2AgentStaticMulticastRouteEntry
+  hm2agentstaticmulticastrouteindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteIndex
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastrouteingressinterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteIngressInterface
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastroutemask:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteMask
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastroutemasktype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteMaskType
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastrouterowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteRowStatus
+          index_field: hm2AgentStaticMulticastRouteIndex
+    create_method: createAndWait
+  hm2agentstaticmulticastroutesrcaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteSrcAddress
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastroutesrcaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteSrcAddressType
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastroutesrcmask:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteSrcMask
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastroutesrcmasktype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRouteEntry
+          field: hm2AgentStaticMulticastRouteSrcMaskType
+          index_field: hm2AgentStaticMulticastRouteIndex
+  hm2agentstaticmulticastroutetable:
+    syntax: Hm2AgentStaticMulticastRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRoutingConfigGroup
+          field: hm2AgentStaticMulticastRouteTable
+  hm2agentstaticmulticastroutingadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRoutingConfigGroup
+          field: hm2AgentStaticMulticastRoutingAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentstaticmulticastroutinginterfaceentry:
+    syntax: Hm2AgentStaticMulticastRoutingInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRoutingInterfaceTable
+          field: hm2AgentStaticMulticastRoutingInterfaceEntry
+  hm2agentstaticmulticastroutinginterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRoutingInterfaceEntry
+          field: hm2AgentStaticMulticastRoutingInterfaceIfIndex
+          index_field: hm2AgentStaticMulticastRoutingInterfaceIfIndex
+  hm2agentstaticmulticastroutinginterfacemode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRoutingInterfaceEntry
+          field: hm2AgentStaticMulticastRoutingInterfaceMode
+          index_field: hm2AgentStaticMulticastRoutingInterfaceIfIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agentstaticmulticastroutinginterfacetable:
+    syntax: Hm2AgentStaticMulticastRoutingInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.252.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentStaticMulticastRoutingConfigGroup
+          field: hm2AgentStaticMulticastRoutingInterfaceTable
+  pimbsrcandidatebsradvinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.4.3.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-MULTICAST-MIB
+          table: hm2AgentPIMBsrCandidateConfEntry
+          field: pimBsrCandidateBSRAdvInterval
+    validation:
+      min: 1
+      max: 16383

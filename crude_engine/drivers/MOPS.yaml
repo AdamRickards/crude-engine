@@ -1,0 +1,40 @@
+---
+# MOPS protocol defaults.
+# Feature declarations override these — declare exceptions, not rules.
+
+version: "1.0"
+protocol: mops
+
+defaults:
+  decode_strings: false
+
+index_encodings:
+  inet_address:
+    format: field_dict
+    # {AddrTypeField: "1", AddrField: "0A 4D 4D 4D"}
+  implied_string:
+    format: hex_string
+    # MOPS encodes string indices as hex-spaced bytes: "test" → "74 65 73 74"
+  compound:
+    format: field_dict
+    # Multiple index fields as dict → {field1: "val1", field2: "val2"}
+
+create_method_default: createAndWait
+
+execute_methods:
+  - save_config
+  - load_config
+  - onboard
+  - clear_config
+  - clear_factory
+  - start_staging
+  - commit_staging
+  - discard_staging
+  - get_staged_mutations
+  - is_factory_default
+
+wire_type_defaults:
+  boolean: crude_boolean
+  integer: crude_numeric
+  float: {function: crude_numeric, args: {type: float}}
+  string: crude_text

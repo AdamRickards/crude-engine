@@ -1,0 +1,195 @@
+# tag_map.yaml — release_matrix.py failure-pattern → #tag mapping
+#
+# Maps recurring failure signatures to stable #bucket #ID tags so that
+# subsequent matrix runs auto-categorize known failures into TODO_HITLIST.md.
+#
+# After triaging an untagged failure (in the "NEEDS TRIAGE" section of
+# TODO_HITLIST.md), add a pattern here. Next renderer run will pick it up.
+#
+# Tag scheme: #<bucket> #<short-id>
+#   Buckets: #engine #schema #wire #driver #crude #test #release #roadmap
+#   IDs: stable kebab-case, see docs/RELEASE_GATE.md
+#
+# Format:
+#   patterns:
+#     - match:
+#         method: <method_name>           # required
+#         protocol: <mops|snmp|ssh|parity># optional. NOTE: parity check
+#                                         #   cells use protocol="parity",
+#                                         #   not the underlying transport
+#         kind: <read|setter|crud|execute># optional
+#         schema: <feature_id>            # optional
+#         evidence_contains: <substring>  # optional, matches against any
+#                                         # field of cell.evidence/contract/types
+#       tags: ["#bucket", "#ID"]
+#       notes: <free text>
+
+patterns:
+
+  # ===== SNMP compound-index decode (~22 read methods) =====
+  # SNMP table walks return suffix-keyed dicts; MOPS keys by one column
+  # value via wire index_field. The two formats don't match, so engine
+  # row-builder shows SNMP as empty even when underlying walks succeeded.
+  # These cells appear via the cross-protocol parity check (protocol=parity).
+
+  - match: {method: get_mac_address_table}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_vlans}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_vlan_egress}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_arp_table}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_lldp_neighbors}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_lldp_neighbors_detail}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_lldp_neighbors_detail_extended}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_ipv6_neighbors}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_ipv6_neighbors_table}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_route_to}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_qos_mapping}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_users}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_devsec_history}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_aca}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_mrp}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_mrp_sub_ring}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_sflow_poller}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_sflow_receiver}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_sflow_sampler}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_signal_contact}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_software}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_arp_inspection}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_snmp_trap_destinations}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+
+  # get_interfaces is silently affected — autoneg/media_type attrs come
+  # from MAU-MIB with compound suffix that doesn't match ifTable's keying.
+  - match:
+      method: get_interfaces
+      evidence_contains: autoneg
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+
+  - match:
+      method: get_vrrp_instances
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match:
+      method: get_vrrp_tracking
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+
+  # ===== get_ntp value disagreement (separate from compound-index issue) =====
+  - match:
+      method: get_ntp
+      evidence_contains: server_enabled
+    tags: ["#wire", "#NTP-Server-Enabled-Mismatch"]
+
+  - match: {method: get_ntp_servers}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+  - match: {method: get_ntp_stats}
+    tags: ["#driver", "#SNMP-Compound-Index-Decode"]
+
+  # ===== SNMP implied-string index resolution =====
+  - match:
+      method: create_snmp_trap_dest
+      protocol: snmp
+    tags: ["#driver", "#SNMP-Implied-String-Index"]
+  - match:
+      method: delete_snmp_trap_dest
+      protocol: snmp
+    tags: ["#driver", "#SNMP-Implied-String-Index"]
+  - match:
+      method: create_user
+      protocol: snmp
+    tags: ["#driver", "#SNMP-Implied-String-Index"]
+  - match:
+      method: delete_user
+      protocol: snmp
+    tags: ["#driver", "#SNMP-Implied-String-Index"]
+  - match:
+      method: create_static_binding
+      protocol: snmp
+    tags: ["#driver", "#SNMP-Implied-String-Index"]
+  - match:
+      method: delete_static_binding
+      protocol: snmp
+    tags: ["#driver", "#SNMP-Implied-String-Index"]
+
+  # ===== CRUD wire bugs (RowStatus lifecycle) =====
+  - match:
+      method: create_tacacs_server
+      evidence_contains: noCreation
+    tags: ["#wire", "#TACACS-CRUD-NoCreation"]
+  - match:
+      method: delete_tacacs_server
+      evidence_contains: noCreation
+    tags: ["#wire", "#TACACS-CRUD-NoCreation"]
+
+  - match:
+      method: create_user
+      protocol: mops
+      evidence_contains: noCreation
+    tags: ["#wire", "#User-CRUD-NoCreation"]
+  - match:
+      method: delete_user
+      protocol: mops
+      evidence_contains: noCreation
+    tags: ["#wire", "#User-CRUD-NoCreation"]
+
+  - match:
+      method: create_dns_server
+      evidence_contains: noCreation
+    tags: ["#wire", "#DNS-CRUD-NoCreation"]
+  - match:
+      method: delete_dns_server
+      evidence_contains: noCreation
+    tags: ["#wire", "#DNS-CRUD-NoCreation"]
+
+  - match:
+      method: create_ldap_server
+      evidence_contains: noSuchName
+    tags: ["#wire", "#LDAP-CRUD-NoSuchName"]
+  - match:
+      method: delete_ldap_server
+      evidence_contains: noSuchName
+    tags: ["#wire", "#LDAP-CRUD-NoSuchName"]
+
+  # ===== SNMP setter encoding =====
+  - match:
+      method: set_port_security
+      protocol: snmp
+      evidence_contains: wrongType
+    tags: ["#driver", "#SNMP-PortSec-WrongType"]
+
+  - match:
+      method: set_lldp
+      protocol: snmp
+      evidence_contains: noCreation
+    tags: ["#driver", "#SNMP-LLDP-NoCreation"]
+
+  # ===== Schema field mismatch =====
+  - match:
+      method: set_ip_source_guard_port
+      evidence_contains: "got None"
+    tags: ["#schema", "#IP-Source-Guard-Port-Field-Mismatch"]
+
+  # ===== get_facts uptime ~100x value bug =====
+  - match:
+      method: get_facts
+      evidence_contains: uptime
+    tags: ["#wire", "#Facts-Uptime-Units"]

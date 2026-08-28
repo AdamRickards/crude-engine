@@ -1,0 +1,110 @@
+version: 2.7.0
+feature: user
+description: User account management and password policy
+methods:
+  get_users:
+    type: dict
+    primary_key: username
+    defaults:
+      level: guest
+      locked: false
+      policy_check: false
+      snmp_auth: ''
+      snmp_enc: ''
+      default_password: false
+  set_user:
+    type: upsert
+  create_user:
+    type: create
+    row_status: user_status
+    required: [username, password]
+    defaults:
+      level: administrator
+  delete_user:
+    type: delete
+    row_status: user_status
+  get_login_policy:
+    type: dict
+    defaults:
+      min_length: 8
+      max_attempts: 3
+      lockout_time: 300
+  set_login_policy:
+    type: upsert
+attributes:
+  # --- Login policy scalars ---
+  min_length:
+    wire: hm2pwdmgmtminlength
+    source: usermgmt
+  max_attempts:
+    wire: hm2pwdmgmtloginattempts
+    source: usermgmt
+  lockout_time:
+    wire: hm2pwdmgmtloginattemptstimeperiod
+    source: usermgmt
+  min_uppercase:
+    wire: hm2pwdmgmtminuppercasechar
+    source: usermgmt
+  min_lowercase:
+    wire: hm2pwdmgmtminlowercasechar
+    source: usermgmt
+  min_numeric:
+    wire: hm2pwdmgmtminnumericchar
+    source: usermgmt
+  min_special:
+    wire: hm2pwdmgmtminspecialchar
+    source: usermgmt
+  # --- User table ---
+  username:
+    wire: hm2username
+    source: usermgmt
+  level:
+    wire: hm2useraccessrole
+    source: usermgmt
+    value_map:
+      '0': unauthorized
+      '1': guest
+      '2': auditor
+      '5': custom1
+      '6': custom2
+      '7': custom3
+      '13': operator
+      '15': administrator
+  locked:
+    wire: hm2userlockoutstatus
+    source: usermgmt
+  policy_check:
+    wire: hm2userpwdpolicychk
+    source: usermgmt
+  snmp_auth:
+    wire: hm2usersnmpauthtype
+    source: usermgmt
+    value_map:
+      '0': ''
+      '1': md5
+      '2': sha
+  snmp_enc:
+    wire: hm2usersnmpenctype
+    source: usermgmt
+    value_map:
+      '0': none
+      '1': des
+      '2': aes128
+      '3': aes256
+  password:
+    wire: hm2userpassword
+    source: usermgmt
+  snmp_auth_password:
+    wire: hm2usersnmpauthpassword
+    source: usermgmt
+  snmp_enc_password:
+    wire: hm2usersnmpencpassword
+    source: usermgmt
+  default_password:
+    wire: hm2pwdmgmtdefaultpwdstatususername
+    source: usermgmt
+    membership_of: username
+  user_status:
+    wire: hm2userstatus
+    source: usermgmt
+    access: crud

@@ -1,0 +1,44 @@
+---
+# SSH protocol defaults.
+# Feature declarations override these — declare exceptions, not rules.
+
+version: "1.0"
+protocol: ssh
+
+defaults:
+  parser: dot_keys              # 227/389 SSH sources use dot_keys (58%)
+  cmd_verify: true              # Safe default. Per-source cmd_verify: false for commands where echo mismatch causes timeout (e.g. HiOS auto-complete)
+  column_overflow: flexible     # flexible: values wider than dash column extend to next 2+ space gap
+                                # strict: values clip at dash-defined column boundary
+                                # Default flexible — real CLI output often overflows fixed columns
+  empty_table_sentinels:        # CLI strings that mean "no data" in table output
+    - "No entry"
+    - "No entries"
+
+index_encodings:
+  inet_address:
+    format: raw
+    # Pass-through: raw IP string in command templates
+  implied_string:
+    format: raw
+    # Pass-through: string name in command templates
+  compound:
+    format: raw
+    # Pass-through: use row_index directly in templates
+
+create_method_default: createAndWait
+
+execute_methods:
+  - save_config
+  - clear_config
+  - clear_factory
+  - onboard
+  - cli
+  - ping
+  - is_factory_default
+
+wire_type_defaults:
+  boolean: crude_boolean
+  integer: crude_numeric
+  float: {function: crude_numeric, args: {type: float}}
+  string: {function: crude_text, args: {decode: false}}

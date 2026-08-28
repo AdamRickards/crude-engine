@@ -1,0 +1,992 @@
+version: 2.6.0
+feature: iec-62439-3
+schemas:
+  read_iec-62439-3:
+    type: dict
+    defaults:
+      lrecntduplicatea: 0
+      lrecntduplicateb: 0
+      lrecntduplicatec: 0
+      lrecnterrwronglana: 0
+      lrecnterrwronglanb: 0
+      lrecnterrwronglanc: 0
+      lrecnterrorsa: 0
+      lrecnterrorsb: 0
+      lrecnterrorsc: 0
+      lrecntmultia: 0
+      lrecntmultib: 0
+      lrecntmultic: 0
+      lrecntnodes: 0
+      lrecntownrxa: 0
+      lrecntownrxb: 0
+      lrecntproxynodes: 0
+      lrecntrxa: 0
+      lrecntrxb: 0
+      lrecntrxc: 0
+      lrecnttxa: 0
+      lrecnttxb: 0
+      lrecnttxc: 0
+      lrecntuniquea: 0
+      lrecntuniqueb: 0
+      lrecntuniquec: 0
+      lreduplicatediscard: 0
+      lreevaluatesupervision: false
+      lrehsrlremode: 0
+      lreinterfaceconfigentry: ''
+      lreinterfaceconfigindex: 0
+      lreinterfaceconfigtable: ''
+      lreinterfacecount: 0
+      lreinterfacestatsentry: ''
+      lreinterfacestatsindex: 0
+      lreinterfacestatstable: ''
+      lrelinkstatusa: 0
+      lrelinkstatusb: 0
+      lremacaddress: ''
+      lremanufacturername: ''
+      lrenodename: ''
+      lrenodetype: 0
+      lrenodesentry: ''
+      lrenodesindex: 0
+      lrenodesmacaddress: ''
+      lrenodestable: ''
+      lrenodestableclear: 0
+      lreportadminstatea: 0
+      lreportadminstateb: 0
+      lreproxynodeentry: ''
+      lreproxynodeindex: 0
+      lreproxynodemacaddress: ''
+      lreproxynodetable: ''
+      lreproxynodetableclear: 0
+      lreredboxidentity: 0
+      lreremnodetype: 0
+      lrerowstatus: 0
+      lreswitchingendnode: 0
+      lretimelastseena: 0
+      lretimelastseenb: 0
+      lretransparentreception: 0
+      lreversionname: ''
+attributes:
+  lrecntduplicatea:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntDuplicateA
+          index_field: lreInterfaceStatsIndex
+  lrecntduplicateb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntDuplicateB
+          index_field: lreInterfaceStatsIndex
+  lrecntduplicatec:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntDuplicateC
+          index_field: lreInterfaceStatsIndex
+  lrecnterrwronglana:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntErrWrongLanA
+          index_field: lreInterfaceStatsIndex
+  lrecnterrwronglanb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntErrWrongLanB
+          index_field: lreInterfaceStatsIndex
+  lrecnterrwronglanc:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntErrWrongLanC
+          index_field: lreInterfaceStatsIndex
+  lrecnterrorsa:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntErrorsA
+          index_field: lreInterfaceStatsIndex
+  lrecnterrorsb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntErrorsB
+          index_field: lreInterfaceStatsIndex
+  lrecnterrorsc:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntErrorsC
+          index_field: lreInterfaceStatsIndex
+  lrecntmultia:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntMultiA
+          index_field: lreInterfaceStatsIndex
+  lrecntmultib:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntMultiB
+          index_field: lreInterfaceStatsIndex
+  lrecntmultic:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntMultiC
+          index_field: lreInterfaceStatsIndex
+  lrecntnodes:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntNodes
+          index_field: lreInterfaceStatsIndex
+  lrecntownrxa:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntOwnRxA
+          index_field: lreInterfaceStatsIndex
+  lrecntownrxb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntOwnRxB
+          index_field: lreInterfaceStatsIndex
+  lrecntproxynodes:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntProxyNodes
+          index_field: lreInterfaceStatsIndex
+  lrecntrxa:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntRxA
+          index_field: lreInterfaceStatsIndex
+  lrecntrxb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntRxB
+          index_field: lreInterfaceStatsIndex
+  lrecntrxc:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntRxC
+          index_field: lreInterfaceStatsIndex
+  lrecnttxa:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntTxA
+          index_field: lreInterfaceStatsIndex
+  lrecnttxb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntTxB
+          index_field: lreInterfaceStatsIndex
+  lrecnttxc:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntTxC
+          index_field: lreInterfaceStatsIndex
+  lrecntuniquea:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntUniqueA
+          index_field: lreInterfaceStatsIndex
+  lrecntuniqueb:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntUniqueB
+          index_field: lreInterfaceStatsIndex
+  lrecntuniquec:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreCntUniqueC
+          index_field: lreInterfaceStatsIndex
+  lreduplicatediscard:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreDuplicateDiscard
+          index_field: lreInterfaceConfigIndex
+  lreevaluatesupervision:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreEvaluateSupervision
+          index_field: lreInterfaceConfigIndex
+    validation:
+      allowed:
+      - true
+      - false
+  lrehsrlremode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreHsrLREMode
+          index_field: lreInterfaceConfigIndex
+  lreinterfaceconfigentry:
+    syntax: LREInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigTable
+          field: lreInterfaceConfigEntry
+  lreinterfaceconfigindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreInterfaceConfigIndex
+          index_field: lreInterfaceConfigIndex
+  lreinterfaceconfigtable:
+    syntax: LREInterfaceConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreConfigurationInterfaces
+          field: lreInterfaceConfigTable
+  lreinterfacecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.0.2
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreConfigurationGeneralGroup
+          field: lreInterfaceCount
+  lreinterfacestatsentry:
+    syntax: LREInterfaceStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsTable
+          field: lreInterfaceStatsEntry
+  lreinterfacestatsindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceStatsEntry
+          field: lreInterfaceStatsIndex
+          index_field: lreInterfaceStatsIndex
+  lreinterfacestatstable:
+    syntax: LREInterfaceStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.1
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreStatisticsInterfaces
+          field: lreInterfaceStatsTable
+  lrelinkstatusa:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreLinkStatusA
+          index_field: lreInterfaceConfigIndex
+  lrelinkstatusb:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreLinkStatusB
+          index_field: lreInterfaceConfigIndex
+  lremacaddress:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreMacAddress
+          index_field: lreInterfaceConfigIndex
+  lremanufacturername:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.0.1
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreConfigurationGeneralGroup
+          field: lreManufacturerName
+  lrenodename:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreNodeName
+          index_field: lreInterfaceConfigIndex
+  lrenodetype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreNodeType
+          index_field: lreInterfaceConfigIndex
+  lrenodesentry:
+    syntax: LRENodesEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.2.1
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreNodesTable
+          field: lreNodesEntry
+  lrenodesindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreNodesEntry
+          field: lreNodesIndex
+          index_field: lreNodesIndex
+          index_fields: &id001
+          - lreInterfaceStatsIndex
+          - lreNodesIndex
+  lrenodesmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreNodesEntry
+          field: lreNodesMacAddress
+          index_field: lreNodesIndex
+          index_fields: *id001
+  lrenodestable:
+    syntax: LRENodesEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.2
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreStatisticsInterfaces
+          field: lreNodesTable
+  lrenodestableclear:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreNodesTableClear
+          index_field: lreInterfaceConfigIndex
+  lreportadminstatea:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lrePortAdminStateA
+          index_field: lreInterfaceConfigIndex
+  lreportadminstateb:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lrePortAdminStateB
+          index_field: lreInterfaceConfigIndex
+  lreproxynodeentry:
+    syntax: LREProxyNodeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.3.1
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreProxyNodeTable
+          field: lreProxyNodeEntry
+  lreproxynodeindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreProxyNodeEntry
+          field: lreProxyNodeIndex
+          index_field: lreProxyNodeIndex
+          index_fields: &id002
+          - lreInterfaceStatsIndex
+          - lreProxyNodeIndex
+  lreproxynodemacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreProxyNodeEntry
+          field: lreProxyNodeMacAddress
+          index_field: lreProxyNodeIndex
+          index_fields: *id002
+  lreproxynodetable:
+    syntax: LREProxyNodeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.3
+          method: get
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreStatisticsInterfaces
+          field: lreProxyNodeTable
+  lreproxynodetableclear:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreProxyNodeTableClear
+          index_field: lreInterfaceConfigIndex
+  lreredboxidentity:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreRedBoxIdentity
+          index_field: lreInterfaceConfigIndex
+  lreremnodetype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreNodesEntry
+          field: lreRemNodeType
+          index_field: lreNodesIndex
+          index_fields: *id001
+  lrerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreRowStatus
+          index_field: lreInterfaceConfigIndex
+    create_method: createAndWait
+  lreswitchingendnode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreSwitchingEndNode
+          index_field: lreInterfaceConfigIndex
+  lretimelastseena:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreNodesEntry
+          field: lreTimeLastSeenA
+          index_field: lreNodesIndex
+          index_fields: *id001
+  lretimelastseenb:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.1.1.0.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreNodesEntry
+          field: lreTimeLastSeenB
+          index_field: lreNodesIndex
+          index_fields: *id001
+  lretransparentreception:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreTransparentReception
+          index_field: lreInterfaceConfigIndex
+  lreversionname:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.62439.2.21.0.1.0.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEC-62439-3-MIB
+          table: lreInterfaceConfigEntry
+          field: lreVersionName
+          index_field: lreInterfaceConfigIndex
+    validation:
+      min: 1
+      max: 32

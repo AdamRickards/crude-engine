@@ -1,0 +1,177 @@
+version: "2.6.0"
+feature: mgmtaccess-ssh
+description: "SSH CLI sources for management access restrictions — hand-authored"
+
+attributes:
+  hm2rmaoperation:
+    sources:
+      ssh:
+        read: {command: "show network management access global", field: "Operation"}
+
+  hm2rmaindex:
+    sources:
+      ssh:
+        read: {command: "show network management access rules", parser: paired_rows, column: 0}
+
+  hm2rmaprefixlength:
+    sources:
+      ssh:
+        read: {command: "show network management access rules", parser: paired_rows, line: 1, column: 0}
+
+  hm2rmaipaddr:
+    sources:
+      ssh:
+        read: {command: "show network management access rules", parser: paired_rows, column: 1}
+
+  hm2rmarowstatus:
+    sources:
+      ssh:
+        create: {command: "network management access add {index} ip {ip}", level: priv}
+        delete: {command: "network management access delete {index}", level: priv}
+
+  hm2rmasrvhttp:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} http {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrvhttps:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} https {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrvsnmp:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrvtelnet:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrvssh:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrviec61850:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrvmodbustcp:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrvethernetip:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}", level: priv}
+
+  hm2rmasrvprofinetio:
+    sources:
+      ssh:
+        write: {command: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}", level: priv}
+
+  # Banner: show system pre-login-banner
+  hm2preloginbanneradminstatus:
+    sources:
+      ssh:
+        read: {command: "show system pre-login-banner", field: "Login banner status"}
+        write: {command: "system pre-login-banner operation", level: config}
+
+  hm2preloginbannertext:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show system pre-login-banner", field: "Login banner text"}
+        write: {command: "system pre-login-banner text {value}", level: config}
+
+  # SNMP global config (snmp schema uses mgmtaccess wire)
+  hm2snmpv1adminstatus:
+    sources:
+      ssh:
+        read: {command: "show snmp access", field: "Access by SNMP v1"}
+
+  hm2snmpv2adminstatus:
+    sources:
+      ssh:
+        read: {command: "show snmp access", field: "Access by SNMP v2"}
+
+  hm2snmpv3adminstatus:
+    sources:
+      ssh:
+        read: {command: "show snmp access", field: "Access by SNMP v3"}
+
+  hm2snmptrapserviceadminstatus:
+    sources:
+      ssh:
+        read: {command: "show snmp trap", field: "trap operation"}
+
+  hm2snmpportnumber:
+    sources:
+      ssh:
+        read: {command: "show snmp access", field: "SNMP port number"}
+
+  # Session config: show ssh server / show telnet
+  hm2sshsessiontimeout:
+    sources:
+      ssh:
+        read: {command: "show ssh server", field: "SSH server idle timeout (minutes)"}
+        write: {command: "ssh timeout {value}", level: config}
+
+  hm2sshmaxsessionscount:
+    sources:
+      ssh:
+        read: {command: "show ssh server", field: "SSH server max number of sessions"}
+        write: {command: "ssh max-sessions {value}", level: config}
+
+  hm2telnetserversessionstimeout:
+    sources:
+      ssh:
+        read: {command: "show telnet", field: "Telnet idle timeout (minutes)"}
+        write: {command: "telnet timeout {value}", level: config}
+
+  # hm2webintftimeout — no show command for web timeout, set-only: network management access web timeout <0..160>
+
+  # Services: show http / show https / show telnet / show ssh server
+  hm2webhttpadminstatus:
+    sources:
+      ssh:
+        read: {command: "show http", field: "HTTP status"}
+
+  hm2webhttpportnumber:
+    sources:
+      ssh:
+        read: {command: "show http", field: "HTTP listening  port"}
+
+  hm2webhttpsadminstatus:
+    sources:
+      ssh:
+        read: {command: "show https", field: "HTTPS status"}
+
+  hm2webhttpsportnumber:
+    sources:
+      ssh:
+        read: {command: "show https", field: "HTTPS listening port"}
+
+  hm2telnetserveradminstatus:
+    sources:
+      ssh:
+        read: {command: "show telnet", field: "Telnet server status"}
+
+  hm2telnetserverport:
+    sources:
+      ssh:
+        read: {command: "show telnet", field: "Telnet listening port"}
+
+  hm2sshadminstatus:
+    sources:
+      ssh:
+        read: {command: "show ssh server", field: "SSH server status"}
+
+  hm2sshportnumber:
+    sources:
+      ssh:
+        read: {command: "show ssh server", field: "SSH server listening port"}

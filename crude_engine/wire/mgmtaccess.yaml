@@ -1,0 +1,1990 @@
+version: 2.6.0
+feature: mgmtaccess
+schemas:
+  read_mgmtaccess:
+    type: dict
+    defaults:
+      hm2cliloginbanneradminstatus: false
+      hm2cliloginbannertext: ''
+      hm2cliloginprompt: ''
+      hm2clilogintimeoutserial: 0
+      hm2consolelastloginusername: ''
+      hm2consolelastlogoutusername: ''
+      hm2consoleserviceshelladminstate: false
+      hm2consoletrapenable: false
+      hm2httppacketsreceived: 0
+      hm2httppacketssent: 0
+      hm2httpspacketsreceived: 0
+      hm2httpspacketssent: 0
+      hm2mgmtaccessphysicalintfenvmadminstatus: false
+      hm2mgmtaccessphysicalintfenvmoperstatus: false
+      hm2mgmtaccessphysicalintfserialadminstatus: false
+      hm2mgmtaccessphysicalintfserialoperstatus: false
+      hm2netconfadminstatus: false
+      hm2netconfmaxsessions: 0
+      hm2netconfportnumber: 0
+      hm2netconfsessiontimeout: 0
+      hm2netconfsessionscount: 0
+      hm2preloginbanneradminstatus: false
+      hm2preloginbannertext: ''
+      hm2rmaentry: ''
+      hm2rmaindex: 0
+      hm2rmainterface: 0
+      hm2rmaipaddr: ''
+      hm2rmaipaddrtype: ''
+      hm2rmalogcounter: 0
+      hm2rmalogging: false
+      hm2rmaloggingglobal: false
+      hm2rmaoperation: false
+      hm2rmaprefixlength: ''
+      hm2rmarowstatus: 0
+      hm2rmasrvethernetip: false
+      hm2rmasrvhttp: false
+      hm2rmasrvhttps: false
+      hm2rmasrviec61850: false
+      hm2rmasrvmodbustcp: false
+      hm2rmasrvprofinetio: false
+      hm2rmasrvsnmp: false
+      hm2rmasrvssh: false
+      hm2rmasrvtelnet: false
+      hm2rmatable: ''
+      hm2snmpover802adminstatus: false
+      hm2snmpportnumber: 0
+      hm2snmptrapserviceadminstatus: false
+      hm2snmpv1adminstatus: false
+      hm2snmpv2adminstatus: false
+      hm2snmpv3adminstatus: false
+      hm2sshadminstatus: false
+      hm2sshdsakeycontrol: 0
+      hm2sshencryptionalgorithms: ''
+      hm2sshfingerprintdsa: ''
+      hm2sshfingerprintrsa: ''
+      hm2sshhmacalgorithms: ''
+      hm2sshhostkeyalgorithms: ''
+      hm2sshkexalgorithms: ''
+      hm2sshkeyfingerprinttype: 0
+      hm2sshkeyoperstatus: 0
+      hm2sshkeyspresent: 0
+      hm2sshknownhostaddress: ''
+      hm2sshknownhostaddresstype: ''
+      hm2sshknownhostentry: ''
+      hm2sshknownhostindex: 0
+      hm2sshknownhostkeyfingerprint: ''
+      hm2sshknownhostkeytype: 0
+      hm2sshknownhoststatus: 0
+      hm2sshknownhosttable: ''
+      hm2sshlastlogininetaddress: ''
+      hm2sshlastlogininetaddresstype: ''
+      hm2sshlastloginusername: ''
+      hm2sshlastlogoutusername: ''
+      hm2sshmaxsessionscount: 0
+      hm2sshoutboundmaxsessionscount: 0
+      hm2sshoutboundsessiontimeout: 0
+      hm2sshoutboundsessionscount: 0
+      hm2sshpacketsreceived: 0
+      hm2sshpacketssent: 0
+      hm2sshportnumber: 0
+      hm2sshprotocollevel: 0
+      hm2sshrsakeycontrol: 0
+      hm2sshsessiontimeout: 0
+      hm2sshsessionscount: 0
+      hm2sshtrapenable: false
+      hm2telnetlastlogininetaddress: ''
+      hm2telnetlastlogininetaddresstype: ''
+      hm2telnetlastloginusername: ''
+      hm2telnetlastlogoutusername: ''
+      hm2telnetpacketsreceived: 0
+      hm2telnetpacketssent: 0
+      hm2telnetserveradminstatus: false
+      hm2telnetservermaxsessions: 0
+      hm2telnetserverport: 0
+      hm2telnetserversessionscount: 0
+      hm2telnetserversessionstimeout: 0
+      hm2telnettrapenable: false
+      hm2webhttpadminstatus: false
+      hm2webhttpportnumber: 0
+      hm2webhttpsadminstatus: false
+      hm2webhttpscertcontrol: 0
+      hm2webhttpscertfingerprint: ''
+      hm2webhttpscertfingerprinttype: 0
+      hm2webhttpscertoperstatus: 0
+      hm2webhttpscertpresent: 0
+      hm2webhttpsportnumber: 0
+      hm2webhttpsserverrestart: ''
+      hm2webhttpsservertlsciphersuites: ''
+      hm2webhttpsservertlsversions: ''
+      hm2webintftimeout: 0
+      hm2weblastlogininetaddress: ''
+      hm2weblastlogininetaddresstype: ''
+      hm2weblastloginusername: ''
+      hm2weblastlogoutusername: ''
+      hm2webtrapenable: false
+attributes:
+  hm2cliloginbanneradminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.10
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2CliLoginBannerAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2cliloginbannertext:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.11
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2CliLoginBannerText
+    validation:
+      min: 0
+      max: 1024
+  hm2cliloginprompt:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2CliLoginPrompt
+    validation:
+      min: 0
+      max: 128
+  hm2clilogintimeoutserial:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2CliLoginTimeoutSerial
+    validation:
+      min: 0
+      max: 160
+  hm2consolelastloginusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.14
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2ConsoleLastLoginUserName
+    validation:
+      min: 0
+      max: 32
+  hm2consolelastlogoutusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.13
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2ConsoleLastLogoutUserName
+    validation:
+      min: 0
+      max: 32
+  hm2consoleserviceshelladminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.15
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2ConsoleServiceShellAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2consoletrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.6.12
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessCliGroup
+          field: hm2ConsoleTrapEnable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2httppacketsreceived:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2HttpPacketsReceived
+  hm2httppacketssent:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2HttpPacketsSent
+  hm2httpspacketsreceived:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2HttpsPacketsReceived
+  hm2httpspacketssent:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2HttpsPacketsSent
+  hm2mgmtaccessphysicalintfenvmadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.11.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessPhysicalIntfGroup
+          field: hm2MgmtAccessPhysicalIntfEnvmAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2mgmtaccessphysicalintfenvmoperstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.11.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessPhysicalIntfGroup
+          field: hm2MgmtAccessPhysicalIntfEnvmOperStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2mgmtaccessphysicalintfserialadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessPhysicalIntfGroup
+          field: hm2MgmtAccessPhysicalIntfSerialAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2mgmtaccessphysicalintfserialoperstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.11.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessPhysicalIntfGroup
+          field: hm2MgmtAccessPhysicalIntfSerialOperStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netconfadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessNetconfGroup
+          field: hm2NetconfAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netconfmaxsessions:
+    syntax: Integer32 (1..5)
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.8.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessNetconfGroup
+          field: hm2NetconfMaxSessions
+    validation:
+      min: 1
+      max: 5
+  hm2netconfportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.8.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessNetconfGroup
+          field: hm2NetconfPortNumber
+  hm2netconfsessiontimeout:
+    syntax: Integer32 (0..3600)
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.8.5
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessNetconfGroup
+          field: hm2NetconfSessionTimeout
+    validation:
+      min: 0
+      max: 3600
+  hm2netconfsessionscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.8.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessNetconfGroup
+          field: hm2NetconfSessionsCount
+  hm2preloginbanneradminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessPreLoginBannerGroup
+          field: hm2PreLoginBannerAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2preloginbannertext:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessPreLoginBannerGroup
+          field: hm2PreLoginBannerText
+    validation:
+      min: 0
+      max: 512
+  hm2rmaentry:
+    syntax: Hm2RmaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaTable
+          field: hm2RmaEntry
+  hm2rmaindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaIndex
+          index_field: hm2RmaIndex
+    validation:
+      min: 1
+      max: 16
+  hm2rmainterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaInterface
+          index_field: hm2RmaIndex
+  hm2rmaipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaIpAddr
+          index_field: hm2RmaIndex
+  hm2rmaipaddrtype:
+    syntax: InetAddressType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaIpAddrType
+          index_field: hm2RmaIndex
+  hm2rmalogcounter:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaLogCounter
+          index_field: hm2RmaIndex
+  hm2rmalogging:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaLogging
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmaloggingglobal:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RestrictedMgmtAccessGroup
+          field: hm2RmaLoggingGlobal
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmaoperation:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RestrictedMgmtAccessGroup
+          field: hm2RmaOperation
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmaprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaPrefixLength
+          index_field: hm2RmaIndex
+  hm2rmarowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaRowStatus
+          index_field: hm2RmaIndex
+    create_method: createAndGo
+  hm2rmasrvethernetip:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvEthernetIP
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrvhttp:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvHttp
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrvhttps:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvHttps
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrviec61850:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvIEC61850
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrvmodbustcp:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvModbusTcp
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrvprofinetio:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvProfinetIO
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrvsnmp:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvSnmp
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrvssh:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvSsh
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmasrvtelnet:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RmaEntry
+          field: hm2RmaSrvTelnet
+          index_field: hm2RmaIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2rmatable:
+    syntax: Hm2RmaEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2RestrictedMgmtAccessGroup
+          field: hm2RmaTable
+  hm2snmpover802adminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSnmpGroup
+          field: hm2SnmpOver802AdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2snmpportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSnmpGroup
+          field: hm2SnmpPortNumber
+  hm2snmptrapserviceadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSnmpGroup
+          field: hm2SnmpTrapServiceAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2snmpv1adminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSnmpGroup
+          field: hm2SnmpV1AdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2snmpv2adminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSnmpGroup
+          field: hm2SnmpV2AdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2snmpv3adminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSnmpGroup
+          field: hm2SnmpV3AdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sshadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sshdsakeycontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.10
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshDSAKeyControl
+  hm2sshencryptionalgorithms:
+    syntax: Hm2SshEncryptionAlgorithms
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.21
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshEncryptionAlgorithms
+  hm2sshfingerprintdsa:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.11
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshFingerPrintDSA
+    validation:
+      min: 0
+      max: 128
+  hm2sshfingerprintrsa:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.12
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshFingerPrintRSA
+    validation:
+      min: 0
+      max: 128
+  hm2sshhmacalgorithms:
+    syntax: Hm2SshHmacAlgorithms
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.19
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshHmacAlgorithms
+  hm2sshhostkeyalgorithms:
+    syntax: Hm2SshHostKeyAlgorithms
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.22
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshHostKeyAlgorithms
+  hm2sshkexalgorithms:
+    syntax: Hm2SshKexAlgorithms
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.20
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshKexAlgorithms
+  hm2sshkeyfingerprinttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.18
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshKeyFingerPrintType
+    validation:
+      allowed:
+      - md5
+      - sha256
+  hm2sshkeyoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.8
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshKeyOperStatus
+    validation:
+      allowed:
+      - dsa
+      - rsa
+      - both
+      - none
+  hm2sshkeyspresent:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.7
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshKeysPresent
+    validation:
+      allowed:
+      - dsa
+      - rsa
+      - both
+      - none
+  hm2sshknownhostaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2SshKnownHostEntry
+          field: hm2SshKnownHostAddress
+          index_field: hm2SshKnownHostIndex
+  hm2sshknownhostaddresstype:
+    syntax: InetAddressType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2SshKnownHostEntry
+          field: hm2SshKnownHostAddressType
+          index_field: hm2SshKnownHostIndex
+  hm2sshknownhostentry:
+    syntax: Hm2SshKnownHostEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2SshKnownHostTable
+          field: hm2SshKnownHostEntry
+  hm2sshknownhostindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2SshKnownHostEntry
+          field: hm2SshKnownHostIndex
+          index_field: hm2SshKnownHostIndex
+  hm2sshknownhostkeyfingerprint:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2SshKnownHostEntry
+          field: hm2SshKnownHostKeyFingerPrint
+          index_field: hm2SshKnownHostIndex
+  hm2sshknownhostkeytype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2SshKnownHostEntry
+          field: hm2SshKnownHostKeyType
+          index_field: hm2SshKnownHostIndex
+  hm2sshknownhoststatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2SshKnownHostEntry
+          field: hm2SshKnownHostStatus
+          index_field: hm2SshKnownHostIndex
+    create_method: createAndWait
+  hm2sshknownhosttable:
+    syntax: Hm2SshKnownHostEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.70
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshKnownHostTable
+  hm2sshlastlogininetaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.17
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshLastLoginInetAddress
+  hm2sshlastlogininetaddresstype:
+    syntax: InetAddressType
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.16
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshLastLoginInetAddressType
+  hm2sshlastloginusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.15
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshLastLoginUserName
+    validation:
+      min: 0
+      max: 32
+  hm2sshlastlogoutusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.14
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshLastLogoutUserName
+    validation:
+      min: 0
+      max: 32
+  hm2sshmaxsessionscount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.5
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshMaxSessionsCount
+    validation:
+      min: 1
+      max: 5
+  hm2sshoutboundmaxsessionscount:
+    syntax: Integer32 (1..5)
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.51
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshOutboundMaxSessionsCount
+    validation:
+      min: 1
+      max: 5
+  hm2sshoutboundsessiontimeout:
+    syntax: Integer32 (0..160)
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.52
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshOutboundSessionTimeout
+    validation:
+      min: 0
+      max: 160
+  hm2sshoutboundsessionscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.50
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshOutboundSessionsCount
+  hm2sshpacketsreceived:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.8
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2SshPacketsReceived
+  hm2sshpacketssent:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.7
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2SshPacketsSent
+  hm2sshportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshPortNumber
+  hm2sshprotocollevel:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshProtocolLevel
+  hm2sshrsakeycontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.9
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshRSAKeyControl
+  hm2sshsessiontimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.6
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshSessionTimeout
+    validation:
+      min: 0
+      max: 160
+  hm2sshsessionscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshSessionsCount
+  hm2sshtrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.4.13
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessSshGroup
+          field: hm2SshTrapEnable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2telnetlastlogininetaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.10
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetLastLoginInetAddress
+  hm2telnetlastlogininetaddresstype:
+    syntax: InetAddressType
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.9
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetLastLoginInetAddressType
+  hm2telnetlastloginusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.8
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetLastLoginUserName
+    validation:
+      min: 0
+      max: 32
+  hm2telnetlastlogoutusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.7
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetLastLogoutUserName
+    validation:
+      min: 0
+      max: 32
+  hm2telnetpacketsreceived:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.6
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2TelnetPacketsReceived
+  hm2telnetpacketssent:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.10.5
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessStatisticsGroup
+          field: hm2TelnetPacketsSent
+  hm2telnetserveradminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetServerAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2telnetservermaxsessions:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetServerMaxSessions
+    validation:
+      min: 1
+      max: 5
+  hm2telnetserverport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetServerPort
+  hm2telnetserversessionscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetServerSessionsCount
+  hm2telnetserversessionstimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.5
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetServerSessionsTimeOut
+    validation:
+      min: 0
+      max: 160
+  hm2telnettrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.3.6
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessTelnetGroup
+          field: hm2TelnetTrapEnable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2webhttpadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2webhttpportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpPortNumber
+  hm2webhttpsadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2webhttpscertcontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.6
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsCertControl
+  hm2webhttpscertfingerprint:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.15
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsCertFingerPrint
+  hm2webhttpscertfingerprinttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.14
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsCertFingerPrintType
+    validation:
+      allowed:
+      - sha1
+      - sha256
+  hm2webhttpscertoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.7
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsCertOperStatus
+    validation:
+      allowed:
+      - generate
+      - delete
+      - none
+  hm2webhttpscertpresent:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsCertPresent
+    validation:
+      allowed:
+      - pem
+      - none
+  hm2webhttpsportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsPortNumber
+  hm2webhttpsserverrestart:
+    syntax: Hm2RestartAction
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.16
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsServerRestart
+  hm2webhttpsservertlsciphersuites:
+    syntax: Hm2TlsCipherSuites
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.18
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsServerTlsCipherSuites
+  hm2webhttpsservertlsversions:
+    syntax: Hm2TlsVersions
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.17
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebHttpsServerTlsVersions
+  hm2webintftimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.8
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebIntfTimeOut
+    validation:
+      min: 0
+      max: 160
+  hm2weblastlogininetaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.13
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebLastLoginInetAddress
+  hm2weblastlogininetaddresstype:
+    syntax: InetAddressType
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.12
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebLastLoginInetAddressType
+  hm2weblastloginusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.11
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebLastLoginUserName
+    validation:
+      min: 0
+      max: 32
+  hm2weblastlogoutusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebLastLogoutUserName
+    validation:
+      min: 0
+      max: 32
+  hm2webtrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.25.1.2.9
+          method: get
+      mops:
+        read:
+          mib: HM2-MGMTACCESS-MIB
+          table: hm2MgmtAccessWebGroup
+          field: hm2WebTrapEnable
+    validation:
+      allowed:
+      - true
+      - false

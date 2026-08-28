@@ -1,0 +1,125 @@
+version: "2.9.0"
+feature: diagnostic-ssh
+description: "SSH CLI sources for HM2-DIAGNOSTIC-MIB"
+
+attributes:
+  # Device monitor: show device-status all
+  hm2devmonoperstate:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show device-status all", field: "Device Monitor"}
+
+  # Security status monitors: show security-status monitor
+  hm2devsecsensehttpenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "HTTP server active"}
+        write: {command: "security-status monitor http-enabled", level: config}
+
+  hm2devsecsensetelnetenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Telnet server active"}
+        write: {command: "security-status monitor telnet-enabled", level: config}
+
+  hm2devsecsensehidiscoveryenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Access with HiDiscovery is possible"}
+        write: {command: "security-status monitor hidisc-enabled", level: config}
+
+  hm2devsecsensesnmpunsecure:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "SNMP unencrypted"}
+        write: {command: "security-status monitor snmp-unsecure", level: config}
+
+  hm2devsecsensesysmonenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Access to System Monitor possible"}
+        write: {command: "security-status monitor sysmon-enabled", level: config}
+
+  hm2devsecsensepasswordchange:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Password default settings unchanged"}
+        write: {command: "security-status monitor pwd-change", level: config}
+
+  hm2devsecsensepasswordminlength:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Minimum password length less than 8"}
+        write: {command: "security-status monitor pwd-min-length", level: config}
+
+  hm2devsecsensepasswordstrengthnotconfigured:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Password policy settings deactivated"}
+        write: {command: "security-status monitor pwd-str-not-config", level: config}
+
+  hm2devsecsensenolinkenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Link interrupted on enabled device ports"}
+        write: {command: "security-status monitor no-link-enabled", level: config}
+
+  hm2devsecsenseextnvmupdateenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Saving the config on the ENVM possible"}
+        write: {command: "security-status monitor extnvm-upd-enabled", level: config}
+
+  hm2devsecsenseextnvmconfigloadunsecure:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Loading unencrypted configuration from ENVM"}
+        write: {command: "security-status monitor extnvm-load-unsecure", level: config}
+
+  hm2devsecsensehttpscertificatewarning:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Auto generated HTTPS certificate in use"}
+        write: {command: "security-status monitor https-cert-warning", level: config}
+
+  hm2devsecsensedevmodeenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Support Mode is active"}
+        write: {command: "security-status monitor support-mode-enabled", level: config}
+
+  hm2devsecsensesecurebootdisabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Secure Boot is inactive"}
+        write: {command: "security-status monitor secure-boot-disabled", level: config}
+
+  hm2devsecsensepmldisabled:
+    sources:
+      ssh:
+        write: {command: "security-status monitor pml-disabled", level: config}
+
+  hm2devsecsensemodbustcpenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "Modbus TCP/IP server active"}
+        write: {command: "security-status monitor modbus-tcp-enabled", level: config}
+
+  hm2devsecsenseethernetipenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "EtherNet/IP protocol active"}
+        write: {command: "security-status monitor ethernet-ip-enabled", level: config}
+
+  hm2devsecsenseprofinetioenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "PROFINET protocol active"}
+        write: {command: "security-status monitor profinet-io-enabled", level: config}
+
+  hm2devsecsenseiec61850mmsenabled:
+    sources:
+      ssh:
+        read: {command: "show security-status monitor", field: "IEC 61850 MMS is enabled"}
+        write: {command: "security-status monitor iec61850-mms-enabled", level: config}

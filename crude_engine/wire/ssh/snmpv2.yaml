@@ -1,0 +1,24 @@
+version: "2.9.0"
+feature: snmpv2-ssh
+description: "SSH CLI sources for SNMPv2-MIB system group"
+
+attributes:
+  sysname:
+    sources:
+      ssh:
+        read: {command: "show system info", field: "System name"}
+        write: {command: "system name {value}", level: config}
+
+  syscontact:
+    sources:
+      ssh:
+        read: {command: "show system info", field: "System contact"}
+        write: {command: "system contact {value}", level: config}
+
+  syslocation:
+    sources:
+      ssh:
+        read: {command: "show system info", field: "System location"}
+        write: {command: "system location {value}", level: config}
+
+  # sysuptime: SSH returns human string '37 days, 06:24:38', needs to_timeticks transform (TODO)

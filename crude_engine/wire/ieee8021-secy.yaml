@@ -1,0 +1,2513 @@
+version: 2.6.0
+feature: ieee8021-secy
+schemas:
+  read_ieee8021-secy:
+    type: dict
+    defaults:
+      secyciphersuitecapability: []
+      secyciphersuitedatalengthchange: false
+      secyciphersuiteentry: ''
+      secyciphersuiteicvlength: 0
+      secyciphersuiteid: ''
+      secyciphersuiteindex: 0
+      secyciphersuitename: ''
+      secyciphersuiteprotection: []
+      secyciphersuiteprotectionoffset: 0
+      secyciphersuiterowstatus: 0
+      secyciphersuitetable: ''
+      secyifapaccesspcp: 0
+      secyifapentry: ''
+      secyifaptable: ''
+      secyifapuserpcp: 0
+      secyifadminpt2ptmac: 0
+      secyifcipherenableuse: false
+      secyifcipherentry: ''
+      secyifcipherimplemented: false
+      secyifcipherrqconfidentiality: false
+      secyifciphertable: ''
+      secyifcurrentciphersuite: 0
+      secyifentry: ''
+      secyifincludescienable: false
+      secyifincludingsci: false
+      secyifinterfaceindex: 0
+      secyifmaxpeerscs: 0
+      secyifmaxtscs: 0
+      secyifoperpt2ptmac: false
+      secyifprotectframesenable: false
+      secyifreplayprotectenable: false
+      secyifreplayprotectwindow: 0
+      secyifrxmaxkeys: 0
+      secyifsci: ''
+      secyiftcentry: ''
+      secyiftctable: ''
+      secyiftctrafficclass: 0
+      secyiftcuserpriority: 0
+      secyiftable: ''
+      secyiftxmaxkeys: 0
+      secyifuseesenable: false
+      secyifusescbenable: false
+      secyifvalidateframes: 0
+      secyrxsa: ''
+      secyrxsacreatedtime: 0
+      secyrxsaentry: ''
+      secyrxsakeyidentifier: ''
+      secyrxsalowestxpn: 0
+      secyrxsanextpn: 0
+      secyrxsanextxpn: 0
+      secyrxsasakunchanged: false
+      secyrxsassci: 0
+      secyrxsastartedtime: 0
+      secyrxsastate: 0
+      secyrxsastatsentry: ''
+      secyrxsastatsinvalidpkts: 0
+      secyrxsastatsnousingsapkts: 0
+      secyrxsastatsnotvalidpkts: 0
+      secyrxsastatsokpkts: 0
+      secyrxsastatstable: ''
+      secyrxsastatsunusedsapkts: 0
+      secyrxsastoppedtime: 0
+      secyrxsatable: ''
+      secyrxsccreatedtime: 0
+      secyrxsccurrentsa: ''
+      secyrxscentry: ''
+      secyrxsci: ''
+      secyrxscstartedtime: 0
+      secyrxscstate: 0
+      secyrxscstatsdelayedpkts: 0
+      secyrxscstatsentry: ''
+      secyrxscstatsinvalidpkts: 0
+      secyrxscstatslatepkts: 0
+      secyrxscstatsnousingsapkts: 0
+      secyrxscstatsnotvalidpkts: 0
+      secyrxscstatsokpkts: 0
+      secyrxscstatsoctetsdecrypted: 0
+      secyrxscstatsoctetsvalidated: 0
+      secyrxscstatstable: ''
+      secyrxscstatsuncheckedpkts: 0
+      secyrxscstatsunusedsapkts: 0
+      secyrxscstoppedtime: 0
+      secyrxsctable: ''
+      secystatsentry: ''
+      secystatsrxbadtagpkts: 0
+      secystatsrxnosaerrorpkts: 0
+      secystatsrxnosapkts: 0
+      secystatsrxnoscipkts: 0
+      secystatsrxnotagpkts: 0
+      secystatsrxoctetsdecrypted: 0
+      secystatsrxoctetsvalidated: 0
+      secystatsrxoverrunpkts: 0
+      secystatsrxunknownscipkts: 0
+      secystatsrxuntaggedpkts: 0
+      secystatstable: ''
+      secystatstxoctetsencrypted: 0
+      secystatstxoctetsprotected: 0
+      secystatstxtoolongpkts: 0
+      secystatstxuntaggedpkts: 0
+      secytsa: ''
+      secytsaconfidentiality: false
+      secytsacreatedtime: 0
+      secytsaentry: ''
+      secytsakeyidentifier: ''
+      secytsanextxpn: 0
+      secytsassci: 0
+      secytsastartedtime: 0
+      secytsastate: 0
+      secytsastoppedtime: 0
+      secytsatable: ''
+      secytsccreatedtime: 0
+      secytscencodingsa: ''
+      secytscentry: ''
+      secytsci: ''
+      secytscstartedtime: 0
+      secytscstate: 0
+      secytscstatsencryptedpkts: 0
+      secytscstatsentry: ''
+      secytscstatsprotectedpkts: 0
+      secytscstatstable: ''
+      secytscstoppedtime: 0
+      secytsctable: ''
+      secytxsa: ''
+      secytxsaconfidentiality: false
+      secytxsacreatedtime: 0
+      secytxsaentry: ''
+      secytxsanextpn: 0
+      secytxsasakunchanged: false
+      secytxsastartedtime: 0
+      secytxsastate: 0
+      secytxsastatsencryptedpkts: 0
+      secytxsastatsentry: ''
+      secytxsastatsprotectedpkts: 0
+      secytxsastatstable: ''
+      secytxsastoppedtime: 0
+      secytxsatable: ''
+      secytxsccreatedtime: 0
+      secytxscencipheringsa: ''
+      secytxscencodingsa: ''
+      secytxscentry: ''
+      secytxsci: ''
+      secytxscstartedtime: 0
+      secytxscstate: 0
+      secytxscstatsencryptedpkts: 0
+      secytxscstatsentry: ''
+      secytxscstatsoctetsencrypted: 0
+      secytxscstatsoctetsprotected: 0
+      secytxscstatsprotectedpkts: 0
+      secytxscstatstable: ''
+      secytxscstoppedtime: 0
+      secytxsctable: ''
+attributes:
+  secyciphersuitecapability:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteCapability
+          index_field: secyCipherSuiteIndex
+    bit_map:
+      0: integrity
+      1: confidentiality
+      2: offsetConfidentiality
+  secyciphersuitedatalengthchange:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteDataLengthChange
+          index_field: secyCipherSuiteIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyciphersuiteentry:
+    syntax: SecyCipherSuiteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteTable
+          field: secyCipherSuiteEntry
+  secyciphersuiteicvlength:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteICVLength
+          index_field: secyCipherSuiteIndex
+    validation:
+      min: 8
+      max: 16
+  secyciphersuiteid:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteId
+          index_field: secyCipherSuiteIndex
+  secyciphersuiteindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteIndex
+          index_field: secyCipherSuiteIndex
+    validation:
+      min: 1
+      max: 4294967295
+  secyciphersuitename:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteName
+          index_field: secyCipherSuiteIndex
+    validation:
+      min: 1
+      max: 128
+  secyciphersuiteprotection:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteProtection
+          index_field: secyCipherSuiteIndex
+    bit_map:
+      0: integrity
+      1: confidentiality
+      2: offsetConfidentiality
+  secyciphersuiteprotectionoffset:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteProtectionOffset
+          index_field: secyCipherSuiteIndex
+  secyciphersuiterowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyCipherSuiteEntry
+          field: secyCipherSuiteRowStatus
+          index_field: secyCipherSuiteIndex
+    create_method: createAndWait
+  secyciphersuitetable:
+    syntax: SecyCipherSuiteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.6
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyCipherSuiteTable
+  secyifapaccesspcp:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.9.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfAPEntry
+          field: secyIfAPAccessPCP
+          index_field: secyIfAPUserPCP
+          index_fields: &id001
+          - secyIfInterfaceIndex
+          - secyIfAPUserPCP
+    validation:
+      min: 0
+      max: 15
+  secyifapentry:
+    syntax: SecyIfAPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.9.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfAPTable
+          field: secyIfAPEntry
+  secyifaptable:
+    syntax: SecyIfAPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.9
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyIfAPTable
+  secyifapuserpcp:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfAPEntry
+          field: secyIfAPUserPCP
+          index_field: secyIfAPUserPCP
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 15
+  secyifadminpt2ptmac:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfAdminPt2PtMAC
+          index_field: secyIfInterfaceIndex
+  secyifcipherenableuse:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfCipherEntry
+          field: secyIfCipherEnableUse
+          index_field: secyCipherSuiteIndex
+          index_fields: &id002
+          - secyIfInterfaceIndex
+          - secyCipherSuiteIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifcipherentry:
+    syntax: SecyIfCipherEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.7.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfCipherTable
+          field: secyIfCipherEntry
+  secyifcipherimplemented:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfCipherEntry
+          field: secyIfCipherImplemented
+          index_field: secyCipherSuiteIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  secyifcipherrqconfidentiality:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfCipherEntry
+          field: secyIfCipherRqConfidentiality
+          index_field: secyCipherSuiteIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  secyifciphertable:
+    syntax: SecyIfCipherEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.7
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyIfCipherTable
+  secyifcurrentciphersuite:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfCurrentCipherSuite
+          index_field: secyIfInterfaceIndex
+  secyifentry:
+    syntax: SecyIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfTable
+          field: secyIfEntry
+  secyifincludescienable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfIncludeSCIEnable
+          index_field: secyIfInterfaceIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifincludingsci:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfIncludingSCI
+          index_field: secyIfInterfaceIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifinterfaceindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfInterfaceIndex
+          index_field: secyIfInterfaceIndex
+  secyifmaxpeerscs:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfMaxPeerSCs
+          index_field: secyIfInterfaceIndex
+  secyifmaxtscs:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfMaxTSCs
+          index_field: secyIfInterfaceIndex
+  secyifoperpt2ptmac:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfOperPt2PtMAC
+          index_field: secyIfInterfaceIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifprotectframesenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfProtectFramesEnable
+          index_field: secyIfInterfaceIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifreplayprotectenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfReplayProtectEnable
+          index_field: secyIfInterfaceIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifreplayprotectwindow:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfReplayProtectWindow
+          index_field: secyIfInterfaceIndex
+  secyifrxmaxkeys:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfRxMaxKeys
+          index_field: secyIfInterfaceIndex
+  secyifsci:
+    syntax: SecySCI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfSCI
+          index_field: secyIfInterfaceIndex
+  secyiftcentry:
+    syntax: SecyIfTCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.8.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfTCTable
+          field: secyIfTCEntry
+  secyiftctable:
+    syntax: SecyIfTCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.8
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyIfTCTable
+  secyiftctrafficclass:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfTCEntry
+          field: secyIfTCTrafficClass
+          index_field: secyIfTCUserPriority
+          index_fields: &id003
+          - secyIfInterfaceIndex
+          - secyIfTCUserPriority
+    validation:
+      min: 0
+      max: 7
+  secyiftcuserpriority:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfTCEntry
+          field: secyIfTCUserPriority
+          index_field: secyIfTCUserPriority
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 7
+  secyiftable:
+    syntax: SecyIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyIfTable
+  secyiftxmaxkeys:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfTxMaxKeys
+          index_field: secyIfInterfaceIndex
+  secyifuseesenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfUseESEnable
+          index_field: secyIfInterfaceIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifusescbenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfUseSCBEnable
+          index_field: secyIfInterfaceIndex
+    validation:
+      allowed:
+      - true
+      - false
+  secyifvalidateframes:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyIfEntry
+          field: secyIfValidateFrames
+          index_field: secyIfInterfaceIndex
+  secyrxsa:
+    syntax: SecyAN
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSA
+          index_field: secyRxSA
+          index_fields: &id004
+          - secyIfInterfaceIndex
+          - secyRxSCI
+          - secyRxSA
+  secyrxsacreatedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSACreatedTime
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsaentry:
+    syntax: SecyRxSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSATable
+          field: secyRxSAEntry
+  secyrxsakeyidentifier:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSAKeyIdentifier
+          index_field: secyRxSA
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 32
+  secyrxsalowestxpn:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSALowestXPN
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsanextpn:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSANextPN
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsanextxpn:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSANextXPN
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsasakunchanged:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSASAKUnchanged
+          index_field: secyRxSA
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  secyrxsassci:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSASSCI
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsastartedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSAStartedTime
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsastate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSAState
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsastatsentry:
+    syntax: SecyRxSAStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAStatsTable
+          field: secyRxSAStatsEntry
+  secyrxsastatsinvalidpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.3.1.16
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAStatsEntry
+          field: secyRxSAStatsInvalidPkts
+  secyrxsastatsnousingsapkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAStatsEntry
+          field: secyRxSAStatsNoUsingSAPkts
+  secyrxsastatsnotvalidpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAStatsEntry
+          field: secyRxSAStatsNotValidPkts
+  secyrxsastatsokpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.3.1.25
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAStatsEntry
+          field: secyRxSAStatsOKPkts
+  secyrxsastatstable:
+    syntax: SecyRxSAStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsMIBObjects
+          field: secyRxSAStatsTable
+  secyrxsastatsunusedsapkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAStatsEntry
+          field: secyRxSAStatsUnusedSAPkts
+  secyrxsastoppedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSAEntry
+          field: secyRxSAStoppedTime
+          index_field: secyRxSA
+          index_fields: *id004
+  secyrxsatable:
+    syntax: SecyRxSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyRxSATable
+  secyrxsccreatedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCEntry
+          field: secyRxSCCreatedTime
+          index_field: secyRxSCI
+          index_fields: &id005
+          - secyIfInterfaceIndex
+          - secyRxSCI
+  secyrxsccurrentsa:
+    syntax: RowPointer
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCEntry
+          field: secyRxSCCurrentSA
+          index_field: secyRxSCI
+          index_fields: *id005
+  secyrxscentry:
+    syntax: SecyRxSCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCTable
+          field: secyRxSCEntry
+  secyrxsci:
+    syntax: SecySCI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCEntry
+          field: secyRxSCI
+          index_field: secyRxSCI
+          index_fields: *id005
+  secyrxscstartedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCEntry
+          field: secyRxSCStartedTime
+          index_field: secyRxSCI
+          index_fields: *id005
+  secyrxscstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCEntry
+          field: secyRxSCState
+          index_field: secyRxSCI
+          index_fields: *id005
+  secyrxscstatsdelayedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsDelayedPkts
+  secyrxscstatsentry:
+    syntax: SecyRxSCStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsTable
+          field: secyRxSCStatsEntry
+  secyrxscstatsinvalidpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsInvalidPkts
+  secyrxscstatslatepkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsLatePkts
+  secyrxscstatsnousingsapkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsNoUsingSAPkts
+  secyrxscstatsnotvalidpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsNotValidPkts
+  secyrxscstatsokpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsOKPkts
+  secyrxscstatsoctetsdecrypted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsOctetsDecrypted
+  secyrxscstatsoctetsvalidated:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsOctetsValidated
+  secyrxscstatstable:
+    syntax: SecyRxSCStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsMIBObjects
+          field: secyRxSCStatsTable
+  secyrxscstatsuncheckedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsUncheckedPkts
+  secyrxscstatsunusedsapkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCStatsEntry
+          field: secyRxSCStatsUnusedSAPkts
+  secyrxscstoppedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyRxSCEntry
+          field: secyRxSCStoppedTime
+          index_field: secyRxSCI
+          index_fields: *id005
+  secyrxsctable:
+    syntax: SecyRxSCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.4
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyRxSCTable
+  secystatsentry:
+    syntax: SecyStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsTable
+          field: secyStatsEntry
+  secystatsrxbadtagpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxBadTagPkts
+  secystatsrxnosaerrorpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxNoSAErrorPkts
+  secystatsrxnosapkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxNoSAPkts
+  secystatsrxnoscipkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxNoSCIPkts
+  secystatsrxnotagpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxNoTagPkts
+  secystatsrxoctetsdecrypted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.14
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxOctetsDecrypted
+  secystatsrxoctetsvalidated:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.13
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxOctetsValidated
+  secystatsrxoverrunpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxOverrunPkts
+  secystatsrxunknownscipkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxUnknownSCIPkts
+  secystatsrxuntaggedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsRxUntaggedPkts
+  secystatstable:
+    syntax: SecyStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsMIBObjects
+          field: secyStatsTable
+  secystatstxoctetsencrypted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.12
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsTxOctetsEncrypted
+  secystatstxoctetsprotected:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsTxOctetsProtected
+  secystatstxtoolongpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsTxTooLongPkts
+  secystatstxuntaggedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsEntry
+          field: secyStatsTxUntaggedPkts
+  secytsa:
+    syntax: SecyAN
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSA
+          index_field: secyTSA
+          index_fields: &id006
+          - secyIfInterfaceIndex
+          - secyTSCI
+          - secyTSA
+  secytsaconfidentiality:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSAConfidentiality
+          index_field: secyTSA
+          index_fields: *id006
+    validation:
+      allowed:
+      - true
+      - false
+  secytsacreatedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSACreatedTime
+          index_field: secyTSA
+          index_fields: *id006
+  secytsaentry:
+    syntax: SecyTSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSATable
+          field: secyTSAEntry
+  secytsakeyidentifier:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSAKeyIdentifier
+          index_field: secyTSA
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 32
+  secytsanextxpn:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSANextXPN
+          index_field: secyTSA
+          index_fields: *id006
+  secytsassci:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSASSCI
+          index_field: secyTSA
+          index_fields: *id006
+  secytsastartedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSAStartedTime
+          index_field: secyTSA
+          index_fields: *id006
+  secytsastate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSAState
+          index_field: secyTSA
+          index_fields: *id006
+  secytsastoppedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11.1.9
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSAEntry
+          field: secyTSAStoppedTime
+          index_field: secyTSA
+          index_fields: *id006
+  secytsatable:
+    syntax: SecyTSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.11
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyTSATable
+  secytsccreatedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCEntry
+          field: secyTSCCreatedTime
+          index_field: secyTSCI
+          index_fields: &id007
+          - secyIfInterfaceIndex
+          - secyTSCI
+  secytscencodingsa:
+    syntax: RowPointer
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCEntry
+          field: secyTSCEncodingSA
+          index_field: secyTSCI
+          index_fields: *id007
+  secytscentry:
+    syntax: SecyTSCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCTable
+          field: secyTSCEntry
+  secytsci:
+    syntax: SecySCI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCEntry
+          field: secyTSCI
+          index_field: secyTSCI
+          index_fields: *id007
+  secytscstartedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCEntry
+          field: secyTSCStartedTime
+          index_field: secyTSCI
+          index_fields: *id007
+  secytscstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCEntry
+          field: secyTSCState
+          index_field: secyTSCI
+          index_fields: *id007
+  secytscstatsencryptedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.12.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCStatsEntry
+          field: secyTSCStatsEncryptedPkts
+  secytscstatsentry:
+    syntax: SecyTSCStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.12.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCStatsTable
+          field: secyTSCStatsEntry
+  secytscstatsprotectedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.12.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCStatsEntry
+          field: secyTSCStatsProtectedPkts
+  secytscstatstable:
+    syntax: SecyTSCStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.12
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsMIBObjects
+          field: secyTSCStatsTable
+  secytscstoppedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTSCEntry
+          field: secyTSCStoppedTime
+          index_field: secyTSCI
+          index_fields: *id007
+  secytsctable:
+    syntax: SecyTSCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.10
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyTSCTable
+  secytxsa:
+    syntax: SecyAN
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSA
+          index_field: secyTxSA
+          index_fields: &id008
+          - secyIfInterfaceIndex
+          - secyTxSA
+  secytxsaconfidentiality:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSAConfidentiality
+          index_field: secyTxSA
+          index_fields: *id008
+    validation:
+      allowed:
+      - true
+      - false
+  secytxsacreatedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSACreatedTime
+          index_field: secyTxSA
+          index_fields: *id008
+  secytxsaentry:
+    syntax: SecyTxSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSATable
+          field: secyTxSAEntry
+  secytxsanextpn:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSANextPN
+          index_field: secyTxSA
+          index_fields: *id008
+  secytxsasakunchanged:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSASAKUnchanged
+          index_field: secyTxSA
+          index_fields: *id008
+    validation:
+      allowed:
+      - true
+      - false
+  secytxsastartedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSAStartedTime
+          index_field: secyTxSA
+          index_fields: *id008
+  secytxsastate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSAState
+          index_field: secyTxSA
+          index_fields: *id008
+  secytxsastatsencryptedpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAStatsEntry
+          field: secyTxSAStatsEncryptedPkts
+  secytxsastatsentry:
+    syntax: SecyTxSAStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAStatsTable
+          field: secyTxSAStatsEntry
+  secytxsastatsprotectedpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAStatsEntry
+          field: secyTxSAStatsProtectedPkts
+  secytxsastatstable:
+    syntax: SecyTxSAStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsMIBObjects
+          field: secyTxSAStatsTable
+  secytxsastoppedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSAEntry
+          field: secyTxSAStoppedTime
+          index_field: secyTxSA
+          index_fields: *id008
+  secytxsatable:
+    syntax: SecyTxSAEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.3
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyTxSATable
+  secytxsccreatedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCEntry
+          field: secyTxSCCreatedTime
+          index_field: secyIfInterfaceIndex
+  secytxscencipheringsa:
+    syntax: RowPointer
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCEntry
+          field: secyTxSCEncipheringSA
+          index_field: secyIfInterfaceIndex
+  secytxscencodingsa:
+    syntax: RowPointer
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCEntry
+          field: secyTxSCEncodingSA
+          index_field: secyIfInterfaceIndex
+  secytxscentry:
+    syntax: SecyTxSCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCTable
+          field: secyTxSCEntry
+  secytxsci:
+    syntax: SecySCI
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCEntry
+          field: secyTxSCI
+          index_field: secyIfInterfaceIndex
+  secytxscstartedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCEntry
+          field: secyTxSCStartedTime
+          index_field: secyIfInterfaceIndex
+  secytxscstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCEntry
+          field: secyTxSCState
+          index_field: secyIfInterfaceIndex
+  secytxscstatsencryptedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCStatsEntry
+          field: secyTxSCStatsEncryptedPkts
+  secytxscstatsentry:
+    syntax: SecyTxSCStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCStatsTable
+          field: secyTxSCStatsEntry
+  secytxscstatsoctetsencrypted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCStatsEntry
+          field: secyTxSCStatsOctetsEncrypted
+  secytxscstatsoctetsprotected:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCStatsEntry
+          field: secyTxSCStatsOctetsProtected
+  secytxscstatsprotectedpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCStatsEntry
+          field: secyTxSCStatsProtectedPkts
+  secytxscstatstable:
+    syntax: SecyTxSCStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.2.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyStatsMIBObjects
+          field: secyTxSCStatsTable
+  secytxscstoppedtime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyTxSCEntry
+          field: secyTxSCStoppedTime
+          index_field: secyIfInterfaceIndex
+  secytxsctable:
+    syntax: SecyTxSCEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.3.1.1.2
+          method: get
+      mops:
+        read:
+          mib: IEEE8021-SECY-MIB
+          table: secyMgmtMIBObjects
+          field: secyTxSCTable

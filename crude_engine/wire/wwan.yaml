@@ -1,0 +1,1864 @@
+version: 2.6.0
+feature: wwan
+schemas:
+  read_wwan:
+    type: dict
+    defaults:
+      hm2wwanadminstatus: false
+      hm2wwanbackupsimfailoverconnection: false
+      hm2wwanbackupsimfailoverdatalimit: false
+      hm2wwanbackupsimfailoverregistration: false
+      hm2wwanbackupsimfailoverroaming: false
+      hm2wwanbackupsimtechnologylevel: false
+      hm2wwancellularactivesimid: ''
+      hm2wwancellularband: 0
+      hm2wwancellularbiterrorrate: 0
+      hm2wwancellularbsic: 0
+      hm2wwancellularcellid: 0
+      hm2wwancellularchannel: 0
+      hm2wwancellularcurrentrxrate: 0
+      hm2wwancellularcurrenttxrate: 0
+      hm2wwancellulardatatech: ''
+      hm2wwancellularlac: 0
+      hm2wwancellularmaxrxrate: 0
+      hm2wwancellularmaxtxrate: 0
+      hm2wwancellularmcc: 0
+      hm2wwancellularmnc: 0
+      hm2wwancellularnetwork: ''
+      hm2wwancellularoperator: ''
+      hm2wwancellularregistration: ''
+      hm2wwancellularroamingstatus: ''
+      hm2wwancellularselection: ''
+      hm2wwancellularsignalquality: 0
+      hm2wwancellularsignalqualitylte: 0
+      hm2wwancellularsignalstrength: 0
+      hm2wwancellularsignalstrengthlte: 0
+      hm2wwandataconnectionactivatedcount: 0
+      hm2wwandataconnectionadminstatus: false
+      hm2wwandataconnectionapn: ''
+      hm2wwandataconnectionapncurrent: ''
+      hm2wwandataconnectionauth: ''
+      hm2wwandataconnectiondnsprimary: ''
+      hm2wwandataconnectiondnsprimarycurrent: ''
+      hm2wwandataconnectiondnsprimarycurrenttype: ''
+      hm2wwandataconnectiondnsprimarytype: ''
+      hm2wwandataconnectiondnssecondary: ''
+      hm2wwandataconnectiondnssecondarycurrent: ''
+      hm2wwandataconnectiondnssecondarycurrenttype: ''
+      hm2wwandataconnectiondnssecondarytype: ''
+      hm2wwandataconnectionentry: ''
+      hm2wwandataconnectionfailedretry: 0
+      hm2wwandataconnectionfailedretrycurrent: 0
+      hm2wwandataconnectionipaddress: ''
+      hm2wwandataconnectionipaddresscurrent: ''
+      hm2wwandataconnectionipaddresscurrenttype: ''
+      hm2wwandataconnectionipaddresstype: ''
+      hm2wwandataconnectionmtu: 0
+      hm2wwandataconnectionpassword: ''
+      hm2wwandataconnectionpdptype: ''
+      hm2wwandataconnectionsimid: 0
+      hm2wwandataconnectionstarttime: 0
+      hm2wwandataconnectionstatus: ''
+      hm2wwandataconnectionstatuserrorreason: ''
+      hm2wwandataconnectiontable: ''
+      hm2wwandataconnectiontotaluptime: 0
+      hm2wwandataconnectionuptime: 0
+      hm2wwandataconnectionuser: ''
+      hm2wwandatapacketstatsentry: ''
+      hm2wwandatapacketstatsrxbytesok: 0
+      hm2wwandatapacketstatsrxdropped: 0
+      hm2wwandatapacketstatsrxerrors: 0
+      hm2wwandatapacketstatsrxok: 0
+      hm2wwandatapacketstatsrxoverflows: 0
+      hm2wwandatapacketstatssimid: 0
+      hm2wwandatapacketstatstable: ''
+      hm2wwandatapacketstatstxbytesok: 0
+      hm2wwandatapacketstatstxdropped: 0
+      hm2wwandatapacketstatstxerrors: 0
+      hm2wwandatapacketstatstxok: 0
+      hm2wwandatapacketstatstxoverflows: 0
+      hm2wwandataplancutoffthreshold: 0
+      hm2wwandataplanentry: ''
+      hm2wwandataplanlastreset: ''
+      hm2wwandataplanlimitmeasureunit: ''
+      hm2wwandataplanmonthlylimit: 0
+      hm2wwandataplanmonthlyusagerx: 0
+      hm2wwandataplanmonthlyusagetx: 0
+      hm2wwandataplanreset: ''
+      hm2wwandataplanresetday: 0
+      hm2wwandataplansimid: 0
+      hm2wwandataplantable: ''
+      hm2wwandataplanwarningthreshold: 0
+      hm2wwanfailovercycle: false
+      hm2wwanfailovertechnologylevel: ''
+      hm2wwanltepersistence: false
+      hm2wwanltepersistenceinterval: 0
+      hm2wwanmodemimei: ''
+      hm2wwanmodemmanufacturer: ''
+      hm2wwanmodemmodel: ''
+      hm2wwanmodemoperationalstate: ''
+      hm2wwanmodemresetfailoverregistration: false
+      hm2wwanmodemrevision: ''
+      hm2wwansettrap: ''
+      hm2wwansimcardadminstatus: false
+      hm2wwansimcardentry: ''
+      hm2wwansimcardiccid: ''
+      hm2wwansimcardimsi: ''
+      hm2wwansimcardpin1: ''
+      hm2wwansimcardpin1mode: false
+      hm2wwansimcardpin1status: ''
+      hm2wwansimcardpin1unblocktries: 0
+      hm2wwansimcardpin1verifytries: 0
+      hm2wwansimcardpuk1: ''
+      hm2wwansimcardroamingmode: false
+      hm2wwansimcardrole: ''
+      hm2wwansimcardrolecurrent: ''
+      hm2wwansimcardsetactive: ''
+      hm2wwansimcardsimid: 0
+      hm2wwansimcardstatus: ''
+      hm2wwansimcardtable: ''
+attributes:
+  hm2wwanadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanbackupsimfailoverconnection:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanBackupSimFailoverConnection
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanbackupsimfailoverdatalimit:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanBackupSimFailoverDataLimit
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanbackupsimfailoverregistration:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanBackupSimFailoverRegistration
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanbackupsimfailoverroaming:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanBackupSimFailoverRoaming
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanbackupsimtechnologylevel:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanBackupSimTechnologyLevel
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwancellularactivesimid:
+    syntax: Hm2SimCardsListActive
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularActiveSimId
+  hm2wwancellularband:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularBand
+  hm2wwancellularbiterrorrate:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.17
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularBitErrorRate
+  hm2wwancellularbsic:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularBsic
+  hm2wwancellularcellid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularCellId
+  hm2wwancellularchannel:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularChannel
+  hm2wwancellularcurrentrxrate:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.19
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularCurrentRxRate
+  hm2wwancellularcurrenttxrate:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.18
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularCurrentTxRate
+  hm2wwancellulardatatech:
+    syntax: Hm2CellularDataTech
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.22
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularDataTech
+  hm2wwancellularlac:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularLac
+  hm2wwancellularmaxrxrate:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.21
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularMaxRxRate
+  hm2wwancellularmaxtxrate:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularMaxTxRate
+  hm2wwancellularmcc:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularMcc
+  hm2wwancellularmnc:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularMnc
+  hm2wwancellularnetwork:
+    syntax: Hm2CellularNetworks
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularNetwork
+  hm2wwancellularoperator:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularOperator
+    validation:
+      min: 0
+      max: 128
+  hm2wwancellularregistration:
+    syntax: Hm2RegistrationStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularRegistration
+  hm2wwancellularroamingstatus:
+    syntax: Hm2RoamingStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.16
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularRoamingStatus
+  hm2wwancellularselection:
+    syntax: Hm2CellularNetworks
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanCellularSelection
+  hm2wwancellularsignalquality:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.14
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularSignalQuality
+  hm2wwancellularsignalqualitylte:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.15
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularSignalQualityLte
+  hm2wwancellularsignalstrength:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularSignalStrength
+  hm2wwancellularsignalstrengthlte:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanCellularInformationGroup
+          field: hm2WwanCellularSignalStrengthLte
+  hm2wwandataconnectionactivatedcount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionActivatedCount
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionAdminStatus
+          index_field: hm2WwanDataConnectionSimId
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwandataconnectionapn:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionApn
+          index_field: hm2WwanDataConnectionSimId
+    validation:
+      min: 0
+      max: 64
+  hm2wwandataconnectionapncurrent:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionApnCurrent
+          index_field: hm2WwanDataConnectionSimId
+    validation:
+      min: 0
+      max: 64
+  hm2wwandataconnectionauth:
+    syntax: Hm2AuthType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionAuth
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnsprimary:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsPrimary
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnsprimarycurrent:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsPrimaryCurrent
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnsprimarycurrenttype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsPrimaryCurrentType
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnsprimarytype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsPrimaryType
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnssecondary:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsSecondary
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnssecondarycurrent:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsSecondaryCurrent
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnssecondarycurrenttype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsSecondaryCurrentType
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiondnssecondarytype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionDnsSecondaryType
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionentry:
+    syntax: Hm2WwanDataConnectionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionTable
+          field: hm2WwanDataConnectionEntry
+  hm2wwandataconnectionfailedretry:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionFailedRetry
+          index_field: hm2WwanDataConnectionSimId
+    validation:
+      min: -1
+      max: 32
+  hm2wwandataconnectionfailedretrycurrent:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionFailedRetryCurrent
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionipaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionIpAddress
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionipaddresscurrent:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionIpAddressCurrent
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionipaddresscurrenttype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionIpAddressCurrentType
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionipaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionIpAddressType
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionmtu:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionMtu
+          index_field: hm2WwanDataConnectionSimId
+    validation:
+      min: 0
+      max: 1500
+  hm2wwandataconnectionpassword:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionPassword
+          index_field: hm2WwanDataConnectionSimId
+    validation:
+      min: 0
+      max: 64
+  hm2wwandataconnectionpdptype:
+    syntax: Hm2PdpType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionPdpType
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionsimid:
+    syntax: Hm2SimCardsListIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionSimId
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionstarttime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.27
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionStartTime
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionstatus:
+    syntax: Hm2ConnectionStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionStatus
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionstatuserrorreason:
+    syntax: HmLargeDisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionStatusErrorReason
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectiontable:
+    syntax: Hm2WwanDataConnectionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataGroup
+          field: hm2WwanDataConnectionTable
+  hm2wwandataconnectiontotaluptime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.29
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionTotalUpTime
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionuptime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.28
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionUpTime
+          index_field: hm2WwanDataConnectionSimId
+  hm2wwandataconnectionuser:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataConnectionEntry
+          field: hm2WwanDataConnectionUser
+          index_field: hm2WwanDataConnectionSimId
+    validation:
+      min: 0
+      max: 64
+  hm2wwandatapacketstatsentry:
+    syntax: Hm2WwanDataPacketStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsTable
+          field: hm2WwanDataPacketStatsEntry
+  hm2wwandatapacketstatsrxbytesok:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsRxBytesOk
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatsrxdropped:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsRxDropped
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatsrxerrors:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsRxErrors
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatsrxok:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsRxOk
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatsrxoverflows:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsRxOverflows
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatssimid:
+    syntax: Hm2SimCardsListIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsSimId
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatstable:
+    syntax: Hm2WwanDataPacketStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataGroup
+          field: hm2WwanDataPacketStatsTable
+  hm2wwandatapacketstatstxbytesok:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsTxBytesOk
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatstxdropped:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsTxDropped
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatstxerrors:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsTxErrors
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatstxok:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsTxOk
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandatapacketstatstxoverflows:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPacketStatsEntry
+          field: hm2WwanDataPacketStatsTxOverflows
+          index_field: hm2WwanDataPacketStatsSimId
+  hm2wwandataplancutoffthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanCutoffThreshold
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplanentry:
+    syntax: Hm2WwanDataPlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanTable
+          field: hm2WwanDataPlanEntry
+  hm2wwandataplanlastreset:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanLastReset
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplanlimitmeasureunit:
+    syntax: Hm2LimitUnit
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanLimitMeasureUnit
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplanmonthlylimit:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanMonthlyLimit
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplanmonthlyusagerx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanMonthlyUsageRx
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplanmonthlyusagetx:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanMonthlyUsageTx
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplanreset:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanReset
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplanresetday:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanResetDay
+          index_field: hm2WwanDataPlanSimId
+    validation:
+      min: 0
+      max: 31
+  hm2wwandataplansimid:
+    syntax: Hm2SimCardsListIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanSimId
+          index_field: hm2WwanDataPlanSimId
+  hm2wwandataplantable:
+    syntax: Hm2WwanDataPlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataGroup
+          field: hm2WwanDataPlanTable
+  hm2wwandataplanwarningthreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanDataPlanEntry
+          field: hm2WwanDataPlanWarningThreshold
+          index_field: hm2WwanDataPlanSimId
+    validation:
+      min: 0
+      max: 100
+  hm2wwanfailovercycle:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanFailoverCycle
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanfailovertechnologylevel:
+    syntax: Hm2TechnologyLevel
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanFailoverTechnologyLevel
+  hm2wwanltepersistence:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanLtePersistence
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanltepersistenceinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanLtePersistenceInterval
+    validation:
+      min: 0
+      max: 3600
+  hm2wwanmodemimei:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanModemInformationGroup
+          field: hm2WwanModemImei
+    validation:
+      min: 0
+      max: 20
+  hm2wwanmodemmanufacturer:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanModemInformationGroup
+          field: hm2WwanModemManufacturer
+    validation:
+      min: 0
+      max: 128
+  hm2wwanmodemmodel:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanModemInformationGroup
+          field: hm2WwanModemModel
+    validation:
+      min: 0
+      max: 64
+  hm2wwanmodemoperationalstate:
+    syntax: Hm2ModemOperationalState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanModemInformationGroup
+          field: hm2WwanModemOperationalState
+  hm2wwanmodemresetfailoverregistration:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanModemResetFailoverRegistration
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwanmodemrevision:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.4.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanModemInformationGroup
+          field: hm2WwanModemRevision
+    validation:
+      min: 0
+      max: 128
+  hm2wwansettrap:
+    syntax: Hm2TrapBits
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.1.14
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanGeneralGroup
+          field: hm2WwanSetTrap
+  hm2wwansimcardadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardAdminStatus
+          index_field: hm2WwanSimCardSimId
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwansimcardentry:
+    syntax: Hm2WwanSimCardEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardTable
+          field: hm2WwanSimCardEntry
+  hm2wwansimcardiccid:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardIccid
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardimsi:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardImsi
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardpin1:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardPin1
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardpin1mode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardPin1Mode
+          index_field: hm2WwanSimCardSimId
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwansimcardpin1status:
+    syntax: Hm2Pin1Status
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardPin1Status
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardpin1unblocktries:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardPin1UnblockTries
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardpin1verifytries:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardPin1VerifyTries
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardpuk1:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardPuk1
+          index_field: hm2WwanSimCardSimId
+    validation:
+      min: 0
+      max: 8
+  hm2wwansimcardroamingmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardRoamingMode
+          index_field: hm2WwanSimCardSimId
+    validation:
+      allowed:
+      - true
+      - false
+  hm2wwansimcardrole:
+    syntax: Hm2SimCardRole
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardRole
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardrolecurrent:
+    syntax: Hm2SimCardRole
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardRoleCurrent
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardsetactive:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardSetActive
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardsimid:
+    syntax: Hm2SimCardsListIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardSimId
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardstatus:
+    syntax: Hm2SimCardStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardEntry
+          field: hm2WwanSimCardStatus
+          index_field: hm2WwanSimCardSimId
+  hm2wwansimcardtable:
+    syntax: Hm2WwanSimCardEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.125.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-WWAN-MIB
+          table: hm2WwanSimCardGroup
+          field: hm2WwanSimCardTable

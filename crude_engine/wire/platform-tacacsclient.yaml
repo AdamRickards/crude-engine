@@ -1,0 +1,274 @@
+version: 2.6.0
+feature: platform-tacacsclient
+schemas:
+  read_platform-tacacsclient:
+    type: dict
+    defaults:
+      hm2agenttacacscmdaccountingmode: 0
+      hm2agenttacacscmdauthorizationadminstatus: false
+      hm2agenttacacsglobalkey: ''
+      hm2agenttacacsglobaltimeout: 0
+      hm2agenttacacskey: ''
+      hm2agenttacacsportnumber: 0
+      hm2agenttacacspriority: 0
+      hm2agenttacacsserverentry: ''
+      hm2agenttacacsserveripaddrtype: ''
+      hm2agenttacacsserveripaddress: ''
+      hm2agenttacacsserverlinklocalintf: 0
+      hm2agenttacacsserverstatus: 0
+      hm2agenttacacsservertable: ''
+      hm2agenttacacssourceinterface: 0
+      hm2agenttacacstimeout: 0
+attributes:
+  hm2agenttacacscmdaccountingmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.249.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsAccountingGroup
+          field: hm2AgentTacacsCmdAccountingMode
+  hm2agenttacacscmdauthorizationadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.248.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsCmdAuthorizationGroup
+          field: hm2AgentTacacsCmdAuthorizationAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2agenttacacsglobalkey:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsGlobalConfigGroup
+          field: hm2AgentTacacsGlobalKey
+    validation:
+      min: 0
+      max: 128
+  hm2agenttacacsglobaltimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsGlobalConfigGroup
+          field: hm2AgentTacacsGlobalTimeout
+    validation:
+      min: 1
+      max: 30
+  hm2agenttacacskey:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsKey
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: &id001
+          - hm2AgentTacacsServerIpAddrType
+          - hm2AgentTacacsServerIpAddress
+    validation:
+      min: 0
+      max: 128
+  hm2agenttacacsportnumber:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsPortNumber
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 65535
+  hm2agenttacacspriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsPriority
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 65535
+  hm2agenttacacsserverentry:
+    syntax: Hm2AgentTacacsServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerTable
+          field: hm2AgentTacacsServerEntry
+  hm2agenttacacsserveripaddrtype:
+    syntax: InetAddressType
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsServerIpAddrType
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: *id001
+  hm2agenttacacsserveripaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsServerIpAddress
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: *id001
+  hm2agenttacacsserverlinklocalintf:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsServerLinkLocalIntf
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: *id001
+  hm2agenttacacsserverstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsServerStatus
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: *id001
+    create_method: createAndGo
+    index_type: inet_address
+  hm2agenttacacsservertable:
+    syntax: Hm2AgentTacacsServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsClientObjects
+          field: hm2AgentTacacsServerTable
+  hm2agenttacacssourceinterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsGlobalConfigGroup
+          field: hm2AgentTacacsSourceInterface
+  hm2agenttacacstimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.18.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-TACACSCLIENT-MIB
+          table: hm2AgentTacacsServerEntry
+          field: hm2AgentTacacsTimeOut
+          index_field: hm2AgentTacacsServerIpAddress
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 30

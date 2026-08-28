@@ -1,0 +1,155 @@
+version: 2.8.0
+feature: remote_auth
+description: RADIUS, TACACS+, and LDAP remote authentication
+methods:
+  get_remote_auth:
+    type: dict
+    defaults:
+      radius_enabled: false
+      radius_timeout: 5
+      radius_retransmits: 3
+      tacacs_accounting: none
+      ldap_enabled: false
+      radius_servers: {}
+      ldap_servers: {}
+      tacacs_servers: {}
+    sub_tables:
+      radius_servers:
+        primary_key: address
+        field_map:
+          address: address
+          port: radius_port
+          secret: secret
+        defaults:
+          address: ''
+          port: 1812
+          secret: ''
+      ldap_servers:
+        primary_key: ldap_address
+        field_map:
+          address: ldap_address
+          port: ldap_port
+        defaults:
+          address: ''
+          port: 636
+      tacacs_servers:
+        primary_key: tacacs_address
+        field_map:
+          address: tacacs_address
+          port: tacacs_port
+          timeout: tacacs_timeout
+        defaults:
+          address: ''
+          port: 49
+          timeout: 5
+  set_remote_auth:
+    type: upsert
+  create_radius_server:
+    type: create
+    row_status: radius_row_status
+    index_key: radius_index
+    required: [address]
+    defaults:
+      radius_addr_type: 1
+      radius_port: 1812
+  delete_radius_server:
+    type: delete
+    row_status: radius_row_status
+    index_key: radius_index
+  create_ldap_server:
+    type: create
+    row_status: ldap_row_status
+    index_key: ldap_index
+    required: [ldap_address]
+    defaults:
+      ldap_addr_type: 1
+      ldap_port: 636
+  delete_ldap_server:
+    type: delete
+    row_status: ldap_row_status
+    index_key: ldap_index
+  create_tacacs_server:
+    type: create
+    row_status: tacacs_row_status
+    required: [tacacs_address]
+    defaults:
+      tacacs_addr_type: 1
+  delete_tacacs_server:
+    type: delete
+    row_status: tacacs_row_status
+    defaults:
+      tacacs_addr_type: 1
+attributes:
+  # --- Scalars ---
+  radius_enabled:
+    wire: hm2agentradiusaccountingmode
+    source: platform-radius
+  radius_timeout:
+    wire: hm2agentradiustimeout
+    source: platform-radius
+  radius_retransmits:
+    wire: hm2agentradiusmaxtransmit
+    source: platform-radius
+  tacacs_accounting:
+    wire: hm2agenttacacscmdaccountingmode
+    source: platform-tacacsclient
+    value_map:
+      '1': none
+      '2': stop-only
+  tacacs_timeout:
+    wire: hm2agenttacacstimeout
+    source: platform-tacacsclient
+  ldap_enabled:
+    wire: hm2ldapclientadminstate
+    source: remote-authentication
+  # --- RADIUS server table ---
+  radius_index:
+    wire: hm2agentradiusserverindex
+    source: platform-radius
+  address:
+    wire: hm2agentradiusserverinetaddress
+    source: platform-radius
+  radius_addr_type:
+    wire: hm2agentradiusserverinetaddrtype
+    source: platform-radius
+  radius_port:
+    wire: hm2agentradiusserverport
+    source: platform-radius
+  secret:
+    wire: hm2agentradiusserversecret
+    source: platform-radius
+  radius_row_status:
+    wire: hm2agentradiusserverrowstatus
+    source: platform-radius
+    access: crud
+  # --- LDAP server table ---
+  ldap_index:
+    wire: hm2ldapclientserverindex
+    source: remote-authentication
+  ldap_address:
+    wire: hm2ldapclientserveraddr
+    source: remote-authentication
+  ldap_addr_type:
+    wire: hm2ldapclientserveraddrtype
+    source: remote-authentication
+  ldap_port:
+    wire: hm2ldapclientserverport
+    source: remote-authentication
+  ldap_row_status:
+    wire: hm2ldapclientserverrowstatus
+    source: remote-authentication
+    access: crud
+  # --- TACACS+ server table (IP-keyed, not integer-indexed) ---
+  tacacs_address:
+    wire: hm2agenttacacsserveripaddress
+    source: platform-tacacsclient
+  tacacs_addr_type:
+    wire: hm2agenttacacsserveripaddrtype
+    source: platform-tacacsclient
+  tacacs_port:
+    wire: hm2agenttacacsportnumber
+    source: platform-tacacsclient
+  tacacs_row_status:
+    wire: hm2agenttacacsserverstatus
+    source: platform-tacacsclient
+    access: crud

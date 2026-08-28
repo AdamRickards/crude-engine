@@ -1,0 +1,367 @@
+version: 2.6.0
+feature: macsec
+schemas:
+  read_macsec:
+    type: dict
+    defaults:
+      hm2macsecclearmacsecportstats: 0
+      hm2macsecclearmacsecstats: 0
+      hm2macsecclearmkaportstats: 0
+      hm2macsecclearmkastats: 0
+      hm2macsecclearportstatsentry: ''
+      hm2macsecclearportstatsifindex: 0
+      hm2macsecclearportstatstable: ''
+      hm2macsecmkasessionentry: ''
+      hm2macsecmkasessionkayifmacaddress: ''
+      hm2macsecmkasessionkayparticipantalgorithmagility: ''
+      hm2macsecmkasessionkayparticipantlatestsakan: 0
+      hm2macsecmkasessionkayparticipantlatestsakki: ''
+      hm2macsecmkasessionkayparticipantlatestsakkn: 0
+      hm2macsecmkasessionkayparticipantlatestsakstatus: 0
+      hm2macsecmkasessionkayparticipantlivepeercount: 0
+      hm2macsecmkasessionkayparticipantmi: ''
+      hm2macsecmkasessionkayparticipantmn: 0
+      hm2macsecmkasessionkayparticipantpotentialpeercount: 0
+      hm2macsecmkasessiontable: ''
+      hm2macsecportentry: ''
+      hm2macsecportifindex: 0
+      hm2macsecportlogicalport: 0
+      hm2macsecporttable: ''
+attributes:
+  hm2macsecclearmacsecportstats:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.3.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecClearPortStatsEntry
+          field: hm2MACsecClearMacsecPortStats
+          index_field: hm2MACsecClearPortStatsIfIndex
+  hm2macsecclearmacsecstats:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecClearStatsGroup
+          field: hm2MACsecClearMacsecStats
+  hm2macsecclearmkaportstats:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.3.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecClearPortStatsEntry
+          field: hm2MACsecClearMkaPortStats
+          index_field: hm2MACsecClearPortStatsIfIndex
+  hm2macsecclearmkastats:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecClearStatsGroup
+          field: hm2MACsecClearMkaStats
+  hm2macsecclearportstatsentry:
+    syntax: Hm2MACsecClearPortStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.3.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecClearPortStatsTable
+          field: hm2MACsecClearPortStatsEntry
+  hm2macsecclearportstatsifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.3.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecClearPortStatsEntry
+          field: hm2MACsecClearPortStatsIfIndex
+          index_field: hm2MACsecClearPortStatsIfIndex
+  hm2macsecclearportstatstable:
+    syntax: Hm2MACsecClearPortStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecClearStatsGroup
+          field: hm2MACsecClearPortStatsTable
+  hm2macsecmkasessionentry:
+    syntax: Hm2MACsecMkaSessionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionTable
+          field: hm2MACsecMkaSessionEntry
+  hm2macsecmkasessionkayifmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayIfMACAddress
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantalgorithmagility:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantAlgorithmAgility
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantlatestsakan:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantLatestSAKAN
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantlatestsakki:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantLatestSAKKI
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantlatestsakkn:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantLatestSAKKN
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantlatestsakstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantLatestSAKStatus
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantlivepeercount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantLivePeerCount
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantmi:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantMI
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantmn:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantMN
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessionkayparticipantpotentialpeercount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionEntry
+          field: hm2MACsecMkaSessionKayParticipantPotentialPeerCount
+          index_field: hm2MACsecPortLogicalPort
+  hm2macsecmkasessiontable:
+    syntax: Hm2MACsecMkaSessionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecMkaSessionGroup
+          field: hm2MACsecMkaSessionTable
+  hm2macsecportentry:
+    syntax: Hm2MACsecPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecPortTable
+          field: hm2MACsecPortEntry
+  hm2macsecportifindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecPortEntry
+          field: hm2MACsecPortIfIndex
+          index_field: hm2MACsecPortIfIndex
+  hm2macsecportlogicalport:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecPortEntry
+          field: hm2MACsecPortLogicalPort
+          index_field: hm2MACsecPortIfIndex
+  hm2macsecporttable:
+    syntax: Hm2MACsecPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.75.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MACSEC-MIB
+          table: hm2MACsecPortGroup
+          field: hm2MACsecPortTable

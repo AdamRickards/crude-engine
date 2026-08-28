@@ -1,0 +1,23 @@
+version: 2.7.0
+feature: poe
+description: Power over Ethernet (PoE) status and configuration
+methods:
+  get_poe:
+    type: dict
+    primary_key: name
+    defaults:
+      enabled: false
+      power_limit: 0.0
+      status: searching
+  set_poe:
+    type: upsert
+attributes:
+  enabled:
+    wire: hm2poemgmtportadminenable
+    source: poe
+  power_limit:
+    wire: hm2poemgmtportpowerlimit
+    source: poe
+  status:
+    wire: hm2poemgmtportdetectionstatus
+    source: poe

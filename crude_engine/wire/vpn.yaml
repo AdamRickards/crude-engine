@@ -1,0 +1,1784 @@
+version: 2.6.0
+feature: vpn
+schemas:
+  read_vpn:
+    type: dict
+    defaults:
+      hm2vpncertificatecertuploaddate: ''
+      hm2vpncertificateenddate: ''
+      hm2vpncertificateentry: ''
+      hm2vpncertificatefilename: ''
+      hm2vpncertificateindex: 0
+      hm2vpncertificateissuer: ''
+      hm2vpncertificatenoconnections: 0
+      hm2vpncertificateprivatekeyfile: ''
+      hm2vpncertificateprivatekeystatus: 0
+      hm2vpncertificatestartdate: ''
+      hm2vpncertificatesubject: ''
+      hm2vpncertificatetable: ''
+      hm2vpncertificatetype: 0
+      hm2vpncertificateuploadpassphrase: ''
+      hm2vpncertificateuseractions: 0
+      hm2vpnconnactivemax: 0
+      hm2vpnconndebug: []
+      hm2vpnconndesc: ''
+      hm2vpnconnentry: ''
+      hm2vpnconnikealgdh: 0
+      hm2vpnconnikealgencr: 0
+      hm2vpnconnikealgmac: 0
+      hm2vpnconnikeauthcertca: ''
+      hm2vpnconnikeauthcertlocal: ''
+      hm2vpnconnikeauthcertremote: ''
+      hm2vpnconnikeauthlocid: ''
+      hm2vpnconnikeauthloctype: 0
+      hm2vpnconnikeauthmode: 0
+      hm2vpnconnikeauthpasswd: ''
+      hm2vpnconnikeauthprivkey: ''
+      hm2vpnconnikeauthpsk: ''
+      hm2vpnconnikeauthremid: ''
+      hm2vpnconnikeauthremtype: 0
+      hm2vpnconnikeauthtype: 0
+      hm2vpnconnikedpdtimeout: 0
+      hm2vpnconnikelifetime: 0
+      hm2vpnconnikelocaladdr: ''
+      hm2vpnconnikereauth: false
+      hm2vpnconnikeremoteaddr: ''
+      hm2vpnconnikestartup: 0
+      hm2vpnconnikeversion: 0
+      hm2vpnconnindex: 0
+      hm2vpnconninfoentry: ''
+      hm2vpnconninfoestablished: 0
+      hm2vpnconninfoikeinitiatorspi: ''
+      hm2vpnconninfoikereauth: 0
+      hm2vpnconninfoikerekeying: 0
+      hm2vpnconninfoikeresponderspi: ''
+      hm2vpnconninfoikeproposal: ''
+      hm2vpnconninfoikeversionused: 0
+      hm2vpnconninfoipsecinbytes: 0
+      hm2vpnconninfoipsecinpackets: 0
+      hm2vpnconninfoipsecinspi: ''
+      hm2vpnconninfoipsecinuse: 0
+      hm2vpnconninfoipsecnumtunnel: 0
+      hm2vpnconninfoipsecoutbytes: 0
+      hm2vpnconninfoipsecoutpackets: 0
+      hm2vpnconninfoipsecoutspi: ''
+      hm2vpnconninfoipsecoutuse: 0
+      hm2vpnconninfoipsecproposal: ''
+      hm2vpnconninfoipsecrekeying: 0
+      hm2vpnconninfolocalhost: ''
+      hm2vpnconninforemotehost: ''
+      hm2vpnconninfotselindex: 0
+      hm2vpnconninfotable: ''
+      hm2vpnconninfotunnelentry: ''
+      hm2vpnconninfotunnelinbytes: 0
+      hm2vpnconninfotunnelinpackets: 0
+      hm2vpnconninfotunnelinspi: ''
+      hm2vpnconninfotunnelinuse: 0
+      hm2vpnconninfotunnelindex: 0
+      hm2vpnconninfotunnellocalsel: ''
+      hm2vpnconninfotunneloutbytes: 0
+      hm2vpnconninfotunneloutpackets: 0
+      hm2vpnconninfotunneloutspi: ''
+      hm2vpnconninfotunneloutuse: 0
+      hm2vpnconninfotunnelrekeying: 0
+      hm2vpnconninfotunnelremotesel: ''
+      hm2vpnconninfotunnelstatus: 0
+      hm2vpnconninfotunneltable: ''
+      hm2vpnconnipsecalgdh: 0
+      hm2vpnconnipsecalgencr: 0
+      hm2vpnconnipsecalgmac: 0
+      hm2vpnconnipseclifetime: 0
+      hm2vpnconnipsecmode: 0
+      hm2vpnconnlasterror: ''
+      hm2vpnconnmargintime: 0
+      hm2vpnconnmax: 0
+      hm2vpnconnnext: 0
+      hm2vpnconnoperstatus: 0
+      hm2vpnconnrowstatus: 0
+      hm2vpnconntable: ''
+      hm2vpntrafficseldesc: ''
+      hm2vpntrafficseldstaddr: ''
+      hm2vpntrafficseldstrest: ''
+      hm2vpntrafficselentry: ''
+      hm2vpntrafficselindex: 0
+      hm2vpntrafficselrowstatus: 0
+      hm2vpntrafficselsrcaddr: ''
+      hm2vpntrafficselsrcrest: ''
+      hm2vpntrafficseltable: ''
+attributes:
+  hm2vpncertificatecertuploaddate:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateCertUploadDate
+          index_field: hm2VpnCertificateIndex
+  hm2vpncertificateenddate:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateEndDate
+          index_field: hm2VpnCertificateIndex
+  hm2vpncertificateentry:
+    syntax: Hm2VpnCertificateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateTable
+          field: hm2VpnCertificateEntry
+  hm2vpncertificatefilename:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateFileName
+          index_field: hm2VpnCertificateIndex
+    validation:
+      min: 0
+      max: 64
+  hm2vpncertificateindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateIndex
+          index_field: hm2VpnCertificateIndex
+    validation:
+      min: 1
+      max: 100
+  hm2vpncertificateissuer:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateIssuer
+          index_field: hm2VpnCertificateIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpncertificatenoconnections:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateNoConnections
+          index_field: hm2VpnCertificateIndex
+    validation:
+      min: 0
+      max: 256
+  hm2vpncertificateprivatekeyfile:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificatePrivateKeyFile
+          index_field: hm2VpnCertificateIndex
+    validation:
+      min: 0
+      max: 64
+  hm2vpncertificateprivatekeystatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificatePrivateKeyStatus
+          index_field: hm2VpnCertificateIndex
+  hm2vpncertificatestartdate:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateStartDate
+          index_field: hm2VpnCertificateIndex
+  hm2vpncertificatesubject:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateSubject
+          index_field: hm2VpnCertificateIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpncertificatetable:
+    syntax: Hm2VpnCertificateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateGroup
+          field: hm2VpnCertificateTable
+  hm2vpncertificatetype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateType
+          index_field: hm2VpnCertificateIndex
+  hm2vpncertificateuploadpassphrase:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateGroup
+          field: hm2VpnCertificateUploadPassphrase
+    validation:
+      min: 0
+      max: 128
+  hm2vpncertificateuseractions:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.4.10.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnCertificateEntry
+          field: hm2VpnCertificateUserActions
+          index_field: hm2VpnCertificateIndex
+  hm2vpnconnactivemax:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnectionGroup
+          field: hm2VpnConnActiveMax
+    validation:
+      min: 0
+      max: 256
+  hm2vpnconndebug:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.33
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnDebug
+          index_field: hm2VpnConnIndex
+    bit_map:
+      0: informational
+      1: unhandled
+  hm2vpnconndesc:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.31
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnDesc
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnentry:
+    syntax: Hm2VpnConnEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnTable
+          field: hm2VpnConnEntry
+  hm2vpnconnikealgdh:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAlgDh
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikealgencr:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAlgEncr
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikealgmac:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAlgMac
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikeauthcertca:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthCertCA
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthcertlocal:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthCertLocal
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthcertremote:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthCertRemote
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthlocid:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthLocId
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthloctype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthLocType
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikeauthmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthMode
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikeauthpasswd:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthPasswd
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthprivkey:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthPrivKey
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthpsk:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthPsk
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthremid:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthRemId
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikeauthremtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthRemType
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikeauthtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeAuthType
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikedpdtimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeDpdTimeout
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 86400
+  hm2vpnconnikelifetime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeLifetime
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 300
+      max: 86400
+  hm2vpnconnikelocaladdr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeLocalAddr
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikereauth:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeReAuth
+          index_field: hm2VpnConnIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2vpnconnikeremoteaddr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeRemoteAddr
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconnikestartup:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeStartup
+          index_field: hm2VpnConnIndex
+  hm2vpnconnikeversion:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIkeVersion
+          index_field: hm2VpnConnIndex
+  hm2vpnconnindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIndex
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 1
+      max: 256
+  hm2vpnconninfoentry:
+    syntax: Hm2VpnConnInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTable
+          field: hm2VpnConnInfoEntry
+  hm2vpnconninfoestablished:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoEstablished
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoikeinitiatorspi:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIKEInitiatorSPI
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 32
+  hm2vpnconninfoikereauth:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIKEReauth
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoikerekeying:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIKERekeying
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoikeresponderspi:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIKEResponderSPI
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 32
+  hm2vpnconninfoikeproposal:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIkeProposal
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconninfoikeversionused:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIkeVersionUsed
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecinbytes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecInBytes
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecinpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecInPackets
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecinspi:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecInSPI
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 16
+  hm2vpnconninfoipsecinuse:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecInUse
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecnumtunnel:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecNumTunnel
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecoutbytes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecOutBytes
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecoutpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecOutPackets
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecoutspi:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecOutSPI
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 16
+  hm2vpnconninfoipsecoutuse:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecOutUse
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfoipsecproposal:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecProposal
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconninfoipsecrekeying:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoIpsecRekeying
+          index_field: hm2VpnConnIndex
+  hm2vpnconninfolocalhost:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoLocalHost
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconninforemotehost:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoEntry
+          field: hm2VpnConnInfoRemoteHost
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpnconninfotselindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTSelIndex
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: &id001
+          - hm2VpnConnIndex
+          - hm2VpnConnInfoTunnelIndex
+    validation:
+      min: 0
+      max: 16
+  hm2vpnconninfotable:
+    syntax: Hm2VpnConnInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.15
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnectionGroup
+          field: hm2VpnConnInfoTable
+  hm2vpnconninfotunnelentry:
+    syntax: Hm2VpnConnInfoTunnelEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelTable
+          field: hm2VpnConnInfoTunnelEntry
+  hm2vpnconninfotunnelinbytes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelInBytes
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunnelinpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelInPackets
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunnelinspi:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelInSPI
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 16
+  hm2vpnconninfotunnelinuse:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelInUse
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunnelindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelIndex
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 32
+  hm2vpnconninfotunnellocalsel:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelLocalSel
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 64
+  hm2vpnconninfotunneloutbytes:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelOutBytes
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunneloutpackets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelOutPackets
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunneloutspi:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelOutSPI
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 16
+  hm2vpnconninfotunneloutuse:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelOutUse
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunnelrekeying:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelRekeying
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunnelremotesel:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelRemoteSel
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 64
+  hm2vpnconninfotunnelstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnInfoTunnelEntry
+          field: hm2VpnConnInfoTunnelStatus
+          index_field: hm2VpnConnInfoTunnelIndex
+          index_fields: *id001
+  hm2vpnconninfotunneltable:
+    syntax: Hm2VpnConnInfoTunnelEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.16
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnectionGroup
+          field: hm2VpnConnInfoTunnelTable
+  hm2vpnconnipsecalgdh:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.27
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIpsecAlgDh
+          index_field: hm2VpnConnIndex
+  hm2vpnconnipsecalgencr:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.29
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIpsecAlgEncr
+          index_field: hm2VpnConnIndex
+  hm2vpnconnipsecalgmac:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.28
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIpsecAlgMac
+          index_field: hm2VpnConnIndex
+  hm2vpnconnipseclifetime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIpsecLifetime
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 300
+      max: 28800
+  hm2vpnconnipsecmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnIpsecMode
+          index_field: hm2VpnConnIndex
+  hm2vpnconnlasterror:
+    syntax: HmLargeDisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.32
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnLastError
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 0
+      max: 512
+  hm2vpnconnmargintime:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnMargintime
+          index_field: hm2VpnConnIndex
+    validation:
+      min: 1
+      max: 1800
+  hm2vpnconnmax:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnectionGroup
+          field: hm2VpnConnMax
+    validation:
+      min: 0
+      max: 256
+  hm2vpnconnnext:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnectionGroup
+          field: hm2VpnConnNext
+    validation:
+      min: 0
+      max: 256
+  hm2vpnconnoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.30
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnOperStatus
+          index_field: hm2VpnConnIndex
+  hm2vpnconnrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10.1.34
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnEntry
+          field: hm2VpnConnRowStatus
+          index_field: hm2VpnConnIndex
+    create_method: createAndWait
+  hm2vpnconntable:
+    syntax: Hm2VpnConnEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnConnectionGroup
+          field: hm2VpnConnTable
+  hm2vpntrafficseldesc:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelEntry
+          field: hm2VpnTrafficSelDesc
+          index_field: hm2VpnTrafficSelIndex
+          index_fields: &id002
+          - hm2VpnConnIndex
+          - hm2VpnTrafficSelIndex
+    validation:
+      min: 0
+      max: 128
+  hm2vpntrafficseldstaddr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelEntry
+          field: hm2VpnTrafficSelDstAddr
+          index_field: hm2VpnTrafficSelIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 32
+  hm2vpntrafficseldstrest:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelEntry
+          field: hm2VpnTrafficSelDstRest
+          index_field: hm2VpnTrafficSelIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 32
+  hm2vpntrafficselentry:
+    syntax: Hm2VpnTrafficSelEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelTable
+          field: hm2VpnTrafficSelEntry
+  hm2vpntrafficselindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelEntry
+          field: hm2VpnTrafficSelIndex
+          index_field: hm2VpnTrafficSelIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 16
+  hm2vpntrafficselrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelEntry
+          field: hm2VpnTrafficSelRowStatus
+          index_field: hm2VpnTrafficSelIndex
+          index_fields: *id002
+    create_method: createAndWait
+  hm2vpntrafficselsrcaddr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelEntry
+          field: hm2VpnTrafficSelSrcAddr
+          index_field: hm2VpnTrafficSelIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 32
+  hm2vpntrafficselsrcrest:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelEntry
+          field: hm2VpnTrafficSelSrcRest
+          index_field: hm2VpnTrafficSelIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 32
+  hm2vpntrafficseltable:
+    syntax: Hm2VpnTrafficSelEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.120.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-VPN-MIB
+          table: hm2VpnTrafficSelGroup
+          field: hm2VpnTrafficSelTable

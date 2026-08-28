@@ -1,0 +1,131 @@
+version: 2.6.0
+feature: mac-notification
+schemas:
+  read_mac-notification:
+    type: dict
+    defaults:
+      hm2macnotifyadminstate: false
+      hm2macnotifyinterfaceadminstate: false
+      hm2macnotifyinterfaceentry: ''
+      hm2macnotifyinterfacemacaddr: ''
+      hm2macnotifyinterfacemacstatus: 0
+      hm2macnotifyinterfacetable: ''
+      hm2macnotifyinterval: 0
+attributes:
+  hm2macnotifyadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.35.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MAC-NOTIFICATION-MIB
+          table: hm2MACNotifyMibObjects
+          field: hm2MACNotifyAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2macnotifyinterfaceadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.35.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-MAC-NOTIFICATION-MIB
+          table: hm2MACNotifyInterfaceEntry
+          field: hm2MACNotifyInterfaceAdminState
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2macnotifyinterfaceentry:
+    syntax: Hm2MACNotifyInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.35.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MAC-NOTIFICATION-MIB
+          table: hm2MACNotifyInterfaceTable
+          field: hm2MACNotifyInterfaceEntry
+  hm2macnotifyinterfacemacaddr:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.35.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-MAC-NOTIFICATION-MIB
+          table: hm2MACNotifyInterfaceEntry
+          field: hm2MACNotifyInterfaceMACAddr
+          index_field: ifIndex
+  hm2macnotifyinterfacemacstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.35.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-MAC-NOTIFICATION-MIB
+          table: hm2MACNotifyInterfaceEntry
+          field: hm2MACNotifyInterfaceMACStatus
+          index_field: ifIndex
+    validation:
+      allowed:
+      - other
+      - added
+      - removed
+  hm2macnotifyinterfacetable:
+    syntax: Hm2MACNotifyInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.35.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-MAC-NOTIFICATION-MIB
+          table: hm2MACNotifyMibObjects
+          field: hm2MACNotifyInterfaceTable
+  hm2macnotifyinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.35.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MAC-NOTIFICATION-MIB
+          table: hm2MACNotifyMibObjects
+          field: hm2MACNotifyInterval
+    validation:
+      min: 0
+      max: 2147483647

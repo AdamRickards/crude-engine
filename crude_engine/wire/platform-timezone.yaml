@@ -1,0 +1,364 @@
+version: 2.6.0
+feature: platform-timezone
+schemas:
+  read_platform-timezone:
+    type: dict
+    defaults:
+      hm2agentstrecurringendingday: 0
+      hm2agentstrecurringendingmonth: 0
+      hm2agentstrecurringendingtime: ''
+      hm2agentstrecurringendingweek: 0
+      hm2agentstrecurringstartingday: 0
+      hm2agentstrecurringstartingmonth: 0
+      hm2agentstrecurringstartingtime: ''
+      hm2agentstrecurringstartingweek: 0
+      hm2agentstrecurringzoneacronym: ''
+      hm2agentstrecurringzoneoffset: 0
+      hm2agentsummertimemode: 0
+      hm2agentsystemdate: ''
+      hm2agentsystemsummertimestate: 0
+      hm2agentsystemtime: ''
+      hm2agentsystemtimezoneacronym: ''
+      hm2agenttimezoneacronym: ''
+      hm2agenttimezonehoursoffset: 0
+      hm2agenttimezoneminutesoffset: 0
+attributes:
+  hm2agentstrecurringendingday:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.6
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringEndingDay
+    validation:
+      allowed:
+      - none
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+  hm2agentstrecurringendingmonth:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.7
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringEndingMonth
+    validation:
+      allowed:
+      - none
+      - jan
+      - feb
+      - mar
+      - apr
+      - may
+      - jun
+      - jul
+      - aug
+      - sep
+      - oct
+      - nov
+      - dec
+  hm2agentstrecurringendingtime:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.8
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringEndingTime
+  hm2agentstrecurringendingweek:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringEndingWeek
+    validation:
+      allowed:
+      - none
+      - first
+      - second
+      - third
+      - fourth
+      - last
+  hm2agentstrecurringstartingday:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringStartingDay
+    validation:
+      allowed:
+      - none
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+  hm2agentstrecurringstartingmonth:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringStartingMonth
+    validation:
+      allowed:
+      - none
+      - jan
+      - feb
+      - mar
+      - apr
+      - may
+      - jun
+      - jul
+      - aug
+      - sep
+      - oct
+      - nov
+      - dec
+  hm2agentstrecurringstartingtime:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringStartingTime
+  hm2agentstrecurringstartingweek:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringStartingWeek
+    validation:
+      allowed:
+      - none
+      - first
+      - second
+      - third
+      - fourth
+      - last
+  hm2agentstrecurringzoneacronym:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.9
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringZoneAcronym
+    validation:
+      min: 0
+      max: 4
+  hm2agentstrecurringzoneoffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeRecurringGroup
+          field: hm2AgentStRecurringZoneOffset
+    validation:
+      min: 0
+      max: 1440
+  hm2agentsummertimemode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSummerTimeGroup
+          field: hm2AgentSummerTimeMode
+    validation:
+      allowed:
+      - noSummertime
+      - recurring
+      - recurringEu
+      - recurringUsa
+  hm2agentsystemdate:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSystemTimeGroup
+          field: hm2AgentSystemDate
+  hm2agentsystemsummertimestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSystemTimeGroup
+          field: hm2AgentSystemSummerTimeState
+  hm2agentsystemtime:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSystemTimeGroup
+          field: hm2AgentSystemTime
+  hm2agentsystemtimezoneacronym:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentSystemTimeGroup
+          field: hm2AgentSystemTimeZoneAcronym
+  hm2agenttimezoneacronym:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentTimeZoneGroup
+          field: hm2AgentTimeZoneAcronym
+    validation:
+      min: 0
+      max: 4
+  hm2agenttimezonehoursoffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentTimeZoneGroup
+          field: hm2AgentTimeZoneHoursOffset
+    validation:
+      min: -12
+      max: 14
+  hm2agenttimezoneminutesoffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.42.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-TIMEZONE-MIB
+          table: hm2AgentTimeZoneGroup
+          field: hm2AgentTimeZoneMinutesOffset
+    validation:
+      min: 0
+      max: 59

@@ -1,0 +1,176 @@
+version: 2.6.0
+feature: mdns-sd
+schemas:
+  read_mdns-sd:
+    type: dict
+    defaults:
+      hm2mdnssdglobaladminstate: false
+      hm2mdnssdinventoryxstatusmonitorportentry: ''
+      hm2mdnssdinventoryxstatusmonitorportlink: false
+      hm2mdnssdinventoryxstatusmonitorportpoe: false
+      hm2mdnssdinventoryxstatusmonitorporttable: ''
+      hm2mdnssdinventoryxstatusoperglobalpoestate: 0
+      hm2mdnssdinventoryxstatusoperportlinkstate: 0
+      hm2mdnssdinventoryxstatusoperportpoestate: 0
+      hm2mdnssdinventoryxstatusoperpowersupplystate: 0
+      hm2mdnssdservicesadminstate: []
+attributes:
+  hm2mdnssdglobaladminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdConfigGroup
+          field: hm2MDnsSdGlobalAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2mdnssdinventoryxstatusmonitorportentry:
+    syntax: Hm2mDnsSdInventoryXstatusMonitorPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusMonitorPortTable
+          field: hm2MDnsSdInventoryXstatusMonitorPortEntry
+  hm2mdnssdinventoryxstatusmonitorportlink:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusMonitorPortEntry
+          field: hm2MDnsSdInventoryXstatusMonitorPortLink
+          index_field: hm2IfacePhysIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2mdnssdinventoryxstatusmonitorportpoe:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusMonitorPortEntry
+          field: hm2MDnsSdInventoryXstatusMonitorPortPoe
+          index_field: hm2IfacePhysIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2mdnssdinventoryxstatusmonitorporttable:
+    syntax: Hm2mDnsSdInventoryXstatusMonitorPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusObjects
+          field: hm2MDnsSdInventoryXstatusMonitorPortTable
+  hm2mdnssdinventoryxstatusoperglobalpoestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusOperState
+          field: hm2MDnsSdInventoryXstatusOperGlobalPoeState
+  hm2mdnssdinventoryxstatusoperportlinkstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusOperState
+          field: hm2MDnsSdInventoryXstatusOperPortLinkState
+  hm2mdnssdinventoryxstatusoperportpoestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusOperState
+          field: hm2MDnsSdInventoryXstatusOperPortPoeState
+  hm2mdnssdinventoryxstatusoperpowersupplystate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.2.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdInventoryXstatusOperState
+          field: hm2MDnsSdInventoryXstatusOperPowerSupplyState
+  hm2mdnssdservicesadminstate:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.95.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-MDNS-SD-MIB
+          table: hm2MDnsSdConfigGroup
+          field: hm2MDnsSdServicesAdminState
+    validation:
+      allowed:
+      - inventory
+    bit_map:
+      0: inventory

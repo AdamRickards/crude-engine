@@ -1,0 +1,40 @@
+# v2.7 Pipeline Step Registry
+# Declares all steps the engine can execute, with direction handlers.
+# Transition steps: bidirectional (ingress + egress)
+# Formatter steps: single direction only
+
+transition_steps:
+  wire:
+    egress: gather_from_wire
+    ingress: scatter_to_wire
+  source:
+    # Paired with wire: — together they form the source binding
+    egress: null
+    ingress: null
+  value_map:
+    egress: apply_value_map
+    ingress: reverse_value_map
+  key_map:
+    egress: apply_key_map
+    ingress: reverse_key_map
+  index_fields:
+    egress: decompose_index
+    ingress: encode_index
+  collect:
+    egress: apply_collect
+    ingress: null
+  regex:
+    egress: apply_regex
+    ingress: null
+
+formatter_steps:
+  compute:
+    direction: egress
+  assemble:
+    direction: ingress
+  lookup:
+    direction: egress
+  membership_of:
+    direction: egress
+  sub_tables:
+    direction: egress

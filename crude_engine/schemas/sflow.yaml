@@ -1,0 +1,86 @@
+version: 2.8.0
+feature: sflow
+description: sFlow receiver, per-port sampler, and per-port poller configuration
+methods:
+  get_sflow_receiver:
+    type: dict
+    primary_key: receiver_index
+    defaults:
+      receiver_index: 0
+      owner: ''
+      timeout: 0
+      max_datagram_size: 1400
+      address: ''
+      port: 6343
+      datagram_version: 5
+  set_sflow_receiver:
+    type: upsert
+  get_sflow_sampler:
+    type: dict
+    primary_key: sampler_datasource
+    key_map: ifindex
+    defaults:
+      sampler_datasource: ''
+      sampler_receiver: 0
+      sampling_rate: 0
+      max_header_size: 128
+  set_sflow_sampler:
+    type: upsert
+  get_sflow_poller:
+    type: dict
+    primary_key: poller_datasource
+    key_map: ifindex
+    defaults:
+      poller_datasource: ''
+      poller_receiver: 0
+      interval: 0
+  set_sflow_poller:
+    type: upsert
+attributes:
+  # --- Receiver table (sFlowRcvrEntry, indexed by sFlowRcvrIndex 1-8) ---
+  receiver_index:
+    wire: sflowrcvrindex
+    source: sflow
+  owner:
+    wire: sflowrcvrowner
+    source: sflow
+  timeout:
+    wire: sflowrcvrtimeout
+    source: sflow
+  max_datagram_size:
+    wire: sflowrcvrmaximumdatagramsize
+    source: sflow
+  address:
+    wire: sflowrcvraddress
+    source: sflow
+  port:
+    wire: sflowrcvrport
+    source: sflow
+  datagram_version:
+    wire: sflowrcvrdatagramversion
+    source: sflow
+  # --- Sampler table (sFlowFsEntry, per-port) ---
+  sampler_datasource:
+    wire: sflowfsdatasource
+    source: sflow
+    regex: '(\d+)$'
+  sampler_receiver:
+    wire: sflowfsreceiver
+    source: sflow
+  sampling_rate:
+    wire: sflowfspacketsamplingrate
+    source: sflow
+  max_header_size:
+    wire: sflowfsmaximumheadersize
+    source: sflow
+  # --- Poller table (sFlowCpEntry, per-port) ---
+  poller_datasource:
+    wire: sflowcpdatasource
+    source: sflow
+    regex: '\.(\d+)$'
+  poller_receiver:
+    wire: sflowcpreceiver
+    source: sflow
+  interval:
+    wire: sflowcpinterval
+    source: sflow

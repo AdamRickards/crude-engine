@@ -1,0 +1,1199 @@
+version: 2.6.0
+feature: dhcps
+schemas:
+  read_dhcps:
+    type: dict
+    defaults:
+      hm2dhcpserveraddrprobe: false
+      hm2dhcpservercounterbootpdroppednotservingsubnet: 0
+      hm2dhcpservercounterbootpdroppedunknownclients: 0
+      hm2dhcpservercounterbootpinvalids: 0
+      hm2dhcpservercounterbootpreplies: 0
+      hm2dhcpservercounterbootprequests: 0
+      hm2dhcpservercounterdhcpv4acks: 0
+      hm2dhcpservercounterdhcpv4declines: 0
+      hm2dhcpservercounterdhcpv4discovers: 0
+      hm2dhcpservercounterdhcpv4droppednotservingsubnet: 0
+      hm2dhcpservercounterdhcpv4droppedunknownclient: 0
+      hm2dhcpservercounterdhcpv4forcedrenews: 0
+      hm2dhcpservercounterdhcpv4informs: 0
+      hm2dhcpservercounterdhcpv4invalids: 0
+      hm2dhcpservercounterdhcpv4naks: 0
+      hm2dhcpservercounterdhcpv4offers: 0
+      hm2dhcpservercounterdhcpv4releases: 0
+      hm2dhcpservercounterdhcpv4requests: 0
+      hm2dhcpservercounterifentry: 0
+      hm2dhcpservercounterifindex: 0
+      hm2dhcpservercounteriftable: 0
+      hm2dhcpservercountermiscotherdhcpserver: 0
+      hm2dhcpserverifconfigentry: ''
+      hm2dhcpserverifconfigindex: 0
+      hm2dhcpserverifconfigmode: false
+      hm2dhcpserverifconfigtable: ''
+      hm2dhcpserverleaseaction: 0
+      hm2dhcpserverleasecircuitid: ''
+      hm2dhcpserverleaseclientid: ''
+      hm2dhcpserverleaseclientmacaddress: ''
+      hm2dhcpserverleaseentry: ''
+      hm2dhcpserverleasegateway: ''
+      hm2dhcpserverleaseifindex: 0
+      hm2dhcpserverleaseipaddress: ''
+      hm2dhcpserverleasepoolindex: 0
+      hm2dhcpserverleaseremoteid: ''
+      hm2dhcpserverleasestarttime: 0
+      hm2dhcpserverleasestate: 0
+      hm2dhcpserverleasetable: ''
+      hm2dhcpserverleasetimeremaining: 0
+      hm2dhcpserverleasevlanid: 0
+      hm2dhcpservermaxleaseentries: 0
+      hm2dhcpservermaxpoolentries: 0
+      hm2dhcpservermode: false
+      hm2dhcpserverpoolcircuitid: ''
+      hm2dhcpserverpoolclientarchitecture: 0
+      hm2dhcpserverpoolclientid: ''
+      hm2dhcpserverpoolendipaddress: ''
+      hm2dhcpserverpoolentry: ''
+      hm2dhcpserverpoolerrorstatus: 0
+      hm2dhcpserverpoolflags: []
+      hm2dhcpserverpoolgateway: ''
+      hm2dhcpserverpoolhirschmannclient: false
+      hm2dhcpserverpoolifindex: 0
+      hm2dhcpserverpoolindex: 0
+      hm2dhcpserverpoolleasetime: 0
+      hm2dhcpserverpoolmacaddress: ''
+      hm2dhcpserverpoolmethod: 0
+      hm2dhcpserverpooloptionconffilename: ''
+      hm2dhcpserverpooloptiondns: ''
+      hm2dhcpserverpooloptiongateway: ''
+      hm2dhcpserverpooloptionhostname: ''
+      hm2dhcpserverpooloptionntp: ''
+      hm2dhcpserverpooloptionnetmask: ''
+      hm2dhcpserverpooloptionwins: ''
+      hm2dhcpserverpoolremoteid: ''
+      hm2dhcpserverpoolrowstatus: 0
+      hm2dhcpserverpoolstartipaddress: ''
+      hm2dhcpserverpooltable: ''
+      hm2dhcpserverpoolvendorid: ''
+      hm2dhcpserverpoolvlanid: 0
+attributes:
+  hm2dhcpserveraddrprobe:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerConfigGroup
+          field: hm2DHCPServerAddrProbe
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dhcpservercounterbootpdroppednotservingsubnet:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterBootpDroppedNotServingSubnet
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterbootpdroppedunknownclients:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterBootpDroppedUnknownClients
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterbootpinvalids:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterBootpInvalids
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterbootpreplies:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterBootpReplies
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterbootprequests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterBootpRequests
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4acks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Acks
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4declines:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Declines
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4discovers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Discovers
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4droppednotservingsubnet:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.31
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4DroppedNotServingSubnet
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4droppedunknownclient:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.30
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4DroppedUnknownClient
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4forcedrenews:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.28
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4ForcedRenews
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4informs:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.27
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Informs
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4invalids:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.29
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Invalids
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4naks:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Naks
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4offers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Offers
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4releases:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Releases
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterdhcpv4requests:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterDhcpv4Requests
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounterifentry:
+    syntax: Hm2DHCPServerCounterIfEntry
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfTable
+          field: hm2DHCPServerCounterIfEntry
+  hm2dhcpservercounterifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterIfIndex
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpservercounteriftable:
+    syntax: Hm2DHCPServerCounterIfEntry
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterGroup
+          field: hm2DHCPServerCounterIfTable
+  hm2dhcpservercountermiscotherdhcpserver:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.4.2.1.40
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerCounterIfEntry
+          field: hm2DHCPServerCounterMiscOtherDhcpServer
+          index_field: hm2DHCPServerCounterIfIndex
+  hm2dhcpserverifconfigentry:
+    syntax: Hm2DHCPServerIfConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerIfConfigTable
+          field: hm2DHCPServerIfConfigEntry
+  hm2dhcpserverifconfigindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerIfConfigEntry
+          field: hm2DHCPServerIfConfigIndex
+          index_field: hm2DHCPServerIfConfigIndex
+  hm2dhcpserverifconfigmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerIfConfigEntry
+          field: hm2DHCPServerIfConfigMode
+          index_field: hm2DHCPServerIfConfigIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dhcpserverifconfigtable:
+    syntax: Hm2DHCPServerIfConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerInterfaceGroup
+          field: hm2DHCPServerIfConfigTable
+  hm2dhcpserverleaseaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseAction
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: &id001
+          - hm2DHCPServerLeasePoolIndex
+          - hm2DHCPServerLeaseIpAddress
+  hm2dhcpserverleasecircuitid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseCircuitId
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  hm2dhcpserverleaseclientid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseClientId
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  hm2dhcpserverleaseclientmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseClientMacAddress
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpserverleaseentry:
+    syntax: Hm2DHCPServerLeaseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseTable
+          field: hm2DHCPServerLeaseEntry
+  hm2dhcpserverleasegateway:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseGateway
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpserverleaseifindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseIfIndex
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpserverleaseipaddress:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseIpAddress
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpserverleasepoolindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeasePoolIndex
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 128
+  hm2dhcpserverleaseremoteid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseRemoteId
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  hm2dhcpserverleasestarttime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseStartTime
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpserverleasestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseState
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpserverleasetable:
+    syntax: Hm2DHCPServerLeaseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseGroup
+          field: hm2DHCPServerLeaseTable
+  hm2dhcpserverleasetimeremaining:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseTimeRemaining
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpserverleasevlanid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerLeaseEntry
+          field: hm2DHCPServerLeaseVlanId
+          index_field: hm2DHCPServerLeaseIpAddress
+          index_fields: *id001
+  hm2dhcpservermaxleaseentries:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerConfigGroup
+          field: hm2DHCPServerMaxLeaseEntries
+  hm2dhcpservermaxpoolentries:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerConfigGroup
+          field: hm2DHCPServerMaxPoolEntries
+  hm2dhcpservermode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerConfigGroup
+          field: hm2DHCPServerMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dhcpserverpoolcircuitid:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolCircuitId
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolclientarchitecture:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.61
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolClientArchitecture
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolclientid:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolClientId
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolendipaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolEndIpAddress
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolentry:
+    syntax: Hm2DHCPServerPoolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolTable
+          field: hm2DHCPServerPoolEntry
+  hm2dhcpserverpoolerrorstatus:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.99
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolErrorStatus
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolflags:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolFlags
+          index_field: hm2DHCPServerPoolIndex
+    bit_map:
+      0: interface
+      1: mac
+      2: gateway
+      3: clientid
+      4: remoteid
+      5: circuitid
+      6: dynamic
+      7: vlanid
+      8: vendorid
+      9: clientarch
+      10: ntp
+  hm2dhcpserverpoolgateway:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolGateway
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolhirschmannclient:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolHirschmannClient
+          index_field: hm2DHCPServerPoolIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dhcpserverpoolifindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolIfIndex
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolIndex
+          index_field: hm2DHCPServerPoolIndex
+    validation:
+      min: 1
+      max: 128
+  hm2dhcpserverpoolleasetime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolLeaseTime
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolmacaddress:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolMacAddress
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolmethod:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.36
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolMethod
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpooloptionconffilename:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.30
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolOptionConfFileName
+          index_field: hm2DHCPServerPoolIndex
+    validation:
+      min: 0
+      max: 70
+  hm2dhcpserverpooloptiondns:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.34
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolOptionDNS
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpooloptiongateway:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.31
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolOptionGateway
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpooloptionhostname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.35
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolOptionHostname
+          index_field: hm2DHCPServerPoolIndex
+    validation:
+      min: 0
+      max: 64
+  hm2dhcpserverpooloptionntp:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.37
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolOptionNTP
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpooloptionnetmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.32
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolOptionNetmask
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpooloptionwins:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.33
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolOptionWINS
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolremoteid:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolRemoteId
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpoolrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.100
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolRowStatus
+          index_field: hm2DHCPServerPoolIndex
+    create_method: createAndWait
+  hm2dhcpserverpoolstartipaddress:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolStartIpAddress
+          index_field: hm2DHCPServerPoolIndex
+  hm2dhcpserverpooltable:
+    syntax: Hm2DHCPServerPoolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerConfigGroup
+          field: hm2DHCPServerPoolTable
+  hm2dhcpserverpoolvendorid:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.60
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolVendorID
+          index_field: hm2DHCPServerPoolIndex
+    validation:
+      min: 0
+      max: 9
+  hm2dhcpserverpoolvlanid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.91.1.1.1.5.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-DHCPS-MIB
+          table: hm2DHCPServerPoolEntry
+          field: hm2DHCPServerPoolVlanId
+          index_field: hm2DHCPServerPoolIndex

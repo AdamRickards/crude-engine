@@ -1,0 +1,18 @@
+version: 2.7.0
+feature: banner
+description: Login banner configuration (NERC CIP compliant)
+methods:
+  get_banner:
+    type: dict
+    defaults:
+      pre_login_enabled: false
+      pre_login_text: ''
+  set_banner:
+    type: upsert
+attributes:
+  pre_login_enabled:
+    wire: hm2preloginbanneradminstatus
+    source: mgmtaccess
+  pre_login_text:
+    wire: hm2preloginbannertext
+    source: mgmtaccess

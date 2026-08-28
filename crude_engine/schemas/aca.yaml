@@ -1,0 +1,95 @@
+version: 2.8.0
+feature: aca
+description: External NVM (ACA) configuration — selected memory, sync state, per-slot settings
+methods:
+  get_aca:
+    type: dict
+    defaults:
+      selected_memory: none
+      envm_state: absent
+      slots: {}
+    sub_tables:
+      slots:
+        primary_key: slot_type
+        field_map:
+          type: slot_type
+          status: slot_status
+          writable: slot_writable
+          auto_update: auto_update
+          auto_ssh_key: auto_ssh_key
+          config_load_priority: config_load_priority
+          config_save: config_save
+          name: slot_name
+          serial_number: slot_serial
+        defaults:
+          type: none
+          status: notPresent
+          writable: false
+          auto_update: false
+          auto_ssh_key: false
+          config_load_priority: disabled
+          config_save: false
+          name: ''
+          serial_number: ''
+  set_aca:
+    type: upsert
+attributes:
+  # --- Globals ---
+  selected_memory:
+    wire: hm2extnvmchooseactive
+    source: devmgmt
+    value_map:
+      '0': none
+      '1': sd
+      '2': usb
+      '3': serial
+  envm_state:
+    wire: hm2fmenvmstate
+    source: filemgmt
+    value_map:
+      '1': ok
+      '2': outOfSync
+      '3': absent
+  # --- Per-slot table (indexed by Hm2DeviceExtNVMType: 1=sd, 2=usb) ---
+  slot_type:
+    wire: hm2extnvmtableindex
+    source: devmgmt
+    value_map:
+      '0': none
+      '1': sd
+      '2': usb
+      '3': serial
+  slot_status:
+    wire: hm2extnvmstatus
+    source: devmgmt
+    value_map:
+      '1': notPresent
+      '2': removed
+      '3': ok
+      '4': outOfMemory
+      '5': genericErr
+  slot_writable:
+    wire: hm2extnvmwritable
+    source: devmgmt
+  auto_update:
+    wire: hm2extnvmautomaticsoftwareload
+    source: devmgmt
+  auto_ssh_key:
+    wire: hm2extnvmautomaticsshkeyload
+    source: devmgmt
+  config_load_priority:
+    wire: hm2extnvmconfigloadpriority
+    source: devmgmt
+    value_map:
+      '0': disabled
+      '1': low
+      '2': high
+  config_save:
+    wire: hm2extnvmconfigsave
+    source: devmgmt
+  slot_name:
+    wire: hm2extnvmproductname
+    source: devmgmt
+  slot_serial:
+    wire: hm2extnvmserialnum
+    source: devmgmt

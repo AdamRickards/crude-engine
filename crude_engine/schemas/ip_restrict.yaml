@@ -1,0 +1,121 @@
+version: 2.7.0
+feature: ip_restrict
+description: IP restriction rules for management access
+methods:
+  get_ip_restrict:
+    type: dict
+    defaults:
+      enabled: false
+      logging: false
+      rules: {}
+    sub_tables:
+      rules:
+        primary_key: index
+        field_map:
+          ip: ip
+          prefix_length: prefix_length
+          http: http
+          https: https
+          snmp: snmp
+          telnet: telnet
+          ssh: ssh
+          iec61850: iec61850
+          modbus: modbus
+          ethernet_ip: ethernet_ip
+          profinet: profinet
+          per_rule_logging: per_rule_logging
+        defaults:
+          ip: ''
+          prefix_length: 0
+          http: true
+          https: true
+          snmp: true
+          telnet: true
+          ssh: true
+          iec61850: true
+          modbus: true
+          ethernet_ip: true
+          profinet: true
+          per_rule_logging: false
+  create_ip_restrict_rule:
+    type: create
+    row_status: rule_status
+    index_key: index
+    required: [ip]
+    defaults:
+      addr_type: 1
+      prefix_length: 32
+      http: true
+      https: true
+      snmp: true
+      telnet: true
+      ssh: true
+      iec61850: true
+      modbus: true
+      ethernet_ip: true
+      profinet: true
+      per_rule_logging: false
+  delete_ip_restrict_rule:
+    type: delete
+    row_status: rule_status
+    index_key: index
+  set_ip_restrict:
+    type: upsert
+attributes:
+  # --- Global scalars ---
+  enabled:
+    wire: hm2rmaoperation
+    source: mgmtaccess
+  logging:
+    wire: hm2rmaloggingglobal
+    source: mgmtaccess
+  # --- Rule table ---
+  index:
+    wire: hm2rmaindex
+    source: mgmtaccess
+  ip:
+    wire: hm2rmaipaddr
+    source: mgmtaccess
+  addr_type:
+    wire: hm2rmaipaddrtype
+    source: mgmtaccess
+  prefix_length:
+    wire: hm2rmaprefixlength
+    source: mgmtaccess
+  interface:
+    wire: hm2rmainterface
+    source: mgmtaccess
+  http:
+    wire: hm2rmasrvhttp
+    source: mgmtaccess
+  https:
+    wire: hm2rmasrvhttps
+    source: mgmtaccess
+  snmp:
+    wire: hm2rmasrvsnmp
+    source: mgmtaccess
+  telnet:
+    wire: hm2rmasrvtelnet
+    source: mgmtaccess
+  ssh:
+    wire: hm2rmasrvssh
+    source: mgmtaccess
+  iec61850:
+    wire: hm2rmasrviec61850
+    source: mgmtaccess
+  modbus:
+    wire: hm2rmasrvmodbustcp
+    source: mgmtaccess
+  ethernet_ip:
+    wire: hm2rmasrvethernetip
+    source: mgmtaccess
+  profinet:
+    wire: hm2rmasrvprofinetio
+    source: mgmtaccess
+  per_rule_logging:
+    wire: hm2rmalogging
+    source: mgmtaccess
+  rule_status:
+    wire: hm2rmarowstatus
+    source: mgmtaccess
+    access: crud

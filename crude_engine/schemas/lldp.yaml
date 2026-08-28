@@ -1,0 +1,85 @@
+version: 2.7.0
+feature: lldp
+description: LLDP configuration and neighbor table
+methods:
+  get_lldp_neighbors:
+    type: list_append
+    primary_key: local_port
+    key_map: ifindex
+    defaults:
+      sys_name: ''
+      port_id: ''
+  get_lldp_neighbors_detail:
+    type: list_append
+    primary_key: local_port
+    key_map: ifindex
+    defaults:
+      port_id: ''
+      sys_name: ''
+      port_description: ''
+      chassis_id: ''
+      sys_description: ''
+      sys_capabilities: []
+      sys_enabled_capabilities: []
+      autoneg_supported: false
+      autoneg_enabled: false
+      mau_type: 0
+      pvid: 0
+      aggregation_enabled: []
+      aggregation_port_id: 0
+  get_lldp_neighbors_detail_extended:
+    schema: get_lldp_neighbors_detail
+  set_lldp:
+    type: upsert
+attributes:
+  enabled:
+    wire: hm2lldpadminstatus
+    source: lldp
+  hello_interval:
+    wire: lldpmessagetxinterval
+    source: lldp
+  hold_multiplier:
+    wire: lldpmessagetxholdmultiplier
+    source: lldp
+  local_port:
+    wire: lldpremlocalportnum
+    source: lldp
+  port_id:
+    wire: lldpremportid
+    source: lldp
+  sys_name:
+    wire: lldpremsysname
+    source: lldp
+  chassis_id:
+    wire: lldpremchassisid
+    source: lldp
+  port_description:
+    wire: lldpremportdesc
+    source: lldp
+  sys_description:
+    wire: lldpremsysdesc
+    source: lldp
+  sys_capabilities:
+    wire: lldpremsyscapsupported
+    source: lldp
+  sys_enabled_capabilities:
+    wire: lldpremsyscapenabled
+    source: lldp
+  autoneg_supported:
+    wire: lldpxdot3remportautonegsupported
+    source: lldp-ext-dot3
+  autoneg_enabled:
+    wire: lldpxdot3remportautonegenabled
+    source: lldp-ext-dot3
+  mau_type:
+    wire: lldpxdot3remportopermautype
+    source: lldp-ext-dot3
+  pvid:
+    wire: lldpxdot1remportvlanid
+    source: lldp-ext-dot1
+  aggregation_enabled:
+    wire: lldpxdot3remlinkaggstatus
+    source: lldp-ext-dot3
+  aggregation_port_id:
+    wire: lldpxdot3remlinkaggportid
+    source: lldp-ext-dot3

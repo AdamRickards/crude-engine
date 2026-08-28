@@ -1,0 +1,468 @@
+version: 2.6.0
+feature: dns
+schemas:
+  read_dns:
+    type: dict
+    defaults:
+      hm2dnscacheadminstate: false
+      hm2dnscacheflushaction: ''
+      hm2dnscachingserveradminstate: false
+      hm2dnsclientadminstate: false
+      hm2dnsclientcacheadminstate: false
+      hm2dnsclientconfigsource: 0
+      hm2dnsclientdefaultdomainname: ''
+      hm2dnsclientrequestretransmits: 0
+      hm2dnsclientrequesttimeout: 0
+      hm2dnsclientserveraddress: ''
+      hm2dnsclientserveraddresstype: ''
+      hm2dnsclientservercfgentry: ''
+      hm2dnsclientservercfgtable: ''
+      hm2dnsclientserverdiagaddress: ''
+      hm2dnsclientserverdiagaddresstype: ''
+      hm2dnsclientserverdiagentry: ''
+      hm2dnsclientserverdiagindex: 0
+      hm2dnsclientserverdiagtable: ''
+      hm2dnsclientserverindex: 0
+      hm2dnsclientserverrowstatus: 0
+      hm2dnsclientstatichostaddresstype: ''
+      hm2dnsclientstatichostconfigentry: ''
+      hm2dnsclientstatichostconfigtable: ''
+      hm2dnsclientstatichostipaddress: ''
+      hm2dnsclientstatichostname: ''
+      hm2dnsclientstatichoststatus: 0
+      hm2dnsclientstaticindex: 0
+attributes:
+  hm2dnscacheadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsCacheGroup
+          field: hm2DnsCacheAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dnscacheflushaction:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsCacheGroup
+          field: hm2DnsCacheFlushAction
+  hm2dnscachingserveradminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsCachingServerGlobalGroup
+          field: hm2DnsCachingServerAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dnsclientadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGroup
+          field: hm2DnsClientAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dnsclientcacheadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.5.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGlobalGroup
+          field: hm2DnsClientCacheAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dnsclientconfigsource:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGroup
+          field: hm2DnsClientConfigSource
+    validation:
+      allowed:
+      - user
+      - mgmt-dhcp
+      - provider
+  hm2dnsclientdefaultdomainname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGlobalGroup
+          field: hm2DnsClientDefaultDomainName
+    validation:
+      min: 0
+      max: 255
+  hm2dnsclientrequestretransmits:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.5.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGlobalGroup
+          field: hm2DnsClientRequestRetransmits
+    validation:
+      min: 0
+      max: 100
+  hm2dnsclientrequesttimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGlobalGroup
+          field: hm2DnsClientRequestTimeout
+    validation:
+      min: 0
+      max: 3600
+  hm2dnsclientserveraddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerCfgEntry
+          field: hm2DnsClientServerAddress
+          index_field: hm2DnsClientServerIndex
+  hm2dnsclientserveraddresstype:
+    syntax: InetAddressType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerCfgEntry
+          field: hm2DnsClientServerAddressType
+          index_field: hm2DnsClientServerIndex
+  hm2dnsclientservercfgentry:
+    syntax: Hm2DnsClientServerCfgEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerCfgTable
+          field: hm2DnsClientServerCfgEntry
+  hm2dnsclientservercfgtable:
+    syntax: Hm2DnsClientServerCfgEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGroup
+          field: hm2DnsClientServerCfgTable
+  hm2dnsclientserverdiagaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerDiagEntry
+          field: hm2DnsClientServerDiagAddress
+          index_field: hm2DnsClientServerDiagIndex
+  hm2dnsclientserverdiagaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerDiagEntry
+          field: hm2DnsClientServerDiagAddressType
+          index_field: hm2DnsClientServerDiagIndex
+  hm2dnsclientserverdiagentry:
+    syntax: Hm2DnsClientServerDiagEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerDiagTable
+          field: hm2DnsClientServerDiagEntry
+  hm2dnsclientserverdiagindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerDiagEntry
+          field: hm2DnsClientServerDiagIndex
+          index_field: hm2DnsClientServerDiagIndex
+    validation:
+      min: 1
+      max: 4
+  hm2dnsclientserverdiagtable:
+    syntax: Hm2DnsClientServerDiagEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGroup
+          field: hm2DnsClientServerDiagTable
+  hm2dnsclientserverindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerCfgEntry
+          field: hm2DnsClientServerIndex
+          index_field: hm2DnsClientServerIndex
+    validation:
+      min: 1
+      max: 4
+  hm2dnsclientserverrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientServerCfgEntry
+          field: hm2DnsClientServerRowStatus
+          index_field: hm2DnsClientServerIndex
+    create_method: createAndGo
+  hm2dnsclientstatichostaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientStaticHostConfigEntry
+          field: hm2DnsClientStaticHostAddressType
+          index_field: hm2DnsClientStaticIndex
+  hm2dnsclientstatichostconfigentry:
+    syntax: Hm2DnsClientStaticHostConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientStaticHostConfigTable
+          field: hm2DnsClientStaticHostConfigEntry
+  hm2dnsclientstatichostconfigtable:
+    syntax: Hm2DnsClientStaticHostConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientGroup
+          field: hm2DnsClientStaticHostConfigTable
+  hm2dnsclientstatichostipaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientStaticHostConfigEntry
+          field: hm2DnsClientStaticHostIPAddress
+          index_field: hm2DnsClientStaticIndex
+  hm2dnsclientstatichostname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientStaticHostConfigEntry
+          field: hm2DnsClientStaticHostName
+          index_field: hm2DnsClientStaticIndex
+    validation:
+      min: 0
+      max: 255
+  hm2dnsclientstatichoststatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientStaticHostConfigEntry
+          field: hm2DnsClientStaticHostStatus
+          index_field: hm2DnsClientStaticIndex
+    create_method: createAndGo
+  hm2dnsclientstaticindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.90.1.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DNS-MIB
+          table: hm2DnsClientStaticHostConfigEntry
+          field: hm2DnsClientStaticIndex
+          index_field: hm2DnsClientStaticIndex
+    validation:
+      min: 1
+      max: 64

@@ -1,0 +1,72 @@
+version: 2.7.0
+feature: profile
+description: Device configuration profiles (NVM/ENVM)
+methods:
+  get_profiles:
+    type: dict
+    primary_key: index
+    defaults:
+      name: ''
+      active: false
+      fingerprint: ''
+      firmware_version: ''
+      datetime: ''
+      fingerprint_verified: false
+      encrypted: false
+      encryption_verified: false
+  activate_profile:
+    type: upsert
+  delete_profile:
+    type: upsert
+attributes:
+  # --- Profile table (read) ---
+  index:
+    wire: hm2fmprofileindex
+    source: filemgmt
+  name:
+    wire: hm2fmprofilename
+    source: filemgmt
+  active:
+    wire: hm2fmprofileactive
+    source: filemgmt
+    value_map:
+      '1': true
+      '2': false
+      '[x]': true
+      '[ ]': false
+  fingerprint:
+    wire: hm2fmprofilefingerprint
+    source: filemgmt
+  datetime:
+    wire: hm2fmprofiledatetime
+    source: filemgmt
+  storage_type:
+    wire: hm2fmprofilestoragetype
+    source: filemgmt
+  sw_major:
+    wire: hm2fmprofileswmajorrelnum
+    source: filemgmt
+  sw_minor:
+    wire: hm2fmprofileswminorrelnum
+    source: filemgmt
+  sw_bugfix:
+    wire: hm2fmprofileswbugfixrelnum
+    source: filemgmt
+  firmware_version:
+    compute:
+      from: [sw_major, sw_minor, sw_bugfix]
+      format: "{sw_major}.{sw_minor}.{sw_bugfix:0>2}"
+      fallback: sw_major
+  fingerprint_verified:
+    wire: hm2fmprofilefingerprintverified
+    source: filemgmt
+  encrypted:
+    wire: hm2fmprofileencryptionactive
+    source: filemgmt
+  encryption_verified:
+    wire: hm2fmprofileencryptionverified
+    source: filemgmt
+  # --- Action fields (write) ---
+  profile_action:
+    wire: hm2fmprofileaction
+    source: filemgmt

@@ -1,0 +1,1428 @@
+version: 2.6.0
+feature: industrial-protocols
+schemas:
+  read_industrial-protocols:
+    type: dict
+    defaults:
+      hm2ethernetipadminstatus: false
+      hm2ethernetipcatalogname: ''
+      hm2ethernetipconnestablished: 0
+      hm2ethernetipconntimeouts: 0
+      hm2ethernetipencapsulationinactivity: 0
+      hm2ethernetiperrorcode: 0
+      hm2ethernetipinterface: 0
+      hm2ethernetiplastconflictdetectedacdactivity: ''
+      hm2ethernetipmajorrevision: 0
+      hm2ethernetipmcastalloccontrol: 0
+      hm2ethernetipmcastcount: 0
+      hm2ethernetipmcaststartaddress: ''
+      hm2ethernetipmcastttlvalue: 0
+      hm2ethernetipminorrevision: 0
+      hm2ethernetipproductcode: 0
+      hm2ethernetipproductname: ''
+      hm2ethernetipqosdscpexplicitvalue: 0
+      hm2ethernetipqosdscphighvalue: 0
+      hm2ethernetipqosdscplowvalue: 0
+      hm2ethernetipqosdscpscheduledvalue: 0
+      hm2ethernetipqosdscpurgentvalue: 0
+      hm2ethernetipqosvalue: false
+      hm2ethernetipselectacdstatus: 0
+      hm2ethernetipvendorobjrequests: 0
+      hm2ethernetipvlan: 0
+      hm2ethernetipwriteaccessstatus: false
+      hm2iec61850mmsserveradminstatus: false
+      hm2iec61850mmsservermaxsessionscount: 0
+      hm2iec61850mmsserverportnumber: 0
+      hm2iec61850mmsserversessionscount: 0
+      hm2iec61850mmsserverstatus: 0
+      hm2iec61850mmsservertechnicalkey: ''
+      hm2iec61850mmsserverwriteaccessstatus: false
+      hm2iec61850mmstlsserveradminstatus: false
+      hm2iec61850mmstlsserverdsakeycontrol: 0
+      hm2iec61850mmstlsserverfingerprintdsa: ''
+      hm2iec61850mmstlsserverfingerprintrsa: ''
+      hm2iec61850mmstlsserverkeyoperstatus: 0
+      hm2iec61850mmstlsserverkeyspresent: 0
+      hm2iec61850mmstlsservermaxsessionscount: 0
+      hm2iec61850mmstlsserverportnumber: 0
+      hm2iec61850mmstlsserverrsakeycontrol: 0
+      hm2iec61850mmstlsserversessionscount: 0
+      hm2iec61850mmstlsserverwriteaccessstatus: false
+      hm2iec62541opcuamaxsessionscount: 0
+      hm2iec62541opcuasecuritypolicy: ''
+      hm2iec62541opcuaserveradminstatus: false
+      hm2iec62541opcuaserverportnumber: 0
+      hm2iec62541opcuauseraccessrole: ''
+      hm2iec62541opcuauserconfigentry: ''
+      hm2iec62541opcuauserconfigtable: ''
+      hm2iec62541opcuausername: ''
+      hm2iec62541opcuauserpassword: ''
+      hm2iec62541opcuauserstatus: 0
+      hm2modbustcpserveradminstatus: false
+      hm2modbustcpservermaxsessionscount: 0
+      hm2modbustcpserverportnumber: 0
+      hm2modbustcpserversessionscount: 0
+      hm2modbustcpserverwriteaccessstatus: false
+      hm2pnioadminstatus: 0
+      hm2pnioclearipparameter: false
+      hm2pnioclearstationname: false
+      hm2pniodcpmode: 0
+      hm2pniodcpmodeentry: ''
+      hm2pniodcpmodeportid: 0
+      hm2pniodcpmodetable: ''
+      hm2pniodeviceid: 0
+      hm2pniodevicetypedetails: ''
+      hm2pniohardwarerelease: 0
+      hm2pnioim1data: ''
+      hm2pnioim2data: ''
+      hm2pnioim3data: ''
+      hm2pnioim4data: ''
+      hm2pniomoduleidentnumber: 0
+      hm2pnionameofstation: ''
+      hm2pnionumactiveapplicationrelations: 0
+      hm2pnioorderid: ''
+      hm2pnioorderid9th: ''
+      hm2pniopdevparameters: ''
+      hm2pniosoftwarerelease: ''
+      hm2pniovlan0forwarding: 0
+attributes:
+  hm2ethernetipadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ethernetipcatalogname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPCatalogName
+    validation:
+      min: 0
+      max: 255
+  hm2ethernetipconnestablished:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPStatisticsGroup
+          field: hm2EtherNetIPConnEstablished
+  hm2ethernetipconntimeouts:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPStatisticsGroup
+          field: hm2EtherNetIPConnTimeouts
+  hm2ethernetipencapsulationinactivity:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.3.7
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPTCPIPObjectGroup
+          field: hm2EtherNetIPEncapsulationInactivity
+    validation:
+      min: 0
+      max: 3600
+  hm2ethernetiperrorcode:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPErrorCode
+    validation:
+      min: 0
+      max: 2147483647
+  hm2ethernetipinterface:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPInterface
+    validation:
+      min: -1
+      max: 2147483647
+  hm2ethernetiplastconflictdetectedacdactivity:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.3.5
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPTCPIPObjectGroup
+          field: hm2EtherNetIPLastConflictDetectedACDActivity
+  hm2ethernetipmajorrevision:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPMajorRevision
+    validation:
+      min: 1
+      max: 255
+  hm2ethernetipmcastalloccontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPTCPIPObjectGroup
+          field: hm2EtherNetIPMcastAllocControl
+  hm2ethernetipmcastcount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPTCPIPObjectGroup
+          field: hm2EtherNetIPMcastCount
+    validation:
+      min: 1
+      max: 255
+  hm2ethernetipmcaststartaddress:
+    syntax: InetAddressIPv4
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.3.4
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPTCPIPObjectGroup
+          field: hm2EtherNetIPMcastStartAddress
+  hm2ethernetipmcastttlvalue:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPTCPIPObjectGroup
+          field: hm2EtherNetIPMcastTTLValue
+    validation:
+      min: 1
+      max: 255
+  hm2ethernetipminorrevision:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPMinorRevision
+    validation:
+      min: 1
+      max: 255
+  hm2ethernetipproductcode:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPProductCode
+    validation:
+      min: 0
+      max: 65535
+  hm2ethernetipproductname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPProductName
+    validation:
+      min: 0
+      max: 32
+  hm2ethernetipqosdscpexplicitvalue:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.4.5
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPQoSObjectGroup
+          field: hm2EtherNetIPQosDscpExplicitValue
+    validation:
+      min: 1
+      max: 63
+  hm2ethernetipqosdscphighvalue:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.4.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPQoSObjectGroup
+          field: hm2EtherNetIPQosDscpHighValue
+    validation:
+      min: 1
+      max: 63
+  hm2ethernetipqosdscplowvalue:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.4.4
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPQoSObjectGroup
+          field: hm2EtherNetIPQosDscpLowValue
+    validation:
+      min: 1
+      max: 63
+  hm2ethernetipqosdscpscheduledvalue:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPQoSObjectGroup
+          field: hm2EtherNetIPQosDscpScheduledValue
+    validation:
+      min: 1
+      max: 63
+  hm2ethernetipqosdscpurgentvalue:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPQoSObjectGroup
+          field: hm2EtherNetIPQosDscpUrgentValue
+    validation:
+      min: 1
+      max: 63
+  hm2ethernetipqosvalue:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.4.6
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPQoSObjectGroup
+          field: hm2EtherNetIPQosValue
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ethernetipselectacdstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.3.6
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPTCPIPObjectGroup
+          field: hm2EtherNetIPSelectACDStatus
+  hm2ethernetipvendorobjrequests:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPStatisticsGroup
+          field: hm2EtherNetIPVendorObjRequests
+  hm2ethernetipvlan:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPVlan
+    validation:
+      min: -1
+      max: 4042
+  hm2ethernetipwriteaccessstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.3.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2EthernetIPConfigGroup
+          field: hm2EtherNetIPWriteAccessStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iec61850mmsserveradminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsServerAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iec61850mmsservermaxsessionscount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsServerMaxSessionsCount
+    validation:
+      min: 1
+      max: 15
+  hm2iec61850mmsserverportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsServerPortNumber
+  hm2iec61850mmsserversessionscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850StatisticsGroup
+          field: hm2Iec61850MmsServerSessionsCount
+  hm2iec61850mmsserverstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.26
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsServerStatus
+    validation:
+      allowed:
+      - unavailable
+      - starting
+      - running
+      - stopping
+      - halted
+      - error
+  hm2iec61850mmsservertechnicalkey:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsServerTechnicalKey
+    validation:
+      min: 0
+      max: 32
+  hm2iec61850mmsserverwriteaccessstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsServerWriteAccessStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iec61850mmstlsserveradminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iec61850mmstlsserverdsakeycontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.23
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerDSAKeyControl
+    validation:
+      allowed:
+      - noop
+      - generate
+      - delete
+  hm2iec61850mmstlsserverfingerprintdsa:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.24
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerFingerPrintDSA
+    validation:
+      min: 0
+      max: 128
+  hm2iec61850mmstlsserverfingerprintrsa:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.25
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerFingerPrintRSA
+    validation:
+      min: 0
+      max: 128
+  hm2iec61850mmstlsserverkeyoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.21
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerKeyOperStatus
+    validation:
+      allowed:
+      - dsa
+      - rsa
+      - both
+      - none
+  hm2iec61850mmstlsserverkeyspresent:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerKeysPresent
+    validation:
+      allowed:
+      - dsa
+      - rsa
+      - both
+      - none
+  hm2iec61850mmstlsservermaxsessionscount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerMaxSessionsCount
+    validation:
+      min: 1
+      max: 15
+  hm2iec61850mmstlsserverportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerPortNumber
+  hm2iec61850mmstlsserverrsakeycontrol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.22
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerRSAKeyControl
+    validation:
+      allowed:
+      - noop
+      - generate
+      - delete
+  hm2iec61850mmstlsserversessionscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850StatisticsGroup
+          field: hm2Iec61850MmsTlsServerSessionsCount
+  hm2iec61850mmstlsserverwriteaccessstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.1.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec61850ConfigGroup
+          field: hm2Iec61850MmsTlsServerWriteAccessStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iec62541opcuamaxsessionscount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541ConfigGroup
+          field: hm2Iec62541OpcUaMaxSessionsCount
+    validation:
+      min: 1
+      max: 5
+  hm2iec62541opcuasecuritypolicy:
+    syntax: Hm2Iec62541OpcUaSecurityPolicies
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541ConfigGroup
+          field: hm2Iec62541OpcUaSecurityPolicy
+  hm2iec62541opcuaserveradminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541ConfigGroup
+          field: hm2Iec62541OpcUaServerAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iec62541opcuaserverportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541ConfigGroup
+          field: hm2Iec62541OpcUaServerPortNumber
+    validation:
+      min: 1
+      max: 65535
+  hm2iec62541opcuauseraccessrole:
+    syntax: Hm2Iec62541OpcUaUserAccessRoles
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541OpcUaUserConfigEntry
+          field: hm2Iec62541OpcUaUserAccessRole
+          index_field: hm2Iec62541OpcUaUserName
+          key_tag: to_hex_decode
+  hm2iec62541opcuauserconfigentry:
+    syntax: Hm2Iec62541OpcUaUserConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541OpcUaUserConfigTable
+          field: hm2Iec62541OpcUaUserConfigEntry
+  hm2iec62541opcuauserconfigtable:
+    syntax: Hm2Iec62541OpcUaUserConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541ConfigGroup
+          field: hm2Iec62541OpcUaUserConfigTable
+  hm2iec62541opcuausername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541OpcUaUserConfigEntry
+          field: hm2Iec62541OpcUaUserName
+          index_field: hm2Iec62541OpcUaUserName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  hm2iec62541opcuauserpassword:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541OpcUaUserConfigEntry
+          field: hm2Iec62541OpcUaUserPassword
+          index_field: hm2Iec62541OpcUaUserName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 64
+  hm2iec62541opcuauserstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.5.1.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2Iec62541OpcUaUserConfigEntry
+          field: hm2Iec62541OpcUaUserStatus
+          index_field: hm2Iec62541OpcUaUserName
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2modbustcpserveradminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ModbusConfigGroup
+          field: hm2ModbusTcpServerAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2modbustcpservermaxsessionscount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ModbusConfigGroup
+          field: hm2ModbusTcpServerMaxSessionsCount
+    validation:
+      min: 1
+      max: 5
+  hm2modbustcpserverportnumber:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ModbusConfigGroup
+          field: hm2ModbusTcpServerPortNumber
+  hm2modbustcpserversessionscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ModbusStatisticsGroup
+          field: hm2ModbusTcpServerSessionsCount
+  hm2modbustcpserverwriteaccessstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ModbusConfigGroup
+          field: hm2ModbusTcpServerWriteAccessStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2pnioadminstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOAdminStatus
+    validation:
+      allowed:
+      - enable
+      - disable
+  hm2pnioclearipparameter:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOClearIpParameter
+    validation:
+      allowed:
+      - true
+      - false
+  hm2pnioclearstationname:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.25
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOClearStationName
+    validation:
+      allowed:
+      - true
+      - false
+  hm2pniodcpmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.20.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2PNIODcpModeEntry
+          field: hm2PNIODcpMode
+          index_field: hm2PNIODcpModePortID
+    validation:
+      allowed:
+      - none
+      - ingress
+      - egress
+      - both
+  hm2pniodcpmodeentry:
+    syntax: Hm2PNIODcpModeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.20.1
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2PNIODcpModeTable
+          field: hm2PNIODcpModeEntry
+  hm2pniodcpmodeportid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.20.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2PNIODcpModeEntry
+          field: hm2PNIODcpModePortID
+          index_field: hm2PNIODcpModePortID
+  hm2pniodcpmodetable:
+    syntax: Hm2PNIODcpModeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIODcpModeTable
+  hm2pniodeviceid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIODeviceID
+    validation:
+      min: 0
+      max: 65535
+  hm2pniodevicetypedetails:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIODeviceTypeDetails
+  hm2pniohardwarerelease:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOHardwareRelease
+  hm2pnioim1data:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.21
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOIm1Data
+    validation:
+      min: 0
+      max: 54
+  hm2pnioim2data:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.22
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOIm2Data
+    validation:
+      min: 0
+      max: 16
+  hm2pnioim3data:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.23
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOIm3Data
+    validation:
+      min: 0
+      max: 54
+  hm2pnioim4data:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.24
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOIm4Data
+    validation:
+      min: 0
+      max: 54
+  hm2pniomoduleidentnumber:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOModuleIdentNumber
+  hm2pnionameofstation:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIONameOfStation
+    validation:
+      min: 0
+      max: 240
+  hm2pnionumactiveapplicationrelations:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIONumActiveApplicationRelations
+  hm2pnioorderid:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOOrderID
+    validation:
+      min: 0
+      max: 64
+  hm2pnioorderid9th:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOOrderID9th
+    validation:
+      min: 0
+      max: 32
+  hm2pniopdevparameters:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.26
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOPdevParameters
+  hm2pniosoftwarerelease:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOSoftwareRelease
+  hm2pniovlan0forwarding:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.101.1.2.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-INDUSTRIAL-PROTOCOLS-MIB
+          table: hm2ProfinetIOConfigGroup
+          field: hm2PNIOVlan0Forwarding
+    validation:
+      allowed:
+      - enable
+      - disable

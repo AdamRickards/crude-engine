@@ -1,0 +1,111 @@
+# safety_protocols.yaml — CLAMPS-style pre/post hooks for ring-touching methods
+#
+# This is TEST infrastructure — NOT engine schemas. The crude_engine knows
+# nothing about these hooks. They are applied by tests/safety_runner.py to
+# wrap method calls that would otherwise risk breaking device connectivity
+# (e.g., reconfiguring a live MRP ring without first taking down the
+# secondary ring port).
+#
+# Used by:
+#   - test_setter_pairs.py (via shared safety_runner)
+#   - test_crud_pairs.py (same)
+#   - tests/release_matrix.py worker dispatch
+#
+# Production code that calls device.set_mrp() through napalm-hios directly
+# does NOT get safety wrapping — that's still the caller's responsibility
+# (or use a tool like CLAMPS).
+#
+# ---------------------------------------------------------------------------
+# Format
+# ---------------------------------------------------------------------------
+#
+# protocols:
+#   <method_name>:
+#     description: <human-readable why>
+#     requires_state: [<state_var>, ...]   # device_state.json keys that
+#                                          # must be populated for this
+#                                          # protocol to apply. If absent,
+#                                          # the cell becomes not_applicable.
+#     require_during:
+#       - target:
+#           read_method: <getter name>     # how to read current value
+#           write_method: <setter name>    # how to apply new + restore
+#           index: <port|name|null>        # row key, supports {var} substitution
+#           field: <attr_name>             # which field on the row
+#         must_equal: <value>              # required value during the wrapped call
+#         # restore is implicit — captured live before, restored after
+#
+# Variable substitution: {ring_port_secondary}, {management_port}, etc. are
+# resolved per-device from tests/device_state.json (gather phase output).
+# A missing variable on a particular device makes the protocol n/a for that
+# device only — other devices unaffected.
+#
+# Capture/restore: the runner reads the field's current value before
+# applying must_equal. After the wrapped method returns (or fails), the
+# captured value is written back. If the captured value already equals
+# must_equal, no change is made and no restore is needed.
+#
+# v2 enhancement (post-release): when a required state variable is absent
+# but the relevant feature is configured on the device, the runner will
+# derive the variable on-demand by calling a getter (e.g., get_mrp returns
+# the secondary port). For v1 we use what gather captures — explicit
+# and predictable.
+
+protocols:
+
+  # === MRP ring safety ===
+  # Reconfiguring a live MRP ring without first taking down the secondary
+  # ring port can cause a transient loop. Same logic applies whether we
+  # are setting parameters, deleting the ring, or modifying sub-rings.
+
+  set_mrp:
+    description: |
+      MRP reconfiguration on a live ring needs the secondary ring port
+      admin-down first to prevent transient loops during the reconfig
+      transition. Restored after the wrapped method returns.
+    requires_state: [ring_port_secondary]
+    require_during:
+      - target:
+          read_method: get_interfaces
+          write_method: set_interface
+          index: "{ring_port_secondary}"
+          field: admin_status
+        must_equal: down
+
+  delete_mrp:
+    description: |
+      Same as set_mrp — destroying ring config while both ports are up
+      can briefly loop. Take secondary port down first.
+    requires_state: [ring_port_secondary]
+    require_during:
+      - target:
+          read_method: get_interfaces
+          write_method: set_interface
+          index: "{ring_port_secondary}"
+          field: admin_status
+        must_equal: down
+
+  set_mrp_sub_ring:
+    description: "Sub-ring config changes — same loop risk as MRP main ring"
+    requires_state: [ring_port_secondary]
+    require_during:
+      - target:
+          read_method: get_interfaces
+          write_method: set_interface
+          index: "{ring_port_secondary}"
+          field: admin_status
+        must_equal: down
+
+  delete_mrp_sub_ring:
+    description: "Same"
+    requires_state: [ring_port_secondary]
+    require_during:
+      - target:
+          read_method: get_interfaces
+          write_method: set_interface
+          index: "{ring_port_secondary}"
+          field: admin_status
+        must_equal: down
+
+  # Add new protocols here as ring-safety needs are identified.
+  # Pattern: methods that change topology need pre/post port safety.

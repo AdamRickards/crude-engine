@@ -1,0 +1,997 @@
+version: 2.6.0
+feature: mau
+schemas:
+  read_mau:
+    type: dict
+    defaults:
+      broadmaubasicentry: ''
+      broadmaubasictable: ''
+      broadmauifindex: 0
+      broadmauindex: 0
+      broadmautranslationfreq: 0
+      broadmauxmtcarrierfreq: 0
+      broadmauxmtrcvsplittype: 0
+      ifjackentry: ''
+      ifjackindex: 0
+      ifjacktable: ''
+      ifjacktype: ''
+      ifmauautonegadminstatus: 0
+      ifmauautonegcapadvertised: 0
+      ifmauautonegcapadvertisedbits: ''
+      ifmauautonegcapreceived: 0
+      ifmauautonegcapreceivedbits: ''
+      ifmauautonegcapability: 0
+      ifmauautonegcapabilitybits: ''
+      ifmauautonegconfig: 0
+      ifmauautonegentry: ''
+      ifmauautonegremotefaultadvertised: 0
+      ifmauautonegremotefaultreceived: 0
+      ifmauautonegremotesignaling: 0
+      ifmauautonegrestart: 0
+      ifmauautonegsupported: false
+      ifmauautonegtable: ''
+      ifmaudefaulttype: ''
+      ifmauentry: ''
+      ifmaufalsecarriers: 0
+      ifmauhcfalsecarriers: 0
+      ifmauifindex: 0
+      ifmauindex: 0
+      ifmaujabberstate: 0
+      ifmaujabberingstateenters: 0
+      ifmaumediaavailable: ''
+      ifmaumediaavailablestateexits: 0
+      ifmaustatus: 0
+      ifmautable: ''
+      ifmautype: ''
+      ifmautypelist: 0
+      ifmautypelistbits: ''
+      rpjackentry: ''
+      rpjackindex: 0
+      rpjacktable: ''
+      rpjacktype: ''
+      rpmauentry: ''
+      rpmaufalsecarriers: 0
+      rpmaugroupindex: 0
+      rpmauindex: 0
+      rpmaujabberstate: 0
+      rpmaujabberingstateenters: 0
+      rpmaumediaavailable: ''
+      rpmaumediaavailablestateexits: 0
+      rpmauportindex: 0
+      rpmaustatus: 0
+      rpmautable: ''
+      rpmautype: ''
+attributes:
+  broadmaubasicentry:
+    syntax: BroadMauBasicEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.3.1.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: broadMauBasicTable
+          field: broadMauBasicEntry
+  broadmaubasictable:
+    syntax: BroadMauBasicEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.3.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: dot3BroadMauBasicGroup
+          field: broadMauBasicTable
+  broadmauifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: broadMauBasicEntry
+          field: broadMauIfIndex
+          index_field: broadMauIndex
+          index_fields: &id001
+          - broadMauIfIndex
+          - broadMauIndex
+  broadmauindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: broadMauBasicEntry
+          field: broadMauIndex
+          index_field: broadMauIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 2147483647
+  broadmautranslationfreq:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: broadMauBasicEntry
+          field: broadMauTranslationFreq
+          index_field: broadMauIndex
+          index_fields: *id001
+  broadmauxmtcarrierfreq:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: broadMauBasicEntry
+          field: broadMauXmtCarrierFreq
+          index_field: broadMauIndex
+          index_fields: *id001
+  broadmauxmtrcvsplittype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: broadMauBasicEntry
+          field: broadMauXmtRcvSplitType
+          index_field: broadMauIndex
+          index_fields: *id001
+  ifjackentry:
+    syntax: IfJackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.2.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifJackTable
+          field: ifJackEntry
+  ifjackindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifJackEntry
+          field: ifJackIndex
+          index_field: ifJackIndex
+          index_fields: &id002
+          - ifMauIfIndex
+          - ifMauIndex
+          - ifJackIndex
+    validation:
+      min: 1
+      max: 2147483647
+  ifjacktable:
+    syntax: IfJackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.2
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: dot3IfMauBasicGroup
+          field: ifJackTable
+  ifjacktype:
+    syntax: IANAifJackType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifJackEntry
+          field: ifJackType
+          index_field: ifJackIndex
+          index_fields: *id002
+  ifmauautonegadminstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegAdminStatus
+          index_field: ifMauIndex
+          index_fields: &id003
+          - ifMauIfIndex
+          - ifMauIndex
+    validation:
+      allowed:
+      - enabled
+      - disabled
+  ifmauautonegcapadvertised:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegCapAdvertised
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegcapadvertisedbits:
+    syntax: IANAifMauAutoNegCapBits
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegCapAdvertisedBits
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegcapreceived:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegCapReceived
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegcapreceivedbits:
+    syntax: IANAifMauAutoNegCapBits
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegCapReceivedBits
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegcapability:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegCapability
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegcapabilitybits:
+    syntax: IANAifMauAutoNegCapBits
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegCapabilityBits
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegconfig:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegConfig
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegentry:
+    syntax: IfMauAutoNegEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegTable
+          field: ifMauAutoNegEntry
+  ifmauautonegremotefaultadvertised:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegRemoteFaultAdvertised
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegremotefaultreceived:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegRemoteFaultReceived
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegremotesignaling:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegRemoteSignaling
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegrestart:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauAutoNegEntry
+          field: ifMauAutoNegRestart
+          index_field: ifMauIndex
+          index_fields: *id003
+  ifmauautonegsupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauAutoNegSupported
+          index_field: ifMauIndex
+          index_fields: &id004
+          - ifMauIfIndex
+          - ifMauIndex
+    validation:
+      allowed:
+      - true
+      - false
+  ifmauautonegtable:
+    syntax: IfMauAutoNegEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.5.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: dot3IfMauAutoNegGroup
+          field: ifMauAutoNegTable
+  ifmaudefaulttype:
+    syntax: AutonomousType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauDefaultType
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmauentry:
+    syntax: IfMauEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauTable
+          field: ifMauEntry
+  ifmaufalsecarriers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauFalseCarriers
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmauhcfalsecarriers:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauHCFalseCarriers
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmauifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauIfIndex
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmauindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauIndex
+          index_field: ifMauIndex
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 2147483647
+  ifmaujabberstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauJabberState
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmaujabberingstateenters:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauJabberingStateEnters
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmaumediaavailable:
+    syntax: IANAifMauMediaAvailable
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauMediaAvailable
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmaumediaavailablestateexits:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauMediaAvailableStateExits
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmaustatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauStatus
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmautable:
+    syntax: IfMauEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: dot3IfMauBasicGroup
+          field: ifMauTable
+  ifmautype:
+    syntax: AutonomousType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauType
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmautypelist:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauTypeList
+          index_field: ifMauIndex
+          index_fields: *id004
+  ifmautypelistbits:
+    syntax: IANAifMauTypeListBits
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: ifMauEntry
+          field: ifMauTypeListBits
+          index_field: ifMauIndex
+          index_fields: *id004
+  rpjackentry:
+    syntax: RpJackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.2.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpJackTable
+          field: rpJackEntry
+  rpjackindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpJackEntry
+          field: rpJackIndex
+          index_field: rpJackIndex
+          index_fields: &id005
+          - rpMauGroupIndex
+          - rpMauPortIndex
+          - rpMauIndex
+          - rpJackIndex
+    validation:
+      min: 1
+      max: 2147483647
+  rpjacktable:
+    syntax: RpJackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.2
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: dot3RpMauBasicGroup
+          field: rpJackTable
+  rpjacktype:
+    syntax: IANAifJackType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpJackEntry
+          field: rpJackType
+          index_field: rpJackIndex
+          index_fields: *id005
+  rpmauentry:
+    syntax: RpMauEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauTable
+          field: rpMauEntry
+  rpmaufalsecarriers:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauFalseCarriers
+          index_field: rpMauIndex
+          index_fields: &id006
+          - rpMauGroupIndex
+          - rpMauPortIndex
+          - rpMauIndex
+  rpmaugroupindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauGroupIndex
+          index_field: rpMauIndex
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 2147483647
+  rpmauindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauIndex
+          index_field: rpMauIndex
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 2147483647
+  rpmaujabberstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauJabberState
+          index_field: rpMauIndex
+          index_fields: *id006
+  rpmaujabberingstateenters:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauJabberingStateEnters
+          index_field: rpMauIndex
+          index_fields: *id006
+  rpmaumediaavailable:
+    syntax: IANAifMauMediaAvailable
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauMediaAvailable
+          index_field: rpMauIndex
+          index_fields: *id006
+  rpmaumediaavailablestateexits:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauMediaAvailableStateExits
+          index_field: rpMauIndex
+          index_fields: *id006
+  rpmauportindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauPortIndex
+          index_field: rpMauIndex
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 2147483647
+  rpmaustatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauStatus
+          index_field: rpMauIndex
+          index_fields: *id006
+  rpmautable:
+    syntax: RpMauEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1
+          method: get
+      mops:
+        read:
+          mib: MAU-MIB
+          table: dot3RpMauBasicGroup
+          field: rpMauTable
+  rpmautype:
+    syntax: AutonomousType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.26.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: MAU-MIB
+          table: rpMauEntry
+          field: rpMauType
+          index_field: rpMauIndex
+          index_fields: *id006

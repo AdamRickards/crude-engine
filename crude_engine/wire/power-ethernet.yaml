@@ -1,0 +1,482 @@
+version: 2.6.0
+feature: power-ethernet
+schemas:
+  read_power-ethernet:
+    type: dict
+    defaults:
+      pethmainpseconsumptionpower: 0
+      pethmainpseentry: ''
+      pethmainpsegroupindex: 0
+      pethmainpseoperstatus: 0
+      pethmainpsepower: 0
+      pethmainpsetable: ''
+      pethmainpseusagethreshold: 0
+      pethnotificationcontrolenable: false
+      pethnotificationcontrolentry: ''
+      pethnotificationcontrolgroupindex: 0
+      pethnotificationcontroltable: ''
+      pethpseportadminenable: false
+      pethpseportdetectionstatus: 0
+      pethpseportentry: ''
+      pethpseportgroupindex: 0
+      pethpseportindex: 0
+      pethpseportinvalidsignaturecounter: 0
+      pethpseportmpsabsentcounter: 0
+      pethpseportoverloadcounter: 0
+      pethpseportpowerclassifications: 0
+      pethpseportpowerdeniedcounter: 0
+      pethpseportpowerpairs: 0
+      pethpseportpowerpairscontrolability: false
+      pethpseportpowerpriority: 0
+      pethpseportshortcounter: 0
+      pethpseporttable: ''
+      pethpseporttype: ''
+attributes:
+  pethmainpseconsumptionpower:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethMainPseEntry
+          field: pethMainPseConsumptionPower
+          index_field: pethMainPseGroupIndex
+  pethmainpseentry:
+    syntax: PethMainPseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethMainPseTable
+          field: pethMainPseEntry
+  pethmainpsegroupindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethMainPseEntry
+          field: pethMainPseGroupIndex
+          index_field: pethMainPseGroupIndex
+    validation:
+      min: 1
+      max: 2147483647
+  pethmainpseoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethMainPseEntry
+          field: pethMainPseOperStatus
+          index_field: pethMainPseGroupIndex
+  pethmainpsepower:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethMainPseEntry
+          field: pethMainPsePower
+          index_field: pethMainPseGroupIndex
+    validation:
+      min: 1
+      max: 65535
+  pethmainpsetable:
+    syntax: PethMainPseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.3.1
+          method: get
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethMainPseObjects
+          field: pethMainPseTable
+  pethmainpseusagethreshold:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethMainPseEntry
+          field: pethMainPseUsageThreshold
+          index_field: pethMainPseGroupIndex
+    validation:
+      min: 1
+      max: 99
+  pethnotificationcontrolenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethNotificationControlEntry
+          field: pethNotificationControlEnable
+          index_field: pethNotificationControlGroupIndex
+    validation:
+      allowed:
+      - true
+      - false
+  pethnotificationcontrolentry:
+    syntax: PethNotificationControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethNotificationControlTable
+          field: pethNotificationControlEntry
+  pethnotificationcontrolgroupindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethNotificationControlEntry
+          field: pethNotificationControlGroupIndex
+          index_field: pethNotificationControlGroupIndex
+    validation:
+      min: 1
+      max: 2147483647
+  pethnotificationcontroltable:
+    syntax: PethNotificationControlEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.4.1
+          method: get
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethNotificationControl
+          field: pethNotificationControlTable
+  pethpseportadminenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortAdminEnable
+          index_field: pethPsePortIndex
+          index_fields: &id001
+          - pethPsePortGroupIndex
+          - pethPsePortIndex
+    validation:
+      allowed:
+      - true
+      - false
+  pethpseportdetectionstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortDetectionStatus
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportentry:
+    syntax: PethPsePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1
+          method: get
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortTable
+          field: pethPsePortEntry
+  pethpseportgroupindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortGroupIndex
+          index_field: pethPsePortIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 2147483647
+  pethpseportindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortIndex
+          index_field: pethPsePortIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 2147483647
+  pethpseportinvalidsignaturecounter:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortInvalidSignatureCounter
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportmpsabsentcounter:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortMPSAbsentCounter
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportoverloadcounter:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortOverLoadCounter
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportpowerclassifications:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortPowerClassifications
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportpowerdeniedcounter:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortPowerDeniedCounter
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportpowerpairs:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortPowerPairs
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportpowerpairscontrolability:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortPowerPairsControlAbility
+          index_field: pethPsePortIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  pethpseportpowerpriority:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortPowerPriority
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseportshortcounter:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortShortCounter
+          index_field: pethPsePortIndex
+          index_fields: *id001
+  pethpseporttable:
+    syntax: PethPsePortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1
+          method: get
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethObjects
+          field: pethPsePortTable
+  pethpseporttype:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.105.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: POWER-ETHERNET-MIB
+          table: pethPsePortEntry
+          field: pethPsePortType
+          index_field: pethPsePortIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 32

@@ -1,0 +1,731 @@
+version: 2.6.0
+feature: vrrp
+schemas:
+  read_vrrp:
+    type: dict
+    defaults:
+      ifindex: 0
+      vrrpassoipaddr: ''
+      vrrpassoipaddrentry: ''
+      vrrpassoipaddrrowstatus: 0
+      vrrpassoipaddrtable: ''
+      vrrpnodeversion: 0
+      vrrpnotificationcntl: 0
+      vrrpoperacceptmode: false
+      vrrpoperadminstate: 0
+      vrrpoperadvertisementinterval: 0
+      vrrpoperauthkey: ''
+      vrrpoperauthtype: 0
+      vrrpoperentry: ''
+      vrrpoperipaddrcount: 0
+      vrrpopermasteripaddr: ''
+      vrrpoperpreemptmode: false
+      vrrpoperprimaryipaddr: ''
+      vrrpoperpriority: 0
+      vrrpoperprotocol: 0
+      vrrpoperrowstatus: 0
+      vrrpoperstate: 0
+      vrrpopertable: ''
+      vrrpopervirtualmacaddr: ''
+      vrrpopervirtualrouteruptime: 0
+      vrrpopervrid: ''
+      vrrprouterchecksumerrors: 0
+      vrrprouterstatsentry: ''
+      vrrprouterstatstable: ''
+      vrrprouterversionerrors: 0
+      vrrproutervriderrors: 0
+      vrrpstatsaddresslisterrors: 0
+      vrrpstatsadvertiseintervalerrors: 0
+      vrrpstatsadvertisercvd: 0
+      vrrpstatsauthfailures: 0
+      vrrpstatsauthtypemismatch: 0
+      vrrpstatsbecomemaster: 0
+      vrrpstatsinvalidauthtype: 0
+      vrrpstatsinvalidtypepktsrcvd: 0
+      vrrpstatsipttlerrors: 0
+      vrrpstatspacketlengtherrors: 0
+      vrrpstatspriorityzeropktsrcvd: 0
+      vrrpstatspriorityzeropktssent: 0
+      vrrptrapautherrortype: 0
+      vrrptrappacketsrc: ''
+attributes:
+  ifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: ifEntry
+          field: ifIndex
+          index_field: ifIndex
+  vrrpassoipaddr:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpAssoIpAddrEntry
+          field: vrrpAssoIpAddr
+          index_field: vrrpAssoIpAddr
+          index_fields: &id001
+          - ifIndex
+          - vrrpOperVrId
+          - vrrpAssoIpAddr
+  vrrpassoipaddrentry:
+    syntax: VrrpAssoIpAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.4.1
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpAssoIpAddrTable
+          field: vrrpAssoIpAddrEntry
+  vrrpassoipaddrrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpAssoIpAddrEntry
+          field: vrrpAssoIpAddrRowStatus
+          index_field: vrrpAssoIpAddr
+          index_fields: *id001
+    create_method: createAndWait
+  vrrpassoipaddrtable:
+    syntax: VrrpAssoIpAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.4
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperations
+          field: vrrpAssoIpAddrTable
+  vrrpnodeversion:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.1
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperations
+          field: vrrpNodeVersion
+  vrrpnotificationcntl:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.2
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperations
+          field: vrrpNotificationCntl
+  vrrpoperacceptmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.16
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperAcceptMode
+          index_field: vrrpOperVrId
+          index_fields: &id002
+          - ifIndex
+          - vrrpOperVrId
+    validation:
+      allowed:
+      - true
+      - false
+  vrrpoperadminstate:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperAdminState
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpoperadvertisementinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperAdvertisementInterval
+          index_field: vrrpOperVrId
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 255
+  vrrpoperauthkey:
+    syntax: OCTET STRING
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperAuthKey
+          index_field: vrrpOperVrId
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 16
+  vrrpoperauthtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperAuthType
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpoperentry:
+    syntax: VrrpOperEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperTable
+          field: vrrpOperEntry
+  vrrpoperipaddrcount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperIpAddrCount
+          index_field: vrrpOperVrId
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  vrrpopermasteripaddr:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperMasterIpAddr
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpoperpreemptmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperPreemptMode
+          index_field: vrrpOperVrId
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  vrrpoperprimaryipaddr:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperPrimaryIpAddr
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpoperpriority:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperPriority
+          index_field: vrrpOperVrId
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  vrrpoperprotocol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.14
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperProtocol
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpoperrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.15
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperRowStatus
+          index_field: vrrpOperVrId
+          index_fields: *id002
+    create_method: createAndWait
+  vrrpoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperState
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpopertable:
+    syntax: VrrpOperEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperations
+          field: vrrpOperTable
+  vrrpopervirtualmacaddr:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperVirtualMacAddr
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpopervirtualrouteruptime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperVirtualRouterUpTime
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrpopervrid:
+    syntax: VrId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperEntry
+          field: vrrpOperVrId
+          index_field: vrrpOperVrId
+          index_fields: *id002
+  vrrprouterchecksumerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.1
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpStatistics
+          field: vrrpRouterChecksumErrors
+  vrrprouterstatsentry:
+    syntax: VrrpRouterStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsTable
+          field: vrrpRouterStatsEntry
+  vrrprouterstatstable:
+    syntax: VrrpRouterStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpStatistics
+          field: vrrpRouterStatsTable
+  vrrprouterversionerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.2
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpStatistics
+          field: vrrpRouterVersionErrors
+  vrrproutervriderrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.3
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpStatistics
+          field: vrrpRouterVrIdErrors
+  vrrpstatsaddresslisterrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsAddressListErrors
+  vrrpstatsadvertiseintervalerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsAdvertiseIntervalErrors
+  vrrpstatsadvertisercvd:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsAdvertiseRcvd
+  vrrpstatsauthfailures:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsAuthFailures
+  vrrpstatsauthtypemismatch:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsAuthTypeMismatch
+  vrrpstatsbecomemaster:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsBecomeMaster
+  vrrpstatsinvalidauthtype:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsInvalidAuthType
+  vrrpstatsinvalidtypepktsrcvd:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsInvalidTypePktsRcvd
+  vrrpstatsipttlerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsIpTtlErrors
+  vrrpstatspacketlengtherrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.12
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsPacketLengthErrors
+  vrrpstatspriorityzeropktsrcvd:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsPriorityZeroPktsRcvd
+  vrrpstatspriorityzeropktssent:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.2.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpRouterStatsEntry
+          field: vrrpStatsPriorityZeroPktsSent
+  vrrptrapautherrortype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.6
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperations
+          field: vrrpTrapAuthErrorType
+  vrrptrappacketsrc:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.68.1.5
+          method: get
+      mops:
+        read:
+          mib: VRRP-MIB
+          table: vrrpOperations
+          field: vrrpTrapPacketSrc

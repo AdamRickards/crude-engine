@@ -1,0 +1,47 @@
+version: 2.7.0
+feature: ipv6
+description: IPv6 configuration and neighbor discovery
+methods:
+  get_ipv6_neighbors:
+    type: dict
+    primary_key: ip
+    defaults:
+      interface: ''
+      ip: ''
+      mac: ''
+      state: reachable
+  get_ipv6_neighbors_table:
+    type: dict
+    primary_key: ip
+    defaults:
+      interface: ''
+      ip: ''
+      mac: ''
+      state: reachable
+attributes:
+  ipv6_address:
+    wire: hm2netipv6localaddr
+    source: netconfig
+  ipv6_state:
+    wire: hm2netipv6adminstatus
+    source: netconfig
+  interface:
+    wire: ipnettophysicalifindex
+    source: ip
+  ip:
+    wire: ipnettophysicalnetaddress
+    source: ip
+  mac:
+    wire: ipnettophysicalphysaddress
+    source: ip
+  state:
+    wire: ipnettophysicalstate
+    source: ip
+    value_map:
+      '1': reachable
+      '2': stale
+      '3': delay
+      '4': probe
+      '5': invalid
+      '6': unknown
+      '7': incomplete

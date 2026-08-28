@@ -1,0 +1,3178 @@
+version: 2.6.0
+feature: pim-std
+schemas:
+  read_pim-std:
+    type: dict
+    defaults:
+      pimbidirdfelectionaddresstype: ''
+      pimbidirdfelectionentry: ''
+      pimbidirdfelectionifindex: 0
+      pimbidirdfelectionrpaddress: ''
+      pimbidirdfelectionstate: 0
+      pimbidirdfelectionstatetimer: 0
+      pimbidirdfelectiontable: ''
+      pimbidirdfelectionwinneraddress: ''
+      pimbidirdfelectionwinneraddresstype: ''
+      pimbidirdfelectionwinnermetric: 0
+      pimbidirdfelectionwinnermetricpref: 0
+      pimbidirdfelectionwinneruptime: 0
+      pimgroupmappingaddresstype: ''
+      pimgroupmappingentry: ''
+      pimgroupmappinggrpaddress: ''
+      pimgroupmappinggrpprefixlength: ''
+      pimgroupmappingorigin: ''
+      pimgroupmappingpimmode: ''
+      pimgroupmappingprecedence: 0
+      pimgroupmappingrpaddress: ''
+      pimgroupmappingrpaddresstype: ''
+      pimgroupmappingtable: ''
+      piminterfaceaddress: ''
+      piminterfaceaddresstype: ''
+      piminterfacebidircapable: false
+      piminterfacedfelectionrobustness: 0
+      piminterfacedr: ''
+      piminterfacedrpriority: 0
+      piminterfacedrpriorityenabled: false
+      piminterfacedomainborder: false
+      piminterfaceeffectoverrideivl: 0
+      piminterfaceeffectpropagdelay: 0
+      piminterfaceentry: ''
+      piminterfacegenerationidvalue: 0
+      piminterfacegraftretryinterval: 0
+      piminterfacehelloholdtime: 0
+      piminterfacehellointerval: 0
+      piminterfaceipversion: ''
+      piminterfaceifindex: 0
+      piminterfacejoinpruneholdtime: 0
+      piminterfacejoinpruneinterval: 0
+      piminterfacelandelayenabled: false
+      piminterfaceoverrideinterval: 0
+      piminterfacepropagationdelay: 0
+      piminterfaceprunelimitinterval: 0
+      piminterfacesrpriorityenabled: false
+      piminterfacestatus: 0
+      piminterfacestoragetype: 0
+      piminterfacestubinterface: false
+      piminterfacesuppressionenabled: false
+      piminterfacetable: ''
+      piminterfacetrighellointerval: 0
+      pimnbrsecaddress: ''
+      pimnbrsecaddressentry: ''
+      pimnbrsecaddressifindex: 0
+      pimnbrsecaddressprimary: ''
+      pimnbrsecaddresstable: ''
+      pimnbrsecaddresstype: ''
+      pimneighboraddress: ''
+      pimneighboraddresstype: ''
+      pimneighborbidircapable: false
+      pimneighbordrpriority: 0
+      pimneighbordrprioritypresent: false
+      pimneighborentry: ''
+      pimneighborexpirytime: 0
+      pimneighborgenerationidpresent: false
+      pimneighborgenerationidvalue: 0
+      pimneighborifindex: 0
+      pimneighborlanprunedelaypresent: false
+      pimneighboroverrideinterval: 0
+      pimneighborpropagationdelay: 0
+      pimneighborsrcapable: false
+      pimneighbortbit: false
+      pimneighbortable: ''
+      pimneighboruptime: 0
+      pimsgaddresstype: ''
+      pimsgdrregisterstate: 0
+      pimsgdrregisterstoptimer: 0
+      pimsgentry: ''
+      pimsggrpaddress: ''
+      pimsgiassertstate: 0
+      pimsgiasserttimer: 0
+      pimsgiassertwinneraddress: ''
+      pimsgiassertwinneraddresstype: ''
+      pimsgiassertwinnermetric: 0
+      pimsgiassertwinnermetricpref: 0
+      pimsgientry: ''
+      pimsgiifindex: 0
+      pimsgijoinexpirytimer: 0
+      pimsgijoinprunestate: 0
+      pimsgilocalmembership: false
+      pimsgiprunependingtimer: 0
+      pimsgitable: ''
+      pimsgiuptime: 0
+      pimsgkeepalivetimer: 0
+      pimsgoriginatorstate: 0
+      pimsgpimmode: ''
+      pimsgrpfifindex: 0
+      pimsgrpfnexthop: ''
+      pimsgrpfnexthoptype: ''
+      pimsgrpfrouteaddress: ''
+      pimsgrpfroutemetric: 0
+      pimsgrpfroutemetricpref: 0
+      pimsgrpfrouteprefixlength: ''
+      pimsgrpfrouteprotocol: ''
+      pimsgrpregisterpmbraddress: ''
+      pimsgrpregisterpmbraddresstype: ''
+      pimsgrptentry: ''
+      pimsgrptientry: ''
+      pimsgrptiifindex: 0
+      pimsgrptijoinprunestate: 0
+      pimsgrptilocalmembership: false
+      pimsgrptipruneexpirytimer: 0
+      pimsgrptiprunependingtimer: 0
+      pimsgrptitable: ''
+      pimsgrptiuptime: 0
+      pimsgrptsrcaddress: ''
+      pimsgrpttable: ''
+      pimsgrptuptime: 0
+      pimsgrptupstreamoverridetimer: 0
+      pimsgrptupstreamprunestate: 0
+      pimsgsptbit: false
+      pimsgsourceactivetimer: 0
+      pimsgsrcaddress: ''
+      pimsgstaterefreshtimer: 0
+      pimsgtable: ''
+      pimsguptime: 0
+      pimsgupstreamjoinstate: 0
+      pimsgupstreamjointimer: 0
+      pimsgupstreamneighbor: ''
+      pimsgupstreamprunelimittimer: 0
+      pimsgupstreamprunestate: 0
+      pimstargaddresstype: ''
+      pimstargentry: ''
+      pimstarggrpaddress: ''
+      pimstargiassertstate: 0
+      pimstargiasserttimer: 0
+      pimstargiassertwinneraddress: ''
+      pimstargiassertwinneraddresstype: ''
+      pimstargiassertwinnermetric: 0
+      pimstargiassertwinnermetricpref: 0
+      pimstargientry: ''
+      pimstargiifindex: 0
+      pimstargijoinexpirytimer: 0
+      pimstargijoinprunestate: 0
+      pimstargilocalmembership: false
+      pimstargiprunependingtimer: 0
+      pimstargitable: ''
+      pimstargiuptime: 0
+      pimstargpimmode: ''
+      pimstargpimmodeorigin: ''
+      pimstargrpaddress: ''
+      pimstargrpaddresstype: ''
+      pimstargrpfifindex: 0
+      pimstargrpfnexthop: ''
+      pimstargrpfnexthoptype: ''
+      pimstargrpfrouteaddress: ''
+      pimstargrpfroutemetric: 0
+      pimstargrpfroutemetricpref: 0
+      pimstargrpfrouteprefixlength: ''
+      pimstargrpfrouteprotocol: ''
+      pimstargrpislocal: false
+      pimstargtable: ''
+      pimstarguptime: 0
+      pimstargupstreamjoinstate: 0
+      pimstargupstreamjointimer: 0
+      pimstargupstreamneighbor: ''
+      pimstargupstreamneighbortype: ''
+      pimstaticrpaddresstype: ''
+      pimstaticrpentry: ''
+      pimstaticrpgrpaddress: ''
+      pimstaticrpgrpprefixlength: ''
+      pimstaticrpoverridedynamic: false
+      pimstaticrppimmode: ''
+      pimstaticrpprecedence: 0
+      pimstaticrprpaddress: ''
+      pimstaticrprowstatus: 0
+      pimstaticrpstoragetype: 0
+      pimstaticrptable: ''
+attributes:
+  pimbidirdfelectionaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionAddressType
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: &id001
+          - pimBidirDFElectionAddressType
+          - pimBidirDFElectionRPAddress
+          - pimBidirDFElectionIfIndex
+  pimbidirdfelectionentry:
+    syntax: PimBidirDFElectionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionTable
+          field: pimBidirDFElectionEntry
+  pimbidirdfelectionifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionIfIndex
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectionrpaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionRPAddress
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectionstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionState
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectionstatetimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.10
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionStateTimer
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectiontable:
+    syntax: PimBidirDFElectionEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimBidirDFElectionTable
+  pimbidirdfelectionwinneraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionWinnerAddress
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectionwinneraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionWinnerAddressType
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectionwinnermetric:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionWinnerMetric
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectionwinnermetricpref:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionWinnerMetricPref
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimbidirdfelectionwinneruptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimBidirDFElectionEntry
+          field: pimBidirDFElectionWinnerUpTime
+          index_field: pimBidirDFElectionIfIndex
+          index_fields: *id001
+  pimgroupmappingaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingAddressType
+          index_field: pimGroupMappingRPAddress
+          index_fields: &id002
+          - pimGroupMappingOrigin
+          - pimGroupMappingAddressType
+          - pimGroupMappingGrpAddress
+          - pimGroupMappingGrpPrefixLength
+          - pimGroupMappingRPAddressType
+          - pimGroupMappingRPAddress
+  pimgroupmappingentry:
+    syntax: PimGroupMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingTable
+          field: pimGroupMappingEntry
+  pimgroupmappinggrpaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingGrpAddress
+          index_field: pimGroupMappingRPAddress
+          index_fields: *id002
+  pimgroupmappinggrpprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingGrpPrefixLength
+          index_field: pimGroupMappingRPAddress
+          index_fields: *id002
+    validation:
+      min: 4
+      max: 128
+  pimgroupmappingorigin:
+    syntax: PimGroupMappingOriginType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingOrigin
+          index_field: pimGroupMappingRPAddress
+          index_fields: *id002
+  pimgroupmappingpimmode:
+    syntax: PimMode
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingPimMode
+          index_field: pimGroupMappingRPAddress
+          index_fields: *id002
+  pimgroupmappingprecedence:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingPrecedence
+          index_field: pimGroupMappingRPAddress
+          index_fields: *id002
+  pimgroupmappingrpaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingRPAddress
+          index_field: pimGroupMappingRPAddress
+          index_fields: *id002
+  pimgroupmappingrpaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimGroupMappingEntry
+          field: pimGroupMappingRPAddressType
+          index_field: pimGroupMappingRPAddress
+          index_fields: *id002
+  pimgroupmappingtable:
+    syntax: PimGroupMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.13
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimGroupMappingTable
+  piminterfaceaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceAddress
+          index_field: pimInterfaceIPVersion
+          index_fields: &id003
+          - pimInterfaceIfIndex
+          - pimInterfaceIPVersion
+  piminterfaceaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceAddressType
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfacebidircapable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceBidirCapable
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  piminterfacedfelectionrobustness:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceDFElectionRobustness
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfacedr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceDR
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfacedrpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceDRPriority
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfacedrpriorityenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceDRPriorityEnabled
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  piminterfacedomainborder:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceDomainBorder
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  piminterfaceeffectoverrideivl:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceEffectOverrideIvl
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 65535
+  piminterfaceeffectpropagdelay:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceEffectPropagDelay
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 32767
+  piminterfaceentry:
+    syntax: PimInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceTable
+          field: pimInterfaceEntry
+  piminterfacegenerationidvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceGenerationIDValue
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfacegraftretryinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceGraftRetryInterval
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 65535
+  piminterfacehelloholdtime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceHelloHoldtime
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 65535
+  piminterfacehellointerval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceHelloInterval
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 18000
+  piminterfaceipversion:
+    syntax: InetVersion
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceIPVersion
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfaceifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceIfIndex
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfacejoinpruneholdtime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceJoinPruneHoldtime
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 65535
+  piminterfacejoinpruneinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceJoinPruneInterval
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 18000
+  piminterfacelandelayenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceLanDelayEnabled
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  piminterfaceoverrideinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceOverrideInterval
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 65535
+  piminterfacepropagationdelay:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfacePropagationDelay
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 32767
+  piminterfaceprunelimitinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfacePruneLimitInterval
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 65535
+  piminterfacesrpriorityenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceSRPriorityEnabled
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  piminterfacestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.27
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceStatus
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    create_method: createAndWait
+  piminterfacestoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.28
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceStorageType
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+  piminterfacestubinterface:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceStubInterface
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  piminterfacesuppressionenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceSuppressionEnabled
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  piminterfacetable:
+    syntax: PimInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimInterfaceTable
+  piminterfacetrighellointerval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimInterfaceEntry
+          field: pimInterfaceTrigHelloInterval
+          index_field: pimInterfaceIPVersion
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 60
+  pimnbrsecaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNbrSecAddressEntry
+          field: pimNbrSecAddress
+          index_field: pimNbrSecAddress
+          index_fields: &id004
+          - pimNbrSecAddressIfIndex
+          - pimNbrSecAddressType
+          - pimNbrSecAddressPrimary
+          - pimNbrSecAddress
+  pimnbrsecaddressentry:
+    syntax: PimNbrSecAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNbrSecAddressTable
+          field: pimNbrSecAddressEntry
+  pimnbrsecaddressifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNbrSecAddressEntry
+          field: pimNbrSecAddressIfIndex
+          index_field: pimNbrSecAddress
+          index_fields: *id004
+  pimnbrsecaddressprimary:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNbrSecAddressEntry
+          field: pimNbrSecAddressPrimary
+          index_field: pimNbrSecAddress
+          index_fields: *id004
+  pimnbrsecaddresstable:
+    syntax: PimNbrSecAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.3
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimNbrSecAddressTable
+  pimnbrsecaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNbrSecAddressEntry
+          field: pimNbrSecAddressType
+          index_field: pimNbrSecAddress
+          index_fields: *id004
+  pimneighboraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborAddress
+          index_field: pimNeighborAddress
+          index_fields: &id005
+          - pimNeighborIfIndex
+          - pimNeighborAddressType
+          - pimNeighborAddress
+  pimneighboraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborAddressType
+          index_field: pimNeighborAddress
+          index_fields: *id005
+  pimneighborbidircapable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborBidirCapable
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  pimneighbordrpriority:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborDRPriority
+          index_field: pimNeighborAddress
+          index_fields: *id005
+  pimneighbordrprioritypresent:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborDRPriorityPresent
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  pimneighborentry:
+    syntax: PimNeighborEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborTable
+          field: pimNeighborEntry
+  pimneighborexpirytime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborExpiryTime
+          index_field: pimNeighborAddress
+          index_fields: *id005
+  pimneighborgenerationidpresent:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborGenerationIDPresent
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  pimneighborgenerationidvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborGenerationIDValue
+          index_field: pimNeighborAddress
+          index_fields: *id005
+  pimneighborifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborIfIndex
+          index_field: pimNeighborAddress
+          index_fields: *id005
+  pimneighborlanprunedelaypresent:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborLanPruneDelayPresent
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  pimneighboroverrideinterval:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborOverrideInterval
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      min: 0
+      max: 65535
+  pimneighborpropagationdelay:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborPropagationDelay
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      min: 0
+      max: 32767
+  pimneighborsrcapable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.15
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborSRCapable
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  pimneighbortbit:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborTBit
+          index_field: pimNeighborAddress
+          index_fields: *id005
+    validation:
+      allowed:
+      - true
+      - false
+  pimneighbortable:
+    syntax: PimNeighborEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimNeighborTable
+  pimneighboruptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimNeighborEntry
+          field: pimNeighborUpTime
+          index_field: pimNeighborAddress
+          index_fields: *id005
+  pimsgaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGAddressType
+          index_field: pimSGSrcAddress
+          index_fields: &id006
+          - pimSGAddressType
+          - pimSGGrpAddress
+          - pimSGSrcAddress
+  pimsgdrregisterstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.19
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGDRRegisterState
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgdrregisterstoptimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.20
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGDRRegisterStopTimer
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgentry:
+    syntax: PimSGEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGTable
+          field: pimSGEntry
+  pimsggrpaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGGrpAddress
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgiassertstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIAssertState
+          index_field: pimSGIIfIndex
+          index_fields: &id007
+          - pimSGAddressType
+          - pimSGGrpAddress
+          - pimSGSrcAddress
+          - pimSGIIfIndex
+  pimsgiasserttimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIAssertTimer
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgiassertwinneraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.10
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIAssertWinnerAddress
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgiassertwinneraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIAssertWinnerAddressType
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgiassertwinnermetric:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.12
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIAssertWinnerMetric
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgiassertwinnermetricpref:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.11
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIAssertWinnerMetricPref
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+    validation:
+      min: 0
+      max: 2147483647
+  pimsgientry:
+    syntax: PimSGIEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGITable
+          field: pimSGIEntry
+  pimsgiifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIIfIndex
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgijoinexpirytimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIJoinExpiryTimer
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgijoinprunestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIJoinPruneState
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgilocalmembership:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGILocalMembership
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+    validation:
+      allowed:
+      - true
+      - false
+  pimsgiprunependingtimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIPrunePendingTimer
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgitable:
+    syntax: PimSGIEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimSGITable
+  pimsgiuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGIEntry
+          field: pimSGIUpTime
+          index_field: pimSGIIfIndex
+          index_fields: *id007
+  pimsgkeepalivetimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.18
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGKeepaliveTimer
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgoriginatorstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.25
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGOriginatorState
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgpimmode:
+    syntax: PimMode
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGPimMode
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpfifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFIfIndex
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpfnexthop:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.11
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFNextHop
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpfnexthoptype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.10
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFNextHopType
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpfrouteaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.13
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFRouteAddress
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpfroutemetric:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.16
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFRouteMetric
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpfroutemetricpref:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.15
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFRouteMetricPref
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+    validation:
+      min: 0
+      max: 2147483647
+  pimsgrpfrouteprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.14
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFRoutePrefixLength
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpfrouteprotocol:
+    syntax: IANAipRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.12
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPFRouteProtocol
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpregisterpmbraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.22
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPRegisterPMBRAddress
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrpregisterpmbraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.21
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGRPRegisterPMBRAddressType
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgrptentry:
+    syntax: PimSGRptEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.8.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptTable
+          field: pimSGRptEntry
+  pimsgrptientry:
+    syntax: PimSGRptIEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptITable
+          field: pimSGRptIEntry
+  pimsgrptiifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptIEntry
+          field: pimSGRptIIfIndex
+          index_field: pimSGRptIIfIndex
+          index_fields: &id008
+          - pimStarGAddressType
+          - pimStarGGrpAddress
+          - pimSGRptSrcAddress
+          - pimSGRptIIfIndex
+  pimsgrptijoinprunestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptIEntry
+          field: pimSGRptIJoinPruneState
+          index_field: pimSGRptIIfIndex
+          index_fields: *id008
+  pimsgrptilocalmembership:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptIEntry
+          field: pimSGRptILocalMembership
+          index_field: pimSGRptIIfIndex
+          index_fields: *id008
+    validation:
+      allowed:
+      - true
+      - false
+  pimsgrptipruneexpirytimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptIEntry
+          field: pimSGRptIPruneExpiryTimer
+          index_field: pimSGRptIIfIndex
+          index_fields: *id008
+  pimsgrptiprunependingtimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptIEntry
+          field: pimSGRptIPrunePendingTimer
+          index_field: pimSGRptIIfIndex
+          index_fields: *id008
+  pimsgrptitable:
+    syntax: PimSGRptIEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimSGRptITable
+  pimsgrptiuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.9.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptIEntry
+          field: pimSGRptIUpTime
+          index_field: pimSGRptIIfIndex
+          index_fields: *id008
+  pimsgrptsrcaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptEntry
+          field: pimSGRptSrcAddress
+          index_field: pimSGRptSrcAddress
+          index_fields: &id009
+          - pimStarGAddressType
+          - pimStarGGrpAddress
+          - pimSGRptSrcAddress
+  pimsgrpttable:
+    syntax: PimSGRptEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.8
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimSGRptTable
+  pimsgrptuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptEntry
+          field: pimSGRptUpTime
+          index_field: pimSGRptSrcAddress
+          index_fields: *id009
+  pimsgrptupstreamoverridetimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptEntry
+          field: pimSGRptUpstreamOverrideTimer
+          index_field: pimSGRptSrcAddress
+          index_fields: *id009
+  pimsgrptupstreamprunestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGRptEntry
+          field: pimSGRptUpstreamPruneState
+          index_field: pimSGRptSrcAddress
+          index_fields: *id009
+  pimsgsptbit:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.17
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGSPTBit
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+    validation:
+      allowed:
+      - true
+      - false
+  pimsgsourceactivetimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.26
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGSourceActiveTimer
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgsrcaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGSrcAddress
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgstaterefreshtimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.27
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGStateRefreshTimer
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgtable:
+    syntax: PimSGEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimSGTable
+  pimsguptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGUpTime
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgupstreamjoinstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGUpstreamJoinState
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgupstreamjointimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGUpstreamJoinTimer
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgupstreamneighbor:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGUpstreamNeighbor
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgupstreamprunelimittimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.24
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGUpstreamPruneLimitTimer
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimsgupstreamprunestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.6.1.23
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimSGEntry
+          field: pimSGUpstreamPruneState
+          index_field: pimSGSrcAddress
+          index_fields: *id006
+  pimstargaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGAddressType
+          index_field: pimStarGGrpAddress
+          index_fields: &id010
+          - pimStarGAddressType
+          - pimStarGGrpAddress
+  pimstargentry:
+    syntax: PimStarGEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGTable
+          field: pimStarGEntry
+  pimstarggrpaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGGrpAddress
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargiassertstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIAssertState
+          index_field: pimStarGIIfIndex
+          index_fields: &id011
+          - pimStarGAddressType
+          - pimStarGGrpAddress
+          - pimStarGIIfIndex
+  pimstargiasserttimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIAssertTimer
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargiassertwinneraddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIAssertWinnerAddress
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargiassertwinneraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIAssertWinnerAddressType
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargiassertwinnermetric:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.12
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIAssertWinnerMetric
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargiassertwinnermetricpref:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIAssertWinnerMetricPref
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+    validation:
+      min: 0
+      max: 2147483647
+  pimstargientry:
+    syntax: PimStarGIEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGITable
+          field: pimStarGIEntry
+  pimstargiifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIIfIndex
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargijoinexpirytimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIJoinExpiryTimer
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargijoinprunestate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIJoinPruneState
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargilocalmembership:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGILocalMembership
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+    validation:
+      allowed:
+      - true
+      - false
+  pimstargiprunependingtimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIPrunePendingTimer
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargitable:
+    syntax: PimStarGIEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimStarGITable
+  pimstargiuptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGIEntry
+          field: pimStarGIUpTime
+          index_field: pimStarGIIfIndex
+          index_fields: *id011
+  pimstargpimmode:
+    syntax: PimMode
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGPimMode
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargpimmodeorigin:
+    syntax: PimGroupMappingOriginType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGPimModeOrigin
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPAddress
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPAddressType
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpfifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.13
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFIfIndex
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpfnexthop:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.15
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFNextHop
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpfnexthoptype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.14
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFNextHopType
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpfrouteaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.17
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFRouteAddress
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpfroutemetric:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.20
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFRouteMetric
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpfroutemetricpref:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.19
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFRouteMetricPref
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+    validation:
+      min: 0
+      max: 2147483647
+  pimstargrpfrouteprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.18
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFRoutePrefixLength
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpfrouteprotocol:
+    syntax: IANAipRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.16
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPFRouteProtocol
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargrpislocal:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGRPIsLocal
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+    validation:
+      allowed:
+      - true
+      - false
+  pimstargtable:
+    syntax: PimStarGEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimStarGTable
+  pimstarguptime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGUpTime
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargupstreamjoinstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGUpstreamJoinState
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargupstreamjointimer:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGUpstreamJoinTimer
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargupstreamneighbor:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.12
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGUpstreamNeighbor
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstargupstreamneighbortype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStarGEntry
+          field: pimStarGUpstreamNeighborType
+          index_field: pimStarGGrpAddress
+          index_fields: *id010
+  pimstaticrpaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.1
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPAddressType
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: &id012
+          - pimStaticRPAddressType
+          - pimStaticRPGrpAddress
+          - pimStaticRPGrpPrefixLength
+  pimstaticrpentry:
+    syntax: PimStaticRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPTable
+          field: pimStaticRPEntry
+  pimstaticrpgrpaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.2
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPGrpAddress
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+  pimstaticrpgrpprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.3
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPGrpPrefixLength
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+    validation:
+      min: 4
+      max: 128
+  pimstaticrpoverridedynamic:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.6
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPOverrideDynamic
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+    validation:
+      allowed:
+      - true
+      - false
+  pimstaticrppimmode:
+    syntax: PimMode
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.5
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPPimMode
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+  pimstaticrpprecedence:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.7
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPPrecedence
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+  pimstaticrprpaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.4
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPRPAddress
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+  pimstaticrprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.8
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPRowStatus
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+    create_method: createAndWait
+    index_type: inet_address
+  pimstaticrpstoragetype:
+    syntax: StorageType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11.1.9
+          method: walk
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pimStaticRPEntry
+          field: pimStaticRPStorageType
+          index_field: pimStaticRPGrpPrefixLength
+          index_fields: *id012
+  pimstaticrptable:
+    syntax: PimStaticRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.157.1.1.11
+          method: get
+      mops:
+        read:
+          mib: PIM-STD-MIB
+          table: pim
+          field: pimStaticRPTable

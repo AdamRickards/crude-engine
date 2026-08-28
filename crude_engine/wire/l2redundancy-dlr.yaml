@@ -1,0 +1,1054 @@
+version: 2.6.0
+feature: l2redundancy-dlr
+schemas:
+  read_l2redundancy-dlr:
+    type: dict
+    defaults:
+      hm2dlractivesupervisoripaddress: ''
+      hm2dlractivesupervisoripaddresstype: ''
+      hm2dlractivesupervisormacaddress: ''
+      hm2dlractivesupervisorprecedence: 0
+      hm2dlrbeaconinterval: 0
+      hm2dlrbeacontimeout: 0
+      hm2dlrcapabilityflags: []
+      hm2dlrconfigentry: ''
+      hm2dlrconfigrowstatus: 0
+      hm2dlrconfigtable: ''
+      hm2dlrdeviceoperstatus: ''
+      hm2dlrgatewayconfigadvertiseinterval: 0
+      hm2dlrgatewayconfigadvertisetimeout: 0
+      hm2dlrgatewayconfigentry: ''
+      hm2dlrgatewayconfiglearningupdate: false
+      hm2dlrgatewayconfigprecedence: 0
+      hm2dlrgatewayconfigrowstatus: 0
+      hm2dlrgatewayconfigtable: ''
+      hm2dlrgatewayconfiguplinkport1ifindex: 0
+      hm2dlrgatewayconfiguplinkport2ifindex: 0
+      hm2dlrgatewayindex: 0
+      hm2dlrgatewayname: ''
+      hm2dlrgatewaystatus: ''
+      hm2dlrgatewaystatusentry: ''
+      hm2dlrgatewaystatusipaddress: ''
+      hm2dlrgatewaystatusipaddresstype: ''
+      hm2dlrgatewaystatusmacaddress: ''
+      hm2dlrgatewaystatusprecedence: 0
+      hm2dlrgatewaystatustable: ''
+      hm2dlrgatewayuplinkport1operstatus: ''
+      hm2dlrgatewayuplinkport2operstatus: ''
+      hm2dlrglobaladminstate: false
+      hm2dlrlastactivenodeport1ipaddress: ''
+      hm2dlrlastactivenodeport1ipaddresstype: ''
+      hm2dlrlastactivenodeport1macaddress: ''
+      hm2dlrlastactivenodeport2ipaddress: ''
+      hm2dlrlastactivenodeport2ipaddresstype: ''
+      hm2dlrlastactivenodeport2macaddress: ''
+      hm2dlrlastnetworkstatuschange: 0
+      hm2dlrnetworkstatus: ''
+      hm2dlrnetworktopology: ''
+      hm2dlrringfaultscount: 0
+      hm2dlrringindex: 0
+      hm2dlrringname: ''
+      hm2dlrringparticipantscount: 0
+      hm2dlrringparticipantsentry: ''
+      hm2dlrringparticipantsindex: 0
+      hm2dlrringparticipantsipaddress: ''
+      hm2dlrringparticipantsipaddresstype: ''
+      hm2dlrringparticipantsmacaddress: ''
+      hm2dlrringparticipantstable: ''
+      hm2dlrringport1ifindex: 0
+      hm2dlrringport1operstatus: ''
+      hm2dlrringport2ifindex: 0
+      hm2dlrringport2operstatus: ''
+      hm2dlrservice: 0
+      hm2dlrstatusentry: ''
+      hm2dlrstatustable: ''
+      hm2dlrsupervisoradminstate: false
+      hm2dlrsupervisorprecedence: 0
+      hm2dlrvlanid: 0
+attributes:
+  hm2dlractivesupervisoripaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrActiveSupervisorIpAddress
+          index_field: hm2DlrRingIndex
+  hm2dlractivesupervisoripaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrActiveSupervisorIpAddressType
+          index_field: hm2DlrRingIndex
+  hm2dlractivesupervisormacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrActiveSupervisorMacAddress
+          index_field: hm2DlrRingIndex
+  hm2dlractivesupervisorprecedence:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrActiveSupervisorPrecedence
+          index_field: hm2DlrRingIndex
+    validation:
+      min: 0
+      max: 255
+  hm2dlrbeaconinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrBeaconInterval
+          index_field: hm2DlrRingIndex
+    validation:
+      min: 400
+      max: 100000
+  hm2dlrbeacontimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrBeaconTimeout
+          index_field: hm2DlrRingIndex
+    validation:
+      min: 800
+      max: 500000
+  hm2dlrcapabilityflags:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrCapabilityFlags
+          index_field: hm2DlrRingIndex
+    bit_map:
+      0: announce
+      1: beacon
+      5: supervisor
+      6: gateway
+      7: flushTable
+  hm2dlrconfigentry:
+    syntax: Hm2DlrConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigTable
+          field: hm2DlrConfigEntry
+  hm2dlrconfigrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrConfigRowStatus
+          index_field: hm2DlrRingIndex
+    create_method: createAndWait
+  hm2dlrconfigtable:
+    syntax: Hm2DlrConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfiguration
+          field: hm2DlrConfigTable
+  hm2dlrdeviceoperstatus:
+    syntax: Hm2DlrRingDeviceStatusType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrDeviceOperStatus
+          index_field: hm2DlrRingIndex
+  hm2dlrgatewayconfigadvertiseinterval:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayConfigAdvertiseInterval
+          index_field: hm2DlrGatewayIndex
+          index_fields: &id001
+          - hm2DlrRingIndex
+          - hm2DlrGatewayIndex
+    validation:
+      min: 1000
+      max: 100000
+  hm2dlrgatewayconfigadvertisetimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayConfigAdvertiseTimeout
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+    validation:
+      min: 2500
+      max: 500000
+  hm2dlrgatewayconfigentry:
+    syntax: Hm2DlrGatewayConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigTable
+          field: hm2DlrGatewayConfigEntry
+  hm2dlrgatewayconfiglearningupdate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayConfigLearningUpdate
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dlrgatewayconfigprecedence:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayConfigPrecedence
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 255
+  hm2dlrgatewayconfigrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayConfigRowStatus
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+    create_method: createAndWait
+  hm2dlrgatewayconfigtable:
+    syntax: Hm2DlrGatewayConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfiguration
+          field: hm2DlrGatewayConfigTable
+  hm2dlrgatewayconfiguplinkport1ifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayConfigUplinkPort1IfIndex
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+  hm2dlrgatewayconfiguplinkport2ifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayConfigUplinkPort2IfIndex
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+  hm2dlrgatewayindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayIndex
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 255
+  hm2dlrgatewayname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayName
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+  hm2dlrgatewaystatus:
+    syntax: Hm2DlrGatewayStatusType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayStatusEntry
+          field: hm2DlrGatewayStatus
+          index_field: hm2DlrGatewayIndex
+          index_fields: &id002
+          - hm2DlrRingIndex
+          - hm2DlrGatewayIndex
+  hm2dlrgatewaystatusentry:
+    syntax: Hm2DlrGatewayStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayStatusTable
+          field: hm2DlrGatewayStatusEntry
+  hm2dlrgatewaystatusipaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayStatusEntry
+          field: hm2DlrGatewayStatusIpAddress
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id002
+  hm2dlrgatewaystatusipaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayStatusEntry
+          field: hm2DlrGatewayStatusIpAddressType
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id002
+  hm2dlrgatewaystatusmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayStatusEntry
+          field: hm2DlrGatewayStatusMacAddress
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id002
+  hm2dlrgatewaystatusprecedence:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayStatusEntry
+          field: hm2DlrGatewayStatusPrecedence
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  hm2dlrgatewaystatustable:
+    syntax: Hm2DlrGatewayStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatus
+          field: hm2DlrGatewayStatusTable
+  hm2dlrgatewayuplinkport1operstatus:
+    syntax: Hm2DlrPortStatusType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayUplinkPort1OperStatus
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+  hm2dlrgatewayuplinkport2operstatus:
+    syntax: Hm2DlrPortStatusType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.11.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrGatewayConfigEntry
+          field: hm2DlrGatewayUplinkPort2OperStatus
+          index_field: hm2DlrGatewayIndex
+          index_fields: *id001
+  hm2dlrglobaladminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfiguration
+          field: hm2DlrGlobalAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dlrlastactivenodeport1ipaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrLastActiveNodePort1IpAddress
+          index_field: hm2DlrRingIndex
+  hm2dlrlastactivenodeport1ipaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrLastActiveNodePort1IpAddressType
+          index_field: hm2DlrRingIndex
+  hm2dlrlastactivenodeport1macaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrLastActiveNodePort1MacAddress
+          index_field: hm2DlrRingIndex
+  hm2dlrlastactivenodeport2ipaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrLastActiveNodePort2IpAddress
+          index_field: hm2DlrRingIndex
+  hm2dlrlastactivenodeport2ipaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrLastActiveNodePort2IpAddressType
+          index_field: hm2DlrRingIndex
+  hm2dlrlastactivenodeport2macaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrLastActiveNodePort2MacAddress
+          index_field: hm2DlrRingIndex
+  hm2dlrlastnetworkstatuschange:
+    syntax: Hm2DlrTimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrLastNetworkStatusChange
+          index_field: hm2DlrRingIndex
+  hm2dlrnetworkstatus:
+    syntax: Hm2DlrNetworkStatusType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrNetworkStatus
+          index_field: hm2DlrRingIndex
+  hm2dlrnetworktopology:
+    syntax: Hm2DlrNetworkTopologyType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrNetworkTopology
+          index_field: hm2DlrRingIndex
+  hm2dlrringfaultscount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrRingFaultsCount
+          index_field: hm2DlrRingIndex
+    validation:
+      min: 0
+      max: 65535
+  hm2dlrringindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrRingIndex
+          index_field: hm2DlrRingIndex
+    validation:
+      min: 1
+      max: 255
+  hm2dlrringname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrRingName
+          index_field: hm2DlrRingIndex
+  hm2dlrringparticipantscount:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusEntry
+          field: hm2DlrRingParticipantsCount
+          index_field: hm2DlrRingIndex
+  hm2dlrringparticipantsentry:
+    syntax: Hm2DlrRingParticipantsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrRingParticipantsTable
+          field: hm2DlrRingParticipantsEntry
+  hm2dlrringparticipantsindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrRingParticipantsEntry
+          field: hm2DlrRingParticipantsIndex
+          index_field: hm2DlrRingParticipantsIndex
+          index_fields: &id003
+          - hm2DlrRingIndex
+          - hm2DlrRingParticipantsIndex
+  hm2dlrringparticipantsipaddress:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrRingParticipantsEntry
+          field: hm2DlrRingParticipantsIpAddress
+          index_field: hm2DlrRingParticipantsIndex
+          index_fields: *id003
+  hm2dlrringparticipantsipaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrRingParticipantsEntry
+          field: hm2DlrRingParticipantsIpAddressType
+          index_field: hm2DlrRingParticipantsIndex
+          index_fields: *id003
+  hm2dlrringparticipantsmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrRingParticipantsEntry
+          field: hm2DlrRingParticipantsMacAddress
+          index_field: hm2DlrRingParticipantsIndex
+          index_fields: *id003
+  hm2dlrringparticipantstable:
+    syntax: Hm2DlrRingParticipantsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatus
+          field: hm2DlrRingParticipantsTable
+  hm2dlrringport1ifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrRingport1IfIndex
+          index_field: hm2DlrRingIndex
+  hm2dlrringport1operstatus:
+    syntax: Hm2DlrPortStatusType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrRingport1OperStatus
+          index_field: hm2DlrRingIndex
+  hm2dlrringport2ifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrRingport2IfIndex
+          index_field: hm2DlrRingIndex
+  hm2dlrringport2operstatus:
+    syntax: Hm2DlrPortStatusType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrRingport2OperStatus
+          index_field: hm2DlrRingIndex
+  hm2dlrservice:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrService
+          index_field: hm2DlrRingIndex
+  hm2dlrstatusentry:
+    syntax: Hm2DlrStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatusTable
+          field: hm2DlrStatusEntry
+  hm2dlrstatustable:
+    syntax: Hm2DlrStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrStatus
+          field: hm2DlrStatusTable
+  hm2dlrsupervisoradminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrSupervisorAdminState
+          index_field: hm2DlrRingIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dlrsupervisorprecedence:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrSupervisorPrecedence
+          index_field: hm2DlrRingIndex
+    validation:
+      min: 0
+      max: 255
+  hm2dlrvlanid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.40.1.5.1.1.10.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2REDUNDANCY-DLR-MIB
+          table: hm2DlrConfigEntry
+          field: hm2DlrVLANID
+          index_field: hm2DlrRingIndex
+    validation:
+      min: 0
+      max: 4042

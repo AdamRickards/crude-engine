@@ -1,0 +1,996 @@
+version: 2.6.0
+feature: ip-forward
+schemas:
+  read_ip-forward:
+    type: dict
+    defaults:
+      inetcidrrouteage: 0
+      inetcidrroutedest: ''
+      inetcidrroutedesttype: ''
+      inetcidrroutediscards: 0
+      inetcidrrouteentry: ''
+      inetcidrrouteifindex: 0
+      inetcidrroutemetric1: 0
+      inetcidrroutemetric2: 0
+      inetcidrroutemetric3: 0
+      inetcidrroutemetric4: 0
+      inetcidrroutemetric5: 0
+      inetcidrroutenexthop: ''
+      inetcidrroutenexthopas: 0
+      inetcidrroutenexthoptype: ''
+      inetcidrroutenumber: 0
+      inetcidrroutepfxlen: ''
+      inetcidrroutepolicy: ''
+      inetcidrrouteproto: ''
+      inetcidrroutestatus: 0
+      inetcidrroutetable: ''
+      inetcidrroutetype: 0
+      ipcidrrouteage: 0
+      ipcidrroutedest: ''
+      ipcidrrouteentry: ''
+      ipcidrrouteifindex: 0
+      ipcidrrouteinfo: ''
+      ipcidrroutemask: ''
+      ipcidrroutemetric1: 0
+      ipcidrroutemetric2: 0
+      ipcidrroutemetric3: 0
+      ipcidrroutemetric4: 0
+      ipcidrroutemetric5: 0
+      ipcidrroutenexthop: ''
+      ipcidrroutenexthopas: 0
+      ipcidrroutenumber: 0
+      ipcidrrouteproto: 0
+      ipcidrroutestatus: 0
+      ipcidrroutetable: ''
+      ipcidrroutetos: 0
+      ipcidrroutetype: 0
+      ipforwardage: 0
+      ipforwarddest: ''
+      ipforwardentry: ''
+      ipforwardifindex: 0
+      ipforwardinfo: ''
+      ipforwardmask: ''
+      ipforwardmetric1: 0
+      ipforwardmetric2: 0
+      ipforwardmetric3: 0
+      ipforwardmetric4: 0
+      ipforwardmetric5: 0
+      ipforwardnexthop: ''
+      ipforwardnexthopas: 0
+      ipforwardnumber: 0
+      ipforwardpolicy: 0
+      ipforwardproto: 0
+      ipforwardtable: ''
+      ipforwardtype: 0
+attributes:
+  inetcidrrouteage:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteAge
+          index_field: inetCidrRouteNextHop
+          index_fields: &id001
+          - inetCidrRouteDestType
+          - inetCidrRouteDest
+          - inetCidrRoutePfxLen
+          - inetCidrRoutePolicy
+          - inetCidrRouteNextHopType
+          - inetCidrRouteNextHop
+  inetcidrroutedest:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteDest
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutedesttype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteDestType
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutediscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.8
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForward
+          field: inetCidrRouteDiscards
+  inetcidrrouteentry:
+    syntax: InetCidrRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteTable
+          field: inetCidrRouteEntry
+  inetcidrrouteifindex:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteIfIndex
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutemetric1:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.12
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteMetric1
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutemetric2:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.13
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteMetric2
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutemetric3:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.14
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteMetric3
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutemetric4:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.15
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteMetric4
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutemetric5:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.16
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteMetric5
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutenexthop:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteNextHop
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutenexthopas:
+    syntax: InetAutonomousSystemNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteNextHopAS
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutenexthoptype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteNextHopType
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutenumber:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.6
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForward
+          field: inetCidrRouteNumber
+  inetcidrroutepfxlen:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRoutePfxLen
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutepolicy:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRoutePolicy
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrrouteproto:
+    syntax: IANAipRouteProtocol
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteProto
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  inetcidrroutestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.17
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteStatus
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+    create_method: createAndWait
+    index_type: inet_address
+  inetcidrroutetable:
+    syntax: InetCidrRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForward
+          field: inetCidrRouteTable
+  inetcidrroutetype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: inetCidrRouteEntry
+          field: inetCidrRouteType
+          index_field: inetCidrRouteNextHop
+          index_fields: *id001
+  ipcidrrouteage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteAge
+          index_field: ipCidrRouteNextHop
+          index_fields: &id002
+          - ipCidrRouteDest
+          - ipCidrRouteMask
+          - ipCidrRouteTos
+          - ipCidrRouteNextHop
+  ipcidrroutedest:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteDest
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrrouteentry:
+    syntax: IpCidrRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteTable
+          field: ipCidrRouteEntry
+  ipcidrrouteifindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteIfIndex
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrrouteinfo:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteInfo
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutemask:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteMask
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutemetric1:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteMetric1
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutemetric2:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.12
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteMetric2
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutemetric3:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.13
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteMetric3
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutemetric4:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.14
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteMetric4
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutemetric5:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.15
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteMetric5
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutenexthop:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteNextHop
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutenexthopas:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteNextHopAS
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutenumber:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.3
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForward
+          field: ipCidrRouteNumber
+  ipcidrrouteproto:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteProto
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipcidrroutestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.16
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteStatus
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+    create_method: createAndWait
+  ipcidrroutetable:
+    syntax: IpCidrRouteEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForward
+          field: ipCidrRouteTable
+  ipcidrroutetos:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteTos
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 2147483647
+  ipcidrroutetype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipCidrRouteEntry
+          field: ipCidrRouteType
+          index_field: ipCidrRouteNextHop
+          index_fields: *id002
+  ipforwardage:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardAge
+          index_field: ipForwardNextHop
+          index_fields: &id003
+          - ipForwardDest
+          - ipForwardProto
+          - ipForwardPolicy
+          - ipForwardNextHop
+  ipforwarddest:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardDest
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardentry:
+    syntax: IpForwardEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardTable
+          field: ipForwardEntry
+  ipforwardifindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardIfIndex
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardinfo:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardInfo
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardmask:
+    syntax: IpAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardMask
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardmetric1:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardMetric1
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardmetric2:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardMetric2
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardmetric3:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardMetric3
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardmetric4:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardMetric4
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardmetric5:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.15
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardMetric5
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardnexthop:
+    syntax: IpAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardNextHop
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardnexthopas:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardNextHopAS
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardnumber:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.1
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForward
+          field: ipForwardNumber
+  ipforwardpolicy:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardPolicy
+          index_field: ipForwardNextHop
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 2147483647
+  ipforwardproto:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardProto
+          index_field: ipForwardNextHop
+          index_fields: *id003
+  ipforwardtable:
+    syntax: IpForwardEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2
+          method: get
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForward
+          field: ipForwardTable
+  ipforwardtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.4.24.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IP-FORWARD-MIB
+          table: ipForwardEntry
+          field: ipForwardType
+          index_field: ipForwardNextHop
+          index_fields: *id003

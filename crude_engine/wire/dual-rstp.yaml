@@ -1,0 +1,499 @@
+version: 2.6.0
+feature: dual-rstp
+schemas:
+  read_dual-rstp:
+    type: dict
+    defaults:
+      hm2dualrstpadminmode: false
+      hm2dualrstpbpdufilterdefault: false
+      hm2dualrstpbpduguardmode: false
+      hm2dualrstpbridgeidentifier: ''
+      hm2dualrstpcstbridgedesignatedroot: ''
+      hm2dualrstpcstbridgefwddelay: 0
+      hm2dualrstpcstbridgehellotime: 0
+      hm2dualrstpcstbridgeholdcount: 0
+      hm2dualrstpcstbridgeholdtime: 0
+      hm2dualrstpcstbridgemaxage: 0
+      hm2dualrstpcstbridgemaxhops: 0
+      hm2dualrstpcstbridgepriority: 0
+      hm2dualrstpcstbridgerootcost: 0
+      hm2dualrstpcstbridgerootport: ''
+      hm2dualrstpcstbridgetimesincetopologychange: 0
+      hm2dualrstpcstbridgetopchanges: 0
+      hm2dualrstpcstbridgetopologychangeparm: 0
+      hm2dualrstpcsthellotime: 0
+      hm2dualrstpcstmaxage: 0
+      hm2dualrstpcstportdrstpinstance: 0
+      hm2dualrstpcstportentry: ''
+      hm2dualrstpcstporttable: ''
+      hm2dualrstpcstregionalrootid: ''
+      hm2dualrstpcstregionalrootpathcost: 0
+      hm2dualrstpcstrootfwddelay: 0
+      hm2dualrstpmstid: 0
+      hm2dualrstpringonlymode: false
+      hm2dualrstpringonlymodeintfone: 0
+      hm2dualrstpringonlymodeintftwo: 0
+      hm2dualrstptrapmode: false
+attributes:
+  hm2dualrstpadminmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpAdminMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dualrstpbpdufilterdefault:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.20
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpBpduFilterDefault
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dualrstpbpduguardmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.19
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpBpduGuardMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dualrstpbridgeidentifier:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.21
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpBridgeIdentifier
+  hm2dualrstpcstbridgedesignatedroot:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.22
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeDesignatedRoot
+  hm2dualrstpcstbridgefwddelay:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeFwdDelay
+    validation:
+      min: 4
+      max: 30
+  hm2dualrstpcstbridgehellotime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.8
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeHelloTime
+    validation:
+      min: 1
+      max: 2
+  hm2dualrstpcstbridgeholdcount:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.18
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeHoldCount
+    validation:
+      min: 1
+      max: 40
+  hm2dualrstpcstbridgeholdtime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.9
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeHoldTime
+  hm2dualrstpcstbridgemaxage:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.7
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeMaxAge
+    validation:
+      min: 6
+      max: 40
+  hm2dualrstpcstbridgemaxhops:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.11
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeMaxHops
+    validation:
+      min: 6
+      max: 40
+  hm2dualrstpcstbridgepriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.12
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgePriority
+    validation:
+      min: 0
+      max: 61440
+  hm2dualrstpcstbridgerootcost:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.16
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeRootCost
+  hm2dualrstpcstbridgerootport:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.17
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeRootPort
+  hm2dualrstpcstbridgetimesincetopologychange:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.13
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeTimeSinceTopologyChange
+  hm2dualrstpcstbridgetopchanges:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.14
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeTopChanges
+  hm2dualrstpcstbridgetopologychangeparm:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.15
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstBridgeTopologyChangeParm
+  hm2dualrstpcsthellotime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstHelloTime
+  hm2dualrstpcstmaxage:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstMaxAge
+  hm2dualrstpcstportdrstpinstance:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstPortEntry
+          field: hm2DualRstpCstPortDrstpInstance
+          index_field: ifIndex
+          index_fields:
+          - hm2DualRstpMstId
+          - ifIndex
+  hm2dualrstpcstportentry:
+    syntax: Hm2DualRstpCstPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstPortTable
+          field: hm2DualRstpCstPortEntry
+  hm2dualrstpcstporttable:
+    syntax: Hm2DualRstpCstPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstPortConfigGroup
+          field: hm2DualRstpCstPortTable
+  hm2dualrstpcstregionalrootid:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstRegionalRootId
+  hm2dualrstpcstregionalrootpathcost:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.5
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstRegionalRootPathCost
+  hm2dualrstpcstrootfwddelay:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.6
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpCstRootFwdDelay
+  hm2dualrstpmstid:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.27
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpMstId
+  hm2dualrstpringonlymode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.23
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpRingOnlyMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dualrstpringonlymodeintfone:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.24
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpRingOnlyModeIntfOne
+  hm2dualrstpringonlymodeintftwo:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.25
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpRingOnlyModeIntfTwo
+  hm2dualrstptrapmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.150.1.0.26
+          method: get
+      mops:
+        read:
+          mib: HM2-DUAL-RSTP-MIB
+          table: hm2DualRstpCstConfigGroup
+          field: hm2DualRstpTrapMode
+    validation:
+      allowed:
+      - true
+      - false

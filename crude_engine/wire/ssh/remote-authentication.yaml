@@ -1,0 +1,37 @@
+version: "2.6.0"
+feature: remote-authentication-ssh
+description: "SSH CLI sources for LDAP — hand-authored"
+
+attributes:
+  hm2ldapclientadminstate:
+    sources:
+      ssh:
+        read: {command: "show ldap global", field: "LDAP operation"}
+
+  hm2ldapclientserverindex:
+    sources:
+      ssh:
+        read: {command: "show ldap client server", parser: paired_rows, column: 0}
+
+  hm2ldapclientserveraddrtype:
+    sources:
+      ssh:
+        read: {command: "show ldap client server", parser: paired_rows, column: 1}
+
+  hm2ldapclientserverport:
+    sources:
+      ssh:
+        read: {command: "show ldap client server", parser: paired_rows, column: 2}
+
+  hm2ldapclientserveraddr:
+    sources:
+      ssh:
+        read: {command: "show ldap client server", parser: paired_rows, column: 3}
+        create: {command: "ldap client server add {index} {ldap_address}", level: config}
+        delete: {command: "ldap client server delete {index}", level: config}
+
+  hm2ldapclientserverrowstatus:
+    sources:
+      ssh:
+        create: {command: "ldap client server add {index} {ldap_address}", level: config}
+        delete: {command: "ldap client server delete {index}", level: config}

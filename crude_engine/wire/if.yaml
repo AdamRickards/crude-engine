@@ -1,0 +1,1072 @@
+version: 2.6.0
+feature: if
+schemas:
+  read_if:
+    type: dict
+    defaults:
+      ifadminstatus: 0
+      ifalias: ''
+      ifconnectorpresent: false
+      ifcounterdiscontinuitytime: 0
+      ifdescr: ''
+      ifentry: ''
+      ifhcinbroadcastpkts: 0
+      ifhcinmulticastpkts: 0
+      ifhcinoctets: 0
+      ifhcinucastpkts: 0
+      ifhcoutbroadcastpkts: 0
+      ifhcoutmulticastpkts: 0
+      ifhcoutoctets: 0
+      ifhcoutucastpkts: 0
+      ifhighspeed: 0
+      ifinbroadcastpkts: 0
+      ifindiscards: 0
+      ifinerrors: 0
+      ifinmulticastpkts: 0
+      ifinnucastpkts: 0
+      ifinoctets: 0
+      ifinucastpkts: 0
+      ifinunknownprotos: 0
+      iflastchange: 0
+      iflinkupdowntrapenable: 0
+      ifmtu: 0
+      ifname: ''
+      ifnumber: 0
+      ifoperstatus: 0
+      ifoutbroadcastpkts: 0
+      ifoutdiscards: 0
+      ifouterrors: 0
+      ifoutmulticastpkts: 0
+      ifoutnucastpkts: 0
+      ifoutoctets: 0
+      ifoutqlen: 0
+      ifoutucastpkts: 0
+      ifphysaddress: ''
+      ifpromiscuousmode: false
+      ifrcvaddressaddress: ''
+      ifrcvaddressentry: ''
+      ifrcvaddressstatus: 0
+      ifrcvaddresstable: ''
+      ifrcvaddresstype: 0
+      ifspecific: ''
+      ifspeed: 0
+      ifstackentry: ''
+      ifstackhigherlayer: 0
+      ifstacklastchange: 0
+      ifstacklowerlayer: 0
+      ifstackstatus: 0
+      ifstacktable: ''
+      iftable: ''
+      iftablelastchange: 0
+      iftestcode: ''
+      iftestentry: ''
+      iftestid: ''
+      iftestowner: ''
+      iftestresult: 0
+      ifteststatus: 0
+      iftesttable: ''
+      iftesttype: ''
+      iftype: ''
+      ifxentry: ''
+      ifxtable: ''
+attributes:
+  ifadminstatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifAdminStatus
+          index_field: ifIndex
+    validation:
+      allowed:
+      - up
+      - down
+      - testing
+  ifalias:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifAlias
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 64
+  ifconnectorpresent:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifConnectorPresent
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  ifcounterdiscontinuitytime:
+    syntax: TimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifCounterDiscontinuityTime
+          index_field: ifIndex
+  ifdescr:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifDescr
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 255
+  ifentry:
+    syntax: IfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTable
+          field: ifEntry
+  ifhcinbroadcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCInBroadcastPkts
+          index_field: ifIndex
+  ifhcinmulticastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCInMulticastPkts
+          index_field: ifIndex
+  ifhcinoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCInOctets
+          index_field: ifIndex
+  ifhcinucastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCInUcastPkts
+          index_field: ifIndex
+  ifhcoutbroadcastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCOutBroadcastPkts
+          index_field: ifIndex
+  ifhcoutmulticastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCOutMulticastPkts
+          index_field: ifIndex
+  ifhcoutoctets:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCOutOctets
+          index_field: ifIndex
+  ifhcoutucastpkts:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHCOutUcastPkts
+          index_field: ifIndex
+  ifhighspeed:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifHighSpeed
+          index_field: ifIndex
+  ifinbroadcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifInBroadcastPkts
+          index_field: ifIndex
+  ifindiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifInDiscards
+          index_field: ifIndex
+  ifinerrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifInErrors
+          index_field: ifIndex
+  ifinmulticastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifInMulticastPkts
+          index_field: ifIndex
+  ifinnucastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifInNUcastPkts
+          index_field: ifIndex
+  ifinoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifInOctets
+          index_field: ifIndex
+  ifinucastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifInUcastPkts
+          index_field: ifIndex
+  ifinunknownprotos:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.15
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifInUnknownProtos
+          index_field: ifIndex
+  iflastchange:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifLastChange
+          index_field: ifIndex
+  iflinkupdowntrapenable:
+    syntax: INTEGER
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifLinkUpDownTrapEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - enabled
+      - disabled
+  ifmtu:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifMtu
+          index_field: ifIndex
+  ifname:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifName
+          index_field: ifIndex
+  ifnumber:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: interfaces
+          field: ifNumber
+  ifoperstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifOperStatus
+          index_field: ifIndex
+    validation:
+      allowed:
+      - up
+      - down
+      - testing
+      - unknown
+      - dormant
+      - notPresent
+      - lowerLayerDown
+  ifoutbroadcastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifOutBroadcastPkts
+          index_field: ifIndex
+  ifoutdiscards:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.19
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifOutDiscards
+          index_field: ifIndex
+  ifouterrors:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.20
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifOutErrors
+          index_field: ifIndex
+  ifoutmulticastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifOutMulticastPkts
+          index_field: ifIndex
+  ifoutnucastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.18
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifOutNUcastPkts
+          index_field: ifIndex
+  ifoutoctets:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.16
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifOutOctets
+          index_field: ifIndex
+  ifoutqlen:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.21
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifOutQLen
+          index_field: ifIndex
+  ifoutucastpkts:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.17
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifOutUcastPkts
+          index_field: ifIndex
+  ifphysaddress:
+    syntax: PhysAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifPhysAddress
+          index_field: ifIndex
+  ifpromiscuousmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXEntry
+          field: ifPromiscuousMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  ifrcvaddressaddress:
+    syntax: PhysAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifRcvAddressEntry
+          field: ifRcvAddressAddress
+          index_field: ifRcvAddressAddress
+          index_fields: &id001
+          - ifIndex
+          - ifRcvAddressAddress
+  ifrcvaddressentry:
+    syntax: IfRcvAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.4.1
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifRcvAddressTable
+          field: ifRcvAddressEntry
+  ifrcvaddressstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifRcvAddressEntry
+          field: ifRcvAddressStatus
+          index_field: ifRcvAddressAddress
+          index_fields: *id001
+    create_method: createAndWait
+  ifrcvaddresstable:
+    syntax: IfRcvAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.4
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifMIBObjects
+          field: ifRcvAddressTable
+  ifrcvaddresstype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifRcvAddressEntry
+          field: ifRcvAddressType
+          index_field: ifRcvAddressAddress
+          index_fields: *id001
+  ifspecific:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.22
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifSpecific
+          index_field: ifIndex
+  ifspeed:
+    syntax: Gauge32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifSpeed
+          index_field: ifIndex
+  ifstackentry:
+    syntax: IfStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.2.1
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifStackTable
+          field: ifStackEntry
+  ifstackhigherlayer:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifStackEntry
+          field: ifStackHigherLayer
+          index_field: ifStackLowerLayer
+          index_fields: &id002
+          - ifStackHigherLayer
+          - ifStackLowerLayer
+  ifstacklastchange:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.6
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifMIBObjects
+          field: ifStackLastChange
+  ifstacklowerlayer:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifStackEntry
+          field: ifStackLowerLayer
+          index_field: ifStackLowerLayer
+          index_fields: *id002
+  ifstackstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifStackEntry
+          field: ifStackStatus
+          index_field: ifStackLowerLayer
+          index_fields: *id002
+    create_method: createAndWait
+  ifstacktable:
+    syntax: IfStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.2
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifMIBObjects
+          field: ifStackTable
+  iftable:
+    syntax: IfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: interfaces
+          field: ifTable
+  iftablelastchange:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.5
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifMIBObjects
+          field: ifTableLastChange
+  iftestcode:
+    syntax: OBJECT IDENTIFIER
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTestEntry
+          field: ifTestCode
+  iftestentry:
+    syntax: IfTestEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3.1
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTestTable
+          field: ifTestEntry
+  iftestid:
+    syntax: TestAndIncr
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTestEntry
+          field: ifTestId
+  iftestowner:
+    syntax: OwnerString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTestEntry
+          field: ifTestOwner
+  iftestresult:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTestEntry
+          field: ifTestResult
+  ifteststatus:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTestEntry
+          field: ifTestStatus
+  iftesttable:
+    syntax: IfTestEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifMIBObjects
+          field: ifTestTable
+  iftesttype:
+    syntax: AutonomousType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifTestEntry
+          field: ifTestType
+  iftype:
+    syntax: IANAifType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifEntry
+          field: ifType
+          index_field: ifIndex
+  ifxentry:
+    syntax: IfXEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifXTable
+          field: ifXEntry
+  ifxtable:
+    syntax: IfXEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.31.1.1
+          method: get
+      mops:
+        read:
+          mib: IF-MIB
+          table: ifMIBObjects
+          field: ifXTable

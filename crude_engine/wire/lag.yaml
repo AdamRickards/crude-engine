@@ -1,0 +1,1112 @@
+version: 2.6.0
+feature: lag
+schemas:
+  read_lag:
+    type: dict
+    defaults:
+      dot3adaggactoradminkey: ''
+      dot3adaggactoroperkey: ''
+      dot3adaggactorsystemid: ''
+      dot3adaggactorsystempriority: 0
+      dot3adaggaggregateorindividual: false
+      dot3adaggcollectormaxdelay: 0
+      dot3adaggentry: ''
+      dot3adaggindex: 0
+      dot3adaggmacaddress: ''
+      dot3adaggpartneroperkey: ''
+      dot3adaggpartnersystemid: ''
+      dot3adaggpartnersystempriority: 0
+      dot3adaggportactoradminkey: ''
+      dot3adaggportactoradminstate: ''
+      dot3adaggportactoroperkey: ''
+      dot3adaggportactoroperstate: ''
+      dot3adaggportactorport: 0
+      dot3adaggportactorportpriority: 0
+      dot3adaggportactorsystemid: ''
+      dot3adaggportactorsystempriority: 0
+      dot3adaggportaggregateorindividual: false
+      dot3adaggportattachedaggid: 0
+      dot3adaggportdebugactorchangecount: 0
+      dot3adaggportdebugactorchurncount: 0
+      dot3adaggportdebugactorchurnstate: ''
+      dot3adaggportdebugactorsynctransitioncount: 0
+      dot3adaggportdebugentry: ''
+      dot3adaggportdebuglastrxtime: 0
+      dot3adaggportdebugmuxreason: ''
+      dot3adaggportdebugmuxstate: 0
+      dot3adaggportdebugpartnerchangecount: 0
+      dot3adaggportdebugpartnerchurncount: 0
+      dot3adaggportdebugpartnerchurnstate: ''
+      dot3adaggportdebugpartnersynctransitioncount: 0
+      dot3adaggportdebugrxstate: 0
+      dot3adaggportdebugtable: ''
+      dot3adaggportentry: ''
+      dot3adaggportindex: 0
+      dot3adaggportlistentry: []
+      dot3adaggportlistports: []
+      dot3adaggportlisttable: []
+      dot3adaggportpartneradminkey: ''
+      dot3adaggportpartneradminport: 0
+      dot3adaggportpartneradminportpriority: 0
+      dot3adaggportpartneradminstate: ''
+      dot3adaggportpartneradminsystemid: ''
+      dot3adaggportpartneradminsystempriority: 0
+      dot3adaggportpartneroperkey: ''
+      dot3adaggportpartneroperport: 0
+      dot3adaggportpartneroperportpriority: 0
+      dot3adaggportpartneroperstate: ''
+      dot3adaggportpartneropersystemid: ''
+      dot3adaggportpartneropersystempriority: 0
+      dot3adaggportselectedaggid: 0
+      dot3adaggportstatsentry: ''
+      dot3adaggportstatsillegalrx: 0
+      dot3adaggportstatslacpdusrx: 0
+      dot3adaggportstatslacpdustx: 0
+      dot3adaggportstatsmarkerpdusrx: 0
+      dot3adaggportstatsmarkerpdustx: 0
+      dot3adaggportstatsmarkerresponsepdusrx: 0
+      dot3adaggportstatsmarkerresponsepdustx: 0
+      dot3adaggportstatstable: ''
+      dot3adaggportstatsunknownrx: 0
+      dot3adaggporttable: ''
+      dot3adaggtable: ''
+      dot3adtableslastchanged: 0
+attributes:
+  dot3adaggactoradminkey:
+    syntax: LacpKey
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggActorAdminKey
+          index_field: dot3adAggIndex
+  dot3adaggactoroperkey:
+    syntax: LacpKey
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggActorOperKey
+          index_field: dot3adAggIndex
+  dot3adaggactorsystemid:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggActorSystemID
+          index_field: dot3adAggIndex
+  dot3adaggactorsystempriority:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggActorSystemPriority
+          index_field: dot3adAggIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggaggregateorindividual:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggAggregateOrIndividual
+          index_field: dot3adAggIndex
+    validation:
+      allowed:
+      - true
+      - false
+  dot3adaggcollectormaxdelay:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggCollectorMaxDelay
+          index_field: dot3adAggIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggentry:
+    syntax: Dot3adAggEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggTable
+          field: dot3adAggEntry
+  dot3adaggindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggIndex
+          index_field: dot3adAggIndex
+  dot3adaggmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggMACAddress
+          index_field: dot3adAggIndex
+  dot3adaggpartneroperkey:
+    syntax: LacpKey
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggPartnerOperKey
+          index_field: dot3adAggIndex
+  dot3adaggpartnersystemid:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggPartnerSystemID
+          index_field: dot3adAggIndex
+  dot3adaggpartnersystempriority:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggEntry
+          field: dot3adAggPartnerSystemPriority
+          index_field: dot3adAggIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportactoradminkey:
+    syntax: LacpKey
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorAdminKey
+          index_field: dot3adAggPortIndex
+  dot3adaggportactoradminstate:
+    syntax: LacpState
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorAdminState
+          index_field: dot3adAggPortIndex
+  dot3adaggportactoroperkey:
+    syntax: LacpKey
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorOperKey
+          index_field: dot3adAggPortIndex
+  dot3adaggportactoroperstate:
+    syntax: LacpState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorOperState
+          index_field: dot3adAggPortIndex
+  dot3adaggportactorport:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorPort
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportactorportpriority:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorPortPriority
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportactorsystemid:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorSystemID
+          index_field: dot3adAggPortIndex
+  dot3adaggportactorsystempriority:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortActorSystemPriority
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportaggregateorindividual:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortAggregateOrIndividual
+          index_field: dot3adAggPortIndex
+    validation:
+      allowed:
+      - true
+      - false
+  dot3adaggportattachedaggid:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortAttachedAggID
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugactorchangecount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugActorChangeCount
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugactorchurncount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugActorChurnCount
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugactorchurnstate:
+    syntax: ChurnState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugActorChurnState
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugactorsynctransitioncount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugActorSyncTransitionCount
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugentry:
+    syntax: Dot3adAggPortDebugEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugTable
+          field: dot3adAggPortDebugEntry
+  dot3adaggportdebuglastrxtime:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugLastRxTime
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugmuxreason:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugMuxReason
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugmuxstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugMuxState
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugpartnerchangecount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugPartnerChangeCount
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugpartnerchurncount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugPartnerChurnCount
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugpartnerchurnstate:
+    syntax: ChurnState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugPartnerChurnState
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugpartnersynctransitioncount:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugPartnerSyncTransitionCount
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugrxstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortDebugEntry
+          field: dot3adAggPortDebugRxState
+          index_field: dot3adAggPortIndex
+  dot3adaggportdebugtable:
+    syntax: Dot3adAggPortDebugEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.3
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPort
+          field: dot3adAggPortDebugTable
+  dot3adaggportentry:
+    syntax: Dot3adAggPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortTable
+          field: dot3adAggPortEntry
+  dot3adaggportindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortIndex
+          index_field: dot3adAggPortIndex
+  dot3adaggportlistentry:
+    syntax: Dot3adAggPortListEntry
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortListTable
+          field: dot3adAggPortListEntry
+  dot3adaggportlistports:
+    syntax: PortList
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortListEntry
+          field: dot3adAggPortListPorts
+          index_field: dot3adAggIndex
+  dot3adaggportlisttable:
+    syntax: Dot3adAggPortListEntry
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.2
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAgg
+          field: dot3adAggPortListTable
+  dot3adaggportpartneradminkey:
+    syntax: LacpKey
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerAdminKey
+          index_field: dot3adAggPortIndex
+  dot3adaggportpartneradminport:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerAdminPort
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportpartneradminportpriority:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerAdminPortPriority
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportpartneradminstate:
+    syntax: LacpState
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerAdminState
+          index_field: dot3adAggPortIndex
+  dot3adaggportpartneradminsystemid:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerAdminSystemID
+          index_field: dot3adAggPortIndex
+  dot3adaggportpartneradminsystempriority:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerAdminSystemPriority
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportpartneroperkey:
+    syntax: LacpKey
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerOperKey
+          index_field: dot3adAggPortIndex
+  dot3adaggportpartneroperport:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerOperPort
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportpartneroperportpriority:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerOperPortPriority
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportpartneroperstate:
+    syntax: LacpState
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerOperState
+          index_field: dot3adAggPortIndex
+  dot3adaggportpartneropersystemid:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerOperSystemID
+          index_field: dot3adAggPortIndex
+  dot3adaggportpartneropersystempriority:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortPartnerOperSystemPriority
+          index_field: dot3adAggPortIndex
+    validation:
+      min: 0
+      max: 65535
+  dot3adaggportselectedaggid:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortEntry
+          field: dot3adAggPortSelectedAggID
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatsentry:
+    syntax: Dot3adAggPortStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsTable
+          field: dot3adAggPortStatsEntry
+  dot3adaggportstatsillegalrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsIllegalRx
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatslacpdusrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsLACPDUsRx
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatslacpdustx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsLACPDUsTx
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatsmarkerpdusrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsMarkerPDUsRx
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatsmarkerpdustx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsMarkerPDUsTx
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatsmarkerresponsepdusrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsMarkerResponsePDUsRx
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatsmarkerresponsepdustx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsMarkerResponsePDUsTx
+          index_field: dot3adAggPortIndex
+  dot3adaggportstatstable:
+    syntax: Dot3adAggPortStatsEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPort
+          field: dot3adAggPortStatsTable
+  dot3adaggportstatsunknownrx:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPortStatsEntry
+          field: dot3adAggPortStatsUnknownRx
+          index_field: dot3adAggPortIndex
+  dot3adaggporttable:
+    syntax: Dot3adAggPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAggPort
+          field: dot3adAggPortTable
+  dot3adaggtable:
+    syntax: Dot3adAggEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: dot3adAgg
+          field: dot3adAggTable
+  dot3adtableslastchanged:
+    syntax: TimeTicks
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.2.840.10006.300.43.1.3
+          method: get
+      mops:
+        read:
+          mib: LAG-MIB
+          table: lagMIBObjects
+          field: dot3adTablesLastChanged

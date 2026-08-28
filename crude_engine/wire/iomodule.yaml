@@ -1,0 +1,622 @@
+version: 2.6.0
+feature: iomodule
+schemas:
+  read_iomodule:
+    type: dict
+    defaults:
+      hm2iomodconfigdiginputadminstate: false
+      hm2iomodconfigdiginputclearfactory: false
+      hm2iomodconfigdiginputentry: ''
+      hm2iomodconfigdiginputid: 0
+      hm2iomodconfigdiginputlogevent: false
+      hm2iomodconfigdiginputmodid: 0
+      hm2iomodconfigdiginputrefreshinterval: 0
+      hm2iomodconfigdiginputsnmptrap: false
+      hm2iomodconfigdiginputtable: ''
+      hm2iomodconfigdigoutputadminstate: false
+      hm2iomodconfigdigoutputentry: ''
+      hm2iomodconfigdigoutputid: 0
+      hm2iomodconfigdigoutputlogevent: false
+      hm2iomodconfigdigoutputmodid: 0
+      hm2iomodconfigdigoutputrefreshinterval: 0
+      hm2iomodconfigdigoutputretrycount: 0
+      hm2iomodconfigdigoutputsnmptrap: false
+      hm2iomodconfigdigoutputsourceaddress: ''
+      hm2iomodconfigdigoutputsourceaddresstype: ''
+      hm2iomodconfigdigoutputsourceid: 0
+      hm2iomodconfigdigoutputsourcemodid: 0
+      hm2iomodconfigdigoutputsourceport: 0
+      hm2iomodconfigdigoutputtable: ''
+      hm2iomodvaluediginputentry: ''
+      hm2iomodvaluediginputid: 0
+      hm2iomodvaluediginputmodid: 0
+      hm2iomodvaluediginputtable: ''
+      hm2iomodvaluediginputvalue: 0
+      hm2iomodvaluedigoutputentry: ''
+      hm2iomodvaluedigoutputid: 0
+      hm2iomodvaluedigoutputmodid: 0
+      hm2iomodvaluedigoutputtable: ''
+      hm2iomodvaluedigoutputvalue: 0
+attributes:
+  hm2iomodconfigdiginputadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigCommon
+          field: hm2IOModConfigDigInputAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iomodconfigdiginputclearfactory:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigInputEntry
+          field: hm2IOModConfigDigInputClearFactory
+          index_field: hm2IOModConfigDigInputID
+          index_fields: &id001
+          - hm2IOModConfigDigInputModID
+          - hm2IOModConfigDigInputID
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iomodconfigdiginputentry:
+    syntax: Hm2IOModConfigDigInputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigInputTable
+          field: hm2IOModConfigDigInputEntry
+  hm2iomodconfigdiginputid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigInputEntry
+          field: hm2IOModConfigDigInputID
+          index_field: hm2IOModConfigDigInputID
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 4
+  hm2iomodconfigdiginputlogevent:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigInputEntry
+          field: hm2IOModConfigDigInputLogEvent
+          index_field: hm2IOModConfigDigInputID
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iomodconfigdiginputmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigInputEntry
+          field: hm2IOModConfigDigInputModID
+          index_field: hm2IOModConfigDigInputID
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 7
+  hm2iomodconfigdiginputrefreshinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigCommon
+          field: hm2IOModConfigDigInputRefreshInterval
+    validation:
+      min: 1000
+      max: 10000
+  hm2iomodconfigdiginputsnmptrap:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigInputEntry
+          field: hm2IOModConfigDigInputSnmpTrap
+          index_field: hm2IOModConfigDigInputID
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iomodconfigdiginputtable:
+    syntax: Hm2IOModConfigDigInputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigGroup
+          field: hm2IOModConfigDigInputTable
+  hm2iomodconfigdigoutputadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigCommon
+          field: hm2IOModConfigDigOutputAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iomodconfigdigoutputentry:
+    syntax: Hm2IOModConfigDigOutputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputTable
+          field: hm2IOModConfigDigOutputEntry
+  hm2iomodconfigdigoutputid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputID
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: &id002
+          - hm2IOModConfigDigOutputModID
+          - hm2IOModConfigDigOutputID
+    validation:
+      min: 1
+      max: 4
+  hm2iomodconfigdigoutputlogevent:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputLogEvent
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iomodconfigdigoutputmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputModID
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2iomodconfigdigoutputrefreshinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigCommon
+          field: hm2IOModConfigDigOutputRefreshInterval
+    validation:
+      min: 1000
+      max: 10000
+  hm2iomodconfigdigoutputretrycount:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigCommon
+          field: hm2IOModConfigDigOutputRetryCount
+    validation:
+      min: 1
+      max: 10
+  hm2iomodconfigdigoutputsnmptrap:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputSnmpTrap
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  hm2iomodconfigdigoutputsourceaddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputSourceAddress
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+  hm2iomodconfigdigoutputsourceaddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputSourceAddressType
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+  hm2iomodconfigdigoutputsourceid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputSourceID
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 4
+  hm2iomodconfigdigoutputsourcemodid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputSourceModID
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 7
+  hm2iomodconfigdigoutputsourceport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigDigOutputEntry
+          field: hm2IOModConfigDigOutputSourcePort
+          index_field: hm2IOModConfigDigOutputID
+          index_fields: *id002
+  hm2iomodconfigdigoutputtable:
+    syntax: Hm2IOModConfigDigOutputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModConfigGroup
+          field: hm2IOModConfigDigOutputTable
+  hm2iomodvaluediginputentry:
+    syntax: Hm2IOModValueDigInputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigInputTable
+          field: hm2IOModValueDigInputEntry
+  hm2iomodvaluediginputid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigInputEntry
+          field: hm2IOModValueDigInputID
+          index_field: hm2IOModValueDigInputID
+          index_fields: &id003
+          - hm2IOModValueDigInputModID
+          - hm2IOModValueDigInputID
+    validation:
+      min: 1
+      max: 4
+  hm2iomodvaluediginputmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigInputEntry
+          field: hm2IOModValueDigInputModID
+          index_field: hm2IOModValueDigInputID
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 7
+  hm2iomodvaluediginputtable:
+    syntax: Hm2IOModValueDigInputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueGroup
+          field: hm2IOModValueDigInputTable
+  hm2iomodvaluediginputvalue:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigInputEntry
+          field: hm2IOModValueDigInputValue
+          index_field: hm2IOModValueDigInputID
+          index_fields: *id003
+    validation:
+      allowed:
+      - not-available
+      - high
+      - low
+  hm2iomodvaluedigoutputentry:
+    syntax: Hm2IOModValueDigOutputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigOutputTable
+          field: hm2IOModValueDigOutputEntry
+  hm2iomodvaluedigoutputid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigOutputEntry
+          field: hm2IOModValueDigOutputID
+          index_field: hm2IOModValueDigOutputID
+          index_fields: &id004
+          - hm2IOModValueDigOutputModID
+          - hm2IOModValueDigOutputID
+    validation:
+      min: 1
+      max: 4
+  hm2iomodvaluedigoutputmodid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigOutputEntry
+          field: hm2IOModValueDigOutputModID
+          index_field: hm2IOModValueDigOutputID
+          index_fields: *id004
+    validation:
+      min: 0
+      max: 7
+  hm2iomodvaluedigoutputtable:
+    syntax: Hm2IOModValueDigOutputEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueGroup
+          field: hm2IOModValueDigOutputTable
+  hm2iomodvaluedigoutputvalue:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.100.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-IOMODULE-MIB
+          table: hm2IOModValueDigOutputEntry
+          field: hm2IOModValueDigOutputValue
+          index_field: hm2IOModValueDigOutputID
+          index_fields: *id004

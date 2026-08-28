@@ -1,0 +1,250 @@
+version: 2.9.0
+feature: interface
+description: Physical and logical interface configuration and status
+methods:
+  get_interfaces:
+    type: dict
+    primary_key: name
+    key_map: ifindex
+    defaults:
+      oper_status: down
+      admin_status: disabled
+      alias: ''
+      speed: 0
+      mtu: 1518
+      phys_address: ''
+      autoneg_enabled: false
+      autoneg_supported: false
+      media_type: ''
+      manual_config: ''
+      cable_crossing: auto
+      flow_control: false
+      link_trap: false
+      power_state: true
+      power_save: disabled
+      signal: false
+      track_name: ''
+  get_interface_statistics:
+    type: dict
+    primary_key: name
+    key_map: ifindex
+    defaults:
+      tx_errors: 0
+      rx_errors: 0
+      tx_discards: 0
+      rx_discards: 0
+      tx_octets: 0
+      rx_octets: 0
+      tx_unicast_packets: 0
+      rx_unicast_packets: 0
+      tx_multicast_packets: 0
+      rx_multicast_packets: 0
+      tx_broadcast_packets: 0
+      rx_broadcast_packets: 0
+      fragments: 0
+      crc_errors: 0
+      collisions: 0
+      late_collisions: 0
+      utilization: 0
+      utilization_interval: 0
+      utilization_alarm_lower: 0
+      utilization_alarm_upper: 0
+      utilization_alarm: false
+  set_interface_utilization:
+    type: upsert
+    fields:
+      - utilization_interval
+      - utilization_alarm_lower
+      - utilization_alarm_upper
+  clear_interface_statistics:
+    type: upsert
+  get_ip_addresses:
+    type: dict
+    defaults:
+      ipv4: {}
+  get_interfaces_ip:
+    schema: get_ip_addresses
+  set_interface:
+    type: upsert
+    fields:
+      - admin_status
+      - alias
+      - mtu
+      - autoneg_enabled
+      - manual_config
+      - cable_crossing
+      - flow_control
+      - link_trap
+      - power_state
+      - power_save
+      - signal
+      - track_name
+attributes:
+  name:
+    wire: ifname
+    source: if
+  oper_status:
+    wire: ifoperstatus
+    source: if
+    value_map:
+      '1': up
+      '2': down
+      '3': testing
+      '4': unknown
+      '5': dormant
+      '6': not_present
+      '7': lower_layer_down
+  admin_status:
+    wire: ifadminstatus
+    source: if
+    value_map:
+      '1': enabled
+      '2': disabled
+  alias:
+    wire: ifalias
+    source: if
+  speed:
+    wire: ifhighspeed
+    source: if
+  mtu:
+    wire: hm2agentportmaxframesize
+    source: platform-switching
+  phys_address:
+    wire: ifphysaddress
+    source: if
+  # MAU-MIB — auto-negotiation and link type
+  autoneg_enabled:
+    wire: ifmauautonegadminstatus
+    source: mau
+    value_map:
+      '1': true
+      '2': false
+  autoneg_supported:
+    wire: ifmauautonegsupported
+    source: mau
+    value_map:
+      '1': true
+      '2': false
+  media_type:
+    wire: ifmaumediaavailable
+    source: mau
+  manual_config:
+    wire: ifmaudefaulttype
+    source: mau
+  # HM2-DEVMGMT-MIB — power, cable crossing, power save
+  cable_crossing:
+    wire: hm2ifacecablecrossing
+    source: devmgmt
+    value_map:
+      '1': mdi
+      '2': mdix
+      '3': auto
+      '4': unsupported
+  power_state:
+    wire: hm2ifacepowerstate
+    source: devmgmt
+  power_save:
+    wire: hm2ifaceautopowerdown
+    source: devmgmt
+    value_map:
+      '1': disabled
+      '2': no_power_save
+      '3': auto_power_down
+      '4': unsupported
+  # HM2-DIAGNOSTIC-MIB — port signaling (blink LED)
+  signal:
+    wire: hm2ledportsignaling
+    source: diagnostic
+  # HM2-TRAFFICMGMT-MIB — flow control
+  flow_control:
+    wire: hm2trafficmgmtifflowcontrol
+    source: trafficmgmt
+  # IF-MIB — link trap
+  link_trap:
+    wire: iflinkupdowntrapenable
+    source: if
+  # HM2-TRACKING-MIB — track name association
+  track_name:
+    wire: hm2trackinterfacestatustrackid
+    source: tracking
+  # Counters (get_interfaces_counters)
+  tx_octets:
+    wire: ifoutoctets
+    source: if
+  rx_octets:
+    wire: ifinoctets
+    source: if
+  tx_errors:
+    wire: ifouterrors
+    source: if
+  rx_errors:
+    wire: ifinerrors
+    source: if
+  tx_discards:
+    wire: ifoutdiscards
+    source: if
+  rx_discards:
+    wire: ifindiscards
+    source: if
+  tx_unicast_packets:
+    wire: ifhcoutucastpkts
+    source: if
+  rx_unicast_packets:
+    wire: ifhcinucastpkts
+    source: if
+  tx_multicast_packets:
+    wire: ifhcoutmulticastpkts
+    source: if
+  rx_multicast_packets:
+    wire: ifhcinmulticastpkts
+    source: if
+  tx_broadcast_packets:
+    wire: ifhcoutbroadcastpkts
+    source: if
+  rx_broadcast_packets:
+    wire: ifhcinbroadcastpkts
+    source: if
+  # RMON-MIB — L1 diagnostic counters
+  fragments:
+    wire: etherstatsfragments
+    source: rmon
+  crc_errors:
+    wire: etherstatscrcalignerrors
+    source: rmon
+  collisions:
+    wire: etherstatscollisions
+    source: rmon
+  # EtherLike-MIB — SNMP only (not in MOPS schema, vendor ticket submitted)
+  late_collisions:
+    wire: dot3statslatecollisions
+    source: etherlike
+  # HM2-DIAGNOSTIC-MIB — port utilization
+  utilization:
+    wire: hm2diagifaceutilization
+    source: diagnostic
+  utilization_interval:
+    wire: hm2diagifaceutilizationcontrolinterval
+    source: diagnostic
+  utilization_alarm_lower:
+    wire: hm2diagifaceutilizationalarmlowerthreshold
+    source: diagnostic
+  utilization_alarm_upper:
+    wire: hm2diagifaceutilizationalarmupperthreshold
+    source: diagnostic
+  utilization_alarm:
+    wire: hm2diagifaceutilizationalarmcondition
+    source: diagnostic
+  # HM2-DEVMGMT-MIB — global clear statistics action
+  flush_statistics:
+    wire: hm2devmgmtactionflushportstats
+    source: devmgmt
+  # Management IP (get_ip_addresses)
+  ipv4_address:
+    wire: hm2netlocalipaddr
+    source: netconfig
+  ipv4_prefix:
+    wire: hm2netprefixlength
+    source: netconfig
+  ipv4_gateway:
+    wire: hm2netgatewayipaddr
+    source: netconfig

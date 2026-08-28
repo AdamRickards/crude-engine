@@ -1,0 +1,394 @@
+version: 2.6.0
+feature: l3redundancy
+schemas:
+  read_l3redundancy:
+    type: dict
+    defaults:
+      hm2haadminstatus: false
+      hm2haconfigsync: ''
+      hm2haconfigsyncstate: 0
+      hm2haheartbeatstatus: 0
+      hm2halinkexternalvrrpid: 0
+      hm2halinkheartbeatinterval: 0
+      hm2halinkheartbeatretries: 0
+      hm2halinkinternalvrrpid: 0
+      hm2halinkstatus: 0
+      hm2hamaintenance: false
+      hm2haprimaryip: ''
+      hm2haprimaryiptype: ''
+      hm2haprimarylinkinterface: 0
+      hm2haprimaryprefixlength: ''
+      hm2haprimarystate: 0
+      hm2harole: 0
+      hm2hasecondaryip: ''
+      hm2hasecondaryiptype: ''
+      hm2hasecondarylinkinterface: 0
+      hm2hasecondaryprefixlength: ''
+      hm2hasecondarystate: 0
+      hm2hasecuritykey: ''
+      hm2hasecuritymode: false
+      hm2haswitchover: ''
+attributes:
+  hm2haadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.30
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2haconfigsync:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.16
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAConfigSync
+  hm2haconfigsyncstate:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAConfigSyncState
+  hm2haheartbeatstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityStatusGroup
+          field: hm2HAHeartbeatStatus
+  hm2halinkexternalvrrpid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HALinkExternalVrrpId
+    validation:
+      min: 0
+      max: 255
+  hm2halinkheartbeatinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HALinkHeartbeatInterval
+    validation:
+      min: 1
+      max: 5
+  hm2halinkheartbeatretries:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.14
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HALinkHeartbeatRetries
+    validation:
+      min: 1
+      max: 10
+  hm2halinkinternalvrrpid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HALinkInternalVrrpId
+    validation:
+      min: 0
+      max: 255
+  hm2halinkstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityStatusGroup
+          field: hm2HALinkStatus
+  hm2hamaintenance:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.31
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAMaintenance
+    validation:
+      allowed:
+      - true
+      - false
+  hm2haprimaryip:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAPrimaryIP
+  hm2haprimaryiptype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAPrimaryIPType
+  hm2haprimarylinkinterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAPrimaryLinkInterface
+  hm2haprimaryprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HAPrimaryPrefixLength
+  hm2haprimarystate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityStatusGroup
+          field: hm2HAPrimaryState
+  hm2harole:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.15
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HARole
+  hm2hasecondaryip:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HASecondaryIP
+  hm2hasecondaryiptype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HASecondaryIPType
+  hm2hasecondarylinkinterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HASecondaryLinkInterface
+  hm2hasecondaryprefixlength:
+    syntax: InetAddressPrefixLength
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HASecondaryPrefixLength
+  hm2hasecondarystate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityStatusGroup
+          field: hm2HASecondaryState
+  hm2hasecuritykey:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.17
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HASecurityKey
+    validation:
+      min: 0
+      max: 32
+  hm2hasecuritymode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.18
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HASecurityMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2haswitchover:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.260.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L3REDUNDANCY-MIB
+          table: hm2HighAvailabilityConfigGroup
+          field: hm2HASwitchover

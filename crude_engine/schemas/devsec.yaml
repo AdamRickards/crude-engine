@@ -1,0 +1,164 @@
+version: 2.8.0
+feature: devsec
+description: Device security monitoring — per-check enable/disable, status history, global state
+methods:
+  get_devsec:
+    type: dict
+    defaults:
+      state: noerror
+      trap_enabled: false
+      monitors: {}
+      history: {}
+    sub_tables:
+      monitors:
+        primary_key: mon_http
+        field_map:
+          http: mon_http
+          telnet: mon_telnet
+          hidiscovery: mon_hidiscovery
+          snmp_unsecure: mon_snmp_unsecure
+          sysmon: mon_sysmon
+          password_change: mon_password_change
+          password_min_length: mon_password_min_length
+          password_policy: mon_password_policy
+          no_link: mon_no_link
+          ext_nvm_update: mon_ext_nvm_update
+          ext_nvm_config_load: mon_ext_nvm_config_load
+          https_cert_warning: mon_https_cert_warning
+          dev_mode: mon_dev_mode
+          secure_boot: mon_secure_boot
+          pml_disabled: mon_pml_disabled
+          modbus_tcp: mon_modbus_tcp
+          ethernet_ip: mon_ethernet_ip
+          profinet_io: mon_profinet_io
+          iec61850_mms: mon_iec61850_mms
+        defaults:
+          http: false
+          telnet: false
+          hidiscovery: false
+          snmp_unsecure: false
+          sysmon: false
+          password_change: false
+          password_min_length: false
+          password_policy: false
+          no_link: false
+          ext_nvm_update: false
+          ext_nvm_config_load: false
+          https_cert_warning: false
+          dev_mode: false
+          secure_boot: false
+          pml_disabled: false
+          modbus_tcp: false
+          ethernet_ip: false
+          profinet_io: false
+          iec61850_mms: false
+  set_devsec:
+    type: upsert
+  get_devsec_history:
+    type: dict
+    primary_key: history_index
+    defaults:
+      cause: ''
+      timestamp: ''
+attributes:
+  # Global state (read-only)
+  state:
+    wire: hm2devsecoperstate
+    source: diagnostic
+    value_map:
+      '1': noerror
+      '2': error
+  # Global trap enable
+  trap_enabled:
+    wire: hm2devsectrapenable
+    source: diagnostic
+  # Per-monitor enable/disable (all r/w booleans)
+  mon_http:
+    wire: hm2devsecsensehttpenabled
+    source: diagnostic
+  mon_telnet:
+    wire: hm2devsecsensetelnetenabled
+    source: diagnostic
+  mon_hidiscovery:
+    wire: hm2devsecsensehidiscoveryenabled
+    source: diagnostic
+  mon_snmp_unsecure:
+    wire: hm2devsecsensesnmpunsecure
+    source: diagnostic
+  mon_sysmon:
+    wire: hm2devsecsensesysmonenabled
+    source: diagnostic
+  mon_password_change:
+    wire: hm2devsecsensepasswordchange
+    source: diagnostic
+  mon_password_min_length:
+    wire: hm2devsecsensepasswordminlength
+    source: diagnostic
+  mon_password_policy:
+    wire: hm2devsecsensepasswordstrengthnotconfigured
+    source: diagnostic
+  mon_no_link:
+    wire: hm2devsecsensenolinkenabled
+    source: diagnostic
+  mon_ext_nvm_update:
+    wire: hm2devsecsenseextnvmupdateenabled
+    source: diagnostic
+  mon_ext_nvm_config_load:
+    wire: hm2devsecsenseextnvmconfigloadunsecure
+    source: diagnostic
+  mon_https_cert_warning:
+    wire: hm2devsecsensehttpscertificatewarning
+    source: diagnostic
+  mon_dev_mode:
+    wire: hm2devsecsensedevmodeenabled
+    source: diagnostic
+  mon_secure_boot:
+    wire: hm2devsecsensesecurebootdisabled
+    source: diagnostic
+  mon_pml_disabled:
+    wire: hm2devsecsensepmldisabled
+    source: diagnostic
+  mon_modbus_tcp:
+    wire: hm2devsecsensemodbustcpenabled
+    source: diagnostic
+  mon_ethernet_ip:
+    wire: hm2devsecsenseethernetipenabled
+    source: diagnostic
+  mon_profinet_io:
+    wire: hm2devsecsenseprofinetioenabled
+    source: diagnostic
+  mon_iec61850_mms:
+    wire: hm2devsecsenseiec61850mmsenabled
+    source: diagnostic
+  # Status history table (read-only)
+  history_index:
+    wire: hm2devsecstatusindex
+    source: diagnostic
+  history_cause:
+    wire: hm2devsecstatustrapcause
+    source: diagnostic
+    value_map:
+      '1': none
+      '10': password-change
+      '11': password-min-length
+      '12': password-policy-not-configured
+      '13': password-policy-inactive
+      '14': telnet-enabled
+      '15': http-enabled
+      '16': snmp-unsecure
+      '17': sysmon-enabled
+      '18': ext-nvm-update-enabled
+      '19': no-link
+      '20': hidisc-enabled
+      '21': ext-nvm-config-load-unsecure
+      '22': iec61850-mms-enabled
+      '23': https-certificate-warning
+      '24': modbus-tcp-enabled
+      '25': ethernet-ip-enabled
+      '26': profinet-io-enabled
+      '29': pml-disabled
+      '31': secure-boot-disabled
+      '32': dev-mode-enabled
+  history_timestamp:
+    wire: hm2devsecstatustimestamp
+    source: diagnostic

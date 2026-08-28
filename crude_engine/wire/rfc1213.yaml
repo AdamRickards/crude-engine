@@ -1,0 +1,90 @@
+version: 2.6.0
+feature: rfc1213
+schemas:
+  read_rfc1213:
+    type: dict
+    defaults:
+      atentry: ''
+      atifindex: 0
+      atnetaddress: ''
+      atphysaddress: ''
+      attable: ''
+attributes:
+  atentry:
+    syntax: AtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: RFC1213-MIB
+          table: atTable
+          field: atEntry
+  atifindex:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: RFC1213-MIB
+          table: atEntry
+          field: atIfIndex
+          index_field: atNetAddress
+          index_fields: &id001
+          - atIfIndex
+          - atNetAddress
+  atnetaddress:
+    syntax: NetworkAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: RFC1213-MIB
+          table: atEntry
+          field: atNetAddress
+          index_field: atNetAddress
+          index_fields: *id001
+  atphysaddress:
+    syntax: PhysAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: RFC1213-MIB
+          table: atEntry
+          field: atPhysAddress
+          index_field: atNetAddress
+          index_fields: *id001
+  attable:
+    syntax: AtEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.3.1
+          method: get
+      mops:
+        read:
+          mib: RFC1213-MIB
+          table: at
+          field: atTable

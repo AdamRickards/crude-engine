@@ -1,0 +1,57 @@
+version: 2.6.0
+feature: if-inverted-stack
+schemas:
+  read_if-inverted-stack:
+    type: dict
+    defaults:
+      ifinvstackentry: ''
+      ifinvstackstatus: 0
+      ifinvstacktable: ''
+attributes:
+  ifinvstackentry:
+    syntax: IfInvStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.77.1.1.1
+          method: get
+      mops:
+        read:
+          mib: IF-INVERTED-STACK-MIB
+          table: ifInvStackTable
+          field: ifInvStackEntry
+  ifinvstackstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.77.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: IF-INVERTED-STACK-MIB
+          table: ifInvStackEntry
+          field: ifInvStackStatus
+          index_field: ifStackHigherLayer
+          index_fields:
+          - ifStackLowerLayer
+          - ifStackHigherLayer
+    create_method: createAndWait
+  ifinvstacktable:
+    syntax: IfInvStackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.77.1.1
+          method: get
+      mops:
+        read:
+          mib: IF-INVERTED-STACK-MIB
+          table: ifInvMIBObjects
+          field: ifInvStackTable

@@ -1,0 +1,121 @@
+version: 2.6.0
+feature: platform-loopback
+schemas:
+  read_platform-loopback:
+    type: dict
+    defaults:
+      hm2agentloopbackentry: ''
+      hm2agentloopbackid: 0
+      hm2agentloopbackipaddress: ''
+      hm2agentloopbackipsubnet: ''
+      hm2agentloopbackifindex: 0
+      hm2agentloopbackstatus: 0
+      hm2agentloopbacktable: ''
+attributes:
+  hm2agentloopbackentry:
+    syntax: Hm2AgentLoopbackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.22.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-LOOPBACK-MIB
+          table: hm2AgentLoopbackTable
+          field: hm2AgentLoopbackEntry
+  hm2agentloopbackid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.22.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-LOOPBACK-MIB
+          table: hm2AgentLoopbackEntry
+          field: hm2AgentLoopbackID
+          index_field: hm2AgentLoopbackID
+    validation:
+      min: 0
+      max: 2147483647
+  hm2agentloopbackipaddress:
+    syntax: InetAddressIPv4
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.22.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-LOOPBACK-MIB
+          table: hm2AgentLoopbackEntry
+          field: hm2AgentLoopbackIPAddress
+          index_field: hm2AgentLoopbackID
+  hm2agentloopbackipsubnet:
+    syntax: InetAddressIPv4
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.22.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-LOOPBACK-MIB
+          table: hm2AgentLoopbackEntry
+          field: hm2AgentLoopbackIPSubnet
+          index_field: hm2AgentLoopbackID
+  hm2agentloopbackifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.22.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-LOOPBACK-MIB
+          table: hm2AgentLoopbackEntry
+          field: hm2AgentLoopbackIfIndex
+          index_field: hm2AgentLoopbackID
+  hm2agentloopbackstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.22.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-PLATFORM-LOOPBACK-MIB
+          table: hm2AgentLoopbackEntry
+          field: hm2AgentLoopbackStatus
+          index_field: hm2AgentLoopbackID
+    create_method: createAndWait
+  hm2agentloopbacktable:
+    syntax: Hm2AgentLoopbackEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.12.22.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-PLATFORM-LOOPBACK-MIB
+          table: hm2AgentLoopbackGroup
+          field: hm2AgentLoopbackTable

@@ -1,0 +1,127 @@
+version: 2.7.0
+feature: ntp
+description: NTP/SNTP client configuration and server list
+methods:
+  get_ntp:
+    type: dict
+    defaults:
+      enabled: false
+      request_interval: 30
+      server_enabled: false
+      server_stratum: 1
+      servers: {}
+    sub_tables:
+      servers:
+        primary_key: address
+        field_map:
+          address: address
+          port: port
+          description: description
+          status: server_oper_status
+        defaults:
+          address: ''
+          port: 123
+          description: ''
+          status: ''
+  get_ntp_stats:
+    type: dict
+    primary_key: server_index
+    defaults:
+      remote: ''
+      referenceid: ''
+      synchronized: false
+      stratum: 0
+      type: '-'
+      when: ''
+      hostpoll: 0
+      reachability: 0
+      delay: 0.0
+      offset: 0.0
+      jitter: 0.0
+  set_ntp:
+    type: upsert
+  get_ntp_servers:
+    type: dict
+    primary_key: server_index
+    defaults:
+      address: ''
+      port: 123
+      description: ''
+      status: ''
+  create_ntp_server:
+    type: create
+    row_status: server_row_status
+    index_key: server_index
+    required: [address]
+    defaults:
+      addr_type: 1
+  delete_ntp_server:
+    type: delete
+    row_status: server_row_status
+    index_key: server_index
+attributes:
+  # --- Client scalars ---
+  enabled:
+    wire: hm2sntpclientadminstate
+    source: timesync
+  request_interval:
+    wire: hm2sntpclientrequestinterval
+    source: timesync
+  client_status:
+    wire: hm2sntpclientstatus
+    source: timesync
+  # --- NTP server mode scalars ---
+  server_enabled:
+    wire: hm2ntpserveradminstate
+    source: timesync
+  server_stratum:
+    wire: hm2ntpserverlocalclockstratum
+    source: timesync
+  # --- Server table ---
+  servers:
+    wire: hm2sntpclientserveraddr
+    source: timesync
+  server_index:
+    wire: hm2sntpclientserverindex
+    source: timesync
+  address:
+    wire: hm2sntpclientserveraddr
+    source: timesync
+  addr_type:
+    wire: hm2sntpclientserveraddrtype
+    source: timesync
+  port:
+    wire: hm2sntpclientserverport
+    source: timesync
+  description:
+    wire: hm2sntpclientserverdescr
+    source: timesync
+  server_oper_status:
+    wire: hm2sntpclientserverstatus
+    source: timesync
+    value_map:
+      '1': other
+      '2': success
+      '3': requestTimedOut
+      '4': badDateEncoded
+      '5': versionNotSupported
+  server_row_status:
+    wire: hm2sntpclientserverrowstatus
+    source: timesync
+    access: crud
+  # --- NAPALM get_ntp_stats fields ---
+  remote:
+    wire: hm2sntpclientserveraddr
+    source: timesync
+  synchronized:
+    wire: hm2sntpclientserverstatus
+    source: timesync
+    value_map:
+      '1': false
+      '2': true
+      'other': false
+      'synchronized': true
+      '': false
+      '3': false
+      '4': false
+      '5': false

@@ -1,0 +1,1257 @@
+version: 2.6.0
+feature: netconfig
+schemas:
+  read_netconfig:
+    type: dict
+    defaults:
+      hm2netacdaddrentry: ''
+      hm2netacdaddrtable: ''
+      hm2netacdaddrtype: ''
+      hm2netacddelay: 0
+      hm2netacddetectionmode: 0
+      hm2netacdfaultstate: 0
+      hm2netacdipaddr: ''
+      hm2netacdmac: ''
+      hm2netacdmaxprotection: 0
+      hm2netacdongoingprobestatus: false
+      hm2netacdprotectinterval: 0
+      hm2netacdreleasedelay: 0
+      hm2netacdstatus: false
+      hm2netacdtimemark: 0
+      hm2netacdtrapenable: false
+      hm2netacdifindex: 0
+      hm2netaction: 0
+      hm2netconfigprotocol: 0
+      hm2netdhcpclientconfigload: false
+      hm2netdhcpclientid: ''
+      hm2netdhcpclientleasetime: 0
+      hm2netgatewayipaddr: ''
+      hm2netgatewayipaddrtype: ''
+      hm2nethidiscoveryblinking: false
+      hm2nethidiscoverymode: 0
+      hm2nethidiscoveryoperation: false
+      hm2nethidiscoveryprotocol: []
+      hm2nethidiscoveryrelay: false
+      hm2netipv6adminstatus: false
+      hm2netipv6configprotocol: 0
+      hm2netipv6dhcpclientid: ''
+      hm2netipv6dupaddrdetecttrans: 0
+      hm2netipv6gatewayaddr: ''
+      hm2netipv6gatewayaddrtype: ''
+      hm2netipv6localaddr: ''
+      hm2netipv6localaddrentry: ''
+      hm2netipv6localaddreuiflag: false
+      hm2netipv6localaddrorigin: ''
+      hm2netipv6localaddrprefix: ''
+      hm2netipv6localaddrprefixlength: 0
+      hm2netipv6localaddrprefixtype: ''
+      hm2netipv6localaddrstatus: 0
+      hm2netipv6localaddrtable: ''
+      hm2netipv6localaddrtype: ''
+      hm2netipdscppriority: 0
+      hm2netlocaladminmacaddress: ''
+      hm2netlocalburnedinmacaddr: ''
+      hm2netlocalipaddr: ''
+      hm2netlocalipaddrtype: ''
+      hm2netmacacdconflictaddress: ''
+      hm2netmacacdstatus: false
+      hm2netmacaddresstype: 0
+      hm2netmgmtport: 0
+      hm2netoobmgmtaction: 0
+      hm2netoobmgmtadminstate: false
+      hm2netoobmgmtdhcpclientleasetime: 0
+      hm2netoobmgmtgatewayipaddr: ''
+      hm2netoobmgmtgatewayipaddrtype: ''
+      hm2netoobmgmtipaddr: ''
+      hm2netoobmgmtipaddrtype: ''
+      hm2netoobmgmtmacaddress: ''
+      hm2netoobmgmtoperstate: 0
+      hm2netoobmgmtprefixlength: ''
+      hm2netoobmgmtprotocol: 0
+      hm2netoobusbmgmtaction: 0
+      hm2netoobusbmgmtadminstate: false
+      hm2netoobusbmgmtdevicemacaddress: ''
+      hm2netoobusbmgmthostmacaddress: ''
+      hm2netoobusbmgmtipaddr: ''
+      hm2netoobusbmgmtipaddrtype: ''
+      hm2netoobusbmgmtprefixlength: ''
+      hm2netprefixlength: ''
+      hm2netvlanid: 0
+      hm2netvlanpriority: 0
+attributes:
+  hm2netacdaddrentry:
+    syntax: Hm2NetACDAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.20.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDAddrTable
+          field: hm2NetACDAddrEntry
+  hm2netacdaddrtable:
+    syntax: Hm2NetACDAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.20
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDAddrTable
+  hm2netacdaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.20.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDAddrEntry
+          field: hm2NetACDAddrType
+          index_field: hm2NetACDTimeMark
+  hm2netacddelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDDelay
+    validation:
+      min: 20
+      max: 500
+  hm2netacddetectionmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDDetectionMode
+    validation:
+      allowed:
+      - activeAndPassive
+      - activeDetectionOnly
+      - passiveDetectionOnly
+  hm2netacdfaultstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.13
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDFaultState
+    validation:
+      allowed:
+      - 'true'
+      - 'false'
+  hm2netacdipaddr:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.20.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDAddrEntry
+          field: hm2NetACDIPAddr
+          index_field: hm2NetACDTimeMark
+  hm2netacdmac:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.20.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDAddrEntry
+          field: hm2NetACDMAC
+          index_field: hm2NetACDTimeMark
+  hm2netacdmaxprotection:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.9
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDMaxProtection
+    validation:
+      min: 0
+      max: 100
+  hm2netacdongoingprobestatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDOngoingProbeStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netacdprotectinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.11
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDProtectInterval
+    validation:
+      min: 20
+      max: 10000
+  hm2netacdreleasedelay:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.7
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDReleaseDelay
+    validation:
+      min: 3
+      max: 3600
+  hm2netacdstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netacdtimemark:
+    syntax: TimeFilter
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.20.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDAddrEntry
+          field: hm2NetACDTimeMark
+          index_field: hm2NetACDTimeMark
+  hm2netacdtrapenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.15
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDGroup
+          field: hm2NetACDTrapEnable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netacdifindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.2.20.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetACDAddrEntry
+          field: hm2NetACDifIndex
+          index_field: hm2NetACDTimeMark
+  hm2netaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.50
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetAction
+    validation:
+      allowed:
+      - other
+      - activate
+  hm2netconfigprotocol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetConfigProtocol
+    validation:
+      allowed:
+      - none
+      - bootp
+      - dhcp
+  hm2netdhcpclientconfigload:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetDHCPClientConfigLoad
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netdhcpclientid:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetDHCPClientId
+    validation:
+      min: 0
+      max: 255
+  hm2netdhcpclientleasetime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.21
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetDHCPClientLeaseTime
+  hm2netgatewayipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetGatewayIPAddr
+  hm2netgatewayipaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetGatewayIPAddrType
+  hm2nethidiscoveryblinking:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.4.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetHiDiscoveryGroup
+          field: hm2NetHiDiscoveryBlinking
+    validation:
+      allowed:
+      - true
+      - false
+  hm2nethidiscoverymode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.4.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetHiDiscoveryGroup
+          field: hm2NetHiDiscoveryMode
+    validation:
+      allowed:
+      - readWrite
+      - readOnly
+  hm2nethidiscoveryoperation:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetHiDiscoveryGroup
+          field: hm2NetHiDiscoveryOperation
+    validation:
+      allowed:
+      - true
+      - false
+  hm2nethidiscoveryprotocol:
+    syntax: BITS { none(0), v1(1), v2(2) }
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.4.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetHiDiscoveryGroup
+          field: hm2NetHiDiscoveryProtocol
+    validation:
+      allowed:
+      - none
+      - v1
+      - v2
+  hm2nethidiscoveryrelay:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.4.5
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetHiDiscoveryGroup
+          field: hm2NetHiDiscoveryRelay
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netipv6adminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.30
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIPv6AdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netipv6configprotocol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.31
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIPv6ConfigProtocol
+    validation:
+      allowed:
+      - none
+      - auto
+      - dhcpv6
+      - all
+  hm2netipv6dhcpclientid:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.35
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIPv6DHCPClientId
+    validation:
+      min: 0
+      max: 255
+  hm2netipv6dupaddrdetecttrans:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.34
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIPv6DupAddrDetectTrans
+    validation:
+      min: 0
+      max: 5
+  hm2netipv6gatewayaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.33
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIPv6GatewayAddr
+  hm2netipv6gatewayaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.32
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIPv6GatewayAddrType
+  hm2netipv6localaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddr
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: &id001
+          - hm2NetIPv6LocalAddrPrefixType
+          - hm2NetIPv6LocalAddrPrefix
+          - hm2NetIPv6LocalAddrPrefixLength
+  hm2netipv6localaddrentry:
+    syntax: Hm2NetIPv6LocalAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrTable
+          field: hm2NetIPv6LocalAddrEntry
+  hm2netipv6localaddreuiflag:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddrEuiFlag
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netipv6localaddrorigin:
+    syntax: IpAddressOriginTC
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddrOrigin
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: *id001
+  hm2netipv6localaddrprefix:
+    syntax: InetAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddrPrefix
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: *id001
+  hm2netipv6localaddrprefixlength:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddrPrefixLength
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 128
+  hm2netipv6localaddrprefixtype:
+    syntax: InetAddressType
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddrPrefixType
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: *id001
+  hm2netipv6localaddrstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddrStatus
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: *id001
+    create_method: createAndWait
+    index_type: inet_address
+  hm2netipv6localaddrtable:
+    syntax: Hm2NetIPv6LocalAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIPv6LocalAddrTable
+  hm2netipv6localaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.36.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetIPv6LocalAddrEntry
+          field: hm2NetIPv6LocalAddrType
+          index_field: hm2NetIPv6LocalAddrPrefixLength
+          index_fields: *id001
+  hm2netipdscppriority:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetIpDscpPriority
+    validation:
+      min: 0
+      max: 63
+  hm2netlocaladminmacaddress:
+    syntax: MacAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetMacGroup
+          field: hm2NetLocalAdminMacAddress
+  hm2netlocalburnedinmacaddr:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetMacGroup
+          field: hm2NetLocalBurnedInMacAddr
+  hm2netlocalipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetLocalIPAddr
+  hm2netlocalipaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetLocalIPAddrType
+  hm2netmacacdconflictaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetMacACDGroup
+          field: hm2NetMacACDConflictAddress
+  hm2netmacacdstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetMacACDGroup
+          field: hm2NetMacACDStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netmacaddresstype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetMacGroup
+          field: hm2NetMacAddressType
+  hm2netmgmtport:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetMgmtPort
+  hm2netoobmgmtaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.50
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtAction
+  hm2netoobmgmtadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netoobmgmtdhcpclientleasetime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.10
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtDHCPClientLeaseTime
+  hm2netoobmgmtgatewayipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.7
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtGatewayIPAddr
+  hm2netoobmgmtgatewayipaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.6
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtGatewayIPAddrType
+  hm2netoobmgmtipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtIPAddr
+  hm2netoobmgmtipaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtIPAddrType
+  hm2netoobmgmtmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.8
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtMacAddress
+  hm2netoobmgmtoperstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.9
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtOperState
+  hm2netoobmgmtprefixlength:
+    syntax: InetAddressPrefixLength
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.5
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtPrefixLength
+  hm2netoobmgmtprotocol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.6.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobMgmtGroup
+          field: hm2NetOobMgmtProtocol
+  hm2netoobusbmgmtaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.7.50
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobUsbMgmtGroup
+          field: hm2NetOobUsbMgmtAction
+  hm2netoobusbmgmtadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobUsbMgmtGroup
+          field: hm2NetOobUsbMgmtAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2netoobusbmgmtdevicemacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.7.8
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobUsbMgmtGroup
+          field: hm2NetOobUsbMgmtDeviceMacAddress
+  hm2netoobusbmgmthostmacaddress:
+    syntax: MacAddress
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.7.7
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobUsbMgmtGroup
+          field: hm2NetOobUsbMgmtHostMacAddress
+  hm2netoobusbmgmtipaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.7.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobUsbMgmtGroup
+          field: hm2NetOobUsbMgmtIPAddr
+  hm2netoobusbmgmtipaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.7.3
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobUsbMgmtGroup
+          field: hm2NetOobUsbMgmtIPAddrType
+  hm2netoobusbmgmtprefixlength:
+    syntax: InetAddressPrefixLength
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.7.5
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetOobUsbMgmtGroup
+          field: hm2NetOobUsbMgmtPrefixLength
+  hm2netprefixlength:
+    syntax: InetAddressPrefixLength
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetPrefixLength
+  hm2netvlanid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetVlanID
+    validation:
+      min: 1
+      max: 4042
+  hm2netvlanpriority:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.20.1.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-NETCONFIG-MIB
+          table: hm2NetStaticGroup
+          field: hm2NetVlanPriority
+    validation:
+      min: 0
+      max: 7

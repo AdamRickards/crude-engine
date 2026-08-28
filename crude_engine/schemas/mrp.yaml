@@ -1,0 +1,110 @@
+version: 2.7.0
+feature: mrp
+description: Media Redundancy Protocol (MRP) domain configuration
+methods:
+  get_mrp:
+    type: dict
+    primary_key: domain_id
+    defaults:
+      operation: false
+      role: undefined
+      domain_name: ''
+      vlan: 0
+      ring_port1: ''
+      ring_port2: ''
+      ring_port1_state: notConnected
+      ring_port2_state: notConnected
+      ring_state: undefined
+      recovery_delay: ''
+      advanced_mode: false
+      manager_priority: 0
+      fixed_backup: false
+  set_mrp:
+    type: upsert
+  create_mrp:
+    type: create
+    row_status: mrp_status
+    index_key: domain_id
+    defaults:
+      domain_id: 'ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff'
+  delete_mrp:
+    type: delete
+    row_status: mrp_status
+    index_key: domain_id
+    defaults:
+      domain_id: 'ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff'
+attributes:
+  domain_id:
+    wire: hm2mrpdomainid
+    source: l2redundancy
+  domain_name:
+    wire: hm2mrpdomainname
+    source: l2redundancy
+  operation:
+    wire: hm2mrprowstatus
+    source: l2redundancy
+    value_map:
+      '1': true
+      '2': false
+  role:
+    wire: hm2mrproleadminstate
+    source: l2redundancy
+    value_map:
+      '1': client
+      '2': manager
+      '3': undefined
+  vlan:
+    wire: hm2mrpvlanid
+    source: l2redundancy
+  ring_port1:
+    wire: hm2mrpringport1ifindex
+    source: l2redundancy
+    value_map: ifindex
+  ring_port2:
+    wire: hm2mrpringport2ifindex
+    source: l2redundancy
+    value_map: ifindex
+  ring_port1_state:
+    wire: hm2mrpringport1operstate
+    source: l2redundancy
+    value_map:
+      '1': disabled
+      '2': blocked
+      '3': forwarding
+      '4': notConnected
+  ring_port2_state:
+    wire: hm2mrpringport2operstate
+    source: l2redundancy
+    value_map:
+      '1': disabled
+      '2': blocked
+      '3': forwarding
+      '4': notConnected
+  ring_state:
+    wire: hm2mrpringoperstate
+    source: l2redundancy
+    value_map:
+      '1': open
+      '2': closed
+      '3': undefined
+  recovery_delay:
+    wire: hm2mrprecoverydelay
+    source: l2redundancy
+    value_map:
+      '1': 500ms
+      '2': 200ms
+      '3': 30ms
+      '4': 10ms
+  advanced_mode:
+    wire: hm2mrpfastmrp
+    source: l2redundancy
+  manager_priority:
+    wire: hm2mrpmrmpriority
+    source: l2redundancy
+  fixed_backup:
+    wire: hm2mrpringport2fixedbackup
+    source: l2redundancy
+  mrp_status:
+    wire: hm2mrprowstatus
+    source: l2redundancy
+    access: crud

@@ -1,0 +1,63 @@
+version: 2.7.0
+feature: rstp
+description: Rapid Spanning Tree Protocol (RSTP) configuration
+methods:
+  get_rstp:
+    type: dict
+    defaults:
+      enabled: false
+      priority: 32768
+      hello_time: 2
+      max_age: 20
+      forward_delay: 15
+      bpdu_guard: false
+  set_rstp:
+    type: upsert
+  get_rstp_port:
+    type: dict
+    primary_key: enabled
+    key_map: ifindex
+    defaults:
+      enabled: false
+      priority: 128
+      path_cost: 0
+      edge_port: false
+    attributes:
+      enabled:
+        wire: hm2agentstpportstate
+        source: platform-switching
+  set_rstp_port:
+    type: upsert
+    index_filter: '^\d+/\d+$'
+    attributes:
+      enabled:
+        wire: hm2agentstpportstate
+        source: platform-switching
+attributes:
+  enabled:
+    wire: hm2agentstpadminmode
+    source: platform-switching
+  priority:
+    wire: hm2agentstpcstbridgepriority
+    source: platform-switching
+  hello_time:
+    wire: hm2agentstpcstbridgehellotime
+    source: platform-switching
+  max_age:
+    wire: hm2agentstpcstbridgemaxage
+    source: platform-switching
+  forward_delay:
+    wire: hm2agentstpcstbridgefwddelay
+    source: platform-switching
+  bpdu_guard:
+    wire: hm2agentstpbpduguardmode
+    source: platform-switching
+  edge_port:
+    wire: hm2agentstpcstportedge
+    source: platform-switching
+  port_priority:
+    wire: hm2agentstpcstportpriority
+    source: platform-switching
+  port_path_cost:
+    wire: hm2agentstpcstportpathcost
+    source: platform-switching

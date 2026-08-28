@@ -1,0 +1,176 @@
+version: 2.7.0
+feature: vrrp
+description: VRRP virtual router redundancy — global config, per-instance CRUD, stats
+methods:
+  get_vrrp:
+    type: dict
+    defaults:
+      enabled: false
+      trap_auth_failure: false
+      trap_new_master: false
+  get_vrrp_instances:
+    type: dict
+    primary_key: state
+    index_fields: [interface, vrid]
+    key_map: ifindex
+    defaults:
+      vrid: ''
+      admin_state: "down"
+      priority: 100
+      current_priority: 0
+      preempt: true
+      interval: 1
+      accept_mode: false
+      primary_ip: ""
+      virtual_ip: ""
+      auth_type: "none"
+      state: "initialize"
+      master_ip: ""
+      virtual_mac: ""
+      uptime: 0
+      ip_count: 0
+  set_vrrp:
+    type: upsert
+    fields: [enabled, trap_auth_failure, trap_new_master]
+  set_vrrp_instance:
+    type: upsert
+    fields: [admin_state, priority, preempt, interval, accept_mode, primary_ip, auth_type, auth_key]
+  create_vrrp:
+    type: create
+    required: [interface, vrid, primary_ip]
+    row_status: row_status
+    index_fields: [interface, vrid]
+  delete_vrrp:
+    type: delete
+    row_status: row_status
+    index_fields: [interface, vrid]
+  get_vrrp_tracking:
+    type: dict
+    primary_key: oper_status
+    index_fields: [track_interface, track_vrid, track_name]
+    key_map: ifindex
+    defaults:
+      track_vrid: ''
+      track_name: ""
+      decrement: 0
+      oper_status: "down"
+  create_vrrp_tracking:
+    type: create
+    required: [track_interface, track_vrid, track_name, decrement]
+    row_status: track_row_status
+    index_fields: [track_interface, track_vrid, track_name]
+  delete_vrrp_tracking:
+    type: delete
+    row_status: track_row_status
+    index_fields: [track_interface, track_vrid, track_name]
+  set_vrrp_tracking:
+    type: upsert
+    fields: [decrement]
+  get_vrrp_stats:
+    type: dict
+    defaults:
+      checksum_errors: 0
+      version_errors: 0
+      vrid_errors: 0
+attributes:
+  # --- Global config (platform-routing wire) ---
+  enabled:
+    wire: hm2agentroutervrrpadminstate
+    source: platform-routing
+  trap_auth_failure:
+    wire: hm2agentsnmpvrrpauthfailuretrapflag
+    source: platform-routing
+  trap_new_master:
+    wire: hm2agentsnmpvrrpnewmastertrapflag
+    source: platform-routing
+  # --- Per-instance index fields (decomposed from compound walk suffix) ---
+  interface:
+    value_map: ifindex
+  vrid: {}
+  admin_state:
+    wire: vrrpoperadminstate
+    source: vrrp
+    value_map:
+      "1": "up"
+      "2": "down"
+  priority:
+    wire: hm2agentvrrpextcfgpriority
+    source: platform-routing
+  current_priority:
+    wire: vrrpoperpriority
+    source: vrrp
+  preempt:
+    wire: vrrpoperpreemptmode
+    source: vrrp
+  interval:
+    wire: vrrpoperadvertisementinterval
+    source: vrrp
+  accept_mode:
+    wire: vrrpoperacceptmode
+    source: vrrp
+  primary_ip:
+    wire: vrrpoperprimaryipaddr
+    source: vrrp
+  auth_type:
+    wire: vrrpoperauthtype
+    source: vrrp
+    value_map:
+      "1": "none"
+      "2": "simple"
+      "3": "ip_ah"
+  auth_key:
+    wire: vrrpoperauthkey
+    source: vrrp
+  row_status:
+    wire: vrrpoperrowstatus
+    source: vrrp
+  virtual_ip:
+    wire: hm2agentvrrpprimaryvirtualaddress
+    source: platform-routing
+  # --- Per-instance state (read-only) ---
+  state:
+    wire: vrrpoperstate
+    source: vrrp
+    value_map:
+      "1": "initialize"
+      "2": "backup"
+      "3": "master"
+  master_ip:
+    wire: vrrpopermasteripaddr
+    source: vrrp
+  virtual_mac:
+    wire: vrrpopervirtualmacaddr
+    source: vrrp
+  uptime:
+    wire: vrrpopervirtualrouteruptime
+    source: vrrp
+  ip_count:
+    wire: vrrpoperipaddrcount
+    source: vrrp
+  # --- Tracking (hm2AgentVrrpTrackingEntry, 3-part compound index) ---
+  track_interface:
+    value_map: ifindex
+  track_vrid: {}
+  track_name: {}
+  decrement:
+    wire: hm2agentvrrptrackdecrement
+    source: platform-routing
+  oper_status:
+    wire: hm2agentvrrptrackoperstatus
+    source: platform-routing
+    value_map:
+      "1": "up"
+      "2": "down"
+  track_row_status:
+    wire: hm2agentvrrptrackrowstatus
+    source: platform-routing
+  # --- Global stats ---
+  checksum_errors:
+    wire: vrrprouterchecksumerrors
+    source: vrrp
+  version_errors:
+    wire: vrrprouterversionerrors
+    source: vrrp
+  vrid_errors:
+    wire: vrrproutervriderrors
+    source: vrrp

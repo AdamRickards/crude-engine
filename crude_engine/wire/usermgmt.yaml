@@ -1,0 +1,1115 @@
+version: 2.6.0
+feature: usermgmt
+schemas:
+  read_usermgmt:
+    type: dict
+    defaults:
+      hm2pwdmgmtdefaultpwdactive: false
+      hm2pwdmgmtdefaultpwdstatusentry: ''
+      hm2pwdmgmtdefaultpwdstatusindex: 0
+      hm2pwdmgmtdefaultpwdstatustable: ''
+      hm2pwdmgmtdefaultpwdstatususername: ''
+      hm2pwdmgmtloginattempts: 0
+      hm2pwdmgmtloginattemptstimeperiod: 0
+      hm2pwdmgmtminlength: 0
+      hm2pwdmgmtminlowercase: 0
+      hm2pwdmgmtminnumericnumbers: 0
+      hm2pwdmgmtminspecialcharacters: 0
+      hm2pwdmgmtminuppercase: 0
+      hm2useraccessrole: ''
+      hm2userapplicationlistauthlistname: ''
+      hm2userapplicationlistentry: ''
+      hm2userapplicationlistname: ''
+      hm2userapplicationliststatus: 0
+      hm2userapplicationlisttable: ''
+      hm2userauthlistentry: ''
+      hm2userauthlistname: ''
+      hm2userauthlistpolicy1: ''
+      hm2userauthlistpolicy2: ''
+      hm2userauthlistpolicy3: ''
+      hm2userauthlistpolicy4: ''
+      hm2userauthlistpolicy5: ''
+      hm2userauthliststatus: 0
+      hm2userauthlisttable: ''
+      hm2userconfigentry: ''
+      hm2userconfigtable: ''
+      hm2usercustomaccessrole: ''
+      hm2usercustomaccessrole2nameentry: ''
+      hm2usercustomaccessrole2nametable: ''
+      hm2usercustomaccessrolename: ''
+      hm2usercustomaccessrolestatus: 0
+      hm2usercustomclibaseaccessrole: ''
+      hm2usercustomclibaseaccessrolestatus: 0
+      hm2usercustomclicmdentry: ''
+      hm2usercustomclicmdinheritentry: ''
+      hm2usercustomclicmdinherittable: ''
+      hm2usercustomclicmdtable: ''
+      hm2usercustomclicommand: ''
+      hm2usercustomcliexecmode: ''
+      hm2usercustomcliindex: 0
+      hm2usercustomclistatus: 0
+      hm2usercustomclitype: 0
+      hm2userforcepasswordstatus: false
+      hm2useriasentry: ''
+      hm2useriastable: ''
+      hm2useriasusername: ''
+      hm2useriasuserpassword: ''
+      hm2useriasuserstatus: 0
+      hm2userlastusercreated: ''
+      hm2userlastuserdeleted: ''
+      hm2userlockoutstatus: false
+      hm2username: ''
+      hm2userpassword: ''
+      hm2userpwdchangeperm: false
+      hm2userpwdpolicychk: false
+      hm2usersnmpauthpassword: ''
+      hm2usersnmpauthtype: 0
+      hm2usersnmpencpassword: ''
+      hm2usersnmpenctype: 0
+      hm2userstatus: 0
+attributes:
+  hm2pwdmgmtdefaultpwdactive:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.100.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtDefaultPwdStatusGroup
+          field: hm2PwdMgmtDefaultPwdActive
+    validation:
+      allowed:
+      - true
+      - false
+  hm2pwdmgmtdefaultpwdstatusentry:
+    syntax: Hm2PwdMgmtDefaultPwdStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtDefaultPwdStatusTable
+          field: hm2PwdMgmtDefaultPwdStatusEntry
+  hm2pwdmgmtdefaultpwdstatusindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtDefaultPwdStatusEntry
+          field: hm2PwdMgmtDefaultPwdStatusIndex
+          index_field: hm2PwdMgmtDefaultPwdStatusIndex
+  hm2pwdmgmtdefaultpwdstatustable:
+    syntax: Hm2PwdMgmtDefaultPwdStatusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.100.100
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtDefaultPwdStatusGroup
+          field: hm2PwdMgmtDefaultPwdStatusTable
+  hm2pwdmgmtdefaultpwdstatususername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtDefaultPwdStatusEntry
+          field: hm2PwdMgmtDefaultPwdStatusUserName
+          index_field: hm2PwdMgmtDefaultPwdStatusIndex
+  hm2pwdmgmtloginattempts:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtGroup
+          field: hm2PwdMgmtLoginAttempts
+    validation:
+      min: 0
+      max: 5
+  hm2pwdmgmtloginattemptstimeperiod:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.7
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtGroup
+          field: hm2PwdMgmtLoginAttemptsTimePeriod
+    validation:
+      min: 0
+      max: 60
+  hm2pwdmgmtminlength:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtGroup
+          field: hm2PwdMgmtMinLength
+    validation:
+      min: 1
+      max: 64
+  hm2pwdmgmtminlowercase:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtGroup
+          field: hm2PwdMgmtMinLowerCase
+    validation:
+      min: 0
+      max: 16
+  hm2pwdmgmtminnumericnumbers:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtGroup
+          field: hm2PwdMgmtMinNumericNumbers
+    validation:
+      min: 0
+      max: 16
+  hm2pwdmgmtminspecialcharacters:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.6
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtGroup
+          field: hm2PwdMgmtMinSpecialCharacters
+    validation:
+      min: 0
+      max: 16
+  hm2pwdmgmtminuppercase:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2PwdMgmtGroup
+          field: hm2PwdMgmtMinUpperCase
+    validation:
+      min: 0
+      max: 16
+  hm2useraccessrole:
+    syntax: Hm2UserAccessRoles
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserAccessRole
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+  hm2userapplicationlistauthlistname:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserApplicationListEntry
+          field: hm2UserApplicationListAuthListName
+          index_field: hm2UserApplicationListName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 32
+  hm2userapplicationlistentry:
+    syntax: Hm2UserApplicationListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserApplicationListTable
+          field: hm2UserApplicationListEntry
+  hm2userapplicationlistname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserApplicationListEntry
+          field: hm2UserApplicationListName
+          index_field: hm2UserApplicationListName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  hm2userapplicationliststatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserApplicationListEntry
+          field: hm2UserApplicationListStatus
+          index_field: hm2UserApplicationListName
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2userapplicationlisttable:
+    syntax: Hm2UserApplicationListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserApplicationListGroup
+          field: hm2UserApplicationListTable
+  hm2userauthlistentry:
+    syntax: Hm2UserAuthListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListTable
+          field: hm2UserAuthListEntry
+  hm2userauthlistname:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListEntry
+          field: hm2UserAuthListName
+          index_field: hm2UserAuthListName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  hm2userauthlistpolicy1:
+    syntax: Hm2UserAuthList
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListEntry
+          field: hm2UserAuthListPolicy1
+          index_field: hm2UserAuthListName
+          key_tag: to_hex_decode
+  hm2userauthlistpolicy2:
+    syntax: Hm2UserAuthList
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListEntry
+          field: hm2UserAuthListPolicy2
+          index_field: hm2UserAuthListName
+          key_tag: to_hex_decode
+  hm2userauthlistpolicy3:
+    syntax: Hm2UserAuthList
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListEntry
+          field: hm2UserAuthListPolicy3
+          index_field: hm2UserAuthListName
+          key_tag: to_hex_decode
+  hm2userauthlistpolicy4:
+    syntax: Hm2UserAuthList
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListEntry
+          field: hm2UserAuthListPolicy4
+          index_field: hm2UserAuthListName
+          key_tag: to_hex_decode
+  hm2userauthlistpolicy5:
+    syntax: Hm2UserAuthList
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListEntry
+          field: hm2UserAuthListPolicy5
+          index_field: hm2UserAuthListName
+          key_tag: to_hex_decode
+  hm2userauthliststatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListEntry
+          field: hm2UserAuthListStatus
+          index_field: hm2UserAuthListName
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2userauthlisttable:
+    syntax: Hm2UserAuthListEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserAuthListGroup
+          field: hm2UserAuthListTable
+  hm2userconfigentry:
+    syntax: Hm2UserConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigTable
+          field: hm2UserConfigEntry
+  hm2userconfigtable:
+    syntax: Hm2UserConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigGroup
+          field: hm2UserConfigTable
+  hm2usercustomaccessrole:
+    syntax: Hm2UserCustomAccessRoles
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomAccessRole2NameEntry
+          field: hm2UserCustomAccessRole
+          index_field: hm2UserCustomAccessRole
+  hm2usercustomaccessrole2nameentry:
+    syntax: Hm2UserCustomAccessRole2NameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomAccessRole2NameTable
+          field: hm2UserCustomAccessRole2NameEntry
+  hm2usercustomaccessrole2nametable:
+    syntax: Hm2UserCustomAccessRole2NameEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomGroup
+          field: hm2UserCustomAccessRole2NameTable
+  hm2usercustomaccessrolename:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomAccessRole2NameEntry
+          field: hm2UserCustomAccessRoleName
+          index_field: hm2UserCustomAccessRole
+    validation:
+      min: 1
+      max: 32
+  hm2usercustomaccessrolestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomAccessRole2NameEntry
+          field: hm2UserCustomAccessRoleStatus
+          index_field: hm2UserCustomAccessRole
+    create_method: createAndWait
+  hm2usercustomclibaseaccessrole:
+    syntax: Hm2UserAccessRoles
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdInheritEntry
+          field: hm2UserCustomCliBaseAccessRole
+          index_field: hm2UserCustomAccessRole
+  hm2usercustomclibaseaccessrolestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdInheritEntry
+          field: hm2UserCustomCliBaseAccessRoleStatus
+          index_field: hm2UserCustomAccessRole
+    create_method: createAndWait
+  hm2usercustomclicmdentry:
+    syntax: Hm2UserCustomCliCmdEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdTable
+          field: hm2UserCustomCliCmdEntry
+  hm2usercustomclicmdinheritentry:
+    syntax: Hm2UserCustomCliCmdInheritEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdInheritTable
+          field: hm2UserCustomCliCmdInheritEntry
+  hm2usercustomclicmdinherittable:
+    syntax: Hm2UserCustomCliCmdInheritEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.2
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomGroup
+          field: hm2UserCustomCliCmdInheritTable
+  hm2usercustomclicmdtable:
+    syntax: Hm2UserCustomCliCmdEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.3
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomGroup
+          field: hm2UserCustomCliCmdTable
+  hm2usercustomclicommand:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdEntry
+          field: hm2UserCustomCliCommand
+          index_field: hm2UserCustomCliIndex
+          index_fields: &id001
+          - hm2UserCustomAccessRole
+          - hm2UserCustomCliExecMode
+          - hm2UserCustomCliIndex
+  hm2usercustomcliexecmode:
+    syntax: Hm2UserCliExecModes
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdEntry
+          field: hm2UserCustomCliExecMode
+          index_field: hm2UserCustomCliIndex
+          index_fields: *id001
+  hm2usercustomcliindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdEntry
+          field: hm2UserCustomCliIndex
+          index_field: hm2UserCustomCliIndex
+          index_fields: *id001
+    validation:
+      min: 1
+      max: 2147483647
+  hm2usercustomclistatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdEntry
+          field: hm2UserCustomCliStatus
+          index_field: hm2UserCustomCliIndex
+          index_fields: *id001
+    create_method: createAndWait
+  hm2usercustomclitype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.20.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserCustomCliCmdEntry
+          field: hm2UserCustomCliType
+          index_field: hm2UserCustomCliIndex
+          index_fields: *id001
+  hm2userforcepasswordstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.10.3
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserStatusGroup
+          field: hm2UserForcePasswordStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2useriasentry:
+    syntax: Hm2UserIasEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserIasTable
+          field: hm2UserIasEntry
+  hm2useriastable:
+    syntax: Hm2UserIasEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserIasGroup
+          field: hm2UserIasTable
+  hm2useriasusername:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.5.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserIasEntry
+          field: hm2UserIasUserName
+          index_field: hm2UserIasUserName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  hm2useriasuserpassword:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.5.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserIasEntry
+          field: hm2UserIasUserPassword
+          index_field: hm2UserIasUserName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 64
+  hm2useriasuserstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.5.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserIasEntry
+          field: hm2UserIasUserStatus
+          index_field: hm2UserIasUserName
+          key_tag: to_hex_decode
+    create_method: createAndGo
+    index_type: implied_string
+  hm2userlastusercreated:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserStatusGroup
+          field: hm2UserLastUserCreated
+  hm2userlastuserdeleted:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.10.2
+          method: get
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserStatusGroup
+          field: hm2UserLastUserDeleted
+  hm2userlockoutstatus:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserLockoutStatus
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2username:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserName
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 32
+  hm2userpassword:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserPassword
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 64
+  hm2userpwdchangeperm:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserPwdChangePerm
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2userpwdpolicychk:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserPwdPolicyChk
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2usersnmpauthpassword:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserSnmpAuthPassword
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 64
+  hm2usersnmpauthtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserSnmpAuthType
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - hmacmd5
+      - hmacsha
+  hm2usersnmpencpassword:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserSnmpEncPassword
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 64
+  hm2usersnmpenctype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserSnmpEncType
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    validation:
+      allowed:
+      - none
+      - des
+      - aesCfb128
+      - aesCfb256
+  hm2userstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-USERMGMT-MIB
+          table: hm2UserConfigEntry
+          field: hm2UserStatus
+          index_field: hm2UserName
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string

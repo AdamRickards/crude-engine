@@ -1,0 +1,28 @@
+version: "2.9.0"
+feature: ip-ssh
+description: "SSH CLI sources for IP-MIB"
+
+attributes:
+  ipnettophysicalifindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show arp", parser: paired_rows, column: 0}
+
+  ipnettophysicalnetaddress:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show arp", parser: paired_rows, column: 1}
+
+  ipnettophysicallastupdated:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show arp", parser: paired_rows, column: 2}
+
+  ipnettophysicalphysaddress:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show arp", parser: paired_rows, line: 1, column: 0}

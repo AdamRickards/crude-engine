@@ -1,0 +1,84 @@
+version: 2.7.0
+feature: protection
+description: 'Network protection features: Storm Control, Loop Protection, and Auto-Disable'
+methods:
+  get_storm_control:
+    type: dict
+    primary_key: broadcast_enabled
+    key_map: ifindex
+    defaults:
+      broadcast_enabled: false
+      broadcast_threshold: 0
+      multicast_enabled: false
+      multicast_threshold: 0
+  set_storm_control:
+    type: upsert
+  get_loop_protection:
+    type: dict
+    defaults:
+      enabled: false
+      transmission_interval: 2
+      rx_threshold: 0
+  set_loop_protection:
+    type: upsert
+  get_auto_disable:
+    type: dict
+    primary_key: name
+    key_map: ifindex
+    defaults:
+      enabled: false
+      reason: none
+      remaining_time: 0
+  set_auto_disable:
+    type: upsert
+    index_filter: '^\d+/\d+$'
+  set_auto_disable_reason:
+    type: upsert
+    index_key: auto_disable_reason
+    attributes:
+      enabled:
+        wire: hm2autodisablereasonoperation
+        source: devmgmt
+attributes:
+  broadcast_enabled:
+    wire: hm2trafficmgmtifingressstormctlbcastmode
+    source: trafficmgmt
+  broadcast_threshold:
+    wire: hm2trafficmgmtifingressstormctlbcastthreshold
+    source: trafficmgmt
+  multicast_enabled:
+    wire: hm2trafficmgmtifingressstormctlmcastmode
+    source: trafficmgmt
+  multicast_threshold:
+    wire: hm2trafficmgmtifingressstormctlmcastthreshold
+    source: trafficmgmt
+  loop_enabled:
+    wire: hm2agentswitchkeepalivestate
+    source: platform-switching
+    value_map:
+      '1': enabled
+      '2': disabled
+  loop_interval:
+    wire: hm2agentswitchkeepalivetransmitinterval
+    source: platform-switching
+  auto_disable_reason:
+    wire: hm2autodisableintferrorreason
+    source: devmgmt
+    value_map:
+      '0': none
+      '1': link-flap
+      '2': crc-error
+      '3': duplex-mismatch
+      '4': dhcp-snooping
+      '5': arp-rate
+      '6': bpdu-rate
+      '7': mac-based-port-security
+      '8': overload-detection
+      '9': speed-duplex
+      '10': loop-protection
+  auto_disable_timer:
+    wire: hm2autodisableintftimer
+    source: devmgmt
+  auto_disable_reset:
+    wire: hm2autodisableintfreset
+    source: devmgmt

@@ -1,0 +1,570 @@
+version: 2.6.0
+feature: dos-mitigation
+schemas:
+  read_dos-mitigation:
+    type: dict
+    defaults:
+      hm2dosmitigationarplimitsup: ''
+      hm2dosmitigationdropipsrcroute: false
+      hm2dosmitigationethernetframeforwarding: false
+      hm2dosmitigationglobaldropcounter: 0
+      hm2dosmitigationicmpcheckssup: ''
+      hm2dosmitigationicmpfrags: false
+      hm2dosmitigationicmppacketsize: 0
+      hm2dosmitigationicmppacketsizemode: false
+      hm2dosmitigationicmpsmurfattack: false
+      hm2dosmitigationlandattack: false
+      hm2dosmitigationlimiterarplimit: 0
+      hm2dosmitigationlimiterinterface: 0
+      hm2dosmitigationlimiterrowstatus: 0
+      hm2dosmitigationlimiterruleentry: ''
+      hm2dosmitigationlimiterruletable: ''
+      hm2dosmitigationlimitertcpsynlimit: 0
+      hm2dosmitigationportdropcounter: 0
+      hm2dosmitigationsmacdmac: false
+      hm2dosmitigationstatisticsportentry: ''
+      hm2dosmitigationstatisticsporttable: ''
+      hm2dosmitigationtcphdrcheckssup: ''
+      hm2dosmitigationtcplandsup: ''
+      hm2dosmitigationtcpminimalheader: false
+      hm2dosmitigationtcpminimalheadersize: 0
+      hm2dosmitigationtcpnullscan: false
+      hm2dosmitigationtcpnullscansup: ''
+      hm2dosmitigationtcpoffsetequ1: false
+      hm2dosmitigationtcpprivilegedsrcport: false
+      hm2dosmitigationtcpsrcdstportequ: false
+      hm2dosmitigationtcpsynfinscan: false
+      hm2dosmitigationtcpsynlimitsup: ''
+      hm2dosmitigationtcpxmasscan: false
+      hm2dosmitigationtcpxmassup: ''
+attributes:
+  hm2dosmitigationarplimitsup:
+    syntax: DosFeatureValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.0.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationCapabilities
+          field: hm2DosMitigationArpLimitSup
+  hm2dosmitigationdropipsrcroute:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationIpHdrChecks
+          field: hm2DosMitigationDropIpSrcRoute
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationethernetframeforwarding:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationEthernetFrameTypeForwarding
+          field: hm2DosMitigationEthernetFrameForwarding
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationglobaldropcounter:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationStatistics
+          field: hm2DosMitigationGlobalDropCounter
+  hm2dosmitigationicmpcheckssup:
+    syntax: DosFeatureValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.0.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationCapabilities
+          field: hm2DosMitigationIcmpChecksSup
+  hm2dosmitigationicmpfrags:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationIcmpChecks
+          field: hm2DosMitigationIcmpFrags
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationicmppacketsize:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationIcmpChecks
+          field: hm2DosMitigationIcmpPacketSize
+    validation:
+      min: 0
+      max: 1472
+  hm2dosmitigationicmppacketsizemode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationIcmpChecks
+          field: hm2DosMitigationIcmpPacketSizeMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationicmpsmurfattack:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.2.6
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationIcmpChecks
+          field: hm2DosMitigationIcmpSmurfAttack
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationlandattack:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationLandAttack
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationlimiterarplimit:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.2.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationLimiterRuleEntry
+          field: hm2DosMitigationLimiterArpLimit
+          index_field: hm2DosMitigationLimiterInterface
+  hm2dosmitigationlimiterinterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.2.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationLimiterRuleEntry
+          field: hm2DosMitigationLimiterInterface
+          index_field: hm2DosMitigationLimiterInterface
+  hm2dosmitigationlimiterrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.2.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationLimiterRuleEntry
+          field: hm2DosMitigationLimiterRowStatus
+          index_field: hm2DosMitigationLimiterInterface
+    create_method: createAndWait
+  hm2dosmitigationlimiterruleentry:
+    syntax: Hm2DosMitigationLimiterRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.2.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationLimiterRuleTable
+          field: hm2DosMitigationLimiterRuleEntry
+  hm2dosmitigationlimiterruletable:
+    syntax: Hm2DosMitigationLimiterRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationLimiterRules
+          field: hm2DosMitigationLimiterRuleTable
+  hm2dosmitigationlimitertcpsynlimit:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.2.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationLimiterRuleEntry
+          field: hm2DosMitigationLimiterTcpSynLimit
+          index_field: hm2DosMitigationLimiterInterface
+  hm2dosmitigationportdropcounter:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationStatisticsPortEntry
+          field: hm2DosMitigationPortDropCounter
+          index_field: ifIndex
+  hm2dosmitigationsmacdmac:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.3.7
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationL2Checks
+          field: hm2DosMitigationSMacDMac
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationstatisticsportentry:
+    syntax: Hm2DosMitigationStatisticsPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationStatisticsPortTable
+          field: hm2DosMitigationStatisticsPortEntry
+  hm2dosmitigationstatisticsporttable:
+    syntax: Hm2DosMitigationStatisticsPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationStatistics
+          field: hm2DosMitigationStatisticsPortTable
+  hm2dosmitigationtcphdrcheckssup:
+    syntax: DosFeatureValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.0.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationCapabilities
+          field: hm2DosMitigationTcpHdrChecksSup
+  hm2dosmitigationtcplandsup:
+    syntax: DosFeatureValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.0.7
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationCapabilities
+          field: hm2DosMitigationTcpLandSup
+  hm2dosmitigationtcpminimalheader:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpMinimalHeader
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationtcpminimalheadersize:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpMinimalHeaderSize
+    validation:
+      min: 20
+      max: 255
+  hm2dosmitigationtcpnullscan:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpNullScan
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationtcpnullscansup:
+    syntax: DosFeatureValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.0.5
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationCapabilities
+          field: hm2DosMitigationTcpNullScanSup
+  hm2dosmitigationtcpoffsetequ1:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.14
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpOffsetEqu1
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationtcpprivilegedsrcport:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.15
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpPrivilegedSrcPort
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationtcpsrcdstportequ:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.16
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpSrcDstPortEqu
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationtcpsynfinscan:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpSynFinScan
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationtcpsynlimitsup:
+    syntax: DosFeatureValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.0.3
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationCapabilities
+          field: hm2DosMitigationTcpSynLimitSup
+  hm2dosmitigationtcpxmasscan:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationTcpHdrChecks
+          field: hm2DosMitigationTcpXmasScan
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dosmitigationtcpxmassup:
+    syntax: DosFeatureValue
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.82.1.1.0.6
+          method: get
+      mops:
+        read:
+          mib: HM2-DOS-MITIGATION-MIB
+          table: hm2DosMitigationCapabilities
+          field: hm2DosMitigationTcpXmasSup

@@ -1,0 +1,795 @@
+version: 2.7.0
+feature: lldp-ext-dot3
+value_maps:
+  lldp_agg_status:
+    0: aggCapable
+    1: aggEnabled
+schemas:
+  read_lldp-ext-dot3:
+    type: dict
+    defaults:
+      lldpxdot3loclinkaggentry: ''
+      lldpxdot3loclinkaggportid: 0
+      lldpxdot3loclinkaggstatus: ''
+      lldpxdot3loclinkaggtable: ''
+      lldpxdot3locmaxframesize: 0
+      lldpxdot3locmaxframesizeentry: ''
+      lldpxdot3locmaxframesizetable: ''
+      lldpxdot3locportautonegadvertisedcap: ''
+      lldpxdot3locportautonegenabled: false
+      lldpxdot3locportautonegsupported: false
+      lldpxdot3locportentry: ''
+      lldpxdot3locportopermautype: 0
+      lldpxdot3locporttable: ''
+      lldpxdot3locpowerclass: 0
+      lldpxdot3locpowerentry: ''
+      lldpxdot3locpowermdienabled: false
+      lldpxdot3locpowermdisupported: false
+      lldpxdot3locpowerpaircontrolable: false
+      lldpxdot3locpowerpairs: 0
+      lldpxdot3locpowerportclass: ''
+      lldpxdot3locpowertable: ''
+      lldpxdot3portconfigentry: ''
+      lldpxdot3portconfigtlvstxenable: []
+      lldpxdot3portconfigtable: ''
+      lldpxdot3remlinkaggentry: ''
+      lldpxdot3remlinkaggportid: 0
+      lldpxdot3remlinkaggstatus: ''
+      lldpxdot3remlinkaggtable: ''
+      lldpxdot3remmaxframesize: 0
+      lldpxdot3remmaxframesizeentry: ''
+      lldpxdot3remmaxframesizetable: ''
+      lldpxdot3remportautonegadvertisedcap: ''
+      lldpxdot3remportautonegenabled: false
+      lldpxdot3remportautonegsupported: false
+      lldpxdot3remportentry: ''
+      lldpxdot3remportopermautype: 0
+      lldpxdot3remporttable: ''
+      lldpxdot3rempowerclass: 0
+      lldpxdot3rempowerentry: ''
+      lldpxdot3rempowermdienabled: false
+      lldpxdot3rempowermdisupported: false
+      lldpxdot3rempowerpaircontrolable: false
+      lldpxdot3rempowerpairs: 0
+      lldpxdot3rempowerportclass: ''
+      lldpxdot3rempowertable: ''
+attributes:
+  lldpxdot3loclinkaggentry:
+    syntax: LldpXdot3LocLinkAggEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocLinkAggTable
+          field: lldpXdot3LocLinkAggEntry
+  lldpxdot3loclinkaggportid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocLinkAggEntry
+          field: lldpXdot3LocLinkAggPortId
+          index_field: lldpLocPortNum
+  lldpxdot3loclinkaggstatus:
+    syntax: LldpLinkAggStatusMap
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocLinkAggEntry
+          field: lldpXdot3LocLinkAggStatus
+          index_field: lldpLocPortNum
+  lldpxdot3loclinkaggtable:
+    syntax: LldpXdot3LocLinkAggEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocalData
+          field: lldpXdot3LocLinkAggTable
+  lldpxdot3locmaxframesize:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocMaxFrameSizeEntry
+          field: lldpXdot3LocMaxFrameSize
+          index_field: lldpLocPortNum
+    validation:
+      min: 0
+      max: 65535
+  lldpxdot3locmaxframesizeentry:
+    syntax: LldpXdot3LocMaxFrameSizeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocMaxFrameSizeTable
+          field: lldpXdot3LocMaxFrameSizeEntry
+  lldpxdot3locmaxframesizetable:
+    syntax: LldpXdot3LocMaxFrameSizeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocalData
+          field: lldpXdot3LocMaxFrameSizeTable
+  lldpxdot3locportautonegadvertisedcap:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPortEntry
+          field: lldpXdot3LocPortAutoNegAdvertisedCap
+          index_field: lldpLocPortNum
+  lldpxdot3locportautonegenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPortEntry
+          field: lldpXdot3LocPortAutoNegEnabled
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3locportautonegsupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPortEntry
+          field: lldpXdot3LocPortAutoNegSupported
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3locportentry:
+    syntax: LldpXdot3LocPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPortTable
+          field: lldpXdot3LocPortEntry
+  lldpxdot3locportopermautype:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPortEntry
+          field: lldpXdot3LocPortOperMauType
+          index_field: lldpLocPortNum
+    validation:
+      min: 0
+      max: 2147483647
+  lldpxdot3locporttable:
+    syntax: LldpXdot3LocPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocalData
+          field: lldpXdot3LocPortTable
+  lldpxdot3locpowerclass:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPowerEntry
+          field: lldpXdot3LocPowerClass
+          index_field: lldpLocPortNum
+  lldpxdot3locpowerentry:
+    syntax: LldpXdot3LocPowerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPowerTable
+          field: lldpXdot3LocPowerEntry
+  lldpxdot3locpowermdienabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPowerEntry
+          field: lldpXdot3LocPowerMDIEnabled
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3locpowermdisupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPowerEntry
+          field: lldpXdot3LocPowerMDISupported
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3locpowerpaircontrolable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPowerEntry
+          field: lldpXdot3LocPowerPairControlable
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3locpowerpairs:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPowerEntry
+          field: lldpXdot3LocPowerPairs
+          index_field: lldpLocPortNum
+  lldpxdot3locpowerportclass:
+    syntax: LldpPowerPortClass
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocPowerEntry
+          field: lldpXdot3LocPowerPortClass
+          index_field: lldpLocPortNum
+  lldpxdot3locpowertable:
+    syntax: LldpXdot3LocPowerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.2.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3LocalData
+          field: lldpXdot3LocPowerTable
+  lldpxdot3portconfigentry:
+    syntax: LldpXdot3PortConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3PortConfigTable
+          field: lldpXdot3PortConfigEntry
+  lldpxdot3portconfigtlvstxenable:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3PortConfigEntry
+          field: lldpXdot3PortConfigTLVsTxEnable
+    bit_map:
+      0: macPhyConfigStatus
+      1: powerViaMDI
+      2: linkAggregation
+      3: maxFrameSize
+  lldpxdot3portconfigtable:
+    syntax: LldpXdot3PortConfigEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3Config
+          field: lldpXdot3PortConfigTable
+  lldpxdot3remlinkaggentry:
+    syntax: LldpXdot3RemLinkAggEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemLinkAggTable
+          field: lldpXdot3RemLinkAggEntry
+  lldpxdot3remlinkaggportid:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemLinkAggEntry
+          field: lldpXdot3RemLinkAggPortId
+          index_field: lldpRemIndex
+          index_fields: &id001
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpxdot3remlinkaggstatus:
+    syntax: LldpLinkAggStatusMap
+    type: list
+    access: r
+    bit_map: lldp_agg_status
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemLinkAggEntry
+          field: lldpXdot3RemLinkAggStatus
+          index_field: lldpRemIndex
+          index_fields: *id001
+  lldpxdot3remlinkaggtable:
+    syntax: LldpXdot3RemLinkAggEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemoteData
+          field: lldpXdot3RemLinkAggTable
+  lldpxdot3remmaxframesize:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemMaxFrameSizeEntry
+          field: lldpXdot3RemMaxFrameSize
+          index_field: lldpRemIndex
+          index_fields:
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+    validation:
+      min: 0
+      max: 65535
+  lldpxdot3remmaxframesizeentry:
+    syntax: LldpXdot3RemMaxFrameSizeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemMaxFrameSizeTable
+          field: lldpXdot3RemMaxFrameSizeEntry
+  lldpxdot3remmaxframesizetable:
+    syntax: LldpXdot3RemMaxFrameSizeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemoteData
+          field: lldpXdot3RemMaxFrameSizeTable
+  lldpxdot3remportautonegadvertisedcap:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPortEntry
+          field: lldpXdot3RemPortAutoNegAdvertisedCap
+          index_field: lldpRemIndex
+          index_fields: &id002
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpxdot3remportautonegenabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPortEntry
+          field: lldpXdot3RemPortAutoNegEnabled
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3remportautonegsupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPortEntry
+          field: lldpXdot3RemPortAutoNegSupported
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3remportentry:
+    syntax: LldpXdot3RemPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPortTable
+          field: lldpXdot3RemPortEntry
+  lldpxdot3remportopermautype:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPortEntry
+          field: lldpXdot3RemPortOperMauType
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 2147483647
+  lldpxdot3remporttable:
+    syntax: LldpXdot3RemPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemoteData
+          field: lldpXdot3RemPortTable
+  lldpxdot3rempowerclass:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPowerEntry
+          field: lldpXdot3RemPowerClass
+          index_field: lldpRemIndex
+          index_fields: &id003
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpxdot3rempowerentry:
+    syntax: LldpXdot3RemPowerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPowerTable
+          field: lldpXdot3RemPowerEntry
+  lldpxdot3rempowermdienabled:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPowerEntry
+          field: lldpXdot3RemPowerMDIEnabled
+          index_field: lldpRemIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3rempowermdisupported:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPowerEntry
+          field: lldpXdot3RemPowerMDISupported
+          index_field: lldpRemIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3rempowerpaircontrolable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPowerEntry
+          field: lldpXdot3RemPowerPairControlable
+          index_field: lldpRemIndex
+          index_fields: *id003
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxdot3rempowerpairs:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPowerEntry
+          field: lldpXdot3RemPowerPairs
+          index_field: lldpRemIndex
+          index_fields: *id003
+  lldpxdot3rempowerportclass:
+    syntax: LldpPowerPortClass
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemPowerEntry
+          field: lldpXdot3RemPowerPortClass
+          index_field: lldpRemIndex
+          index_fields: *id003
+  lldpxdot3rempowertable:
+    syntax: LldpXdot3RemPowerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-DOT3-MIB
+          table: lldpXdot3RemoteData
+          field: lldpXdot3RemPowerTable

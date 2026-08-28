@@ -1,0 +1,1185 @@
+version: 2.6.0
+feature: lldp-ext-hm
+schemas:
+  read_lldp-ext-hm:
+    type: dict
+    defaults:
+      lldpxhmconfiggmrpentry: ''
+      lldpxhmconfiggmrptable: ''
+      lldpxhmconfiggmrptxenable: false
+      lldpxhmconfigigmpentry: ''
+      lldpxhmconfigigmptable: ''
+      lldpxhmconfigigmptxenable: false
+      lldpxhmconfigptpentry: ''
+      lldpxhmconfigptptable: ''
+      lldpxhmconfigptptxenable: false
+      lldpxhmconfigportsecentry: ''
+      lldpxhmconfigportsectable: ''
+      lldpxhmconfigportsectxenable: false
+      lldpxhmconfigsysentry: ''
+      lldpxhmconfigsystable: ''
+      lldpxhmconfigsystxbits: []
+      lldpxhmlocgmrpentry: ''
+      lldpxhmlocgmrpservicereq: ''
+      lldpxhmlocgmrpstatus: false
+      lldpxhmlocgmrpsupport: false
+      lldpxhmlocgmrptable: ''
+      lldpxhmlocigmpentry: ''
+      lldpxhmlocigmpstatus: false
+      lldpxhmlocigmpsupport: false
+      lldpxhmlocigmptable: ''
+      lldpxhmlocigmpversion: ''
+      lldpxhmlocptpclockvalues: []
+      lldpxhmlocptpentry: ''
+      lldpxhmlocptpstatus: ''
+      lldpxhmlocptpsupport: ''
+      lldpxhmlocptpsyncinterval: 0
+      lldpxhmlocptptable: ''
+      lldpxhmlocptpv1subdomainname: ''
+      lldpxhmlocptpv2announceinterval: 0
+      lldpxhmlocptpv2datatransfer: ''
+      lldpxhmlocptpv2delaymechanism: ''
+      lldpxhmlocptpv2subdomainnumber: 0
+      lldpxhmlocportsecentry: ''
+      lldpxhmlocportsecmode: ''
+      lldpxhmlocportsecstatus: false
+      lldpxhmlocportsecsupport: false
+      lldpxhmlocportsectable: ''
+      lldpxhmremgmrpentry: ''
+      lldpxhmremgmrpservicereq: ''
+      lldpxhmremgmrpstatus: false
+      lldpxhmremgmrpsupport: false
+      lldpxhmremgmrptable: ''
+      lldpxhmremigmpentry: ''
+      lldpxhmremigmpstatus: false
+      lldpxhmremigmpsupport: false
+      lldpxhmremigmptable: ''
+      lldpxhmremigmpversion: ''
+      lldpxhmremptpclockvalues: []
+      lldpxhmremptpentry: ''
+      lldpxhmremptpstatus: ''
+      lldpxhmremptpsupport: ''
+      lldpxhmremptpsyncinterval: 0
+      lldpxhmremptptable: ''
+      lldpxhmremptpv1subdomainname: ''
+      lldpxhmremptpv2announceinterval: 0
+      lldpxhmremptpv2datatransfer: ''
+      lldpxhmremptpv2delaymechanism: ''
+      lldpxhmremptpv2subdomainnumber: 0
+      lldpxhmremportsecentry: ''
+      lldpxhmremportsecmode: ''
+      lldpxhmremportsecstatus: false
+      lldpxhmremportsecsupport: false
+      lldpxhmremportsectable: ''
+attributes:
+  lldpxhmconfiggmrpentry:
+    syntax: LldpXHmConfigGMRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigGMRPTable
+          field: lldpXHmConfigGMRPEntry
+  lldpxhmconfiggmrptable:
+    syntax: LldpXHmConfigGMRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfig
+          field: lldpXHmConfigGMRPTable
+  lldpxhmconfiggmrptxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigGMRPEntry
+          field: lldpXHmConfigGMRPTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmconfigigmpentry:
+    syntax: LldpXHmConfigIGMPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigIGMPTable
+          field: lldpXHmConfigIGMPEntry
+  lldpxhmconfigigmptable:
+    syntax: LldpXHmConfigIGMPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfig
+          field: lldpXHmConfigIGMPTable
+  lldpxhmconfigigmptxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigIGMPEntry
+          field: lldpXHmConfigIGMPTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmconfigptpentry:
+    syntax: LldpXHmConfigPTPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigPTPTable
+          field: lldpXHmConfigPTPEntry
+  lldpxhmconfigptptable:
+    syntax: LldpXHmConfigPTPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfig
+          field: lldpXHmConfigPTPTable
+  lldpxhmconfigptptxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigPTPEntry
+          field: lldpXHmConfigPTPTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmconfigportsecentry:
+    syntax: LldpXHmConfigPortSecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigPortSecTable
+          field: lldpXHmConfigPortSecEntry
+  lldpxhmconfigportsectable:
+    syntax: LldpXHmConfigPortSecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfig
+          field: lldpXHmConfigPortSecTable
+  lldpxhmconfigportsectxenable:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigPortSecEntry
+          field: lldpXHmConfigPortSecTxEnable
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmconfigsysentry:
+    syntax: LldpXHmConfigSYSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.5.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigSYSTable
+          field: lldpXHmConfigSYSEntry
+  lldpxhmconfigsystable:
+    syntax: LldpXHmConfigSYSEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.5
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfig
+          field: lldpXHmConfigSYSTable
+  lldpxhmconfigsystxbits:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.1.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmConfigSYSEntry
+          field: lldpXHmConfigSYSTxBits
+    bit_map:
+      0: sysContact
+      1: sysLocation
+  lldpxhmlocgmrpentry:
+    syntax: LldpXHmLocGMRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocGMRPTable
+          field: lldpXHmLocGMRPEntry
+  lldpxhmlocgmrpservicereq:
+    syntax: LldpXHmLocGMRPServiceReqSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocGMRPEntry
+          field: lldpXHmLocGMRPServiceReq
+          index_field: lldpLocPortNum
+  lldpxhmlocgmrpstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocGMRPEntry
+          field: lldpXHmLocGMRPStatus
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmlocgmrpsupport:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocGMRPEntry
+          field: lldpXHmLocGMRPSupport
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmlocgmrptable:
+    syntax: LldpXHmLocGMRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocalData
+          field: lldpXHmLocGMRPTable
+  lldpxhmlocigmpentry:
+    syntax: LldpXHmLocIGMPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocIGMPTable
+          field: lldpXHmLocIGMPEntry
+  lldpxhmlocigmpstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocIGMPEntry
+          field: lldpXHmLocIGMPStatus
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmlocigmpsupport:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocIGMPEntry
+          field: lldpXHmLocIGMPSupport
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmlocigmptable:
+    syntax: LldpXHmLocIGMPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocalData
+          field: lldpXHmLocIGMPTable
+  lldpxhmlocigmpversion:
+    syntax: LldpXHmLocIGMPVersionSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocIGMPEntry
+          field: lldpXHmLocIGMPVersion
+          index_field: lldpLocPortNum
+  lldpxhmlocptpclockvalues:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPClockValues
+          index_field: lldpLocPortNum
+    bit_map:
+      0: slave
+      1: master
+      2: transparent
+      3: boundary
+      4: grandmaster
+      5: multidomain
+      6: simplemode
+  lldpxhmlocptpentry:
+    syntax: LldpXHmLocPTPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPTable
+          field: lldpXHmLocPTPEntry
+  lldpxhmlocptpstatus:
+    syntax: LldpXHmLocPTPStatusSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPStatus
+          index_field: lldpLocPortNum
+  lldpxhmlocptpsupport:
+    syntax: LldpXHmLocPTPSupportSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPSupport
+          index_field: lldpLocPortNum
+  lldpxhmlocptpsyncinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPSyncInterval
+          index_field: lldpLocPortNum
+    validation:
+      min: -128
+      max: 127
+  lldpxhmlocptptable:
+    syntax: LldpXHmLocPTPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocalData
+          field: lldpXHmLocPTPTable
+  lldpxhmlocptpv1subdomainname:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPv1SubdomainName
+          index_field: lldpLocPortNum
+    validation:
+      min: 0
+      max: 16
+  lldpxhmlocptpv2announceinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPv2AnnounceInterval
+          index_field: lldpLocPortNum
+    validation:
+      min: -128
+      max: 127
+  lldpxhmlocptpv2datatransfer:
+    syntax: LldpXHmLocPTPv2DataTransferSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPv2DataTransfer
+          index_field: lldpLocPortNum
+  lldpxhmlocptpv2delaymechanism:
+    syntax: LldpXHmLocPTPv2DelayMechanismSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPv2DelayMechanism
+          index_field: lldpLocPortNum
+  lldpxhmlocptpv2subdomainnumber:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPTPEntry
+          field: lldpXHmLocPTPv2SubdomainNumber
+          index_field: lldpLocPortNum
+    validation:
+      min: 0
+      max: 255
+  lldpxhmlocportsecentry:
+    syntax: LldpXHmLocPortSecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPortSecTable
+          field: lldpXHmLocPortSecEntry
+  lldpxhmlocportsecmode:
+    syntax: LldpXHmLocPortSecModeSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPortSecEntry
+          field: lldpXHmLocPortSecMode
+          index_field: lldpLocPortNum
+  lldpxhmlocportsecstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPortSecEntry
+          field: lldpXHmLocPortSecStatus
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmlocportsecsupport:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocPortSecEntry
+          field: lldpXHmLocPortSecSupport
+          index_field: lldpLocPortNum
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmlocportsectable:
+    syntax: LldpXHmLocPortSecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.2.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmLocalData
+          field: lldpXHmLocPortSecTable
+  lldpxhmremgmrpentry:
+    syntax: LldpXHmRemGMRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemGMRPTable
+          field: lldpXHmRemGMRPEntry
+  lldpxhmremgmrpservicereq:
+    syntax: LldpXHmRemGMRPServiceReqSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemGMRPEntry
+          field: lldpXHmRemGMRPServiceReq
+          index_field: lldpRemIndex
+          index_fields: &id001
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpxhmremgmrpstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemGMRPEntry
+          field: lldpXHmRemGMRPStatus
+          index_field: lldpRemIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmremgmrpsupport:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemGMRPEntry
+          field: lldpXHmRemGMRPSupport
+          index_field: lldpRemIndex
+          index_fields: *id001
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmremgmrptable:
+    syntax: LldpXHmRemGMRPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemoteData
+          field: lldpXHmRemGMRPTable
+  lldpxhmremigmpentry:
+    syntax: LldpXHmRemIGMPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemIGMPTable
+          field: lldpXHmRemIGMPEntry
+  lldpxhmremigmpstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemIGMPEntry
+          field: lldpXHmRemIGMPStatus
+          index_field: lldpRemIndex
+          index_fields: &id002
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmremigmpsupport:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemIGMPEntry
+          field: lldpXHmRemIGMPSupport
+          index_field: lldpRemIndex
+          index_fields: *id002
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmremigmptable:
+    syntax: LldpXHmRemIGMPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.2
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemoteData
+          field: lldpXHmRemIGMPTable
+  lldpxhmremigmpversion:
+    syntax: LldpXHmRemIGMPVersionSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemIGMPEntry
+          field: lldpXHmRemIGMPVersion
+          index_field: lldpRemIndex
+          index_fields: *id002
+  lldpxhmremptpclockvalues:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPClockValues
+          index_field: lldpRemIndex
+          index_fields: &id003
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+    bit_map:
+      0: slave
+      1: master
+      2: transparent
+      3: boundary
+      4: grandmaster
+      5: multidomain
+      6: simplemode
+  lldpxhmremptpentry:
+    syntax: LldpXHmRemPTPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPTable
+          field: lldpXHmRemPTPEntry
+  lldpxhmremptpstatus:
+    syntax: LldpXHmRemPTPStatusSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPStatus
+          index_field: lldpRemIndex
+          index_fields: *id003
+  lldpxhmremptpsupport:
+    syntax: LldpXHmRemPTPSupportSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPSupport
+          index_field: lldpRemIndex
+          index_fields: *id003
+  lldpxhmremptpsyncinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPSyncInterval
+          index_field: lldpRemIndex
+          index_fields: *id003
+    validation:
+      min: -128
+      max: 127
+  lldpxhmremptptable:
+    syntax: LldpXHmRemPTPEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemoteData
+          field: lldpXHmRemPTPTable
+  lldpxhmremptpv1subdomainname:
+    syntax: OCTET STRING
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPv1SubdomainName
+          index_field: lldpRemIndex
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 16
+  lldpxhmremptpv2announceinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPv2AnnounceInterval
+          index_field: lldpRemIndex
+          index_fields: *id003
+    validation:
+      min: -128
+      max: 127
+  lldpxhmremptpv2datatransfer:
+    syntax: LldpXHmRemPTPv2DataTransferSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPv2DataTransfer
+          index_field: lldpRemIndex
+          index_fields: *id003
+  lldpxhmremptpv2delaymechanism:
+    syntax: LldpXHmRemPTPv2DelayMechanismSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPv2DelayMechanism
+          index_field: lldpRemIndex
+          index_fields: *id003
+  lldpxhmremptpv2subdomainnumber:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPTPEntry
+          field: lldpXHmRemPTPv2SubdomainNumber
+          index_field: lldpRemIndex
+          index_fields: *id003
+    validation:
+      min: 0
+      max: 255
+  lldpxhmremportsecentry:
+    syntax: LldpXHmRemPortSecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.3.1
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPortSecTable
+          field: lldpXHmRemPortSecEntry
+  lldpxhmremportsecmode:
+    syntax: LldpXHmRemPortSecModeSyntax
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPortSecEntry
+          field: lldpXHmRemPortSecMode
+          index_field: lldpRemIndex
+          index_fields: &id004
+          - lldpRemTimeMark
+          - lldpRemLocalPortNum
+          - lldpRemIndex
+  lldpxhmremportsecstatus:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPortSecEntry
+          field: lldpXHmRemPortSecStatus
+          index_field: lldpRemIndex
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmremportsecsupport:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemPortSecEntry
+          field: lldpXHmRemPortSecSupport
+          index_field: lldpRemIndex
+          index_fields: *id004
+    validation:
+      allowed:
+      - true
+      - false
+  lldpxhmremportsectable:
+    syntax: LldpXHmRemPortSecEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32867.1.3.3
+          method: get
+      mops:
+        read:
+          mib: LLDP-EXT-HM-MIB
+          table: lldpXHmRemoteData
+          field: lldpXHmRemPortSecTable

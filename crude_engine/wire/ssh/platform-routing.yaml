@@ -1,0 +1,98 @@
+version: "2.9.0"
+feature: platform-routing-ssh
+description: "SSH CLI sources for Unicast Routing (L3 only)"
+
+attributes:
+  # Global: show ip global
+  hm2agentswitchiproutingmode:
+    sources:
+      ssh:
+        read: {command: "show ip global", field: "Routing mode"}
+        write: {command: "ip routing", level: config_interface}
+
+  # Per-port table: show ip interface
+  hm2agentswitchipinterfaceipaddress:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip interface", parser: table, column: 1}
+        write: {command: "ip address primary {value} {netmask}", level: config_interface}
+
+  hm2agentswitchipinterfacenetmask:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip interface", parser: table, column: 2}
+
+  hm2agentswitchipinterfaceroutingmode:
+    sources:
+      ssh:
+        write: {command: "ip routing", level: config_interface}
+
+  hm2agentswitchipinterfaceproxyarpmode:
+    sources:
+      ssh:
+        write: {command: "ip proxy-arp operation", level: config_interface}
+
+  hm2agentswitchipinterfacenetdirectedbcmode:
+    sources:
+      ssh:
+        write: {command: "ip netdirbcast", level: config_interface}
+
+  hm2agentswitchipinterfacemtuvalue:
+    sources:
+      ssh:
+        write: {command: "ip mtu {value}", level: config_interface}
+
+  hm2agentswitchipinterfaceicmpunreachables:
+    sources:
+      ssh:
+        write: {command: "ip icmp unreachables", level: config_interface}
+
+  hm2agentswitchipinterfaceicmpredirects:
+    sources:
+      ssh:
+        write: {command: "ip icmp redirects", level: config}
+
+  # VRRP global: show ip vrrp global
+  hm2agentroutervrrpadminstate:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp global", field: "VRRP Admin State"}
+        write: {command: "ip vrrp operation", level: config}
+
+  hm2agentsnmpvrrpauthfailuretrapflag:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp global", field: "Authentication Failure Trap"}
+        write: {command: "ip vrrp trap auth-failure", level: config}
+
+  hm2agentsnmpvrrpnewmastertrapflag:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp global", field: "New Master Trap"}
+        write: {command: "ip vrrp trap new-master", level: config}
+
+  # VRRP per-instance (platform-routing wire): show ip vrrp interface table
+  hm2agentvrrpextcfgpriority:
+    sources:
+      ssh:
+        read: {command: "show ip vrrp interface", parser: table, column: 2}
+
+  hm2agentvrrpprimaryvirtualaddress:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip vrrp interface", parser: table, column: 3}
+
+  # VRRP tracking
+  hm2agentvrrptrackdecrement:
+    sources:
+      ssh:
+        write: {command: "ip vrrp track modify {vrid} {track_name} decrement {value}", level: config_interface}
+
+  hm2agentvrrptrackrowstatus:
+    sources:
+      ssh:
+        create: {command: "ip vrrp track add {vrid} {track_name} decrement {decrement}", level: config_interface}
+        delete: {command: "ip vrrp track delete {vrid} {track_name}", level: config_interface}

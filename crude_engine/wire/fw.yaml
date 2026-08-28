@@ -1,0 +1,6191 @@
+version: 2.6.0
+feature: fw
+schemas:
+  read_fw:
+    type: dict
+    defaults:
+      hm2appruledirection: 0
+      hm2appruleentry: ''
+      hm2appruleindex: 0
+      hm2appruleisdefault: false
+      hm2apprulename: ''
+      hm2appruleport: ''
+      hm2appruleprotocol: ''
+      hm2apprulestatus: 0
+      hm2appruletable: ''
+      hm2assetdescription: ''
+      hm2assetentry: ''
+      hm2assetgenerallocation: ''
+      hm2assetindex: 0
+      hm2assetipaddress: ''
+      hm2assetmacaddress: ''
+      hm2assetmanufacturer: ''
+      hm2assetmodel: ''
+      hm2assetname: ''
+      hm2assetspecificlocation: ''
+      hm2assetstatus: 0
+      hm2assettable: ''
+      hm2assettag: ''
+      hm2assettype: 0
+      hm2conntrackvalidatechecksum: false
+      hm2dpiampdi: false
+      hm2dpiampprotectmode: false
+      hm2dpiamptaskcode: ''
+      hm2dpiamptaskcodedescription: ''
+      hm2dpiamptaskcodeentry: ''
+      hm2dpiamptaskcodemode: 0
+      hm2dpiamptaskcodestatus: 0
+      hm2dpiamptaskcodetable: ''
+      hm2dpiamptaskcodetype: 0
+      hm2dpiobjectenipclassid: ''
+      hm2dpiobjectenipdescription: ''
+      hm2dpiobjectenipentry: ''
+      hm2dpiobjecteniprowstatus: 0
+      hm2dpiobjectenipservices: ''
+      hm2dpiobjecteniptable: ''
+      hm2dpiprofileampaddrclass: ''
+      hm2dpiprofileampaddress: ''
+      hm2dpiprofileampbcc: false
+      hm2dpiprofileampcommitpendingactions: ''
+      hm2dpiprofileampdataword: ''
+      hm2dpiprofileampdebug: false
+      hm2dpiprofileampdescription: ''
+      hm2dpiprofileampdevclass: ''
+      hm2dpiprofileampecc: false
+      hm2dpiprofileampentry: ''
+      hm2dpiprofileampindex: 0
+      hm2dpiprofileampmsgtype: ''
+      hm2dpiprofileamppendingactions: false
+      hm2dpiprofileampprotectmode: false
+      hm2dpiprofileampprotocol: 0
+      hm2dpiprofileamprowstatus: 0
+      hm2dpiprofileampsanitycheck: false
+      hm2dpiprofileamptable: ''
+      hm2dpiprofileamptaskcode: ''
+      hm2dpiprofileamptaskcodedata: ''
+      hm2dpiprofileamptcpreset: false
+      hm2dpiprofilednp3checkoutstationtraffic: false
+      hm2dpiprofilednp3commitpendingactions: ''
+      hm2dpiprofilednp3crccheck: false
+      hm2dpiprofilednp3defaultwhitelist: ''
+      hm2dpiprofilednp3description: ''
+      hm2dpiprofilednp3entry: ''
+      hm2dpiprofilednp3functioncodelist: ''
+      hm2dpiprofilednp3index: 0
+      hm2dpiprofilednp3objectentry: ''
+      hm2dpiprofilednp3objectfuncname: ''
+      hm2dpiprofilednp3objectfunction: 0
+      hm2dpiprofilednp3objectgroupno: 0
+      hm2dpiprofilednp3objectindex: 0
+      hm2dpiprofilednp3objectlength: ''
+      hm2dpiprofilednp3objectqualifier: ''
+      hm2dpiprofilednp3objectrowstatus: 0
+      hm2dpiprofilednp3objecttable: ''
+      hm2dpiprofilednp3objecttype: 0
+      hm2dpiprofilednp3objectvariation: ''
+      hm2dpiprofilednp3pendingactions: false
+      hm2dpiprofilednp3rowstatus: 0
+      hm2dpiprofilednp3sanitycheck: false
+      hm2dpiprofilednp3table: ''
+      hm2dpiprofilednp3tcpreset: false
+      hm2dpiprofileenipallowembpccc: false
+      hm2dpiprofileenipcommitpendingactions: ''
+      hm2dpiprofileenipdebug: false
+      hm2dpiprofileenipdefaultobjectlist: ''
+      hm2dpiprofileenipdescription: ''
+      hm2dpiprofileenipentry: ''
+      hm2dpiprofileenipfunctiontype: 0
+      hm2dpiprofileenipindex: 0
+      hm2dpiprofileenippendingactions: false
+      hm2dpiprofileeniprowstatus: 0
+      hm2dpiprofileenipsanitycheck: false
+      hm2dpiprofileeniptable: ''
+      hm2dpiprofileeniptcpreset: false
+      hm2dpiprofileenipwildcardservices: ''
+      hm2dpiprofilegoosecommitpendingactions: ''
+      hm2dpiprofilegoosedescription: ''
+      hm2dpiprofilegooseentry: ''
+      hm2dpiprofilegooseindex: 0
+      hm2dpiprofilegoosependingactions: false
+      hm2dpiprofilegooserowstatus: 0
+      hm2dpiprofilegoosesanitycheck: false
+      hm2dpiprofilegoosestsqcheck: false
+      hm2dpiprofilegoosestateidcheck: false
+      hm2dpiprofilegoosestoretime: 0
+      hm2dpiprofilegoosetable: ''
+      hm2dpiprofileiec104advancedtypeidlist: ''
+      hm2dpiprofileiec104allowiec101: false
+      hm2dpiprofileiec104causeoftransmissionsize: 0
+      hm2dpiprofileiec104commitpendingactions: ''
+      hm2dpiprofileiec104commonaddresslist: ''
+      hm2dpiprofileiec104commonaddresssize: 0
+      hm2dpiprofileiec104debug: false
+      hm2dpiprofileiec104description: ''
+      hm2dpiprofileiec104entry: ''
+      hm2dpiprofileiec104functiontype: 0
+      hm2dpiprofileiec104ioaddresssize: 0
+      hm2dpiprofileiec104index: 0
+      hm2dpiprofileiec104originatoraddrlist: ''
+      hm2dpiprofileiec104originatoraddresslist: []
+      hm2dpiprofileiec104pendingactions: false
+      hm2dpiprofileiec104reset: false
+      hm2dpiprofileiec104rowstatus: 0
+      hm2dpiprofileiec104sanitycheck: false
+      hm2dpiprofileiec104table: ''
+      hm2dpiprofileiec104typeidlist: []
+      hm2dpiprofileindex: 0
+      hm2dpiprofilemodbuscommitpendingactions: ''
+      hm2dpiprofilemodbusdescription: ''
+      hm2dpiprofilemodbusentry: ''
+      hm2dpiprofilemodbusexception: false
+      hm2dpiprofilemodbusfunctioncodelist: ''
+      hm2dpiprofilemodbusfunctiontype: 0
+      hm2dpiprofilemodbusindex: 0
+      hm2dpiprofilemodbuspendingactions: false
+      hm2dpiprofilemodbusreset: false
+      hm2dpiprofilemodbusrowstatus: 0
+      hm2dpiprofilemodbussanitycheck: false
+      hm2dpiprofilemodbustable: ''
+      hm2dpiprofilemodbusunitidentifierlist: ''
+      hm2dpiprofileopccommitpendingactions: ''
+      hm2dpiprofileopcdescription: ''
+      hm2dpiprofileopcentry: ''
+      hm2dpiprofileopcfragmentcheck: false
+      hm2dpiprofileopcindex: 0
+      hm2dpiprofileopcpendingactions: false
+      hm2dpiprofileopcrowstatus: 0
+      hm2dpiprofileopcsanitycheck: false
+      hm2dpiprofileopctable: ''
+      hm2dpiprofileopctimeoutconnect: 0
+      hm2dpiprofiles7commitpendingactions: ''
+      hm2dpiprofiles7debug: false
+      hm2dpiprofiles7description: ''
+      hm2dpiprofiles7entry: ''
+      hm2dpiprofiles7index: 0
+      hm2dpiprofiles7pendingactions: false
+      hm2dpiprofiles7rowstatus: 0
+      hm2dpiprofiles7sanitycheck: false
+      hm2dpiprofiles7table: ''
+      hm2dpiprofiles7tcpreset: false
+      hm2dpiprofiles7templatelist: ''
+      hm2dpis7protocol: ''
+      hm2dpis7ruleentry: ''
+      hm2dpis7rulefunction: ''
+      hm2dpis7rulefunctiongroup: ''
+      hm2dpis7ruleindex: 0
+      hm2dpis7rulerowstatus: 0
+      hm2dpis7rulesubfunction: ''
+      hm2dpis7ruletable: ''
+      hm2dpis7templatedescription: ''
+      hm2dpis7templateentry: ''
+      hm2dpis7templateindex: 0
+      hm2dpis7templaterowstatus: 0
+      hm2dpis7templatetable: ''
+      hm2defaultpolicy: 0
+      hm2dynfwaction: 0
+      hm2dynfwcommitpendingactions: ''
+      hm2dynfwdescription: ''
+      hm2dynfwifmappingrulecount: 0
+      hm2dynfwifmdirection: 0
+      hm2dynfwifminterface: 0
+      hm2dynfwifmpriority: 0
+      hm2dynfwifmrowstatus: 0
+      hm2dynfwifmruleindex: 0
+      hm2dynfwlog: false
+      hm2dynfwmaxrules: 0
+      hm2dynfwproto: 0
+      hm2dynfwrowstatus: 0
+      hm2dynfwrulecount: 0
+      hm2dynfwruleentry: ''
+      hm2dynfwruleifmappingentry: ''
+      hm2dynfwruleifmappingtable: ''
+      hm2dynfwruleindex: 0
+      hm2dynfwruleparams: ''
+      hm2dynfwrulependingactions: false
+      hm2dynfwruletable: ''
+      hm2dynfwsourceaddress: ''
+      hm2dynfwsourceport: ''
+      hm2dynfwstatslastapplied: ''
+      hm2dynfwstatspacketcount: 0
+      hm2dynfwstatspacketsize: 0
+      hm2dynfwstatsruleentry: ''
+      hm2dynfwstatsruletable: ''
+      hm2dynfwstatsttpck: 0
+      hm2dynfwstatsttpckaccepted: 0
+      hm2dynfwstatsttpckdendrop: 0
+      hm2dynfwstatsttpcksize: 0
+      hm2dynfwtargetaddress: ''
+      hm2dynfwtargetport: ''
+      hm2dynfwtrap: false
+      hm2flmaction: 0
+      hm2flmadminstate: false
+      hm2flmappinfoenum: 0
+      hm2flmappinfostring: ''
+      hm2flmappstate: 0
+      hm2flmfreemem: 0
+      hm2flminterfaceentry: ''
+      hm2flminterfaceindex: 0
+      hm2flminterfacerowstatus: 0
+      hm2flminterfacetable: ''
+      hm2flml3entries: 0
+      hm2flmmaxentries: 0
+      hm2flushtables: ''
+      hm2idsadminstate: false
+      hm2idsisrunning: false
+      hm2idsusername: ''
+      hm2l2apprulename: ''
+      hm2l2commitpendingactions: ''
+      hm2l2dpiprofileindex: 0
+      hm2l2defaultpolicy: 0
+      hm2l2fwtrap: false
+      hm2l2ifmappingrulecount: 0
+      hm2l2ifmdirection: 0
+      hm2l2ifminterface: 0
+      hm2l2ifmpriority: 0
+      hm2l2ifmrowstatus: 0
+      hm2l2ifmruleindex: 0
+      hm2l2ifmtype: 0
+      hm2l2maxrules: 0
+      hm2l2rowstatus: 0
+      hm2l2ruleaction: 0
+      hm2l2ruleassignqueueid: 0
+      hm2l2rulecount: 0
+      hm2l2ruledescription: ''
+      hm2l2ruledestipaddr: ''
+      hm2l2ruledestmacaddr: ''
+      hm2l2ruledestport: ''
+      hm2l2ruleentry: ''
+      hm2l2ruleetypekey: 0
+      hm2l2ruleetypevalue: ''
+      hm2l2rulehitcount: 0
+      hm2l2ruleifmappingentry: ''
+      hm2l2ruleifmappingtable: ''
+      hm2l2ruleindex: 0
+      hm2l2ruleiptosbits: 0
+      hm2l2rulelog: false
+      hm2l2rulependingactions: false
+      hm2l2ruleprotoname: ''
+      hm2l2ruleprotocol: 0
+      hm2l2ruleratelimitcburst: ''
+      hm2l2ruleratelimitcrate: 0
+      hm2l2ruleratelimitcrateunit: 0
+      hm2l2rulesrcipaddr: ''
+      hm2l2rulesrcmacaddr: ''
+      hm2l2rulesrcport: ''
+      hm2l2rulestatsaction: 0
+      hm2l2ruletable: ''
+      hm2l2rulevlanid: 0
+      hm2l2validatefcs: false
+      hm2l3action: 0
+      hm2l3apprulename: ''
+      hm2l3commitpendingactions: ''
+      hm2l3description: ''
+      hm2l3ifmappingrulecount: 0
+      hm2l3ifmdirection: 0
+      hm2l3ifminterface: 0
+      hm2l3ifmpriority: 0
+      hm2l3ifmrowstatus: 0
+      hm2l3ifmruleindex: 0
+      hm2l3log: false
+      hm2l3logcounter: 0
+      hm2l3maxrules: 0
+      hm2l3proto: 0
+      hm2l3protoname: ''
+      hm2l3rowstatus: 0
+      hm2l3rulecount: 0
+      hm2l3ruleentry: ''
+      hm2l3ruleifmappingentry: ''
+      hm2l3ruleifmappingtable: ''
+      hm2l3ruleindex: 0
+      hm2l3ruleparams: ''
+      hm2l3rulependingactions: false
+      hm2l3ruletable: ''
+      hm2l3sourceaddress: ''
+      hm2l3sourceport: ''
+      hm2l3statslastapplied: ''
+      hm2l3statspacketcount: 0
+      hm2l3statspacketsize: 0
+      hm2l3statsruleentry: ''
+      hm2l3statsruletable: ''
+      hm2l3statstotalpck: 0
+      hm2l3statstotalpckaccepted: 0
+      hm2l3statstotalpckdendrop: 0
+      hm2l3statstotalpcksize: 0
+      hm2l3targetaddress: ''
+      hm2l3targetport: ''
+      hm2l3trap: false
+      hm2loggingglobalstate: false
+      hm2protocoldescription: ''
+      hm2protocolentry: ''
+      hm2protocolethertype: ''
+      hm2protocoletypekey: 0
+      hm2protocolipprotonumber: 0
+      hm2protocolindex: 0
+      hm2protocolname: ''
+      hm2protocolport: ''
+      hm2protocolstatus: 0
+      hm2protocoltable: ''
+      hm2protocoltype: 0
+      hm2resetstatistics: ''
+attributes:
+  hm2appruledirection:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleEntry
+          field: hm2AppRuleDirection
+          index_field: hm2AppRuleIndex
+  hm2appruleentry:
+    syntax: Hm2AppRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleTable
+          field: hm2AppRuleEntry
+  hm2appruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleEntry
+          field: hm2AppRuleIndex
+          index_field: hm2AppRuleIndex
+  hm2appruleisdefault:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleEntry
+          field: hm2AppRuleIsDefault
+          index_field: hm2AppRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2apprulename:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleEntry
+          field: hm2AppRuleName
+          index_field: hm2AppRuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2appruleport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleEntry
+          field: hm2AppRulePort
+          index_field: hm2AppRuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2appruleprotocol:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleEntry
+          field: hm2AppRuleProtocol
+          index_field: hm2AppRuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2apprulestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AppRuleEntry
+          field: hm2AppRuleStatus
+          index_field: hm2AppRuleIndex
+    create_method: createAndWait
+  hm2appruletable:
+    syntax: Hm2AppRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwAssetMgmtGroup
+          field: hm2AppRuleTable
+  hm2assetdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetDescription
+          index_field: hm2AssetIndex
+    validation:
+      min: 0
+      max: 128
+  hm2assetentry:
+    syntax: Hm2AssetEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetTable
+          field: hm2AssetEntry
+  hm2assetgenerallocation:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetGeneralLocation
+          index_field: hm2AssetIndex
+    validation:
+      min: 0
+      max: 128
+  hm2assetindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetIndex
+          index_field: hm2AssetIndex
+    validation:
+      min: 1
+      max: 100
+  hm2assetipaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetIpAddress
+          index_field: hm2AssetIndex
+    validation:
+      min: 1
+      max: 20
+  hm2assetmacaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetMacAddress
+          index_field: hm2AssetIndex
+    validation:
+      min: 1
+      max: 20
+  hm2assetmanufacturer:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetManufacturer
+          index_field: hm2AssetIndex
+    validation:
+      min: 0
+      max: 128
+  hm2assetmodel:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetModel
+          index_field: hm2AssetIndex
+    validation:
+      min: 0
+      max: 128
+  hm2assetname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetName
+          index_field: hm2AssetIndex
+    validation:
+      min: 1
+      max: 32
+  hm2assetspecificlocation:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetSpecificLocation
+          index_field: hm2AssetIndex
+    validation:
+      min: 0
+      max: 128
+  hm2assetstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetStatus
+          index_field: hm2AssetIndex
+    create_method: createAndWait
+  hm2assettable:
+    syntax: Hm2AssetEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwAssetMgmtGroup
+          field: hm2AssetTable
+  hm2assettag:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetTag
+          index_field: hm2AssetIndex
+    validation:
+      min: 0
+      max: 128
+  hm2assettype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2AssetEntry
+          field: hm2AssetType
+          index_field: hm2AssetIndex
+  hm2conntrackvalidatechecksum:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwGeneralSettings
+          field: hm2ConnTrackValidateCheckSum
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiampdi:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.17.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpGeneralSetting
+          field: hm2DPIAmpDI
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiampprotectmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.17.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpGeneralSetting
+          field: hm2DPIAmpProtectMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiamptaskcode:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.9.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIAmpTaskCodeEntry
+          field: hm2DPIAmpTaskCode
+          index_field: hm2DPIAmpTaskCode
+          key_tag: to_hex_decode
+    validation:
+      min: 1
+      max: 2
+  hm2dpiamptaskcodedescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.9.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIAmpTaskCodeEntry
+          field: hm2DPIAmpTaskCodeDescription
+          index_field: hm2DPIAmpTaskCode
+          key_tag: to_hex_decode
+    validation:
+      min: 0
+      max: 64
+  hm2dpiamptaskcodeentry:
+    syntax: Hm2DPIAmpTaskCodeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.9.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIAmpTaskCodeTable
+          field: hm2DPIAmpTaskCodeEntry
+  hm2dpiamptaskcodemode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.9.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIAmpTaskCodeEntry
+          field: hm2DPIAmpTaskCodeMode
+          index_field: hm2DPIAmpTaskCode
+          key_tag: to_hex_decode
+  hm2dpiamptaskcodestatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.9.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIAmpTaskCodeEntry
+          field: hm2DPIAmpTaskCodeStatus
+          index_field: hm2DPIAmpTaskCode
+          key_tag: to_hex_decode
+    create_method: createAndWait
+    index_type: implied_string
+  hm2dpiamptaskcodetable:
+    syntax: Hm2DPIAmpTaskCodeEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.9
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIAmpTaskCodeTable
+  hm2dpiamptaskcodetype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.9.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIAmpTaskCodeEntry
+          field: hm2DPIAmpTaskCodeType
+          index_field: hm2DPIAmpTaskCode
+          key_tag: to_hex_decode
+  hm2dpiobjectenipclassid:
+    syntax: EnipClassId
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIObjectEnipEntry
+          field: hm2DPIObjectEnipClassId
+          index_field: hm2DPIObjectEnipClassId
+          index_fields: &id001
+          - hm2DPIProfileEnipIndex
+          - hm2DPIObjectEnipClassId
+  hm2dpiobjectenipdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIObjectEnipEntry
+          field: hm2DPIObjectEnipDescription
+          index_field: hm2DPIObjectEnipClassId
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 32
+  hm2dpiobjectenipentry:
+    syntax: Hm2DPIObjectEnipEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIObjectEnipTable
+          field: hm2DPIObjectEnipEntry
+  hm2dpiobjecteniprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIObjectEnipEntry
+          field: hm2DPIObjectEnipRowStatus
+          index_field: hm2DPIObjectEnipClassId
+          index_fields: *id001
+    create_method: createAndWait
+  hm2dpiobjectenipservices:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIObjectEnipEntry
+          field: hm2DPIObjectEnipServices
+          index_field: hm2DPIObjectEnipClassId
+          index_fields: *id001
+    validation:
+      min: 0
+      max: 640
+  hm2dpiobjecteniptable:
+    syntax: Hm2DPIObjectEnipEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.5
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIObjectEnipTable
+  hm2dpiprofileampaddrclass:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpAddrClass
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 1024
+  hm2dpiprofileampaddress:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpAddress
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 1024
+  hm2dpiprofileampbcc:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpBcc
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileampcommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.18.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpObjects
+          field: hm2DPIProfileAmpCommitPendingActions
+  hm2dpiprofileampdataword:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpDataword
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 1024
+  hm2dpiprofileampdebug:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpDebug
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileampdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpDescription
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofileampdevclass:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpDevClass
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 1024
+  hm2dpiprofileampecc:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpEcc
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileampentry:
+    syntax: Hm2DPIProfileAmpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpTable
+          field: hm2DPIProfileAmpEntry
+  hm2dpiprofileampindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpIndex
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofileampmsgtype:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpMsgType
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 764
+  hm2dpiprofileamppendingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.18.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpObjects
+          field: hm2DPIProfileAmpPendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileampprotectmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpProtectmode
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileampprotocol:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpProtocol
+          index_field: hm2DPIProfileAmpIndex
+  hm2dpiprofileamprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpRowStatus
+          index_field: hm2DPIProfileAmpIndex
+    create_method: createAndWait
+  hm2dpiprofileampsanitycheck:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpSanityCheck
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileamptable:
+    syntax: Hm2DPIProfileAmpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileAmpTable
+  hm2dpiprofileamptaskcode:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpTaskcode
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 764
+  hm2dpiprofileamptaskcodedata:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpTaskcodedata
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      min: 0
+      max: 1024
+  hm2dpiprofileamptcpreset:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.8.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileAmpEntry
+          field: hm2DPIProfileAmpTcpReset
+          index_field: hm2DPIProfileAmpIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilednp3checkoutstationtraffic:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3CheckOutstationTraffic
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilednp3commitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.16.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Objects
+          field: hm2DPIProfileDnp3CommitPendingActions
+  hm2dpiprofilednp3crccheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3CrcCheck
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilednp3defaultwhitelist:
+    syntax: HmExtraLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3DefaultWhiteList
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      min: 1
+      max: 1400
+  hm2dpiprofilednp3description:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3Description
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofilednp3entry:
+    syntax: Hm2DPIProfileDnp3Entry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Table
+          field: hm2DPIProfileDnp3Entry
+  hm2dpiprofilednp3functioncodelist:
+    syntax: HmExtraLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3FunctionCodeList
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      min: 1
+      max: 1400
+  hm2dpiprofilednp3index:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3Index
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofilednp3objectentry:
+    syntax: Hm2DPIProfileDnp3ObjectEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectTable
+          field: hm2DPIProfileDnp3ObjectEntry
+  hm2dpiprofilednp3objectfuncname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectFuncName
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: &id002
+          - hm2DPIProfileDnp3Index
+          - hm2DPIProfileDnp3ObjectIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofilednp3objectfunction:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectFunction
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  hm2dpiprofilednp3objectgroupno:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectGroupno
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  hm2dpiprofilednp3objectindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectIndex
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+    validation:
+      min: 1
+      max: 256
+  hm2dpiprofilednp3objectlength:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectLength
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofilednp3objectqualifier:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectQualifier
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 255
+  hm2dpiprofilednp3objectrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectRowStatus
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+    create_method: createAndWait
+  hm2dpiprofilednp3objecttable:
+    syntax: Hm2DPIProfileDnp3ObjectEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileDnp3ObjectTable
+  hm2dpiprofilednp3objecttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectType
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+  hm2dpiprofilednp3objectvariation:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.7.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3ObjectEntry
+          field: hm2DPIProfileDnp3ObjectVariation
+          index_field: hm2DPIProfileDnp3ObjectIndex
+          index_fields: *id002
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofilednp3pendingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.16.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Objects
+          field: hm2DPIProfileDnp3PendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilednp3rowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3RowStatus
+          index_field: hm2DPIProfileDnp3Index
+    create_method: createAndWait
+  hm2dpiprofilednp3sanitycheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3SanityCheck
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilednp3table:
+    syntax: Hm2DPIProfileDnp3Entry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileDnp3Table
+  hm2dpiprofilednp3tcpreset:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.6.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileDnp3Entry
+          field: hm2DPIProfileDnp3TcpReset
+          index_field: hm2DPIProfileDnp3Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileenipallowembpccc:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipAllowEmbPCCC
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileenipcommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.14.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipObjects
+          field: hm2DPIProfileEnipCommitPendingActions
+  hm2dpiprofileenipdebug:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipDebug
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileenipdefaultobjectlist:
+    syntax: HmExtraLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipDefaultObjectList
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      min: 1
+      max: 1280
+  hm2dpiprofileenipdescription:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipDescription
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofileenipentry:
+    syntax: Hm2DPIProfileEnipEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipTable
+          field: hm2DPIProfileEnipEntry
+  hm2dpiprofileenipfunctiontype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipFunctionType
+          index_field: hm2DPIProfileEnipIndex
+  hm2dpiprofileenipindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipIndex
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofileenippendingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.14.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipObjects
+          field: hm2DPIProfileEnipPendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileeniprowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipRowStatus
+          index_field: hm2DPIProfileEnipIndex
+    create_method: createAndWait
+  hm2dpiprofileenipsanitycheck:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipSanityCheck
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileeniptable:
+    syntax: Hm2DPIProfileEnipEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileEnipTable
+  hm2dpiprofileeniptcpreset:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipTcpReset
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileenipwildcardservices:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.4.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileEnipEntry
+          field: hm2DPIProfileEnipWildCardServices
+          index_field: hm2DPIProfileEnipIndex
+    validation:
+      min: 0
+      max: 640
+  hm2dpiprofilegoosecommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseObjects
+          field: hm2DPIProfileGooseCommitPendingActions
+  hm2dpiprofilegoosedescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseEntry
+          field: hm2DPIProfileGooseDescription
+          index_field: hm2DPIProfileGooseIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofilegooseentry:
+    syntax: Hm2DPIProfileGooseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseTable
+          field: hm2DPIProfileGooseEntry
+  hm2dpiprofilegooseindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseEntry
+          field: hm2DPIProfileGooseIndex
+          index_field: hm2DPIProfileGooseIndex
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofilegoosependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseObjects
+          field: hm2DPIProfileGoosePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilegooserowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseEntry
+          field: hm2DPIProfileGooseRowStatus
+          index_field: hm2DPIProfileGooseIndex
+    create_method: createAndWait
+  hm2dpiprofilegoosesanitycheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseEntry
+          field: hm2DPIProfileGooseSanityCheck
+          index_field: hm2DPIProfileGooseIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilegoosestsqcheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseEntry
+          field: hm2DPIProfileGooseStSqCheck
+          index_field: hm2DPIProfileGooseIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilegoosestateidcheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseEntry
+          field: hm2DPIProfileGooseStateIdCheck
+          index_field: hm2DPIProfileGooseIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilegoosestoretime:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileGooseEntry
+          field: hm2DPIProfileGooseStoreTime
+          index_field: hm2DPIProfileGooseIndex
+    validation:
+      min: 0
+      max: 4294967295
+  hm2dpiprofilegoosetable:
+    syntax: Hm2DPIProfileGooseEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.8.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2DPIProfileTables
+          field: hm2DPIProfileGooseTable
+  hm2dpiprofileiec104advancedtypeidlist:
+    syntax: HmExtraLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104AdvancedTypeIDList
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 0
+      max: 1400
+  hm2dpiprofileiec104allowiec101:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104AllowIEC101
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileiec104causeoftransmissionsize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104CauseOfTransmissionSize
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 1
+      max: 2
+  hm2dpiprofileiec104commitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.13.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Objects
+          field: hm2DPIProfileIEC104CommitPendingActions
+  hm2dpiprofileiec104commonaddresslist:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104CommonAddressList
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 0
+      max: 1024
+  hm2dpiprofileiec104commonaddresssize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104CommonAddressSize
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 1
+      max: 2
+  hm2dpiprofileiec104debug:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104Debug
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileiec104description:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104Description
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 0
+      max: 128
+  hm2dpiprofileiec104entry:
+    syntax: Hm2DPIProfileIEC104Entry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Table
+          field: hm2DPIProfileIEC104Entry
+  hm2dpiprofileiec104functiontype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104FunctionType
+          index_field: hm2DPIProfileIEC104Index
+  hm2dpiprofileiec104ioaddresssize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104IOAddressSize
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 1
+      max: 3
+  hm2dpiprofileiec104index:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104Index
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofileiec104originatoraddrlist:
+    syntax: HmExtraLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104OriginatorAddrList
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      min: 0
+      max: 1400
+  hm2dpiprofileiec104originatoraddresslist:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104OriginatorAddressList
+          index_field: hm2DPIProfileIEC104Index
+    bit_map:
+      0: oa-0
+      1: oa-1
+      2: oa-2
+      3: oa-3
+      4: oa-4
+      5: oa-5
+      6: oa-6
+      7: oa-7
+      8: oa-8
+      9: oa-9
+      10: oa-10
+      11: oa-11
+      12: oa-12
+      13: oa-13
+      14: oa-14
+      15: oa-15
+      16: oa-16
+      17: oa-17
+      18: oa-18
+      19: oa-19
+      20: oa-20
+      21: oa-21
+      22: oa-22
+      23: oa-23
+      24: oa-24
+      25: oa-25
+      26: oa-26
+      27: oa-27
+      28: oa-28
+      29: oa-29
+      30: oa-30
+      31: oa-31
+      32: oa-32
+      33: oa-33
+      34: oa-34
+      35: oa-35
+      36: oa-36
+      37: oa-37
+      38: oa-38
+      39: oa-39
+      40: oa-40
+      41: oa-41
+      42: oa-42
+      43: oa-43
+      44: oa-44
+      45: oa-45
+      46: oa-46
+      47: oa-47
+      48: oa-48
+      49: oa-49
+      50: oa-50
+      51: oa-51
+      52: oa-52
+      53: oa-53
+      54: oa-54
+      55: oa-55
+      56: oa-56
+      57: oa-57
+      58: oa-58
+      59: oa-59
+      60: oa-60
+      61: oa-61
+      62: oa-62
+      63: oa-63
+      64: oa-64
+      65: oa-65
+      66: oa-66
+      67: oa-67
+      68: oa-68
+      69: oa-69
+      70: oa-70
+      71: oa-71
+      72: oa-72
+      73: oa-73
+      74: oa-74
+      75: oa-75
+      76: oa-76
+      77: oa-77
+      78: oa-78
+      79: oa-79
+      80: oa-80
+      81: oa-81
+      82: oa-82
+      83: oa-83
+      84: oa-84
+      85: oa-85
+      86: oa-86
+      87: oa-87
+      88: oa-88
+      89: oa-89
+      90: oa-90
+      91: oa-91
+      92: oa-92
+      93: oa-93
+      94: oa-94
+      95: oa-95
+      96: oa-96
+      97: oa-97
+      98: oa-98
+      99: oa-99
+      100: oa-100
+      101: oa-101
+      102: oa-102
+      103: oa-103
+      104: oa-104
+      105: oa-105
+      106: oa-106
+      107: oa-107
+      108: oa-108
+      109: oa-109
+      110: oa-110
+      111: oa-111
+      112: oa-112
+      113: oa-113
+      114: oa-114
+      115: oa-115
+      116: oa-116
+      117: oa-117
+      118: oa-118
+      119: oa-119
+      120: oa-120
+      121: oa-121
+      122: oa-122
+      123: oa-123
+      124: oa-124
+      125: oa-125
+      126: oa-126
+      127: oa-127
+      128: oa-128
+      129: oa-129
+      130: oa-130
+      131: oa-131
+      132: oa-132
+      133: oa-133
+      134: oa-134
+      135: oa-135
+      136: oa-136
+      137: oa-137
+      138: oa-138
+      139: oa-139
+      140: oa-140
+      141: oa-141
+      142: oa-142
+      143: oa-143
+      144: oa-144
+      145: oa-145
+      146: oa-146
+      147: oa-147
+      148: oa-148
+      149: oa-149
+      150: oa-150
+      151: oa-151
+      152: oa-152
+      153: oa-153
+      154: oa-154
+      155: oa-155
+      156: oa-156
+      157: oa-157
+      158: oa-158
+      159: oa-159
+      160: oa-160
+      161: oa-161
+      162: oa-162
+      163: oa-163
+      164: oa-164
+      165: oa-165
+      166: oa-166
+      167: oa-167
+      168: oa-168
+      169: oa-169
+      170: oa-170
+      171: oa-171
+      172: oa-172
+      173: oa-173
+      174: oa-174
+      175: oa-175
+      176: oa-176
+      177: oa-177
+      178: oa-178
+      179: oa-179
+      180: oa-180
+      181: oa-181
+      182: oa-182
+      183: oa-183
+      184: oa-184
+      185: oa-185
+      186: oa-186
+      187: oa-187
+      188: oa-188
+      189: oa-189
+      190: oa-190
+      191: oa-191
+      192: oa-192
+      193: oa-193
+      194: oa-194
+      195: oa-195
+      196: oa-196
+      197: oa-197
+      198: oa-198
+      199: oa-199
+      200: oa-200
+      201: oa-201
+      202: oa-202
+      203: oa-203
+      204: oa-204
+      205: oa-205
+      206: oa-206
+      207: oa-207
+      208: oa-208
+      209: oa-209
+      210: oa-210
+      211: oa-211
+      212: oa-212
+      213: oa-213
+      214: oa-214
+      215: oa-215
+      216: oa-216
+      217: oa-217
+      218: oa-218
+      219: oa-219
+      220: oa-220
+      221: oa-221
+      222: oa-222
+      223: oa-223
+      224: oa-224
+      225: oa-225
+      226: oa-226
+      227: oa-227
+      228: oa-228
+      229: oa-229
+      230: oa-230
+      231: oa-231
+      232: oa-232
+      233: oa-233
+      234: oa-234
+      235: oa-235
+      236: oa-236
+      237: oa-237
+      238: oa-238
+      239: oa-239
+      240: oa-240
+      241: oa-241
+      242: oa-242
+      243: oa-243
+      244: oa-244
+      245: oa-245
+      246: oa-246
+      247: oa-247
+      248: oa-248
+      249: oa-249
+      250: oa-250
+      251: oa-251
+      252: oa-252
+      253: oa-253
+      254: oa-254
+      255: oa-255
+  hm2dpiprofileiec104pendingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.13.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Objects
+          field: hm2DPIProfileIEC104PendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileiec104reset:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104Reset
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileiec104rowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104RowStatus
+          index_field: hm2DPIProfileIEC104Index
+    create_method: createAndWait
+  hm2dpiprofileiec104sanitycheck:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104SanityCheck
+          index_field: hm2DPIProfileIEC104Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileiec104table:
+    syntax: Hm2DPIProfileIEC104Entry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileIEC104Table
+  hm2dpiprofileiec104typeidlist:
+    syntax: BITS
+    type: list
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileIEC104Entry
+          field: hm2DPIProfileIEC104TypeIDList
+          index_field: hm2DPIProfileIEC104Index
+    bit_map:
+      0: invalid-0
+      1: m-sp-na-1
+      2: m-sp-ta-1
+      3: m-dp-na-1
+      4: m-dp-ta-1
+      5: m-st-na-1
+      6: m-st-ta-1
+      7: m-bo-na-1
+      8: m-bo-ta-1
+      9: m-me-na-1
+      10: m-me-ta-1
+      11: m-me-nb-1
+      12: m-me-tb-1
+      13: m-me-nc-1
+      14: m-me-tc-1
+      15: m-it-na-1
+      16: m-it-ta-1
+      17: m-ep-ta-1
+      18: m-ep-tb-1
+      19: m-ep-tc-1
+      20: m-ps-na-1
+      21: m-me-nd-1
+      22: reserved-22
+      23: reserved-23
+      24: reserved-24
+      25: reserved-25
+      26: reserved-26
+      27: reserved-27
+      28: reserved-28
+      29: reserved-29
+      30: m-sp-tb-1
+      31: m-dp-tb-1
+      32: m-st-tb-1
+      33: m-bo-tb-1
+      34: m-me-td-1
+      35: m-me-te-1
+      36: m-me-tf-1
+      37: m-it-tb-1
+      38: m-ep-td-1
+      39: m-ep-te-1
+      40: m-ep-tf-1
+      41: reserved-41
+      42: reserved-42
+      43: reserved-43
+      44: reserved-44
+      45: c-sc-na-1
+      46: c-dc-na-1
+      47: c-rc-na-1
+      48: c-se-na-1
+      49: c-se-nb-1
+      50: c-se-nc-1
+      51: c-bo-na-1
+      52: reserved-52
+      53: reserved-53
+      54: reserved-54
+      55: reserved-55
+      56: reserved-56
+      57: reserved-57
+      58: c-sc-ta-1
+      59: c-dc-ta-1
+      60: c-rc-ta-1
+      61: c-se-ta-1
+      62: c-se-tb-1
+      63: c-se-tc-1
+      64: c-bo-ta-1
+      65: reserved-65
+      66: reserved-66
+      67: reserved-67
+      68: reserved-68
+      69: reserved-69
+      70: m-ei-na-1
+      71: reserved-71
+      72: reserved-72
+      73: reserved-73
+      74: reserved-74
+      75: reserved-75
+      76: reserved-76
+      77: reserved-77
+      78: reserved-78
+      79: reserved-79
+      80: reserved-80
+      81: reserved-81
+      82: reserved-82
+      83: reserved-83
+      84: reserved-84
+      85: reserved-85
+      86: reserved-86
+      87: reserved-87
+      88: reserved-88
+      89: reserved-89
+      90: reserved-90
+      91: reserved-91
+      92: reserved-92
+      93: reserved-93
+      94: reserved-94
+      95: reserved-95
+      96: reserved-96
+      97: reserved-97
+      98: reserved-98
+      99: reserved-99
+      100: c-ic-na-1
+      101: c-ci-na-1
+      102: c-rd-na-1
+      103: c-cs-na-1
+      104: c-ts-nb-1
+      105: c-rp-nc-1
+      106: c-cd-na-1
+      107: c-ts-ta-1
+      108: reserved-108
+      109: reserved-109
+      110: p-me-na-1
+      111: p-me-nb-1
+      112: p-me-nc-1
+      113: p-ac-na-1
+      114: reserved-114
+      115: reserved-115
+      116: reserved-116
+      117: reserved-117
+      118: reserved-118
+      119: reserved-119
+      120: f-fr-na-1
+      121: f-sr-na-1
+      122: f-sc-na-1
+      123: f-ls-na-1
+      124: f-af-na-1
+      125: f-sg-na-1
+      126: f-dr-ta-1
+      127: f-sc-nb-1
+      128: custom-128
+      129: custom-129
+      130: custom-130
+      131: custom-131
+      132: custom-132
+      133: custom-133
+      134: custom-134
+      135: custom-135
+      136: custom-136
+      137: custom-137
+      138: custom-138
+      139: custom-139
+      140: custom-140
+      141: custom-141
+      142: custom-142
+      143: custom-143
+      144: custom-144
+      145: custom-145
+      146: custom-146
+      147: custom-147
+      148: custom-148
+      149: custom-149
+      150: custom-150
+      151: custom-151
+      152: custom-152
+      153: custom-153
+      154: custom-154
+      155: custom-155
+      156: custom-156
+      157: custom-157
+      158: custom-158
+      159: custom-159
+      160: custom-160
+      161: custom-161
+      162: custom-162
+      163: custom-163
+      164: custom-164
+      165: custom-165
+      166: custom-166
+      167: custom-167
+      168: custom-168
+      169: custom-169
+      170: custom-170
+      171: custom-171
+      172: custom-172
+      173: custom-173
+      174: custom-174
+      175: custom-175
+      176: custom-176
+      177: custom-177
+      178: custom-178
+      179: custom-179
+      180: custom-180
+      181: custom-181
+      182: custom-182
+      183: custom-183
+      184: custom-184
+      185: custom-185
+      186: custom-186
+      187: custom-187
+      188: custom-188
+      189: custom-189
+      190: custom-190
+      191: custom-191
+      192: custom-192
+      193: custom-193
+      194: custom-194
+      195: custom-195
+      196: custom-196
+      197: custom-197
+      198: custom-198
+      199: custom-199
+      200: custom-200
+      201: custom-201
+      202: custom-202
+      203: custom-203
+      204: custom-204
+      205: custom-205
+      206: custom-206
+      207: custom-207
+      208: custom-208
+      209: custom-209
+      210: custom-210
+      211: custom-211
+      212: custom-212
+      213: custom-213
+      214: custom-214
+      215: custom-215
+      216: custom-216
+      217: custom-217
+      218: custom-218
+      219: custom-219
+      220: custom-220
+      221: custom-221
+      222: custom-222
+      223: custom-223
+      224: custom-224
+      225: custom-225
+      226: custom-226
+      227: custom-227
+      228: custom-228
+      229: custom-229
+      230: custom-230
+      231: custom-231
+      232: custom-232
+      233: custom-233
+      234: custom-234
+      235: custom-235
+      236: custom-236
+      237: custom-237
+      238: custom-238
+      239: custom-239
+      240: custom-240
+      241: custom-241
+      242: custom-242
+      243: custom-243
+      244: custom-244
+      245: custom-245
+      246: custom-246
+      247: custom-247
+      248: custom-248
+      249: custom-249
+      250: custom-250
+      251: custom-251
+      252: custom-252
+      253: custom-253
+      254: custom-254
+      255: custom-255
+  hm2dpiprofileindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2DPIProfileIndex
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofilemodbuscommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.11.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusObjects
+          field: hm2DPIProfileModbusCommitPendingActions
+  hm2dpiprofilemodbusdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusDescription
+          index_field: hm2DPIProfileModbusIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofilemodbusentry:
+    syntax: Hm2DPIProfileModbusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusTable
+          field: hm2DPIProfileModbusEntry
+  hm2dpiprofilemodbusexception:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusException
+          index_field: hm2DPIProfileModbusIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilemodbusfunctioncodelist:
+    syntax: HmExtraLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusFunctionCodeList
+          index_field: hm2DPIProfileModbusIndex
+    validation:
+      min: 1
+      max: 1400
+  hm2dpiprofilemodbusfunctiontype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusFunctionType
+          index_field: hm2DPIProfileModbusIndex
+  hm2dpiprofilemodbusindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusIndex
+          index_field: hm2DPIProfileModbusIndex
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofilemodbuspendingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusObjects
+          field: hm2DPIProfileModbusPendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilemodbusreset:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusReset
+          index_field: hm2DPIProfileModbusIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilemodbusrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusRowStatus
+          index_field: hm2DPIProfileModbusIndex
+    create_method: createAndWait
+  hm2dpiprofilemodbussanitycheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusSanityCheck
+          index_field: hm2DPIProfileModbusIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofilemodbustable:
+    syntax: Hm2DPIProfileModbusEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileModbusTable
+  hm2dpiprofilemodbusunitidentifierlist:
+    syntax: HmExtraLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileModbusEntry
+          field: hm2DPIProfileModbusUnitIdentifierList
+          index_field: hm2DPIProfileModbusIndex
+    validation:
+      min: 1
+      max: 1400
+  hm2dpiprofileopccommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.12.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcObjects
+          field: hm2DPIProfileOpcCommitPendingActions
+  hm2dpiprofileopcdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcEntry
+          field: hm2DPIProfileOpcDescription
+          index_field: hm2DPIProfileOpcIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofileopcentry:
+    syntax: Hm2DPIProfileOpcEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcTable
+          field: hm2DPIProfileOpcEntry
+  hm2dpiprofileopcfragmentcheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcEntry
+          field: hm2DPIProfileOpcFragmentCheck
+          index_field: hm2DPIProfileOpcIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileopcindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcEntry
+          field: hm2DPIProfileOpcIndex
+          index_field: hm2DPIProfileOpcIndex
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofileopcpendingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.12.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcObjects
+          field: hm2DPIProfileOpcPendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileopcrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcEntry
+          field: hm2DPIProfileOpcRowStatus
+          index_field: hm2DPIProfileOpcIndex
+    create_method: createAndWait
+  hm2dpiprofileopcsanitycheck:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcEntry
+          field: hm2DPIProfileOpcSanityCheck
+          index_field: hm2DPIProfileOpcIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofileopctable:
+    syntax: Hm2DPIProfileOpcEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileOpcTable
+  hm2dpiprofileopctimeoutconnect:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileOpcEntry
+          field: hm2DPIProfileOpcTimeoutConnect
+          index_field: hm2DPIProfileOpcIndex
+    validation:
+      min: 0
+      max: 300
+  hm2dpiprofiles7commitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.19.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Objects
+          field: hm2DPIProfileS7CommitPendingActions
+  hm2dpiprofiles7debug:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Entry
+          field: hm2DPIProfileS7Debug
+          index_field: hm2DPIProfileS7Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofiles7description:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Entry
+          field: hm2DPIProfileS7Description
+          index_field: hm2DPIProfileS7Index
+    validation:
+      min: 0
+      max: 32
+  hm2dpiprofiles7entry:
+    syntax: Hm2DPIProfileS7Entry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Table
+          field: hm2DPIProfileS7Entry
+  hm2dpiprofiles7index:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Entry
+          field: hm2DPIProfileS7Index
+          index_field: hm2DPIProfileS7Index
+    validation:
+      min: 1
+      max: 32
+  hm2dpiprofiles7pendingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.19.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Objects
+          field: hm2DPIProfileS7PendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofiles7rowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Entry
+          field: hm2DPIProfileS7RowStatus
+          index_field: hm2DPIProfileS7Index
+    create_method: createAndWait
+  hm2dpiprofiles7sanitycheck:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Entry
+          field: hm2DPIProfileS7SanityCheck
+          index_field: hm2DPIProfileS7Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofiles7table:
+    syntax: Hm2DPIProfileS7Entry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIProfileS7Table
+  hm2dpiprofiles7tcpreset:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Entry
+          field: hm2DPIProfileS7TcpReset
+          index_field: hm2DPIProfileS7Index
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dpiprofiles7templatelist:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileS7Entry
+          field: hm2DPIProfileS7TemplateList
+          index_field: hm2DPIProfileS7Index
+    validation:
+      min: 0
+      max: 110
+  hm2dpis7protocol:
+    syntax: Hm2DPIS7ProtocolType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.11.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7TemplateEntry
+          field: hm2DPIS7Protocol
+          index_field: hm2DPIS7TemplateIndex
+  hm2dpis7ruleentry:
+    syntax: Hm2DPIS7RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.12.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7RuleTable
+          field: hm2DPIS7RuleEntry
+  hm2dpis7rulefunction:
+    syntax: Hm2S7FunctionType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.12.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7RuleEntry
+          field: hm2DPIS7RuleFunction
+          index_field: hm2DPIS7RuleIndex
+          index_fields: &id003
+          - hm2DPIS7TemplateIndex
+          - hm2DPIS7RuleIndex
+  hm2dpis7rulefunctiongroup:
+    syntax: Hm2S7FunctionGroupType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.12.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7RuleEntry
+          field: hm2DPIS7RuleFunctionGroup
+          index_field: hm2DPIS7RuleIndex
+          index_fields: *id003
+  hm2dpis7ruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.12.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7RuleEntry
+          field: hm2DPIS7RuleIndex
+          index_field: hm2DPIS7RuleIndex
+          index_fields: *id003
+    validation:
+      min: 1
+      max: 25
+  hm2dpis7rulerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.12.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7RuleEntry
+          field: hm2DPIS7RuleRowStatus
+          index_field: hm2DPIS7RuleIndex
+          index_fields: *id003
+    create_method: createAndWait
+  hm2dpis7rulesubfunction:
+    syntax: HmLargeDisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.12.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7RuleEntry
+          field: hm2DPIS7RuleSubFunction
+          index_field: hm2DPIS7RuleIndex
+          index_fields: *id003
+    validation:
+      min: 1
+      max: 160
+  hm2dpis7ruletable:
+    syntax: Hm2DPIS7RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.12
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIS7RuleTable
+  hm2dpis7templatedescription:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.11.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7TemplateEntry
+          field: hm2DPIS7TemplateDescription
+          index_field: hm2DPIS7TemplateIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dpis7templateentry:
+    syntax: Hm2DPIS7TemplateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7TemplateTable
+          field: hm2DPIS7TemplateEntry
+  hm2dpis7templateindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.11.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7TemplateEntry
+          field: hm2DPIS7TemplateIndex
+          index_field: hm2DPIS7TemplateIndex
+    validation:
+      min: 1
+      max: 40
+  hm2dpis7templaterowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.11.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIS7TemplateEntry
+          field: hm2DPIS7TemplateRowStatus
+          index_field: hm2DPIS7TemplateIndex
+    create_method: createAndWait
+  hm2dpis7templatetable:
+    syntax: Hm2DPIS7TemplateEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.21.11
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DPIProfileTables
+          field: hm2DPIS7TemplateTable
+  hm2defaultpolicy:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwGeneralSettings
+          field: hm2DefaultPolicy
+  hm2dynfwaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwAction
+          index_field: hm2DynFwRuleIndex
+  hm2dynfwcommitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleObjects
+          field: hm2DynFwCommitPendingActions
+  hm2dynfwdescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwDescription
+          index_field: hm2DynFwRuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2dynfwifmappingrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleObjects
+          field: hm2DynFwIfMappingRuleCount
+  hm2dynfwifmdirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleIfMappingEntry
+          field: hm2DynFwIfmDirection
+          index_field: hm2DynFwIfmRuleIndex
+          index_fields: &id004
+          - hm2DynFwIfmInterface
+          - hm2DynFwIfmDirection
+          - hm2DynFwIfmRuleIndex
+  hm2dynfwifminterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleIfMappingEntry
+          field: hm2DynFwIfmInterface
+          index_field: hm2DynFwIfmRuleIndex
+          index_fields: *id004
+  hm2dynfwifmpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleIfMappingEntry
+          field: hm2DynFwIfmPriority
+          index_field: hm2DynFwIfmRuleIndex
+          index_fields: *id004
+  hm2dynfwifmrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleIfMappingEntry
+          field: hm2DynFwIfmRowStatus
+          index_field: hm2DynFwIfmRuleIndex
+          index_fields: *id004
+    create_method: createAndWait
+  hm2dynfwifmruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleIfMappingEntry
+          field: hm2DynFwIfmRuleIndex
+          index_field: hm2DynFwIfmRuleIndex
+          index_fields: *id004
+    validation:
+      min: 1
+      max: 2048
+  hm2dynfwlog:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwLog
+          index_field: hm2DynFwRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dynfwmaxrules:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwGeneralSettings
+          field: hm2DynFwMaxRules
+  hm2dynfwproto:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwProto
+          index_field: hm2DynFwRuleIndex
+  hm2dynfwrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwRowStatus
+          index_field: hm2DynFwRuleIndex
+    create_method: createAndWait
+  hm2dynfwrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleObjects
+          field: hm2DynFwRuleCount
+  hm2dynfwruleentry:
+    syntax: Hm2DynFwRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleTable
+          field: hm2DynFwRuleEntry
+  hm2dynfwruleifmappingentry:
+    syntax: Hm2DynFwRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleIfMappingTable
+          field: hm2DynFwRuleIfMappingEntry
+  hm2dynfwruleifmappingtable:
+    syntax: Hm2DynFwRuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleTables
+          field: hm2DynFwRuleIfMappingTable
+  hm2dynfwruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwRuleIndex
+          index_field: hm2DynFwRuleIndex
+    validation:
+      min: 1
+      max: 512
+  hm2dynfwruleparams:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwRuleParams
+          index_field: hm2DynFwRuleIndex
+    validation:
+      min: 0
+      max: 50
+  hm2dynfwrulependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleObjects
+          field: hm2DynFwRulePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dynfwruletable:
+    syntax: Hm2DynFwRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleTables
+          field: hm2DynFwRuleTable
+  hm2dynfwsourceaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwSourceAddress
+          index_field: hm2DynFwRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2dynfwsourceport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwSourcePort
+          index_field: hm2DynFwRuleIndex
+    validation:
+      min: 1
+      max: 50
+  hm2dynfwstatslastapplied:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwStatsRuleEntry
+          field: hm2DynFwStatsLastApplied
+          index_field: hm2DynFwRuleIndex
+  hm2dynfwstatspacketcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwStatsRuleEntry
+          field: hm2DynFwStatsPacketCount
+          index_field: hm2DynFwRuleIndex
+  hm2dynfwstatspacketsize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwStatsRuleEntry
+          field: hm2DynFwStatsPacketSize
+          index_field: hm2DynFwRuleIndex
+  hm2dynfwstatsruleentry:
+    syntax: Hm2DynFwStatsRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwStatsRuleTable
+          field: hm2DynFwStatsRuleEntry
+  hm2dynfwstatsruletable:
+    syntax: Hm2DynFwStatsRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwStatsTables
+          field: hm2DynFwStatsRuleTable
+  hm2dynfwstatsttpck:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwGeneralStats
+          field: hm2DynFwStatsTtPck
+  hm2dynfwstatsttpckaccepted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwGeneralStats
+          field: hm2DynFwStatsTtPckAccepted
+  hm2dynfwstatsttpckdendrop:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwGeneralStats
+          field: hm2DynFwStatsTtPckDenDrop
+  hm2dynfwstatsttpcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwGeneralStats
+          field: hm2DynFwStatsTtPckSize
+  hm2dynfwtargetaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwTargetAddress
+          index_field: hm2DynFwRuleIndex
+    validation:
+      min: 1
+      max: 20
+  hm2dynfwtargetport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwTargetPort
+          index_field: hm2DynFwRuleIndex
+    validation:
+      min: 1
+      max: 50
+  hm2dynfwtrap:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.2.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2DynFwRuleEntry
+          field: hm2DynFwTrap
+          index_field: hm2DynFwRuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2flmaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLMAction
+  hm2flmadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLMAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2flmappinfoenum:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLMAppInfoEnum
+  hm2flmappinfostring:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLMAppInfoString
+    validation:
+      min: 0
+      max: 80
+  hm2flmappstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLMAppState
+  hm2flmfreemem:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLMFreeMem
+  hm2flminterfaceentry:
+    syntax: Hm2FLMInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMInterfaceTable
+          field: hm2FLMInterfaceEntry
+  hm2flminterfaceindex:
+    syntax: InterfaceIndex
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMInterfaceEntry
+          field: hm2FLMInterfaceIndex
+          index_field: hm2FLMInterfaceIndex
+  hm2flminterfacerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMInterfaceEntry
+          field: hm2FLMInterfaceRowStatus
+          index_field: hm2FLMInterfaceIndex
+    create_method: createAndWait
+  hm2flminterfacetable:
+    syntax: Hm2FLMInterfaceEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMTables
+          field: hm2FLMInterfaceTable
+  hm2flml3entries:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLML3Entries
+  hm2flmmaxentries:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.4.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FLMObjects
+          field: hm2FLMMaxEntries
+  hm2flushtables:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwGeneralSettings
+          field: hm2FlushTables
+  hm2idsadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.5.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2IDSObjects
+          field: hm2IDSAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2idsisrunning:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.5.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2IDSObjects
+          field: hm2IDSIsRunning
+    validation:
+      allowed:
+      - true
+      - false
+  hm2idsusername:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.5.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2IDSObjects
+          field: hm2IDSUserName
+    validation:
+      min: 0
+      max: 32
+  hm2l2apprulename:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.26
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2AppRuleName
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2l2commitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleObjects
+          field: hm2L2CommitPendingActions
+  hm2l2dpiprofileindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.24
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2DPIProfileIndex
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2l2defaultpolicy:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2FwGeneralSettings
+          field: hm2L2DefaultPolicy
+  hm2l2fwtrap:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.19
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2FwTrap
+          index_field: hm2L2RuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2l2ifmappingrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleObjects
+          field: hm2L2IfMappingRuleCount
+  hm2l2ifmdirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleIfMappingEntry
+          field: hm2L2IfmDirection
+          index_field: hm2L2IfmRuleIndex
+          index_fields: &id005
+          - hm2L2IfmType
+          - hm2L2IfmInterface
+          - hm2L2IfmDirection
+          - hm2L2IfmRuleIndex
+  hm2l2ifminterface:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleIfMappingEntry
+          field: hm2L2IfmInterface
+          index_field: hm2L2IfmRuleIndex
+          index_fields: *id005
+  hm2l2ifmpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleIfMappingEntry
+          field: hm2L2IfmPriority
+          index_field: hm2L2IfmRuleIndex
+          index_fields: *id005
+  hm2l2ifmrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleIfMappingEntry
+          field: hm2L2IfmRowStatus
+          index_field: hm2L2IfmRuleIndex
+          index_fields: *id005
+    create_method: createAndWait
+  hm2l2ifmruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleIfMappingEntry
+          field: hm2L2IfmRuleIndex
+          index_field: hm2L2IfmRuleIndex
+          index_fields: *id005
+    validation:
+      min: 1
+      max: 999
+  hm2l2ifmtype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleIfMappingEntry
+          field: hm2L2IfmType
+          index_field: hm2L2IfmRuleIndex
+          index_fields: *id005
+  hm2l2maxrules:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2FwGeneralSettings
+          field: hm2L2MaxRules
+  hm2l2rowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.23
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RowStatus
+          index_field: hm2L2RuleIndex
+    create_method: createAndWait
+  hm2l2ruleaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleAction
+          index_field: hm2L2RuleIndex
+  hm2l2ruleassignqueueid:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleAssignQueueId
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 0
+      max: 7
+  hm2l2rulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleObjects
+          field: hm2L2RuleCount
+  hm2l2ruledescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.20
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleDescription
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2l2ruledestipaddr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleDestIpAddr
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l2ruledestmacaddr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleDestMacAddr
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l2ruledestport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleDestPort
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2l2ruleentry:
+    syntax: Hm2L2RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleTable
+          field: hm2L2RuleEntry
+  hm2l2ruleetypekey:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleEtypeKey
+          index_field: hm2L2RuleIndex
+  hm2l2ruleetypevalue:
+    syntax: EtypeValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleEtypeValue
+          index_field: hm2L2RuleIndex
+  hm2l2rulehitcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleHitCount
+          index_field: hm2L2RuleIndex
+  hm2l2ruleifmappingentry:
+    syntax: Hm2L2RuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleIfMappingTable
+          field: hm2L2RuleIfMappingEntry
+  hm2l2ruleifmappingtable:
+    syntax: Hm2L2RuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleTables
+          field: hm2L2RuleIfMappingTable
+  hm2l2ruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleIndex
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 999
+  hm2l2ruleiptosbits:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleIpTosBits
+          index_field: hm2L2RuleIndex
+  hm2l2rulelog:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.21
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleLog
+          index_field: hm2L2RuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2l2rulependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleObjects
+          field: hm2L2RulePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2l2ruleprotoname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.25
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleProtoName
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l2ruleprotocol:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleProtocol
+          index_field: hm2L2RuleIndex
+  hm2l2ruleratelimitcburst:
+    syntax: AclBurstSize
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.17
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleRateLimitCburst
+          index_field: hm2L2RuleIndex
+  hm2l2ruleratelimitcrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleRateLimitCrate
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 0
+      max: 10000000
+  hm2l2ruleratelimitcrateunit:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.18
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleRateLimitCrateUnit
+          index_field: hm2L2RuleIndex
+  hm2l2rulesrcipaddr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleSrcIpAddr
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l2rulesrcmacaddr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleSrcMacAddr
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l2rulesrcport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleSrcPort
+          index_field: hm2L2RuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2l2rulestatsaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.22
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleStatsAction
+          index_field: hm2L2RuleIndex
+  hm2l2ruletable:
+    syntax: Hm2L2RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleTables
+          field: hm2L2RuleTable
+  hm2l2rulevlanid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.3.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2RuleEntry
+          field: hm2L2RuleVlanId
+          index_field: hm2L2RuleIndex
+  hm2l2validatefcs:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.6.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L2FwGeneralSettings
+          field: hm2L2ValidateFCS
+    validation:
+      allowed:
+      - true
+      - false
+  hm2l3action:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3Action
+          index_field: hm2L3RuleIndex
+  hm2l3apprulename:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3AppRuleName
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2l3commitpendingactions:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleObjects
+          field: hm2L3CommitPendingActions
+  hm2l3description:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3Description
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 0
+      max: 32
+  hm2l3ifmappingrulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleObjects
+          field: hm2L3IfMappingRuleCount
+  hm2l3ifmdirection:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleIfMappingEntry
+          field: hm2L3IfmDirection
+          index_field: hm2L3IfmRuleIndex
+          index_fields: &id006
+          - hm2L3IfmInterface
+          - hm2L3IfmDirection
+          - hm2L3IfmRuleIndex
+  hm2l3ifminterface:
+    syntax: InterfaceIndex
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleIfMappingEntry
+          field: hm2L3IfmInterface
+          index_field: hm2L3IfmRuleIndex
+          index_fields: *id006
+  hm2l3ifmpriority:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleIfMappingEntry
+          field: hm2L3IfmPriority
+          index_field: hm2L3IfmRuleIndex
+          index_fields: *id006
+  hm2l3ifmrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleIfMappingEntry
+          field: hm2L3IfmRowStatus
+          index_field: hm2L3IfmRuleIndex
+          index_fields: *id006
+    create_method: createAndWait
+  hm2l3ifmruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleIfMappingEntry
+          field: hm2L3IfmRuleIndex
+          index_field: hm2L3IfmRuleIndex
+          index_fields: *id006
+    validation:
+      min: 1
+      max: 2048
+  hm2l3log:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3Log
+          index_field: hm2L3RuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2l3logcounter:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3LogCounter
+          index_field: hm2L3RuleIndex
+  hm2l3maxrules:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwGeneralSettings
+          field: hm2L3MaxRules
+  hm2l3proto:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3Proto
+          index_field: hm2L3RuleIndex
+  hm2l3protoname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3ProtoName
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l3rowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3RowStatus
+          index_field: hm2L3RuleIndex
+    create_method: createAndWait
+  hm2l3rulecount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleObjects
+          field: hm2L3RuleCount
+  hm2l3ruleentry:
+    syntax: Hm2L3RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleTable
+          field: hm2L3RuleEntry
+  hm2l3ruleifmappingentry:
+    syntax: Hm2L3RuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleIfMappingTable
+          field: hm2L3RuleIfMappingEntry
+  hm2l3ruleifmappingtable:
+    syntax: Hm2L3RuleIfMappingEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleTables
+          field: hm2L3RuleIfMappingTable
+  hm2l3ruleindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3RuleIndex
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 1
+      max: 2048
+  hm2l3ruleparams:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3RuleParams
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 0
+      max: 50
+  hm2l3rulependingactions:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleObjects
+          field: hm2L3RulePendingActions
+    validation:
+      allowed:
+      - true
+      - false
+  hm2l3ruletable:
+    syntax: Hm2L3RuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleTables
+          field: hm2L3RuleTable
+  hm2l3sourceaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3SourceAddress
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l3sourceport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3SourcePort
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2l3statslastapplied:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3StatsRuleEntry
+          field: hm2L3StatsLastApplied
+          index_field: hm2L3RuleIndex
+  hm2l3statspacketcount:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3StatsRuleEntry
+          field: hm2L3StatsPacketCount
+          index_field: hm2L3RuleIndex
+  hm2l3statspacketsize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3StatsRuleEntry
+          field: hm2L3StatsPacketSize
+          index_field: hm2L3RuleIndex
+  hm2l3statsruleentry:
+    syntax: Hm2L3StatsRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3StatsRuleTable
+          field: hm2L3StatsRuleEntry
+  hm2l3statsruletable:
+    syntax: Hm2L3StatsRuleEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3StatsTables
+          field: hm2L3StatsRuleTable
+  hm2l3statstotalpck:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3GeneralStats
+          field: hm2L3StatsTotalPck
+  hm2l3statstotalpckaccepted:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3GeneralStats
+          field: hm2L3StatsTotalPckAccepted
+  hm2l3statstotalpckdendrop:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3GeneralStats
+          field: hm2L3StatsTotalPckDenDrop
+  hm2l3statstotalpcksize:
+    syntax: Counter64
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3GeneralStats
+          field: hm2L3StatsTotalPckSize
+  hm2l3targetaddress:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3TargetAddress
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 1
+      max: 32
+  hm2l3targetport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3TargetPort
+          index_field: hm2L3RuleIndex
+    validation:
+      min: 1
+      max: 128
+  hm2l3trap:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.3.2.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2L3RuleEntry
+          field: hm2L3Trap
+          index_field: hm2L3RuleIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2loggingglobalstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwGeneralSettings
+          field: hm2LoggingGlobalState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2protocoldescription:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolDescription
+          index_field: hm2ProtocolIndex
+    validation:
+      min: 0
+      max: 128
+  hm2protocolentry:
+    syntax: Hm2ProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolTable
+          field: hm2ProtocolEntry
+  hm2protocolethertype:
+    syntax: EtypeValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolEtherType
+          index_field: hm2ProtocolIndex
+  hm2protocoletypekey:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolEtypeKey
+          index_field: hm2ProtocolIndex
+  hm2protocolipprotonumber:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolIPProtoNumber
+          index_field: hm2ProtocolIndex
+  hm2protocolindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolIndex
+          index_field: hm2ProtocolIndex
+  hm2protocolname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolName
+          index_field: hm2ProtocolIndex
+    validation:
+      min: 1
+      max: 32
+  hm2protocolport:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolPort
+          index_field: hm2ProtocolIndex
+    validation:
+      min: 1
+      max: 128
+  hm2protocolstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolStatus
+          index_field: hm2ProtocolIndex
+    create_method: createAndWait
+  hm2protocoltable:
+    syntax: Hm2ProtocolEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwAssetMgmtGroup
+          field: hm2ProtocolTable
+  hm2protocoltype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.7.3.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2ProtocolEntry
+          field: hm2ProtocolType
+          index_field: hm2ProtocolIndex
+  hm2resetstatistics:
+    syntax: HmActionValue
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.79.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-FW-MIB
+          table: hm2FwGeneralSettings
+          field: hm2ResetStatistics

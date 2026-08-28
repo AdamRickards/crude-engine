@@ -1,0 +1,101 @@
+version: 2.8.0
+feature: router
+description: IP routing — global config, per-port L3 interfaces, VLAN router interfaces (VRI)
+methods:
+  get_router:
+    type: dict
+    defaults:
+      routing_enabled: false
+      ports: {}
+      vri: {}
+    sub_tables:
+      ports:
+        primary_key: port_ifindex
+        key_map: ifindex
+        field_map:
+          ip_address: port_ip_address
+          netmask: port_netmask
+          routing_mode: port_routing_mode
+          proxy_arp: port_proxy_arp
+          directed_broadcast: port_directed_broadcast
+          mtu: port_mtu
+          icmp_unreachables: port_icmp_unreachables
+          icmp_redirects: port_icmp_redirects
+        defaults:
+          ip_address: ''
+          netmask: ''
+          routing_mode: false
+          proxy_arp: false
+          directed_broadcast: false
+          mtu: 0
+          icmp_unreachables: false
+          icmp_redirects: false
+      vri:
+        primary_key: vri_vlan_id
+        field_map:
+          vlan_id: vri_vlan_id
+          ifindex: vri_ifindex
+        defaults:
+          vlan_id: 0
+          ifindex: 0
+  set_router:
+    type: upsert
+    fields: [routing_enabled]
+  set_router_port:
+    type: upsert
+    fields: [port_ip_address, port_netmask, port_routing_mode, port_proxy_arp, port_directed_broadcast, port_mtu, port_icmp_unreachables, port_icmp_redirects]
+  set_router_vri:
+    type: upsert
+    fields: [vri_ifindex]
+  create_router_vri:
+    type: create
+    row_status: vri_status
+    index_key: vri_vlan_id
+  delete_router_vri:
+    type: delete
+    row_status: vri_status
+    index_key: vri_vlan_id
+attributes:
+  # --- Global ---
+  routing_enabled:
+    wire: hm2agentswitchiproutingmode
+    source: platform-routing
+  # --- Per-port interface table (keyed by ifIndex → port name) ---
+  port_ifindex:
+    wire: hm2agentswitchipinterfaceifindex
+    source: platform-routing
+  port_ip_address:
+    wire: hm2agentswitchipinterfaceipaddress
+    source: platform-routing
+  port_netmask:
+    wire: hm2agentswitchipinterfacenetmask
+    source: platform-routing
+  port_routing_mode:
+    wire: hm2agentswitchipinterfaceroutingmode
+    source: platform-routing
+  port_proxy_arp:
+    wire: hm2agentswitchipinterfaceproxyarpmode
+    source: platform-routing
+  port_directed_broadcast:
+    wire: hm2agentswitchipinterfacenetdirectedbcmode
+    source: platform-routing
+  port_mtu:
+    wire: hm2agentswitchipinterfacemtuvalue
+    source: platform-routing
+  port_icmp_unreachables:
+    wire: hm2agentswitchipinterfaceicmpunreachables
+    source: platform-routing
+  port_icmp_redirects:
+    wire: hm2agentswitchipinterfaceicmpredirects
+    source: platform-routing
+  # --- VRI table (keyed by VLAN ID, CRUD via RowStatus) ---
+  vri_vlan_id:
+    wire: hm2agentswitchipvlanid
+    source: platform-routing
+  vri_ifindex:
+    wire: hm2agentswitchipvlanifindex
+    source: platform-routing
+  vri_status:
+    wire: hm2agentswitchipvlanroutingstatus
+    source: platform-routing
+    access: crud

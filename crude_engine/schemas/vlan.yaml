@@ -1,0 +1,82 @@
+version: 2.7.0
+feature: vlan
+description: VLAN configuration, port membership and ingress/egress rules
+methods:
+  get_vlans:
+    type: dict
+    primary_key: vlan_id
+    defaults:
+      name: ''
+      ports: {}
+  create_vlan:
+    type: create
+    row_status: vlan_status
+    required: [vlan_id]
+    index_key: vlan_id
+  set_vlan:
+    type: upsert
+  delete_vlan:
+    type: delete
+    row_status: vlan_status
+  get_vlan_ingress:
+    type: dict
+    primary_key: pvid
+    key_map: bridge_port
+    defaults:
+      pvid: 1
+      ingress_filtering: false
+      acceptable_frame_types: admitAll
+  set_vlan_ingress:
+    type: upsert
+  set_access_port:
+    type: upsert
+  get_vlan_egress:
+    type: dict
+    primary_key: vlan_id
+    defaults:
+      egress_ports: []
+      untagged_ports: []
+  set_vlan_egress:
+    type: upsert
+attributes:
+  vlan_id:
+    wire: dot1qvlanindex
+    source: q-bridge
+  name:
+    wire: dot1qvlanstaticname
+    source: q-bridge
+  egress_ports:
+    wire: dot1qvlanstaticegressports
+    source: q-bridge
+    value_map: ifindex
+  untagged_ports:
+    wire: dot1qvlanstaticuntaggedports
+    source: q-bridge
+    value_map: ifindex
+  forbidden_ports:
+    wire: dot1qvlanforbiddenegressports
+    source: q-bridge
+  ports:
+    compute:
+      from: [egress_ports, untagged_ports, forbidden_ports]
+      expr: "{**{p: 'U' for p in untagged_ports}, **{p: 'T' for p in egress_ports if p not in untagged_ports}, **{p: 'F' for p in forbidden_ports}}"
+      sort: natural
+  interface_name:
+    wire: ifname
+    source: if
+  pvid:
+    wire: dot1qpvid
+    source: q-bridge
+  ingress_filtering:
+    wire: dot1qportingressfiltering
+    source: q-bridge
+  acceptable_frame_types:
+    wire: dot1qportacceptableframetypes
+    source: q-bridge
+    value_map:
+      '1': admitAll
+      '2': admitOnlyVlanTagged
+  vlan_status:
+    wire: dot1qvlanstaticrowstatus
+    source: q-bridge
+    access: crud

@@ -1,0 +1,48 @@
+# method_exemptions.yaml — release_matrix.py method-level exemptions
+#
+# Whole-method gaps that are explicitly accepted (not bugs to fix).
+# Per-attr exemptions live in tests/wire_exemptions.yaml.
+#
+# Each entry needs a `reason` field. No silent skips.
+#
+# Format:
+#   exemptions:
+#     - method: <method_name>
+#       protocol: <mops|snmp|ssh|offline>
+#       device: <ip>           # optional — omit to apply fleet-wide
+#       reason: <text>
+#       added: <YYYY-MM-DD>
+#
+# Example:
+#   exemptions:
+#     - method: get_config
+#       protocol: ssh
+#       reason: "show running-config not parseable across firmware versions; tracked under #roadmap #SSH-Config-Parser"
+#       added: 2026-04-13
+
+exemptions:
+  # ===== L2S firmware MIB-availability =====
+  # The BRS50 L2S firmware does not include DHCP snooping or LDAP MIB
+  # modules. Methods touching those modules return noSuchName errors —
+  # not bugs in the engine, just absent capability on this tier.
+
+  - method: create_ldap_server
+    device: 192.168.60.85
+    reason: "L2S firmware doesn't include the LDAP MIB module (HM2-REMOTE-AUTHENTICATION-MIB/hm2LdapClientServerAddrEntry)"
+    added: 2026-04-14
+
+  - method: delete_ldap_server
+    device: 192.168.60.85
+    reason: "L2S firmware doesn't include the LDAP MIB module"
+    added: 2026-04-14
+
+  - method: create_static_binding
+    device: 192.168.60.85
+    reason: "static_binding test setup requires set_dhcp_snooping which L2S firmware doesn't support (hm2AgentDhcpSnoopingAdminMode noSuchName)"
+    added: 2026-04-14
+
+  - method: delete_static_binding
+    device: 192.168.60.85
+    reason: "Same as create_static_binding — L2S has no DHCP snooping MIB"
+    added: 2026-04-14
+

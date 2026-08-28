@@ -1,0 +1,328 @@
+openapi: 3.0.3
+info:
+  title: CRUDE lab sidecar
+  version: 0.1.0
+  description: |
+    Contract only. This file is the Cycle 0 sidecar API. The VPS is not
+    implemented here. Named catalog entries are generated later from schema
+    `type:` (C/R/U/D) plus protocol `execute_methods` (E). Do not invent
+    CRUDE methods in this document.
+
+    **Where it runs.** The sidecar lives on the existing VPS already on the
+    homelab VPN. The Bot VM must not WireGuard the homelab, must not hold
+    the tunnel, and must never SSH switches. The bot calls this API by
+    **test name** (PR-guided). Device targeting and credentials stay on
+    the VPS.
+
+    **What POST /v1/run does (server-side, in order).**
+    1. Exclusive **lock** for the lab run (one mutating window at a time).
+    2. **Arm device rollback** (HiOS built-in). 30s is the floor; raise `T`
+       for coarse. Not a VPS-side "hope we restore."
+    3. External **snapshot** is belt-and-braces only.
+    4. Execute the named catalog entry.
+    5. Release the lock.
+
+    **Keep vs Revert** (from the catalog entry, not the request body).
+    - Keep (`expect.rollback: confirmed`): arm → SET → probe → confirm
+      before the floor. Do not confirm if the mgmt probe is not green
+      with margin.
+    - Revert (`expect.rollback: fired`): arm → SET → do not confirm →
+      wait `T`. Comms may die; that is data. `comms` tests are almost
+      always Revert.
+
+    **Catalog names (generated later; examples only).**
+    - `get_dns.read` — R
+    - `set_dns.roundtrip` — U (upsert + read)
+    - `dns.lifecycle.mops` — coarse `R0-C-R1-U-R2-D-R3` on MOPS
+    Grammar from AGENTS.md §5: `*.read`, create+read, upsert+read,
+    delete+read, execute + documented side effects, `*.lifecycle.mops`,
+    `*.lifecycle.parity`. Combinations as declared. This contract does
+    not enumerate the catalog.
+
+    A failed *test* is HTTP 200 with `result.passed: false`. HTTP errors
+    are lock / unknown name / sidecar-not-ready, not device truth.
+servers:
+  - url: /
+    description: >
+      Sidecar process on the existing lab VPS (already on the homelab VPN).
+      Host is not this Bot VM. VPS not wired in this cycle.
+paths:
+  /v1/run:
+    post:
+      operationId: runCatalogTest
+      summary: Run one named catalog test
+      description: |
+        Body is the catalog test name. Sidecar looks up the named entry
+        (expect.rollback, destructivity overlay, protocol, coarse `T`).
+        Caller does not pass methods, OIDs, device addresses, or payloads.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunRequest'
+            examples:
+              read:
+                summary: Read (no write window)
+                value: { name: get_dns.read }
+              roundtrip:
+                summary: Upsert + read
+                value: { name: set_dns.roundtrip }
+              lifecycle:
+                summary: Coarse MOPS lifecycle
+                value: { name: dns.lifecycle.mops }
+      responses:
+        '200':
+          description: |
+            Named entry ran to completion (including expected comms-loss
+            on Revert). Inspect `result.passed` and first-class outcomes.
+            Unexpected comms-loss fails Keep, bumps overlay toward
+            `comms`, and must not continue U/D on a dead path.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunResponse'
+              examples:
+                keep_ok:
+                  summary: Keep confirmed, comms held
+                  value:
+                    result:
+                      name: set_dns.roundtrip
+                      passed: true
+                      commands_sent: true
+                      comms: ok
+                      rollback: confirmed
+                      expected:
+                        comms: ok
+                        rollback: confirmed
+                      actual:
+                        comms: ok
+                        rollback: confirmed
+                    audit:
+                      diff:
+                        buckets: []
+                    timings:
+                      encode_dispatch_ms: 12
+                      gather_decode_ms: 40
+                      time_to_confirm_ms: 1800
+                      time_to_rollback_visible_ms: null
+                      audit_lag_ms: 25
+                      device_timer_ms: 30000
+                revert_fired:
+                  summary: Revert window fired; comms lost then recovered
+                  value:
+                    result:
+                      name: dns.lifecycle.mops
+                      passed: true
+                      commands_sent: true
+                      comms: lost_then_ok
+                      rollback: fired
+                      expected:
+                        comms: lost_then_ok
+                        rollback: fired
+                      actual:
+                        comms: lost_then_ok
+                        rollback: fired
+                    audit:
+                      diff:
+                        buckets: []
+                    timings:
+                      encode_dispatch_ms: 80
+                      gather_decode_ms: 200
+                      time_to_confirm_ms: null
+                      time_to_rollback_visible_ms: 32000
+                      audit_lag_ms: 110
+                      device_timer_ms: 30000
+        '400':
+          description: Request is not a catalog test name.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: |
+            Name is well-formed but not in the catalog. Cycle 0 has no
+            generated catalog yet; this status is still the contract.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Lab lock is held by another run.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: |
+            Sidecar or lab path not ready (VPS unwired, rollback cannot
+            be armed, snapshot belt unavailable). Not a device-truth fail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    RunRequest:
+      type: object
+      additionalProperties: false
+      required: [name]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          pattern: '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$'
+          description: |
+            Generated catalog entry name. Examples (not an enum):
+            `get_dns.read`, `set_dns.roundtrip`, `dns.lifecycle.mops`.
+          example: get_dns.read
+    RunResponse:
+      type: object
+      additionalProperties: false
+      required: [result, audit, timings]
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        audit:
+          $ref: '#/components/schemas/Audit'
+        timings:
+          $ref: '#/components/schemas/Timings'
+    Result:
+      type: object
+      additionalProperties: false
+      required:
+        - name
+        - passed
+        - commands_sent
+        - comms
+        - rollback
+        - expected
+        - actual
+      properties:
+        name:
+          type: string
+          description: Echo of the catalog name that ran.
+        passed:
+          type: boolean
+          description: |
+            true only when expected matches actual on first-class
+            outcomes, audit.diff.buckets is empty, and timings have not
+            regressed (a timing regression fails like `wrong_encoding`).
+            Pass/fail is not sufficient by itself; callers must also
+            read commands_sent, comms, and rollback.
+        commands_sent:
+          type: boolean
+          description: Whether the sidecar dispatched commands toward the device.
+        comms:
+          $ref: '#/components/schemas/Comms'
+        rollback:
+          $ref: '#/components/schemas/Rollback'
+        expected:
+          $ref: '#/components/schemas/Outcomes'
+        actual:
+          $ref: '#/components/schemas/Outcomes'
+    Outcomes:
+      type: object
+      additionalProperties: false
+      required: [comms, rollback]
+      properties:
+        comms:
+          $ref: '#/components/schemas/Comms'
+        rollback:
+          $ref: '#/components/schemas/Rollback'
+    Comms:
+      type: string
+      enum: [ok, lost, lost_then_ok]
+      description: |
+        Management-path observation for this run.
+        Unexpected loss fails Keep and must not continue U/D.
+    Rollback:
+      type: string
+      enum: [confirmed, fired, not_armed, failed]
+      description: |
+        Device rollback outcome. Reads typically `not_armed`. Keep
+        expects `confirmed`. Revert expects `fired`. `failed` is a
+        harness miss (arm/confirm/fire did not match the device).
+    Audit:
+      type: object
+      additionalProperties: false
+      required: [diff]
+      properties:
+        diff:
+          $ref: '#/components/schemas/AuditDiff'
+    AuditDiff:
+      type: object
+      additionalProperties: false
+      required: [buckets]
+      description: |
+        SNMP audit SET log vs `crude_matrix` / wire syntax after C/U/D.
+        Getter is Gate 1 egress; audit is Gate 3. Both must agree or the
+        run found shaping vs wire.
+      properties:
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditFailBucket'
+          description: Empty means clean. More than one bucket may apply.
+    AuditFailBucket:
+      type: string
+      enum:
+        - missing_oid
+        - wrong_encoding
+        - extra_oid
+        - type_mismatch
+        - rollback_incomplete
+    Timings:
+      type: object
+      additionalProperties: false
+      required:
+        - encode_dispatch_ms
+        - gather_decode_ms
+        - time_to_confirm_ms
+        - time_to_rollback_visible_ms
+        - audit_lag_ms
+        - device_timer_ms
+      description: |
+        Milliseconds. Subtract `device_timer_ms` before comparing.
+        Null where the phase did not happen (no confirm on Revert, no
+        rollback-visible on Keep-confirmed, no SET-log on a pure read).
+      properties:
+        encode_dispatch_ms:
+          type: integer
+          minimum: 0
+        gather_decode_ms:
+          type: integer
+          minimum: 0
+        time_to_confirm_ms:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: SLO vs the 30s floor. Keep only.
+        time_to_rollback_visible_ms:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: Revert / fired path. How long until rollback showed.
+        audit_lag_ms:
+          type: integer
+          minimum: 0
+          nullable: true
+        device_timer_ms:
+          type: integer
+          minimum: 0
+          description: |
+            Armed HiOS window for this run (floor 30000; raised `T` for
+            coarse, typically 2–5 min). Do not 30s-tax every PDU.
+    Error:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error:
+          type: string
+          enum: [bad_name, unknown_name, lock_held, not_ready]
+        message:
+          type: string
+        name:
+          type: string
+          description: Echo of the requested name when known.

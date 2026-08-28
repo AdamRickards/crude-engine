@@ -1,0 +1,104 @@
+version: 2.7.0
+feature: services
+description: Network services management (HTTP, HTTPS, Telnet, SSH, SNMP)
+methods:
+  get_services:
+    type: dict
+    defaults:
+      http: {}
+      https: {}
+      telnet: {}
+      ssh: {}
+      snmp_v1: {}
+      snmp_v2: {}
+      snmp_v3: {}
+    sub_tables:
+      http:
+        primary_key: http_enabled
+        field_map:
+          enabled: http_enabled
+          port: http_port
+        defaults:
+          enabled: false
+          port: 80
+      https:
+        primary_key: https_enabled
+        field_map:
+          enabled: https_enabled
+          port: https_port
+        defaults:
+          enabled: false
+          port: 443
+      telnet:
+        primary_key: telnet_enabled
+        field_map:
+          enabled: telnet_enabled
+          port: telnet_port
+        defaults:
+          enabled: false
+          port: 23
+      ssh:
+        primary_key: ssh_enabled
+        field_map:
+          enabled: ssh_enabled
+          port: ssh_port
+        defaults:
+          enabled: false
+          port: 22
+      snmp_v1:
+        primary_key: snmp_v1_enabled
+        field_map:
+          enabled: snmp_v1_enabled
+        defaults:
+          enabled: false
+      snmp_v2:
+        primary_key: snmp_v2_enabled
+        field_map:
+          enabled: snmp_v2_enabled
+        defaults:
+          enabled: false
+      snmp_v3:
+        primary_key: snmp_v3_enabled
+        field_map:
+          enabled: snmp_v3_enabled
+        defaults:
+          enabled: false
+  set_services:
+    type: upsert
+attributes:
+  http_enabled:
+    wire: hm2webhttpadminstatus
+    source: mgmtaccess
+  http_port:
+    wire: hm2webhttpportnumber
+    source: mgmtaccess
+  https_enabled:
+    wire: hm2webhttpsadminstatus
+    source: mgmtaccess
+  https_port:
+    wire: hm2webhttpsportnumber
+    source: mgmtaccess
+  telnet_enabled:
+    wire: hm2telnetserveradminstatus
+    source: mgmtaccess
+  telnet_port:
+    wire: hm2telnetserverport
+    source: mgmtaccess
+  ssh_enabled:
+    wire: hm2sshadminstatus
+    source: mgmtaccess
+  ssh_port:
+    wire: hm2sshportnumber
+    source: mgmtaccess
+  snmp_v1_enabled:
+    wire: hm2snmpv1adminstatus
+    source: mgmtaccess
+  snmp_v2_enabled:
+    wire: hm2snmpv2adminstatus
+    source: mgmtaccess
+  snmp_v3_enabled:
+    wire: hm2snmpv3adminstatus
+    source: mgmtaccess
+  snmp_port:
+    wire: hm2snmpportnumber
+    source: mgmtaccess

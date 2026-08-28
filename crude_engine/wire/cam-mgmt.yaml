@@ -1,0 +1,545 @@
+version: 2.6.0
+feature: cam-mgmt
+schemas:
+  read_cam-mgmt:
+    type: dict
+    defaults:
+      hm2camaction: 0
+      hm2camactionconnectionstatus: 0
+      hm2camactionreplicationstatus: 0
+      hm2camcertinfoentry: ''
+      hm2camcertinfoexpiry: ''
+      hm2camcertinfoindex: 0
+      hm2camcertinfoissuer: ''
+      hm2camcertinfopresent: false
+      hm2camcertinfoserialnumber: ''
+      hm2camcertinfosubject: ''
+      hm2camcertinfotable: ''
+      hm2camclientserveraddr: ''
+      hm2camclientserveraddrentry: ''
+      hm2camclientserveraddrtable: ''
+      hm2camclientserveraddrtype: ''
+      hm2camclientserverbasedn: ''
+      hm2camclientserverdescr: ''
+      hm2camclientserverindex: 0
+      hm2camclientserverport: 0
+      hm2camclientserverreplicationinterval: 0
+      hm2camclientserverreplicationstatus: 0
+      hm2camclientserverrowstatus: 0
+      hm2camclientserversearchstring: ''
+      hm2camclientserverssltls: false
+      hm2camclientserverstatus: 0
+      hm2camconfigadminstatus: false
+      hm2camconfiglastvalidserverindex: 0
+      hm2campwdchangeaction: 0
+      hm2campwdchangeactionstatus: 0
+      hm2campwdchangeusername: ''
+      hm2campwdchangeuserpwnew: ''
+      hm2campwdchangeuserpwold: ''
+attributes:
+  hm2camaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamActionGroup
+          field: hm2CamAction
+  hm2camactionconnectionstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.10.2
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamActionGroup
+          field: hm2CamActionConnectionStatus
+  hm2camactionreplicationstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.10.3
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamActionGroup
+          field: hm2CamActionReplicationStatus
+  hm2camcertinfoentry:
+    syntax: Hm2CamCertInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoTable
+          field: hm2CamCertInfoEntry
+  hm2camcertinfoexpiry:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoEntry
+          field: hm2CamCertInfoExpiry
+          index_field: hm2CamCertInfoIndex
+  hm2camcertinfoindex:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoEntry
+          field: hm2CamCertInfoIndex
+          index_field: hm2CamCertInfoIndex
+  hm2camcertinfoissuer:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoEntry
+          field: hm2CamCertInfoIssuer
+          index_field: hm2CamCertInfoIndex
+  hm2camcertinfopresent:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoEntry
+          field: hm2CamCertInfoPresent
+          index_field: hm2CamCertInfoIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2camcertinfoserialnumber:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoEntry
+          field: hm2CamCertInfoSerialNumber
+          index_field: hm2CamCertInfoIndex
+  hm2camcertinfosubject:
+    syntax: SnmpAdminString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoEntry
+          field: hm2CamCertInfoSubject
+          index_field: hm2CamCertInfoIndex
+  hm2camcertinfotable:
+    syntax: Hm2CamCertInfoEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.30.1
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamCertInfoGroup
+          field: hm2CamCertInfoTable
+  hm2camclientserveraddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerAddr
+          index_field: hm2CamClientServerIndex
+  hm2camclientserveraddrentry:
+    syntax: Hm2CamClientServerAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrTable
+          field: hm2CamClientServerAddrEntry
+  hm2camclientserveraddrtable:
+    syntax: Hm2CamClientServerAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamConfigGroup
+          field: hm2CamClientServerAddrTable
+  hm2camclientserveraddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerAddrType
+          index_field: hm2CamClientServerIndex
+  hm2camclientserverbasedn:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerBaseDN
+          index_field: hm2CamClientServerIndex
+    validation:
+      min: 0
+      max: 100
+  hm2camclientserverdescr:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerDescr
+          index_field: hm2CamClientServerIndex
+    validation:
+      min: 0
+      max: 100
+  hm2camclientserverindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerIndex
+          index_field: hm2CamClientServerIndex
+    validation:
+      min: 1
+      max: 2
+  hm2camclientserverport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerPort
+          index_field: hm2CamClientServerIndex
+  hm2camclientserverreplicationinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerReplicationInterval
+          index_field: hm2CamClientServerIndex
+    validation:
+      min: 10
+      max: 1440
+  hm2camclientserverreplicationstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerReplicationStatus
+          index_field: hm2CamClientServerIndex
+  hm2camclientserverrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerRowStatus
+          index_field: hm2CamClientServerIndex
+    create_method: createAndWait
+  hm2camclientserversearchstring:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerSearchString
+          index_field: hm2CamClientServerIndex
+    validation:
+      min: 0
+      max: 100
+  hm2camclientserverssltls:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerSslTls
+          index_field: hm2CamClientServerIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2camclientserverstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamClientServerAddrEntry
+          field: hm2CamClientServerStatus
+          index_field: hm2CamClientServerIndex
+  hm2camconfigadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamConfigGroup
+          field: hm2CamConfigAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2camconfiglastvalidserverindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamConfigGroup
+          field: hm2CamConfigLastValidServerindex
+    validation:
+      min: 1
+      max: 2
+  hm2campwdchangeaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.20.4
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamPwdChangeGroup
+          field: hm2CamPwdChangeAction
+  hm2campwdchangeactionstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.20.5
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamPwdChangeGroup
+          field: hm2CamPwdChangeActionStatus
+  hm2campwdchangeusername:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.20.1
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamPwdChangeGroup
+          field: hm2CamPwdChangeUserName
+    validation:
+      min: 0
+      max: 100
+  hm2campwdchangeuserpwnew:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.20.3
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamPwdChangeGroup
+          field: hm2CamPwdChangeUserPwNew
+    validation:
+      min: 0
+      max: 100
+  hm2campwdchangeuserpwold:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.200.1.20.2
+          method: get
+      mops:
+        read:
+          mib: HM2-CAM-MGMT-MIB
+          table: hm2CamPwdChangeGroup
+          field: hm2CamPwdChangeUserPwOld
+    validation:
+      min: 0
+      max: 100

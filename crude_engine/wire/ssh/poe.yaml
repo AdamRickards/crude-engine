@@ -1,0 +1,22 @@
+version: "2.9.0"
+feature: poe-ssh
+description: "SSH CLI sources for PoE — verified from GRS1042 show inlinepower"
+
+attributes:
+  hm2poemgmtportadminenable:
+    sources:
+      ssh:
+        read: {command: "show inlinepower port", parser: table, column: 1}
+        write: {command: "inlinepower operation"}
+
+  hm2poemgmtportpowerlimit:
+    sources:
+      ssh:
+        read: {command: "show inlinepower port", parser: table, column: 4}
+        write: {command: "inlinepower power-limit {value}"}
+
+  hm2poemgmtportdetectionstatus:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show inlinepower port", parser: table, column: 3}

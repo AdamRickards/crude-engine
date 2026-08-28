@@ -1,0 +1,32 @@
+version: 2.7.0
+feature: mac
+description: MAC address table (FDB) mapping
+methods:
+  get_mac_address_table:
+    type: dict
+    primary_key: mac
+    defaults:
+      mac: ''
+      interface: ''
+      vlan: 0
+      status: other
+attributes:
+  mac:
+    wire: dot1qtpfdbaddress
+    source: q-bridge
+  interface:
+    wire: dot1qtpfdbport
+    source: q-bridge
+    value_map: bridge_port
+  vlan:
+    wire: dot1qfdbid
+    source: q-bridge
+  status:
+    wire: dot1qtpfdbstatus
+    source: q-bridge
+    value_map:
+      '1': other
+      '2': invalid
+      '3': learned
+      '4': self
+      '5': mgmt

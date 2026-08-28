@@ -1,0 +1,83 @@
+version: 2.7.0
+feature: syslog
+description: Syslog client configuration and server table
+methods:
+  get_syslog:
+    type: dict
+    defaults:
+      enabled: false
+      servers: {}
+    sub_tables:
+      servers:
+        primary_key: ip
+        field_map:
+          ip: ip
+          port: port
+          severity: severity
+          transport: transport
+        defaults:
+          ip: ''
+          port: 514
+          severity: informational
+          transport: udp
+  set_syslog:
+    type: upsert
+  create_syslog_server:
+    type: create
+    row_status: server_row_status
+    index_key: server_index
+    required: [ip]
+    defaults:
+      addr_type: 1
+      port: 514
+      severity: 6
+      transport: 1
+      log_type: 1
+  delete_syslog_server:
+    type: delete
+    row_status: server_row_status
+    index_key: server_index
+attributes:
+  enabled:
+    wire: hm2logsyslogadminstatus
+    source: logging
+  servers:
+    wire: hm2logsyslogserveripaddr
+    source: logging
+  server_index:
+    wire: hm2logsyslogserverindex
+    source: logging
+  ip:
+    wire: hm2logsyslogserveripaddr
+    source: logging
+  addr_type:
+    wire: hm2logsyslogserveripaddrtype
+    source: logging
+  port:
+    wire: hm2logsyslogserverudpport
+    source: logging
+  severity:
+    wire: hm2logsyslogserverlevelupto
+    source: logging
+    value_map:
+      '0': emergency
+      '1': alert
+      '2': critical
+      '3': error
+      '4': warning
+      '5': notice
+      '6': informational
+      '7': debug
+  transport:
+    wire: hm2logsyslogservertransporttype
+    source: logging
+    value_map:
+      '1': udp
+      '2': tls
+  log_type:
+    wire: hm2logsyslogserverlogtype
+    source: logging
+  server_row_status:
+    wire: hm2logsyslogserverrowstatus
+    source: logging
+    access: crud

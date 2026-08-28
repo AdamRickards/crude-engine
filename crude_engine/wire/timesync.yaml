@@ -1,0 +1,2607 @@
+version: 2.6.0
+feature: timesync
+schemas:
+  read_timesync:
+    type: dict
+    defaults:
+      hm2dot1asabsmaxoffset: 0
+      hm2dot1asenable: false
+      hm2dot1asissynchronized: 0
+      hm2dot1assynclowerbound: 0
+      hm2dot1assyncupperbound: 0
+      hm2irigadminstatus: false
+      hm2irigmode: 0
+      hm2irigoperstatus: false
+      hm2irigppsadminstatus: false
+      hm2irigtimemode: 0
+      hm2irigtimequality: 0
+      hm2ntpclientadminstate: false
+      hm2ntpclientlistenaddraddress: ''
+      hm2ntpclientlistenaddraddresstype: ''
+      hm2ntpclientlistenaddrentry: ''
+      hm2ntpclientlistenaddrindex: 0
+      hm2ntpclientlistenaddrport: 0
+      hm2ntpclientlistenaddrrowstatus: 0
+      hm2ntpclientlistenaddrstatus: 0
+      hm2ntpclientlistenaddrtable: ''
+      hm2ntpclientoperatingmode: 0
+      hm2ntpclientserveraddrentry: ''
+      hm2ntpclientserveraddrtable: ''
+      hm2ntpclientserveraddress: ''
+      hm2ntpclientserveraddresstype: ''
+      hm2ntpclientserverburst: false
+      hm2ntpclientserverindex: 0
+      hm2ntpclientserverinitialburst: false
+      hm2ntpclientserverport: 0
+      hm2ntpclientserverprefer: false
+      hm2ntpclientserverrowstatus: 0
+      hm2ntpclientserverstatus: 0
+      hm2ntpoperatingstate: 0
+      hm2ntpserveradminstate: false
+      hm2ntpserverlocalclockstratum: 0
+      hm2ntpserveroperatingmode: 0
+      hm2ptp2announcereceipttimeout: 0
+      hm2ptp2clockaccuracy: 0
+      hm2ptp2clockclass: 0
+      hm2ptp2clockidentity: ''
+      hm2ptp2clockquality: ''
+      hm2ptp2clockvariance: 0
+      hm2ptp2currentutcoffset: 0
+      hm2ptp2currentutcoffsetvalid: false
+      hm2ptp2delayasymmetry: 0
+      hm2ptp2delaymechanism: 0
+      hm2ptp2domainnumber: 0
+      hm2ptp2frequencytraceable: false
+      hm2ptp2grandmasterclockaccuracy: 0
+      hm2ptp2grandmasterclockclass: 0
+      hm2ptp2grandmasterclockquality: ''
+      hm2ptp2grandmasterclockvariance: 0
+      hm2ptp2grandmasteridentity: ''
+      hm2ptp2grandmasterpriority1: 0
+      hm2ptp2grandmasterpriority2: 0
+      hm2ptp2leap59: false
+      hm2ptp2leap61: false
+      hm2ptp2logannounceinterval: 0
+      hm2ptp2logdelayreqinterval: 0
+      hm2ptp2logpdelayreqinterval: ''
+      hm2ptp2logsyncinterval: ''
+      hm2ptp2meanpathdelay: 0
+      hm2ptp2networkprotocol: 0
+      hm2ptp2observedparentclockphasechangerate: 0
+      hm2ptp2observedparentoffsetscaledlogvariance: 0
+      hm2ptp2offsetfrommaster: 0
+      hm2ptp2parentportidentity: ''
+      hm2ptp2parentstats: false
+      hm2ptp2peermeanpathdelay: 0
+      hm2ptp2portcapability: []
+      hm2ptp2portenable: false
+      hm2ptp2portentry: ''
+      hm2ptp2portstate: 0
+      hm2ptp2porttable: ''
+      hm2ptp2priority1: 0
+      hm2ptp2priority2: 0
+      hm2ptp2ptptimescale: false
+      hm2ptp2stepsremoved: 0
+      hm2ptp2tccapability: []
+      hm2ptp2tcclockidentity: ''
+      hm2ptp2tccurrentmaster: ''
+      hm2ptp2tcdelayasymmetry: 0
+      hm2ptp2tcdelaymechanism: 0
+      hm2ptp2tcfaulty: false
+      hm2ptp2tclogpdelayreqinterval: ''
+      hm2ptp2tcmeanpathdelay: 0
+      hm2ptp2tcmultidomainmode: false
+      hm2ptp2tcnetworkprotocol: 0
+      hm2ptp2tcoffsetfrommaster: 0
+      hm2ptp2tcpeermeanpathdelay: 0
+      hm2ptp2tcportenable: false
+      hm2ptp2tcportentry: ''
+      hm2ptp2tcporttable: ''
+      hm2ptp2tcprimarydomain: 0
+      hm2ptp2tcsynclocalclock: false
+      hm2ptp2tcsyntonized: false
+      hm2ptp2tcvlanid: 0
+      hm2ptp2tcvlanpriority: 0
+      hm2ptp2timesource: 0
+      hm2ptp2timetraceable: false
+      hm2ptp2twostepclock: false
+      hm2ptp2v1compatibility: 0
+      hm2ptp2versionnumber: 0
+      hm2ptp2vlanid: 0
+      hm2ptp2vlanpriority: 0
+      hm2ptpabsmaxoffset: 0
+      hm2ptpclockmode: 0
+      hm2ptpenable: false
+      hm2ptpissynchronized: 0
+      hm2ptpmanagement: false
+      hm2ptpprofile: 0
+      hm2ptpsynclowerbound: 0
+      hm2ptpsyncupperbound: 0
+      hm2ptptimeseconds: 0
+      hm2sntpclientadminstate: false
+      hm2sntpclientbroadcastrecvtimeout: 0
+      hm2sntpclientdisableaftersync: false
+      hm2sntpclientinterface: 0
+      hm2sntpclientoperatingmode: 0
+      hm2sntpclientrequestinterval: 0
+      hm2sntpclientserveraddr: ''
+      hm2sntpclientserveraddrentry: ''
+      hm2sntpclientserveraddrtable: ''
+      hm2sntpclientserveraddrtype: ''
+      hm2sntpclientserverdescr: ''
+      hm2sntpclientserverindex: 0
+      hm2sntpclientserverport: 0
+      hm2sntpclientserverrowstatus: 0
+      hm2sntpclientserverstatus: ''
+      hm2sntpclientstatus: 0
+      hm2sntpserveradminstate: false
+      hm2sntpserverbroadcastaddr: ''
+      hm2sntpserverbroadcastaddrtype: ''
+      hm2sntpserverbroadcastadminstate: false
+      hm2sntpserverbroadcastinterval: 0
+      hm2sntpserverbroadcastport: 0
+      hm2sntpserverbroadcastvlan: 0
+      hm2sntpserverbroadcastvlanentry: ''
+      hm2sntpserverbroadcastvlanrowstatus: 0
+      hm2sntpserverbroadcastvlantable: ''
+      hm2sntpserverinterface: 0
+      hm2sntpserveronlyifsync: false
+      hm2sntpserverport: 0
+      hm2sntpserverstatus: 0
+      hm2systemlocaloffset: 0
+      hm2systemlocaltime: ''
+      hm2systemtimesource: 0
+      hm2systemutctime: ''
+attributes:
+  hm2dot1asabsmaxoffset:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.6.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Dot1asGlobal
+          field: hm2Dot1asAbsMaxOffset
+  hm2dot1asenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.6.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Dot1asGlobal
+          field: hm2Dot1asEnable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2dot1asissynchronized:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.6.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Dot1asGlobal
+          field: hm2Dot1asIsSynchronized
+    validation:
+      allowed:
+      - 'true'
+      - 'false'
+  hm2dot1assynclowerbound:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.6.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Dot1asGlobal
+          field: hm2Dot1asSyncLowerBound
+    validation:
+      min: 1
+      max: 999999999
+  hm2dot1assyncupperbound:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.6.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Dot1asGlobal
+          field: hm2Dot1asSyncUpperBound
+    validation:
+      min: 31
+      max: 1000000000
+  hm2irigadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2IrigGroup
+          field: hm2IrigAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2irigmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2IrigGroup
+          field: hm2IrigMode
+  hm2irigoperstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.5.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2IrigGroup
+          field: hm2IrigOperStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2irigppsadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.5.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2IrigGroup
+          field: hm2IrigPpsAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2irigtimemode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.5.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2IrigGroup
+          field: hm2IrigTimeMode
+  hm2irigtimequality:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.5.6
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2IrigGroup
+          field: hm2IrigTimeQuality
+  hm2ntpclientadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientConfigGroup
+          field: hm2NtpClientAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ntpclientlistenaddraddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientListenAddrEntry
+          field: hm2NtpClientListenAddrAddress
+          index_field: hm2NtpClientListenAddrIndex
+  hm2ntpclientlistenaddraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientListenAddrEntry
+          field: hm2NtpClientListenAddrAddressType
+          index_field: hm2NtpClientListenAddrIndex
+  hm2ntpclientlistenaddrentry:
+    syntax: Hm2NtpClientListenAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientListenAddrTable
+          field: hm2NtpClientListenAddrEntry
+  hm2ntpclientlistenaddrindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientListenAddrEntry
+          field: hm2NtpClientListenAddrIndex
+          index_field: hm2NtpClientListenAddrIndex
+    validation:
+      min: 1
+      max: 4
+  hm2ntpclientlistenaddrport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientListenAddrEntry
+          field: hm2NtpClientListenAddrPort
+          index_field: hm2NtpClientListenAddrIndex
+  hm2ntpclientlistenaddrrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientListenAddrEntry
+          field: hm2NtpClientListenAddrRowStatus
+          index_field: hm2NtpClientListenAddrIndex
+    create_method: createAndWait
+  hm2ntpclientlistenaddrstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientListenAddrEntry
+          field: hm2NtpClientListenAddrStatus
+          index_field: hm2NtpClientListenAddrIndex
+  hm2ntpclientlistenaddrtable:
+    syntax: Hm2NtpClientListenAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientGroup
+          field: hm2NtpClientListenAddrTable
+  hm2ntpclientoperatingmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientConfigGroup
+          field: hm2NtpClientOperatingMode
+  hm2ntpclientserveraddrentry:
+    syntax: Hm2NtpClientServerAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrTable
+          field: hm2NtpClientServerAddrEntry
+  hm2ntpclientserveraddrtable:
+    syntax: Hm2NtpClientServerAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientGroup
+          field: hm2NtpClientServerAddrTable
+  hm2ntpclientserveraddress:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerAddress
+          index_field: hm2NtpClientServerIndex
+  hm2ntpclientserveraddresstype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerAddressType
+          index_field: hm2NtpClientServerIndex
+  hm2ntpclientserverburst:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerBurst
+          index_field: hm2NtpClientServerIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ntpclientserverindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerIndex
+          index_field: hm2NtpClientServerIndex
+    validation:
+      min: 1
+      max: 4
+  hm2ntpclientserverinitialburst:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerInitialBurst
+          index_field: hm2NtpClientServerIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ntpclientserverport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerPort
+          index_field: hm2NtpClientServerIndex
+  hm2ntpclientserverprefer:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerPrefer
+          index_field: hm2NtpClientServerIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ntpclientserverrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerRowStatus
+          index_field: hm2NtpClientServerIndex
+    create_method: createAndWait
+  hm2ntpclientserverstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.3.4.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpClientServerAddrEntry
+          field: hm2NtpClientServerStatus
+          index_field: hm2NtpClientServerIndex
+  hm2ntpoperatingstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpGeneralGroup
+          field: hm2NtpOperatingState
+  hm2ntpserveradminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerGroup
+          field: hm2SntpServerAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ntpserverlocalclockstratum:
+    syntax: Integer32 (1..16)
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.2.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpServerConfigGroup
+          field: hm2NtpServerLocalClockStratum
+    validation:
+      min: 1
+      max: 16
+  hm2ntpserveroperatingmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.3.2.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2NtpServerConfigGroup
+          field: hm2NtpServerOperatingMode
+  hm2ptp2announcereceipttimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2AnnounceReceiptTimeout
+          index_field: ifIndex
+    validation:
+      min: 2
+      max: 10
+  hm2ptp2clockaccuracy:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ClockAccuracy
+  hm2ptp2clockclass:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ClockClass
+    validation:
+      min: 0
+      max: 255
+  hm2ptp2clockidentity:
+    syntax: PtpClockIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ClockIdentity
+  hm2ptp2clockquality:
+    syntax: PtpClockQuality
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ClockQuality
+  hm2ptp2clockvariance:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ClockVariance
+  hm2ptp2currentutcoffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.24
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2CurrentUtcOffset
+    validation:
+      min: -32768
+      max: 32767
+  hm2ptp2currentutcoffsetvalid:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.25
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2CurrentUtcOffsetValid
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2delayasymmetry:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.13
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2DelayAsymmetry
+          index_field: ifIndex
+    validation:
+      min: -2000000000
+      max: 2000000000
+  hm2ptp2delaymechanism:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2DelayMechanism
+          index_field: ifIndex
+    validation:
+      allowed:
+      - e2e
+      - p2p
+      - disabled
+  hm2ptp2domainnumber:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2DomainNumber
+    validation:
+      min: 0
+      max: 255
+  hm2ptp2frequencytraceable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.29
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2FrequencyTraceable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2grandmasterclockaccuracy:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.20
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2GrandmasterClockAccuracy
+    validation:
+      allowed:
+      - within25ns
+      - within100ns
+      - within250ns
+      - within1000ns
+      - within2500ns
+      - within10us
+      - within25us
+      - within100us
+      - within250us
+      - within1000us
+      - within2500us
+      - within10ms
+      - within25ms
+      - within100ms
+      - within250ms
+      - within1s
+      - within10s
+      - beyond10s
+      - unknown
+  hm2ptp2grandmasterclockclass:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.19
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2GrandmasterClockClass
+    validation:
+      min: 0
+      max: 255
+  hm2ptp2grandmasterclockquality:
+    syntax: PtpClockQuality
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.18
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2GrandmasterClockQuality
+  hm2ptp2grandmasterclockvariance:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.21
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2GrandmasterClockVariance
+  hm2ptp2grandmasteridentity:
+    syntax: PtpClockIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.17
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2GrandmasterIdentity
+  hm2ptp2grandmasterpriority1:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.22
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2GrandmasterPriority1
+  hm2ptp2grandmasterpriority2:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.23
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2GrandmasterPriority2
+  hm2ptp2leap59:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.26
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2Leap59
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2leap61:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.27
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2Leap61
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2logannounceinterval:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2LogAnnounceInterval
+          index_field: ifIndex
+    validation:
+      allowed:
+      - sec-1
+      - sec-2
+      - sec-4
+      - sec-8
+      - sec-16
+  hm2ptp2logdelayreqinterval:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2LogDelayReqInterval
+          index_field: ifIndex
+  hm2ptp2logpdelayreqinterval:
+    syntax: Hm2Ptp2LogPdelayReqIntervalTc
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2LogPdelayReqInterval
+          index_field: ifIndex
+  hm2ptp2logsyncinterval:
+    syntax: Hm2Ptp2LogSyncIntervalTc
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2LogSyncInterval
+          index_field: ifIndex
+  hm2ptp2meanpathdelay:
+    syntax: PtpTimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2MeanPathDelay
+  hm2ptp2networkprotocol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.11
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2NetworkProtocol
+          index_field: ifIndex
+    validation:
+      allowed:
+      - udpIpv4
+      - ieee8023
+  hm2ptp2observedparentclockphasechangerate:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.16
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ObservedParentClockPhaseChangeRate
+  hm2ptp2observedparentoffsetscaledlogvariance:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.15
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ObservedParentOffsetScaledLogVariance
+  hm2ptp2offsetfrommaster:
+    syntax: PtpTimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2OffsetFromMaster
+  hm2ptp2parentportidentity:
+    syntax: PtpPortIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ParentPortIdentity
+  hm2ptp2parentstats:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.14
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2ParentStats
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2peermeanpathdelay:
+    syntax: PtpTimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2PeerMeanPathDelay
+          index_field: ifIndex
+  hm2ptp2portcapability:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.14
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2PortCapability
+          index_field: ifIndex
+    bit_map:
+      0: reserved
+      1: one-step
+      2: e2e-delay
+      3: p2p-delay
+      4: ptp2Ieee8023
+      5: ptp2UdpIpv4
+      6: ptp2UdpIpv6
+      7: asymmCorrection
+      8: halfDuplex
+      9: ptp2UdpE2EGlobal
+  hm2ptp2portenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2PortEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2portentry:
+    syntax: Hm2Ptp2PortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortTable
+          field: hm2Ptp2PortEntry
+  hm2ptp2portstate:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2PortState
+          index_field: ifIndex
+    validation:
+      allowed:
+      - initializing
+      - faulty
+      - disabled
+      - listening
+      - pre-master
+      - master
+      - passive
+      - uncalibrated
+      - slave
+  hm2ptp2porttable:
+    syntax: Hm2Ptp2PortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Objects
+          field: hm2Ptp2PortTable
+  hm2ptp2priority1:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2Priority1
+    validation:
+      min: 0
+      max: 255
+  hm2ptp2priority2:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2Priority2
+    validation:
+      min: 0
+      max: 255
+  hm2ptp2ptptimescale:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.30
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2PtpTimescale
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2stepsremoved:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2StepsRemoved
+  hm2ptp2tccapability:
+    syntax: BITS
+    type: list
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.13
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCCapability
+    bit_map:
+      0: reserved
+      1: one-step
+      2: e2e-delay
+      3: p2p-delay
+      4: ptp2Ieee8023
+      5: ptp2UdpIpv4
+      6: ptp2UdpIpv6
+      7: asymmCorrection
+      8: halfDuplex
+  hm2ptp2tcclockidentity:
+    syntax: PtpClockIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCClockIdentity
+  hm2ptp2tccurrentmaster:
+    syntax: PtpPortIdentity
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCCurrentMaster
+  hm2ptp2tcdelayasymmetry:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.2.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCPortEntry
+          field: hm2Ptp2TCDelayAsymmetry
+          index_field: ifIndex
+    validation:
+      min: -2000000000
+      max: 2000000000
+  hm2ptp2tcdelaymechanism:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCDelayMechanism
+    validation:
+      allowed:
+      - e2e
+      - p2p
+      - e2e-optimized
+      - disabled
+  hm2ptp2tcfaulty:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCPortEntry
+          field: hm2Ptp2TCFaulty
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2tclogpdelayreqinterval:
+    syntax: Hm2Ptp2LogPdelayReqIntervalTc
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCPortEntry
+          field: hm2Ptp2TCLogPdelayReqInterval
+          index_field: ifIndex
+  hm2ptp2tcmeanpathdelay:
+    syntax: PtpTimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.10
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCMeanPathDelay
+  hm2ptp2tcmultidomainmode:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCMultiDomainMode
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2tcnetworkprotocol:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCNetworkProtocol
+    validation:
+      allowed:
+      - udpIpv4
+      - ieee8023
+  hm2ptp2tcoffsetfrommaster:
+    syntax: PtpTimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCOffsetFromMaster
+  hm2ptp2tcpeermeanpathdelay:
+    syntax: PtpTimeInterval
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCPortEntry
+          field: hm2Ptp2TCPeerMeanPathDelay
+          index_field: ifIndex
+  hm2ptp2tcportenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCPortEntry
+          field: hm2Ptp2TCPortEnable
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2tcportentry:
+    syntax: Hm2Ptp2TCPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCPortTable
+          field: hm2Ptp2TCPortEntry
+  hm2ptp2tcporttable:
+    syntax: Hm2Ptp2TCPortEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCObjects
+          field: hm2Ptp2TCPortTable
+  hm2ptp2tcprimarydomain:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCPrimaryDomain
+    validation:
+      min: 0
+      max: 255
+  hm2ptp2tcsynclocalclock:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCSyncLocalClock
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2tcsyntonized:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCSyntonized
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2tcvlanid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.11
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCVlanID
+    validation:
+      min: -1
+      max: 4095
+  hm2ptp2tcvlanpriority:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.3.1.12
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2TCConfiguration
+          field: hm2Ptp2TCVlanPriority
+    validation:
+      min: 0
+      max: 7
+  hm2ptp2timesource:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.31
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2TimeSource
+    validation:
+      allowed:
+      - atomicClock
+      - gps
+      - terrestrialRadio
+      - ptp
+      - ntp
+      - handSet
+      - other
+      - internalOscillator
+  hm2ptp2timetraceable:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.28
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2TimeTraceable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2twostepclock:
+    syntax: TruthValue
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2Configuration
+          field: hm2Ptp2TwoStepClock
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptp2v1compatibility:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.12
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2V1Compatibility
+          index_field: ifIndex
+  hm2ptp2versionnumber:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2VersionNumber
+          index_field: ifIndex
+  hm2ptp2vlanid:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.15
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2VlanID
+          index_field: ifIndex
+    validation:
+      min: -1
+      max: 4042
+  hm2ptp2vlanpriority:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.2.2.1.16
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2Ptp2PortEntry
+          field: hm2Ptp2VlanPriority
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 7
+  hm2ptpabsmaxoffset:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.7
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpAbsMaxOffset
+  hm2ptpclockmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpClockMode
+    validation:
+      allowed:
+      - v2-boundary-clock
+      - v2-transparent-clock
+  hm2ptpenable:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpEnable
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptpissynchronized:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpIsSynchronized
+    validation:
+      allowed:
+      - 'true'
+      - 'false'
+  hm2ptpmanagement:
+    syntax: TruthValue
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.9
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpManagement
+    validation:
+      allowed:
+      - true
+      - false
+  hm2ptpprofile:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpProfile
+  hm2ptpsynclowerbound:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpSyncLowerBound
+    validation:
+      min: 1
+      max: 999999999
+  hm2ptpsyncupperbound:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.6
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpSyncUpperBound
+    validation:
+      min: 31
+      max: 1000000000
+  hm2ptptimeseconds:
+    syntax: PtpTimeStamp
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.4.1.8
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2PtpGlobal
+          field: hm2PtpTimeSeconds
+  hm2sntpclientadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sntpclientbroadcastrecvtimeout:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.6
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientBroadcastRecvTimeout
+    validation:
+      min: 128
+      max: 2048
+  hm2sntpclientdisableaftersync:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientDisableAfterSync
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sntpclientinterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.7
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientInterface
+  hm2sntpclientoperatingmode:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientOperatingMode
+    validation:
+      allowed:
+      - unicast
+      - broadcast
+  hm2sntpclientrequestinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientRequestInterval
+    validation:
+      min: 5
+      max: 3600
+  hm2sntpclientserveraddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrEntry
+          field: hm2SntpClientServerAddr
+          index_field: hm2SntpClientServerIndex
+  hm2sntpclientserveraddrentry:
+    syntax: Hm2SntpClientServerAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrTable
+          field: hm2SntpClientServerAddrEntry
+  hm2sntpclientserveraddrtable:
+    syntax: Hm2SntpClientServerAddrEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientServerAddrTable
+  hm2sntpclientserveraddrtype:
+    syntax: InetAddressType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrEntry
+          field: hm2SntpClientServerAddrType
+          index_field: hm2SntpClientServerIndex
+  hm2sntpclientserverdescr:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrEntry
+          field: hm2SntpClientServerDescr
+          index_field: hm2SntpClientServerIndex
+  hm2sntpclientserverindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrEntry
+          field: hm2SntpClientServerIndex
+          index_field: hm2SntpClientServerIndex
+    validation:
+      min: 1
+      max: 4
+  hm2sntpclientserverport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrEntry
+          field: hm2SntpClientServerPort
+          index_field: hm2SntpClientServerIndex
+    validation:
+      min: 1
+      max: 65535
+  hm2sntpclientserverrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrEntry
+          field: hm2SntpClientServerRowStatus
+          index_field: hm2SntpClientServerIndex
+    create_method: createAndWait
+  hm2sntpclientserverstatus:
+    syntax: HmSntpClientServerStatus
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientServerAddrEntry
+          field: hm2SntpClientServerStatus
+          index_field: hm2SntpClientServerIndex
+  hm2sntpclientstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.3.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpClientGroup
+          field: hm2SntpClientStatus
+    validation:
+      allowed:
+      - disabled
+      - notSynchronized
+      - synchronizedToRemoteServer
+  hm2sntpserveradminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerGroup
+          field: hm2SntpServerAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sntpserverbroadcastaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastGroup
+          field: hm2SntpServerBroadcastAddr
+  hm2sntpserverbroadcastaddrtype:
+    syntax: InetAddressType
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastGroup
+          field: hm2SntpServerBroadcastAddrType
+  hm2sntpserverbroadcastadminstate:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastGroup
+          field: hm2SntpServerBroadcastAdminState
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sntpserverbroadcastinterval:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastGroup
+          field: hm2SntpServerBroadcastInterval
+    validation:
+      min: 64
+      max: 1024
+  hm2sntpserverbroadcastport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastGroup
+          field: hm2SntpServerBroadcastPort
+    validation:
+      min: 1
+      max: 65535
+  hm2sntpserverbroadcastvlan:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastVlanEntry
+          field: hm2SntpServerBroadcastVlan
+          index_field: hm2SntpServerBroadcastVlan
+  hm2sntpserverbroadcastvlanentry:
+    syntax: Hm2SntpServerBroadcastVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastVlanTable
+          field: hm2SntpServerBroadcastVlanEntry
+  hm2sntpserverbroadcastvlanrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastVlanEntry
+          field: hm2SntpServerBroadcastVlanRowStatus
+          index_field: hm2SntpServerBroadcastVlan
+    create_method: createAndWait
+  hm2sntpserverbroadcastvlantable:
+    syntax: Hm2SntpServerBroadcastVlanEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.2.10
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerBroadcastGroup
+          field: hm2SntpServerBroadcastVlanTable
+  hm2sntpserverinterface:
+    syntax: InterfaceIndexOrZero
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.1.5
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerGroup
+          field: hm2SntpServerInterface
+  hm2sntpserveronlyifsync:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerGroup
+          field: hm2SntpServerOnlyIfSync
+    validation:
+      allowed:
+      - true
+      - false
+  hm2sntpserverport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerGroup
+          field: hm2SntpServerPort
+    validation:
+      min: 1
+      max: 65535
+  hm2sntpserverstatus:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.2.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SntpServerGroup
+          field: hm2SntpServerStatus
+    validation:
+      allowed:
+      - disabled
+      - notSynchronized
+      - syncToLocal
+      - syncToRefclock
+      - syncToRemoteServer
+  hm2systemlocaloffset:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SystemTimeGroup
+          field: hm2SystemLocalOffset
+    validation:
+      min: -780
+      max: 840
+  hm2systemlocaltime:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SystemTimeGroup
+          field: hm2SystemLocalTime
+  hm2systemtimesource:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SystemTimeGroup
+          field: hm2SystemTimeSource
+    validation:
+      allowed:
+      - local
+      - sntp
+      - ntp
+      - ptp
+      - gps
+  hm2systemutctime:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.50.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TIMESYNC-MIB
+          table: hm2SystemTimeGroup
+          field: hm2SystemUtcTime

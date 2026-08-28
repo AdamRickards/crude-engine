@@ -1,0 +1,31 @@
+# Silos, not people-theatre. Today everything lands on @AdamRickards.
+# Split these when a silo gets a real owner.
+
+# Schema
+/crude_engine/schemas/ @AdamRickards
+
+# Wire / Matrix
+/crude_engine/wire/ @AdamRickards
+/crude_engine/engine/crude_matrix.yaml @AdamRickards
+/crude_engine/engine/steps.yaml @AdamRickards
+/crude_engine/engine/context_maps.yaml @AdamRickards
+/crude_engine/engine/crude.py @AdamRickards
+
+# Interpreter / Engine (starving)
+/crude_engine/engine/interpreter.py @AdamRickards
+/crude_engine/drivers/ @AdamRickards
+/crude_engine/transport_registry.py @AdamRickards
+
+# Test
+/tests/ @AdamRickards
+/scripts/check_catalogue.py @AdamRickards
+/scripts/ci_offline.sh @AdamRickards
+
+# Docs
+/docs/ @AdamRickards
+/README.md @AdamRickards
+/AGENTS.md @AdamRickards
+
+# Prime / gate invariants (cross-cutting)
+/CODEOWNERS @AdamRickards
+/.github/ @AdamRickards

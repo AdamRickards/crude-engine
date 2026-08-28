@@ -1,0 +1,17 @@
+version: "2.6.0"
+feature: snmp-community-ssh
+description: "SSH CLI sources for SNMP communities — hand-authored"
+
+attributes:
+  snmpcommunityname:
+    sources:
+      ssh:
+        read: {command: "show snmp community", parser: simple_table, column: 0}
+        create: {command: "snmp community ro {community_name}", level: config}
+        delete: {command: "no snmp community ro {index}", level: config}
+
+  snmpcommunitystatus:
+    sources:
+      ssh:
+        create: {command: "snmp community ro {community_name}", level: config}
+        delete: {command: "no snmp community ro {index}", level: config}

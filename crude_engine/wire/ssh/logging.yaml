@@ -1,0 +1,48 @@
+version: "2.6.0"
+feature: logging-ssh
+description: "SSH CLI sources for syslog — hand-authored, generator ignores *-ssh.yaml"
+
+attributes:
+  hm2logsyslogadminstatus:
+    sources:
+      ssh:
+        read: {command: "show logging syslog", field: "Syslog logging settings"}
+        write: {command: "{'' if value else 'no '}logging syslog operation"}
+
+  hm2logsyslogserveripaddr:
+    sources:
+      ssh:
+        read: {command: "show logging host", parser: paired_rows, column: 1}
+        create: {command: "logging host add {index} addr {ip} port {port} severity {severity}", level: config}
+        delete: {command: "logging host delete {index}", level: config}
+
+  hm2logsyslogserverindex:
+    sources:
+      ssh:
+        read: {command: "show logging host", parser: paired_rows, column: 0}
+
+  hm2logsyslogserverudpport:
+    sources:
+      ssh:
+        read: {command: "show logging host", parser: paired_rows, column: 2}
+
+  hm2logsyslogserverlevelupto:
+    sources:
+      ssh:
+        read: {command: "show logging host", parser: paired_rows, column: 3}
+
+  hm2logsyslogservertransporttype:
+    sources:
+      ssh:
+        read: {command: "show logging host", parser: paired_rows, line: 1, column: 0}
+
+  hm2logsyslogserverlogtype:
+    sources:
+      ssh:
+        read: {command: "show logging host", parser: paired_rows, line: 1, column: 2}
+
+  hm2logsyslogserverrowstatus:
+    sources:
+      ssh:
+        create: {command: "logging host add {index} addr {ip} port {port} severity {severity}", level: config}
+        delete: {command: "logging host delete {index}", level: config}

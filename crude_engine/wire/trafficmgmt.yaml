@@ -1,0 +1,260 @@
+version: 2.6.0
+feature: trafficmgmt
+schemas:
+  read_trafficmgmt:
+    type: dict
+    defaults:
+      hm2trafficmgmtflowcontrol: false
+      hm2trafficmgmtifegressshapingrate: 0
+      hm2trafficmgmtifegressshapingrateunit: 0
+      hm2trafficmgmtifentry: ''
+      hm2trafficmgmtifflowcontrol: false
+      hm2trafficmgmtifingressstormctlbcastmode: false
+      hm2trafficmgmtifingressstormctlbcastthreshold: 0
+      hm2trafficmgmtifingressstormctlmcastmode: false
+      hm2trafficmgmtifingressstormctlmcastthreshold: 0
+      hm2trafficmgmtifingressstormctlthresholdunit: 0
+      hm2trafficmgmtifingressstormctlucastmode: false
+      hm2trafficmgmtifingressstormctlucastthreshold: 0
+      hm2trafficmgmtiftable: ''
+      hm2trafficmgmtingressstormbuckettype: 0
+attributes:
+  hm2trafficmgmtflowcontrol:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtMibObjects
+          field: hm2TrafficMgmtFlowControl
+    validation:
+      allowed:
+      - true
+      - false
+  hm2trafficmgmtifegressshapingrate:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfEgressShapingRate
+          index_field: ifIndex
+  hm2trafficmgmtifegressshapingrateunit:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfEgressShapingRateUnit
+          index_field: ifIndex
+  hm2trafficmgmtifentry:
+    syntax: Hm2TrafficMgmtIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfTable
+          field: hm2TrafficMgmtIfEntry
+  hm2trafficmgmtifflowcontrol:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfFlowControl
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2trafficmgmtifingressstormctlbcastmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfIngressStormCtlBcastMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2trafficmgmtifingressstormctlbcastthreshold:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfIngressStormCtlBcastThreshold
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 14880000
+  hm2trafficmgmtifingressstormctlmcastmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfIngressStormCtlMcastMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2trafficmgmtifingressstormctlmcastthreshold:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfIngressStormCtlMcastThreshold
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 14880000
+  hm2trafficmgmtifingressstormctlthresholdunit:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfIngressStormCtlThresholdUnit
+          index_field: ifIndex
+    validation:
+      allowed:
+      - percent
+      - pps
+  hm2trafficmgmtifingressstormctlucastmode:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfIngressStormCtlUcastMode
+          index_field: ifIndex
+    validation:
+      allowed:
+      - true
+      - false
+  hm2trafficmgmtifingressstormctlucastthreshold:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtIfEntry
+          field: hm2TrafficMgmtIfIngressStormCtlUcastThreshold
+          index_field: ifIndex
+    validation:
+      min: 0
+      max: 14880000
+  hm2trafficmgmtiftable:
+    syntax: Hm2TrafficMgmtIfEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtMibObjects
+          field: hm2TrafficMgmtIfTable
+  hm2trafficmgmtingressstormbuckettype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.31.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-TRAFFICMGMT-MIB
+          table: hm2TrafficMgmtMibObjects
+          field: hm2TrafficMgmtIngressStormBucketType

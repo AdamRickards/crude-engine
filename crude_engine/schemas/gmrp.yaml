@@ -1,0 +1,37 @@
+version: 2.7.0
+feature: gmrp
+description: GMRP (GARP Multicast Registration Protocol) configuration
+methods:
+  get_gmrp:
+    type: dict
+    defaults:
+      enabled: false
+      unknown_multicast: flood
+      ports: {}
+    sub_tables:
+      ports:
+        primary_key: port_enabled
+        key_map: bridge_port
+        field_map:
+          enabled: port_enabled
+        defaults:
+          enabled: false
+  set_gmrp:
+    type: upsert
+    fields: [enabled, unknown_multicast]
+  set_gmrp_port:
+    type: upsert
+    fields: [port_enabled]
+attributes:
+  enabled:
+    wire: dot1dgmrpstatus
+    source: p-bridge
+  unknown_multicast:
+    wire: hm2agentswitchgmrpunknownmulticastfiltermode
+    source: platform-switching
+    value_map:
+      '0': flood
+      '1': discard
+  port_enabled:
+    wire: dot1dportgmrpstatus
+    source: p-bridge

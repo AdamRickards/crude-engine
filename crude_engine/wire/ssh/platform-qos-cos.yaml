@@ -1,0 +1,16 @@
+version: "2.9.0"
+feature: platform-qos-cos-ssh
+description: "SSH CLI sources for QoS class of service"
+
+attributes:
+  hm2agentcosmapintftrustmode:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show classofservice trust", parser: table, column: 2}
+
+  hm2agentcosmapuntrustedtrafficclass:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show classofservice trust", parser: table, column: 3}

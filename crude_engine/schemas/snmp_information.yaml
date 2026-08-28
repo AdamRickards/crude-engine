@@ -1,0 +1,22 @@
+version: 2.7.0
+feature: snmp_information
+description: NAPALM standard — system name, contact, location
+methods:
+  get_snmp_information:
+    type: dict
+    defaults:
+      chassis_id: ''
+      contact: ''
+      location: ''
+  set_snmp_information:
+    type: upsert
+attributes:
+  chassis_id:
+    wire: sysname
+    source: snmpv2
+  contact:
+    wire: syscontact
+    source: snmpv2
+  location:
+    wire: syslocation
+    source: snmpv2

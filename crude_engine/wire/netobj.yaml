@@ -1,0 +1,245 @@
+version: 2.6.0
+feature: netobj
+schemas:
+  read_netobj:
+    type: dict
+    defaults:
+      hm2netobjectscount: 0
+      hm2netobjectsdataentriescount: 0
+      hm2netobjectsdatatable: ''
+      hm2netobjectsdatatabledata: ''
+      hm2netobjectsdatatableentriescount: 0
+      hm2netobjectsdatatableentry: ''
+      hm2netobjectsdatatableindex: 0
+      hm2netobjectsdatatableobjindex: 0
+      hm2netobjectsdatatablerowstatus: 0
+      hm2netobjectsindex: 0
+      hm2netobjectsname: ''
+      hm2netobjectsrowstatus: 0
+      hm2netobjectstable: ''
+      hm2netobjectstableentry: ''
+attributes:
+  hm2netobjectscount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsObjects
+          field: hm2NetobjectsCount
+    validation:
+      min: 0
+      max: 1024
+  hm2netobjectsdataentriescount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.1.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsTableEntry
+          field: hm2NetobjectsDataEntriesCount
+          index_field: hm2NetobjectsIndex
+  hm2netobjectsdatatable:
+    syntax: Hm2NetobjectsDataTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsTables
+          field: hm2NetobjectsDataTable
+  hm2netobjectsdatatabledata:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.2.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsDataTableEntry
+          field: hm2NetobjectsDataTableData
+          index_field: hm2NetobjectsDataTableIndex
+    validation:
+      min: 1
+      max: 100
+  hm2netobjectsdatatableentriescount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsObjects
+          field: hm2NetobjectsDataTableEntriesCount
+  hm2netobjectsdatatableentry:
+    syntax: Hm2NetobjectsDataTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsDataTable
+          field: hm2NetobjectsDataTableEntry
+  hm2netobjectsdatatableindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsDataTableEntry
+          field: hm2NetobjectsDataTableIndex
+          index_field: hm2NetobjectsDataTableIndex
+    validation:
+      min: 1
+      max: 1024
+  hm2netobjectsdatatableobjindex:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsDataTableEntry
+          field: hm2NetobjectsDataTableObjIndex
+          index_field: hm2NetobjectsDataTableIndex
+    validation:
+      min: 1
+      max: 1024
+  hm2netobjectsdatatablerowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.2.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsDataTableEntry
+          field: hm2NetobjectsDataTableRowStatus
+          index_field: hm2NetobjectsDataTableIndex
+    create_method: createAndWait
+  hm2netobjectsindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsTableEntry
+          field: hm2NetobjectsIndex
+          index_field: hm2NetobjectsIndex
+    validation:
+      min: 1
+      max: 1024
+  hm2netobjectsname:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsTableEntry
+          field: hm2NetobjectsName
+          index_field: hm2NetobjectsIndex
+    validation:
+      min: 1
+      max: 50
+  hm2netobjectsrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.1.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsTableEntry
+          field: hm2NetobjectsRowStatus
+          index_field: hm2NetobjectsIndex
+    create_method: createAndWait
+  hm2netobjectstable:
+    syntax: Hm2NetobjectsTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsTables
+          field: hm2NetobjectsTable
+  hm2netobjectstableentry:
+    syntax: Hm2NetobjectsTableEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.60.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-NETOBJ-MIB
+          table: hm2NetobjectsTable
+          field: hm2NetobjectsTableEntry

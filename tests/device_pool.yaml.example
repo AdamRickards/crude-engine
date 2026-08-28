@@ -1,0 +1,11 @@
+# Copy to device_pool.yaml locally. Do not commit the live file.
+# Passwords come from the environment, not from this file.
+devices:
+  - ip: 192.0.2.10
+    label: example-lab-1
+    sw_level: L2
+    fw: "09.0.00"
+    has_capable: []
+    has_configured: []
+    safe_for: [read]
+    notes: "documentation only"

@@ -1,0 +1,181 @@
+version: 2.6.0
+feature: l2forwarding
+schemas:
+  read_l2forwarding:
+    type: dict
+    defaults:
+      hm2cosmapipdscpentry: ''
+      hm2cosmapipdscptable: ''
+      hm2cosmapipdscptrafficclass: 0
+      hm2cosmapipdscpvalue: 0
+      hm2l2vlanunawaremodeadminstatus: false
+      hm2l2vlanunawaremodeoperstatus: false
+      hm2trafficclass: 0
+      hm2trafficclassentry: ''
+      hm2trafficclasspriority: 0
+      hm2trafficclasstable: ''
+attributes:
+  hm2cosmapipdscpentry:
+    syntax: Hm2CosMapIpDscpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2CosMapIpDscpTable
+          field: hm2CosMapIpDscpEntry
+  hm2cosmapipdscptable:
+    syntax: Hm2CosMapIpDscpEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2L2ForwClassOfServiceGroup
+          field: hm2CosMapIpDscpTable
+  hm2cosmapipdscptrafficclass:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2CosMapIpDscpEntry
+          field: hm2CosMapIpDscpTrafficClass
+          index_field: hm2CosMapIpDscpValue
+    validation:
+      min: 0
+      max: 7
+  hm2cosmapipdscpvalue:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2CosMapIpDscpEntry
+          field: hm2CosMapIpDscpValue
+          index_field: hm2CosMapIpDscpValue
+    validation:
+      min: 0
+      max: 63
+  hm2l2vlanunawaremodeadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2L2ForwGeneralGroup
+          field: hm2L2VlanUnawareModeAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2l2vlanunawaremodeoperstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2L2ForwGeneralGroup
+          field: hm2L2VlanUnawareModeOperStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2trafficclass:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.1.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2TrafficClassEntry
+          field: hm2TrafficClass
+          index_field: hm2TrafficClassPriority
+    validation:
+      min: 0
+      max: 7
+  hm2trafficclassentry:
+    syntax: Hm2TrafficClassEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2TrafficClassTable
+          field: hm2TrafficClassEntry
+  hm2trafficclasspriority:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.1.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2TrafficClassEntry
+          field: hm2TrafficClassPriority
+          index_field: hm2TrafficClassPriority
+    validation:
+      min: 0
+      max: 7
+  hm2trafficclasstable:
+    syntax: Hm2TrafficClassEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.30.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-L2FORWARDING-MIB
+          table: hm2L2ForwClassOfServiceGroup
+          field: hm2TrafficClassTable

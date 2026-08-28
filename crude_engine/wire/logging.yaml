@@ -1,0 +1,1517 @@
+version: 2.6.0
+feature: logging
+schemas:
+  read_logging:
+    type: dict
+    defaults:
+      hm2logaudittrailcomment: ''
+      hm2logbufferdloglevelthreshold: ''
+      hm2logclicommandsadminstatus: false
+      hm2logconsoleadminstatus: false
+      hm2logconsoleseverityfilter: ''
+      hm2logcounterflashblock: 0
+      hm2logcounterflashcount: 0
+      hm2logcounterflashdescription: ''
+      hm2logcounterflashentry: 0
+      hm2logcounterflashtable: 0
+      hm2logcounterflashvalue: 0
+      hm2logcounteroperatinghours: 0
+      hm2logemailaction: 0
+      hm2logemailadminstatus: false
+      hm2logemailclienttlsciphersuites: ''
+      hm2logemailclienttlsversions: ''
+      hm2logemailfromaddress: ''
+      hm2logemaillogduration: 0
+      hm2logemailmailserverentry: ''
+      hm2logemailmailservertable: ''
+      hm2logemailnonurgentseverity: ''
+      hm2logemailnumemailfailures: 0
+      hm2logemailnumemailssent: 0
+      hm2logemailsmtpaddr: ''
+      hm2logemailsmtpaddrdescr: ''
+      hm2logemailsmtpaddrindex: 0
+      hm2logemailsmtpaddrtype: ''
+      hm2logemailsmtpentrystatus: 0
+      hm2logemailsmtploginid: ''
+      hm2logemailsmtppassword: ''
+      hm2logemailsmtpport: 0
+      hm2logemailsmtpsecurity: 0
+      hm2logemailsmtptimeout: 0
+      hm2logemailsubject: ''
+      hm2logemailsubjectentry: ''
+      hm2logemailsubjectentrystatus: 0
+      hm2logemailsubjectmessagetype: 0
+      hm2logemailsubjecttable: ''
+      hm2logemailtestmessagebody: ''
+      hm2logemailtestmessagetype: 0
+      hm2logemailtimeoflastmailsent: ''
+      hm2logemailtoaddraddress: ''
+      hm2logemailtoaddrentrystatus: 0
+      hm2logemailtoaddrmessageindex: 0
+      hm2logemailtoaddrmessagetype: 0
+      hm2logemailtoaddressentry: ''
+      hm2logemailtoaddresstable: ''
+      hm2logemailurgentseverity: ''
+      hm2loghumhistentry: ''
+      hm2loghumhistindex: 0
+      hm2loghumhistrangemax: 0
+      hm2loghumhistrangemin: 0
+      hm2loghumhisttable: ''
+      hm2loghumhisttime: 0
+      hm2loghummaximum: 0
+      hm2loghumminimum: 0
+      hm2logpersistadminstatus: false
+      hm2logpersistfilesmax: 0
+      hm2logpersistlevelupto: ''
+      hm2logpersistmaxfilesize: 0
+      hm2logpersistentfileentry: ''
+      hm2logpersistentfileindex: 0
+      hm2logpersistentfilename: ''
+      hm2logpersistentfilesize: 0
+      hm2logpersistentfiletable: ''
+      hm2logsnmploggetrequest: false
+      hm2logsnmploggetseverity: ''
+      hm2logsnmplogsetrequest: false
+      hm2logsnmplogsetseverity: ''
+      hm2logsyslogadminstatus: false
+      hm2logsyslogclienttlsciphersuites: ''
+      hm2logsyslogclienttlsversions: ''
+      hm2logsyslogserverentry: ''
+      hm2logsyslogserveripaddr: ''
+      hm2logsyslogserveripaddrtype: ''
+      hm2logsyslogserverindex: 0
+      hm2logsyslogserverlevelupto: 0
+      hm2logsyslogserverlogtype: 0
+      hm2logsyslogserverrowstatus: 0
+      hm2logsyslogservertable: ''
+      hm2logsyslogservertransporttype: 0
+      hm2logsyslogserverudpport: 0
+      hm2logtemphistentry: ''
+      hm2logtemphistindex: 0
+      hm2logtemphistrangemax: 0
+      hm2logtemphistrangemin: 0
+      hm2logtemphisttable: ''
+      hm2logtemphisttime: 0
+      hm2logtempmaximum: 0
+      hm2logtempminimum: 0
+      hm2logtempvariationcount: 0
+attributes:
+  hm2logaudittrailcomment:
+    syntax: DisplayString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.9.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogAuditGroup
+          field: hm2LogAuditTrailComment
+  hm2logbufferdloglevelthreshold:
+    syntax: HmAgentLogSeverity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.4.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogBufferedLoggingGroup
+          field: hm2LogBufferdLogLevelThreshold
+  hm2logclicommandsadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.2.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCliCommandsLoggingGroup
+          field: hm2LogCliCommandsAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2logconsoleadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.3.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogConsoleLoggingGroup
+          field: hm2LogConsoleAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2logconsoleseverityfilter:
+    syntax: HmAgentLogSeverity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.3.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogConsoleLoggingGroup
+          field: hm2LogConsoleSeverityFilter
+  hm2logcounterflashblock:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.7.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCounterFlashEntry
+          field: hm2LogCounterFlashBlock
+          index_field: hm2LogCounterFlashBlock
+    validation:
+      allowed:
+      - bootBlock
+      - fileSystem
+      - imageStorage
+      - parameters
+      - formatFs
+      - userFormatFs
+      - dhcpBindings
+      - persistentLog
+  hm2logcounterflashcount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.7.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCounterFlashEntry
+          field: hm2LogCounterFlashCount
+          index_field: hm2LogCounterFlashBlock
+  hm2logcounterflashdescription:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.7.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCounterFlashEntry
+          field: hm2LogCounterFlashDescription
+          index_field: hm2LogCounterFlashBlock
+  hm2logcounterflashentry:
+    syntax: Hm2LogCounterFlashEntry
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.7.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCounterFlashTable
+          field: hm2LogCounterFlashEntry
+  hm2logcounterflashtable:
+    syntax: Hm2LogCounterFlashEntry
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.7.10
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCounterGroup
+          field: hm2LogCounterFlashTable
+  hm2logcounterflashvalue:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.7.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCounterFlashEntry
+          field: hm2LogCounterFlashValue
+          index_field: hm2LogCounterFlashBlock
+  hm2logcounteroperatinghours:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.7.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogCounterGroup
+          field: hm2LogCounterOperatingHours
+  hm2logemailaction:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.9
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailAction
+  hm2logemailadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2logemailclienttlsciphersuites:
+    syntax: Hm2TlsCipherSuites
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.19
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailClientTlsCipherSuites
+  hm2logemailclienttlsversions:
+    syntax: Hm2TlsVersions
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.18
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailClientTlsVersions
+  hm2logemailfromaddress:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailFromAddress
+    validation:
+      min: 0
+      max: 255
+  hm2logemaillogduration:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.3
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailLogDuration
+    validation:
+      min: 30
+      max: 1440
+  hm2logemailmailserverentry:
+    syntax: Hm2LogEmailMailServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerTable
+          field: hm2LogEmailMailServerEntry
+  hm2logemailmailservertable:
+    syntax: Hm2LogEmailMailServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailMailServerTable
+  hm2logemailnonurgentseverity:
+    syntax: HmAgentLogSeverity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.5
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailNonUrgentSeverity
+  hm2logemailnumemailfailures:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.7
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailNumEmailFailures
+  hm2logemailnumemailssent:
+    syntax: Counter32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.6
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailNumEmailsSent
+  hm2logemailsmtpaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpAddr
+          index_field: hm2LogEmailSmtpAddrIndex
+  hm2logemailsmtpaddrdescr:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpAddrDescr
+          index_field: hm2LogEmailSmtpAddrIndex
+    validation:
+      min: 0
+      max: 255
+  hm2logemailsmtpaddrindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpAddrIndex
+          index_field: hm2LogEmailSmtpAddrIndex
+    validation:
+      min: 1
+      max: 5
+  hm2logemailsmtpaddrtype:
+    syntax: InetAddressType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpAddrType
+          index_field: hm2LogEmailSmtpAddrIndex
+  hm2logemailsmtpentrystatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.9
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpEntryStatus
+          index_field: hm2LogEmailSmtpAddrIndex
+    create_method: createAndWait
+  hm2logemailsmtploginid:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpLoginID
+          index_field: hm2LogEmailSmtpAddrIndex
+    validation:
+      min: 0
+      max: 255
+  hm2logemailsmtppassword:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpPassword
+          index_field: hm2LogEmailSmtpAddrIndex
+    validation:
+      min: 0
+      max: 255
+  hm2logemailsmtpport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpPort
+          index_field: hm2LogEmailSmtpAddrIndex
+  hm2logemailsmtpsecurity:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpSecurity
+          index_field: hm2LogEmailSmtpAddrIndex
+  hm2logemailsmtptimeout:
+    syntax: Unsigned32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.17.1.10
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailMailServerEntry
+          field: hm2LogEmailSmtpTimeout
+          index_field: hm2LogEmailSmtpAddrIndex
+    validation:
+      min: 1
+      max: 15
+  hm2logemailsubject:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.16.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailSubjectEntry
+          field: hm2LogEmailSubject
+          index_field: hm2LogEmailSubjectMessageType
+    validation:
+      min: 0
+      max: 255
+  hm2logemailsubjectentry:
+    syntax: Hm2LogEmailSubjectEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.16.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailSubjectTable
+          field: hm2LogEmailSubjectEntry
+  hm2logemailsubjectentrystatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.16.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailSubjectEntry
+          field: hm2LogEmailSubjectEntryStatus
+          index_field: hm2LogEmailSubjectMessageType
+    create_method: createAndGo
+  hm2logemailsubjectmessagetype:
+    syntax: INTEGER
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.16.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailSubjectEntry
+          field: hm2LogEmailSubjectMessageType
+          index_field: hm2LogEmailSubjectMessageType
+  hm2logemailsubjecttable:
+    syntax: Hm2LogEmailSubjectEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.16
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailSubjectTable
+  hm2logemailtestmessagebody:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.11
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailTestMessageBody
+    validation:
+      min: 0
+      max: 255
+  hm2logemailtestmessagetype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.10
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailTestMessageType
+  hm2logemailtimeoflastmailsent:
+    syntax: HmTimeSeconds1970
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.8
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailTimeOfLastMailSent
+  hm2logemailtoaddraddress:
+    syntax: SnmpAdminString
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.15.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailToAddressEntry
+          field: hm2LogEmailToAddrAddress
+          index_field: hm2LogEmailToAddrMessageIndex
+    validation:
+      min: 0
+      max: 255
+  hm2logemailtoaddrentrystatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.15.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailToAddressEntry
+          field: hm2LogEmailToAddrEntryStatus
+          index_field: hm2LogEmailToAddrMessageIndex
+    create_method: createAndWait
+  hm2logemailtoaddrmessageindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.15.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailToAddressEntry
+          field: hm2LogEmailToAddrMessageIndex
+          index_field: hm2LogEmailToAddrMessageIndex
+    validation:
+      min: 1
+      max: 10
+  hm2logemailtoaddrmessagetype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.15.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailToAddressEntry
+          field: hm2LogEmailToAddrMessageType
+          index_field: hm2LogEmailToAddrMessageIndex
+  hm2logemailtoaddressentry:
+    syntax: Hm2LogEmailToAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.15.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailToAddressTable
+          field: hm2LogEmailToAddressEntry
+  hm2logemailtoaddresstable:
+    syntax: Hm2LogEmailToAddressEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.15
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailToAddressTable
+  hm2logemailurgentseverity:
+    syntax: HmAgentLogSeverity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.10.4
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogEmailAlertGroup
+          field: hm2LogEmailUrgentSeverity
+  hm2loghumhistentry:
+    syntax: Hm2LogHumHistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumHistTable
+          field: hm2LogHumHistEntry
+  hm2loghumhistindex:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumHistEntry
+          field: hm2LogHumHistIndex
+          index_field: hm2LogHumHistIndex
+  hm2loghumhistrangemax:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumHistEntry
+          field: hm2LogHumHistRangeMax
+          index_field: hm2LogHumHistIndex
+    validation:
+      min: 0
+      max: 100
+  hm2loghumhistrangemin:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumHistEntry
+          field: hm2LogHumHistRangeMin
+          index_field: hm2LogHumHistIndex
+    validation:
+      min: 0
+      max: 100
+  hm2loghumhisttable:
+    syntax: Hm2LogHumHistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.10
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumidityGroup
+          field: hm2LogHumHistTable
+  hm2loghumhisttime:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumHistEntry
+          field: hm2LogHumHistTime
+          index_field: hm2LogHumHistIndex
+  hm2loghummaximum:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumidityGroup
+          field: hm2LogHumMaximum
+    validation:
+      min: 0
+      max: 100
+  hm2loghumminimum:
+    syntax: Unsigned32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.11.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogHumidityGroup
+          field: hm2LogHumMinimum
+    validation:
+      min: 0
+      max: 100
+  hm2logpersistadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentGroup
+          field: hm2LogPersistAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2logpersistfilesmax:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.3
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentGroup
+          field: hm2LogPersistFilesMax
+    validation:
+      min: 0
+      max: 25
+  hm2logpersistlevelupto:
+    syntax: HmAgentLogSeverity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.4
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentGroup
+          field: hm2LogPersistLevelUpto
+  hm2logpersistmaxfilesize:
+    syntax: Integer32
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentGroup
+          field: hm2LogPersistMaxFileSize
+    validation:
+      min: 0
+      max: 4096
+  hm2logpersistentfileentry:
+    syntax: Hm2LogPersistentFileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentFileTable
+          field: hm2LogPersistentFileEntry
+  hm2logpersistentfileindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.5.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentFileEntry
+          field: hm2LogPersistentFileIndex
+          index_field: hm2LogPersistentFileIndex
+  hm2logpersistentfilename:
+    syntax: DisplayString
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.5.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentFileEntry
+          field: hm2LogPersistentFileName
+          index_field: hm2LogPersistentFileIndex
+  hm2logpersistentfilesize:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.5.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentFileEntry
+          field: hm2LogPersistentFileSize
+          index_field: hm2LogPersistentFileIndex
+  hm2logpersistentfiletable:
+    syntax: Hm2LogPersistentFileEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.6.5
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogPersistentGroup
+          field: hm2LogPersistentFileTable
+  hm2logsnmploggetrequest:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.1.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSnmpLoggingGroup
+          field: hm2LogSnmpLogGetRequest
+    validation:
+      allowed:
+      - true
+      - false
+  hm2logsnmploggetseverity:
+    syntax: HmAgentLogSeverity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.1.3
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSnmpLoggingGroup
+          field: hm2LogSnmpLogGetSeverity
+  hm2logsnmplogsetrequest:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.1.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSnmpLoggingGroup
+          field: hm2LogSnmpLogSetRequest
+    validation:
+      allowed:
+      - true
+      - false
+  hm2logsnmplogsetseverity:
+    syntax: HmAgentLogSeverity
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.1.4
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSnmpLoggingGroup
+          field: hm2LogSnmpLogSetSeverity
+  hm2logsyslogadminstatus:
+    syntax: HmEnabledStatus
+    type: boolean
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogGroup
+          field: hm2LogSyslogAdminStatus
+    validation:
+      allowed:
+      - true
+      - false
+  hm2logsyslogclienttlsciphersuites:
+    syntax: Hm2TlsCipherSuites
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.3
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogGroup
+          field: hm2LogSyslogClientTlsCipherSuites
+  hm2logsyslogclienttlsversions:
+    syntax: Hm2TlsVersions
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogGroup
+          field: hm2LogSyslogClientTlsVersions
+  hm2logsyslogserverentry:
+    syntax: Hm2LogSyslogServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerTable
+          field: hm2LogSyslogServerEntry
+  hm2logsyslogserveripaddr:
+    syntax: InetAddress
+    type: string
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerIPAddr
+          index_field: hm2LogSyslogServerIndex
+  hm2logsyslogserveripaddrtype:
+    syntax: InetAddressType
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerIPAddrType
+          index_field: hm2LogSyslogServerIndex
+  hm2logsyslogserverindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerIndex
+          index_field: hm2LogSyslogServerIndex
+    validation:
+      min: 1
+      max: 8
+  hm2logsyslogserverlevelupto:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.5
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerLevelUpto
+          index_field: hm2LogSyslogServerIndex
+    validation:
+      allowed:
+      - alert
+      - critical
+      - error
+      - warning
+      - notice
+      - info
+      - debug
+  hm2logsyslogserverlogtype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.6
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerLogType
+          index_field: hm2LogSyslogServerIndex
+  hm2logsyslogserverrowstatus:
+    syntax: RowStatus
+    type: integer
+    access: crud
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.7
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerRowStatus
+          index_field: hm2LogSyslogServerIndex
+    create_method: createAndWait
+  hm2logsyslogservertable:
+    syntax: Hm2LogSyslogServerEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogGroup
+          field: hm2LogSyslogServerTable
+  hm2logsyslogservertransporttype:
+    syntax: INTEGER
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.8
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerTransportType
+          index_field: hm2LogSyslogServerIndex
+  hm2logsyslogserverudpport:
+    syntax: InetPortNumber
+    type: integer
+    access: ru
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogSyslogServerEntry
+          field: hm2LogSyslogServerUdpPort
+          index_field: hm2LogSyslogServerIndex
+  hm2logtemphistentry:
+    syntax: Hm2LogTempHistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.10.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTempHistTable
+          field: hm2LogTempHistEntry
+  hm2logtemphistindex:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.10.1.1
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTempHistEntry
+          field: hm2LogTempHistIndex
+          index_field: hm2LogTempHistIndex
+  hm2logtemphistrangemax:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.10.1.3
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTempHistEntry
+          field: hm2LogTempHistRangeMax
+          index_field: hm2LogTempHistIndex
+  hm2logtemphistrangemin:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.10.1.2
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTempHistEntry
+          field: hm2LogTempHistRangeMin
+          index_field: hm2LogTempHistIndex
+  hm2logtemphisttable:
+    syntax: Hm2LogTempHistEntry
+    type: string
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.10
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTemperatureGroup
+          field: hm2LogTempHistTable
+  hm2logtemphisttime:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.10.1.4
+          method: walk
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTempHistEntry
+          field: hm2LogTempHistTime
+          index_field: hm2LogTempHistIndex
+  hm2logtempmaximum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.2
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTemperatureGroup
+          field: hm2LogTempMaximum
+  hm2logtempminimum:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.1
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTemperatureGroup
+          field: hm2LogTempMinimum
+  hm2logtempvariationcount:
+    syntax: Integer32
+    type: integer
+    access: r
+    sources:
+      snmp:
+        read:
+          oid: 1.3.6.1.4.1.248.11.23.1.8.3
+          method: get
+      mops:
+        read:
+          mib: HM2-LOGGING-MIB
+          table: hm2LogTemperatureGroup
+          field: hm2LogTempVariationCount
