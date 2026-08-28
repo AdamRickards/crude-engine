@@ -16,6 +16,8 @@ No feature-specific Python. Wire YAMLs (generated from MIB) declare device truth
 - **Canonical output** — schemas describe the device, not the consumer
 - See [API_REFERENCE.md](docs/API_REFERENCE.md) for the full method and schema inventory
 
+![The three-gate model](docs/Images/three-gates.svg)
+
 ## Installation
 
 ```

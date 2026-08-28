@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640" role="img" aria-labelledby="title desc">
+  <title id="title">get_dns through the three gates</title>
+  <desc id="desc">One read: d.get_dns() enters via adapter and resolve_intent, Gate 1 SchemaContext, Gate 2 WireContext, Gate 3 gather_and_decode to the device, CRUDE decode, pipeline transform, Gate 1 defaults check, canonical output.</desc>
+  <style>
+    .t { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; fill: #e8ecf4; }
+    .title { font-size: 18px; font-weight: 700; }
+    .sub { font-size: 12px; fill: #8b93a7; }
+    .box-title { font-size: 13px; font-weight: 650; }
+    .box-sub { font-size: 11px; fill: #8b93a7; }
+    .lbl { font-size: 10px; fill: #5b9dff; }
+    .col { font-size: 12px; font-weight: 650; letter-spacing: 0.08em; fill: #8b93a7; }
+    .legend { font-size: 11px; fill: #8b93a7; }
+    .small { font-size: 10px; fill: #8b93a7; }
+    .mono { font-family: ui-monospace, "IBM Plex Mono", monospace; font-size: 11px; fill: #e8ecf4; }
+    .mono-m { font-family: ui-monospace, "IBM Plex Mono", monospace; font-size: 10px; fill: #8b93a7; }
+  </style>
+  <rect width="960" height="640" fill="#0b0d12"/>
+  <text class="t title" x="480" y="30" text-anchor="middle">get_dns() — one read through the three gates</text>
+  <text class="t sub" x="480" y="50" text-anchor="middle">ARCHITECTURE “How It Works”: user intent → schema YAML → gates → device → canonical dict</text>
+  <text class="t col" x="24" y="82">1  REQUEST PATH</text>
+  <rect x="24" y="96" width="216" height="56" rx="8" fill="#3a4150" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="132.0" y="118" text-anchor="middle">Adapter</text>
+  <text class="t box-sub" x="132.0" y="136" text-anchor="middle">d.get_dns()  ·  _call, is_setter=false</text>
+  <rect x="256" y="96" width="216" height="56" rx="8" fill="#3a4150" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="364.0" y="118" text-anchor="middle">resolve_intent</text>
+  <text class="t box-sub" x="364.0" y="136" text-anchor="middle">loads schemas/dns.yaml  ·  type: dict</text>
+  <rect x="488" y="96" width="216" height="56" rx="8" fill="#0f5c52" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="596.0" y="118" text-anchor="middle">Gate 1</text>
+  <text class="t box-sub" x="596.0" y="136" text-anchor="middle">SchemaContext  ·  scope from defaults</text>
+  <rect x="720" y="96" width="216" height="56" rx="8" fill="#a84b1a" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="828.0" y="118" text-anchor="middle">Gate 2</text>
+  <text class="t box-sub" x="828.0" y="136" text-anchor="middle">wire: hm2dnsclientadminstate</text>
+  <line x1="240" y1="124.0" x2="250" y2="124.0" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="248,119.0 248,129.0 256,124.0" fill="#e8ecf4"/>
+  <line x1="472" y1="124.0" x2="482" y2="124.0" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="480,119.0 480,129.0 488,124.0" fill="#e8ecf4"/>
+  <line x1="704" y1="124.0" x2="714" y2="124.0" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="712,119.0 712,129.0 720,124.0" fill="#e8ecf4"/>
+  <rect x="24" y="164" width="912" height="36" rx="6" fill="#151922" stroke="#2a3142" stroke-width="1"/>
+  <text class="t mono-m" x="480" y="186" text-anchor="middle">enabled → wire/dns.yaml hm2dnsclientadminstate  ·  snmp oid 1.3.6.1.4.1.248.11.90.1.1.1  ·  ResolvedIntent is frozen</text>
+  <text class="t col" x="24" y="230">2  GATE 3 GATHER — DEVICE ROUNDTRIP</text>
+  <rect x="24" y="244" width="280" height="64" rx="8" fill="#8b2e2e" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="164.0" y="266" text-anchor="middle">Gate 3 gather_and_decode</text>
+  <text class="t box-sub" x="164.0" y="284" text-anchor="middle">group attrs by wire source  ·  scalars GET, tables WALK</text>
+  <rect x="340" y="244" width="280" height="64" rx="8" fill="#3a4150" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="480.0" y="266" text-anchor="middle">Transport</text>
+  <text class="t box-sub" x="480.0" y="284" text-anchor="middle">SNMP GET / WALK  (or MOPS / SSH / Offline)</text>
+  <rect x="656" y="244" width="280" height="64" rx="8" fill="#2a3142" stroke="#8b93a7" stroke-width="1"/>
+  <text class="t box-title" x="796.0" y="266" text-anchor="middle">Device</text>
+  <text class="t box-sub" x="796.0" y="284" text-anchor="middle">returns raw values  ·  adminstate: 1</text>
+  <line x1="304" y1="268" x2="334" y2="268" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="332,263 332,273 340,268" fill="#e8ecf4"/>
+  <line x1="620" y1="268" x2="650" y2="268" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="648,263 648,273 656,268" fill="#e8ecf4"/>
+  <line x1="796.0" y1="308" x2="796.0" y2="336" stroke="#5b9dff" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <line x1="164.0" y1="336" x2="796.0" y2="336" stroke="#5b9dff" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <line x1="164.0" y1="336" x2="164.0" y2="314" stroke="#5b9dff" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <polygon points="159.0,316 169.0,316 164.0,308" fill="#5b9dff"/>
+  <text class="t lbl" x="480" y="328" text-anchor="middle">raw wire values return to Gate 3</text>
+  <rect x="24" y="348" width="912" height="36" rx="6" fill="#151922" stroke="#2a3142" stroke-width="1"/>
+  <text class="t mono-m" x="480" y="370" text-anchor="middle">CRUDE decode: HmEnabledStatus + boolean → crude_boolean  ·  adminstate 1 → True  (canonical shaping is engine formatters)</text>
+  <text class="t col" x="24" y="430">3  RETURN PATH</text>
+  <rect x="24" y="444" width="216" height="56" rx="8" fill="#4a3a7a" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="132.0" y="466" text-anchor="middle">Pipeline _translate</text>
+  <text class="t box-sub" x="132.0" y="484" text-anchor="middle">value_map / collect / regex per attr</text>
+  <rect x="256" y="444" width="216" height="56" rx="8" fill="#4a3a7a" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="364.0" y="466" text-anchor="middle">Output shaping</text>
+  <text class="t box-sub" x="364.0" y="484" text-anchor="middle">defaults contract  ·  sub_tables if declared</text>
+  <rect x="488" y="444" width="216" height="56" rx="8" fill="#0f5c52" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="596.0" y="466" text-anchor="middle">Gate 1 exit</text>
+  <text class="t box-sub" x="596.0" y="484" text-anchor="middle">all declared default keys present</text>
+  <rect x="720" y="444" width="216" height="56" rx="8" fill="#3a4150" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="828.0" y="466" text-anchor="middle">Adapter</text>
+  <text class="t box-sub" x="828.0" y="484" text-anchor="middle">canonical dict  ·  no consumer reshape required</text>
+  <line x1="240" y1="472.0" x2="250" y2="472.0" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="248,467.0 248,477.0 256,472.0" fill="#e8ecf4"/>
+  <line x1="472" y1="472.0" x2="482" y2="472.0" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="480,467.0 480,477.0 488,472.0" fill="#e8ecf4"/>
+  <line x1="704" y1="472.0" x2="714" y2="472.0" stroke="#e8ecf4" stroke-width="1.4"/>
+  <polygon points="712,467.0 712,477.0 720,472.0" fill="#e8ecf4"/>
+  <rect x="24" y="520" width="912" height="88" rx="8" fill="#151922" stroke="#2a3142" stroke-width="1"/>
+  <text class="t box-title" x="44" y="544">Final output — d.get_dns()</text>
+  <text class="t mono" x="44" y="568">{ "enabled": True }</text>
+  <text class="t mono-m" x="44" y="590">ARCHITECTURE example. Gate 1 egress: output matches schema defaults. Getter can lie; SNMP audit log + canonical read-back are device truth.</text>
+</svg>
