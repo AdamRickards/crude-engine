@@ -4,6 +4,8 @@
 > Context is gate output. Every layer operates on context produced by the gate it passed through.
 > No gate transit, no context, no operation.
 
+![The three-gate model](Images/three-gates.svg)
+
 ## How It Works
 
 ```
@@ -26,6 +28,8 @@
     │◀─────────────────────│───────────────────────│                      │
     │  {"enabled": True}   │                       │                      │
 ```
+
+![get_dns through the three gates](Images/get-example.svg)
 
 ## Data Flow — Three Gates, Both Directions
 
