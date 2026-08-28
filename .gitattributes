@@ -1,0 +1,3 @@
+# YAML is the product (schema + wire). Linguist hides data languages by default.
+*.yaml linguist-detectable=true
+*.yml linguist-detectable=true
