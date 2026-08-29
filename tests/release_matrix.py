@@ -33,6 +33,8 @@ CLI surface (see docs/RELEASE_GATE.md § "CLI surface"):
 from __future__ import annotations
 
 import argparse
+import functools
+import concurrent.futures
 import errno
 import fcntl
 import json
@@ -57,6 +59,7 @@ DEVICE_POOL_PATH = os.path.join(HERE, "device_pool.yaml")
 TAG_MAP_PATH = os.path.join(HERE, "tag_map.yaml")
 METHOD_EXEMPTIONS_PATH = os.path.join(HERE, "method_exemptions.yaml")
 WIRE_EXEMPTIONS_PATH = os.path.join(HERE, "wire_exemptions.yaml")
+INSPECT_YAML_PATH = os.path.join(HERE, "inspect.yaml")
 
 MATRIX_PATH = os.path.join(HERE, "release_matrix.json")
 PLAN_PATH = os.path.join(HERE, "release_test_plan.json")
@@ -343,6 +346,7 @@ def run_gather(device_ip: str | None = None,
     state.setdefault("devices", {})
     state["gathered_at"] = _now_iso()
 
+    from napalm import get_network_driver
     from napalm import get_network_driver
     driver = get_network_driver("hios")
 
@@ -2216,6 +2220,50 @@ def run_render() -> None:
 # =============================================================================
 
 
+@functools.lru_cache(maxsize=1)
+def _load_inspect_yaml() -> dict:
+    """Read tests/inspect.yaml. YAML declares; this only loads."""
+    import yaml
+    if not os.path.isfile(INSPECT_YAML_PATH):
+        raise FileNotFoundError(INSPECT_YAML_PATH)
+    with open(INSPECT_YAML_PATH) as f:
+        return yaml.safe_load(f) or {}
+
+
+def _inspect_timeout_s(protocol: str) -> float:
+    """timeout_s for one protocol from tests/inspect.yaml. No Python defaults."""
+    data = _load_inspect_yaml()
+    entry = ((data.get("protocols") or {}).get(protocol) or {})
+    if "timeout_s" not in entry:
+        raise KeyError(
+            f"tests/inspect.yaml protocols.{protocol}.timeout_s is not declared"
+        )
+    return float(entry["timeout_s"])
+
+
+def _call_with_timeout(seconds: float, fn, *args, **kwargs):
+    """Run fn, raise TimeoutError after seconds.
+
+    Do not wait for the worker on timeout: a hung device.open() must not
+    hold the sidecar RunLock. The worker thread may outlive the caller.
+    """
+    pool = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    fut = pool.submit(fn, *args, **kwargs)
+    try:
+        return fut.result(timeout=seconds)
+    except concurrent.futures.TimeoutError as exc:
+        raise TimeoutError(f"exceeded {seconds}s") from exc
+    finally:
+        pool.shutdown(wait=False)
+
+
+def _jsonable(obj):
+    try:
+        return json.loads(json.dumps(obj, default=str))
+    except TypeError:
+        return repr(obj)[:500]
+
+
 def run_inspect(method_name: str | None,
                 device_filter: str | None,
                 protocol_filter: str | None,
@@ -2223,48 +2271,56 @@ def run_inspect(method_name: str | None,
                 trace: bool = False,
                 no_validate: bool = False,
                 username: str = "admin",
-                password: str = "private") -> int:
+                password: str = "private"):
     """Investigation mode for fault finding.
 
     Runs the named read method on the named device across every supported
-    protocol (or just the named one). Dumps raw return data side-by-side,
-    runs the parity check, prints the result. Does NOT write to the matrix
-    DB or modify any persisted state.
+    protocol (or just the named one). Prints for interactive use AND returns
+    a dict the sidecar can put on the wire:
 
-    Engine flag passthrough:
-      trace=True       — capture device.last_trace, dump pipeline steps
-      no_validate=True — pass validate=False (skip gate rejection)
-      napalm_compat=False is always set (we want raw engine output)
+        {
+          "exit": 0|2,
+          "method": ...,
+          "device": ...,
+          "protocols": {proto: {status, elapsed_ms, raw|error}},
+          "parity_diffs": [...],
+        }
 
-    Use this instead of writing throwaway Python scripts when you need to
-    see what a getter actually returns. The harness has the wiring; use it.
+    `exit` 2 is usage (missing method/device). `exit` 0 means the inspect
+    ran; it is not "all protocols agreed." Parity diffs stay in
+    parity_diffs so callers can file issues. Does NOT write the matrix DB.
     """
-    from audit_common import load_all_method_metadata
-    from napalm import get_network_driver
+    def usage(msg: str) -> dict:
+        print(msg)
+        return {
+            "exit": 2,
+            "error": msg,
+            "method": method_name,
+            "device": device_filter,
+            "protocols": {},
+            "parity_diffs": [],
+        }
 
     if not method_name:
-        print("--inspect requires --method")
-        return 2
+        return usage("--inspect requires --method")
     if not device_filter:
-        print("--inspect requires --device")
-        return 2
+        return usage("--inspect requires --device")
 
+    from audit_common import load_all_method_metadata
     schemas_meta = load_all_method_metadata()
     if method_name not in schemas_meta:
-        print(f"unknown method: {method_name}")
-        return 2
+        return usage(f"unknown method: {method_name}")
 
     meta = schemas_meta[method_name]
     if meta["kind"] != "read":
-        print(f"--inspect only supports read methods (got {meta['kind']})")
-        return 2
+        return usage(f"--inspect only supports read methods (got {meta['kind']})")
 
     declared_protocols = sorted(meta["protocols"])
     if protocol_filter:
         if protocol_filter not in declared_protocols:
-            print(f"protocol {protocol_filter!r} has no wire source for {method_name}")
-            print(f"declared protocols for this method: {declared_protocols}")
-            return 2
+            return usage(
+                f"protocol {protocol_filter!r} has no wire source for {method_name}"
+            )
         protocols = [protocol_filter]
     else:
         protocols = declared_protocols
@@ -2288,61 +2344,81 @@ def run_inspect(method_name: str | None,
 
     driver = get_network_driver("hios")
     raw_results: dict[str, object] = {}
+    protocols_out: dict[str, dict] = {}
 
-    # Build the kwargs we'll pass to the method — these flow through the
-    # adapter to the engine via _call(). napalm_compat=False is the inspect
-    # default so we get the raw schema-shaped output, not NAPALM reshape.
     call_kwargs: dict = {"napalm_compat": False}
     if trace:
         call_kwargs["trace"] = True
     if no_validate:
         call_kwargs["validate"] = False
 
-    for proto in protocols:
-        print(f"--- {proto} ---")
-        try:
-            device = driver(device_filter, username, password,
-                            optional_args={"protocol": proto})
-            device.open()
-        except Exception as e:
-            print(f"  CONNECT FAILED: {str(e)[:200]}")
-            print()
-            continue
-
-        import time as _time
-        t0 = _time.monotonic()
-        raw = None
-        err = None
+    def _one_protocol(proto: str):
+        device = driver(device_filter, username, password,
+                        optional_args={"protocol": proto})
+        device.open()
+        last_trace = None
         try:
             fn = getattr(device, method_name)
             try:
                 raw = fn(**call_kwargs)
             except TypeError:
-                # Some methods may not accept all kwargs — retry minimal
                 raw = fn()
-        except Exception as e:
-            err = str(e)[:300]
-        elapsed_ms = round((_time.monotonic() - t0) * 1000)
+            if trace:
+                last_trace = getattr(device, "last_trace", None)
+            if isinstance(raw, tuple):
+                raw = raw[0]
+            return raw, last_trace
+        finally:
+            try:
+                device.close()
+            except Exception:
+                pass
 
-        # Capture last_trace if trace was requested
-        last_trace = None
-        if trace:
-            last_trace = getattr(device, "last_trace", None)
-
+    for proto in protocols:
         try:
-            device.close()
-        except Exception:
-            pass
-
-        if err:
-            print(f"  DISPATCH ERROR: {err}")
+            budget = _inspect_timeout_s(proto)
+        except (KeyError, FileNotFoundError, ValueError, TypeError) as e:
+            print(f"--- {proto} ---")
+            print(f"  UNDECLARED TIMEOUT: {e}")
             print()
+            protocols_out[proto] = {
+                "status": "dispatch_error",
+                "elapsed_ms": 0,
+                "error": str(e),
+            }
+            continue
+        print(f"--- {proto} (timeout {budget}s) ---")
+        t0 = time.monotonic()
+        try:
+            raw, last_trace = _call_with_timeout(budget, _one_protocol, proto)
+        except TimeoutError as e:
+            elapsed_ms = round((time.monotonic() - t0) * 1000)
+            print(f"  TIMEOUT: {e}")
+            print()
+            protocols_out[proto] = {
+                "status": "timeout",
+                "elapsed_ms": elapsed_ms,
+                "error": str(e),
+            }
+            continue
+        except Exception as e:
+            elapsed_ms = round((time.monotonic() - t0) * 1000)
+            msg = str(e)[:300]
+            # open() failures vs dispatch: both are per-protocol signal
+            status = "connect_failed" if "CONNECT" in msg.upper() or elapsed_ms < 50 else "dispatch_error"
+            # Prefer connect_failed when open() raised before a getter exists
+            if "open" in msg.lower() or elapsed_ms == 0:
+                status = "connect_failed"
+            print(f"  {status.upper()}: {msg[:200]}")
+            print()
+            protocols_out[proto] = {
+                "status": status,
+                "elapsed_ms": elapsed_ms,
+                "error": msg,
+            }
             continue
 
-        # Strip tuple wrapping (some methods return (result, trace) tuples)
-        if isinstance(raw, tuple):
-            raw = raw[0]
-
+        elapsed_ms = round((time.monotonic() - t0) * 1000)
         print(f"  time_ms={elapsed_ms}")
 
         if isinstance(raw, dict):
@@ -2367,7 +2443,6 @@ def run_inspect(method_name: str | None,
         if raw is not None:
             raw_results[proto] = raw
 
-        # Trace dump
         if trace and last_trace:
             print(f"  trace ({len(last_trace)} entries):")
             for entry in last_trace:
@@ -2387,11 +2462,16 @@ def run_inspect(method_name: str | None,
             print(f"  trace: (empty — device.last_trace was None)")
 
         print()
+        protocols_out[proto] = {
+            "status": "ok",
+            "elapsed_ms": elapsed_ms,
+            "raw": _jsonable(raw),
+        }
 
-    # Cross-protocol parity check (uses the same _compute_parity as the gate)
+    diffs: list = []
     if len(raw_results) >= 2:
         print("=== parity ===")
-        diffs = _compute_parity(method_name, meta, raw_results)
+        diffs = list(_compute_parity(method_name, meta, raw_results) or [])
         if not diffs:
             print("  PARITY OK — all protocols return matching values for "
                   "non-timing fields")
@@ -2403,7 +2483,14 @@ def run_inspect(method_name: str | None,
         print("=== parity ===")
         print("  (need ≥ 2 protocols with results to compare)")
 
-    return 0
+    return {
+        "exit": 0,
+        "method": method_name,
+        "device": device_filter,
+        "protocols": protocols_out,
+        "parity_diffs": _jsonable(diffs),
+    }
+
 
 
 # =============================================================================
@@ -2482,12 +2569,15 @@ def main():
         return 0
 
     if args.inspect:
-        return run_inspect(method_name=args.method,
-                           device_filter=args.device,
-                           protocol_filter=args.protocol,
-                           schema_filter=args.schema,
-                           trace=args.trace,
-                           no_validate=args.no_validate)
+        inspect_out = run_inspect(method_name=args.method,
+                                  device_filter=args.device,
+                                  protocol_filter=args.protocol,
+                                  schema_filter=args.schema,
+                                  trace=args.trace,
+                                  no_validate=args.no_validate)
+        if isinstance(inspect_out, dict):
+            return int(inspect_out.get("exit", 0))
+        return inspect_out
 
     did_something = False
 

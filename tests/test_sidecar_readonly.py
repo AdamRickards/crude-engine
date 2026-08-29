@@ -53,16 +53,24 @@ def main():
     else:
         errors += ok("get_dns.read → --inspect --method get_dns")
 
-    if call_inspect("get_dns", None) != 0:
-        errors += fail("fake inspect should return 0 without a device")
+    fake = call_inspect("get_dns", None)
+    if not isinstance(fake, dict) or fake.get("exit") != 0 or not fake.get("fake"):
+        errors += fail(f"fake inspect should return dict exit=0 fake=True, got {fake!r}")
     else:
         errors += ok("fake/mocked inspect (no switch)")
 
     code, body = handle_run({"name": "get_dns.read"})
-    if code != 200 or body.get("result", {}).get("rollback") != "not_armed":
+    result = body.get("result") or {}
+    if (
+        code != 200
+        or result.get("rollback") != "not_armed"
+        or "parity_diffs" not in result
+        or "protocols" not in result
+        or result.get("passed") is not True
+    ):
         errors += fail(f"get_dns.read → {code} {body}")
     else:
-        errors += ok("POST get_dns.read → 200 rollback=not_armed")
+        errors += ok("POST get_dns.read → 200 rollback=not_armed + inspect map")
 
     code, body = handle_run({"name": "set_dns.roundtrip"})
     if code != 400 or body.get("error") != "bad_name":

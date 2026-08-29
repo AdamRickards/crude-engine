@@ -205,6 +205,8 @@ components:
         - rollback
         - expected
         - actual
+        - protocols
+        - parity_diffs
       properties:
         name:
           type: string
@@ -212,11 +214,10 @@ components:
         passed:
           type: boolean
           description: |
-            true only when expected matches actual on first-class
-            outcomes, audit.diff.buckets is empty, and timings have not
-            regressed (a timing regression fails like `wrong_encoding`).
-            Pass/fail is not sufficient by itself; callers must also
-            read commands_sent, comms, and rollback.
+            For read-only inspect: true when at least one protocol
+            returned data (or fake/offline transport). Protocol
+            disagreement does not flip this to false. Callers file
+            GitHub issues from `parity_diffs`, not from `passed`.
         commands_sent:
           type: boolean
           description: Whether the sidecar dispatched commands toward the device.
@@ -228,6 +229,30 @@ components:
           $ref: '#/components/schemas/Outcomes'
         actual:
           $ref: '#/components/schemas/Outcomes'
+        protocols:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              status:
+                type: string
+                enum: [ok, connect_failed, dispatch_error, timeout]
+              elapsed_ms:
+                type: integer
+                minimum: 0
+              raw: {}
+              error:
+                type: string
+          description: |
+            Per-protocol inspect outcome. Timeouts come from
+            tests/inspect.yaml (YAML declares, Python interprets).
+        parity_diffs:
+          type: array
+          description: |
+            Cross-protocol diffs from the harness parity check.
+            Empty if fewer than two protocols returned data, or they
+            matched. Non-empty is issue-proof, not a failed GET.
+          items: {}
     Outcomes:
       type: object
       additionalProperties: false
