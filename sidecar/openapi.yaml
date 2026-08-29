@@ -240,12 +240,26 @@ components:
               elapsed_ms:
                 type: integer
                 minimum: 0
+                description: open_ms + call_ms. Informational; not a fail bit.
+              open_ms:
+                type: integer
+                minimum: 0
+                nullable: true
+              call_ms:
+                type: integer
+                minimum: 0
+                nullable: true
+              phase:
+                type: string
+                enum: [open, call]
+                description: Set on timeout/connect_failed/dispatch_error.
               raw: {}
               error:
                 type: string
           description: |
-            Per-protocol inspect outcome. Timeouts come from
-            tests/inspect.yaml (YAML declares, Python interprets).
+            Per-protocol inspect outcome. open_timeout_s and
+            call_timeout_s come from tests/inspect.yaml (YAML declares,
+            Python interprets). Combined wall time is not a failure.
         parity_diffs:
           type: array
           description: |

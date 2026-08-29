@@ -2232,15 +2232,15 @@ def _load_inspect_yaml() -> dict:
         return yaml.safe_load(f) or {}
 
 
-def _inspect_timeout_s(protocol: str) -> float:
-    """timeout_s for one protocol from tests/inspect.yaml. No Python defaults."""
+def _inspect_budget_s(protocol: str, key: str) -> float:
+    """One budget from tests/inspect.yaml. key is open_timeout_s or call_timeout_s."""
     data = _load_inspect_yaml()
     entry = ((data.get("protocols") or {}).get(protocol) or {})
-    if "timeout_s" not in entry:
+    if key not in entry:
         raise KeyError(
-            f"tests/inspect.yaml protocols.{protocol}.timeout_s is not declared"
+            f"tests/inspect.yaml protocols.{protocol}.{key} is not declared"
         )
-    return float(entry["timeout_s"])
+    return float(entry[key])
 
 
 def _call_with_timeout(seconds: float, fn, *args, **kwargs):
@@ -2284,7 +2284,7 @@ def run_inspect(method_name: str | None,
           "exit": 0|2,
           "method": ...,
           "device": ...,
-          "protocols": {proto: {status, elapsed_ms, raw|error}},
+          "protocols": {proto: {status, open_ms, call_ms, elapsed_ms, raw|error}},
           "parity_diffs": [...],
         }
 
@@ -2356,31 +2356,35 @@ def run_inspect(method_name: str | None,
     if no_validate:
         call_kwargs["validate"] = False
 
-    def _one_protocol(proto: str):
+    def _close_quiet(dev):
+        if dev is None:
+            return
+        try:
+            dev.close()
+        except Exception:
+            pass
+
+    def _open_proto(proto: str):
         device = driver(device_filter, username, password,
                         optional_args={"protocol": proto})
         device.open()
-        last_trace = None
+        return device
+
+    def _call_proto(dev):
+        fn = getattr(dev, method_name)
         try:
-            fn = getattr(device, method_name)
-            try:
-                raw = fn(**call_kwargs)
-            except TypeError:
-                raw = fn()
-            if trace:
-                last_trace = getattr(device, "last_trace", None)
-            if isinstance(raw, tuple):
-                raw = raw[0]
-            return raw, last_trace
-        finally:
-            try:
-                device.close()
-            except Exception:
-                pass
+            raw = fn(**call_kwargs)
+        except TypeError:
+            raw = fn()
+        last_trace = getattr(dev, "last_trace", None) if trace else None
+        if isinstance(raw, tuple):
+            raw = raw[0]
+        return raw, last_trace
 
     for proto in protocols:
         try:
-            budget = _inspect_timeout_s(proto)
+            open_s = _inspect_budget_s(proto, "open_timeout_s")
+            call_s = _inspect_budget_s(proto, "call_timeout_s")
         except (KeyError, FileNotFoundError, ValueError, TypeError) as e:
             print(f"--- {proto} ---")
             print(f"  UNDECLARED TIMEOUT: {e}")
@@ -2388,42 +2392,84 @@ def run_inspect(method_name: str | None,
             protocols_out[proto] = {
                 "status": "dispatch_error",
                 "elapsed_ms": 0,
+                "open_ms": None,
+                "call_ms": None,
                 "error": str(e),
             }
             continue
-        print(f"--- {proto} (timeout {budget}s) ---")
-        t0 = time.monotonic()
+        print(f"--- {proto} (open {open_s}s / call {call_s}s) ---")
+        device = None
+        open_ms = None
+        call_ms = None
+        t_open = time.monotonic()
         try:
-            raw, last_trace = _call_with_timeout(budget, _one_protocol, proto)
+            device = _call_with_timeout(open_s, _open_proto, proto)
         except TimeoutError as e:
-            elapsed_ms = round((time.monotonic() - t0) * 1000)
-            print(f"  TIMEOUT: {e}")
+            open_ms = round((time.monotonic() - t_open) * 1000)
+            print(f"  OPEN TIMEOUT: {e} open_ms={open_ms}")
             print()
             protocols_out[proto] = {
                 "status": "timeout",
-                "elapsed_ms": elapsed_ms,
+                "phase": "open",
+                "elapsed_ms": open_ms,
+                "open_ms": open_ms,
+                "call_ms": None,
                 "error": str(e),
             }
             continue
         except Exception as e:
-            elapsed_ms = round((time.monotonic() - t0) * 1000)
+            open_ms = round((time.monotonic() - t_open) * 1000)
             msg = str(e)[:300]
-            # open() failures vs dispatch: both are per-protocol signal
-            status = "connect_failed" if "CONNECT" in msg.upper() or elapsed_ms < 50 else "dispatch_error"
-            # Prefer connect_failed when open() raised before a getter exists
-            if "open" in msg.lower() or elapsed_ms == 0:
-                status = "connect_failed"
-            print(f"  {status.upper()}: {msg[:200]}")
+            print(f"  CONNECT_FAILED: {msg[:200]}")
             print()
+            _close_quiet(device)
             protocols_out[proto] = {
-                "status": status,
-                "elapsed_ms": elapsed_ms,
+                "status": "connect_failed",
+                "phase": "open",
+                "elapsed_ms": open_ms,
+                "open_ms": open_ms,
+                "call_ms": None,
                 "error": msg,
             }
             continue
+        open_ms = round((time.monotonic() - t_open) * 1000)
 
-        elapsed_ms = round((time.monotonic() - t0) * 1000)
-        print(f"  time_ms={elapsed_ms}")
+        t_call = time.monotonic()
+        try:
+            raw, last_trace = _call_with_timeout(call_s, _call_proto, device)
+        except TimeoutError as e:
+            call_ms = round((time.monotonic() - t_call) * 1000)
+            print(f"  CALL TIMEOUT: {e} open_ms={open_ms} call_ms={call_ms}")
+            print()
+            _close_quiet(device)
+            protocols_out[proto] = {
+                "status": "timeout",
+                "phase": "call",
+                "elapsed_ms": (open_ms or 0) + call_ms,
+                "open_ms": open_ms,
+                "call_ms": call_ms,
+                "error": str(e),
+            }
+            continue
+        except Exception as e:
+            call_ms = round((time.monotonic() - t_call) * 1000)
+            msg = str(e)[:300]
+            print(f"  DISPATCH_ERROR: {msg[:200]}")
+            print()
+            _close_quiet(device)
+            protocols_out[proto] = {
+                "status": "dispatch_error",
+                "phase": "call",
+                "elapsed_ms": (open_ms or 0) + call_ms,
+                "open_ms": open_ms,
+                "call_ms": call_ms,
+                "error": msg,
+            }
+            continue
+        call_ms = round((time.monotonic() - t_call) * 1000)
+        _close_quiet(device)
+        elapsed_ms = (open_ms or 0) + call_ms
+        print(f"  open_ms={open_ms} call_ms={call_ms} elapsed_ms={elapsed_ms}")
 
         if isinstance(raw, dict):
             print(f"  raw type=dict len={len(raw)}")
@@ -2469,6 +2515,8 @@ def run_inspect(method_name: str | None,
         protocols_out[proto] = {
             "status": "ok",
             "elapsed_ms": elapsed_ms,
+            "open_ms": open_ms,
+            "call_ms": call_ms,
             "raw": _jsonable(raw),
         }
 
