@@ -43,14 +43,14 @@ attributes:
   hm2dnsclientserveraddress:
     sources:
       ssh:
-        read: {command: "show dns client servers", parser: table, column: 1}
+        read: {command: "show dns client servers", parser: table, column: 1, key_column: 0}
         create: {command: "dns client servers add {index} ip {address}", level: config}
         delete: {command: "dns client servers delete {index}", level: config, confirm: "y"}
 
   hm2dnsclientserverindex:
     sources:
       ssh:
-        read: {command: "show dns client servers", parser: table, column: 0}
+        read: {command: "show dns client servers", parser: table, column: 0, key_column: 0}
 
   hm2dnsclientserverrowstatus:
     sources:
