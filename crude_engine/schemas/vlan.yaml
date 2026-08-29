@@ -5,6 +5,8 @@ methods:
   get_vlans:
     type: dict
     primary_key: vlan_id
+    # SNMP: accessible dot1qVlanStaticTable, vlan_id from walk suffix.
+    # Not CurrentTable INDEX (1.17 same-wire).
     defaults:
       name: ''
       ports: {}
