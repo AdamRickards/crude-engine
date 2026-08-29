@@ -100,8 +100,22 @@ def pick_device_ip():
     return None
 
 
-def shape_inspect(name, rc):
-    passed = rc == 0
+def shape_inspect(name, inspect_out):
+    """HTTP body for a read inspect. passed = at least one protocol ok (or fake).
+
+    parity_diffs are first-class: callers file GitHub issues from them.
+    Disagreement does not flip passed to false.
+    """
+    if not isinstance(inspect_out, dict):
+        inspect_out = {"exit": 0 if inspect_out in (0, None) else inspect_out,
+                       "protocols": {}, "parity_diffs": []}
+    fake = bool(inspect_out.get("fake"))
+    protocols = inspect_out.get("protocols") or {}
+    diffs = inspect_out.get("parity_diffs") or []
+    if not isinstance(diffs, list):
+        diffs = [diffs]
+    any_ok = any((p or {}).get("status") == "ok" for p in protocols.values())
+    passed = True if fake else any_ok
     comms = "ok" if passed else "lost"
     expected = {"comms": "ok", "rollback": "not_armed"}
     actual = {"comms": comms, "rollback": "not_armed"}
@@ -114,6 +128,8 @@ def shape_inspect(name, rc):
             "rollback": "not_armed",
             "expected": expected,
             "actual": actual,
+            "protocols": protocols,
+            "parity_diffs": diffs,
         },
         "audit": {"diff": {"buckets": []}},
         "timings": {
@@ -130,7 +146,14 @@ def shape_inspect(name, rc):
 def call_inspect(method, device, protocol=None):
     """Call tests/release_matrix.py::run_inspect. Fake transport does not."""
     if transport() in ("fake", "offline"):
-        return 0
+        return {
+            "exit": 0,
+            "fake": True,
+            "method": method,
+            "device": device,
+            "protocols": {},
+            "parity_diffs": [],
+        }
     tests_dir = str(ROOT / "tests")
     if tests_dir not in sys.path:
         sys.path.insert(0, tests_dir)
@@ -138,16 +161,13 @@ def call_inspect(method, device, protocol=None):
 
     user = os.environ.get("CRUDE_DEVICE_USERNAME") or "admin"
     password = os.environ.get("CRUDE_DEVICE_PASSWORD") or ""
-    t0 = time.perf_counter()
-    rc = rm.run_inspect(
+    return rm.run_inspect(
         method,
         device,
         protocol,
         username=user,
         password=password,
     )
-    _ = t0
-    return rc
 
 
 def handle_run(payload):
@@ -191,15 +211,21 @@ def handle_run(payload):
     if not LOCK.acquire():
         return 409, {"error": "lock_held", "message": "lab lock is held", "name": name}
     try:
-        rc = call_inspect(method, device, protocol)
-        if rc not in (0, None) and rc != 0:
-            if rc == 2:
+        out = call_inspect(method, device, protocol)
+        if isinstance(out, dict) and out.get("exit") == 2:
+            return 503, {
+                "error": "not_ready",
+                "message": out.get("error") or "release_matrix --inspect usage error",
+                "name": name,
+            }
+        if not isinstance(out, dict) and out not in (0, None):
+            if out == 2:
                 return 503, {
                     "error": "not_ready",
                     "message": "release_matrix --inspect returned 2",
                     "name": name,
                 }
-        return 200, shape_inspect(name, 0 if rc in (0, None) else rc)
+        return 200, shape_inspect(name, out)
     finally:
         LOCK.release()
 

@@ -1,0 +1,19 @@
+# inspect.yaml — harness inspect budgets. TEST infrastructure, not engine
+# schemas. crude_engine does not read this file. tests/release_matrix.py
+# ::run_inspect and the sidecar (which calls it) do.
+#
+# YAML declares per-protocol timeout_s. Python only interprets. Do not
+# hardcode seconds in release_matrix.py. One flat timeout is wrong:
+# MOPS is usually one call; SNMP is multi-turn when a method has a
+# sub_table (scalar get_cmd plus bulk_cmd walk) plus per-OID fallback;
+# SSH/CLI is the noisiest (prompt, pagination).
+#
+# These numbers are starting budgets, not a second floor. Tune here.
+
+protocols:
+  mops:
+    timeout_s: 2
+  snmp:
+    timeout_s: 5
+  ssh:
+    timeout_s: 8
