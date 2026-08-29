@@ -257,6 +257,43 @@ def _fanout() -> int:
                 f"hung sibling isolated ({wall:.2f}s); others {others}; "
                 "no cross-thread close"
             )
+
+        class _WithCli:
+            def __init__(self, *args, **kwargs):
+                blob = [
+                    {
+                        "command": "show dns client servers",
+                        "level": "enable",
+                        "response": "Index Address\n0 1.1.1.1",
+                    }
+                ]
+                self._transports = {"ssh": type("T", (), {"last_cli": blob})()}
+
+            def open(self):
+                pass
+
+            def get_dns(self, **kwargs):
+                return {"enabled": True, "servers": {"0": {"address": "1.1.1.1"}}}
+
+            def close(self):
+                pass
+
+        rm.get_network_driver = lambda _name: _WithCli
+        rm._inspect_budget_s = lambda proto, key: 1.0
+        quiet = rm.run_inspect("get_dns", "192.0.2.10", "ssh")
+        ssh = (quiet.get("protocols") or {}).get("ssh") or {}
+        if "cli" in ssh:
+            rc |= fail(f"cli present without trace: {ssh}")
+        else:
+            rc |= ok("no cli on default inspect")
+        traced = rm.run_inspect("get_dns", "192.0.2.10", "ssh", trace=True)
+        ssh = (traced.get("protocols") or {}).get("ssh") or {}
+        cli = ssh.get("cli") or []
+        cmds = [c.get("command") for c in cli]
+        if "show dns client servers" not in cmds:
+            rc |= fail(f"trace last_cli missing show: {cli}")
+        else:
+            rc |= ok("trace last_cli round-trips show dns client servers")
     finally:
         rm.get_network_driver = orig_driver
         rm._inspect_budget_s = orig_budget

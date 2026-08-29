@@ -183,6 +183,12 @@ components:
             Generated catalog entry name. Examples (not an enum):
             `get_dns.read`, `set_dns.roundtrip`, `dns.lifecycle.mops`.
           example: get_dns.read
+        trace:
+          type: boolean
+          description: |
+            Opt-in. When true, inspect copies SSH command/response
+            text onto each protocol result as `cli`. Default polls
+            omit this. Does not change parse or what is sent.
     RunResponse:
       type: object
       additionalProperties: false
@@ -256,10 +262,26 @@ components:
               raw: {}
               error:
                 type: string
+              cli:
+                type: array
+                description: |
+                  Present when request.trace is true. SSH: command +
+                  response text the table parser saw. Not a parse change.
+                items:
+                  type: object
+                  properties:
+                    command:
+                      type: string
+                    level:
+                      type: string
+                    response:
+                      type: string
+              trace: {}
           description: |
             Per-protocol inspect outcome. open_timeout_s and
             call_timeout_s come from tests/inspect.yaml (YAML declares,
             Python interprets). Combined wall time is not a failure.
+            Opt-in `cli` is the raw SSH show text for debug.
         parity_diffs:
           type: array
           description: |

@@ -143,7 +143,7 @@ def shape_inspect(name, inspect_out):
     }
 
 
-def call_inspect(method, device, protocol=None):
+def call_inspect(method, device, protocol=None, trace=False):
     """Call tests/release_matrix.py::run_inspect. Fake transport does not."""
     if transport() in ("fake", "offline"):
         return {
@@ -165,6 +165,7 @@ def call_inspect(method, device, protocol=None):
         method,
         device,
         protocol,
+        trace=bool(trace),
         username=user,
         password=password,
     )
@@ -172,9 +173,10 @@ def call_inspect(method, device, protocol=None):
 
 def handle_run(payload):
     """Return (status_code, body). Refuses non-reads before inspect."""
-    if not isinstance(payload, dict) or set(payload.keys()) - {"name"}:
-        return 400, {"error": "bad_name", "message": 'body must be {"name": ...}'}
+    if not isinstance(payload, dict) or set(payload.keys()) - {"name", "trace"}:
+        return 400, {"error": "bad_name", "message": 'body must be {"name": ...} or {"name": ..., "trace": true}'}
     name = payload.get("name")
+    trace = bool(payload.get("trace"))
     if not well_formed(name):
         return 400, {"error": "bad_name", "message": "not a catalog test name", "name": name}
 
@@ -211,7 +213,7 @@ def handle_run(payload):
     if not LOCK.acquire():
         return 409, {"error": "lock_held", "message": "lab lock is held", "name": name}
     try:
-        out = call_inspect(method, device, protocol)
+        out = call_inspect(method, device, protocol, trace=trace)
         if isinstance(out, dict) and out.get("exit") == 2:
             return 503, {
                 "error": "not_ready",
