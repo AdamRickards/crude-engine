@@ -1,5 +1,9 @@
 version: 2.6.0
 feature: netconfig
+value_maps:
+  hidiscovery_mode:
+    read-write: readWrite
+    read-only: readOnly
 schemas:
   read_netconfig:
     type: dict

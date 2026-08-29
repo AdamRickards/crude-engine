@@ -39,7 +39,7 @@ attributes:
     type: string
     sources:
       ssh:
-        read: {command: "show network hidiscovery", field: "Operating mode"}
+        read: {command: "show network hidiscovery", field: "Operating mode", tag: value_map, map: hidiscovery_mode}
         write: {command: "network hidiscovery mode {value}", level: priv}
 
   hm2nethidiscoveryblinking:
