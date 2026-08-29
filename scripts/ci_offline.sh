@@ -41,6 +41,7 @@ else
 fi
 
 run "program-files" "$PY" scripts/generate_status.py --check
+run "snmp-loop-drain" "$PY" tests/test_snmp_loop_drain.py
 run "principles" "$PY" scripts/check_principles.py
 
 # Catalogue proofs are the 2.10 exit. They are expected red in cycle 0
@@ -77,4 +78,5 @@ fi
 soft=0
 "$PY" -c "from crude_engine import FeatureEngine" || soft=1
 "$PY" scripts/generate_status.py --check || soft=1
+"$PY" tests/test_snmp_loop_drain.py || soft=1
 exit $soft

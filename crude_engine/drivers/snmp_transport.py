@@ -10,6 +10,8 @@ import asyncio
 import logging
 from typing import Dict, List, Tuple, Any
 
+from crude_engine.drivers.loop_drain import drain_and_close
+
 from pysnmp.hlapi.asyncio import (
     SnmpEngine, CommunityData, UsmUserData, UdpTransportTarget, ContextData,
     ObjectType, ObjectIdentity,
@@ -105,9 +107,9 @@ class SNMPHIOS:
         """Clean up SNMP session and event loop."""
         self._engine = None
         self._transport = None
-        if self._loop and not self._loop.is_closed():
-            self._loop.close()
-            self._loop = None
+        loop = self._loop
+        self._loop = None
+        drain_and_close(loop)
 
     def is_factory_default(self) -> bool:
         return False
