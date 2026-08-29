@@ -254,7 +254,17 @@ class Handler(BaseHTTPRequestHandler):
         except (ValueError, UnicodeDecodeError):
             self._send(400, {"error": "bad_name", "message": "body is not JSON"})
             return
-        code, body = handle_run(payload)
+        try:
+            code, body = handle_run(payload)
+        except Exception as exc:
+            self._send(
+                500,
+                {
+                    "error": "not_ready",
+                    "message": f"{type(exc).__name__}: {exc}",
+                },
+            )
+            return
         self._send(code, body)
 
     def do_GET(self):

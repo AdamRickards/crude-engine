@@ -46,6 +46,11 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from typing import Any
 
+try:
+    from napalm import get_network_driver
+except ImportError:
+    get_network_driver = None
+
 # -----------------------------------------------------------------------------
 # Paths
 # -----------------------------------------------------------------------------
@@ -346,8 +351,6 @@ def run_gather(device_ip: str | None = None,
     state.setdefault("devices", {})
     state["gathered_at"] = _now_iso()
 
-    from napalm import get_network_driver
-    from napalm import get_network_driver
     driver = get_network_driver("hios")
 
     for dev in devices:
@@ -1226,7 +1229,6 @@ def run_worker(device_ip: str, jobs: list[dict], matrix_db: MatrixDB,
 
     Returns a summary dict for orchestrator logging.
     """
-    from napalm import get_network_driver
 
     # Group jobs by protocol — we can only have one open device per
     # protocol at a time. Open per-protocol within the same worker.
@@ -2342,6 +2344,8 @@ def run_inspect(method_name: str | None,
     print(f"  engine flags:       {', '.join(flags)}")
     print()
 
+    if get_network_driver is None:
+        raise ImportError("napalm is required for live inspect")
     driver = get_network_driver("hios")
     raw_results: dict[str, object] = {}
     protocols_out: dict[str, dict] = {}
