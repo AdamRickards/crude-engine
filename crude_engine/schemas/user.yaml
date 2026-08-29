@@ -5,6 +5,11 @@ methods:
   get_users:
     type: dict
     primary_key: username
+    # Drive rows from an accessible hm2UserConfigTable column.
+    # INDEX hm2UserName is accessible-for-notify; 1.17 never walks it.
+    # SNMP walk suffix is IMPLIED hm2UserName (e.g. 97.100.109.105.110 → admin).
+    index_fields: [username]
+    index_type: implied_string
     defaults:
       level: guest
       locked: false
@@ -12,6 +17,10 @@ methods:
       snmp_auth: ''
       snmp_enc: ''
       default_password: false
+    attributes:
+      username:
+        wire: hm2useraccessrole
+        source: usermgmt
   set_user:
     type: upsert
   create_user:
