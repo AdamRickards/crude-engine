@@ -41,6 +41,8 @@ else
 fi
 
 run "program-files" "$PY" scripts/generate_status.py --check
+run "inspect-result" "$PY" tests/test_inspect_result.py
+run "inspect-reaches-driver" "$PY" tests/test_inspect_reaches_driver.py
 run "principles" "$PY" scripts/check_principles.py
 
 # Catalogue proofs are the 2.10 exit. They are expected red in cycle 0
@@ -77,4 +79,6 @@ fi
 soft=0
 "$PY" -c "from crude_engine import FeatureEngine" || soft=1
 "$PY" scripts/generate_status.py --check || soft=1
+"$PY" tests/test_inspect_result.py || soft=1
+"$PY" tests/test_inspect_reaches_driver.py || soft=1
 exit $soft
