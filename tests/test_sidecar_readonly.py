@@ -19,9 +19,11 @@ if str(ROOT) not in sys.path:
 from sidecar.app import (  # noqa: E402
     call_inspect,
     handle_run,
+    handle_sync,
     make_server,
     name_to_inspect,
 )
+import sidecar.app as sidecar_app  # noqa: E402
 
 
 def fail(msg):
@@ -67,6 +69,7 @@ def main():
         or "parity_diffs" not in result
         or "protocols" not in result
         or result.get("passed") is not True
+        or (body.get("sidecar") or {}).get("ref") != "main"
     ):
         errors += fail(f"get_dns.read → {code} {body}")
     else:
@@ -92,6 +95,56 @@ def main():
         errors += fail(f"fake trace should have empty protocols, got {result}")
     else:
         errors += ok("POST get_dns.read trace=true still 200 (fake)")
+
+    def boom(*_a, **_k):
+        raise AssertionError("git must not run on fake or 403")
+
+    sidecar_app._git_sync_main = boom
+    sidecar_app._git_sync_pr = boom
+
+    code, body = handle_sync({"op": "main"})
+    if code != 200 or body.get("ref") != "main" or body.get("restart") is not False:
+        errors += fail(f"sync main fake → {code} {body}")
+    else:
+        errors += ok("POST /v1/sync op=main fake → 200 no git")
+
+    code, body = handle_sync({"op": "clean"})
+    if code != 200 or body.get("ref") != "main":
+        errors += fail(f"sync clean fake → {code} {body}")
+    else:
+        errors += ok("POST /v1/sync op=clean fake → 200")
+
+    code, body = handle_sync({"op": "pr"})
+    if code != 400 or body.get("error") != "bad_name":
+        errors += fail(f"sync pr missing number → {code} {body}")
+    else:
+        errors += ok("POST /v1/sync pr without number → 400")
+
+    code, body = handle_sync({"op": "pr", "number": 2, "ref": "heads/x"})
+    if code != 400 or body.get("error") != "bad_name":
+        errors += fail(f"sync extra key → {code} {body}")
+    else:
+        errors += ok("POST /v1/sync extra key → 400")
+
+    sidecar_app.pr_author_lookup = lambda n: "stranger"
+    code, body = handle_sync({"op": "pr", "number": 2})
+    if code != 403 or body.get("error") != "forbidden":
+        errors += fail(f"foreign author → {code} {body}")
+    else:
+        errors += ok("POST /v1/sync pr foreign author → 403 no git")
+
+    sidecar_app.pr_author_lookup = lambda n: "AdamRickards"
+    code, body = handle_sync({"op": "pr", "number": 1})
+    if (
+        code != 200
+        or body.get("ref") != "pr-1"
+        or body.get("restart") is not False
+        or body.get("ok") is not True
+    ):
+        errors += fail(f"allowlisted pr fake → {code} {body}")
+    else:
+        errors += ok("POST /v1/sync pr AdamRickards fake → 200 no git")
+    sidecar_app.pr_author_lookup = None
 
     code, body = handle_run({"name": "get_no_such_method.read"})
     if code != 404 or body.get("error") != "unknown_name":
