@@ -5,6 +5,8 @@ methods:
   get_arp_table:
     type: dict
     primary_key: ip
+    # IP-MIB ipNetToMediaTable (1.17 same-wire). Not ipNetToPhysical*.
+    # Accessible Media columns; SNMP suffix is ifIndex.ip.
     defaults:
       interface: ''
       mac: ''
@@ -57,19 +59,18 @@ methods:
     type: upsert
     fields: [dai_vlan_enabled, dai_vlan_logging, dai_vlan_binding_check, dai_vlan_acl_static, dai_vlan_acl_name]
 attributes:
-  # ARP table (get_arp_table)
+  # ARP table (get_arp_table) — ipNetToMediaTable, not Physical.
+  # Media has no lastUpdated; age stays default 0.0 (1.17 same).
   interface:
-    wire: ipnettophysicalifindex
+    wire: ipnettomediaifindex
     source: ip
   mac:
-    wire: ipnettophysicalphysaddress
+    wire: ipnettomediaphysaddress
     source: ip
   ip:
-    wire: ipnettophysicalnetaddress
+    wire: ipnettomedianetaddress
     source: ip
-  age:
-    wire: ipnettophysicallastupdated
-    source: ip
+  age: {}
   # DAI global
   validate_src_mac:
     wire: hm2agentdaisrcmacvalidate
