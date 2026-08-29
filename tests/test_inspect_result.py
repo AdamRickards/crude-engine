@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Offline proofs for inspect budgets. No device. YAML declares open/call."""
+"""Offline proofs for inspect budgets and protocol fan-out. No device."""
 from __future__ import annotations
 
 import sys
+import threading
 import time
 from pathlib import Path
 
@@ -41,8 +42,6 @@ def main() -> int:
         call_s = rm._inspect_budget_s(name, "call_timeout_s")
         rc |= ok(f"inspect.yaml {name} open={open_s}s call={call_s}s")
 
-    # Live get_dns measurement that the old combined 2s budget failed:
-    # open 1459ms + call 596ms = 2055ms. Split budgets must cover that.
     mops_open = rm._inspect_budget_s("mops", "open_timeout_s")
     mops_call = rm._inspect_budget_s("mops", "call_timeout_s")
     if mops_open * 1000 <= 1459 or mops_call * 1000 <= 596:
@@ -101,10 +100,9 @@ def main() -> int:
             "snmp": {
                 "status": "timeout",
                 "elapsed_ms": 4000,
-                "open_ms": 200,
-                "call_ms": 3800,
-                "phase": "call",
-                "error": "exceeded 4.0s",
+                "open_ms": None,
+                "call_ms": None,
+                "error": "overall deadline exceeded",
             },
         },
         "parity_diffs": [],
@@ -121,13 +119,14 @@ def main() -> int:
     else:
         rc |= ok("fake transport passed true")
 
-    rc |= _split_phases()
+    rc |= _fanout()
     return rc
 
 
-def _split_phases() -> int:
-    """open+call that would blow a combined 0.25s budget still reports ok."""
+def _fanout() -> int:
     rc = 0
+    orig_driver = rm.get_network_driver
+    orig_budget = rm._inspect_budget_s
 
     class _Healthy:
         closed = 0
@@ -145,23 +144,40 @@ def _split_phases() -> int:
         def close(self):
             type(self).closed += 1
 
-    class _HangCall:
-        closed = 0
+    class _Parallel:
+        opens: dict = {}
+        closes: dict = {}
 
         def __init__(self, *args, **kwargs):
-            pass
+            self.proto = (kwargs.get("optional_args") or {}).get("protocol")
+
+        def open(self):
+            type(self).opens[self.proto] = threading.get_ident()
+            time.sleep(0.25)
+
+        def get_dns(self, **kwargs):
+            return {"enabled": True, "servers": {"1": {}}}
+
+        def close(self):
+            type(self).closes[self.proto] = threading.get_ident()
+
+    class _HangMops:
+        closed: dict = {}
+
+        def __init__(self, *args, **kwargs):
+            self.proto = (kwargs.get("optional_args") or {}).get("protocol")
 
         def open(self):
             pass
 
         def get_dns(self, **kwargs):
-            time.sleep(8)
+            if self.proto == "mops":
+                time.sleep(2)
+            return {"enabled": True, "servers": {"1": {}}}
 
         def close(self):
-            type(self).closed += 1
+            type(self).closed[self.proto] = threading.get_ident()
 
-    orig_driver = rm.get_network_driver
-    orig_budget = rm._inspect_budget_s
     try:
         rm.get_network_driver = lambda _name: _Healthy
 
@@ -186,22 +202,61 @@ def _split_phases() -> int:
                 f"(combined would miss 0.25s)"
             )
 
-        rm.get_network_driver = lambda _name: _HangCall
+        _Parallel.opens = {}
+        _Parallel.closes = {}
+        rm.get_network_driver = lambda _name: _Parallel
 
-        def _call_tight(proto, key):
-            if key == "open_timeout_s":
-                return 1.0
+        def _wide(proto, key):
+            return 1.0
+
+        rm._inspect_budget_s = _wide
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None)
+        wall = time.monotonic() - t0
+        statuses = {
+            k: (v or {}).get("status")
+            for k, v in (out.get("protocols") or {}).items()
+        }
+        if wall > 0.60:
+            rc |= fail(f"fan-out wall {wall:.2f}s looks sequential (want ~max 0.25s)")
+        elif any(s != "ok" for s in statuses.values()):
+            rc |= fail(f"fan-out statuses {statuses}")
+        elif set(_Parallel.opens) != set(_Parallel.closes):
+            rc |= fail(f"open/close proto mismatch {_Parallel.opens} {_Parallel.closes}")
+        elif any(_Parallel.opens[p] != _Parallel.closes[p] for p in _Parallel.opens):
+            rc |= fail(
+                f"close() on a different thread than open(): "
+                f"open={_Parallel.opens} close={_Parallel.closes}"
+            )
+        else:
+            rc |= ok(f"fan-out wall {wall:.2f}s (max not sum), owner-thread close()")
+
+        _HangMops.closed = {}
+        rm.get_network_driver = lambda _name: _HangMops
+
+        def _short(proto, key):
             return 0.2
 
-        rm._inspect_budget_s = _call_tight
-        out = rm.run_inspect("get_dns", "192.0.2.10", "mops")
-        proto = (out.get("protocols") or {}).get("mops") or {}
-        if proto.get("status") != "timeout" or proto.get("phase") != "call":
-            rc |= fail(f"hung call should be timeout phase=call, got {proto}")
-        elif _HangCall.closed < 1:
-            rc |= fail("call-phase timeout did not close()")
+        rm._inspect_budget_s = _short
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None)
+        wall = time.monotonic() - t0
+        protos = out.get("protocols") or {}
+        mops = protos.get("mops") or {}
+        others = {k: (v or {}).get("status") for k, v in protos.items() if k != "mops"}
+        if mops.get("status") != "timeout":
+            rc |= fail(f"hung mops should be overall timeout, got {mops}")
+        elif wall > 1.0:
+            rc |= fail(f"overall wait hung {wall:.2f}s")
+        elif any(s != "ok" for s in others.values()):
+            rc |= fail(f"siblings should be ok, got {others}")
+        elif "mops" in _HangMops.closed:
+            rc |= fail("caller must not close() a hung worker's device")
         else:
-            rc |= ok("call-phase timeout still runs close()")
+            rc |= ok(
+                f"hung sibling isolated ({wall:.2f}s); others {others}; "
+                "no cross-thread close"
+            )
     finally:
         rm.get_network_driver = orig_driver
         rm._inspect_budget_s = orig_budget

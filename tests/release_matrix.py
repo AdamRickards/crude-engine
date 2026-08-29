@@ -2246,8 +2246,8 @@ def _inspect_budget_s(protocol: str, key: str) -> float:
 def _call_with_timeout(seconds: float, fn, *args, **kwargs):
     """Run fn, raise TimeoutError after seconds.
 
-    Do not wait for the worker on timeout: a hung device.open() must not
-    hold the sidecar RunLock. The worker thread may outlive the caller.
+    Kept for offline proofs. Live inspect does not abandon a worker
+    mid-call; each protocol owns open/call/close on one thread.
     """
     pool = concurrent.futures.ThreadPoolExecutor(max_workers=1)
     fut = pool.submit(fn, *args, **kwargs)
@@ -2257,6 +2257,163 @@ def _call_with_timeout(seconds: float, fn, *args, **kwargs):
         raise TimeoutError(f"exceeded {seconds}s") from exc
     finally:
         pool.shutdown(wait=False)
+
+
+def _inspect_one_protocol(
+    driver,
+    proto: str,
+    device_filter: str,
+    username: str,
+    password: str,
+    method_name: str,
+    call_kwargs: dict,
+    trace: bool,
+):
+    """One thread, one device, full lifecycle. Never raises.
+
+    Hang never returns; the caller wait() marks timeout without
+    touching this device. close() only runs in this thread.
+    """
+    t_open = time.monotonic()
+    try:
+        _inspect_budget_s(proto, "open_timeout_s")
+        _inspect_budget_s(proto, "call_timeout_s")
+    except (KeyError, FileNotFoundError, ValueError, TypeError) as e:
+        return proto, {
+            "status": "dispatch_error",
+            "elapsed_ms": 0,
+            "open_ms": None,
+            "call_ms": None,
+            "error": str(e),
+        }
+
+    device = None
+    try:
+        try:
+            device = driver(
+                device_filter,
+                username,
+                password,
+                optional_args={"protocol": proto},
+            )
+            device.open()
+        except Exception as e:
+            open_ms = round((time.monotonic() - t_open) * 1000)
+            return proto, {
+                "status": "connect_failed",
+                "phase": "open",
+                "elapsed_ms": open_ms,
+                "open_ms": open_ms,
+                "call_ms": None,
+                "error": str(e)[:300],
+            }
+        open_ms = round((time.monotonic() - t_open) * 1000)
+
+        t_call = time.monotonic()
+        try:
+            fn = getattr(device, method_name)
+            try:
+                raw = fn(**call_kwargs)
+            except TypeError:
+                raw = fn()
+            last_trace = getattr(device, "last_trace", None) if trace else None
+            if isinstance(raw, tuple):
+                raw = raw[0]
+            call_ms = round((time.monotonic() - t_call) * 1000)
+            out = {
+                "status": "ok",
+                "elapsed_ms": open_ms + call_ms,
+                "open_ms": open_ms,
+                "call_ms": call_ms,
+                "raw": _jsonable(raw),
+            }
+            if trace:
+                out["trace"] = last_trace
+            return proto, out
+        except Exception as e:
+            call_ms = round((time.monotonic() - t_call) * 1000)
+            return proto, {
+                "status": "dispatch_error",
+                "phase": "call",
+                "elapsed_ms": open_ms + call_ms,
+                "open_ms": open_ms,
+                "call_ms": call_ms,
+                "error": str(e)[:300],
+            }
+    finally:
+        if device is not None:
+            try:
+                device.close()
+            except Exception:
+                pass
+
+
+def _print_inspect_protocol(proto: str, result: dict, trace: bool) -> None:
+    open_s = None
+    call_s = None
+    try:
+        open_s = _inspect_budget_s(proto, "open_timeout_s")
+        call_s = _inspect_budget_s(proto, "call_timeout_s")
+    except (KeyError, FileNotFoundError, ValueError, TypeError):
+        pass
+    if open_s is not None:
+        print(f"--- {proto} (open {open_s}s / call {call_s}s) ---")
+    else:
+        print(f"--- {proto} ---")
+    status = result.get("status")
+    if status == "ok":
+        print(
+            f"  open_ms={result.get('open_ms')} "
+            f"call_ms={result.get('call_ms')} "
+            f"elapsed_ms={result.get('elapsed_ms')}"
+        )
+        raw = result.get("raw")
+        if isinstance(raw, dict):
+            print(f"  raw type=dict len={len(raw)}")
+            if raw:
+                first_key = next(iter(raw))
+                first_val = raw[first_key]
+                print(f"  first key:  {first_key!r}")
+                if isinstance(first_val, dict):
+                    print("  first row:")
+                    for k, v in sorted(first_val.items()):
+                        print(f"    {k}: {repr(v)[:80]}")
+                else:
+                    print(f"  first val:  {repr(first_val)[:120]}")
+        elif isinstance(raw, list):
+            print(f"  raw type=list len={len(raw)}")
+            if raw:
+                print(f"  first item: {repr(raw[0])[:200]}")
+        else:
+            print(f"  raw: {repr(raw)[:200]}")
+        last_trace = result.get("trace")
+        if trace and last_trace:
+            print(f"  trace ({len(last_trace)} entries):")
+            for entry in last_trace:
+                if isinstance(entry, dict):
+                    parts = []
+                    for k in sorted(entry.keys()):
+                        v = entry[k]
+                        sval = repr(v) if not isinstance(v, str) else v
+                        if len(sval) > 60:
+                            sval = sval[:57] + "..."
+                        parts.append(f"{k}={sval}")
+                    print(f"    {' '.join(parts)}")
+                else:
+                    print(f"    {repr(entry)[:200]}")
+        elif trace:
+            print("  trace: (empty — device.last_trace was None)")
+    elif status == "timeout":
+        print(
+            f"  TIMEOUT: {result.get('error')} "
+            f"open_ms={result.get('open_ms')} call_ms={result.get('call_ms')}"
+        )
+    elif status == "connect_failed":
+        print(f"  CONNECT_FAILED: {(result.get('error') or '')[:200]}")
+    else:
+        err = result.get("error") or ""
+        print(f"  {str(status).upper()}: {err[:200]}")
+    print()
 
 
 def _jsonable(obj):
@@ -2356,39 +2513,13 @@ def run_inspect(method_name: str | None,
     if no_validate:
         call_kwargs["validate"] = False
 
-    def _close_quiet(dev):
-        if dev is None:
-            return
-        try:
-            dev.close()
-        except Exception:
-            pass
-
-    def _open_proto(proto: str):
-        device = driver(device_filter, username, password,
-                        optional_args={"protocol": proto})
-        device.open()
-        return device
-
-    def _call_proto(dev):
-        fn = getattr(dev, method_name)
-        try:
-            raw = fn(**call_kwargs)
-        except TypeError:
-            raw = fn()
-        last_trace = getattr(dev, "last_trace", None) if trace else None
-        if isinstance(raw, tuple):
-            raw = raw[0]
-        return raw, last_trace
-
+    to_run = []
+    overall_s = 0.0
     for proto in protocols:
         try:
             open_s = _inspect_budget_s(proto, "open_timeout_s")
             call_s = _inspect_budget_s(proto, "call_timeout_s")
         except (KeyError, FileNotFoundError, ValueError, TypeError) as e:
-            print(f"--- {proto} ---")
-            print(f"  UNDECLARED TIMEOUT: {e}")
-            print()
             protocols_out[proto] = {
                 "status": "dispatch_error",
                 "elapsed_ms": 0,
@@ -2397,128 +2528,49 @@ def run_inspect(method_name: str | None,
                 "error": str(e),
             }
             continue
-        print(f"--- {proto} (open {open_s}s / call {call_s}s) ---")
-        device = None
-        open_ms = None
-        call_ms = None
-        t_open = time.monotonic()
-        try:
-            device = _call_with_timeout(open_s, _open_proto, proto)
-        except TimeoutError as e:
-            open_ms = round((time.monotonic() - t_open) * 1000)
-            print(f"  OPEN TIMEOUT: {e} open_ms={open_ms}")
-            print()
+        to_run.append(proto)
+        overall_s = max(overall_s, open_s + call_s)
+
+    pool = concurrent.futures.ThreadPoolExecutor(max_workers=max(1, len(to_run)))
+    futures: dict = {}
+    try:
+        for proto in to_run:
+            fut = pool.submit(
+                _inspect_one_protocol,
+                driver,
+                proto,
+                device_filter,
+                username,
+                password,
+                method_name,
+                call_kwargs,
+                trace,
+            )
+            futures[fut] = proto
+        done, not_done = concurrent.futures.wait(futures, timeout=overall_s)
+        for fut in done:
+            proto, result = fut.result()
+            protocols_out[proto] = result
+        for fut in not_done:
+            proto = futures[fut]
             protocols_out[proto] = {
                 "status": "timeout",
-                "phase": "open",
-                "elapsed_ms": open_ms,
-                "open_ms": open_ms,
+                "elapsed_ms": round(overall_s * 1000),
+                "open_ms": None,
                 "call_ms": None,
-                "error": str(e),
+                "error": "overall deadline exceeded",
             }
-            continue
-        except Exception as e:
-            open_ms = round((time.monotonic() - t_open) * 1000)
-            msg = str(e)[:300]
-            print(f"  CONNECT_FAILED: {msg[:200]}")
-            print()
-            _close_quiet(device)
-            protocols_out[proto] = {
-                "status": "connect_failed",
-                "phase": "open",
-                "elapsed_ms": open_ms,
-                "open_ms": open_ms,
-                "call_ms": None,
-                "error": msg,
-            }
-            continue
-        open_ms = round((time.monotonic() - t_open) * 1000)
+    finally:
+        # Hung workers stay isolated. Waiting would hold sidecar RunLock.
+        # Do not close() their device from this thread.
+        pool.shutdown(wait=False)
 
-        t_call = time.monotonic()
-        try:
-            raw, last_trace = _call_with_timeout(call_s, _call_proto, device)
-        except TimeoutError as e:
-            call_ms = round((time.monotonic() - t_call) * 1000)
-            print(f"  CALL TIMEOUT: {e} open_ms={open_ms} call_ms={call_ms}")
-            print()
-            _close_quiet(device)
-            protocols_out[proto] = {
-                "status": "timeout",
-                "phase": "call",
-                "elapsed_ms": (open_ms or 0) + call_ms,
-                "open_ms": open_ms,
-                "call_ms": call_ms,
-                "error": str(e),
-            }
-            continue
-        except Exception as e:
-            call_ms = round((time.monotonic() - t_call) * 1000)
-            msg = str(e)[:300]
-            print(f"  DISPATCH_ERROR: {msg[:200]}")
-            print()
-            _close_quiet(device)
-            protocols_out[proto] = {
-                "status": "dispatch_error",
-                "phase": "call",
-                "elapsed_ms": (open_ms or 0) + call_ms,
-                "open_ms": open_ms,
-                "call_ms": call_ms,
-                "error": msg,
-            }
-            continue
-        call_ms = round((time.monotonic() - t_call) * 1000)
-        _close_quiet(device)
-        elapsed_ms = (open_ms or 0) + call_ms
-        print(f"  open_ms={open_ms} call_ms={call_ms} elapsed_ms={elapsed_ms}")
-
-        if isinstance(raw, dict):
-            print(f"  raw type=dict len={len(raw)}")
-            if raw:
-                first_key = next(iter(raw))
-                first_val = raw[first_key]
-                print(f"  first key:  {first_key!r}")
-                if isinstance(first_val, dict):
-                    print(f"  first row:")
-                    for k, v in sorted(first_val.items()):
-                        print(f"    {k}: {repr(v)[:80]}")
-                else:
-                    print(f"  first val:  {repr(first_val)[:120]}")
-        elif isinstance(raw, list):
-            print(f"  raw type=list len={len(raw)}")
-            if raw:
-                print(f"  first item: {repr(raw[0])[:200]}")
-        else:
-            print(f"  raw: {repr(raw)[:200]}")
-
-        if raw is not None:
+    for proto in protocols:
+        result = protocols_out.get(proto) or {}
+        _print_inspect_protocol(proto, result, trace)
+        raw = result.get("raw")
+        if result.get("status") == "ok" and raw is not None:
             raw_results[proto] = raw
-
-        if trace and last_trace:
-            print(f"  trace ({len(last_trace)} entries):")
-            for entry in last_trace:
-                if isinstance(entry, dict):
-                    keys = sorted(entry.keys())
-                    parts = []
-                    for k in keys:
-                        v = entry[k]
-                        sval = repr(v) if not isinstance(v, str) else v
-                        if len(sval) > 60:
-                            sval = sval[:57] + "..."
-                        parts.append(f"{k}={sval}")
-                    print(f"    {' '.join(parts)}")
-                else:
-                    print(f"    {repr(entry)[:200]}")
-        elif trace:
-            print(f"  trace: (empty — device.last_trace was None)")
-
-        print()
-        protocols_out[proto] = {
-            "status": "ok",
-            "elapsed_ms": elapsed_ms,
-            "open_ms": open_ms,
-            "call_ms": call_ms,
-            "raw": _jsonable(raw),
-        }
 
     diffs: list = []
     if len(raw_results) >= 2:
