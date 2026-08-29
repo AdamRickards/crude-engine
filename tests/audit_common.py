@@ -313,6 +313,7 @@ def gather_one_ip(ip: str, username: str = "admin", password: str = "private",
 #
 # Returns a flat dict of method_name → metadata.
 
+import functools
 import os as _os
 import yaml as _yaml
 
@@ -350,6 +351,7 @@ def _load_wire_exemptions() -> dict:
     return out
 
 
+@functools.lru_cache(maxsize=None)
 def _load_one_wire(wire_file: str) -> dict:
     """Load and return base wire YAML for `wire_file` (no .yaml extension)."""
     p = _os.path.join(_WIRE_DIR, f"{wire_file}.yaml")
@@ -359,6 +361,7 @@ def _load_one_wire(wire_file: str) -> dict:
         return _yaml.safe_load(f) or {}
 
 
+@functools.lru_cache(maxsize=None)
 def _load_one_wire_overlay(wire_file: str, protocol: str) -> dict:
     """Load wire overlay for a protocol (e.g., wire/ssh/<wire_file>.yaml)."""
     p = _os.path.join(_WIRE_DIR, protocol, f"{wire_file}.yaml")
