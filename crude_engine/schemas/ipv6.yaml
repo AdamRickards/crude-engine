@@ -5,6 +5,8 @@ methods:
   get_ipv6_neighbors:
     type: dict
     primary_key: ip
+    # Same table as get_ipv6_neighbors_table and ARP family (#75):
+    # ipNetToMediaTable, not Physical INDEX (1.17 has no ND getter).
     defaults:
       interface: ''
       ip: ''
@@ -25,23 +27,15 @@ attributes:
   ipv6_state:
     wire: hm2netipv6adminstatus
     source: netconfig
+  # ipNetToMediaTable (accessible columns; suffix ifIndex.ip).
+  # Physical 4.35 is empty on SNMP. Media has no ND state; default reachable.
   interface:
-    wire: ipnettophysicalifindex
+    wire: ipnettomediaifindex
     source: ip
   ip:
-    wire: ipnettophysicalnetaddress
+    wire: ipnettomedianetaddress
     source: ip
   mac:
-    wire: ipnettophysicalphysaddress
+    wire: ipnettomediaphysaddress
     source: ip
-  state:
-    wire: ipnettophysicalstate
-    source: ip
-    value_map:
-      '1': reachable
-      '2': stale
-      '3': delay
-      '4': probe
-      '5': invalid
-      '6': unknown
-      '7': incomplete
+  state: {}
