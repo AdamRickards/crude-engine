@@ -27,7 +27,11 @@ Example pool host is TEST-NET `192.0.2.10` in
 `tests/device_pool.yaml.example`. Passwords from the environment
 (`CRUDE_DEVICE_PASSWORD`).
 
-Sync: iterate tests on a PC, merge to GitHub, sidecar machine git pull.
+Sync: `POST /v1/sync` `{op: main}` (live pull), `{op: pr, number: N}`
+(allowlisted author only), `{op: clean}` (back to origin/main). Same
+lock as `/v1/run`. Not a second harness. VPS Claude is the fallback
+until this endpoint is on main.
+
 
 ## Run
 
