@@ -84,6 +84,18 @@ class SSHGatherDriver(BaseDriver):
                 logger.debug("SSH command failed: %s — %s", cmd, str(e)[:80])
                 ssh_cache[(cmd, level)] = ""
 
+        # Keep the command text for inspect/sidecar trace. Does not change
+        # parse or what was sent. Cap each blob so a poll body stays usable.
+        _cli = []
+        for (cmd, level), resp in ssh_cache.items():
+            text = resp if isinstance(resp, str) else str(resp)
+            if len(text) > 32768:
+                text = text[:32768] + "\n…truncated"
+            _cli.append({"command": cmd, "level": level, "response": text})
+        self.last_cli = _cli
+        if getattr(self, "transport", None) is not None:
+            self.transport.last_cli = _cli
+
         # Phase 3: Each attribute parses from cached response
         for name, source in sources:
             if source.get("iterate_from"):
