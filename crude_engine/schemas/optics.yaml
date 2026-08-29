@@ -6,14 +6,24 @@ methods:
     type: dict
     primary_key: name
     key_map: ifindex
+    index_filter: '^\d+/\d+$'
     defaults:
       tx_power: 0.0
       rx_power: 0.0
       temperature: 0.0
 attributes:
+  # Identity is detected-SFP ifIndex, not if.ifname (full ifTable).
+  # hm2sfpdiagtable is a scalar on the wire; lookup from tx_power keys
+  # rebuilds {ifIndex: ifIndex} (SCHEMA_MODEL lookup resolve, non-dict
+  # branch). Method key_map remaps those values to ifName. Defaults 0.0
+  # cannot manufacture cpu/vlan/empty-cage rows because they are not
+  # in hm2SfpDiagEntry ("Entry for a detected SFP").
   name:
-    wire: ifname
-    source: if
+    wire: hm2sfpdiagtable
+    source: devmgmt
+    lookup:
+      from: tx_power
+      resolve: "key"
   tx_power:
     wire: hm2sfpcurrenttxpower
     source: devmgmt

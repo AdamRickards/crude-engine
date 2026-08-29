@@ -76,3 +76,27 @@ attributes:
     sources:
       ssh:
         write: {command: "auto-power-down {value}", level: config_interface}
+
+  # get_optics (#55): show sfp is plugged modules, not show port / ifname.
+  # Line layout (napalm-hios 1.17): Intf  Part-ID  ModType  Temp  TxPower  RxPower
+  # Part-ID is variable width; regex_extract, not column index.
+  hm2sfpcurrenttxpower:
+    sources:
+      ssh:
+        read: {command: "show sfp", parser: paired_rows, lines_per_record: 1, key_column: 0, regex_extract: '(-?\d+\.\d+)\s*/\s*\d+\.\d+', index: 0}
+
+  hm2sfpcurrentrxpower:
+    sources:
+      ssh:
+        read: {command: "show sfp", parser: paired_rows, lines_per_record: 1, key_column: 0, regex_extract: '(-?\d+\.\d+)\s*/\s*\d+\.\d+', index: 1}
+
+  hm2sfpcurrenttemperature:
+    sources:
+      ssh:
+        read: {command: "show sfp", parser: paired_rows, lines_per_record: 1, key_column: 0, regex_extract: '(\d+)/\d+', index: 1}
+
+  hm2sfpdiagtable:
+    sources:
+      ssh:
+        read: {command: "show sfp", parser: none}
+
