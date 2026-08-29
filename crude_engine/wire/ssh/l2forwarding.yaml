@@ -3,14 +3,14 @@ feature: l2forwarding-ssh
 description: "SSH CLI sources for L2 forwarding (QoS mapping)"
 
 attributes:
-  hm2trafficclasspriority:
-    type: string
-    sources:
-      ssh:
-        read: {command: "show classofservice dot1p-mapping", parser: table, column: 0}
-
   hm2trafficclass:
     type: string
     sources:
       ssh:
-        read: {command: "show classofservice dot1p-mapping", parser: table, column: 1}
+        read: {command: "show classofservice dot1p-mapping", parser: table, column: 1, key_column: 0}
+
+  hm2cosmapipdscptrafficclass:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show classofservice ip-dscp-mapping", parser: table, column: 1, key_column: 0}
