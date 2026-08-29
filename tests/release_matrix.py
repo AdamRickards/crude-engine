@@ -1069,9 +1069,43 @@ def _values_equal(a, b) -> bool:
     return False
 
 
+def _compare_nested(diffs: list, pa: str, pb: str, va, vb, default_val,
+                    path: str) -> None:
+    """Compare a row-level dict/list that is not a named sub_table."""
+    if isinstance(default_val, dict):
+        da = va if isinstance(va, dict) else {}
+        db = vb if isinstance(vb, dict) else {}
+        if da == db:
+            return
+        if len(da) != len(db):
+            diffs.append(f"{path}: {pa} keys={len(da)} vs {pb} keys={len(db)}")
+            return
+        diffs.append(
+            f"{path}: {pa}={repr(da)[:40]} vs {pb}={repr(db)[:40]}"
+        )
+        return
+    if isinstance(default_val, list):
+        la = va if isinstance(va, list) else []
+        lb = vb if isinstance(vb, list) else []
+        if la == lb:
+            return
+        if len(la) != len(lb):
+            diffs.append(f"{path}: {pa} len={len(la)} vs {pb} len={len(lb)}")
+            return
+        diffs.append(
+            f"{path}: {pa}={repr(la)[:40]} vs {pb}={repr(lb)[:40]}"
+        )
+
+
 def _compare_flat(diffs: list, pa: str, pb: str, a: dict, b: dict,
-                  defaults: dict, path: str = "") -> None:
-    """Compare two flat dicts field-by-field. Adds diffs in place. Caps at MAX."""
+                  defaults: dict, path: str = "",
+                  skip_nested: set | None = None) -> None:
+    """Compare two dicts field-by-field. Adds diffs in place. Caps at MAX.
+
+    Named sub_tables (skip_nested) are walked by the caller. Other dict/list
+    defaults are row-level nested fields and must compare (issue #89).
+    """
+    skip_nested = skip_nested or set()
     if len(diffs) >= _MAX_DIFFS_PER_PAIR:
         return
     for field in defaults:
@@ -1081,8 +1115,13 @@ def _compare_flat(diffs: list, pa: str, pb: str, a: dict, b: dict,
         if field in _PARITY_TIMING_FIELDS:
             continue
         default_val = defaults[field]
-        # Skip nested structures — caller handles sub_tables separately
         if isinstance(default_val, (dict, list)):
+            if field in skip_nested:
+                continue
+            _compare_nested(
+                diffs, pa, pb, a.get(field), b.get(field), default_val,
+                path=f"{path}{field}",
+            )
             continue
         va = a.get(field)
         vb = b.get(field)
@@ -1098,7 +1137,8 @@ def _compare_flat(diffs: list, pa: str, pb: str, a: dict, b: dict,
 
 def _compare_table(diffs: list, pa: str, pb: str,
                    table_a: dict, table_b: dict,
-                   defaults: dict, path: str = "") -> None:
+                   defaults: dict, path: str = "",
+                   skip_nested: set | None = None) -> None:
     """Compare two table dicts (keyed by row identity) row-by-row.
 
     Reports row keys present in one but not the other, then for common
@@ -1137,7 +1177,8 @@ def _compare_table(diffs: list, pa: str, pb: str,
         row_b = table_b[row_key]
         if isinstance(row_a, dict) and isinstance(row_b, dict):
             _compare_flat(diffs, pa, pb, row_a, row_b, defaults,
-                          path=f"{path}[{row_key}].")
+                          path=f"{path}[{row_key}].",
+                          skip_nested=skip_nested)
         elif row_a != row_b:
             diffs.append(f"{path}[{row_key}]: {pa}={repr(row_a)[:40]} "
                          f"vs {pb}={repr(row_b)[:40]}")
@@ -1148,8 +1189,9 @@ def _compute_parity(method_name: str, schema_meta: dict,
     """Compare read results across protocols for one method.
 
     Real cross-protocol value parity — not just row-count comparison.
-    Recursively descends into sub_tables. Compares every non-timing
-    scalar field across protocols.
+    Recursively descends into named sub_tables. Compares every non-timing
+    scalar field, plus row-level dict/list fields that are not named
+    sub_tables (issue #89).
 
     Returns a list of diff strings. Empty list = parity OK.
     """
@@ -1173,14 +1215,15 @@ def _compute_parity(method_name: str, schema_meta: dict,
                                  f"({type(a).__name__} vs {type(b).__name__})")
                 continue
 
+            skip_nested = set(sub_tables)
             if pk:
                 # Top-level dict IS a table keyed by row identity
-                _compare_table(diffs, pa, pb, a, b, defaults)
+                _compare_table(diffs, pa, pb, a, b, defaults,
+                               skip_nested=skip_nested)
             elif sub_tables:
                 # Flat globals + named sub_tables
-                # Compare top-level scalars
-                _compare_flat(diffs, pa, pb, a, b, defaults)
-                # Compare each sub_table separately
+                _compare_flat(diffs, pa, pb, a, b, defaults,
+                              skip_nested=skip_nested)
                 for st_name, st_def in sub_tables.items():
                     sa = a.get(st_name)
                     sb = b.get(st_name)
@@ -1192,8 +1235,9 @@ def _compute_parity(method_name: str, schema_meta: dict,
                         diffs.append(f"{st_name}: {pa}={type(sa).__name__} "
                                      f"vs {pb}={type(sb).__name__}")
             else:
-                # Pure flat dict
-                _compare_flat(diffs, pa, pb, a, b, defaults)
+                # Pure flat dict (nested row fields still compare)
+                _compare_flat(diffs, pa, pb, a, b, defaults,
+                              skip_nested=skip_nested)
 
             if len(diffs) >= _MAX_DIFFS_PER_PAIR:
                 break
