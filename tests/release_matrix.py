@@ -2259,6 +2259,28 @@ def _call_with_timeout(seconds: float, fn, *args, **kwargs):
         pool.shutdown(wait=False)
 
 
+
+def _collect_cli(device):
+    """Raw CLI blobs stashed by SSH gather (transport/driver/device)."""
+    found = []
+    seen = set()
+    objs = [device, getattr(device, "engine", None)]
+    transports = getattr(device, "_transports", None)
+    if isinstance(transports, dict):
+        objs.extend(transports.values())
+    elif transports:
+        objs.append(transports)
+    for obj in objs:
+        if obj is None:
+            continue
+        cli = getattr(obj, "last_cli", None)
+        if not cli or id(cli) in seen:
+            continue
+        seen.add(id(cli))
+        found.extend(cli)
+    return found
+
+
 def _inspect_one_protocol(
     driver,
     proto: str,
@@ -2317,6 +2339,7 @@ def _inspect_one_protocol(
             except TypeError:
                 raw = fn()
             last_trace = getattr(device, "last_trace", None) if trace else None
+            last_cli = _collect_cli(device) if trace else []
             if isinstance(raw, tuple):
                 raw = raw[0]
             call_ms = round((time.monotonic() - t_call) * 1000)
@@ -2329,6 +2352,8 @@ def _inspect_one_protocol(
             }
             if trace:
                 out["trace"] = last_trace
+                if last_cli:
+                    out["cli"] = last_cli
             return proto, out
         except Exception as e:
             call_ms = round((time.monotonic() - t_call) * 1000)
