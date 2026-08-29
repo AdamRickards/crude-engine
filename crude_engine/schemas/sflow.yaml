@@ -5,6 +5,8 @@ methods:
   get_sflow_receiver:
     type: dict
     primary_key: receiver_index
+    # SNMP: accessible sFlowRcvrOwner, index from walk suffix (1.17).
+    # Not INDEX sFlowRcvrIndex. Sampler/poller DataSource is a different suffix.
     defaults:
       receiver_index: 0
       owner: ''
