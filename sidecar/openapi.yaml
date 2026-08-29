@@ -168,6 +168,63 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /v1/sync:
+    post:
+      operationId: syncCheckout
+      summary: Pull main, checkout an allowlisted PR, or clean back to main
+      description: |
+        RPC for the git pull the sidecar already does by hand. Not a
+        second harness. Not extra keys on `/v1/run`.
+
+        `op: pr` looks up the PR author and compares to YAML
+        `allow_pr_authors` (start: AdamRickards) *before* fetch.
+        Mismatch is 403; no checkout, no restart. `main` and `clean`
+        do not need that check. Never a caller-supplied ref, never
+        push, never force. Same RunLock as `/v1/run`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncRequest'
+            examples:
+              main:
+                value: { op: main }
+              pr:
+                value: { op: pr, number: 36 }
+              clean:
+                value: { op: clean }
+      responses:
+        '200':
+          description: Checkout moved. `restart` true means the process will exit so systemd can reload YAML/Python.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncResponse'
+        '400':
+          description: Body is not a known op.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: PR author is not in allow_pr_authors. No fetch.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Lab lock is held.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Git or PR lookup not ready.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     RunRequest:
@@ -200,6 +257,49 @@ components:
           $ref: '#/components/schemas/Audit'
         timings:
           $ref: '#/components/schemas/Timings'
+        sidecar:
+          $ref: '#/components/schemas/SidecarHead'
+    SyncRequest:
+      type: object
+      additionalProperties: false
+      required: [op]
+      properties:
+        op:
+          type: string
+          enum: [main, pr, clean]
+        number:
+          type: integer
+          minimum: 1
+          description: Required when op is pr. GitHub PR number, not a ref.
+    SyncResponse:
+      type: object
+      additionalProperties: false
+      required: [ok, op, head, ref, restart]
+      properties:
+        ok:
+          type: boolean
+        op:
+          type: string
+          enum: [main, pr, clean]
+        head:
+          type: string
+          nullable: true
+        ref:
+          type: string
+        restart:
+          type: boolean
+        number:
+          type: integer
+    SidecarHead:
+      type: object
+      additionalProperties: false
+      properties:
+        sha:
+          type: string
+          nullable: true
+        ref:
+          type: string
+          nullable: true
     Result:
       type: object
       additionalProperties: false
@@ -388,7 +488,7 @@ components:
       properties:
         error:
           type: string
-          enum: [bad_name, unknown_name, lock_held, not_ready]
+          enum: [bad_name, unknown_name, lock_held, not_ready, forbidden]
         message:
           type: string
         name:

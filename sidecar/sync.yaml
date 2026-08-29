@@ -1,0 +1,10 @@
+# sidecar/sync.yaml — POST /v1/sync. YAML declares; Python interprets.
+# No live URLs. api_host is a host name only (scheme is not stored here).
+#
+# allow_pr_authors: GitHub logins that may be fetched via op: pr.
+# Anyone else → 403, no fetch, no checkout, no restart.
+
+repo: AdamRickards/crude-engine
+api_host: api.github.com
+allow_pr_authors:
+  - AdamRickards
