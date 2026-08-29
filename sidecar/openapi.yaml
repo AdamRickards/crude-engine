@@ -3,10 +3,17 @@ info:
   title: CRUDE lab sidecar
   version: 0.1.0
   description: |
-    Contract only. This file is the Cycle 0 sidecar API. The VPS is not
-    implemented here. Named catalog entries are generated later from schema
-    `type:` (C/R/U/D) plus protocol `execute_methods` (E). Do not invent
-    CRUDE methods in this document.
+    Cycle 0 sidecar API. Named catalog entries come from schema `type:`
+    (C/R/U/D) plus protocol `execute_methods` (E). Do not invent CRUDE
+    methods in this document.
+
+    **Read-only process (issue 20).** Default `CRUDE_SIDECAR_MODE=read-only`.
+    `python -m sidecar` serves POST /v1/run for catalog `access: R` /
+    `*.read` only. Rollback is `not_armed`. This process does not arm
+    HiOS rollback and does not implement Keep/Revert. Other catalog
+    names (`*.roundtrip`, `*.execute`, `*.lifecycle`) return 400
+    `bad_name`. Homelab VPS write path is not this process.
+    `servers.url` stays `/`.
 
     **Where it runs.** The sidecar lives on the existing VPS already on the
     homelab VPN. The Bot VM must not WireGuard the homelab, must not hold
