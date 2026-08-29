@@ -10,7 +10,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(
         prog="python -m sidecar",
         description=(
-            "POST /v1/run {name} maps catalog *.read to "
+            "POST /v1/run {name} and POST /v1/sync {op} over "
             "tests/release_matrix.py --inspect --method <getter>. "
             "Default mode is read-only."
         ),
@@ -21,7 +21,7 @@ def main(argv=None):
     from sidecar.app import make_server, mode
 
     print(
-        f"sidecar mode={mode()!r} POST /v1/run on {args.host}:{args.port} "
+        f"sidecar mode={mode()!r} POST /v1/run and /v1/sync on {args.host}:{args.port} "
         f"inspect=tests/release_matrix.py::run_inspect",
         file=sys.stderr,
     )
