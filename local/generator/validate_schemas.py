@@ -27,6 +27,7 @@ VALID_TOP_KEYS = {'version', 'feature', 'description', 'methods', 'attributes', 
 
 VALID_METHOD_KEYS = {
     'type', 'defaults', 'primary_key', 'key_map', 'index_fields',
+    'index_type',
     'sub_tables', 'row_status', 'index_key', 'required', 'fields',
     'index_filter', 'linked_tables', 'attributes', 'schema',
 }

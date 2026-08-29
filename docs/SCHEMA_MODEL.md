@@ -130,6 +130,7 @@ No other top-level keys are valid.
 | `primary_key` | COND | string | Required for table getters (dict keyed by this field) |
 | `key_map` | OPT | string | Context map name for key remapping (e.g. `ifindex`) |
 | `index_fields` | OPT | list | RFC 2578 compound index decomposition fields |
+| `index_type` | OPT | string | Last INDEX field encoding. `implied_string` = RFC 2578 IMPLIED (remaining sub-IDs as ASCII). Used with `index_fields`. |
 | `sub_tables` | OPT | dict | Nested table definitions (see Sub-Table Keys) |
 | `index_filter` | OPT | string | Regex filter on valid index values |
 
