@@ -2,18 +2,22 @@
 # schemas. crude_engine does not read this file. tests/release_matrix.py
 # ::run_inspect and the sidecar (which calls it) do.
 #
-# YAML declares per-protocol timeout_s. Python only interprets. Do not
-# hardcode seconds in release_matrix.py. One flat timeout is wrong:
-# MOPS is usually one call; SNMP is multi-turn when a method has a
-# sub_table (scalar get_cmd plus bulk_cmd walk) plus per-OID fallback;
-# SSH/CLI is the noisiest (prompt, pagination).
+# YAML declares per-protocol open_timeout_s and call_timeout_s. Python
+# only interprets. Do not hardcode seconds in release_matrix.py.
+# Combined wall time is not a failure signal. A protocol that opens and
+# calls inside these two budgets is status: ok.
 #
-# These numbers are starting budgets, not a second floor. Tune here.
+# Starting budgets from live get_dns (home-office). Tune here, not in Python.
+# MOPS open is two TLS handshakes (~1.5s), not a bug. SNMP call needs
+# headroom for sub_table + per-OID fallback. SSH open is prompt/login.
 
 protocols:
   mops:
-    timeout_s: 2
+    open_timeout_s: 3
+    call_timeout_s: 2
   snmp:
-    timeout_s: 5
+    open_timeout_s: 2
+    call_timeout_s: 4
   ssh:
-    timeout_s: 8
+    open_timeout_s: 6
+    call_timeout_s: 3
