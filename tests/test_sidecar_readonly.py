@@ -78,6 +78,21 @@ def main():
     else:
         errors += ok("POST set_dns.roundtrip → 400 bad_name (inspect not called)")
 
+    code, body = handle_run({"name": "get_dns.read", "device": "192.0.2.10"})
+    if code != 400 or body.get("error") != "bad_name":
+        errors += fail(f"extra key → {code} {body}")
+    else:
+        errors += ok("extra POST key → 400 bad_name")
+
+    code, body = handle_run({"name": "get_dns.read", "trace": True})
+    result = body.get("result") or {}
+    if code != 200 or result.get("passed") is not True:
+        errors += fail(f"trace true → {code} {body}")
+    elif "cli" in str(result.get("protocols") or {}):
+        errors += fail(f"fake trace should have empty protocols, got {result}")
+    else:
+        errors += ok("POST get_dns.read trace=true still 200 (fake)")
+
     code, body = handle_run({"name": "get_no_such_method.read"})
     if code != 404 or body.get("error") != "unknown_name":
         errors += fail(f"unknown → {code} {body}")
