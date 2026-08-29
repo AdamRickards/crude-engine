@@ -516,7 +516,7 @@ attributes:
     sources:
       snmp:
         read:
-          oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.1.1.1
+          oid: 1.0.8802.1.1.2.1.5.32962.1.3.1.1.1
           method: walk
       mops:
         read:
