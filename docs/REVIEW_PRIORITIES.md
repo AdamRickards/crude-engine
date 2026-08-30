@@ -3,7 +3,7 @@
 > **Author:** Grok (review session, 2026-07-05)  
 > **Scope:** crude-engine 2.9.0 + napalm-hios 2.0.0 (napalm-hios-v2 lineage)  
 > **Purpose:** Capture project state and a prioritized work list for PM review. No code changes — analysis only.  
-> **Status:** Draft for Adam's review. Not authoritative until adopted into `TODO.md` / `ROADMAP.md`.
+> **Status:** Draft for Adam's review. Not authoritative until adopted into GitHub issues / `ROADMAP.md`. Do not recreate a live `docs/TODO.md`.
 
 ---
 
@@ -13,7 +13,7 @@ The project is **past prototype and in pre-release hardening**. Architecture is 
 
 1. **MOPS↔SNMP value parity** (145 failures, overwhelmingly one root cause)
 2. **Fleet-scale setter/CRUD matrix execution** (planned but not yet run)
-3. **Documentation hygiene** (stale counts, missing curated TODO/ROADMAP)
+3. **Documentation hygiene** (stale counts; leftovers belong on GitHub issues, not competing TODO files)
 
 The NAPALM adapter (`napalm-hios`) is largely complete. The engine is production-ready for **per-protocol reads** (916/916 pass on MOPS and SNMP individually). The release gate fails on **cross-protocol agreement**, not single-protocol correctness.
 
@@ -47,7 +47,7 @@ Source: `docs/RELEASE_MATRIX.md` / `tests/release_matrix.json`
 
 **Key insight:** MOPS alone: 458 pass, 0 fail. SNMP alone: 458 pass, 0 fail. Blockers are **cross-protocol value agreement**, not broken getters on either protocol in isolation.
 
-### Failure buckets (`docs/TODO_HITLIST.md`)
+### Failure buckets (April HITLIST dump; leftovers now GitHub issues)
 
 | Tag | Cells | Theme |
 |-----|-------|-------|
@@ -134,13 +134,13 @@ Priorities are ordered by **release leverage** (how many gate cells one fix unlo
 
 ### P1 — Pre-release hygiene (low effort, high clarity)
 
-#### P1.1 — Regenerate curated `TODO.md` and `ROADMAP.md`
+#### P1.1 — Leftovers live on GitHub issues (not a live `TODO.md`)
 
 | | |
 |---|---|
-| **Source** | `docs/TODO_HITLIST.md` (auto-generated failures) |
-| **Process** | `RELEASE_GATE.md` — curate hitlist into `TODO.md`; post-release scope into `ROADMAP.md` |
-| **Why** | Archived leftover Claude (`local/archive/docs-legacy/claude/CLAUDE.md`) explicitly marks old `TODO-old.md` as untrusted; curated lists don't exist yet |
+| **Source** | April HITLIST dump (archived); cycle-0 lines already map to GitHub issues |
+| **Process** | Prove-then-file or comment-close on GitHub issues. `ROADMAP.md` stays the feature target + release gate. |
+| **Why** | `docs/TODO.md` / `TODO-old.md` / `TODO_HITLIST.md` are competing law. Archive, do not recreate as live. |
 
 #### P1.2 — Sync method/schema counts across docs
 
@@ -275,7 +275,7 @@ Phase B — Prove write path (1 session, lab devices)
   Re-run: release_matrix.py --render
 
 Phase C — Ship hygiene (half session)
-  P1.1  Curate TODO.md + ROADMAP.md from hitlist
+  P1.1  Leftovers on GitHub issues; keep ROADMAP.md
   P1.2  Sync doc counts
   P1.3  Update SCHEMA_MODEL hitlist
   P1.4  Remove dead _get_with_ifindex
@@ -317,7 +317,7 @@ Phase E — Post-release
 |-----|------|
 | `docs/RELEASE_GATE.md` | Release process authority |
 | `docs/RELEASE_MATRIX.md` | Auto-generated scoreboard |
-| `docs/TODO_HITLIST.md` | Auto-generated failure queue |
+| GitHub issues | Leftover work (HITLIST April dump superseded) |
 | `docs/ENGINE_PRINCIPLES.md` | Block ownership rules |
 | `docs/ARCHITECTURE.md` | Three-gate model |
 | `docs/DIAGNOSTIC_PROCESS.md` | Fix ladder |

@@ -10,7 +10,7 @@ Read this when you sit down to work, or when an agent resumes.
 4. Do the smallest change that can make that proof pass.
 5. Re-run **all** of `scripts/ci_offline.sh`. Do not "just run the one check."
 6. If the proof is a lab proof (`lab: true`), use `tests/release_matrix.py --inspect` first, then the surgical execute, then `--render`.
-7. Mark the task `done`, move the tag out of `docs/TODO.md` into `CHANGELOG.md` if it shipped a user-visible fix.
+7. Mark the task `done` in `cycles.yaml`. If it shipped a user-visible fix, record the tag in `CHANGELOG.md`. Comment-close the GitHub issue.
 8. Regenerate status. Commit when git exists.
 
 ## What each file is allowed to be
@@ -21,8 +21,7 @@ Read this when you sit down to work, or when an agent resumes.
 | `docs/program/roadmap.yaml` | Version exit criteria (machine) | Human when the destination moves |
 | `docs/ROADMAP.md` | Same, for reading | Human; keep aligned with yaml |
 | `docs/program/cycles.yaml` | Current iteration tasks | Human or agent; one cycle |
-| `docs/TODO.md` | Human view of the cycle + hitlist curation | Curated; not auto from matrix |
-| `docs/TODO_HITLIST.md` | Raw matrix failures | **Generated only** (`release_matrix.py --render`) |
+| GitHub issues | Leftover work (prove-then-file or comment-close) | Not `docs/TODO.md` / `TODO_HITLIST.md` |
 | `docs/RELEASE_MATRIX.md` | Gate scoreboard | **Generated only** |
 | `docs/API_REFERENCE.md` | Catalogue rendering | **Generated only** (`generate_docs.py`) |
 | `docs/status.html` | Poster | **Generated only** (`generate_status.py`) |
@@ -52,14 +51,14 @@ Append to `cycles.yaml`:
   notes: "why / where / what done looks like"
 ```
 
-`#bucket #Short-Id` follows `docs/RELEASE_GATE.md`. A tag lives in TODO **or** ROADMAP, never both.
+`#bucket #Short-Id` follows `docs/RELEASE_GATE.md`. A tag lives in a GitHub issue **or** ROADMAP.md, never both.
 
 ## Closing a cycle
 
 When every task in the cycle is `done` or `parked`:
 
 1. Bump or keep `cycle:` number.
-2. Write a 5-line note at the top of `docs/TODO.md` (what this cycle proved).
+2. Comment-close leftover GitHub issues for this cycle (what this cycle proved).
 3. Open the next cycle from the remaining ROADMAP exit criteria.
 4. Do not open tools/NILS work as a cycle until 2.10 exit is met or explicitly parked.
 
