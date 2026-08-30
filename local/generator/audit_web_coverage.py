@@ -1,3 +1,11 @@
+"""Leftover v26/monolith script. Not live law. Do not run.
+
+Hardcoded napalm-hios-v2 / napalm_hios paths from the old monolith.
+Kept (not deleted) as archive. Live generators: generate_docs.py,
+generate_method_ref.py, generate_protocols.py. Live schema check:
+validate_schemas.py. See local/generator/README.md.
+"""
+
 import os
 import yaml
 import xml.etree.ElementTree as ET

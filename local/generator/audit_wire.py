@@ -1,11 +1,18 @@
+"""Read-only wire integrity audit (protocol coverage, duplicate names).
+
+Retargeted from leftover napalm-hios-v2 / napalm_hios/wire to this
+repo's crude_engine/wire. Does not mutate YAML. Not a live doc generator
+(those are generate_docs.py / generate_method_ref.py / generate_protocols.py).
+"""
 import os
 import yaml
 from collections import defaultdict
 
-# Paths
-BASE_DIR = '/home/adamr/obsidian-vault/Projects/napalm-hios-v2'
-WIRE_DIR = os.path.join(BASE_DIR, 'napalm_hios/wire')
-OUTPUT_FILE = os.path.join(BASE_DIR, 'docs/WIRE_INTEGRITY.md')
+# Paths — this repo's crude_engine/ (not napalm-hios-v2)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PACKAGE_DIR = os.path.join(BASE_DIR, '../../crude_engine')
+WIRE_DIR = os.path.join(PACKAGE_DIR, 'wire')
+OUTPUT_FILE = os.path.join(BASE_DIR, '../../docs/WIRE_INTEGRITY.md')
 
 def load_yaml(path):
     try:
