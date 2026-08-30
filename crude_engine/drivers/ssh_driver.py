@@ -1,5 +1,5 @@
 """
-SSH_gather.py — SSH protocol driver for napalm-hios.
+SSH_gather.py — SSH protocol driver for crude-engine.
 
 Layer: Driver. Translates wire YAML source dicts into SSH CLI operations.
 Owns: command dedup, level navigation, CLI parsing, response caching.
