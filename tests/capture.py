@@ -1,6 +1,10 @@
 """
 capture.py — Multi-layer test fixture capture from live devices.
 
+Not the live offline floor (scripts/ci_offline.sh does not run this).
+Tap4 consumer is the 2.0 NAPALM shim (`napalm_hios.hios.HIOSDriver`).
+Keep that adapter import; do not fold the shim into crude_engine.
+
 Captures at 4 boundaries in a single pass:
   tap1: transport responses (raw wire data)
   tap2: driver.gather() output (post-transform gathered dict)
@@ -21,7 +25,7 @@ import time
 from datetime import datetime
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-from napalm_hios.hios import HIOSDriver
+from napalm_hios.hios import HIOSDriver  # 2.0 shim; intended live capture consumer
 
 
 def serialize(obj):
