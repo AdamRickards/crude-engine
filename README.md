@@ -20,11 +20,13 @@ No feature-specific Python. Wire YAMLs (generated from MIB) declare device truth
 
 ## Installation
 
+Not on PyPI yet (first publish is 2.10.0). From this repo:
+
 ```
-pip install crude-engine
+pip install -e .
 ```
 
-For NAPALM integration: `pip install napalm-hios` (installs crude-engine as a dependency).
+NAPALM integration is the separate `napalm-hios` 2.0 shim — not on PyPI yet.
 
 ## Usage
 

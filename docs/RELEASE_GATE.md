@@ -5,7 +5,7 @@
 
 ## Why this doc exists
 
-We are preparing crude-engine for its first real release. The work plan, the matrix tool design, the cross-reference scheme, and the exit criteria all live here so a fresh session can pick up without re-deriving the plan from archived leftover Claude (`local/archive/docs-legacy/claude/CLAUDE.md`) and stale TODO files.
+We are preparing crude-engine for its first real release. The work plan, the matrix tool design, the cross-reference scheme, and the exit criteria all live here so a fresh session can pick up from this doc and `AGENTS.md` (the only root agent law), not leftover Claude. Leftover Claude lives at `local/archive/docs-legacy/claude/CLAUDE.md` (archive, not law). Do not update a live `CLAUDE.md`. Stale TODO files are hints, not facts.
 
 The old `docs/TODO.md` and `docs/ROADMAP.md` have been renamed to `TODO-old.md` and `ROADMAP-old.md`. **They are not trusted.** Anything in them is a hint, not a fact. New `TODO.md` and `ROADMAP.md` will be generated from matrix tool output and reviewed by the user.
 
@@ -874,7 +874,7 @@ Scale-out path (post-release): if test_replay fixture mode is added, fixture-bas
 - [x] Rename `TODO.md` / `ROADMAP.md` → `-old` variants
 - [x] Write `tests/README_TESTS.md` — script catalog
 - [x] Write `docs/RELEASE_GATE.md` (this doc)
-- [x] Update `CLAUDE.md` (now `local/archive/docs-legacy/claude/CLAUDE.md`) with tag scheme + RELEASE_GATE pointer + comms-loss rule
+- [x] Recorded tag scheme + RELEASE_GATE pointer + comms-loss rule in leftover Claude archive (`local/archive/docs-legacy/claude/CLAUDE.md`) — archive, not law. Do not update a live `CLAUDE.md`; `AGENTS.md` is the only root agent law.
 - [x] Refactor `audit_getters_v2.py` to expose `run_one_read(device, method, schema)`. Existing CLI unchanged.
 - [x] Refactor `test_setter_pairs.py` to expose `run_one_setter(device, name, spec)`. Existing CLI unchanged.
 - [x] Refactor `test_crud_pairs.py` to expose `run_one_crud(device, name, spec)`. Existing CLI unchanged.
