@@ -35,7 +35,7 @@ _Configuration management and watchdog status_
 - **`get_config()`** — Read
   Returns: `running`, `startup`
 - **`get_config_status()`** — Read
-  Returns: `saved`, `last_changed`, `nvm`, `aca`, `boot`
+  Returns: `saved`, `nvm`, `aca`, `boot`
 - **`get_config_remote()`** — Read
   Returns: `url`, `status`
 - **`set_config_remote()`** — Update
@@ -411,7 +411,7 @@ _User account management and password policy_
   Returns: `level`
 - **`delete_user()`** — Delete
 - **`get_login_policy()`** — Read
-  Returns: `min_length`, `max_attempts`, `lockout_time`
+  Returns: `min_length`, `max_attempts`, `lockout_time`, `min_uppercase`, `min_lowercase`, `min_numeric`, `min_special`
 - **`set_login_policy()`** — Update
 
 ## vlan
