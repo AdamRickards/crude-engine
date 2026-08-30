@@ -5,9 +5,9 @@
 
 ## Why this doc exists
 
-We are preparing crude-engine for its first real release. The work plan, the matrix tool design, the cross-reference scheme, and the exit criteria all live here so a fresh session can pick up from this doc and `AGENTS.md` (the only root agent law), not leftover Claude. Leftover Claude lives at `local/archive/docs-legacy/claude/CLAUDE.md` (archive, not law). Do not update a live `CLAUDE.md`. Stale TODO files are hints, not facts.
+We are preparing crude-engine for its first real release. The work plan, the matrix tool design, the cross-reference scheme, and the exit criteria all live here so a fresh session can pick up from this doc and `AGENTS.md` (the only root agent law), not leftover Claude. Leftover Claude lives at `local/archive/docs-legacy/claude/CLAUDE.md` (archive, not law). Do not update a live `CLAUDE.md`. Archived TODO trio lives at `local/archive/docs-legacy/` (not live law). Leftover work is GitHub issues (prove-then-file or comment-close).
 
-The old `docs/TODO.md` and `docs/ROADMAP.md` have been renamed to `TODO-old.md` and `ROADMAP-old.md`. **They are not trusted.** Anything in them is a hint, not a fact. New `TODO.md` and `ROADMAP.md` will be generated from matrix tool output and reviewed by the user.
+The old `docs/TODO.md`, `docs/TODO-old.md`, and `docs/TODO_HITLIST.md` are archived at `local/archive/docs-legacy/` — **not live law.** Leftovers live on GitHub issues. `docs/ROADMAP.md` stays — feature target + release gate (plus GitHub milestones). Do not treat a live `docs/TODO.md` as the current cycle. `docs/ROADMAP-old.md` remains in `docs/` (untrusted hint).
 
 ## Phase 0 status (2026-04-14): COMPLETE
 
@@ -18,7 +18,7 @@ The matrix tool is built, validated, and produces real signal. Phase 0 exit crit
 - `tests/safety_runner.py` + `tests/safety_protocols.yaml` provide CLAMPS-style pre/post hooks
 - `tests/device_pool.yaml` describes the fleet (capability vocabulary auto-validates against schemas)
 - `tests/release_matrix.json` is the central DB (lock+backoff hierarchical writes)
-- `docs/RELEASE_MATRIX.md` and `docs/TODO_HITLIST.md` are auto-generated from the DB
+- `docs/RELEASE_MATRIX.md` is auto-generated from the DB. The April `TODO_HITLIST.md` dump is archived under `local/archive/docs-legacy/` (leftovers are GitHub issues).
 
 **Validated against the live fleet:**
 - Read sweep: **916/916 PASS** across 7 devices × 2 protocols (mops + snmp)
@@ -70,7 +70,7 @@ The harness owns the wiring, the credentials, the protocol enumeration, the pari
 
 ## Findings catalogue (early signal from the matrix tool)
 
-These would land in `docs/TODO_HITLIST.md` once curated. Capturing them here so they survive context loss:
+These became GitHub issues (HITLIST April dump superseded by #12/#13 and #39–#75). Capturing them here so they survive context loss:
 
 ### From the value-parity check (added later in session)
 
@@ -125,7 +125,7 @@ A verdict is one of:
 
 ## Cross-reference tag scheme
 
-> Replaces file pointers between TODO and ROADMAP. Grep-recoverable. Dangling tags are obvious.
+> Replaces file pointers between leftover GitHub issues and ROADMAP. Grep-recoverable. Dangling tags are obvious.
 
 **Format:** `#<bucket> #<short-id>`
 
@@ -151,7 +151,7 @@ A verdict is one of:
 
 **Entries always have at least two tags:** one bucket + one ID. They may have multiple buckets if the work spans layers (e.g., `#engine #driver #VRRP-MOPS-Compound`).
 
-**TODO.md entry shape:**
+**GitHub issue leftover shape:**
 ```
 - [ ] #engine #VRRP-MOPS-Compound — MOPS row decomposition gap on compound indexes
       Blocks: get_vrrp_instances parity, vrrp CRUD on .83
@@ -175,8 +175,8 @@ Exit: matrix tool reports SSH `pass` for all methods that have CLI equivalents,
 ```
 
 **Cleanup discipline:**
-- A tag should appear in TODO.md OR ROADMAP.md, never both at the same time.
-- When work ships from TODO → CHANGELOG, grep the tag across `docs/`. Any other hit is dangling and must be cleaned up.
+- A tag should appear in a GitHub issue OR ROADMAP.md, never both at the same time.
+- When work ships from a GitHub issue → CHANGELOG, grep the tag across `docs/`. Any other hit is dangling and must be cleaned up.
 - `grep -r '#VRRP-MOPS-Compound' docs/` should return zero lines once shipped.
 - Tags inside CHANGELOG.md are OK as historical record — they're prefixed with the version.
 
@@ -697,13 +697,13 @@ python3 tests/release_matrix.py --render
 
 ### Doc generation from matrix
 
-The renderer produces THREE files from `release_matrix.json` + `release_test_plan.json`:
+The renderer produces the scoreboard from `release_matrix.json` + `release_test_plan.json`:
 
 | File | Generated? | Purpose | Edited? |
 |---|---|---|---|
 | `docs/RELEASE_MATRIX.md` | Yes, every run | Read-only status summary. The "scoreboard" | Never |
-| `docs/TODO_HITLIST.md` | Yes, every run | Raw working list of failures grouped by `#bucket` tag. The "to-fix queue" | Never |
-| `docs/TODO.md` | No, curated | Release-blocking work, judgement-applied. What we actually work on | By session |
+
+Leftover failures live on GitHub issues (prove-then-file or comment-close). Do not treat `docs/TODO.md` or `docs/TODO_HITLIST.md` as live law — they are archived at `local/archive/docs-legacy/`.
 
 **`docs/RELEASE_MATRIX.md` sections:**
 - Plan vs results summary (planned, ran, passed, failed, exempt, n/a, not_run, comms_lost)
@@ -712,13 +712,13 @@ The renderer produces THREE files from `release_matrix.json` + `release_test_pla
 - Per-schema status table (rows = methods, columns = protocol×device, cells = verdict)
 - `comms_lost` list (if any) with manual-verification instructions
 
-**`docs/TODO_HITLIST.md` structure:**
+**Archived HITLIST shape (historical, not live process):**
 
 ```markdown
 # TODO Hitlist (auto-generated 2026-04-13)
 
 > Raw failures from release_matrix.json grouped by tag bucket.
-> NOT the curated TODO. See docs/TODO.md for the working list.
+> NOT live law. Leftovers live on GitHub issues.
 
 ## #engine
 - [ ] #engine #VRRP-MOPS-Compound
@@ -751,17 +751,16 @@ patterns:
     tags: ["#wire", "#DNS-AddrType-SSH"]
 ```
 
-**The curation flow** (one session pass after each matrix run):
+**The leftover flow** (one session pass after each matrix run):
 
 1. Matrix tool runs → `release_matrix.json` updated
-2. Renderer runs → `RELEASE_MATRIX.md` + `TODO_HITLIST.md` regenerated
-3. Session reads `TODO_HITLIST.md`, looks at "NEEDS TRIAGE" section
-4. For each triage item: assign a `#bucket #ID`, write to `tag_map.yaml`, decide if it's release-scope or roadmap
-5. Re-run renderer (no execution) → triage section empties
-6. Session updates `docs/TODO.md` with release-scope items only, ordered by priority
-7. Items that go to roadmap get added to `docs/ROADMAP.md` with the same `#ID`
+2. Renderer runs → `RELEASE_MATRIX.md` regenerated
+3. Session reads the scoreboard / failing cells, looks at untagged failures
+4. For each leftover: assign a `#bucket #ID`, write to `tag_map.yaml`, decide if it's release-scope or roadmap
+5. Prove-then-file (or comment-close) a GitHub issue. Do not write a live `docs/TODO.md` or `docs/TODO_HITLIST.md`.
+6. Items that go to roadmap get added to `docs/ROADMAP.md` with the same `#ID`
 
-**Cleanup discipline:** when a fix ships, the cell verdict flips to `pass`. The renderer drops it from `TODO_HITLIST.md`. The session removes it from `TODO.md`. `grep -r '#VRRP-MOPS-Compound' docs/ tests/` should return zero hits — any remaining hit is a dangling reference.
+**Cleanup discipline:** when a fix ships, the cell verdict flips to `pass`. Comment-close the GitHub issue. `grep -r '#VRRP-MOPS-Compound' docs/ tests/` should return zero hits — any remaining hit is a dangling reference.
 
 `docs/ROADMAP.md` is hand-curated for post-release scope using the same `#bucket #ID` tag scheme.
 
@@ -871,7 +870,7 @@ Scale-out path (post-release): if test_replay fixture mode is added, fixture-bas
 
 **Completed in design session (2026-04-13):**
 - [x] Read existing test scripts (`audit_getters_v2.py`, `audit_setters.py`, `test_setter_pairs.py`, `test_crud_pairs.py`, `audit_all.py`, `capture.py`, `test_replay.py`)
-- [x] Rename `TODO.md` / `ROADMAP.md` → `-old` variants
+- [x] Rename `TODO.md` / `ROADMAP.md` → `-old` variants (TODO trio later archived to `local/archive/docs-legacy/`; ROADMAP.md is live again)
 - [x] Write `tests/README_TESTS.md` — script catalog
 - [x] Write `docs/RELEASE_GATE.md` (this doc)
 - [x] Recorded tag scheme + RELEASE_GATE pointer + comms-loss rule in leftover Claude archive (`local/archive/docs-legacy/claude/CLAUDE.md`) — archive, not law. Do not update a live `CLAUDE.md`; `AGENTS.md` is the only root agent law.
@@ -903,11 +902,11 @@ Scale-out path (post-release): if test_replay fixture mode is added, fixture-bas
 - [ ] Run `release_matrix.py --release-scope` against the fleet (.4, .254, .80, .83, .85)
 - [ ] **One device + one protocol at a time** for the SET/CRUD kinds. Read kind can run all-at-once because it's safe.
 - [ ] Capture the JSON. Inspect failures.
-- [ ] Diff against current TODO-old.md / SSH_HITLIST claims. Every discrepancy = "doc was wrong, here's the new truth."
-- [ ] Generate first draft of `docs/TODO.md` from the failure list, with tag assignments. User reviews.
+- [ ] Diff against archived TODO trio (`local/archive/docs-legacy/`) / SSH_HITLIST claims. Every discrepancy = "doc was wrong, here's the new truth."
+- [ ] File GitHub issues from the failure list, with tag assignments. User reviews. Do not recreate a live `docs/TODO.md`.
 - [ ] Generate first draft of `docs/ROADMAP.md` for post-release scope (SSH 1st-class, OFFLINE 1st-class if not done in Phase 3, HiSecOS, gNMI, Modbus, generator improvements, schema rework, benchmarking).
 
-**Phase 1 exit:** truth JSON exists, TODO.md and ROADMAP.md drafts exist, every failure is tagged.
+**Phase 1 exit:** truth JSON exists, GitHub leftover issues filed, ROADMAP.md exists, every failure is tagged.
 
 ### Phase 2 — Execute the categorized work
 
@@ -931,7 +930,7 @@ After each fix:
 - [ ] `release_matrix.py --offline` against `local/reference/configs/*.xml`
 - [ ] Inspect results
 - [ ] Decision point:
-  - If most cells `pass`: OFFLINE is already a citizen. Add `#release #Offline-1st-Class` to TODO.md. Update README. Test it for SET/CRUD too via the `set_config_remote` / `load_config` execute path. Move it into release scope.
+  - If most cells `pass`: OFFLINE is already a citizen. File a GitHub issue tagged `#release #Offline-1st-Class`. Update README. Test it for SET/CRUD too via the `set_config_remote` / `load_config` execute path. Move it into release scope.
   - If results are messy: every gap is categorized into the 5 buckets, tagged `#roadmap #Offline-1st-Class`, and rolled to post-release.
 
 **Phase 3 exit:** OFFLINE has a verdict — citizen now, or citizen later, with reason.
@@ -945,7 +944,7 @@ After each fix:
 - [ ] Bump version (2.10.0 most likely)
 - [ ] Patch via `local/reference/RELEASE.md` process
 - [ ] Hand patch to user
-- [ ] After user commits, push, tags: archive this RELEASE_GATE.md to `local/archive/RELEASE_GATE-v2.10.md`. Archive TODO-old.md and ROADMAP-old.md alongside.
+- [ ] After user commits, push, tags: archive this RELEASE_GATE.md to `local/archive/RELEASE_GATE-v2.10.md`. The TODO trio is already at `local/archive/docs-legacy/`. Do not archive `ROADMAP.md` with that trio; `ROADMAP-old.md` stays in `docs/` unless a later cull.
 
 **Release exit:** v2.10 (or chosen number) on PyPI. MOPS+SNMP first-class. OFFLINE per Phase 3 verdict. SSH explicitly post-release with full ROADMAP entry.
 
@@ -953,9 +952,9 @@ After each fix:
 
 1. **Surgical testing always.** Full matrix runs are proof, not debugging. To debug one method on one protocol on one device, re-run only that cell.
 2. **Comms loss = stop and ask.** If a SET/CRUD run breaks the device's responsiveness, the matrix tool stops, dumps state, and asks the user. No assumptions about cause.
-3. **Re-verify, don't trust docs.** Every claim in TODO-old.md, SSH_HITLIST.md, and archived leftover Claude (`local/archive/docs-legacy/claude/CLAUDE.md`) is a hint. The matrix tool's output is the truth.
+3. **Re-verify, don't trust docs.** Every claim in the archived TODO trio (`local/archive/docs-legacy/`), SSH_HITLIST.md, and archived leftover Claude (`local/archive/docs-legacy/claude/CLAUDE.md`) is a hint. The matrix tool's output is the truth.
 4. **No throwaway work.** Every script, every YAML, every doc must have post-release reuse value (CI input, regression suite, generator input). If it's a one-shot, push back and propose something reusable.
-5. **Tag everything.** Every TODO entry has at least `#bucket #ID`. Every ROADMAP entry has `#roadmap #ID`. Every CHANGELOG entry references the shipped tags so the cleanup grep works.
+5. **Tag everything.** Every GitHub leftover issue has at least `#bucket #ID`. Every ROADMAP entry has `#roadmap #ID`. Every CHANGELOG entry references the shipped tags so the cleanup grep works.
 6. **MOPS + SNMP only for the gate.** SSH work that surfaces during Phase 1 (e.g., a wire that's missing for SSH) does not block release. It gets a `#roadmap` tag and moves on. The exception is if the SSH gap reveals a real `#engine` or `#schema` bug that also affects MOPS/SNMP — then it's release scope.
 
 ## Resolved decisions
@@ -964,7 +963,7 @@ After each fix:
 - **JSON file location** — `tests/release_matrix.json` ✓
 - **Rendered doc location** — `docs/RELEASE_MATRIX.md` ✓
 - **Tag scheme** — `#bucket #ID` two-token format ✓ (see "Cross-reference tag scheme" above)
-- **TODO/ROADMAP rename** — `TODO-old.md` / `ROADMAP-old.md`, archive to `local/archive/` once release ships ✓
+- **TODO trio archived** — `TODO.md` / `TODO-old.md` / `TODO_HITLIST.md` live under `local/archive/docs-legacy/` (not live law). `ROADMAP.md` stays. `ROADMAP-old.md` remains in `docs/` (untrusted) ✓
 
 ## Deferred until needed
 

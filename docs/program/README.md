@@ -9,7 +9,7 @@ The operating system for getting crude-engine from 2.9 to 2.10 and beyond.
 | [roadmap.yaml](roadmap.yaml) | Versions + exit criteria (machine) |
 | [cycles.yaml](cycles.yaml) | This iteration's tasks |
 | [../ROADMAP.md](../ROADMAP.md) | Human roadmap |
-| [../TODO.md](../TODO.md) | Human cycle list |
+| [GitHub issues](https://github.com/AdamRickards/crude-engine/issues) | Leftover work (prove-then-file or comment-close) |
 | [../status.html](../status.html) | Generated poster |
 
 Proofs live in `scripts/`. Lab proofs live in `tests/release_matrix.py`.

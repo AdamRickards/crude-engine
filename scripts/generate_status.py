@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render docs/status.html from program/*.yaml + TODO/ROADMAP presence.
+"""Render docs/status.html from program/*.yaml + ROADMAP presence.
 
     python3 scripts/generate_status.py
     python3 scripts/generate_status.py --check   # fail if human files missing
@@ -156,7 +156,7 @@ footer {{ margin-top:36px; color:var(--muted); font-family:var(--mono); font-siz
       <a href="program/SEED.md">SEED.md</a> ·
       <a href="program/METHOD.md">METHOD.md</a> ·
       <a href="ROADMAP.md">ROADMAP.md</a> ·
-      <a href="TODO.md">TODO.md</a> ·
+      <a href="https://github.com/AdamRickards/crude-engine/issues">GitHub issues</a> ·
       <a href="program/cycles.yaml">cycles.yaml</a>
     </p>
   </div>
@@ -188,7 +188,7 @@ footer {{ margin-top:36px; color:var(--muted); font-family:var(--mono); font-siz
 
 def check_human_files():
     missing = []
-    for rel in ("docs/ROADMAP.md", "docs/TODO.md", "docs/program/SEED.md",
+    for rel in ("docs/ROADMAP.md", "docs/program/SEED.md",
                 "docs/program/METHOD.md", "docs/program/cycles.yaml",
                 "docs/program/roadmap.yaml"):
         if not os.path.isfile(os.path.join(ROOT, rel)):

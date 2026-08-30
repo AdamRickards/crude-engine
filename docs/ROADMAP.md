@@ -23,7 +23,7 @@ Old file: `docs/ROADMAP-old.md` (untrusted).
 | `principles-grep` | offline | `scripts/check_principles.py` | `if protocol ==` and `except Exception: pass` stay banned. |
 | `parity-gate` | lab | `release_matrix.py --execute --kind parity --render` | 145 blocking cells (2026-04-14), almost all `#SNMP-Compound-Index-Decode`. |
 | `setter-crud-fleet` | lab | `--kind setter` then `--kind crud` | Read path green ≠ write path proven. |
-| `docs-curated` | offline | `generate_status.py --check` | TODO + ROADMAP exist and match the cycle. |
+| `docs-curated` | offline | `generate_status.py --check` | ROADMAP.md exists and matches the cycle. Leftovers live on GitHub issues. |
 
 Gate definition (unchanged): every in-scope method has a verified MOPS and SNMP verdict. Truth from execution, not prose.
 
@@ -31,7 +31,7 @@ Version number: **2.10.0** (not a 1.0 reset). 2.9 already exists in the package.
 
 ### Cycle 0 (current) — honest catalogue
 
-Offline only. See `docs/program/cycles.yaml` and `docs/TODO.md`.
+Offline only. See `docs/program/cycles.yaml`. Leftover work is GitHub issues.
 Lab P0 items are on the cycle as `lab: true` but **not started** until offline proofs are green.
 
 ---
