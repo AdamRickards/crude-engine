@@ -1,23 +1,30 @@
-# Leftover v26/monolith one-shot. Not live law. Do not run.
-# Hardcoded napalm-hios-v2 / napalm_hios paths from the old monolith.
-# Kept (not deleted) as archive. Live generators: generate_docs.py,
-# generate_method_ref.py, generate_protocols.py. Live schema check:
-# validate_schemas.py. See local/generator/README.md.
-
-# Version: 2.6.1 - Deep MIB Resolution (restored & perfected)
+# Leftover v26/monolith one-shot. Not live law.
+# Kept (not deleted) as archive. Do not write crude_engine/wire.
+# Isolated temp emit only: python batch_generate_MIB.py --isolated --outdir /tmp/...
+# Live generators: generate_docs.py, generate_method_ref.py, generate_protocols.py.
+# Live schema check: validate_schemas.py. See local/generator/README.md.
+#
+# Version: 2.6.2 - AUGMENTS index, BITS TC unwrap, composite INDEX, SFlowReceiver
 import os
+import argparse
 import xml.etree.ElementTree as ET
 import json
 import re
 import yaml
 
-# Updated Paths to use /local/reference/
+# Historical monolith default (dead). Isolated --outdir retargets the RUN.
+_REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 BASE_DIR = '/home/adamr/obsidian-vault/Projects/napalm-hios-v2'
 captured_dir = os.path.join(BASE_DIR, 'local/reference/captured')
-xml_schema_path = os.path.join(BASE_DIR, 'local/reference/MOPS/mops_hios.xml')
-master_schema_path = os.path.join(BASE_DIR, 'docs/napalm-hios-2-6-schema.md')
+xml_schema_path = os.path.join(_REPO_ROOT, 'local/reference/MOPS/mops_hios.xml')
+master_schema_path = os.path.join(_REPO_ROOT, 'docs/napalm-hios-2-6-schema.md')
 output_dir = os.path.join(BASE_DIR, 'local/reference/webUI')
-overrides_path = os.path.join(BASE_DIR, 'local/generator/overrides.yaml')
+overrides_path = os.path.join(_REPO_ROOT, 'local/generator/overrides.yaml')
+
+def _refuse_live_wire(path):
+    ap = os.path.abspath(path).replace("\\", "/")
+    if "crude_engine/wire" in ap:
+        raise SystemExit("leftover batch_generate_MIB refuses to write live crude_engine/wire")
 
 def load_overrides():
     if not os.path.exists(overrides_path): return {}
@@ -63,11 +70,19 @@ def parse_constraints(raw, syntax, mib_range=None):
         elif "TruthValue" in s or "HmEnabledStatus" in s: v = {"allowed": [True, False]}
     return v
 
-def syntax_to_type(syntax):
+def syntax_to_type(syntax, enumerations=None, tc_info=None):
     s = str(syntax).strip()
     if any(x in s for x in ("TruthValue", "HmEnabledStatus", "EnabledStatus")): return "boolean"
-    if s == "INTEGER" or any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number", "StorageType", "TimeStamp", "TimeInterval", "TimeFilter", "InetAddressPrefixLength", "InetAddressType", "InetPortNumber", "InetVersion", "Timeout", "Metric", "VlanId", "RouterID", "AreaID", "LacpKey", "DesignatedRouterPriority")): return "integer"
+    # INTEGER{enabled(1),disabled(2)} — same semantics as HmEnabledStatus, inline enum
+    if enumerations:
+        pairs = {(e.get("name"), str(e.get("value"))) for e in enumerations}
+        if pairs == {("enabled", "1"), ("disabled", "2")}:
+            return "boolean"
+    if s == "INTEGER" or any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number", "StorageType", "TimeStamp", "TimeInterval", "TimeFilter", "InetAddressPrefixLength", "InetAddressType", "InetPortNumber", "InetVersion", "Timeout", "Metric", "VlanId", "RouterID", "AreaID", "LacpKey", "DesignatedRouterPriority", "SFlowReceiver")): return "integer"
     if any(x in s for x in ("BITS", "PortList")): return "list"
+    # TextualConvention whose base syntax is BITS (LldpSystemCapabilitiesMap, …)
+    if tc_info and tc_info.get("syntax") == "BITS":
+        return "list"
     # Hm2* BITS types have bit_map in their MIB definition — handled by bit_map detection
     # Don't blanket-classify all Hm2* as list — many are integer enums
     return "string"
@@ -140,9 +155,47 @@ def build_lookup_tables(root):
             if idx_detail:
                 index_meta[entry_name] = idx_detail
 
-    return obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta
+    # AUGMENTS entries have no INDEX child — inherit from the augmented Entry
+    # (ifXEntry augments ifEntry, dot1qPortVlanEntry augments dot1dBasePortEntry, …)
+    for obj in root.findall('.//ObjectType'):
+        aug = obj.get('augments')
+        if not aug:
+            continue
+        entry_name = obj.get('name', '')
+        if not entry_name:
+            continue
+        seen = set()
+        cur = aug
+        while cur and cur not in seen:
+            seen.add(cur)
+            if cur in index_fields:
+                index_fields[entry_name] = list(index_fields[cur])
+                if cur in index_meta:
+                    index_meta[entry_name] = list(index_meta[cur])
+                break
+            cur_obj = obj_by_name.get(cur)
+            cur = cur_obj.get('augments') if cur_obj is not None else None
 
-def resolve_meta(target_name, master_db, obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta, root):
+    tc_by_name = {}
+    for tc in root.findall('.//TextualConvention'):
+        name = tc.get('name')
+        syn = tc.find('Syntax')
+        if not name or syn is None:
+            continue
+        info = {"syntax": syn.get("name", ""), "bit_map": {}}
+        for enum in syn.findall('Enumeration'):
+            try:
+                info["bit_map"][int(enum.get("value"))] = enum.get("name")
+            except (TypeError, ValueError):
+                pass
+        if not info["bit_map"]:
+            info.pop("bit_map")
+        tc_by_name[name] = info
+
+    return obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta, tc_by_name
+
+def resolve_meta(target_name, master_db, obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta, root, tc_by_name=None):
+    tc_by_name = tc_by_name or {}
     found_meta = {"mib": "Unknown", "table": "Unknown", "oid": "N/A", "syntax": "Unknown", "access": "r", "constraints": "", "is_table": False, "index_field": ""}
     
     target_obj = obj_by_name.get(target_name)
@@ -238,6 +291,9 @@ def resolve_meta(target_name, master_db, obj_by_name, node_by_name, table_for_en
                     found_meta["index_type"] = "inet_address"
                 elif any_implied or any(s in ('SnmpAdminString', 'OCTET STRING', 'SnmpEngineID') for s in syntaxes):
                     found_meta["index_type"] = "implied_string"
+                elif len(idx_detail) > 1:
+                    # multi-field INDEX with mixed types (ip_source_guard 4-part, …)
+                    found_meta["index_type"] = "composite"
 
     lookup_keys = []
     if found_meta["mib"] != "Unknown":
@@ -257,6 +313,13 @@ def resolve_meta(target_name, master_db, obj_by_name, node_by_name, table_for_en
             if found_meta["mib"] == "Unknown": found_meta["mib"] = key.split("::")[0]
             break
 
+    if target_obj is not None:
+        syntax_node = target_obj.find('Syntax')
+        if syntax_node is not None:
+            enums = list(syntax_node.findall('Enumeration'))
+            if enums:
+                found_meta["enumerations"] = enums
+
     if found_meta["syntax"] == "BITS" and target_obj is not None:
         bit_map = {}
         syntax_node = target_obj.find('Syntax')
@@ -264,15 +327,23 @@ def resolve_meta(target_name, master_db, obj_by_name, node_by_name, table_for_en
             for enum in syntax_node.findall('Enumeration'):
                 bit_map[int(enum.get('value'))] = enum.get('name')
         if bit_map: found_meta["bit_map"] = bit_map
+    else:
+        tc = tc_by_name.get(found_meta["syntax"])
+        if tc and tc.get("syntax") == "BITS" and tc.get("bit_map"):
+            found_meta["bit_map"] = tc["bit_map"]
+            found_meta["tc"] = tc
+        elif tc:
+            found_meta["tc"] = tc
 
     return found_meta
 
 def process_captured_pages():
+    _refuse_live_wire(output_dir)
     if not os.path.exists(output_dir): os.makedirs(output_dir)
     tree = ET.parse(xml_schema_path); root = tree.getroot()
     master_db = load_master_meta()
     overrides = load_overrides()
-    obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta = build_lookup_tables(root)
+    obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta, tc_by_name = build_lookup_tables(root)
 
     mib_features = {}
     for name, obj in obj_by_name.items():
@@ -288,10 +359,10 @@ def process_captured_pages():
         feature_data = {"version": "2.6.0", "feature": mib_id, 
                         "schemas": {f"read_{mib_id}": {"type": "dict", "defaults": {}}}, "attributes": {}}
         for attr_name in sorted(attrs_found.keys()):
-            meta = resolve_meta(attr_name, master_db, obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta, root)
+            meta = resolve_meta(attr_name, master_db, obj_by_name, node_by_name, table_for_entry, obj_to_mib, index_fields, index_meta, root, tc_by_name)
             if meta:
                 access = meta['access'].strip(); syntax = meta['syntax'].strip()
-                stype = syntax_to_type(syntax)
+                stype = syntax_to_type(syntax, enumerations=meta.get("enumerations"), tc_info=meta.get("tc"))
                 validation = parse_constraints(meta['constraints'], syntax, meta.get('mib_range'))
                 clean_name = attr_name.lower()
                 feature_data["schemas"][f"read_{mib_id}"]["defaults"][clean_name] = get_default_for_type(stype)
@@ -315,6 +386,13 @@ def process_captured_pages():
                 if cm_override: attr_entry["create_method"] = cm_override
                 type_override = overrides.get("type", {}).get(clean_name)
                 if type_override: attr_entry["type"] = type_override
+                src_ov = (overrides.get("sources") or {}).get(clean_name) or {}
+                if src_ov.get("oid"):
+                    attr_entry["sources"]["snmp"]["read"]["oid"] = src_ov["oid"]
+                if src_ov.get("table"):
+                    attr_entry["sources"]["mops"]["read"]["table"] = src_ov["table"]
+                if src_ov.get("field"):
+                    attr_entry["sources"]["mops"]["read"]["field"] = src_ov["field"]
                 feature_data["attributes"][clean_name] = attr_entry
         with open(os.path.join(output_dir, f"{mib_id}.yaml"), 'w') as f:
             yaml.dump(feature_data, f, sort_keys=False, default_flow_style=False)
@@ -348,5 +426,28 @@ def process_captured_pages():
 
     print(f"Generated {count} + 1 context-sources v2.6 Wire YAMLs using MIB-based naming.")
 
-if __name__ == "__main__":
+def _cli(argv=None):
+    global xml_schema_path, overrides_path, master_schema_path, output_dir
+    parser = argparse.ArgumentParser(
+        description="Leftover MIB→wire generator. Not live law. Temp outdir only."
+    )
+    parser.add_argument("--isolated", action="store_true",
+                        help="Required. Leftover is dead as live law; isolated temp emit only.")
+    parser.add_argument("--outdir", required=True,
+                        help="TEMP directory for YAML emit. Never crude_engine/wire.")
+    parser.add_argument("--xml", default=xml_schema_path,
+                        help="mops_hios.xml path (in-tree local/reference/MOPS/)")
+    parser.add_argument("--overrides", default=overrides_path)
+    parser.add_argument("--master", default=master_schema_path)
+    args = parser.parse_args(argv)
+    if not args.isolated:
+        raise SystemExit("leftover batch_generate_MIB is not live law; pass --isolated --outdir /tmp/...")
+    xml_schema_path = args.xml
+    overrides_path = args.overrides
+    master_schema_path = args.master
+    output_dir = args.outdir
+    _refuse_live_wire(output_dir)
     process_captured_pages()
+
+if __name__ == "__main__":
+    _cli()

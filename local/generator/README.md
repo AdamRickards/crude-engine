@@ -61,11 +61,17 @@ Live schema law remains `validate_schemas.py` (CI).
 
 These still hardcode `napalm-hios-v2` / `napalm_hios/` (or the old
 `local/reference/webUI` / v1 `hios.py` / LocalUI tree). **Kept, not
-deleted. Do not run.** Do not heal/enrich/batch-generate against live YAML.
+deleted.** Do not heal/enrich/batch-generate against live YAML.
+`batch_generate_MIB.py` may be invoked **isolated** into a TEMP outdir
+for emit-diff only — never `crude_engine/wire`:
+
+```bash
+python3 local/generator/batch_generate_MIB.py --isolated --outdir /tmp/crude-mib-emit
+```
 
 | File | Why leftover |
 |------|----------------|
-| `batch_generate_MIB.py` | One-shot MIB→webUI generator; mutates/writes the old tree |
+| `batch_generate_MIB.py` | One-shot MIB→wire generator; not live law. Isolated `--outdir` only |
 | `batch_generate_webui.py.stable` | Same class (sibling one-shot) |
 | `heal_schemas.py` | Mutates schema `source:` against old webUI wires |
 | `enrich_schema_v26.py` | Mutates `docs/napalm-hios-2-6-schema.md` |
