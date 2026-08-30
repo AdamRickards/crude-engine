@@ -1,5 +1,5 @@
 """
-base.py — Base driver interface for napalm-hios.
+base.py — Base driver interface for crude-engine.
 
 Layer: Driver (abstract). The contract between engine and transport.
 Engine calls gather() and set_values(). Driver calls transport. Nothing

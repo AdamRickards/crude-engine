@@ -1,5 +1,5 @@
 """
-MOPS.py — MOPS protocol driver for napalm-hios.
+MOPS.py — MOPS protocol driver for crude-engine.
 
 Layer: Driver. Translates wire YAML source dicts into MOPS operations.
 Owns: get_multi batching, index keying, row filtering, tag dispatch.

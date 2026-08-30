@@ -1,5 +1,5 @@
 """
-mops_transport.py — MOPS transport for napalm-hios.
+mops_transport.py — MOPS transport for crude-engine.
 
 Layer: Transport. Owns HTTPS session and raw MIB operations via XML.
 Cannot: interpret data meaning, decide what to gather, know about features.

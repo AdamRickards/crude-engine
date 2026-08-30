@@ -7,7 +7,7 @@ configuration. It wraps SNMP MIB operations in XML over HTTPS, providing:
   - HTTP Basic auth (same credentials as SSH/SNMP)
   - No net-snmp/pysnmp dependency — just requests + xml.etree
 
-Adapted from Hirschy-MOPS/lib/mops.py for use as a napalm-hios transport.
+Adapted from Hirschy-MOPS/lib/mops.py for use as a crude-engine transport.
 
 Usage:
     from crude_engine.drivers.mops_client import MOPSClient
