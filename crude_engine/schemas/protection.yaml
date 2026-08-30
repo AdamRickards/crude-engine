@@ -19,6 +19,16 @@ methods:
       enabled: false
       transmission_interval: 2
       rx_threshold: 0
+    attributes:
+      enabled:
+        wire: hm2agentswitchkeepalivestate
+        source: platform-switching
+      transmission_interval:
+        wire: hm2agentswitchkeepalivetransmitinterval
+        source: platform-switching
+      rx_threshold:
+        wire: hm2agentswitchkeepaliverxthreshold
+        source: platform-switching
   set_loop_protection:
     type: upsert
   get_auto_disable:
@@ -29,6 +39,28 @@ methods:
       enabled: false
       reason: none
       remaining_time: 0
+    attributes:
+      enabled:
+        wire: hm2autodisableintfoperstate
+        source: devmgmt
+      reason:
+        wire: hm2autodisableintferrorreason
+        source: devmgmt
+        value_map:
+          '0': none
+          '1': link-flap
+          '2': crc-error
+          '3': duplex-mismatch
+          '4': dhcp-snooping
+          '5': arp-rate
+          '6': bpdu-rate
+          '7': mac-based-port-security
+          '8': overload-detection
+          '9': speed-duplex
+          '10': loop-protection
+      remaining_time:
+        wire: hm2autodisableintfremainingtime
+        source: devmgmt
   set_auto_disable:
     type: upsert
     index_filter: '^\d+/\d+$'

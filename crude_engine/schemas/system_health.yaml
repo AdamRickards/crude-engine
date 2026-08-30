@@ -8,6 +8,31 @@ methods:
       oper_state: ''
       status_index: 0
       trap_cause: ''
+    attributes:
+      oper_state:
+        wire: hm2devmonoperstate
+        source: diagnostic
+        value_map:
+          '1': noerror
+          '2': error
+      status_index:
+        wire: hm2devmonstatusindex
+        source: diagnostic
+      trap_cause:
+        wire: hm2devmontrapcause
+        source: diagnostic
+        value_map:
+          '1': none
+          '2': power-supply
+          '3': link-failure
+          '4': temperature
+          '5': fan-failure
+          '6': module-removal
+          '7': ext-nvm-removal
+          '8': ext-nvm-not-in-sync
+          '9': ring-redundancy
+          '28': humidity
+          '30': stp-port-blocked
   set_device_monitor:
     type: upsert
   get_devsec_status:
@@ -16,12 +41,55 @@ methods:
       oper_state: ''
       status_index: 0
       trap_cause: ''
+    attributes:
+      oper_state:
+        wire: hm2devsecoperstate
+        source: diagnostic
+        value_map:
+          '1': noerror
+          '2': error
+      status_index:
+        wire: hm2devsecstatusindex
+        source: diagnostic
+      trap_cause:
+        wire: hm2devsectrapcause
+        source: diagnostic
+        value_map:
+          '1': none
+          '10': password-change
+          '11': password-min-length
+          '12': password-policy-not-configured
+          '13': password-policy-inactive
+          '14': telnet-enabled
+          '15': http-enabled
+          '16': snmp-unsecure
+          '17': sysmon-enabled
+          '18': ext-nvm-update-enabled
+          '19': no-link
+          '20': hidisc-enabled
+          '21': ext-nvm-config-load-unsecure
+          '22': iec61850-mms-enabled
+          '23': https-certificate-warning
+          '24': modbus-tcp-enabled
+          '25': ethernet-ip-enabled
+          '26': profinet-io-enabled
+          '29': pml-disabled
+          '31': secure-boot-disabled
+          '32': dev-mode-enabled
   set_devsec_status:
     type: upsert
   get_fan_status:
     type: dict
     defaults:
       status: running
+    attributes:
+      status:
+        wire: hm2fanmgmtstatus
+        source: fan
+        value_map:
+          '1': normal
+          '2': defective
+          '3': not-present
 attributes:
   monitor_state:
     wire: hm2devmonoperstate
