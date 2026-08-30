@@ -201,6 +201,8 @@ python3 tests/test_crud_pairs.py 192.168.60.80 --protocol snmp
 
 ### `capture.py` — multi-layer fixture capture
 
+**Status:** leftover live-capture helper, **not** the offline CI floor (`scripts/ci_offline.sh` does not run it). Tap4 goes through the 2.0 NAPALM shim (`napalm_hios.hios.HIOSDriver`). Do not fold that shim into `crude_engine`.
+
 **Purpose:** record everything that happens on a single device call, at four boundaries, so it can be replayed offline.
 
 **What it captures:**
@@ -228,6 +230,8 @@ python3 tests/capture.py 192.168.1.4 --methods get_facts get_interfaces
 
 ### `test_replay.py` — pytest-based fixture replay
 
+**Status:** leftover, **not** the live offline floor. CI does not run it. Fixtures are local/untracked. Engine import is `crude_engine.FeatureEngine`. `test_napalm` compares captured JSON; it does not import the shim.
+
 **Purpose:** offline regression tests using captured fixtures. No live device needed.
 
 **What it does:**
@@ -238,9 +242,8 @@ python3 tests/capture.py 192.168.1.4 --methods get_facts get_interfaces
 - Standard pytest discovery; `-k` filters work
 
 **When to use it:**
-- CI / pre-commit gate (fast, no network).
+- Local replay of captured fixtures (not CI).
 - Refactoring engine internals without risking a regression.
-- Testing on a plane.
 
 **When NOT to use it:**
 - Not for SET/CRUD — captures are read-only.

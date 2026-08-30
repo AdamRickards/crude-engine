@@ -1,9 +1,12 @@
 """
 test_replay.py — Multi-layer replay tests from captured fixtures.
 
+Leftover, not the live offline floor. scripts/ci_offline.sh does not run
+this. Fixtures under tests/fixtures/ are local/untracked.
+
 Tests at each boundary independently:
   test_engine:  tap1 (transport) → engine → compare tap3 (engine output)
-  test_napalm:  tap3 (engine output) → adapter shape → compare tap4 (napalm output)
+  test_napalm:  tap3 vs tap4 JSON (adapter shape already captured; no shim)
 
 Usage:
     pytest tests/test_replay.py -v
@@ -15,8 +18,7 @@ import json
 import os
 import pytest
 
-from napalm_hios.engine.interpreter import FeatureEngine
-from napalm_hios.hios import HIOSDriver
+from crude_engine import FeatureEngine
 
 FIXTURE_DIR = os.path.join(os.path.dirname(__file__), 'fixtures')
 
