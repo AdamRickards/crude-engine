@@ -10,6 +10,12 @@ This document is the formal specification for schema YAMLs in crude-engine. Ever
 
 1. **Schemas describe the device, not the consumer.** Key names come from MIB concepts, not NAPALM conventions. The adapter reshapes for its consumer.
 2. **`defaults` is the output contract.** Every key in `defaults` MUST appear in the getter output. Gate 1 exit enforces this.
+   - A getter returns its `defaults` keys.
+   - Every `defaults` key MUST exist as an attribute (feature-level or method-scoped).
+   - Device-touching attributes MUST have `wire` + `source` so Gate 2 resolves — that is the matrix lookup and the formatting.
+   - An undeclared `defaults` key never enters Gate 2; Gate 1 exit alone is a lie.
+   - Empty `{}` is only for honest no-wire (e.g. SSH execute blobs like `get_config` running/startup).
+   - Floor for this class: `python3 scripts/check_catalogue.py --composed`.
 3. **`type` determines shape.** `dict` = flat or keyed dict. `list` / `list_append` = list of dicts. `upsert` / `create` / `delete` = write operations.
 4. **`wire` + `source` bind to the device.** Every attribute that touches the device MUST declare its wire binding. Compute-only attributes MAY omit them.
 5. **Method scope is explicit.** `defaults` keys define what a getter returns. `fields` restrict what a setter accepts. `sub_tables.field_map` declares nested structure.
@@ -36,7 +42,7 @@ Schema (one per feature)
 
 ### Read method output contract
 
-`defaults` defines every key the getter returns. Gate 1 exit enforces this — if a key is in `defaults`, it MUST appear in the output.
+`defaults` defines every key the getter returns. Gate 1 exit enforces this — if a key is in `defaults`, it MUST appear in the output. Every `defaults` key MUST also exist as an attribute; undeclared keys never enter Gate 2 (principle 2).
 
 ```yaml
 get_dns:
