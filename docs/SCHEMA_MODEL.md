@@ -268,13 +268,15 @@ These rules define what "canonical" means. Violations are not errors — they ar
 
 ## Known NAPALM-Shaped Schemas (Reshaping Hitlist)
 
-| Schema | Keys | Canonical Alternative | Consumer Reshaper |
-|--------|------|----------------------|-------------------|
-| `interface` | `is_up`, `is_enabled`, `last_flapped`, `speed`, `mtu`, `mac_address`, `description` | `oper_status`, `admin_status`, `last_change`, `highspeed`, `mtu`, `phys_address`, `alias` | napalm-hios maps back |
-| `lldp` | `remote_hostname`, `remote_port`, `remote_chassis_id`, `remote_system_description` | `sys_name`, `port_id`, `chassis_id`, `sys_description` | napalm-hios maps back |
-| `mac` | `active`, `static`, `moves`, `last_move` | `status` (forward/permanent/etc) | napalm-hios derives booleans |
-| `optics` | Nested `physical_channels` structure | Flat `tx_power_dbm`, `rx_power_dbm` per port | napalm-hios nests for NAPALM |
-| `vlan` (get_vlans) | `ports` dict with U/T/F values | Separate `egress_ports`, `untagged_ports`, `forbidden_ports` lists | napalm-hios merges to ports dict |
+Live `defaults` (`origin/main` `139fe69`, 45 schemas): four of these five rows are already canonical. Only `vlan` `get_vlans` is still a consumer/shim leftover. Extra scan found no further hitlist rows. Canonical shape stays engine formatters; consumer reshape stays adapter/shim.
+
+| Schema | Live defaults keys | Status | Consumer |
+|--------|--------------------|--------|----------|
+| `interface` (`get_interfaces`) | `oper_status`, `admin_status` (was `is_up`/`is_enabled`). `phys_address`, `alias` present; `last_flapped`, `mac_address`, `description` gone. | Already canonical. Leftover naming: `speed` vs canonical `highspeed` (wire `ifhighspeed`). `mtu` is live and canonical — not a NAPALM violation. | napalm-hios maps back if needed |
+| `lldp` (`get_lldp_neighbors`, `get_lldp_neighbors_detail`) | `sys_name`, `port_id`, `chassis_id`, `sys_description` (was `remote_*`) | Already canonical | napalm-hios maps back if needed |
+| `mac` (`get_mac_address_table`) | `status` MIB enum `other`/`invalid`/`learned`/`self`/`mgmt` (was `active`/`static`/`moves`/`last_move`) | Already canonical | napalm-hios derives booleans if needed |
+| `optics` (`get_optics`) | flat `tx_power`, `rx_power`, `temperature` (was nested `physical_channels`) | Already canonical | napalm-hios nests for NAPALM if needed |
+| `vlan` (`get_vlans`) | `ports` dict with U/T/F | Honest leftover. Canonical already exists as `get_vlan_egress`. | Consumer/shim still merges if needed |
 
 ### Acceptable (MIB-standard keys, NAPALM method name coincidence)
 
