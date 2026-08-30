@@ -94,7 +94,7 @@ Config XML file acts as a device. Uses MOPS engine protocol internally. Auto-det
 
 ## Wire Overlays
 
-- **SSH**: `wire/ssh/` (13 overlay files)
+- **SSH**: `wire/ssh/` (30 overlay files)
 
 ---
 
@@ -102,6 +102,6 @@ Config XML file acts as a device. Uses MOPS engine protocol internally. Auto-det
 
 | Protocol | Wire Attrs | Methods | Method % |
 | :--- | :--- | :--- | :--- |
-| MOPS | 7927 / 7927 | 174 / 174 | 100% |
-| SNMP | 7927 / 7927 | 174 / 174 | 100% |
-| SSH | 61 / 7927 | 53 / 174 | 30% |
+| MOPS | 7927 / 7928 | 179 / 179 | 100% |
+| SNMP | 7928 / 7928 | 179 / 179 | 100% |
+| SSH | 286 / 7928 | 165 / 179 | 92% |

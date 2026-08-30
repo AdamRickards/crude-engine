@@ -2,12 +2,12 @@
 
 Automatically generated from schema, wire, and protocol YAMLs.
 
-**45 features** | **189 methods** (16C 75R 68U 16D 12E) | **Protocols:** MOPS, SNMP, SSH
+**45 features** | **191 methods** (16C 76R 69U 16D 12E) | **Protocols:** MOPS, SNMP, SSH
 
 ## Table of Contents
 
 - **[aca](#aca)** — `get_aca` (Read, MOPS/SNMP/SSH), `set_aca` (Update, MOPS/SNMP/SSH)
-- **[arp](#arp)** — `get_arp_table` (Read, MOPS/SNMP/SSH), `get_arp_inspection` (Read, MOPS/SNMP/SSH), `set_arp_inspection` (Update, MOPS/SNMP/SSH), `set_arp_inspection_port` (Update, MOPS/SNMP/SSH), `set_arp_inspection_vlan` (Update, MOPS/SNMP/SSH)
+- **[arp](#arp)** — `get_arp_table` (Read, MOPS/SNMP), `get_arp_inspection` (Read, MOPS/SNMP/SSH), `set_arp_inspection` (Update, MOPS/SNMP/SSH), `set_arp_inspection_port` (Update, MOPS/SNMP/SSH), `set_arp_inspection_vlan` (Update, MOPS/SNMP/SSH)
 - **[banner](#banner)** — `get_banner` (Read, MOPS/SNMP/SSH), `set_banner` (Update, MOPS/SNMP/SSH)
 - **[config](#config)** — `get_config` (Read, Composed), `get_config_status` (Read, MOPS/SNMP/SSH), `get_config_remote` (Read, Composed), `set_config_remote` (Update, MOPS/SNMP/SSH), `get_watchdog_status` (Read, MOPS/SNMP/SSH), `set_watchdog` (Update, MOPS/SNMP/SSH)
 - **[dai_global](#dai_global)** — `get_dai_global` (Read, MOPS/SNMP/SSH), `set_dai_global` (Update, MOPS/SNMP/SSH)
@@ -20,7 +20,7 @@ Automatically generated from schema, wire, and protocol YAMLs.
 - **[interface](#interface)** — `get_interfaces` (Read, MOPS/SNMP/SSH), `get_interface_statistics` (Read, MOPS/SNMP/SSH), `set_interface_utilization` (Update, MOPS/SNMP/SSH), `clear_interface_statistics` (Update, MOPS/SNMP/SSH), `get_ip_addresses` (Read, Composed), `get_interfaces_ip` (Read, MOPS/SNMP/SSH), `set_interface` (Update, MOPS/SNMP/SSH)
 - **[ip_restrict](#ip_restrict)** — `get_ip_restrict` (Read, MOPS/SNMP/SSH), `create_ip_restrict_rule` (Create, MOPS/SNMP/SSH), `delete_ip_restrict_rule` (Delete, MOPS/SNMP/SSH), `set_ip_restrict` (Update, MOPS/SNMP/SSH)
 - **[ip_source_guard](#ip_source_guard)** — `get_ip_source_guard_port` (Read, MOPS/SNMP/SSH), `set_ip_source_guard_port` (Update, MOPS/SNMP/SSH), `get_ip_source_guard_bindings` (Read, MOPS/SNMP), `set_ip_source_guard_binding` (Update, MOPS/SNMP/SSH), `create_static_binding` (Create, MOPS/SNMP), `delete_static_binding` (Delete, MOPS/SNMP/SSH)
-- **[ipv6](#ipv6)** — `get_ipv6_neighbors` (Read, MOPS/SNMP/SSH), `get_ipv6_neighbors_table` (Read, MOPS/SNMP/SSH)
+- **[ipv6](#ipv6)** — `get_ipv6_neighbors` (Read, MOPS/SNMP), `get_ipv6_neighbors_table` (Read, MOPS/SNMP)
 - **[lldp](#lldp)** — `get_lldp_neighbors` (list_append, MOPS/SNMP), `get_lldp_neighbors_detail` (list_append, MOPS/SNMP), `get_lldp_neighbors_detail_extended` (Read, MOPS/SNMP/SSH), `set_lldp` (Update, MOPS/SNMP/SSH)
 - **[mac](#mac)** — `get_mac_address_table` (Read, MOPS/SNMP/SSH)
 - **[management](#management)** — `get_management` (Read, MOPS/SNMP/SSH), `set_management` (Update, MOPS/SNMP/SSH), `get_management_priority` (Read, Composed), `set_management_priority` (Update, MOPS/SNMP/SSH)
@@ -31,7 +31,7 @@ Automatically generated from schema, wire, and protocol YAMLs.
 - **[poe](#poe)** — `get_poe` (Read, MOPS/SNMP/SSH), `set_poe` (Update, MOPS/SNMP/SSH)
 - **[port_security](#port_security)** — `get_port_security` (Read, MOPS/SNMP/SSH), `set_port_security` (Update, MOPS/SNMP/SSH), `create_port_security` (Update, MOPS/SNMP/SSH), `delete_port_security` (Update, MOPS/SNMP/SSH)
 - **[profile](#profile)** — `get_profiles` (Read, MOPS/SNMP/SSH), `activate_profile` (Update, MOPS/SNMP/SSH), `delete_profile` (Update, MOPS/SNMP/SSH)
-- **[protection](#protection)** — `get_storm_control` (Read, MOPS/SNMP/SSH), `set_storm_control` (Update, MOPS/SNMP/SSH), `get_loop_protection` (Read, Composed), `set_loop_protection` (Update, MOPS/SNMP/SSH), `get_auto_disable` (Read, Composed), `set_auto_disable` (Update, MOPS/SNMP/SSH), `set_auto_disable_reason` (Update, MOPS/SNMP/SSH)
+- **[protection](#protection)** — `get_storm_control` (Read, MOPS/SNMP/SSH), `set_storm_control` (Update, MOPS/SNMP/SSH), `get_loop_protection` (Read, Composed), `set_loop_protection` (Update, MOPS/SNMP/SSH), `get_auto_disable` (Read, Composed), `set_auto_disable` (Update, MOPS/SNMP/SSH), `get_auto_disable_reasons` (Read, Composed), `set_auto_disable_reason` (Update, MOPS/SNMP/SSH), `auto_disable_reset` (Update, MOPS/SNMP/SSH)
 - **[qos](#qos)** — `get_qos` (Read, MOPS/SNMP/SSH), `set_qos` (Update, MOPS/SNMP/SSH)
 - **[qos_mapping](#qos_mapping)** — `get_qos_mapping` (Read, MOPS/SNMP/SSH), `set_qos_mapping` (Update, MOPS/SNMP/SSH)
 - **[remote_auth](#remote_auth)** — `get_remote_auth` (Read, MOPS/SNMP/SSH), `set_remote_auth` (Update, MOPS/SNMP/SSH), `create_radius_server` (Create, MOPS/SNMP/SSH), `delete_radius_server` (Delete, MOPS/SNMP/SSH), `create_ldap_server` (Create, MOPS/SNMP/SSH), `delete_ldap_server` (Delete, MOPS/SNMP/SSH), `create_tacacs_server` (Create, MOPS/SNMP/SSH), `delete_tacacs_server` (Delete, MOPS/SNMP)
@@ -86,17 +86,17 @@ get_aca() -> {
 
 ```
 MOPS {
-  auto_ssh_key: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSshKeyLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_serial: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmSerialNum}  # DisplayString, access=r
-  slot_status: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmStatus}  # INTEGER, access=r
-  selected_memory: {HM2-DEVMGMT-MIB / hm2ExtNvmGeneralGroup.hm2ExtNvmChooseActive}  # Hm2DeviceExtNVMType, access=ru
-  slot_name: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmProductName}  # DisplayString, access=r
-  auto_update: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSoftwareLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_writable: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmWritable}  # HmEnabledStatus, access=r, allowed=[True, False]
-  config_save: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmConfigSave}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_type: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmTableIndex}  # Hm2DeviceExtNVMType, access=r
   config_load_priority: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmConfigLoadPriority}  # INTEGER, access=ru, allowed=['disable', 'first', 'second', 'third']
+  slot_type: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmTableIndex}  # Hm2DeviceExtNVMType, access=r
+  auto_update: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSoftwareLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_status: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmStatus}  # INTEGER, access=r
+  slot_name: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmProductName}  # DisplayString, access=r
+  selected_memory: {HM2-DEVMGMT-MIB / hm2ExtNvmGeneralGroup.hm2ExtNvmChooseActive}  # Hm2DeviceExtNVMType, access=ru
+  auto_ssh_key: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSshKeyLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_writable: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmWritable}  # HmEnabledStatus, access=r, allowed=[True, False]
   envm_state: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMEnvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
+  slot_serial: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmSerialNum}  # DisplayString, access=r
+  config_save: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmConfigSave}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -105,17 +105,17 @@ MOPS {
 
 ```
 SNMP {
-  auto_ssh_key: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_serial: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.7}  # DisplayString, access=r
-  slot_status: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.2}  # INTEGER, access=r
-  selected_memory: {oid: 1.3.6.1.4.1.248.11.10.1.8.1.1, method: get}  # Hm2DeviceExtNVMType, access=ru
-  slot_name: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.5}  # DisplayString, access=r
-  auto_update: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_writable: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.11}  # HmEnabledStatus, access=r, allowed=[True, False]
-  config_save: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_type: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.1}  # Hm2DeviceExtNVMType, access=r
   config_load_priority: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.9}  # INTEGER, access=ru, allowed=['disable', 'first', 'second', 'third']
+  slot_type: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.1}  # Hm2DeviceExtNVMType, access=r
+  auto_update: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_status: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.2}  # INTEGER, access=r
+  slot_name: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.5}  # DisplayString, access=r
+  selected_memory: {oid: 1.3.6.1.4.1.248.11.10.1.8.1.1, method: get}  # Hm2DeviceExtNVMType, access=ru
+  auto_ssh_key: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_writable: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.11}  # HmEnabledStatus, access=r, allowed=[True, False]
   envm_state: {oid: 1.3.6.1.4.1.248.11.21.1.3.2, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
+  slot_serial: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.7}  # DisplayString, access=r
+  config_save: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -137,17 +137,17 @@ SSH {
 
 ```
 MOPS {
-  auto_ssh_key: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSshKeyLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_serial: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmSerialNum}  # DisplayString, access=r
-  slot_status: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmStatus}  # INTEGER, access=r
-  selected_memory: {HM2-DEVMGMT-MIB / hm2ExtNvmGeneralGroup.hm2ExtNvmChooseActive}  # Hm2DeviceExtNVMType, access=ru
-  slot_name: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmProductName}  # DisplayString, access=r
-  auto_update: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSoftwareLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_writable: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmWritable}  # HmEnabledStatus, access=r, allowed=[True, False]
-  config_save: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmConfigSave}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_type: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmTableIndex}  # Hm2DeviceExtNVMType, access=r
   config_load_priority: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmConfigLoadPriority}  # INTEGER, access=ru, allowed=['disable', 'first', 'second', 'third']
+  slot_type: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmTableIndex}  # Hm2DeviceExtNVMType, access=r
+  auto_update: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSoftwareLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_status: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmStatus}  # INTEGER, access=r
+  slot_name: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmProductName}  # DisplayString, access=r
+  selected_memory: {HM2-DEVMGMT-MIB / hm2ExtNvmGeneralGroup.hm2ExtNvmChooseActive}  # Hm2DeviceExtNVMType, access=ru
+  auto_ssh_key: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmAutomaticSshKeyLoad}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_writable: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmWritable}  # HmEnabledStatus, access=r, allowed=[True, False]
   envm_state: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMEnvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
+  slot_serial: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmSerialNum}  # DisplayString, access=r
+  config_save: {HM2-DEVMGMT-MIB / hm2ExtNvmEntry.hm2ExtNvmConfigSave}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -156,17 +156,17 @@ MOPS {
 
 ```
 SNMP {
-  auto_ssh_key: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_serial: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.7}  # DisplayString, access=r
-  slot_status: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.2}  # INTEGER, access=r
-  selected_memory: {oid: 1.3.6.1.4.1.248.11.10.1.8.1.1, method: get}  # Hm2DeviceExtNVMType, access=ru
-  slot_name: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.5}  # DisplayString, access=r
-  auto_update: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_writable: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.11}  # HmEnabledStatus, access=r, allowed=[True, False]
-  config_save: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  slot_type: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.1}  # Hm2DeviceExtNVMType, access=r
   config_load_priority: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.9}  # INTEGER, access=ru, allowed=['disable', 'first', 'second', 'third']
+  slot_type: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.1}  # Hm2DeviceExtNVMType, access=r
+  auto_update: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_status: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.2}  # INTEGER, access=r
+  slot_name: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.5}  # DisplayString, access=r
+  selected_memory: {oid: 1.3.6.1.4.1.248.11.10.1.8.1.1, method: get}  # Hm2DeviceExtNVMType, access=ru
+  auto_ssh_key: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  slot_writable: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.11}  # HmEnabledStatus, access=r, allowed=[True, False]
   envm_state: {oid: 1.3.6.1.4.1.248.11.21.1.3.2, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
+  slot_serial: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.7}  # DisplayString, access=r
+  config_save: {oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -188,7 +188,7 @@ _ARP table and Dynamic ARP Inspection (DAI) configuration_
 
 ### `get_arp_table()`
 
-**Read** | **Protocols:** MOPS, SNMP, SSH
+**Read** | **Protocols:** MOPS, SNMP
 Primary key: `ip`
 
 ```
@@ -201,38 +201,24 @@ get_arp_table() -> {
 ```
 
 
-<details><summary>MOPS sources (4/4 attrs)</summary>
+<details><summary>MOPS sources (3/4 attrs)</summary>
 
 ```
 MOPS {
-  age: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalLastUpdated}  # TimeStamp, access=r
-  mac: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalPhysAddress}  # PhysAddress, access=ru, range=0–65535
-  ip: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalNetAddress}  # InetAddress, access=r
-  interface: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalIfIndex}  # InterfaceIndex, access=r
+  ip: {IP-MIB / ipNetToMediaEntry.ipNetToMediaNetAddress}  # IpAddress, access=ru
+  interface: {IP-MIB / ipNetToMediaEntry.ipNetToMediaIfIndex}  # INTEGER, access=ru, range=1–2147483647
+  mac: {IP-MIB / ipNetToMediaEntry.ipNetToMediaPhysAddress}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
 
-<details><summary>SNMP sources (4/4 attrs)</summary>
+<details><summary>SNMP sources (3/4 attrs)</summary>
 
 ```
 SNMP {
-  age: {oid: 1.3.6.1.2.1.4.35.1.5}  # TimeStamp, access=r
-  mac: {oid: 1.3.6.1.2.1.4.35.1.4}  # PhysAddress, access=ru, range=0–65535
-  ip: {oid: 1.3.6.1.2.1.4.35.1.3}  # InetAddress, access=r
-  interface: {oid: 1.3.6.1.2.1.4.35.1.1}  # InterfaceIndex, access=r
-}
-```
-</details>
-
-<details><summary>SSH sources (4/4 attrs)</summary>
-
-```
-SSH {
-  age: {read: "show arp"}  # TimeStamp, access=r
-  mac: {read: "show arp"}  # PhysAddress, access=ru, range=0–65535
-  ip: {read: "show arp"}  # InetAddress, access=r
-  interface: {read: "show arp"}  # InterfaceIndex, access=r
+  ip: {oid: 1.3.6.1.2.1.4.22.1.3}  # IpAddress, access=ru
+  interface: {oid: 1.3.6.1.2.1.4.22.1.1}  # INTEGER, access=ru, range=1–2147483647
+  mac: {oid: 1.3.6.1.2.1.4.22.1.2}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
@@ -259,21 +245,21 @@ get_arp_inspection() -> {
 
 ```
 MOPS {
-  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
-  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
-  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
-  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_index: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanIndex}  # VlanIndex, access=r, range=1–4094
   dai_vlan_logging: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanLoggingEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_acl_name: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclName}  # DisplayString, access=ru, range=0–31
   dai_rate_limit: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfRateLimit}  # Integer32, access=ru
-  dai_vlan_index: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanIndex}  # VlanIndex, access=r, range=1–4094
-  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
   dai_port_auto_disable: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
+  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
+  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -282,21 +268,21 @@ MOPS {
 
 ```
 SNMP {
-  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
-  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
-  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_index: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.1}  # VlanIndex, access=r, range=1–4094
   dai_vlan_logging: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.3}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_acl_name: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.4}  # DisplayString, access=ru, range=0–31
   dai_rate_limit: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.2}  # Integer32, access=ru
-  dai_vlan_index: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.1}  # VlanIndex, access=r, range=1–4094
-  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
   dai_port_auto_disable: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
+  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -305,10 +291,10 @@ SNMP {
 
 ```
 SSH {
-  port_ifindex: {read: "show port"}  # DisplayString, access=r
   validate_ip: {read: "show ip arp-inspection global", write: "ip arp-inspection verify ip"}  # TruthValue, access=ru, allowed=[True, False]
-  validate_dst_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify dst-mac"}  # TruthValue, access=ru, allowed=[True, False]
   validate_src_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify src-mac"}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {read: "show port"}  # DisplayString, access=r
+  validate_dst_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify dst-mac"}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -317,72 +303,66 @@ SSH {
 
 **Update** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (19/19 attrs)</summary>
+<details><summary>MOPS sources (18/19 attrs)</summary>
 
 ```
 MOPS {
-  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
-  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_rate_limit: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfRateLimit}  # Integer32, access=ru
-  interface: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalIfIndex}  # InterfaceIndex, access=r
-  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  age: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalLastUpdated}  # TimeStamp, access=r
-  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
-  ip: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalNetAddress}  # InetAddress, access=r
-  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_logging: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanLoggingEnable}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_index: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanIndex}  # VlanIndex, access=r, range=1–4094
-  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_name: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclName}  # DisplayString, access=ru, range=0–31
-  mac: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalPhysAddress}  # PhysAddress, access=ru, range=0–65535
+  dai_rate_limit: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfRateLimit}  # Integer32, access=ru
+  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
   dai_port_auto_disable: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ip: {IP-MIB / ipNetToMediaEntry.ipNetToMediaNetAddress}  # IpAddress, access=ru
+  dai_vlan_logging: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanLoggingEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
+  mac: {IP-MIB / ipNetToMediaEntry.ipNetToMediaPhysAddress}  # PhysAddress, access=ru, range=0–65535
+  dai_vlan_acl_name: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclName}  # DisplayString, access=ru, range=0–31
+  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  interface: {IP-MIB / ipNetToMediaEntry.ipNetToMediaIfIndex}  # INTEGER, access=ru, range=1–2147483647
+  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
+  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
 
-<details><summary>SNMP sources (19/19 attrs)</summary>
+<details><summary>SNMP sources (18/19 attrs)</summary>
 
 ```
 SNMP {
-  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
-  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  dai_rate_limit: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.2}  # Integer32, access=ru
-  interface: {oid: 1.3.6.1.2.1.4.35.1.1}  # InterfaceIndex, access=r
-  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  age: {oid: 1.3.6.1.2.1.4.35.1.5}  # TimeStamp, access=r
-  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
-  ip: {oid: 1.3.6.1.2.1.4.35.1.3}  # InetAddress, access=r
-  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_logging: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.3}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_index: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.1}  # VlanIndex, access=r, range=1–4094
-  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_name: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.4}  # DisplayString, access=ru, range=0–31
-  mac: {oid: 1.3.6.1.2.1.4.35.1.4}  # PhysAddress, access=ru, range=0–65535
+  dai_rate_limit: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.2}  # Integer32, access=ru
+  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
   dai_port_auto_disable: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ip: {oid: 1.3.6.1.2.1.4.22.1.3}  # IpAddress, access=ru
+  dai_vlan_logging: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.3}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  mac: {oid: 1.3.6.1.2.1.4.22.1.2}  # PhysAddress, access=ru, range=0–65535
+  dai_vlan_acl_name: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.4}  # DisplayString, access=ru, range=0–31
+  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  interface: {oid: 1.3.6.1.2.1.4.22.1.1}  # INTEGER, access=ru, range=1–2147483647
+  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
 
-<details><summary>SSH sources (8/19 attrs)</summary>
+<details><summary>SSH sources (4/19 attrs)</summary>
 
 ```
 SSH {
-  interface: {read: "show arp"}  # InterfaceIndex, access=r
-  age: {read: "show arp"}  # TimeStamp, access=r
-  ip: {read: "show arp"}  # InetAddress, access=r
   validate_ip: {read: "show ip arp-inspection global", write: "ip arp-inspection verify ip"}  # TruthValue, access=ru, allowed=[True, False]
+  validate_src_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify src-mac"}  # TruthValue, access=ru, allowed=[True, False]
   port_ifindex: {read: "show port"}  # DisplayString, access=r
   validate_dst_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify dst-mac"}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify src-mac"}  # TruthValue, access=ru, allowed=[True, False]
-  mac: {read: "show arp"}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
@@ -391,72 +371,66 @@ SSH {
 
 **Update** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (19/19 attrs)</summary>
+<details><summary>MOPS sources (18/19 attrs)</summary>
 
 ```
 MOPS {
-  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
-  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_rate_limit: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfRateLimit}  # Integer32, access=ru
-  interface: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalIfIndex}  # InterfaceIndex, access=r
-  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  age: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalLastUpdated}  # TimeStamp, access=r
-  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
-  ip: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalNetAddress}  # InetAddress, access=r
-  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_logging: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanLoggingEnable}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_index: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanIndex}  # VlanIndex, access=r, range=1–4094
-  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_name: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclName}  # DisplayString, access=ru, range=0–31
-  mac: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalPhysAddress}  # PhysAddress, access=ru, range=0–65535
+  dai_rate_limit: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfRateLimit}  # Integer32, access=ru
+  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
   dai_port_auto_disable: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ip: {IP-MIB / ipNetToMediaEntry.ipNetToMediaNetAddress}  # IpAddress, access=ru
+  dai_vlan_logging: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanLoggingEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
+  mac: {IP-MIB / ipNetToMediaEntry.ipNetToMediaPhysAddress}  # PhysAddress, access=ru, range=0–65535
+  dai_vlan_acl_name: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclName}  # DisplayString, access=ru, range=0–31
+  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  interface: {IP-MIB / ipNetToMediaEntry.ipNetToMediaIfIndex}  # INTEGER, access=ru, range=1–2147483647
+  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
+  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
 
-<details><summary>SNMP sources (19/19 attrs)</summary>
+<details><summary>SNMP sources (18/19 attrs)</summary>
 
 ```
 SNMP {
-  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
-  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  dai_rate_limit: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.2}  # Integer32, access=ru
-  interface: {oid: 1.3.6.1.2.1.4.35.1.1}  # InterfaceIndex, access=r
-  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  age: {oid: 1.3.6.1.2.1.4.35.1.5}  # TimeStamp, access=r
-  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
-  ip: {oid: 1.3.6.1.2.1.4.35.1.3}  # InetAddress, access=r
-  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_logging: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.3}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_index: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.1}  # VlanIndex, access=r, range=1–4094
-  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_name: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.4}  # DisplayString, access=ru, range=0–31
-  mac: {oid: 1.3.6.1.2.1.4.35.1.4}  # PhysAddress, access=ru, range=0–65535
+  dai_rate_limit: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.2}  # Integer32, access=ru
+  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
   dai_port_auto_disable: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ip: {oid: 1.3.6.1.2.1.4.22.1.3}  # IpAddress, access=ru
+  dai_vlan_logging: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.3}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  mac: {oid: 1.3.6.1.2.1.4.22.1.2}  # PhysAddress, access=ru, range=0–65535
+  dai_vlan_acl_name: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.4}  # DisplayString, access=ru, range=0–31
+  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  interface: {oid: 1.3.6.1.2.1.4.22.1.1}  # INTEGER, access=ru, range=1–2147483647
+  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
 
-<details><summary>SSH sources (8/19 attrs)</summary>
+<details><summary>SSH sources (4/19 attrs)</summary>
 
 ```
 SSH {
-  interface: {read: "show arp"}  # InterfaceIndex, access=r
-  age: {read: "show arp"}  # TimeStamp, access=r
-  ip: {read: "show arp"}  # InetAddress, access=r
   validate_ip: {read: "show ip arp-inspection global", write: "ip arp-inspection verify ip"}  # TruthValue, access=ru, allowed=[True, False]
+  validate_src_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify src-mac"}  # TruthValue, access=ru, allowed=[True, False]
   port_ifindex: {read: "show port"}  # DisplayString, access=r
   validate_dst_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify dst-mac"}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify src-mac"}  # TruthValue, access=ru, allowed=[True, False]
-  mac: {read: "show arp"}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
@@ -465,72 +439,66 @@ SSH {
 
 **Update** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (19/19 attrs)</summary>
+<details><summary>MOPS sources (18/19 attrs)</summary>
 
 ```
 MOPS {
-  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
-  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
-  dai_rate_limit: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfRateLimit}  # Integer32, access=ru
-  interface: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalIfIndex}  # InterfaceIndex, access=r
-  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  age: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalLastUpdated}  # TimeStamp, access=r
-  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
-  ip: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalNetAddress}  # InetAddress, access=r
-  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_logging: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanLoggingEnable}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_index: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanIndex}  # VlanIndex, access=r, range=1–4094
-  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_name: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclName}  # DisplayString, access=ru, range=0–31
-  mac: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalPhysAddress}  # PhysAddress, access=ru, range=0–65535
+  dai_rate_limit: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfRateLimit}  # Integer32, access=ru
+  dai_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
   dai_port_auto_disable: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclStaticFlag}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ip: {IP-MIB / ipNetToMediaEntry.ipNetToMediaNetAddress}  # IpAddress, access=ru
+  dai_vlan_logging: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanLoggingEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiIfConfigEntry.hm2AgentDaiIfBurstInterval}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiIPValidate}  # TruthValue, access=ru, allowed=[True, False]
+  mac: {IP-MIB / ipNetToMediaEntry.ipNetToMediaPhysAddress}  # PhysAddress, access=ru, range=0–65535
+  dai_vlan_acl_name: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanArpAclName}  # DisplayString, access=ru, range=0–31
+  validate_src_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiSrcMacValidate}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  interface: {IP-MIB / ipNetToMediaEntry.ipNetToMediaIfIndex}  # INTEGER, access=ru, range=1–2147483647
+  dai_vlan_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanDynArpInspEnable}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiVlanConfigEntry.hm2AgentDaiVlanBindingCheckEnable}  # TruthValue, access=ru, allowed=[True, False]
+  validate_dst_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDaiConfigGroup.hm2AgentDaiDstMacValidate}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
 
-<details><summary>SNMP sources (19/19 attrs)</summary>
+<details><summary>SNMP sources (18/19 attrs)</summary>
 
 ```
 SNMP {
-  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
-  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
-  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  dai_rate_limit: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.2}  # Integer32, access=ru
-  interface: {oid: 1.3.6.1.2.1.4.35.1.1}  # InterfaceIndex, access=r
-  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  age: {oid: 1.3.6.1.2.1.4.35.1.5}  # TimeStamp, access=r
-  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
-  ip: {oid: 1.3.6.1.2.1.4.35.1.3}  # InetAddress, access=r
-  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_logging: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.3}  # TruthValue, access=ru, allowed=[True, False]
   dai_vlan_index: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.1}  # VlanIndex, access=r, range=1–4094
-  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
-  dai_vlan_acl_name: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.4}  # DisplayString, access=ru, range=0–31
-  mac: {oid: 1.3.6.1.2.1.4.35.1.4}  # PhysAddress, access=ru, range=0–65535
+  dai_rate_limit: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.2}  # Integer32, access=ru
+  dai_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.1}  # TruthValue, access=ru, allowed=[True, False]
   dai_port_auto_disable: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_acl_static: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.5}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ip: {oid: 1.3.6.1.2.1.4.22.1.3}  # IpAddress, access=ru
+  dai_vlan_logging: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.3}  # TruthValue, access=ru, allowed=[True, False]
+  dai_burst_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.7.1.3}  # Unsigned32, access=ru, range=1–15
+  validate_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.3, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  mac: {oid: 1.3.6.1.2.1.4.22.1.2}  # PhysAddress, access=ru, range=0–65535
+  dai_vlan_acl_name: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.4}  # DisplayString, access=ru, range=0–31
+  validate_src_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  port_ifindex: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  interface: {oid: 1.3.6.1.2.1.4.22.1.1}  # INTEGER, access=ru, range=1–2147483647
+  dai_vlan_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.2}  # TruthValue, access=ru, allowed=[True, False]
+  dai_vlan_binding_check: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.4.1.248}  # TruthValue, access=ru, allowed=[True, False]
+  validate_dst_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.21.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
 
-<details><summary>SSH sources (8/19 attrs)</summary>
+<details><summary>SSH sources (4/19 attrs)</summary>
 
 ```
 SSH {
-  interface: {read: "show arp"}  # InterfaceIndex, access=r
-  age: {read: "show arp"}  # TimeStamp, access=r
-  ip: {read: "show arp"}  # InetAddress, access=r
   validate_ip: {read: "show ip arp-inspection global", write: "ip arp-inspection verify ip"}  # TruthValue, access=ru, allowed=[True, False]
+  validate_src_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify src-mac"}  # TruthValue, access=ru, allowed=[True, False]
   port_ifindex: {read: "show port"}  # DisplayString, access=r
   validate_dst_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify dst-mac"}  # TruthValue, access=ru, allowed=[True, False]
-  validate_src_mac: {read: "show ip arp-inspection global", write: "ip arp-inspection verify src-mac"}  # TruthValue, access=ru, allowed=[True, False]
-  mac: {read: "show arp"}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
@@ -557,8 +525,8 @@ get_banner() -> {
 
 ```
 MOPS {
-  pre_login_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessPreLoginBannerGroup.hm2PreLoginBannerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   pre_login_text: {HM2-MGMTACCESS-MIB / hm2MgmtAccessPreLoginBannerGroup.hm2PreLoginBannerText}  # HmLargeDisplayString, access=ru, range=0–512
+  pre_login_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessPreLoginBannerGroup.hm2PreLoginBannerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -567,8 +535,8 @@ MOPS {
 
 ```
 SNMP {
-  pre_login_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   pre_login_text: {oid: 1.3.6.1.4.1.248.11.25.1.5.2, method: get}  # HmLargeDisplayString, access=ru, range=0–512
+  pre_login_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -577,8 +545,8 @@ SNMP {
 
 ```
 SSH {
-  pre_login_enabled: {read: "show system pre-login-banner", write: "system pre-login-banner operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   pre_login_text: {read: "show system pre-login-banner", write: "system pre-login-banner text {value}"}  # HmLargeDisplayString, access=ru, range=0–512
+  pre_login_enabled: {read: "show system pre-login-banner", write: "system pre-login-banner operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -591,8 +559,8 @@ SSH {
 
 ```
 MOPS {
-  pre_login_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessPreLoginBannerGroup.hm2PreLoginBannerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   pre_login_text: {HM2-MGMTACCESS-MIB / hm2MgmtAccessPreLoginBannerGroup.hm2PreLoginBannerText}  # HmLargeDisplayString, access=ru, range=0–512
+  pre_login_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessPreLoginBannerGroup.hm2PreLoginBannerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -601,8 +569,8 @@ MOPS {
 
 ```
 SNMP {
-  pre_login_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   pre_login_text: {oid: 1.3.6.1.4.1.248.11.25.1.5.2, method: get}  # HmLargeDisplayString, access=ru, range=0–512
+  pre_login_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -611,8 +579,8 @@ SNMP {
 
 ```
 SSH {
-  pre_login_enabled: {read: "show system pre-login-banner", write: "system pre-login-banner operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   pre_login_text: {read: "show system pre-login-banner", write: "system pre-login-banner text {value}"}  # HmLargeDisplayString, access=ru, range=0–512
+  pre_login_enabled: {read: "show system pre-login-banner", write: "system pre-login-banner operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -642,7 +610,6 @@ get_config() -> {
 ```
 get_config_status() -> {
     saved: True  // bool (computed)
-    last_changed: ""  // str
     nvm: "ok"  // "ok" | "outOfSync" | "busy"
     aca: "absent"  // "ok" | "outOfSync" | "absent"
     boot: "ok"  // "ok" | "outOfSync"
@@ -654,9 +621,9 @@ get_config_status() -> {
 
 ```
 MOPS {
+  aca: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMEnvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
   nvm: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMNvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   boot: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMBootParamState}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
-  aca: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMEnvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
 </details>
@@ -665,9 +632,9 @@ MOPS {
 
 ```
 SNMP {
+  aca: {oid: 1.3.6.1.4.1.248.11.21.1.3.2, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
   nvm: {oid: 1.3.6.1.4.1.248.11.21.1.3.1, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   boot: {oid: 1.3.6.1.4.1.248.11.21.1.3.3, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
-  aca: {oid: 1.3.6.1.4.1.248.11.21.1.3.2, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
 </details>
@@ -676,9 +643,9 @@ SNMP {
 
 ```
 SSH {
+  aca: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
   nvm: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   boot: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
-  aca: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
 </details>
@@ -699,43 +666,43 @@ get_config_remote() -> {
 
 **Update** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (6/7 attrs)</summary>
+<details><summary>MOPS sources (6/9 attrs)</summary>
 
 ```
 MOPS {
-  nvm: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMNvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
+  boot: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMBootParamState}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   watchdog_remaining: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimerValue}  # Integer32, access=r
   watchdog_interval: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimeInterval}  # Integer32 (30..600), access=ru, range=30–600
+  nvm: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMNvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   watchdog_enabled: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  boot: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMBootParamState}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   aca: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMEnvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
 </details>
 
-<details><summary>SNMP sources (6/7 attrs)</summary>
+<details><summary>SNMP sources (6/9 attrs)</summary>
 
 ```
 SNMP {
-  nvm: {oid: 1.3.6.1.4.1.248.11.21.1.3.1, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
+  boot: {oid: 1.3.6.1.4.1.248.11.21.1.3.3, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   watchdog_remaining: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.4, method: get}  # Integer32, access=r
   watchdog_interval: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.3, method: get}  # Integer32 (30..600), access=ru, range=30–600
+  nvm: {oid: 1.3.6.1.4.1.248.11.21.1.3.1, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   watchdog_enabled: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  boot: {oid: 1.3.6.1.4.1.248.11.21.1.3.3, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   aca: {oid: 1.3.6.1.4.1.248.11.21.1.3.2, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
 </details>
 
-<details><summary>SSH sources (6/7 attrs)</summary>
+<details><summary>SSH sources (6/9 attrs)</summary>
 
 ```
 SSH {
-  nvm: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
+  boot: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   watchdog_remaining: {read: "show config watchdog"}  # Integer32, access=r
   watchdog_interval: {read: "show config watchdog", write: "config watchdog timeout {value}"}  # Integer32 (30..600), access=ru, range=30–600
+  nvm: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   watchdog_enabled: {read: "show config watchdog", write: "config watchdog admin-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  boot: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   aca: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
@@ -758,9 +725,9 @@ get_watchdog_status() -> {
 
 ```
 MOPS {
-  watchdog_remaining: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimerValue}  # Integer32, access=r
-  watchdog_interval: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimeInterval}  # Integer32 (30..600), access=ru, range=30–600
   watchdog_enabled: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  watchdog_interval: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimeInterval}  # Integer32 (30..600), access=ru, range=30–600
+  watchdog_remaining: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimerValue}  # Integer32, access=r
 }
 ```
 </details>
@@ -769,9 +736,9 @@ MOPS {
 
 ```
 SNMP {
-  watchdog_remaining: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.4, method: get}  # Integer32, access=r
-  watchdog_interval: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.3, method: get}  # Integer32 (30..600), access=ru, range=30–600
   watchdog_enabled: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  watchdog_interval: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.3, method: get}  # Integer32 (30..600), access=ru, range=30–600
+  watchdog_remaining: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.4, method: get}  # Integer32, access=r
 }
 ```
 </details>
@@ -780,9 +747,9 @@ SNMP {
 
 ```
 SSH {
-  watchdog_remaining: {read: "show config watchdog"}  # Integer32, access=r
-  watchdog_interval: {read: "show config watchdog", write: "config watchdog timeout {value}"}  # Integer32 (30..600), access=ru, range=30–600
   watchdog_enabled: {read: "show config watchdog", write: "config watchdog admin-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  watchdog_interval: {read: "show config watchdog", write: "config watchdog timeout {value}"}  # Integer32 (30..600), access=ru, range=30–600
+  watchdog_remaining: {read: "show config watchdog"}  # Integer32, access=r
 }
 ```
 </details>
@@ -791,43 +758,43 @@ SSH {
 
 **Update** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (6/7 attrs)</summary>
+<details><summary>MOPS sources (6/9 attrs)</summary>
 
 ```
 MOPS {
-  nvm: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMNvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
+  boot: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMBootParamState}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   watchdog_remaining: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimerValue}  # Integer32, access=r
   watchdog_interval: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogTimeInterval}  # Integer32 (30..600), access=ru, range=30–600
+  nvm: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMNvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   watchdog_enabled: {HM2-FILEMGMT-MIB / hm2FileMgmtConfigWatchdogControl.hm2ConfigWatchdogAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  boot: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMBootParamState}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   aca: {HM2-FILEMGMT-MIB / hm2FileMgmtStatusGroup.hm2FMEnvmState}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
 </details>
 
-<details><summary>SNMP sources (6/7 attrs)</summary>
+<details><summary>SNMP sources (6/9 attrs)</summary>
 
 ```
 SNMP {
-  nvm: {oid: 1.3.6.1.4.1.248.11.21.1.3.1, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
+  boot: {oid: 1.3.6.1.4.1.248.11.21.1.3.3, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   watchdog_remaining: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.4, method: get}  # Integer32, access=r
   watchdog_interval: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.3, method: get}  # Integer32 (30..600), access=ru, range=30–600
+  nvm: {oid: 1.3.6.1.4.1.248.11.21.1.3.1, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   watchdog_enabled: {oid: 1.3.6.1.4.1.248.11.21.1.4.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  boot: {oid: 1.3.6.1.4.1.248.11.21.1.3.3, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   aca: {oid: 1.3.6.1.4.1.248.11.21.1.3.2, method: get}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
 </details>
 
-<details><summary>SSH sources (6/7 attrs)</summary>
+<details><summary>SSH sources (6/9 attrs)</summary>
 
 ```
 SSH {
-  nvm: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
+  boot: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   watchdog_remaining: {read: "show config watchdog"}  # Integer32, access=r
   watchdog_interval: {read: "show config watchdog", write: "config watchdog timeout {value}"}  # Integer32 (30..600), access=ru, range=30–600
+  nvm: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'busy']
   watchdog_enabled: {read: "show config watchdog", write: "config watchdog admin-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  boot: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync']
   aca: {read: "show config status"}  # INTEGER, access=r, allowed=['ok', 'outOfSync', 'absent']
 }
 ```
@@ -947,27 +914,27 @@ get_devsec() -> {
 
 ```
 MOPS {
-  trap_enabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecTrapEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_hidiscovery: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHiDiscoveryEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_iec61850_mms: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseIec61850MmsEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
-  mon_sysmon: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSysmonEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_snmp_unsecure: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSnmpUnsecure}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_secure_boot: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSecureBootDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_policy: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordStrengthNotConfigured}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_no_link: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseNoLinkEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_telnet: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseTelnetEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_https_cert_warning: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpsCertificateWarning}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ext_nvm_update: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseExtNvmUpdateEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_http: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_min_length: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordMinLength}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_pml_disabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePMLDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_profinet_io: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseProfinetIOEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ethernet_ip: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseEtherNetIpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_password_change: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordChange}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_dev_mode: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseDevModeEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_http: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_https_cert_warning: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpsCertificateWarning}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_min_length: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordMinLength}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_sysmon: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSysmonEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_modbus_tcp: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseModbusTcpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_pml_disabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePMLDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_telnet: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseTelnetEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_snmp_unsecure: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSnmpUnsecure}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ext_nvm_update: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseExtNvmUpdateEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  trap_enabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecTrapEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
+  mon_ethernet_ip: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseEtherNetIpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_secure_boot: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSecureBootDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_iec61850_mms: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseIec61850MmsEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_ext_nvm_config_load: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseExtNvmConfigLoadUnsecure}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_policy: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordStrengthNotConfigured}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_hidiscovery: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHiDiscoveryEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_dev_mode: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseDevModeEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_no_link: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseNoLinkEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_profinet_io: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseProfinetIOEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -976,27 +943,27 @@ MOPS {
 
 ```
 SNMP {
-  trap_enabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_hidiscovery: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.16, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_iec61850_mms: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.18, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
-  mon_sysmon: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.13, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_snmp_unsecure: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.12, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_secure_boot: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.24, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_policy: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.8, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_no_link: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.15, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_telnet: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.10, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_https_cert_warning: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.19, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ext_nvm_update: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.14, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_http: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.11, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_min_length: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.7, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_pml_disabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.23, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_profinet_io: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.22, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ethernet_ip: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.21, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_password_change: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_dev_mode: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.25, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_http: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.11, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_https_cert_warning: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.19, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_min_length: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.7, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_sysmon: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.13, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_modbus_tcp: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.20, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_pml_disabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.23, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_telnet: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.10, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_snmp_unsecure: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.12, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ext_nvm_update: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.14, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  trap_enabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
+  mon_ethernet_ip: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.21, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_secure_boot: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.24, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_iec61850_mms: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.18, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_ext_nvm_config_load: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.17, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_policy: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.8, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_hidiscovery: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.16, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_dev_mode: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.25, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_no_link: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.15, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_profinet_io: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.22, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1005,25 +972,25 @@ SNMP {
 
 ```
 SSH {
-  mon_hidiscovery: {read: "show security-status monitor", write: "security-status monitor hidisc-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_iec61850_mms: {read: "show security-status monitor", write: "security-status monitor iec61850-mms-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_sysmon: {read: "show security-status monitor", write: "security-status monitor sysmon-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_snmp_unsecure: {read: "show security-status monitor", write: "security-status monitor snmp-unsecure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_secure_boot: {read: "show security-status monitor", write: "security-status monitor secure-boot-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_policy: {read: "show security-status monitor", write: "security-status monitor pwd-str-not-config"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_no_link: {read: "show security-status monitor", write: "security-status monitor no-link-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_telnet: {read: "show security-status monitor", write: "security-status monitor telnet-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_https_cert_warning: {read: "show security-status monitor", write: "security-status monitor https-cert-warning"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ext_nvm_update: {read: "show security-status monitor", write: "security-status monitor extnvm-upd-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_http: {read: "show security-status monitor", write: "security-status monitor http-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_min_length: {read: "show security-status monitor", write: "security-status monitor pwd-min-length"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_pml_disabled: {write: "security-status monitor pml-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_profinet_io: {read: "show security-status monitor", write: "security-status monitor profinet-io-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ethernet_ip: {read: "show security-status monitor", write: "security-status monitor ethernet-ip-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_password_change: {read: "show security-status monitor", write: "security-status monitor pwd-change"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_dev_mode: {read: "show security-status monitor", write: "security-status monitor support-mode-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_http: {read: "show security-status monitor", write: "security-status monitor http-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_https_cert_warning: {read: "show security-status monitor", write: "security-status monitor https-cert-warning"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_min_length: {read: "show security-status monitor", write: "security-status monitor pwd-min-length"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_sysmon: {read: "show security-status monitor", write: "security-status monitor sysmon-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_modbus_tcp: {read: "show security-status monitor", write: "security-status monitor modbus-tcp-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_pml_disabled: {write: "security-status monitor pml-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_telnet: {read: "show security-status monitor", write: "security-status monitor telnet-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_snmp_unsecure: {read: "show security-status monitor", write: "security-status monitor snmp-unsecure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ext_nvm_update: {read: "show security-status monitor", write: "security-status monitor extnvm-upd-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ethernet_ip: {read: "show security-status monitor", write: "security-status monitor ethernet-ip-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_secure_boot: {read: "show security-status monitor", write: "security-status monitor secure-boot-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_iec61850_mms: {read: "show security-status monitor", write: "security-status monitor iec61850-mms-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_ext_nvm_config_load: {read: "show security-status monitor", write: "security-status monitor extnvm-load-unsecure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_policy: {read: "show security-status monitor", write: "security-status monitor pwd-str-not-config"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_hidiscovery: {read: "show security-status monitor", write: "security-status monitor hidisc-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_dev_mode: {read: "show security-status monitor", write: "security-status monitor support-mode-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_no_link: {read: "show security-status monitor", write: "security-status monitor no-link-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_profinet_io: {read: "show security-status monitor", write: "security-status monitor profinet-io-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1036,30 +1003,30 @@ SSH {
 
 ```
 MOPS {
-  mon_hidiscovery: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHiDiscoveryEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  trap_enabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecTrapEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_iec61850_mms: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseIec61850MmsEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
-  mon_sysmon: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSysmonEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_snmp_unsecure: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSnmpUnsecure}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  history_cause: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusTrapCause}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
-  mon_secure_boot: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSecureBootDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_policy: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordStrengthNotConfigured}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_no_link: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseNoLinkEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_telnet: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseTelnetEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_https_cert_warning: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpsCertificateWarning}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ext_nvm_update: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseExtNvmUpdateEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_http: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_min_length: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordMinLength}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  history_index: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusIndex}  # Integer32, access=r
-  mon_pml_disabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePMLDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_profinet_io: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseProfinetIOEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ethernet_ip: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseEtherNetIpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_password_change: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordChange}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  history_timestamp: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusTimeStamp}  # HmTimeSeconds1970, access=r
-  mon_dev_mode: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseDevModeEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_http: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_https_cert_warning: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHttpsCertificateWarning}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_min_length: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordMinLength}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_sysmon: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSysmonEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_modbus_tcp: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseModbusTcpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_pml_disabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePMLDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_telnet: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseTelnetEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_snmp_unsecure: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSnmpUnsecure}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ext_nvm_update: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseExtNvmUpdateEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  trap_enabled: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecTrapEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
+  mon_ethernet_ip: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseEtherNetIpEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  history_timestamp: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusTimeStamp}  # HmTimeSeconds1970, access=r
+  history_index: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusIndex}  # Integer32, access=r
+  mon_secure_boot: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseSecureBootDisabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_iec61850_mms: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseIec61850MmsEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  history_cause: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusTrapCause}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
   mon_ext_nvm_config_load: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseExtNvmConfigLoadUnsecure}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_policy: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSensePasswordStrengthNotConfigured}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_hidiscovery: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseHiDiscoveryEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_dev_mode: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseDevModeEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_no_link: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseNoLinkEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_profinet_io: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecSenseProfinetIOEnabled}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1068,30 +1035,30 @@ MOPS {
 
 ```
 SNMP {
-  mon_hidiscovery: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.16, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  trap_enabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_iec61850_mms: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.18, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
-  mon_sysmon: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.13, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_snmp_unsecure: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.12, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  history_cause: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.3}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
-  mon_secure_boot: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.24, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_policy: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.8, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_no_link: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.15, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_telnet: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.10, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_https_cert_warning: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.19, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ext_nvm_update: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.14, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_http: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.11, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_min_length: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.7, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  history_index: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.1}  # Integer32, access=r
-  mon_pml_disabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.23, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_profinet_io: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.22, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ethernet_ip: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.21, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_password_change: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  history_timestamp: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.2}  # HmTimeSeconds1970, access=r
-  mon_dev_mode: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.25, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_http: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.11, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_https_cert_warning: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.19, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_min_length: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.7, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_sysmon: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.13, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_modbus_tcp: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.20, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_pml_disabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.23, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_telnet: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.10, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_snmp_unsecure: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.12, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ext_nvm_update: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.14, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  trap_enabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
+  mon_ethernet_ip: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.21, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  history_timestamp: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.2}  # HmTimeSeconds1970, access=r
+  history_index: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.2}  # Integer32, access=r
+  mon_secure_boot: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.24, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_iec61850_mms: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.18, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  history_cause: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.3}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
   mon_ext_nvm_config_load: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.17, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_policy: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.8, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_hidiscovery: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.16, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_dev_mode: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.25, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_no_link: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.15, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_profinet_io: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.22, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1100,25 +1067,25 @@ SNMP {
 
 ```
 SSH {
-  mon_hidiscovery: {read: "show security-status monitor", write: "security-status monitor hidisc-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_iec61850_mms: {read: "show security-status monitor", write: "security-status monitor iec61850-mms-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_sysmon: {read: "show security-status monitor", write: "security-status monitor sysmon-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_snmp_unsecure: {read: "show security-status monitor", write: "security-status monitor snmp-unsecure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_secure_boot: {read: "show security-status monitor", write: "security-status monitor secure-boot-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_policy: {read: "show security-status monitor", write: "security-status monitor pwd-str-not-config"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_no_link: {read: "show security-status monitor", write: "security-status monitor no-link-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_telnet: {read: "show security-status monitor", write: "security-status monitor telnet-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_https_cert_warning: {read: "show security-status monitor", write: "security-status monitor https-cert-warning"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ext_nvm_update: {read: "show security-status monitor", write: "security-status monitor extnvm-upd-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_http: {read: "show security-status monitor", write: "security-status monitor http-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_password_min_length: {read: "show security-status monitor", write: "security-status monitor pwd-min-length"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_pml_disabled: {write: "security-status monitor pml-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_profinet_io: {read: "show security-status monitor", write: "security-status monitor profinet-io-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_ethernet_ip: {read: "show security-status monitor", write: "security-status monitor ethernet-ip-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_password_change: {read: "show security-status monitor", write: "security-status monitor pwd-change"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  mon_dev_mode: {read: "show security-status monitor", write: "security-status monitor support-mode-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_http: {read: "show security-status monitor", write: "security-status monitor http-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_https_cert_warning: {read: "show security-status monitor", write: "security-status monitor https-cert-warning"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_min_length: {read: "show security-status monitor", write: "security-status monitor pwd-min-length"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_sysmon: {read: "show security-status monitor", write: "security-status monitor sysmon-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_modbus_tcp: {read: "show security-status monitor", write: "security-status monitor modbus-tcp-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_pml_disabled: {write: "security-status monitor pml-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_telnet: {read: "show security-status monitor", write: "security-status monitor telnet-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_snmp_unsecure: {read: "show security-status monitor", write: "security-status monitor snmp-unsecure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ext_nvm_update: {read: "show security-status monitor", write: "security-status monitor extnvm-upd-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_ethernet_ip: {read: "show security-status monitor", write: "security-status monitor ethernet-ip-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_secure_boot: {read: "show security-status monitor", write: "security-status monitor secure-boot-disabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_iec61850_mms: {read: "show security-status monitor", write: "security-status monitor iec61850-mms-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mon_ext_nvm_config_load: {read: "show security-status monitor", write: "security-status monitor extnvm-load-unsecure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_password_policy: {read: "show security-status monitor", write: "security-status monitor pwd-str-not-config"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_hidiscovery: {read: "show security-status monitor", write: "security-status monitor hidisc-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_dev_mode: {read: "show security-status monitor", write: "security-status monitor support-mode-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_no_link: {read: "show security-status monitor", write: "security-status monitor no-link-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mon_profinet_io: {read: "show security-status monitor", write: "security-status monitor profinet-io-enabled"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1149,7 +1116,7 @@ MOPS {
 
 ```
 SNMP {
-  history_index: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.1}  # Integer32, access=r
+  history_index: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.2}  # Integer32, access=r
 }
 ```
 </details>
@@ -1178,9 +1145,9 @@ get_dhcp_snooping() -> {
 
 ```
 MOPS {
-  verify_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingVerifyMac}  # TruthValue, access=ru, allowed=[True, False]
   database_file: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingRemoteFileName}  # DisplayString, access=ru, range=0–255
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingAdminMode}  # TruthValue, access=ru, allowed=[True, False]
+  verify_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingVerifyMac}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1189,9 +1156,9 @@ MOPS {
 
 ```
 SNMP {
-  verify_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
   database_file: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.12, method: get}  # DisplayString, access=ru, range=0–255
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  verify_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1200,9 +1167,9 @@ SNMP {
 
 ```
 SSH {
-  verify_mac: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping verify-mac"}  # TruthValue, access=ru, allowed=[True, False]
   database_file: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping database storage {value}"}  # DisplayString, access=ru, range=0–255
   enabled: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping mode"}  # TruthValue, access=ru, allowed=[True, False]
+  verify_mac: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping verify-mac"}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1215,10 +1182,10 @@ SSH {
 
 ```
 MOPS {
-  port_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingIfConfigEntry.hm2AgentDhcpSnoopingIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
-  verify_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingVerifyMac}  # TruthValue, access=ru, allowed=[True, False]
   database_file: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingRemoteFileName}  # DisplayString, access=ru, range=0–255
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingAdminMode}  # TruthValue, access=ru, allowed=[True, False]
+  verify_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingConfigGroup.hm2AgentDhcpSnoopingVerifyMac}  # TruthValue, access=ru, allowed=[True, False]
+  port_trusted: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentDhcpSnoopingIfConfigEntry.hm2AgentDhcpSnoopingIfTrustEnable}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1227,10 +1194,10 @@ MOPS {
 
 ```
 SNMP {
-  port_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.4.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  verify_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
   database_file: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.12, method: get}  # DisplayString, access=ru, range=0–255
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.1, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  verify_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.2, method: get}  # TruthValue, access=ru, allowed=[True, False]
+  port_trusted: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.4.1.1}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1239,10 +1206,10 @@ SNMP {
 
 ```
 SSH {
-  port_trusted: {read: "show ip dhcp-snooping interfaces"}  # TruthValue, access=ru, allowed=[True, False]
-  verify_mac: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping verify-mac"}  # TruthValue, access=ru, allowed=[True, False]
   database_file: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping database storage {value}"}  # DisplayString, access=ru, range=0–255
   enabled: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping mode"}  # TruthValue, access=ru, allowed=[True, False]
+  verify_mac: {read: "show ip dhcp-snooping global", write: "ip dhcp-snooping verify-mac"}  # TruthValue, access=ru, allowed=[True, False]
+  port_trusted: {read: "show ip dhcp-snooping interfaces"}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1275,15 +1242,15 @@ get_dns() -> {
 
 ```
 MOPS {
-  timeout: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestTimeout}  # Integer32, access=ru, range=0–3600
+  servers: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
+  retransmits: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestRetransmits}  # Integer32, access=ru, range=0–100
   enabled: {HM2-DNS-MIB / hm2DnsClientGroup.hm2DnsClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
+  domain_name: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientDefaultDomainName}  # SnmpAdminString, access=ru, range=0–255
   config_source: {HM2-DNS-MIB / hm2DnsClientGroup.hm2DnsClientConfigSource}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {HM2-DNS-MIB / hm2DnsCacheGroup.hm2DnsCacheAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
-  domain_name: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientDefaultDomainName}  # SnmpAdminString, access=ru, range=0–255
-  retransmits: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestRetransmits}  # Integer32, access=ru, range=0–100
+  timeout: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestTimeout}  # Integer32, access=ru, range=0–3600
   address: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
-  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1292,15 +1259,15 @@ MOPS {
 
 ```
 SNMP {
-  timeout: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.2, method: get}  # Integer32, access=ru, range=0–3600
+  servers: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
+  retransmits: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.3, method: get}  # Integer32, access=ru, range=0–100
   enabled: {oid: 1.3.6.1.4.1.248.11.90.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
+  domain_name: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.1, method: get}  # SnmpAdminString, access=ru, range=0–255
   config_source: {oid: 1.3.6.1.4.1.248.11.90.1.1.2, method: get}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {oid: 1.3.6.1.4.1.248.11.90.1.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
-  domain_name: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.1, method: get}  # SnmpAdminString, access=ru, range=0–255
-  retransmits: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.3, method: get}  # Integer32, access=ru, range=0–100
+  timeout: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.2, method: get}  # Integer32, access=ru, range=0–3600
   address: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
-  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1309,13 +1276,13 @@ SNMP {
 
 ```
 SSH {
-  timeout: {read: "show dns client info", write: "dns client timeout {value}"}  # Integer32, access=ru, range=0–3600
+  servers: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
+  retransmits: {read: "show dns client info", write: "dns client retry {value}"}  # Integer32, access=ru, range=0–100
   enabled: {read: "show dns client info", write: "{'' if value else 'no '}dns client adminstate"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  domain_name: {read: "show dns client info", write: "dns client domain-name {value}"}  # SnmpAdminString, access=ru, range=0–255
   config_source: {read: "show dns client info", write: "dns client source {value}"}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {read: "show dns client info", write: "{'' if value else 'no '}dns client cache adminstate"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
-  domain_name: {read: "show dns client info", write: "dns client domain-name {value}"}  # SnmpAdminString, access=ru, range=0–255
-  retransmits: {read: "show dns client info", write: "dns client retry {value}"}  # Integer32, access=ru, range=0–100
+  timeout: {read: "show dns client info", write: "dns client timeout {value}"}  # Integer32, access=ru, range=0–3600
   address: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
 }
 ```
@@ -1329,17 +1296,17 @@ SSH {
 
 ```
 MOPS {
-  timeout: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestTimeout}  # Integer32, access=ru, range=0–3600
+  servers: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
+  retransmits: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestRetransmits}  # Integer32, access=ru, range=0–100
   enabled: {HM2-DNS-MIB / hm2DnsClientGroup.hm2DnsClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_index: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerIndex}  # Integer32, access=r, range=1–4
+  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
+  domain_name: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientDefaultDomainName}  # SnmpAdminString, access=ru, range=0–255
   config_source: {HM2-DNS-MIB / hm2DnsClientGroup.hm2DnsClientConfigSource}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {HM2-DNS-MIB / hm2DnsCacheGroup.hm2DnsCacheAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
-  domain_name: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientDefaultDomainName}  # SnmpAdminString, access=ru, range=0–255
-  server_index: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerIndex}  # Integer32, access=r, range=1–4
-  retransmits: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestRetransmits}  # Integer32, access=ru, range=0–100
+  timeout: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestTimeout}  # Integer32, access=ru, range=0–3600
   address: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
   server_status: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerRowStatus}  # RowStatus, access=crud
-  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1348,17 +1315,17 @@ MOPS {
 
 ```
 SNMP {
-  timeout: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.2, method: get}  # Integer32, access=ru, range=0–3600
+  servers: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
+  retransmits: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.3, method: get}  # Integer32, access=ru, range=0–100
   enabled: {oid: 1.3.6.1.4.1.248.11.90.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_index: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.1}  # Integer32, access=r, range=1–4
+  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
+  domain_name: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.1, method: get}  # SnmpAdminString, access=ru, range=0–255
   config_source: {oid: 1.3.6.1.4.1.248.11.90.1.1.2, method: get}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {oid: 1.3.6.1.4.1.248.11.90.1.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
-  domain_name: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.1, method: get}  # SnmpAdminString, access=ru, range=0–255
-  server_index: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.1}  # Integer32, access=r, range=1–4
-  retransmits: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.3, method: get}  # Integer32, access=ru, range=0–100
+  timeout: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.2, method: get}  # Integer32, access=ru, range=0–3600
   address: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
   server_status: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.4}  # RowStatus, access=crud
-  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1367,14 +1334,14 @@ SNMP {
 
 ```
 SSH {
-  timeout: {read: "show dns client info", write: "dns client timeout {value}"}  # Integer32, access=ru, range=0–3600
+  servers: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
+  retransmits: {read: "show dns client info", write: "dns client retry {value}"}  # Integer32, access=ru, range=0–100
   enabled: {read: "show dns client info", write: "{'' if value else 'no '}dns client adminstate"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_index: {read: "show dns client servers"}  # Integer32, access=r, range=1–4
+  domain_name: {read: "show dns client info", write: "dns client domain-name {value}"}  # SnmpAdminString, access=ru, range=0–255
   config_source: {read: "show dns client info", write: "dns client source {value}"}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {read: "show dns client info", write: "{'' if value else 'no '}dns client cache adminstate"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
-  domain_name: {read: "show dns client info", write: "dns client domain-name {value}"}  # SnmpAdminString, access=ru, range=0–255
-  server_index: {read: "show dns client servers"}  # Integer32, access=r, range=1–4
-  retransmits: {read: "show dns client info", write: "dns client retry {value}"}  # Integer32, access=ru, range=0–100
+  timeout: {read: "show dns client info", write: "dns client timeout {value}"}  # Integer32, access=ru, range=0–3600
   address: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
   server_status: {write: "dns client servers add {index} ip {address}"}  # RowStatus, access=crud
 }
@@ -1397,8 +1364,8 @@ create_dns_server() -> {
 
 ```
 MOPS {
-  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
   address: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
+  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1407,8 +1374,8 @@ MOPS {
 
 ```
 SNMP {
-  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
   address: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
+  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1430,17 +1397,17 @@ SSH {
 
 ```
 MOPS {
-  timeout: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestTimeout}  # Integer32, access=ru, range=0–3600
+  servers: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
+  retransmits: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestRetransmits}  # Integer32, access=ru, range=0–100
   enabled: {HM2-DNS-MIB / hm2DnsClientGroup.hm2DnsClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_index: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerIndex}  # Integer32, access=r, range=1–4
+  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
+  domain_name: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientDefaultDomainName}  # SnmpAdminString, access=ru, range=0–255
   config_source: {HM2-DNS-MIB / hm2DnsClientGroup.hm2DnsClientConfigSource}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {HM2-DNS-MIB / hm2DnsCacheGroup.hm2DnsCacheAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
-  domain_name: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientDefaultDomainName}  # SnmpAdminString, access=ru, range=0–255
-  server_index: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerIndex}  # Integer32, access=r, range=1–4
-  retransmits: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestRetransmits}  # Integer32, access=ru, range=0–100
+  timeout: {HM2-DNS-MIB / hm2DnsClientGlobalGroup.hm2DnsClientRequestTimeout}  # Integer32, access=ru, range=0–3600
   address: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddress}  # InetAddress, access=ru
   server_status: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerRowStatus}  # RowStatus, access=crud
-  addr_type: {HM2-DNS-MIB / hm2DnsClientServerCfgEntry.hm2DnsClientServerAddressType}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1449,17 +1416,17 @@ MOPS {
 
 ```
 SNMP {
-  timeout: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.2, method: get}  # Integer32, access=ru, range=0–3600
+  servers: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
+  retransmits: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.3, method: get}  # Integer32, access=ru, range=0–100
   enabled: {oid: 1.3.6.1.4.1.248.11.90.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_index: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.1}  # Integer32, access=r, range=1–4
+  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
+  domain_name: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.1, method: get}  # SnmpAdminString, access=ru, range=0–255
   config_source: {oid: 1.3.6.1.4.1.248.11.90.1.1.2, method: get}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {oid: 1.3.6.1.4.1.248.11.90.1.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
-  domain_name: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.1, method: get}  # SnmpAdminString, access=ru, range=0–255
-  server_index: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.1}  # Integer32, access=r, range=1–4
-  retransmits: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.3, method: get}  # Integer32, access=ru, range=0–100
+  timeout: {oid: 1.3.6.1.4.1.248.11.90.1.1.5.2, method: get}  # Integer32, access=ru, range=0–3600
   address: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.3}  # InetAddress, access=ru
   server_status: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.4}  # RowStatus, access=crud
-  addr_type: {oid: 1.3.6.1.4.1.248.11.90.1.1.3.1.2}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -1468,14 +1435,14 @@ SNMP {
 
 ```
 SSH {
-  timeout: {read: "show dns client info", write: "dns client timeout {value}"}  # Integer32, access=ru, range=0–3600
+  servers: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
+  retransmits: {read: "show dns client info", write: "dns client retry {value}"}  # Integer32, access=ru, range=0–100
   enabled: {read: "show dns client info", write: "{'' if value else 'no '}dns client adminstate"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_index: {read: "show dns client servers"}  # Integer32, access=r, range=1–4
+  domain_name: {read: "show dns client info", write: "dns client domain-name {value}"}  # SnmpAdminString, access=ru, range=0–255
   config_source: {read: "show dns client info", write: "dns client source {value}"}  # INTEGER, access=ru, allowed=['user', 'mgmt-dhcp', 'provider']
   cache_enabled: {read: "show dns client info", write: "{'' if value else 'no '}dns client cache adminstate"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  servers: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
-  domain_name: {read: "show dns client info", write: "dns client domain-name {value}"}  # SnmpAdminString, access=ru, range=0–255
-  server_index: {read: "show dns client servers"}  # Integer32, access=r, range=1–4
-  retransmits: {read: "show dns client info", write: "dns client retry {value}"}  # Integer32, access=ru, range=0–100
+  timeout: {read: "show dns client info", write: "dns client timeout {value}"}  # Integer32, access=ru, range=0–3600
   address: {read: "show dns client servers", write: "dns client servers add {index} ip {address}"}  # InetAddress, access=ru
   server_status: {write: "dns client servers add {index} ip {address}"}  # RowStatus, access=crud
 }
@@ -1507,8 +1474,8 @@ get_gmrp() -> {
 ```
 MOPS {
   port_enabled: {P-BRIDGE-MIB / dot1dPortGmrpEntry.dot1dPortGmrpStatus}  # EnabledStatus, access=ru
-  unknown_multicast: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchGARPGroup.hm2AgentSwitchGmrpUnknownMulticastFilterMode}  # INTEGER, access=ru, allowed=['flood', 'discard']
   enabled: {P-BRIDGE-MIB / dot1dExtBase.dot1dGmrpStatus}  # EnabledStatus, access=ru
+  unknown_multicast: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchGARPGroup.hm2AgentSwitchGmrpUnknownMulticastFilterMode}  # INTEGER, access=ru, allowed=['flood', 'discard']
 }
 ```
 </details>
@@ -1518,8 +1485,8 @@ MOPS {
 ```
 SNMP {
   port_enabled: {oid: 1.3.6.1.2.1.17.6.1.4.1.1.1}  # EnabledStatus, access=ru
-  unknown_multicast: {oid: 1.3.6.1.4.1.248.12.1.2.8.249.1, method: get}  # INTEGER, access=ru, allowed=['flood', 'discard']
   enabled: {oid: 1.3.6.1.2.1.17.6.1.1.3, method: get}  # EnabledStatus, access=ru
+  unknown_multicast: {oid: 1.3.6.1.4.1.248.12.1.2.8.249.1, method: get}  # INTEGER, access=ru, allowed=['flood', 'discard']
 }
 ```
 </details>
@@ -1533,8 +1500,8 @@ SNMP {
 ```
 MOPS {
   port_enabled: {P-BRIDGE-MIB / dot1dPortGmrpEntry.dot1dPortGmrpStatus}  # EnabledStatus, access=ru
-  unknown_multicast: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchGARPGroup.hm2AgentSwitchGmrpUnknownMulticastFilterMode}  # INTEGER, access=ru, allowed=['flood', 'discard']
   enabled: {P-BRIDGE-MIB / dot1dExtBase.dot1dGmrpStatus}  # EnabledStatus, access=ru
+  unknown_multicast: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchGARPGroup.hm2AgentSwitchGmrpUnknownMulticastFilterMode}  # INTEGER, access=ru, allowed=['flood', 'discard']
 }
 ```
 </details>
@@ -1544,8 +1511,8 @@ MOPS {
 ```
 SNMP {
   port_enabled: {oid: 1.3.6.1.2.1.17.6.1.4.1.1.1}  # EnabledStatus, access=ru
-  unknown_multicast: {oid: 1.3.6.1.4.1.248.12.1.2.8.249.1, method: get}  # INTEGER, access=ru, allowed=['flood', 'discard']
   enabled: {oid: 1.3.6.1.2.1.17.6.1.1.3, method: get}  # EnabledStatus, access=ru
+  unknown_multicast: {oid: 1.3.6.1.4.1.248.12.1.2.8.249.1, method: get}  # INTEGER, access=ru, allowed=['flood', 'discard']
 }
 ```
 </details>
@@ -1559,8 +1526,8 @@ SNMP {
 ```
 MOPS {
   port_enabled: {P-BRIDGE-MIB / dot1dPortGmrpEntry.dot1dPortGmrpStatus}  # EnabledStatus, access=ru
-  unknown_multicast: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchGARPGroup.hm2AgentSwitchGmrpUnknownMulticastFilterMode}  # INTEGER, access=ru, allowed=['flood', 'discard']
   enabled: {P-BRIDGE-MIB / dot1dExtBase.dot1dGmrpStatus}  # EnabledStatus, access=ru
+  unknown_multicast: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchGARPGroup.hm2AgentSwitchGmrpUnknownMulticastFilterMode}  # INTEGER, access=ru, allowed=['flood', 'discard']
 }
 ```
 </details>
@@ -1570,8 +1537,8 @@ MOPS {
 ```
 SNMP {
   port_enabled: {oid: 1.3.6.1.2.1.17.6.1.4.1.1.1}  # EnabledStatus, access=ru
-  unknown_multicast: {oid: 1.3.6.1.4.1.248.12.1.2.8.249.1, method: get}  # INTEGER, access=ru, allowed=['flood', 'discard']
   enabled: {oid: 1.3.6.1.2.1.17.6.1.1.3, method: get}  # EnabledStatus, access=ru
+  unknown_multicast: {oid: 1.3.6.1.4.1.248.12.1.2.8.249.1, method: get}  # INTEGER, access=ru, allowed=['flood', 'discard']
 }
 ```
 </details>
@@ -1687,10 +1654,10 @@ get_hidiscovery() -> {
 
 ```
 MOPS {
-  mode: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryMode}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
-  relay_enabled: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryRelay}  # HmEnabledStatus, access=ru, allowed=[True, False]
   blinking: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryBlinking}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mode: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryMode}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
   enabled: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  relay_enabled: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryRelay}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1699,10 +1666,10 @@ MOPS {
 
 ```
 SNMP {
-  mode: {oid: 1.3.6.1.4.1.248.11.20.1.4.2, method: get}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
-  relay_enabled: {oid: 1.3.6.1.4.1.248.11.20.1.4.5, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   blinking: {oid: 1.3.6.1.4.1.248.11.20.1.4.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mode: {oid: 1.3.6.1.4.1.248.11.20.1.4.2, method: get}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
   enabled: {oid: 1.3.6.1.4.1.248.11.20.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  relay_enabled: {oid: 1.3.6.1.4.1.248.11.20.1.4.5, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1711,10 +1678,10 @@ SNMP {
 
 ```
 SSH {
-  mode: {read: "show network hidiscovery", write: "network hidiscovery mode {value}"}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
-  relay_enabled: {read: "show network hidiscovery", write: "network hidiscovery relay"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   blinking: {read: "show network hidiscovery", write: "network hidiscovery blinking"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mode: {read: "show network hidiscovery", write: "network hidiscovery mode {value}"}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
   enabled: {read: "show network hidiscovery", write: "network hidiscovery operation {value}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  relay_enabled: {read: "show network hidiscovery", write: "network hidiscovery relay"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1727,10 +1694,10 @@ SSH {
 
 ```
 MOPS {
-  mode: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryMode}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
-  relay_enabled: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryRelay}  # HmEnabledStatus, access=ru, allowed=[True, False]
   blinking: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryBlinking}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mode: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryMode}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
   enabled: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  relay_enabled: {HM2-NETCONFIG-MIB / hm2NetHiDiscoveryGroup.hm2NetHiDiscoveryRelay}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1739,10 +1706,10 @@ MOPS {
 
 ```
 SNMP {
-  mode: {oid: 1.3.6.1.4.1.248.11.20.1.4.2, method: get}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
-  relay_enabled: {oid: 1.3.6.1.4.1.248.11.20.1.4.5, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   blinking: {oid: 1.3.6.1.4.1.248.11.20.1.4.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mode: {oid: 1.3.6.1.4.1.248.11.20.1.4.2, method: get}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
   enabled: {oid: 1.3.6.1.4.1.248.11.20.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  relay_enabled: {oid: 1.3.6.1.4.1.248.11.20.1.4.5, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1751,10 +1718,10 @@ SNMP {
 
 ```
 SSH {
-  mode: {read: "show network hidiscovery", write: "network hidiscovery mode {value}"}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
-  relay_enabled: {read: "show network hidiscovery", write: "network hidiscovery relay"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   blinking: {read: "show network hidiscovery", write: "network hidiscovery blinking"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  mode: {read: "show network hidiscovery", write: "network hidiscovery mode {value}"}  # INTEGER, access=ru, allowed=['readWrite', 'readOnly']
   enabled: {read: "show network hidiscovery", write: "network hidiscovery operation {value}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  relay_enabled: {read: "show network hidiscovery", write: "network hidiscovery relay"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -1797,24 +1764,24 @@ get_interfaces() -> {
 
 ```
 MOPS {
-  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
-  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
-  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
-  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
-  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
   admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
+  phys_address: {IF-MIB / ifEntry.ifPhysAddress}  # PhysAddress, access=r
   flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
   power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
   signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
-  phys_address: {IF-MIB / ifEntry.ifPhysAddress}  # PhysAddress, access=r
-  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
   autoneg_supported: {MAU-MIB / ifMauEntry.ifMauAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
+  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
+  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
+  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -1823,24 +1790,24 @@ MOPS {
 
 ```
 SNMP {
-  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
-  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
-  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
-  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
-  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
   admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
+  phys_address: {oid: 1.3.6.1.2.1.2.2.1.6}  # PhysAddress, access=r
   flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
   power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
   signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
-  phys_address: {oid: 1.3.6.1.2.1.2.2.1.6}  # PhysAddress, access=r
-  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
   autoneg_supported: {oid: 1.3.6.1.2.1.26.2.1.1.12}  # TruthValue, access=r, allowed=[True, False]
+  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
+  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
+  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
+  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -1849,13 +1816,13 @@ SNMP {
 
 ```
 SSH {
-  cable_crossing: {write: "cable-crossing {value}"}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  alias: {read: "show port", write: "name {value}"}  # DisplayString, access=ru, range=0–64
   admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
   flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  cable_crossing: {write: "cable-crossing {value}"}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
   name: {read: "show port"}  # DisplayString, access=r
+  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  alias: {read: "show port", write: "name {value}"}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -1896,26 +1863,26 @@ get_interface_statistics() -> {
 
 ```
 MOPS {
-  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
-  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
   tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
-  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
-  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
-  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
-  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
-  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
-  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
-  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
-  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
-  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
-  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
+  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
   tx_discards: {IF-MIB / ifEntry.ifOutDiscards}  # Counter32, access=r
-  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
-  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
   rx_octets: {IF-MIB / ifEntry.ifInOctets}  # Counter32, access=r
-  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
+  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
   crc_errors: {RMON-MIB / etherStatsEntry.etherStatsCRCAlignErrors}  # Counter32, access=r
+  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
+  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
+  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
+  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
+  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
+  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
+  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
+  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
+  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
+  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
   utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
 }
 ```
@@ -1925,27 +1892,27 @@ MOPS {
 
 ```
 SNMP {
-  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
-  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
   tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
-  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
+  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
+  tx_discards: {oid: 1.3.6.1.2.1.2.2.1.19}  # Counter32, access=r
+  rx_octets: {oid: 1.3.6.1.2.1.2.2.1.10}  # Counter32, access=r
+  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
   tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
-  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
+  crc_errors: {oid: 1.3.6.1.2.1.16.1.1.1.8}  # Counter32, access=r
+  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
+  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
+  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
   utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
   late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
-  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
-  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
-  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
   rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
-  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
-  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
-  tx_discards: {oid: 1.3.6.1.2.1.2.2.1.19}  # Counter32, access=r
-  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
-  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
-  rx_octets: {oid: 1.3.6.1.2.1.2.2.1.10}  # Counter32, access=r
-  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
   rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
-  crc_errors: {oid: 1.3.6.1.2.1.16.1.1.1.8}  # Counter32, access=r
+  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
+  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
+  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
+  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
+  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
   utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
 }
 ```
@@ -1968,48 +1935,48 @@ SSH {
 
 ```
 MOPS {
-  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
-  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
-  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
-  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
-  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
-  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
-  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
-  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
-  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
-  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
-  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
-  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
-  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
-  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
   phys_address: {IF-MIB / ifEntry.ifPhysAddress}  # PhysAddress, access=r
-  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
-  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
-  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
-  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
-  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
-  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
-  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
+  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
   tx_discards: {IF-MIB / ifEntry.ifOutDiscards}  # Counter32, access=r
-  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
-  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
-  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {IF-MIB / ifEntry.ifInOctets}  # Counter32, access=r
-  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
-  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
-  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
-  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
+  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
+  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
   crc_errors: {RMON-MIB / etherStatsEntry.etherStatsCRCAlignErrors}  # Counter32, access=r
-  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
+  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
+  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
   autoneg_supported: {MAU-MIB / ifMauEntry.ifMauAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
+  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
+  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
+  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
+  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
+  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
+  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
+  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
+  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
+  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
+  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
+  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
+  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2018,49 +1985,49 @@ MOPS {
 
 ```
 SNMP {
-  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
-  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
-  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
-  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
-  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
-  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
-  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
-  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
-  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
-  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
-  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
-  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
-  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
-  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
-  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
   phys_address: {oid: 1.3.6.1.2.1.2.2.1.6}  # PhysAddress, access=r
-  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
-  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
-  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
-  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
-  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
-  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
-  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
+  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
   tx_discards: {oid: 1.3.6.1.2.1.2.2.1.19}  # Counter32, access=r
-  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
-  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
-  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {oid: 1.3.6.1.2.1.2.2.1.10}  # Counter32, access=r
-  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
-  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
-  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
-  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
+  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
+  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
   crc_errors: {oid: 1.3.6.1.2.1.16.1.1.1.8}  # Counter32, access=r
-  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
+  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
+  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
   autoneg_supported: {oid: 1.3.6.1.2.1.26.2.1.1.12}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
+  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
+  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
+  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
+  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
+  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
+  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
+  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
+  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
+  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
+  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
+  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
+  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
+  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2069,15 +2036,15 @@ SNMP {
 
 ```
 SSH {
+  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
+  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
+  name: {read: "show port"}  # DisplayString, access=r
+  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
   cable_crossing: {write: "cable-crossing {value}"}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
   alias: {read: "show port", write: "name {value}"}  # DisplayString, access=ru, range=0–64
-  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
-  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  name: {read: "show port"}  # DisplayString, access=r
-  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
-  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
 }
 ```
 </details>
@@ -2090,48 +2057,48 @@ SSH {
 
 ```
 MOPS {
-  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
-  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
-  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
-  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
-  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
-  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
-  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
-  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
-  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
-  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
-  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
-  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
-  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
-  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
   phys_address: {IF-MIB / ifEntry.ifPhysAddress}  # PhysAddress, access=r
-  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
-  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
-  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
-  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
-  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
-  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
-  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
+  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
   tx_discards: {IF-MIB / ifEntry.ifOutDiscards}  # Counter32, access=r
-  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
-  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
-  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {IF-MIB / ifEntry.ifInOctets}  # Counter32, access=r
-  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
-  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
-  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
-  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
+  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
+  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
   crc_errors: {RMON-MIB / etherStatsEntry.etherStatsCRCAlignErrors}  # Counter32, access=r
-  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
+  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
+  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
   autoneg_supported: {MAU-MIB / ifMauEntry.ifMauAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
+  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
+  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
+  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
+  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
+  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
+  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
+  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
+  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
+  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
+  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
+  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
+  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2140,49 +2107,49 @@ MOPS {
 
 ```
 SNMP {
-  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
-  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
-  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
-  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
-  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
-  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
-  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
-  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
-  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
-  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
-  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
-  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
-  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
-  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
-  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
   phys_address: {oid: 1.3.6.1.2.1.2.2.1.6}  # PhysAddress, access=r
-  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
-  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
-  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
-  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
-  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
-  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
-  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
+  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
   tx_discards: {oid: 1.3.6.1.2.1.2.2.1.19}  # Counter32, access=r
-  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
-  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
-  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {oid: 1.3.6.1.2.1.2.2.1.10}  # Counter32, access=r
-  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
-  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
-  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
-  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
+  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
+  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
   crc_errors: {oid: 1.3.6.1.2.1.16.1.1.1.8}  # Counter32, access=r
-  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
+  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
+  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
   autoneg_supported: {oid: 1.3.6.1.2.1.26.2.1.1.12}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
+  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
+  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
+  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
+  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
+  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
+  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
+  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
+  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
+  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
+  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
+  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
+  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
+  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2191,15 +2158,15 @@ SNMP {
 
 ```
 SSH {
+  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
+  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
+  name: {read: "show port"}  # DisplayString, access=r
+  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
   cable_crossing: {write: "cable-crossing {value}"}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
   alias: {read: "show port", write: "name {value}"}  # DisplayString, access=ru, range=0–64
-  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
-  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  name: {read: "show port"}  # DisplayString, access=r
-  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
-  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
 }
 ```
 </details>
@@ -2223,48 +2190,48 @@ get_ip_addresses() -> {
 
 ```
 MOPS {
-  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
-  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
-  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
-  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
-  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
-  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
-  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
-  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
-  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
-  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
-  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
-  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
-  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
-  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
   phys_address: {IF-MIB / ifEntry.ifPhysAddress}  # PhysAddress, access=r
-  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
-  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
-  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
-  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
-  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
-  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
-  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
+  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
   tx_discards: {IF-MIB / ifEntry.ifOutDiscards}  # Counter32, access=r
-  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
-  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
-  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {IF-MIB / ifEntry.ifInOctets}  # Counter32, access=r
-  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
-  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
-  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
-  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
+  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
+  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
   crc_errors: {RMON-MIB / etherStatsEntry.etherStatsCRCAlignErrors}  # Counter32, access=r
-  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
+  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
+  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
   autoneg_supported: {MAU-MIB / ifMauEntry.ifMauAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
+  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
+  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
+  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
+  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
+  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
+  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
+  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
+  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
+  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
+  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
+  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
+  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2273,49 +2240,49 @@ MOPS {
 
 ```
 SNMP {
-  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
-  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
-  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
-  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
-  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
-  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
-  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
-  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
-  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
-  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
-  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
-  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
-  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
-  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
-  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
   phys_address: {oid: 1.3.6.1.2.1.2.2.1.6}  # PhysAddress, access=r
-  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
-  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
-  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
-  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
-  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
-  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
-  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
+  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
   tx_discards: {oid: 1.3.6.1.2.1.2.2.1.19}  # Counter32, access=r
-  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
-  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
-  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {oid: 1.3.6.1.2.1.2.2.1.10}  # Counter32, access=r
-  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
-  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
-  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
-  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
+  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
+  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
   crc_errors: {oid: 1.3.6.1.2.1.16.1.1.1.8}  # Counter32, access=r
-  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
+  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
+  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
   autoneg_supported: {oid: 1.3.6.1.2.1.26.2.1.1.12}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
+  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
+  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
+  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
+  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
+  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
+  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
+  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
+  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
+  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
+  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
+  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
+  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
+  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2324,15 +2291,15 @@ SNMP {
 
 ```
 SSH {
+  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
+  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
+  name: {read: "show port"}  # DisplayString, access=r
+  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
   cable_crossing: {write: "cable-crossing {value}"}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
   alias: {read: "show port", write: "name {value}"}  # DisplayString, access=ru, range=0–64
-  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
-  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  name: {read: "show port"}  # DisplayString, access=r
-  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
-  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
 }
 ```
 </details>
@@ -2345,48 +2312,48 @@ SSH {
 
 ```
 MOPS {
-  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
-  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
-  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
-  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
-  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
-  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
-  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
-  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
-  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
-  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
-  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
-  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
-  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
-  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
   phys_address: {IF-MIB / ifEntry.ifPhysAddress}  # PhysAddress, access=r
-  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
-  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
-  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
-  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
-  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
-  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
-  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {HM2-DIAGNOSTIC-MIB / hm2LedPortEntry.hm2LedPortSignaling}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {IF-MIB / ifXEntry.ifHCOutBroadcastPkts}  # Counter64, access=r
+  rx_multicast_packets: {IF-MIB / ifXEntry.ifHCInMulticastPkts}  # Counter64, access=r
   tx_discards: {IF-MIB / ifEntry.ifOutDiscards}  # Counter32, access=r
-  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
-  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
-  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {IF-MIB / ifEntry.ifInOctets}  # Counter32, access=r
-  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
-  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
-  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
-  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  power_state: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfacePowerState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {IF-MIB / ifXEntry.ifHighSpeed}  # Gauge32, access=r
+  tx_unicast_packets: {IF-MIB / ifXEntry.ifHCOutUcastPkts}  # Counter64, access=r
+  tx_multicast_packets: {IF-MIB / ifXEntry.ifHCOutMulticastPkts}  # Counter64, access=r
   crc_errors: {RMON-MIB / etherStatsEntry.etherStatsCRCAlignErrors}  # Counter32, access=r
-  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentPortConfigEntry.hm2AgentPortMaxFrameSize}  # Integer32, access=ru
+  collisions: {RMON-MIB / etherStatsEntry.etherStatsCollisions}  # Counter32, access=r
+  ipv4_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
   autoneg_supported: {MAU-MIB / ifMauEntry.ifMauAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {IF-MIB / ifXEntry.ifHCInBroadcastPkts}  # Counter64, access=r
+  fragments: {RMON-MIB / etherStatsEntry.etherStatsFragments}  # Counter32, access=r
+  utilization_interval: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationControlInterval}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmCondition}  # TruthValue, access=r, allowed=[True, False]
+  rx_errors: {IF-MIB / ifEntry.ifInErrors}  # Counter32, access=r
+  rx_discards: {IF-MIB / ifEntry.ifInDiscards}  # Counter32, access=r
+  flow_control: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfFlowControl}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceAutoPowerDown}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
+  flush_statistics: {HM2-DEVMGMT-MIB / hm2DeviceMgmtActionGroup.hm2DevMgmtActionFlushPortStats}  # INTEGER, access=ru
+  manual_config: {MAU-MIB / ifMauEntry.ifMauDefaultType}  # AutonomousType, access=ru
+  utilization_alarm_lower: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmLowerThreshold}  # Integer32, access=ru, range=0–10000
+  name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  utilization_alarm_upper: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilizationAlarmUpperThreshold}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {IF-MIB / ifXEntry.ifHCInUcastPkts}  # Counter64, access=r
+  admin_status: {IF-MIB / ifEntry.ifAdminStatus}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {IF-MIB / ifXEntry.ifLinkUpDownTrapEnable}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {MAU-MIB / ifMauEntry.ifMauMediaAvailable}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {HM2-DEVMGMT-MIB / hm2IfaceEntry.hm2IfaceCableCrossing}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {HM2-TRACKING-MIB / hm2TrackInterfaceStatusEntry.hm2TrackInterfaceStatusTrackId}  # SnmpAdminString, access=ru
+  ipv4_prefix: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {MAU-MIB / ifMauAutoNegEntry.ifMauAutoNegAdminStatus}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {IF-MIB / ifEntry.ifOutOctets}  # Counter32, access=r
+  oper_status: {IF-MIB / ifEntry.ifOperStatus}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {HM2-DIAGNOSTIC-MIB / hm2DiagIfaceUtilizationEntry.hm2DiagIfaceUtilization}  # Integer32, access=r, range=0–10000
+  tx_errors: {IF-MIB / ifEntry.ifOutErrors}  # Counter32, access=r
+  alias: {IF-MIB / ifXEntry.ifAlias}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2395,49 +2362,49 @@ MOPS {
 
 ```
 SNMP {
-  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
-  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
-  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
-  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
-  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
-  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
-  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
-  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
-  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
-  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
-  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
-  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
-  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
-  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
-  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
-  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
   phys_address: {oid: 1.3.6.1.2.1.2.2.1.6}  # PhysAddress, access=r
-  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
-  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
-  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
-  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
-  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
-  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
-  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  signal: {oid: 1.3.6.1.4.1.248.11.22.1.4.2.1.3}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.13}  # Counter64, access=r
+  rx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.8}  # Counter64, access=r
   tx_discards: {oid: 1.3.6.1.2.1.2.2.1.19}  # Counter32, access=r
-  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
-  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
-  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
-  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
-  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rx_octets: {oid: 1.3.6.1.2.1.2.2.1.10}  # Counter32, access=r
-  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
-  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
-  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
-  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
-  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  power_state: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  speed: {oid: 1.3.6.1.2.1.31.1.1.1.15}  # Gauge32, access=r
+  tx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.11}  # Counter64, access=r
+  tx_multicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.12}  # Counter64, access=r
   crc_errors: {oid: 1.3.6.1.2.1.16.1.1.1.8}  # Counter32, access=r
-  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  mtu: {oid: 1.3.6.1.4.1.248.12.1.2.13.1.19}  # Integer32, access=ru
+  collisions: {oid: 1.3.6.1.2.1.16.1.1.1.13}  # Counter32, access=r
+  ipv4_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
   autoneg_supported: {oid: 1.3.6.1.2.1.26.2.1.1.12}  # TruthValue, access=r, allowed=[True, False]
+  rx_broadcast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.9}  # Counter64, access=r
+  fragments: {oid: 1.3.6.1.2.1.16.1.1.1.11}  # Counter32, access=r
+  utilization_interval: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.2}  # Integer32, access=ru, range=1–3600
+  utilization_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.5}  # TruthValue, access=r, allowed=[True, False]
+  late_collisions: {oid: 1.3.6.1.2.1.10.7.2.1.8}  # Counter32, access=r
+  rx_errors: {oid: 1.3.6.1.2.1.2.2.1.14}  # Counter32, access=r
+  rx_discards: {oid: 1.3.6.1.2.1.2.2.1.13}  # Counter32, access=r
+  flow_control: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.5}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
+  flush_statistics: {oid: 1.3.6.1.4.1.248.11.10.1.2.5, method: get}  # INTEGER, access=ru
+  manual_config: {oid: 1.3.6.1.2.1.26.2.1.1.11}  # AutonomousType, access=ru
+  utilization_alarm_lower: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.3}  # Integer32, access=ru, range=0–10000
+  name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  utilization_alarm_upper: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.4}  # Integer32, access=ru, range=0–10000
+  rx_unicast_packets: {oid: 1.3.6.1.2.1.31.1.1.1.7}  # Counter64, access=r
+  admin_status: {oid: 1.3.6.1.2.1.2.2.1.7}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
+  link_trap: {oid: 1.3.6.1.2.1.31.1.1.1.14}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  media_type: {oid: 1.3.6.1.2.1.26.2.1.1.5}  # IANAifMauMediaAvailable, access=r
+  cable_crossing: {oid: 1.3.6.1.4.1.248.11.10.1.6.1.1.3}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
+  track_name: {oid: 1.3.6.1.4.1.248.11.115.1.8.1.1.1}  # SnmpAdminString, access=ru
+  ipv4_prefix: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
+  autoneg_enabled: {oid: 1.3.6.1.2.1.26.5.1.1.1}  # INTEGER, access=ru, allowed=['enabled', 'disabled']
+  tx_octets: {oid: 1.3.6.1.2.1.2.2.1.16}  # Counter32, access=r
+  oper_status: {oid: 1.3.6.1.2.1.2.2.1.8}  # INTEGER, access=r, allowed=['up', 'down', 'testing', 'unknown', 'dormant', 'notPresent', 'lowerLayerDown']
+  utilization: {oid: 1.3.6.1.4.1.248.11.22.1.5.1.1.1}  # Integer32, access=r, range=0–10000
+  tx_errors: {oid: 1.3.6.1.2.1.2.2.1.20}  # Counter32, access=r
+  alias: {oid: 1.3.6.1.2.1.31.1.1.1.18}  # DisplayString, access=ru, range=0–64
 }
 ```
 </details>
@@ -2446,15 +2413,15 @@ SNMP {
 
 ```
 SSH {
+  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
+  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
+  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
+  name: {read: "show port"}  # DisplayString, access=r
+  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
   cable_crossing: {write: "cable-crossing {value}"}  # INTEGER, access=ru, allowed=['mdi', 'mdix', 'auto-mdix', 'unsupported']
   alias: {read: "show port", write: "name {value}"}  # DisplayString, access=ru, range=0–64
-  ipv4_address: {read: "show network parms", write: "network parms {value} {netmask} {gateway}"}  # InetAddress, access=ru
-  power_state: {write: "power-state"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  flow_control: {write: "storm-control flow-control"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  name: {read: "show port"}  # DisplayString, access=r
-  ipv4_gateway: {read: "show network parms"}  # InetAddress, access=ru
-  power_save: {write: "auto-power-down {value}"}  # INTEGER, access=ru, allowed=['auto-power-down', 'no-power-save', 'energy-efficient-ethernet', 'unsupported']
-  admin_status: {read: "show port", write: "shutdown"}  # INTEGER, access=ru, allowed=['up', 'down', 'testing']
 }
 ```
 </details>
@@ -2483,21 +2450,21 @@ get_ip_restrict() -> {
 
 ```
 MOPS {
+  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
+  index: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIndex}  # Integer32, access=r, range=1–16
+  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
+  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ethernet_ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvEthernetIP}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  logging: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaLoggingGlobal}  # HmEnabledStatus, access=ru, allowed=[True, False]
   http: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaLogging}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
-  enabled: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSsh}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  index: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIndex}  # Integer32, access=r, range=1–16
-  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
-  logging: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaLoggingGlobal}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2506,21 +2473,21 @@ MOPS {
 
 ```
 SNMP {
+  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
+  index: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.1}  # Integer32, access=r, range=1–16
+  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {oid: 1.3.6.1.4.1.248.11.25.1.7.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
+  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ethernet_ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   http: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
-  enabled: {oid: 1.3.6.1.4.1.248.11.25.1.7.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  index: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.1}  # Integer32, access=r, range=1–16
-  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
-  logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2529,19 +2496,19 @@ SNMP {
 
 ```
 SSH {
-  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ip: {read: "show network management access rules"}  # InetAddress, access=ru
-  enabled: {read: "show network management access global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   index: {read: "show network management access rules"}  # Integer32, access=r, range=1–16
-  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
   https: {write: "network management access modify {_row_index} https {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show network management access global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
+  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2573,19 +2540,19 @@ create_ip_restrict_rule() -> {
 
 ```
 MOPS {
+  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
+  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
+  addr_type: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddrType}  # InetAddressType, access=ru
+  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ethernet_ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvEthernetIP}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
   http: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaLogging}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
-  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSsh}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
-  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  addr_type: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddrType}  # InetAddressType, access=ru
+  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2594,19 +2561,19 @@ MOPS {
 
 ```
 SNMP {
+  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
+  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
+  addr_type: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.3}  # InetAddressType, access=ru
+  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ethernet_ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
   http: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
-  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
-  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  addr_type: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.3}  # InetAddressType, access=ru
+  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2615,17 +2582,17 @@ SNMP {
 
 ```
 SSH {
-  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ip: {read: "show network management access rules"}  # InetAddress, access=ru
-  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
   https: {write: "network management access modify {_row_index} https {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
+  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2638,24 +2605,24 @@ SSH {
 
 ```
 MOPS {
+  index: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIndex}  # Integer32, access=r, range=1–16
+  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
+  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  addr_type: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddrType}  # InetAddressType, access=ru
+  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
+  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  interface: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaInterface}  # InterfaceIndexOrZero, access=ru
   ethernet_ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvEthernetIP}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  logging: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaLoggingGlobal}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  rule_status: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaRowStatus}  # RowStatus, access=crud
   http: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaLogging}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
-  enabled: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSsh}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  index: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIndex}  # Integer32, access=r, range=1–16
-  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  interface: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaInterface}  # InterfaceIndexOrZero, access=ru
-  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
-  logging: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaLoggingGlobal}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  addr_type: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddrType}  # InetAddressType, access=ru
-  rule_status: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaRowStatus}  # RowStatus, access=crud
+  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2664,24 +2631,24 @@ MOPS {
 
 ```
 SNMP {
+  index: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.1}  # Integer32, access=r, range=1–16
+  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
+  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {oid: 1.3.6.1.4.1.248.11.25.1.7.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  addr_type: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.3}  # InetAddressType, access=ru
+  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
+  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  interface: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.15}  # InterfaceIndexOrZero, access=ru
   ethernet_ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  rule_status: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.2}  # RowStatus, access=crud
   http: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
-  enabled: {oid: 1.3.6.1.4.1.248.11.25.1.7.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  index: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.1}  # Integer32, access=r, range=1–16
-  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  interface: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.15}  # InterfaceIndexOrZero, access=ru
-  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
-  logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  addr_type: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.3}  # InetAddressType, access=ru
-  rule_status: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.2}  # RowStatus, access=crud
+  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2690,20 +2657,20 @@ SNMP {
 
 ```
 SSH {
-  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {read: "show network management access rules"}  # InetAddress, access=ru
-  enabled: {read: "show network management access global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   index: {read: "show network management access rules"}  # Integer32, access=r, range=1–16
-  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
+  ip: {read: "show network management access rules"}  # InetAddress, access=ru
   https: {write: "network management access modify {_row_index} https {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show network management access global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
+  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rule_status: {write: "network management access add {index} ip {ip}"}  # RowStatus, access=crud
+  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2716,24 +2683,24 @@ SSH {
 
 ```
 MOPS {
+  index: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIndex}  # Integer32, access=r, range=1–16
+  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
+  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  addr_type: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddrType}  # InetAddressType, access=ru
+  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
+  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  interface: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaInterface}  # InterfaceIndexOrZero, access=ru
   ethernet_ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvEthernetIP}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  logging: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaLoggingGlobal}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  rule_status: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaRowStatus}  # RowStatus, access=crud
   http: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaLogging}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddr}  # InetAddress, access=ru
-  enabled: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSsh}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvIEC61850}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  index: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIndex}  # Integer32, access=r, range=1–16
-  profinet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvProfinetIO}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvTelnet}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvModbusTcp}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  interface: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaInterface}  # InterfaceIndexOrZero, access=ru
-  prefix_length: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaPrefixLength}  # InetAddressPrefixLength, access=ru
-  logging: {HM2-MGMTACCESS-MIB / hm2RestrictedMgmtAccessGroup.hm2RmaLoggingGlobal}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvHttps}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  addr_type: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaIpAddrType}  # InetAddressType, access=ru
-  rule_status: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaRowStatus}  # RowStatus, access=crud
+  snmp: {HM2-MGMTACCESS-MIB / hm2RmaEntry.hm2RmaSrvSnmp}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2742,24 +2709,24 @@ MOPS {
 
 ```
 SNMP {
+  index: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.1}  # Integer32, access=r, range=1–16
+  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
+  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {oid: 1.3.6.1.4.1.248.11.25.1.7.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  addr_type: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.3}  # InetAddressType, access=ru
+  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
+  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  interface: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.15}  # InterfaceIndexOrZero, access=ru
   ethernet_ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  rule_status: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.2}  # RowStatus, access=crud
   http: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   per_rule_logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.4}  # InetAddress, access=ru
-  enabled: {oid: 1.3.6.1.4.1.248.11.25.1.7.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
   ssh: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  index: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.1}  # Integer32, access=r, range=1–16
-  profinet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  interface: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.15}  # InterfaceIndexOrZero, access=ru
-  prefix_length: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.5}  # InetAddressPrefixLength, access=ru
-  logging: {oid: 1.3.6.1.4.1.248.11.25.1.7.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  addr_type: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.3}  # InetAddressType, access=ru
-  rule_status: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.2}  # RowStatus, access=crud
+  snmp: {oid: 1.3.6.1.4.1.248.11.25.1.7.1.1.8}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2768,20 +2735,20 @@ SNMP {
 
 ```
 SSH {
-  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ip: {read: "show network management access rules"}  # InetAddress, access=ru
-  enabled: {read: "show network management access global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   index: {read: "show network management access rules"}  # Integer32, access=r, range=1–16
-  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
+  ip: {read: "show network management access rules"}  # InetAddress, access=ru
   https: {write: "network management access modify {_row_index} https {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  modbus: {write: "network management access modify {_row_index} modbus-tcp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show network management access global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  prefix_length: {read: "show network management access rules"}  # InetAddressPrefixLength, access=ru
+  telnet: {write: "network management access modify {_row_index} telnet {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  profinet: {write: "network management access modify {_row_index} profinet-io {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ethernet_ip: {write: "network management access modify {_row_index} ethernet-ip {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  iec61850: {write: "network management access modify {_row_index} iec61850-mms {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   rule_status: {write: "network management access add {index} ip {ip}"}  # RowStatus, access=crud
+  http: {write: "network management access modify {_row_index} http {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh: {write: "network management access modify {_row_index} ssh {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp: {write: "network management access modify {_row_index} snmp {'enable' if value else 'disable'}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2809,8 +2776,8 @@ get_ip_source_guard_port() -> {
 
 ```
 MOPS {
-  enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfVerifySource}  # TruthValue, access=ru, allowed=[True, False]
   port_security: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfPortSecurity}  # TruthValue, access=ru, allowed=[True, False]
+  enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfVerifySource}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2819,8 +2786,8 @@ MOPS {
 
 ```
 SNMP {
-  enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.1}  # TruthValue, access=ru, allowed=[True, False]
   port_security: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.2}  # TruthValue, access=ru, allowed=[True, False]
+  enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.1}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2829,8 +2796,8 @@ SNMP {
 
 ```
 SSH {
-  enabled: {read: "show ip source-guard interfaces"}  # TruthValue, access=ru, allowed=[True, False]
   port_security: {read: "show ip source-guard interfaces"}  # TruthValue, access=ru, allowed=[True, False]
+  enabled: {read: "show ip source-guard interfaces"}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -2843,14 +2810,14 @@ SSH {
 
 ```
 MOPS {
-  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
-  binding_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfVerifySource}  # TruthValue, access=ru, allowed=[True, False]
-  port_security: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfPortSecurity}  # TruthValue, access=ru, allowed=[True, False]
   binding_active: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
+  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
+  binding_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
   binding_hw_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingHwStatus}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingMacAddr}  # MacAddress, access=ru
+  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
+  port_security: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfPortSecurity}  # TruthValue, access=ru, allowed=[True, False]
   binding_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIpAddr}  # IpAddress, access=ru
 }
 ```
@@ -2860,14 +2827,14 @@ MOPS {
 
 ```
 SNMP {
-  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
-  binding_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  port_security: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.2}  # TruthValue, access=ru, allowed=[True, False]
   binding_active: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
+  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
+  binding_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
   binding_hw_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.248}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.3}  # MacAddress, access=ru
+  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
+  port_security: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.2}  # TruthValue, access=ru, allowed=[True, False]
   binding_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.4}  # IpAddress, access=ru
 }
 ```
@@ -2904,11 +2871,11 @@ get_ip_source_guard_bindings() -> {
 
 ```
 MOPS {
-  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
-  binding_hw_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingHwStatus}  # TruthValue, access=r, allowed=[True, False]
   binding_active: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
+  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
+  binding_hw_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingHwStatus}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingMacAddr}  # MacAddress, access=ru
+  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
   binding_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIpAddr}  # IpAddress, access=ru
 }
 ```
@@ -2918,11 +2885,11 @@ MOPS {
 
 ```
 SNMP {
-  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
-  binding_hw_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.248}  # TruthValue, access=r, allowed=[True, False]
   binding_active: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
+  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
+  binding_hw_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.248}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.3}  # MacAddress, access=ru
+  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
   binding_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.4}  # IpAddress, access=ru
 }
 ```
@@ -2936,14 +2903,14 @@ SNMP {
 
 ```
 MOPS {
-  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
-  binding_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfVerifySource}  # TruthValue, access=ru, allowed=[True, False]
-  port_security: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfPortSecurity}  # TruthValue, access=ru, allowed=[True, False]
   binding_active: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
+  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
+  binding_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
   binding_hw_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingHwStatus}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingMacAddr}  # MacAddress, access=ru
+  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
+  port_security: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfPortSecurity}  # TruthValue, access=ru, allowed=[True, False]
   binding_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIpAddr}  # IpAddress, access=ru
 }
 ```
@@ -2953,14 +2920,14 @@ MOPS {
 
 ```
 SNMP {
-  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
-  binding_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  port_security: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.2}  # TruthValue, access=ru, allowed=[True, False]
   binding_active: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
+  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
+  binding_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
   binding_hw_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.248}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.3}  # MacAddress, access=ru
+  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
+  port_security: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.2}  # TruthValue, access=ru, allowed=[True, False]
   binding_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.4}  # IpAddress, access=ru
 }
 ```
@@ -3016,14 +2983,14 @@ SNMP {
 
 ```
 MOPS {
-  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
-  binding_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfVerifySource}  # TruthValue, access=ru, allowed=[True, False]
-  port_security: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfPortSecurity}  # TruthValue, access=ru, allowed=[True, False]
   binding_active: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
+  binding_vlan: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingVlanId}  # VlanIndex, access=ru, range=1–4094
+  binding_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingRowStatus}  # RowStatus, access=crud
   binding_hw_status: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingHwStatus}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingMacAddr}  # MacAddress, access=ru
+  binding_ifindex: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIfIndex}  # InterfaceIndex, access=ru
+  port_security: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentIpsgIfConfigEntry.hm2AgentIpsgIfPortSecurity}  # TruthValue, access=ru, allowed=[True, False]
   binding_ip: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStaticIpsgBindingEntry.hm2AgentStaticIpsgBindingIpAddr}  # IpAddress, access=ru
 }
 ```
@@ -3033,14 +3000,14 @@ MOPS {
 
 ```
 SNMP {
-  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
-  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
-  binding_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.1}  # TruthValue, access=ru, allowed=[True, False]
-  port_security: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.2}  # TruthValue, access=ru, allowed=[True, False]
   binding_active: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
+  binding_vlan: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.2}  # VlanIndex, access=ru, range=1–4094
+  binding_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.5}  # RowStatus, access=crud
   binding_hw_status: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.248}  # TruthValue, access=r, allowed=[True, False]
   binding_mac: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.3}  # MacAddress, access=ru
+  binding_ifindex: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.1}  # InterfaceIndex, access=ru
+  port_security: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.5.1.2}  # TruthValue, access=ru, allowed=[True, False]
   binding_ip: {oid: 1.3.6.1.4.1.248.12.1.2.8.23.8.1.4}  # IpAddress, access=ru
 }
 ```
@@ -3064,7 +3031,7 @@ _IPv6 configuration and neighbor discovery_
 
 ### `get_ipv6_neighbors()`
 
-**Read** | **Protocols:** MOPS, SNMP, SSH
+**Read** | **Protocols:** MOPS, SNMP
 Primary key: `ip`
 
 ```
@@ -3072,49 +3039,36 @@ get_ipv6_neighbors() -> {
     interface: ""  // str
     ip: ""  // str
     mac: ""  // str
-    state: "reachable"  // "reachable" | "stale" | "delay" | "probe" | "invalid" | "unknown" | "incomplete"
+    state: "reachable"  // str
 }
 ```
 
 
-<details><summary>MOPS sources (4/4 attrs)</summary>
+<details><summary>MOPS sources (3/4 attrs)</summary>
 
 ```
 MOPS {
-  mac: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalPhysAddress}  # PhysAddress, access=ru, range=0–65535
-  state: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalState}  # INTEGER, access=r, allowed=['reachable', 'stale', 'delay', 'probe', 'invalid', 'unknown', 'incomplete']
-  ip: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalNetAddress}  # InetAddress, access=r
-  interface: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalIfIndex}  # InterfaceIndex, access=r
+  ip: {IP-MIB / ipNetToMediaEntry.ipNetToMediaNetAddress}  # IpAddress, access=ru
+  interface: {IP-MIB / ipNetToMediaEntry.ipNetToMediaIfIndex}  # INTEGER, access=ru, range=1–2147483647
+  mac: {IP-MIB / ipNetToMediaEntry.ipNetToMediaPhysAddress}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
 
-<details><summary>SNMP sources (4/4 attrs)</summary>
+<details><summary>SNMP sources (3/4 attrs)</summary>
 
 ```
 SNMP {
-  mac: {oid: 1.3.6.1.2.1.4.35.1.4}  # PhysAddress, access=ru, range=0–65535
-  state: {oid: 1.3.6.1.2.1.4.35.1.7}  # INTEGER, access=r, allowed=['reachable', 'stale', 'delay', 'probe', 'invalid', 'unknown', 'incomplete']
-  ip: {oid: 1.3.6.1.2.1.4.35.1.3}  # InetAddress, access=r
-  interface: {oid: 1.3.6.1.2.1.4.35.1.1}  # InterfaceIndex, access=r
-}
-```
-</details>
-
-<details><summary>SSH sources (3/4 attrs)</summary>
-
-```
-SSH {
-  mac: {read: "show arp"}  # PhysAddress, access=ru, range=0–65535
-  ip: {read: "show arp"}  # InetAddress, access=r
-  interface: {read: "show arp"}  # InterfaceIndex, access=r
+  ip: {oid: 1.3.6.1.2.1.4.22.1.3}  # IpAddress, access=ru
+  interface: {oid: 1.3.6.1.2.1.4.22.1.1}  # INTEGER, access=ru, range=1–2147483647
+  mac: {oid: 1.3.6.1.2.1.4.22.1.2}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
 
 ### `get_ipv6_neighbors_table()`
 
-**Read** | **Protocols:** MOPS, SNMP, SSH
+**Read** | **Protocols:** MOPS, SNMP
 Primary key: `ip`
 
 ```
@@ -3122,42 +3076,29 @@ get_ipv6_neighbors_table() -> {
     interface: ""  // str
     ip: ""  // str
     mac: ""  // str
-    state: "reachable"  // "reachable" | "stale" | "delay" | "probe" | "invalid" | "unknown" | "incomplete"
+    state: "reachable"  // str
 }
 ```
 
 
-<details><summary>MOPS sources (4/4 attrs)</summary>
+<details><summary>MOPS sources (3/4 attrs)</summary>
 
 ```
 MOPS {
-  mac: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalPhysAddress}  # PhysAddress, access=ru, range=0–65535
-  state: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalState}  # INTEGER, access=r, allowed=['reachable', 'stale', 'delay', 'probe', 'invalid', 'unknown', 'incomplete']
-  ip: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalNetAddress}  # InetAddress, access=r
-  interface: {IP-MIB / ipNetToPhysicalEntry.ipNetToPhysicalIfIndex}  # InterfaceIndex, access=r
+  ip: {IP-MIB / ipNetToMediaEntry.ipNetToMediaNetAddress}  # IpAddress, access=ru
+  interface: {IP-MIB / ipNetToMediaEntry.ipNetToMediaIfIndex}  # INTEGER, access=ru, range=1–2147483647
+  mac: {IP-MIB / ipNetToMediaEntry.ipNetToMediaPhysAddress}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
 
-<details><summary>SNMP sources (4/4 attrs)</summary>
+<details><summary>SNMP sources (3/4 attrs)</summary>
 
 ```
 SNMP {
-  mac: {oid: 1.3.6.1.2.1.4.35.1.4}  # PhysAddress, access=ru, range=0–65535
-  state: {oid: 1.3.6.1.2.1.4.35.1.7}  # INTEGER, access=r, allowed=['reachable', 'stale', 'delay', 'probe', 'invalid', 'unknown', 'incomplete']
-  ip: {oid: 1.3.6.1.2.1.4.35.1.3}  # InetAddress, access=r
-  interface: {oid: 1.3.6.1.2.1.4.35.1.1}  # InterfaceIndex, access=r
-}
-```
-</details>
-
-<details><summary>SSH sources (3/4 attrs)</summary>
-
-```
-SSH {
-  mac: {read: "show arp"}  # PhysAddress, access=ru, range=0–65535
-  ip: {read: "show arp"}  # InetAddress, access=r
-  interface: {read: "show arp"}  # InterfaceIndex, access=r
+  ip: {oid: 1.3.6.1.2.1.4.22.1.3}  # IpAddress, access=ru
+  interface: {oid: 1.3.6.1.2.1.4.22.1.1}  # INTEGER, access=ru, range=1–2147483647
+  mac: {oid: 1.3.6.1.2.1.4.22.1.2}  # PhysAddress, access=ru, range=0–65535
 }
 ```
 </details>
@@ -3186,8 +3127,8 @@ get_lldp_neighbors() -> {
 ```
 MOPS {
   local_port: {LLDP-MIB / lldpRemEntry.lldpRemLocalPortNum}  # LldpPortNumber, access=r
-  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
   port_id: {LLDP-MIB / lldpRemEntry.lldpRemPortId}  # LldpPortId, access=r
+  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
 }
 ```
 </details>
@@ -3196,9 +3137,9 @@ MOPS {
 
 ```
 SNMP {
-  local_port: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.2}  # LldpPortNumber, access=r
-  sys_name: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
-  port_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
+  local_port: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # LldpPortNumber, access=r
+  port_id: {oid: 1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
+  sys_name: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
 }
 ```
 </details>
@@ -3231,20 +3172,20 @@ get_lldp_neighbors_detail() -> {
 
 ```
 MOPS {
-  port_description: {LLDP-MIB / lldpRemEntry.lldpRemPortDesc}  # SnmpAdminString, access=r, range=0–255
-  sys_description: {LLDP-MIB / lldpRemEntry.lldpRemSysDesc}  # SnmpAdminString, access=r, range=0–255
-  aggregation_port_id: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggPortId}  # Integer32, access=r
-  sys_capabilities: {LLDP-MIB / lldpRemEntry.lldpRemSysCapSupported}  # LldpSystemCapabilitiesMap, access=r
   chassis_id: {LLDP-MIB / lldpRemEntry.lldpRemChassisId}  # LldpChassisId, access=r
+  sys_capabilities: {LLDP-MIB / lldpRemEntry.lldpRemSysCapSupported}  # LldpSystemCapabilitiesMap, access=r
+  aggregation_port_id: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggPortId}  # Integer32, access=r
   sys_enabled_capabilities: {LLDP-MIB / lldpRemEntry.lldpRemSysCapEnabled}  # LldpSystemCapabilitiesMap, access=r
   local_port: {LLDP-MIB / lldpRemEntry.lldpRemLocalPortNum}  # LldpPortNumber, access=r
-  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
-  autoneg_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegEnabled}  # TruthValue, access=r, allowed=[True, False]
-  mau_type: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortOperMauType}  # Integer32, access=r, range=0–2147483647
-  pvid: {LLDP-EXT-DOT1-MIB / lldpXdot1RemEntry.lldpXdot1RemPortVlanId}  # Integer32, access=r
-  port_id: {LLDP-MIB / lldpRemEntry.lldpRemPortId}  # LldpPortId, access=r
-  aggregation_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggStatus}  # LldpLinkAggStatusMap, access=r
+  sys_description: {LLDP-MIB / lldpRemEntry.lldpRemSysDesc}  # SnmpAdminString, access=r, range=0–255
   autoneg_supported: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  mau_type: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortOperMauType}  # Integer32, access=r, range=0–2147483647
+  aggregation_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggStatus}  # LldpLinkAggStatusMap, access=r
+  pvid: {LLDP-EXT-DOT1-MIB / lldpXdot1RemEntry.lldpXdot1RemPortVlanId}  # Integer32, access=r
+  autoneg_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegEnabled}  # TruthValue, access=r, allowed=[True, False]
+  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
+  port_description: {LLDP-MIB / lldpRemEntry.lldpRemPortDesc}  # SnmpAdminString, access=r, range=0–255
+  port_id: {LLDP-MIB / lldpRemEntry.lldpRemPortId}  # LldpPortId, access=r
 }
 ```
 </details>
@@ -3253,20 +3194,20 @@ MOPS {
 
 ```
 SNMP {
-  port_description: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.8}  # SnmpAdminString, access=r, range=0–255
-  sys_description: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.10}  # SnmpAdminString, access=r, range=0–255
-  aggregation_port_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.2}  # Integer32, access=r
-  sys_capabilities: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.11}  # LldpSystemCapabilitiesMap, access=r
-  chassis_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.5}  # LldpChassisId, access=r
-  sys_enabled_capabilities: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.12}  # LldpSystemCapabilitiesMap, access=r
-  local_port: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.2}  # LldpPortNumber, access=r
-  sys_name: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
-  autoneg_enabled: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.2}  # TruthValue, access=r, allowed=[True, False]
-  mau_type: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.4}  # Integer32, access=r, range=0–2147483647
-  pvid: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.1.1.1}  # Integer32, access=r
-  port_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
-  aggregation_enabled: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.1}  # LldpLinkAggStatusMap, access=r
-  autoneg_supported: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.1}  # TruthValue, access=r, allowed=[True, False]
+  chassis_id: {oid: 1.0.8802.1.1.2.1.4.1.1.5}  # LldpChassisId, access=r
+  sys_capabilities: {oid: 1.0.8802.1.1.2.1.4.1.1.11}  # LldpSystemCapabilitiesMap, access=r
+  aggregation_port_id: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.3.1.2}  # Integer32, access=r
+  sys_enabled_capabilities: {oid: 1.0.8802.1.1.2.1.4.1.1.12}  # LldpSystemCapabilitiesMap, access=r
+  local_port: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # LldpPortNumber, access=r
+  sys_description: {oid: 1.0.8802.1.1.2.1.4.1.1.10}  # SnmpAdminString, access=r, range=0–255
+  autoneg_supported: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.1}  # TruthValue, access=r, allowed=[True, False]
+  mau_type: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.4}  # Integer32, access=r, range=0–2147483647
+  aggregation_enabled: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.3.1.1}  # LldpLinkAggStatusMap, access=r
+  pvid: {oid: 1.0.8802.1.1.2.1.5.32962.1.3.1.1.1}  # Integer32, access=r
+  autoneg_enabled: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.2}  # TruthValue, access=r, allowed=[True, False]
+  sys_name: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
+  port_description: {oid: 1.0.8802.1.1.2.1.4.1.1.8}  # SnmpAdminString, access=r, range=0–255
+  port_id: {oid: 1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
 }
 ```
 </details>
@@ -3279,23 +3220,23 @@ SNMP {
 
 ```
 MOPS {
-  port_description: {LLDP-MIB / lldpRemEntry.lldpRemPortDesc}  # SnmpAdminString, access=r, range=0–255
-  sys_description: {LLDP-MIB / lldpRemEntry.lldpRemSysDesc}  # SnmpAdminString, access=r, range=0–255
-  aggregation_port_id: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggPortId}  # Integer32, access=r
+  chassis_id: {LLDP-MIB / lldpRemEntry.lldpRemChassisId}  # LldpChassisId, access=r
   sys_capabilities: {LLDP-MIB / lldpRemEntry.lldpRemSysCapSupported}  # LldpSystemCapabilitiesMap, access=r
+  aggregation_port_id: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggPortId}  # Integer32, access=r
   enabled: {HM2-LLDP-MIB / hm2LLDPConfigGroup.hm2LLDPAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   local_port: {LLDP-MIB / lldpRemEntry.lldpRemLocalPortNum}  # LldpPortNumber, access=r
-  chassis_id: {LLDP-MIB / lldpRemEntry.lldpRemChassisId}  # LldpChassisId, access=r
   sys_enabled_capabilities: {LLDP-MIB / lldpRemEntry.lldpRemSysCapEnabled}  # LldpSystemCapabilitiesMap, access=r
-  hello_interval: {LLDP-MIB / lldpConfiguration.lldpMessageTxInterval}  # Integer32, access=ru, range=5–32768
-  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
-  autoneg_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegEnabled}  # TruthValue, access=r, allowed=[True, False]
-  mau_type: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortOperMauType}  # Integer32, access=r, range=0–2147483647
-  pvid: {LLDP-EXT-DOT1-MIB / lldpXdot1RemEntry.lldpXdot1RemPortVlanId}  # Integer32, access=r
-  port_id: {LLDP-MIB / lldpRemEntry.lldpRemPortId}  # LldpPortId, access=r
-  aggregation_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggStatus}  # LldpLinkAggStatusMap, access=r
-  hold_multiplier: {LLDP-MIB / lldpConfiguration.lldpMessageTxHoldMultiplier}  # Integer32, access=ru, range=2–10
+  sys_description: {LLDP-MIB / lldpRemEntry.lldpRemSysDesc}  # SnmpAdminString, access=r, range=0–255
   autoneg_supported: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  mau_type: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortOperMauType}  # Integer32, access=r, range=0–2147483647
+  hello_interval: {LLDP-MIB / lldpConfiguration.lldpMessageTxInterval}  # Integer32, access=ru, range=5–32768
+  hold_multiplier: {LLDP-MIB / lldpConfiguration.lldpMessageTxHoldMultiplier}  # Integer32, access=ru, range=2–10
+  aggregation_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggStatus}  # LldpLinkAggStatusMap, access=r
+  pvid: {LLDP-EXT-DOT1-MIB / lldpXdot1RemEntry.lldpXdot1RemPortVlanId}  # Integer32, access=r
+  autoneg_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegEnabled}  # TruthValue, access=r, allowed=[True, False]
+  port_description: {LLDP-MIB / lldpRemEntry.lldpRemPortDesc}  # SnmpAdminString, access=r, range=0–255
+  port_id: {LLDP-MIB / lldpRemEntry.lldpRemPortId}  # LldpPortId, access=r
+  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
 }
 ```
 </details>
@@ -3304,23 +3245,23 @@ MOPS {
 
 ```
 SNMP {
-  port_description: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.8}  # SnmpAdminString, access=r, range=0–255
-  sys_description: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.10}  # SnmpAdminString, access=r, range=0–255
-  aggregation_port_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.2}  # Integer32, access=r
-  sys_capabilities: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.11}  # LldpSystemCapabilitiesMap, access=r
+  chassis_id: {oid: 1.0.8802.1.1.2.1.4.1.1.5}  # LldpChassisId, access=r
+  sys_capabilities: {oid: 1.0.8802.1.1.2.1.4.1.1.11}  # LldpSystemCapabilitiesMap, access=r
+  aggregation_port_id: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.3.1.2}  # Integer32, access=r
   enabled: {oid: 1.3.6.1.4.1.248.11.34.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  local_port: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.2}  # LldpPortNumber, access=r
-  chassis_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.5}  # LldpChassisId, access=r
-  sys_enabled_capabilities: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.12}  # LldpSystemCapabilitiesMap, access=r
+  local_port: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # LldpPortNumber, access=r
+  sys_enabled_capabilities: {oid: 1.0.8802.1.1.2.1.4.1.1.12}  # LldpSystemCapabilitiesMap, access=r
+  sys_description: {oid: 1.0.8802.1.1.2.1.4.1.1.10}  # SnmpAdminString, access=r, range=0–255
+  autoneg_supported: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.1}  # TruthValue, access=r, allowed=[True, False]
+  mau_type: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.4}  # Integer32, access=r, range=0–2147483647
   hello_interval: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1, method: get}  # Integer32, access=ru, range=5–32768
-  sys_name: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
-  autoneg_enabled: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.2}  # TruthValue, access=r, allowed=[True, False]
-  mau_type: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.4}  # Integer32, access=r, range=0–2147483647
-  pvid: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.1.1.1}  # Integer32, access=r
-  port_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
-  aggregation_enabled: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.1}  # LldpLinkAggStatusMap, access=r
   hold_multiplier: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.2, method: get}  # Integer32, access=ru, range=2–10
-  autoneg_supported: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.1}  # TruthValue, access=r, allowed=[True, False]
+  aggregation_enabled: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.3.1.1}  # LldpLinkAggStatusMap, access=r
+  pvid: {oid: 1.0.8802.1.1.2.1.5.32962.1.3.1.1.1}  # Integer32, access=r
+  autoneg_enabled: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.2}  # TruthValue, access=r, allowed=[True, False]
+  port_description: {oid: 1.0.8802.1.1.2.1.4.1.1.8}  # SnmpAdminString, access=r, range=0–255
+  port_id: {oid: 1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
+  sys_name: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
 }
 ```
 </details>
@@ -3344,23 +3285,23 @@ SSH {
 
 ```
 MOPS {
-  port_description: {LLDP-MIB / lldpRemEntry.lldpRemPortDesc}  # SnmpAdminString, access=r, range=0–255
-  sys_description: {LLDP-MIB / lldpRemEntry.lldpRemSysDesc}  # SnmpAdminString, access=r, range=0–255
-  aggregation_port_id: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggPortId}  # Integer32, access=r
+  chassis_id: {LLDP-MIB / lldpRemEntry.lldpRemChassisId}  # LldpChassisId, access=r
   sys_capabilities: {LLDP-MIB / lldpRemEntry.lldpRemSysCapSupported}  # LldpSystemCapabilitiesMap, access=r
+  aggregation_port_id: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggPortId}  # Integer32, access=r
   enabled: {HM2-LLDP-MIB / hm2LLDPConfigGroup.hm2LLDPAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   local_port: {LLDP-MIB / lldpRemEntry.lldpRemLocalPortNum}  # LldpPortNumber, access=r
-  chassis_id: {LLDP-MIB / lldpRemEntry.lldpRemChassisId}  # LldpChassisId, access=r
   sys_enabled_capabilities: {LLDP-MIB / lldpRemEntry.lldpRemSysCapEnabled}  # LldpSystemCapabilitiesMap, access=r
-  hello_interval: {LLDP-MIB / lldpConfiguration.lldpMessageTxInterval}  # Integer32, access=ru, range=5–32768
-  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
-  autoneg_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegEnabled}  # TruthValue, access=r, allowed=[True, False]
-  mau_type: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortOperMauType}  # Integer32, access=r, range=0–2147483647
-  pvid: {LLDP-EXT-DOT1-MIB / lldpXdot1RemEntry.lldpXdot1RemPortVlanId}  # Integer32, access=r
-  port_id: {LLDP-MIB / lldpRemEntry.lldpRemPortId}  # LldpPortId, access=r
-  aggregation_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggStatus}  # LldpLinkAggStatusMap, access=r
-  hold_multiplier: {LLDP-MIB / lldpConfiguration.lldpMessageTxHoldMultiplier}  # Integer32, access=ru, range=2–10
+  sys_description: {LLDP-MIB / lldpRemEntry.lldpRemSysDesc}  # SnmpAdminString, access=r, range=0–255
   autoneg_supported: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegSupported}  # TruthValue, access=r, allowed=[True, False]
+  mau_type: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortOperMauType}  # Integer32, access=r, range=0–2147483647
+  hello_interval: {LLDP-MIB / lldpConfiguration.lldpMessageTxInterval}  # Integer32, access=ru, range=5–32768
+  hold_multiplier: {LLDP-MIB / lldpConfiguration.lldpMessageTxHoldMultiplier}  # Integer32, access=ru, range=2–10
+  aggregation_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemLinkAggEntry.lldpXdot3RemLinkAggStatus}  # LldpLinkAggStatusMap, access=r
+  pvid: {LLDP-EXT-DOT1-MIB / lldpXdot1RemEntry.lldpXdot1RemPortVlanId}  # Integer32, access=r
+  autoneg_enabled: {LLDP-EXT-DOT3-MIB / lldpXdot3RemPortEntry.lldpXdot3RemPortAutoNegEnabled}  # TruthValue, access=r, allowed=[True, False]
+  port_description: {LLDP-MIB / lldpRemEntry.lldpRemPortDesc}  # SnmpAdminString, access=r, range=0–255
+  port_id: {LLDP-MIB / lldpRemEntry.lldpRemPortId}  # LldpPortId, access=r
+  sys_name: {LLDP-MIB / lldpRemEntry.lldpRemSysName}  # SnmpAdminString, access=r, range=0–255
 }
 ```
 </details>
@@ -3369,23 +3310,23 @@ MOPS {
 
 ```
 SNMP {
-  port_description: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.8}  # SnmpAdminString, access=r, range=0–255
-  sys_description: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.10}  # SnmpAdminString, access=r, range=0–255
-  aggregation_port_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.2}  # Integer32, access=r
-  sys_capabilities: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.11}  # LldpSystemCapabilitiesMap, access=r
+  chassis_id: {oid: 1.0.8802.1.1.2.1.4.1.1.5}  # LldpChassisId, access=r
+  sys_capabilities: {oid: 1.0.8802.1.1.2.1.4.1.1.11}  # LldpSystemCapabilitiesMap, access=r
+  aggregation_port_id: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.3.1.2}  # Integer32, access=r
   enabled: {oid: 1.3.6.1.4.1.248.11.34.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  local_port: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.2}  # LldpPortNumber, access=r
-  chassis_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.5}  # LldpChassisId, access=r
-  sys_enabled_capabilities: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.12}  # LldpSystemCapabilitiesMap, access=r
+  local_port: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # LldpPortNumber, access=r
+  sys_enabled_capabilities: {oid: 1.0.8802.1.1.2.1.4.1.1.12}  # LldpSystemCapabilitiesMap, access=r
+  sys_description: {oid: 1.0.8802.1.1.2.1.4.1.1.10}  # SnmpAdminString, access=r, range=0–255
+  autoneg_supported: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.1}  # TruthValue, access=r, allowed=[True, False]
+  mau_type: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.4}  # Integer32, access=r, range=0–2147483647
   hello_interval: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.1, method: get}  # Integer32, access=ru, range=5–32768
-  sys_name: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
-  autoneg_enabled: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.2}  # TruthValue, access=r, allowed=[True, False]
-  mau_type: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.4}  # Integer32, access=r, range=0–2147483647
-  pvid: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.32962.1.3.1.1.1}  # Integer32, access=r
-  port_id: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
-  aggregation_enabled: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.3.1.1}  # LldpLinkAggStatusMap, access=r
   hold_multiplier: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.1.2, method: get}  # Integer32, access=ru, range=2–10
-  autoneg_supported: {oid: 1.3.6.1.2.1.0.8802.1.1.2.1.5.4623.1.3.1.1.1}  # TruthValue, access=r, allowed=[True, False]
+  aggregation_enabled: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.3.1.1}  # LldpLinkAggStatusMap, access=r
+  pvid: {oid: 1.0.8802.1.1.2.1.5.32962.1.3.1.1.1}  # Integer32, access=r
+  autoneg_enabled: {oid: 1.0.8802.1.1.2.1.5.4623.1.3.1.1.2}  # TruthValue, access=r, allowed=[True, False]
+  port_description: {oid: 1.0.8802.1.1.2.1.4.1.1.8}  # SnmpAdminString, access=r, range=0–255
+  port_id: {oid: 1.0.8802.1.1.2.1.4.1.1.7}  # LldpPortId, access=r
+  sys_name: {oid: 1.0.8802.1.1.2.1.4.1.1.9}  # SnmpAdminString, access=r, range=0–255
 }
 ```
 </details>
@@ -3426,10 +3367,10 @@ get_mac_address_table() -> {
 
 ```
 MOPS {
-  mac: {Q-BRIDGE-MIB / dot1qTpFdbEntry.dot1qTpFdbAddress}  # MacAddress, access=r
-  status: {Q-BRIDGE-MIB / dot1qTpFdbEntry.dot1qTpFdbStatus}  # INTEGER, access=r
   interface: {Q-BRIDGE-MIB / dot1qTpFdbEntry.dot1qTpFdbPort}  # INTEGER, access=r, range=0–65535
+  status: {Q-BRIDGE-MIB / dot1qTpFdbEntry.dot1qTpFdbStatus}  # INTEGER, access=r
   vlan: {Q-BRIDGE-MIB / dot1qFdbEntry.dot1qFdbId}  # Unsigned32, access=r
+  mac: {Q-BRIDGE-MIB / dot1qTpFdbEntry.dot1qTpFdbAddress}  # MacAddress, access=r
 }
 ```
 </details>
@@ -3438,10 +3379,10 @@ MOPS {
 
 ```
 SNMP {
-  mac: {oid: 1.3.6.1.2.1.17.7.1.2.2.1.1}  # MacAddress, access=r
-  status: {oid: 1.3.6.1.2.1.17.7.1.2.2.1.3}  # INTEGER, access=r
   interface: {oid: 1.3.6.1.2.1.17.7.1.2.2.1.2}  # INTEGER, access=r, range=0–65535
+  status: {oid: 1.3.6.1.2.1.17.7.1.2.2.1.3}  # INTEGER, access=r
   vlan: {oid: 1.3.6.1.2.1.17.7.1.2.1.1.1}  # Unsigned32, access=r
+  mac: {oid: 1.3.6.1.2.1.17.7.1.2.2.1.1}  # MacAddress, access=r
 }
 ```
 </details>
@@ -3450,10 +3391,10 @@ SNMP {
 
 ```
 SSH {
-  mac: {read: "show mac-addr-table"}  # MacAddress, access=r
-  status: {read: "show mac-addr-table"}  # INTEGER, access=r
   interface: {read: "show mac-addr-table"}  # INTEGER, access=r, range=0–65535
+  status: {read: "show mac-addr-table"}  # INTEGER, access=r
   vlan: {read: "show mac-addr-table"}  # Unsigned32, access=r
+  mac: {read: "show mac-addr-table"}  # MacAddress, access=r
 }
 ```
 </details>
@@ -3484,10 +3425,10 @@ get_management() -> {
 
 ```
 MOPS {
+  prefix_length: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
   gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
   vlan_id: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetVlanID}  # Integer32, access=ru, range=1–4042
   ip_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
-  prefix_length: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
   protocol: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetConfigProtocol}  # INTEGER, access=ru, allowed=['none', 'bootp', 'dhcp']
 }
 ```
@@ -3497,10 +3438,10 @@ MOPS {
 
 ```
 SNMP {
+  prefix_length: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
   gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
   vlan_id: {oid: 1.3.6.1.4.1.248.11.20.1.1.7, method: get}  # Integer32, access=ru, range=1–4042
   ip_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
-  prefix_length: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
   protocol: {oid: 1.3.6.1.4.1.248.11.20.1.1.1, method: get}  # INTEGER, access=ru, allowed=['none', 'bootp', 'dhcp']
 }
 ```
@@ -3526,10 +3467,10 @@ SSH {
 
 ```
 MOPS {
+  prefix_length: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
   gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
   vlan_id: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetVlanID}  # Integer32, access=ru, range=1–4042
   ip_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
-  prefix_length: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
   protocol: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetConfigProtocol}  # INTEGER, access=ru, allowed=['none', 'bootp', 'dhcp']
 }
 ```
@@ -3539,10 +3480,10 @@ MOPS {
 
 ```
 SNMP {
+  prefix_length: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
   gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
   vlan_id: {oid: 1.3.6.1.4.1.248.11.20.1.1.7, method: get}  # Integer32, access=ru, range=1–4042
   ip_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
-  prefix_length: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
   protocol: {oid: 1.3.6.1.4.1.248.11.20.1.1.1, method: get}  # INTEGER, access=ru, allowed=['none', 'bootp', 'dhcp']
 }
 ```
@@ -3580,10 +3521,10 @@ get_management_priority() -> {
 
 ```
 MOPS {
+  prefix_length: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
   gateway: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetGatewayIPAddr}  # InetAddress, access=ru
   vlan_id: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetVlanID}  # Integer32, access=ru, range=1–4042
   ip_address: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetLocalIPAddr}  # InetAddress, access=ru
-  prefix_length: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetPrefixLength}  # InetAddressPrefixLength, access=ru
   protocol: {HM2-NETCONFIG-MIB / hm2NetStaticGroup.hm2NetConfigProtocol}  # INTEGER, access=ru, allowed=['none', 'bootp', 'dhcp']
 }
 ```
@@ -3593,10 +3534,10 @@ MOPS {
 
 ```
 SNMP {
+  prefix_length: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
   gateway: {oid: 1.3.6.1.4.1.248.11.20.1.1.6, method: get}  # InetAddress, access=ru
   vlan_id: {oid: 1.3.6.1.4.1.248.11.20.1.1.7, method: get}  # Integer32, access=ru, range=1–4042
   ip_address: {oid: 1.3.6.1.4.1.248.11.20.1.1.3, method: get}  # InetAddress, access=ru
-  prefix_length: {oid: 1.3.6.1.4.1.248.11.20.1.1.4, method: get}  # InetAddressPrefixLength, access=ru
   protocol: {oid: 1.3.6.1.4.1.248.11.20.1.1.1, method: get}  # INTEGER, access=ru, allowed=['none', 'bootp', 'dhcp']
 }
 ```
@@ -3648,20 +3589,20 @@ get_mrp() -> {
 
 ```
 MOPS {
-  ring_port1: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1IfIndex}  # Integer32, access=ru
-  ring_port2_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
   advanced_mode: {HM2-L2REDUNDANCY-MIB / hm2MrpMibGroup.hm2MrpFastMrp}  # INTEGER, access=r, allowed=['supported', 'notSupported']
+  operation: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRowStatus}  # RowStatus, access=crud
   vlan: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpVlanID}  # Integer32, access=ru
-  role: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRoleAdminState}  # INTEGER, access=ru, allowed=['client', 'manager']
   ring_port2: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2IfIndex}  # Integer32, access=ru
-  domain_name: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpDomainName}  # SnmpAdminString, access=ru
   recovery_delay: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRecoveryDelay}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
   domain_id: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpDomainID}  # OCTET STRING, access=r
-  ring_port1_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
-  operation: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRowStatus}  # RowStatus, access=crud
-  manager_priority: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpMRMPriority}  # Integer32 (0..65535), access=ru, range=0–65535
-  ring_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingOperState}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  domain_name: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpDomainName}  # SnmpAdminString, access=ru
   fixed_backup: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2FixedBackup}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  role: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRoleAdminState}  # INTEGER, access=ru, allowed=['client', 'manager']
+  ring_port1_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
+  ring_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingOperState}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  manager_priority: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpMRMPriority}  # Integer32 (0..65535), access=ru, range=0–65535
+  ring_port1: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1IfIndex}  # Integer32, access=ru
+  ring_port2_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
 }
 ```
 </details>
@@ -3670,20 +3611,20 @@ MOPS {
 
 ```
 SNMP {
-  ring_port1: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.4}  # Integer32, access=ru
-  ring_port2_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.8}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
   advanced_mode: {oid: 1.3.6.1.4.1.248.11.40.1.1.3, method: get}  # INTEGER, access=r, allowed=['supported', 'notSupported']
+  operation: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.26}  # RowStatus, access=crud
   vlan: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.13}  # Integer32, access=ru
-  role: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.9}  # INTEGER, access=ru, allowed=['client', 'manager']
   ring_port2: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.7}  # Integer32, access=ru
-  domain_name: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.2}  # SnmpAdminString, access=ru
   recovery_delay: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.11}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
   domain_id: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.1}  # OCTET STRING, access=r
-  ring_port1_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.5}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
-  operation: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.26}  # RowStatus, access=crud
-  manager_priority: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.14}  # Integer32 (0..65535), access=ru, range=0–65535
-  ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.23}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  domain_name: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.2}  # SnmpAdminString, access=ru
   fixed_backup: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.27}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  role: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.9}  # INTEGER, access=ru, allowed=['client', 'manager']
+  ring_port1_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.5}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
+  ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.23}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  manager_priority: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.14}  # Integer32 (0..65535), access=ru, range=0–65535
+  ring_port1: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.4}  # Integer32, access=ru
+  ring_port2_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.8}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
 }
 ```
 </details>
@@ -3692,20 +3633,20 @@ SNMP {
 
 ```
 SSH {
-  ring_port1: {read: "show mrp", write: "mrp domain modify port primary {value}"}  # Integer32, access=ru
-  ring_port2_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
   advanced_mode: {read: "show mrp", write: "mrp domain modify advanced-mode {value}"}  # INTEGER, access=r, allowed=['supported', 'notSupported']
+  operation: {read: "show mrp", write: "mrp domain modify operation {value}"}  # RowStatus, access=crud
   vlan: {read: "show mrp", write: "mrp domain modify vlan {value}"}  # Integer32, access=ru
-  role: {read: "show mrp", write: "mrp domain modify mode {value}"}  # INTEGER, access=ru, allowed=['client', 'manager']
   ring_port2: {read: "show mrp", write: "mrp domain modify port secondary {value}"}  # Integer32, access=ru
-  domain_name: {read: "show mrp", write: "mrp domain modify name {value}"}  # SnmpAdminString, access=ru
   recovery_delay: {read: "show mrp", write: "mrp domain modify recovery-delay {value}"}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
   domain_id: {read: "show mrp"}  # OCTET STRING, access=r
-  ring_port1_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
-  operation: {read: "show mrp", write: "mrp domain modify operation {value}"}  # RowStatus, access=crud
-  manager_priority: {read: "show mrp", write: "mrp domain modify manager-priority {value}"}  # Integer32 (0..65535), access=ru, range=0–65535
-  ring_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  domain_name: {read: "show mrp", write: "mrp domain modify name {value}"}  # SnmpAdminString, access=ru
   fixed_backup: {read: "show mrp"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  role: {read: "show mrp", write: "mrp domain modify mode {value}"}  # INTEGER, access=ru, allowed=['client', 'manager']
+  ring_port1_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
+  ring_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  manager_priority: {read: "show mrp", write: "mrp domain modify manager-priority {value}"}  # Integer32 (0..65535), access=ru, range=0–65535
+  ring_port1: {read: "show mrp", write: "mrp domain modify port primary {value}"}  # Integer32, access=ru
+  ring_port2_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
 }
 ```
 </details>
@@ -3718,21 +3659,21 @@ SSH {
 
 ```
 MOPS {
-  ring_port1: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1IfIndex}  # Integer32, access=ru
-  ring_port2_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
   advanced_mode: {HM2-L2REDUNDANCY-MIB / hm2MrpMibGroup.hm2MrpFastMrp}  # INTEGER, access=r, allowed=['supported', 'notSupported']
-  vlan: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpVlanID}  # Integer32, access=ru
+  operation: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRowStatus}  # RowStatus, access=crud
   mrp_status: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRowStatus}  # RowStatus, access=crud
-  role: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRoleAdminState}  # INTEGER, access=ru, allowed=['client', 'manager']
+  vlan: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpVlanID}  # Integer32, access=ru
   ring_port2: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2IfIndex}  # Integer32, access=ru
+  recovery_delay: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRecoveryDelay}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
   domain_id: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpDomainID}  # OCTET STRING, access=r
   domain_name: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpDomainName}  # SnmpAdminString, access=ru
-  recovery_delay: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRecoveryDelay}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
-  ring_port1_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
-  operation: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRowStatus}  # RowStatus, access=crud
-  manager_priority: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpMRMPriority}  # Integer32 (0..65535), access=ru, range=0–65535
-  ring_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingOperState}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
   fixed_backup: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2FixedBackup}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  role: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRoleAdminState}  # INTEGER, access=ru, allowed=['client', 'manager']
+  ring_port1_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
+  ring_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingOperState}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  manager_priority: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpMRMPriority}  # Integer32 (0..65535), access=ru, range=0–65535
+  ring_port1: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport1IfIndex}  # Integer32, access=ru
+  ring_port2_state: {HM2-L2REDUNDANCY-MIB / hm2MrpEntry.hm2MrpRingport2OperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
 }
 ```
 </details>
@@ -3741,21 +3682,21 @@ MOPS {
 
 ```
 SNMP {
-  ring_port1: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.4}  # Integer32, access=ru
-  ring_port2_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.8}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
   advanced_mode: {oid: 1.3.6.1.4.1.248.11.40.1.1.3, method: get}  # INTEGER, access=r, allowed=['supported', 'notSupported']
-  vlan: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.13}  # Integer32, access=ru
+  operation: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.26}  # RowStatus, access=crud
   mrp_status: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.26}  # RowStatus, access=crud
-  role: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.9}  # INTEGER, access=ru, allowed=['client', 'manager']
+  vlan: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.13}  # Integer32, access=ru
   ring_port2: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.7}  # Integer32, access=ru
+  recovery_delay: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.11}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
   domain_id: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.1}  # OCTET STRING, access=r
   domain_name: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.2}  # SnmpAdminString, access=ru
-  recovery_delay: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.11}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
-  ring_port1_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.5}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
-  operation: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.26}  # RowStatus, access=crud
-  manager_priority: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.14}  # Integer32 (0..65535), access=ru, range=0–65535
-  ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.23}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
   fixed_backup: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.27}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  role: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.9}  # INTEGER, access=ru, allowed=['client', 'manager']
+  ring_port1_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.5}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
+  ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.23}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  manager_priority: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.14}  # Integer32 (0..65535), access=ru, range=0–65535
+  ring_port1: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.4}  # Integer32, access=ru
+  ring_port2_state: {oid: 1.3.6.1.4.1.248.11.40.1.1.1.1.8}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
 }
 ```
 </details>
@@ -3764,21 +3705,21 @@ SNMP {
 
 ```
 SSH {
-  ring_port1: {read: "show mrp", write: "mrp domain modify port primary {value}"}  # Integer32, access=ru
-  ring_port2_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
   advanced_mode: {read: "show mrp", write: "mrp domain modify advanced-mode {value}"}  # INTEGER, access=r, allowed=['supported', 'notSupported']
-  vlan: {read: "show mrp", write: "mrp domain modify vlan {value}"}  # Integer32, access=ru
+  operation: {read: "show mrp", write: "mrp domain modify operation {value}"}  # RowStatus, access=crud
   mrp_status: {read: "show mrp", write: "mrp domain modify operation {value}"}  # RowStatus, access=crud
-  role: {read: "show mrp", write: "mrp domain modify mode {value}"}  # INTEGER, access=ru, allowed=['client', 'manager']
+  vlan: {read: "show mrp", write: "mrp domain modify vlan {value}"}  # Integer32, access=ru
   ring_port2: {read: "show mrp", write: "mrp domain modify port secondary {value}"}  # Integer32, access=ru
+  recovery_delay: {read: "show mrp", write: "mrp domain modify recovery-delay {value}"}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
   domain_id: {read: "show mrp"}  # OCTET STRING, access=r
   domain_name: {read: "show mrp", write: "mrp domain modify name {value}"}  # SnmpAdminString, access=ru
-  recovery_delay: {read: "show mrp", write: "mrp domain modify recovery-delay {value}"}  # INTEGER, access=ru, allowed=['delay500', 'delay200', 'delay30', 'delay10']
-  ring_port1_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
-  operation: {read: "show mrp", write: "mrp domain modify operation {value}"}  # RowStatus, access=crud
-  manager_priority: {read: "show mrp", write: "mrp domain modify manager-priority {value}"}  # Integer32 (0..65535), access=ru, range=0–65535
-  ring_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
   fixed_backup: {read: "show mrp"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  role: {read: "show mrp", write: "mrp domain modify mode {value}"}  # INTEGER, access=ru, allowed=['client', 'manager']
+  ring_port1_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
+  ring_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['open', 'closed', 'undefined']
+  manager_priority: {read: "show mrp", write: "mrp domain modify manager-priority {value}"}  # Integer32 (0..65535), access=ru, range=0–65535
+  ring_port1: {read: "show mrp", write: "mrp domain modify port primary {value}"}  # Integer32, access=ru
+  ring_port2_state: {read: "show mrp"}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'notConnected']
 }
 ```
 </details>
@@ -3882,18 +3823,18 @@ get_mrp_sub_ring() -> {
 
 ```
 MOPS {
-  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
   admin_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmAdminState}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmMibGroup.hm2SrmGlobalAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmVlanID}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
-  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmMRPDomainID}  # OCTET STRING, access=ru
-  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
+  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   oper_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmOperState}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingName}  # SnmpAdminString, access=ru
-  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
+  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -3902,18 +3843,18 @@ MOPS {
 
 ```
 SNMP {
-  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
   admin_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.2}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.4}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
-  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.5}  # OCTET STRING, access=ru
-  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
+  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   oper_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.3}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.8}  # SnmpAdminString, access=ru
-  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
+  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -3926,19 +3867,19 @@ SNMP {
 
 ```
 MOPS {
-  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
   admin_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmAdminState}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmMibGroup.hm2SrmGlobalAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmVlanID}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   srm_status: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRowStatus}  # RowStatus, access=crud
-  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmMRPDomainID}  # OCTET STRING, access=ru
-  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   oper_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmOperState}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
+  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingName}  # SnmpAdminString, access=ru
-  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
+  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -3947,19 +3888,19 @@ MOPS {
 
 ```
 SNMP {
-  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
   admin_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.2}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.4}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   srm_status: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.20}  # RowStatus, access=crud
-  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.5}  # OCTET STRING, access=ru
-  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   oper_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.3}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
+  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.8}  # SnmpAdminString, access=ru
-  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
+  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -3972,19 +3913,19 @@ SNMP {
 
 ```
 MOPS {
-  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
   admin_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmAdminState}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmMibGroup.hm2SrmGlobalAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmVlanID}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   srm_status: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRowStatus}  # RowStatus, access=crud
-  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmMRPDomainID}  # OCTET STRING, access=ru
-  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   oper_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmOperState}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
+  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingName}  # SnmpAdminString, access=ru
-  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
+  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -3993,19 +3934,19 @@ MOPS {
 
 ```
 SNMP {
-  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
   admin_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.2}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.4}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   srm_status: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.20}  # RowStatus, access=crud
-  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.5}  # OCTET STRING, access=ru
-  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   oper_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.3}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
+  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.8}  # SnmpAdminString, access=ru
-  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
+  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -4018,19 +3959,19 @@ SNMP {
 
 ```
 MOPS {
-  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
   admin_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmAdminState}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmMibGroup.hm2SrmGlobalAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmVlanID}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   srm_status: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRowStatus}  # RowStatus, access=crud
-  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmMRPDomainID}  # OCTET STRING, access=ru
-  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortOperState}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   oper_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmOperState}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  oper_enabled: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmConfigOperState}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
+  redundancy: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRedundancyOperState}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingName}  # SnmpAdminString, access=ru
-  ring_id: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmRingID}  # Integer32, access=r
+  sub_ring_port: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingPortIfIndex}  # Integer32, access=ru
+  sub_ring_state: {HM2-L2REDUNDANCY-MIB / hm2SrmEntry.hm2SrmSubRingOperState}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -4039,19 +3980,19 @@ MOPS {
 
 ```
 SNMP {
-  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
   admin_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.2}  # INTEGER, access=ru, allowed=['manager', 'redundantManager', 'singleManager']
-  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
   enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vlan: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.4}  # Integer32, access=ru, range=0–4042
-  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   srm_status: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.20}  # RowStatus, access=crud
-  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
   domain_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.5}  # OCTET STRING, access=ru
-  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
+  sub_ring_port_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.10}  # INTEGER, access=r, allowed=['disabled', 'blocked', 'forwarding', 'not-connected']
   oper_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.3}  # INTEGER, access=r, allowed=['manager', 'redundantManager', 'singleManager', 'disabled']
+  oper_enabled: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.13}  # INTEGER, access=r, allowed=['noError', 'ringPortLinkError', 'multipleSRM', 'noPartnerManager', 'concurrentVLAN', 'concurrentPort', 'concurrentRedundancy', 'trunkMember', 'sharedVLAN']
+  redundancy: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.12}  # INTEGER, access=r, allowed=['redGuaranteed', 'redNotGuaranteed']
   sub_ring_name: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.8}  # SnmpAdminString, access=ru
-  ring_id: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.1}  # Integer32, access=r
+  sub_ring_port: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.9}  # Integer32, access=ru
+  sub_ring_state: {oid: 1.3.6.1.4.1.248.11.40.1.4.3.1.11}  # INTEGER, access=r, allowed=['undefined', 'open', 'closed']
 }
 ```
 </details>
@@ -4082,15 +4023,15 @@ get_ntp() -> {
 
 ```
 MOPS {
-  server_oper_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
-  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
   servers: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
-  enabled: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_stratum: {HM2-TIMESYNC-MIB / hm2NtpServerConfigGroup.hm2NtpServerLocalClockStratum}  # Integer32 (1..16), access=ru, range=1–16
-  request_interval: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientRequestInterval}  # Integer32, access=ru, range=5–3600
-  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
+  enabled: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_oper_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
   address: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
   server_enabled: {HM2-TIMESYNC-MIB / hm2SntpServerGroup.hm2SntpServerAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
+  request_interval: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientRequestInterval}  # Integer32, access=ru, range=5–3600
 }
 ```
 </details>
@@ -4099,15 +4040,15 @@ MOPS {
 
 ```
 SNMP {
-  server_oper_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
-  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
   servers: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
-  enabled: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_stratum: {oid: 1.3.6.1.4.1.248.11.50.1.3.2.1.3, method: get}  # Integer32 (1..16), access=ru, range=1–16
-  request_interval: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.4, method: get}  # Integer32, access=ru, range=5–3600
-  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
+  enabled: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  server_oper_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
   address: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
   server_enabled: {oid: 1.3.6.1.4.1.248.11.50.1.4.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
+  request_interval: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.4, method: get}  # Integer32, access=ru, range=5–3600
 }
 ```
 </details>
@@ -4116,14 +4057,14 @@ SNMP {
 
 ```
 SSH {
-  server_oper_status: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
-  description: {read: "show sntp client server"}  # DisplayString, access=ru
   servers: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
   enabled: {read: "show sntp global", write: "{'' if value else 'no '}sntp client operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  request_interval: {read: "show sntp global"}  # Integer32, access=ru, range=5–3600
-  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
+  server_oper_status: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
   address: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
   server_enabled: {read: "show sntp global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {read: "show sntp client server"}  # DisplayString, access=ru
+  request_interval: {read: "show sntp global"}  # Integer32, access=ru, range=5–3600
 }
 ```
 </details>
@@ -4154,8 +4095,8 @@ get_ntp_stats() -> {
 
 ```
 MOPS {
-  remote: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
   server_index: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerIndex}  # Integer32, access=r, range=1–4
+  remote: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
   synchronized: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
 }
 ```
@@ -4165,8 +4106,8 @@ MOPS {
 
 ```
 SNMP {
-  remote: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
   server_index: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.1}  # Integer32, access=r, range=1–4
+  remote: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
   synchronized: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
 }
 ```
@@ -4176,8 +4117,8 @@ SNMP {
 
 ```
 SSH {
-  remote: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
   server_index: {read: "show sntp client server"}  # Integer32, access=r, range=1–4
+  remote: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
   synchronized: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
 }
 ```
@@ -4191,21 +4132,21 @@ SSH {
 
 ```
 MOPS {
-  server_oper_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
-  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
-  enabled: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   servers: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
   server_stratum: {HM2-TIMESYNC-MIB / hm2NtpServerConfigGroup.hm2NtpServerLocalClockStratum}  # Integer32 (1..16), access=ru, range=1–16
-  request_interval: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientRequestInterval}  # Integer32, access=ru, range=5–3600
-  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
-  remote: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  enabled: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_index: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerIndex}  # Integer32, access=r, range=1–4
-  server_row_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerRowStatus}  # RowStatus, access=crud
-  synchronized: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
-  address: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
-  client_status: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientStatus}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
-  server_enabled: {HM2-TIMESYNC-MIB / hm2SntpServerGroup.hm2SntpServerAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   addr_type: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddrType}  # InetAddressType, access=ru
+  server_oper_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
+  remote: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  synchronized: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
+  request_interval: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientRequestInterval}  # Integer32, access=ru, range=5–3600
+  address: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  server_row_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerRowStatus}  # RowStatus, access=crud
+  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
+  server_enabled: {HM2-TIMESYNC-MIB / hm2SntpServerGroup.hm2SntpServerAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
+  client_status: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientStatus}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
 }
 ```
 </details>
@@ -4214,21 +4155,21 @@ MOPS {
 
 ```
 SNMP {
-  server_oper_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
-  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
-  enabled: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   servers: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
   server_stratum: {oid: 1.3.6.1.4.1.248.11.50.1.3.2.1.3, method: get}  # Integer32 (1..16), access=ru, range=1–16
-  request_interval: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.4, method: get}  # Integer32, access=ru, range=5–3600
-  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
-  remote: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  enabled: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_index: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.1}  # Integer32, access=r, range=1–4
-  server_row_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.7}  # RowStatus, access=crud
-  synchronized: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
-  address: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
-  client_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.5, method: get}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
-  server_enabled: {oid: 1.3.6.1.4.1.248.11.50.1.4.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   addr_type: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.2}  # InetAddressType, access=ru
+  server_oper_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
+  remote: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  synchronized: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
+  request_interval: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.4, method: get}  # Integer32, access=ru, range=5–3600
+  address: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  server_row_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.7}  # RowStatus, access=crud
+  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
+  server_enabled: {oid: 1.3.6.1.4.1.248.11.50.1.4.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
+  client_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.5, method: get}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
 }
 ```
 </details>
@@ -4237,20 +4178,20 @@ SNMP {
 
 ```
 SSH {
-  server_oper_status: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
-  description: {read: "show sntp client server"}  # DisplayString, access=ru
-  enabled: {read: "show sntp global", write: "{'' if value else 'no '}sntp client operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   servers: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
-  request_interval: {read: "show sntp global"}  # Integer32, access=ru, range=5–3600
-  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
-  remote: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  enabled: {read: "show sntp global", write: "{'' if value else 'no '}sntp client operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_index: {read: "show sntp client server"}  # Integer32, access=r, range=1–4
-  server_row_status: {write: "sntp client server add {index} {address}"}  # RowStatus, access=crud
-  synchronized: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
-  address: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
-  client_status: {read: "show sntp global"}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
-  server_enabled: {read: "show sntp global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   addr_type: {read: "show sntp client server"}  # InetAddressType, access=ru
+  server_oper_status: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
+  remote: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  synchronized: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
+  request_interval: {read: "show sntp global"}  # Integer32, access=ru, range=5–3600
+  address: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  server_row_status: {write: "sntp client server add {index} {address}"}  # RowStatus, access=crud
+  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
+  server_enabled: {read: "show sntp global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {read: "show sntp client server"}  # DisplayString, access=ru
+  client_status: {read: "show sntp global"}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
 }
 ```
 </details>
@@ -4274,10 +4215,10 @@ get_ntp_servers() -> {
 
 ```
 MOPS {
-  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
-  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
   server_index: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerIndex}  # Integer32, access=r, range=1–4
   address: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
+  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
 }
 ```
 </details>
@@ -4286,10 +4227,10 @@ MOPS {
 
 ```
 SNMP {
-  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
-  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
   server_index: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.1}  # Integer32, access=r, range=1–4
   address: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
+  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
 }
 ```
 </details>
@@ -4298,10 +4239,10 @@ SNMP {
 
 ```
 SSH {
-  description: {read: "show sntp client server"}  # DisplayString, access=ru
-  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
   server_index: {read: "show sntp client server"}  # Integer32, access=r, range=1–4
   address: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
+  description: {read: "show sntp client server"}  # DisplayString, access=ru
 }
 ```
 </details>
@@ -4322,8 +4263,8 @@ create_ntp_server() -> {
 
 ```
 MOPS {
-  addr_type: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddrType}  # InetAddressType, access=ru
   address: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  addr_type: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddrType}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -4332,8 +4273,8 @@ MOPS {
 
 ```
 SNMP {
-  addr_type: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.2}  # InetAddressType, access=ru
   address: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  addr_type: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.2}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -4342,8 +4283,8 @@ SNMP {
 
 ```
 SSH {
-  addr_type: {read: "show sntp client server"}  # InetAddressType, access=ru
   address: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  addr_type: {read: "show sntp client server"}  # InetAddressType, access=ru
 }
 ```
 </details>
@@ -4356,21 +4297,21 @@ SSH {
 
 ```
 MOPS {
-  server_oper_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
-  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
-  enabled: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   servers: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
   server_stratum: {HM2-TIMESYNC-MIB / hm2NtpServerConfigGroup.hm2NtpServerLocalClockStratum}  # Integer32 (1..16), access=ru, range=1–16
-  request_interval: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientRequestInterval}  # Integer32, access=ru, range=5–3600
-  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
-  remote: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  enabled: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_index: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerIndex}  # Integer32, access=r, range=1–4
-  server_row_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerRowStatus}  # RowStatus, access=crud
-  synchronized: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
-  address: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
-  client_status: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientStatus}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
-  server_enabled: {HM2-TIMESYNC-MIB / hm2SntpServerGroup.hm2SntpServerAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   addr_type: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddrType}  # InetAddressType, access=ru
+  server_oper_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
+  remote: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  synchronized: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerStatus}  # HmSntpClientServerStatus, access=r
+  request_interval: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientRequestInterval}  # Integer32, access=ru, range=5–3600
+  address: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerAddr}  # InetAddress, access=ru
+  server_row_status: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerRowStatus}  # RowStatus, access=crud
+  port: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerPort}  # InetPortNumber, access=ru, range=1–65535
+  server_enabled: {HM2-TIMESYNC-MIB / hm2SntpServerGroup.hm2SntpServerAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {HM2-TIMESYNC-MIB / hm2SntpClientServerAddrEntry.hm2SntpClientServerDescr}  # DisplayString, access=ru
+  client_status: {HM2-TIMESYNC-MIB / hm2SntpClientGroup.hm2SntpClientStatus}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
 }
 ```
 </details>
@@ -4379,21 +4320,21 @@ MOPS {
 
 ```
 SNMP {
-  server_oper_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
-  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
-  enabled: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   servers: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
   server_stratum: {oid: 1.3.6.1.4.1.248.11.50.1.3.2.1.3, method: get}  # Integer32 (1..16), access=ru, range=1–16
-  request_interval: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.4, method: get}  # Integer32, access=ru, range=5–3600
-  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
-  remote: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  enabled: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_index: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.1}  # Integer32, access=r, range=1–4
-  server_row_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.7}  # RowStatus, access=crud
-  synchronized: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
-  address: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
-  client_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.5, method: get}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
-  server_enabled: {oid: 1.3.6.1.4.1.248.11.50.1.4.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   addr_type: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.2}  # InetAddressType, access=ru
+  server_oper_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
+  remote: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  synchronized: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.6}  # HmSntpClientServerStatus, access=r
+  request_interval: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.4, method: get}  # Integer32, access=ru, range=5–3600
+  address: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.3}  # InetAddress, access=ru
+  server_row_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.7}  # RowStatus, access=crud
+  port: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.4}  # InetPortNumber, access=ru, range=1–65535
+  server_enabled: {oid: 1.3.6.1.4.1.248.11.50.1.4.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.10.1.5}  # DisplayString, access=ru
+  client_status: {oid: 1.3.6.1.4.1.248.11.50.1.2.3.5, method: get}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
 }
 ```
 </details>
@@ -4402,20 +4343,20 @@ SNMP {
 
 ```
 SSH {
-  server_oper_status: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
-  description: {read: "show sntp client server"}  # DisplayString, access=ru
-  enabled: {read: "show sntp global", write: "{'' if value else 'no '}sntp client operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   servers: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
-  request_interval: {read: "show sntp global"}  # Integer32, access=ru, range=5–3600
-  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
-  remote: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  enabled: {read: "show sntp global", write: "{'' if value else 'no '}sntp client operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   server_index: {read: "show sntp client server"}  # Integer32, access=r, range=1–4
-  server_row_status: {write: "sntp client server add {index} {address}"}  # RowStatus, access=crud
-  synchronized: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
-  address: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
-  client_status: {read: "show sntp global"}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
-  server_enabled: {read: "show sntp global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   addr_type: {read: "show sntp client server"}  # InetAddressType, access=ru
+  server_oper_status: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
+  remote: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  synchronized: {read: "show sntp client server"}  # HmSntpClientServerStatus, access=r
+  request_interval: {read: "show sntp global"}  # Integer32, access=ru, range=5–3600
+  address: {read: "show sntp client server", write: "sntp client server add {index} {address}"}  # InetAddress, access=ru
+  server_row_status: {write: "sntp client server add {index} {address}"}  # RowStatus, access=crud
+  port: {read: "show sntp client server"}  # InetPortNumber, access=ru, range=1–65535
+  server_enabled: {read: "show sntp global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  description: {read: "show sntp client server"}  # DisplayString, access=ru
+  client_status: {read: "show sntp global"}  # INTEGER, access=r, allowed=['disabled', 'notSynchronized', 'synchronizedToRemoteServer']
 }
 ```
 </details>
@@ -4444,10 +4385,10 @@ get_optics() -> {
 
 ```
 MOPS {
-  temperature: {HM2-DEVMGMT-MIB / hm2SfpDiagEntry.hm2SfpCurrentTemperature}  # Integer32, access=r
-  tx_power: {HM2-DEVMGMT-MIB / hm2SfpDiagEntry.hm2SfpCurrentTxPower}  # Integer32, access=r
   name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
   rx_power: {HM2-DEVMGMT-MIB / hm2SfpDiagEntry.hm2SfpCurrentRxPower}  # Integer32, access=r
+  tx_power: {HM2-DEVMGMT-MIB / hm2SfpDiagEntry.hm2SfpCurrentTxPower}  # Integer32, access=r
+  temperature: {HM2-DEVMGMT-MIB / hm2SfpDiagEntry.hm2SfpCurrentTemperature}  # Integer32, access=r
 }
 ```
 </details>
@@ -4456,10 +4397,10 @@ MOPS {
 
 ```
 SNMP {
-  temperature: {oid: 1.3.6.1.4.1.248.11.10.1.7.2.1.2}  # Integer32, access=r
-  tx_power: {oid: 1.3.6.1.4.1.248.11.10.1.7.2.1.3}  # Integer32, access=r
   name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
   rx_power: {oid: 1.3.6.1.4.1.248.11.10.1.7.2.1.4}  # Integer32, access=r
+  tx_power: {oid: 1.3.6.1.4.1.248.11.10.1.7.2.1.3}  # Integer32, access=r
+  temperature: {oid: 1.3.6.1.4.1.248.11.10.1.7.2.1.2}  # Integer32, access=r
 }
 ```
 </details>
@@ -4497,8 +4438,8 @@ get_poe() -> {
 
 ```
 MOPS {
-  power_limit: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortPowerLimit}  # Integer32 (0..30000), access=ru, range=0–30000
   status: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortDetectionStatus}  # INTEGER, access=r, allowed=['disabled', 'searching', 'deliveringPower', 'fault', 'test', 'otherFault']
+  power_limit: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortPowerLimit}  # Integer32 (0..30000), access=ru, range=0–30000
   enabled: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortAdminEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -4508,8 +4449,8 @@ MOPS {
 
 ```
 SNMP {
-  power_limit: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.14}  # Integer32 (0..30000), access=ru, range=0–30000
   status: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.3}  # INTEGER, access=r, allowed=['disabled', 'searching', 'deliveringPower', 'fault', 'test', 'otherFault']
+  power_limit: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.14}  # Integer32 (0..30000), access=ru, range=0–30000
   enabled: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -4519,8 +4460,8 @@ SNMP {
 
 ```
 SSH {
-  power_limit: {read: "show inlinepower port", write: "inlinepower power-limit {value}"}  # Integer32 (0..30000), access=ru, range=0–30000
   status: {read: "show inlinepower port"}  # INTEGER, access=r, allowed=['disabled', 'searching', 'deliveringPower', 'fault', 'test', 'otherFault']
+  power_limit: {read: "show inlinepower port", write: "inlinepower power-limit {value}"}  # Integer32 (0..30000), access=ru, range=0–30000
   enabled: {read: "show inlinepower port", write: "inlinepower operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -4534,8 +4475,8 @@ SSH {
 
 ```
 MOPS {
-  power_limit: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortPowerLimit}  # Integer32 (0..30000), access=ru, range=0–30000
   status: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortDetectionStatus}  # INTEGER, access=r, allowed=['disabled', 'searching', 'deliveringPower', 'fault', 'test', 'otherFault']
+  power_limit: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortPowerLimit}  # Integer32 (0..30000), access=ru, range=0–30000
   enabled: {HM2-POE-MIB / hm2PoeMgmtPortEntry.hm2PoeMgmtPortAdminEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -4545,8 +4486,8 @@ MOPS {
 
 ```
 SNMP {
-  power_limit: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.14}  # Integer32 (0..30000), access=ru, range=0–30000
   status: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.3}  # INTEGER, access=r, allowed=['disabled', 'searching', 'deliveringPower', 'fault', 'test', 'otherFault']
+  power_limit: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.14}  # Integer32 (0..30000), access=ru, range=0–30000
   enabled: {oid: 1.3.6.1.4.1.248.11.12.1.1.3.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -4556,8 +4497,8 @@ SNMP {
 
 ```
 SSH {
-  power_limit: {read: "show inlinepower port", write: "inlinepower power-limit {value}"}  # Integer32 (0..30000), access=ru, range=0–30000
   status: {read: "show inlinepower port"}  # INTEGER, access=r, allowed=['disabled', 'searching', 'deliveringPower', 'fault', 'test', 'otherFault']
+  power_limit: {read: "show inlinepower port", write: "inlinepower power-limit {value}"}  # Integer32 (0..30000), access=ru, range=0–30000
   enabled: {read: "show inlinepower port", write: "inlinepower operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -4588,18 +4529,18 @@ get_port_security() -> {
 
 ```
 MOPS {
-  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
   global_enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentGlobalPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
   auto_disable_enabled: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
-  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
-  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
-  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
-  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   last_discarded_mac: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityLastDiscardedMAC}  # DisplayString, access=r
+  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
+  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
+  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
+  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
+  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
   mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentPortSecurityOperationMode}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -4608,18 +4549,18 @@ MOPS {
 
 ```
 SNMP {
-  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
   global_enabled: {oid: 1.3.6.1.4.1.248.12.20.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  enabled: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
   auto_disable_enabled: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
-  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
-  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
-  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
-  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   last_discarded_mac: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.7}  # DisplayString, access=r
+  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
+  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
+  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
+  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
+  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
   mode: {oid: 1.3.6.1.4.1.248.12.20.1.12, method: get}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -4628,17 +4569,17 @@ SNMP {
 
 ```
 SSH {
-  dynamic_limit: {read: "show port-security interface", write: "port-security dynamic-limit {value}"}  # Unsigned32, access=ru, range=0–600
   global_enabled: {read: "show port-security global", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {read: "show port-security interface", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  violation_trap_frequency: {read: "show port-security interface {index}", write: "port-security violation-traps operation frequency {value}"}  # Unsigned32, access=ru, range=0–3600
-  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
-  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
-  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   last_discarded_mac: {read: "show port-security interface {index}"}  # DisplayString, access=r
+  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
+  dynamic_limit: {read: "show port-security interface", write: "port-security dynamic-limit {value}"}  # Unsigned32, access=ru, range=0–600
+  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
+  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  violation_trap_frequency: {read: "show port-security interface {index}", write: "port-security violation-traps operation frequency {value}"}  # Unsigned32, access=ru, range=0–3600
+  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
   mode: {write: "port-security mode {value}"}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -4651,25 +4592,25 @@ SSH {
 
 ```
 MOPS {
-  mac_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressAdd}  # DisplayString, access=ru
+  auto_disable_enabled: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
+  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
   mac_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressRemove}  # DisplayString, access=ru
-  ip_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressRemove}  # DisplayString, access=ru
+  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
+  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
   ip_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressAdd}  # DisplayString, access=ru
+  static_macs: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticMACs}  # DisplayString, access=r, range=0–1536
+  static_ips: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIPs}  # DisplayString, access=r, range=0–1536
+  ip_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressRemove}  # DisplayString, access=ru
+  mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentPortSecurityOperationMode}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
   global_enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentGlobalPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
-  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
-  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
   last_discarded_mac: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityLastDiscardedMAC}  # DisplayString, access=r
-  static_ips: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIPs}  # DisplayString, access=r, range=0–1536
-  auto_disable_enabled: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
   static_ip_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIpCount}  # Unsigned32, access=r
-  static_macs: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticMACs}  # DisplayString, access=r, range=0–1536
-  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
-  mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentPortSecurityOperationMode}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  mac_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressAdd}  # DisplayString, access=ru
+  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4678,25 +4619,25 @@ MOPS {
 
 ```
 SNMP {
-  mac_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.8}  # DisplayString, access=ru
+  auto_disable_enabled: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
+  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
   mac_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.9}  # DisplayString, access=ru
-  ip_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.252}  # DisplayString, access=ru
+  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
+  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
   ip_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.251}  # DisplayString, access=ru
+  static_macs: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.6}  # DisplayString, access=r, range=0–1536
+  static_ips: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.250}  # DisplayString, access=r, range=0–1536
+  ip_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.252}  # DisplayString, access=ru
+  mode: {oid: 1.3.6.1.4.1.248.12.20.1.12, method: get}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
   global_enabled: {oid: 1.3.6.1.4.1.248.12.20.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
-  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
-  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
   last_discarded_mac: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.7}  # DisplayString, access=r
-  static_ips: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.250}  # DisplayString, access=r, range=0–1536
-  auto_disable_enabled: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
   static_ip_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.249}  # Unsigned32, access=r
-  static_macs: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.6}  # DisplayString, access=r, range=0–1536
-  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
-  mode: {oid: 1.3.6.1.4.1.248.12.20.1.12, method: get}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  mac_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.8}  # DisplayString, access=ru
+  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4705,21 +4646,21 @@ SNMP {
 
 ```
 SSH {
-  mac_add: {write: "port-security mac-address add {mac} {vlan}"}  # DisplayString, access=ru
-  mac_remove: {write: "port-security mac-address delete {mac} {vlan}"}  # DisplayString, access=ru
-  ip_remove: {write: "port-security ip-address delete {ip} {vlan}"}  # DisplayString, access=ru
-  ip_add: {write: "port-security ip-address add {ip} {vlan}"}  # DisplayString, access=ru
-  global_enabled: {read: "show port-security global", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  enabled: {read: "show port-security interface", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
-  last_discarded_mac: {read: "show port-security interface {index}"}  # DisplayString, access=r
-  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   dynamic_limit: {read: "show port-security interface", write: "port-security dynamic-limit {value}"}  # Unsigned32, access=ru, range=0–600
   violation_trap_frequency: {read: "show port-security interface {index}", write: "port-security violation-traps operation frequency {value}"}  # Unsigned32, access=ru, range=0–3600
+  mac_remove: {write: "port-security mac-address delete {mac} {vlan}"}  # DisplayString, access=ru
+  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
+  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
+  ip_add: {write: "port-security ip-address add {ip} {vlan}"}  # DisplayString, access=ru
+  ip_remove: {write: "port-security ip-address delete {ip} {vlan}"}  # DisplayString, access=ru
   mode: {write: "port-security mode {value}"}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  global_enabled: {read: "show port-security global", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show port-security interface", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  last_discarded_mac: {read: "show port-security interface {index}"}  # DisplayString, access=r
+  mac_add: {write: "port-security mac-address add {mac} {vlan}"}  # DisplayString, access=ru
+  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4732,25 +4673,25 @@ SSH {
 
 ```
 MOPS {
-  mac_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressAdd}  # DisplayString, access=ru
+  auto_disable_enabled: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
+  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
   mac_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressRemove}  # DisplayString, access=ru
-  ip_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressRemove}  # DisplayString, access=ru
+  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
+  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
   ip_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressAdd}  # DisplayString, access=ru
+  static_macs: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticMACs}  # DisplayString, access=r, range=0–1536
+  static_ips: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIPs}  # DisplayString, access=r, range=0–1536
+  ip_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressRemove}  # DisplayString, access=ru
+  mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentPortSecurityOperationMode}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
   global_enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentGlobalPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
-  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
-  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
   last_discarded_mac: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityLastDiscardedMAC}  # DisplayString, access=r
-  static_ips: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIPs}  # DisplayString, access=r, range=0–1536
-  auto_disable_enabled: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
   static_ip_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIpCount}  # Unsigned32, access=r
-  static_macs: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticMACs}  # DisplayString, access=r, range=0–1536
-  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
-  mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentPortSecurityOperationMode}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  mac_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressAdd}  # DisplayString, access=ru
+  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4759,25 +4700,25 @@ MOPS {
 
 ```
 SNMP {
-  mac_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.8}  # DisplayString, access=ru
+  auto_disable_enabled: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
+  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
   mac_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.9}  # DisplayString, access=ru
-  ip_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.252}  # DisplayString, access=ru
+  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
+  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
   ip_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.251}  # DisplayString, access=ru
+  static_macs: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.6}  # DisplayString, access=r, range=0–1536
+  static_ips: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.250}  # DisplayString, access=r, range=0–1536
+  ip_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.252}  # DisplayString, access=ru
+  mode: {oid: 1.3.6.1.4.1.248.12.20.1.12, method: get}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
   global_enabled: {oid: 1.3.6.1.4.1.248.12.20.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
-  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
-  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
   last_discarded_mac: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.7}  # DisplayString, access=r
-  static_ips: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.250}  # DisplayString, access=r, range=0–1536
-  auto_disable_enabled: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
   static_ip_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.249}  # Unsigned32, access=r
-  static_macs: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.6}  # DisplayString, access=r, range=0–1536
-  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
-  mode: {oid: 1.3.6.1.4.1.248.12.20.1.12, method: get}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  mac_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.8}  # DisplayString, access=ru
+  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4786,21 +4727,21 @@ SNMP {
 
 ```
 SSH {
-  mac_add: {write: "port-security mac-address add {mac} {vlan}"}  # DisplayString, access=ru
-  mac_remove: {write: "port-security mac-address delete {mac} {vlan}"}  # DisplayString, access=ru
-  ip_remove: {write: "port-security ip-address delete {ip} {vlan}"}  # DisplayString, access=ru
-  ip_add: {write: "port-security ip-address add {ip} {vlan}"}  # DisplayString, access=ru
-  global_enabled: {read: "show port-security global", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  enabled: {read: "show port-security interface", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
-  last_discarded_mac: {read: "show port-security interface {index}"}  # DisplayString, access=r
-  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   dynamic_limit: {read: "show port-security interface", write: "port-security dynamic-limit {value}"}  # Unsigned32, access=ru, range=0–600
   violation_trap_frequency: {read: "show port-security interface {index}", write: "port-security violation-traps operation frequency {value}"}  # Unsigned32, access=ru, range=0–3600
+  mac_remove: {write: "port-security mac-address delete {mac} {vlan}"}  # DisplayString, access=ru
+  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
+  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
+  ip_add: {write: "port-security ip-address add {ip} {vlan}"}  # DisplayString, access=ru
+  ip_remove: {write: "port-security ip-address delete {ip} {vlan}"}  # DisplayString, access=ru
   mode: {write: "port-security mode {value}"}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  global_enabled: {read: "show port-security global", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show port-security interface", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  last_discarded_mac: {read: "show port-security interface {index}"}  # DisplayString, access=r
+  mac_add: {write: "port-security mac-address add {mac} {vlan}"}  # DisplayString, access=ru
+  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4813,25 +4754,25 @@ SSH {
 
 ```
 MOPS {
-  mac_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressAdd}  # DisplayString, access=ru
+  auto_disable_enabled: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
+  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
   mac_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressRemove}  # DisplayString, access=ru
-  ip_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressRemove}  # DisplayString, access=ru
+  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
+  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
   ip_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressAdd}  # DisplayString, access=ru
+  static_macs: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticMACs}  # DisplayString, access=r, range=0–1536
+  static_ips: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIPs}  # DisplayString, access=r, range=0–1536
+  ip_remove: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityIPAddressRemove}  # DisplayString, access=ru
+  mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentPortSecurityOperationMode}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
   global_enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentGlobalPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
-  dynamic_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicCount}  # Unsigned32, access=r
-  auto_disable: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityAutoDisable}  # TruthValue, access=ru, allowed=[True, False]
   last_discarded_mac: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityLastDiscardedMAC}  # DisplayString, access=r
-  static_ips: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIPs}  # DisplayString, access=r, range=0–1536
-  auto_disable_enabled: {HM2-DEVMGMT-MIB / hm2AutoDisableReasonEntry.hm2AutoDisableReasonOperation}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticLimit}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  dynamic_limit: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityDynamicLimit}  # Unsigned32, access=ru, range=0–600
   static_ip_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticIpCount}  # Unsigned32, access=r
-  static_macs: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticMACs}  # DisplayString, access=r, range=0–1536
-  violation_trap_frequency: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapFrequency}  # Unsigned32, access=ru, range=0–3600
-  mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityGroup.hm2AgentPortSecurityOperationMode}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  mac_add: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityMACAddressAdd}  # DisplayString, access=ru
+  violation_trap_mode: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityViolationTrapMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {HM2-PLATFORM-PORTSECURITY-MIB / hm2AgentPortSecurityEntry.hm2AgentPortSecurityStaticCount}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4840,25 +4781,25 @@ MOPS {
 
 ```
 SNMP {
-  mac_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.8}  # DisplayString, access=ru
+  auto_disable_enabled: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
+  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
   mac_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.9}  # DisplayString, access=ru
-  ip_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.252}  # DisplayString, access=ru
+  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
+  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
   ip_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.251}  # DisplayString, access=ru
+  static_macs: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.6}  # DisplayString, access=r, range=0–1536
+  static_ips: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.250}  # DisplayString, access=r, range=0–1536
+  ip_remove: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.252}  # DisplayString, access=ru
+  mode: {oid: 1.3.6.1.4.1.248.12.20.1.12, method: get}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
   global_enabled: {oid: 1.3.6.1.4.1.248.12.20.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
-  dynamic_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.20}  # Unsigned32, access=r
-  auto_disable: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.248}  # TruthValue, access=ru, allowed=[True, False]
   last_discarded_mac: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.7}  # DisplayString, access=r
-  static_ips: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.250}  # DisplayString, access=r, range=0–1536
-  auto_disable_enabled: {oid: 1.3.6.1.4.1.248.11.10.1.9.2.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.3}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  dynamic_limit: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.2}  # Unsigned32, access=ru, range=0–600
   static_ip_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.249}  # Unsigned32, access=r
-  static_macs: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.6}  # DisplayString, access=r, range=0–1536
-  violation_trap_frequency: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.23}  # Unsigned32, access=ru, range=0–3600
-  mode: {oid: 1.3.6.1.4.1.248.12.20.1.12, method: get}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  mac_add: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.8}  # DisplayString, access=ru
+  violation_trap_mode: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {oid: 1.3.6.1.4.1.248.12.20.1.2.1.21}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4867,21 +4808,21 @@ SNMP {
 
 ```
 SSH {
-  mac_add: {write: "port-security mac-address add {mac} {vlan}"}  # DisplayString, access=ru
-  mac_remove: {write: "port-security mac-address delete {mac} {vlan}"}  # DisplayString, access=ru
-  ip_remove: {write: "port-security ip-address delete {ip} {vlan}"}  # DisplayString, access=ru
-  ip_add: {write: "port-security ip-address add {ip} {vlan}"}  # DisplayString, access=ru
-  global_enabled: {read: "show port-security global", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  enabled: {read: "show port-security interface", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
-  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
-  last_discarded_mac: {read: "show port-security interface {index}"}  # DisplayString, access=r
-  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
-  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   dynamic_limit: {read: "show port-security interface", write: "port-security dynamic-limit {value}"}  # Unsigned32, access=ru, range=0–600
   violation_trap_frequency: {read: "show port-security interface {index}", write: "port-security violation-traps operation frequency {value}"}  # Unsigned32, access=ru, range=0–3600
+  mac_remove: {write: "port-security mac-address delete {mac} {vlan}"}  # DisplayString, access=ru
+  dynamic_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
+  static_limit: {read: "show port-security interface", write: "port-security max-static {value}"}  # Unsigned32, access=ru, range=0–64
+  auto_disable: {read: "show port-security interface {index}"}  # TruthValue, access=ru, allowed=[True, False]
+  ip_add: {write: "port-security ip-address add {ip} {vlan}"}  # DisplayString, access=ru
+  ip_remove: {write: "port-security ip-address delete {ip} {vlan}"}  # DisplayString, access=ru
   mode: {write: "port-security mode {value}"}  # INTEGER, access=ru, allowed=['macAddressBased', 'ipAddressBased']
+  global_enabled: {read: "show port-security global", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show port-security interface", write: "{'' if value else 'no '}port-security operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  last_discarded_mac: {read: "show port-security interface {index}"}  # DisplayString, access=r
+  mac_add: {write: "port-security mac-address add {mac} {vlan}"}  # DisplayString, access=ru
+  violation_trap_mode: {read: "show port-security interface {index}", write: "port-security violation-traps operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  static_count: {read: "show port-security interface {index}"}  # Unsigned32, access=r
 }
 ```
 </details>
@@ -4915,14 +4856,14 @@ get_profiles() -> {
 
 ```
 MOPS {
-  fingerprint: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprint}  # DisplayString (SIZE(40)), access=r
-  active: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileActive}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  encrypted: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionActive}  # TruthValue, access=r, allowed=[True, False]
-  encryption_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionVerified}  # TruthValue, access=r, allowed=[True, False]
   index: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileIndex}  # Integer32 (1..100), access=r, range=1–100
+  encryption_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionVerified}  # TruthValue, access=r, allowed=[True, False]
+  encrypted: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionActive}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprint}  # DisplayString (SIZE(40)), access=r
+  name: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileName}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  active: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileActive}  # INTEGER, access=ru, allowed=['active', 'inactive']
   fingerprint_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprintVerified}  # TruthValue, access=r, allowed=[True, False]
   datetime: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileDateTime}  # HmTimeSeconds1970, access=r
-  name: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileName}  # DisplayString (SIZE(0..32)), access=r, range=0–32
 }
 ```
 </details>
@@ -4931,14 +4872,14 @@ MOPS {
 
 ```
 SNMP {
-  fingerprint: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.13}  # DisplayString (SIZE(40)), access=r
-  active: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.5}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  encrypted: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.8}  # TruthValue, access=r, allowed=[True, False]
-  encryption_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.9}  # TruthValue, access=r, allowed=[True, False]
   index: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.2}  # Integer32 (1..100), access=r, range=1–100
+  encryption_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.9}  # TruthValue, access=r, allowed=[True, False]
+  encrypted: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.8}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.13}  # DisplayString (SIZE(40)), access=r
+  name: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.3}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  active: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.5}  # INTEGER, access=ru, allowed=['active', 'inactive']
   fingerprint_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.14}  # TruthValue, access=r, allowed=[True, False]
   datetime: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.4}  # HmTimeSeconds1970, access=r
-  name: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.3}  # DisplayString (SIZE(0..32)), access=r, range=0–32
 }
 ```
 </details>
@@ -4947,14 +4888,14 @@ SNMP {
 
 ```
 SSH {
-  fingerprint: {read: "show config profiles nvm"}  # DisplayString (SIZE(40)), access=r
-  active: {read: "show config profiles nvm", write: "config profile select nvm {_row_index}"}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  encrypted: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
-  encryption_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
   index: {read: "show config profiles nvm"}  # Integer32 (1..100), access=r, range=1–100
+  encryption_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
+  encrypted: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {read: "show config profiles nvm"}  # DisplayString (SIZE(40)), access=r
+  name: {read: "show config profiles nvm"}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  active: {read: "show config profiles nvm", write: "config profile select nvm {_row_index}"}  # INTEGER, access=ru, allowed=['active', 'inactive']
   fingerprint_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
   datetime: {read: "show config profiles nvm"}  # HmTimeSeconds1970, access=r
-  name: {read: "show config profiles nvm"}  # DisplayString (SIZE(0..32)), access=r, range=0–32
 }
 ```
 </details>
@@ -4967,19 +4908,19 @@ SSH {
 
 ```
 MOPS {
-  storage_type: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileStorageType}  # INTEGER, access=r, allowed=['nvm', 'envm']
-  fingerprint: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprint}  # DisplayString (SIZE(40)), access=r
-  sw_bugfix: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwBugfixRelNum}  # Integer32, access=r
-  active: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileActive}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  sw_minor: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMinorRelNum}  # Integer32, access=r
-  encrypted: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionActive}  # TruthValue, access=r, allowed=[True, False]
-  sw_major: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMajorRelNum}  # Integer32, access=r
   index: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileIndex}  # Integer32 (1..100), access=r, range=1–100
   encryption_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionVerified}  # TruthValue, access=r, allowed=[True, False]
-  fingerprint_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprintVerified}  # TruthValue, access=r, allowed=[True, False]
   profile_action: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileAction}  # INTEGER, access=ru
-  datetime: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileDateTime}  # HmTimeSeconds1970, access=r
+  fingerprint_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprintVerified}  # TruthValue, access=r, allowed=[True, False]
+  sw_major: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMajorRelNum}  # Integer32, access=r
+  encrypted: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionActive}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprint}  # DisplayString (SIZE(40)), access=r
   name: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileName}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  storage_type: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileStorageType}  # INTEGER, access=r, allowed=['nvm', 'envm']
+  active: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileActive}  # INTEGER, access=ru, allowed=['active', 'inactive']
+  sw_bugfix: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwBugfixRelNum}  # Integer32, access=r
+  datetime: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileDateTime}  # HmTimeSeconds1970, access=r
+  sw_minor: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMinorRelNum}  # Integer32, access=r
 }
 ```
 </details>
@@ -4988,19 +4929,19 @@ MOPS {
 
 ```
 SNMP {
-  storage_type: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.1}  # INTEGER, access=r, allowed=['nvm', 'envm']
-  fingerprint: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.13}  # DisplayString (SIZE(40)), access=r
-  sw_bugfix: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.12}  # Integer32, access=r
-  active: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.5}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  sw_minor: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.11}  # Integer32, access=r
-  encrypted: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.8}  # TruthValue, access=r, allowed=[True, False]
-  sw_major: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.10}  # Integer32, access=r
   index: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.2}  # Integer32 (1..100), access=r, range=1–100
   encryption_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.9}  # TruthValue, access=r, allowed=[True, False]
-  fingerprint_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.14}  # TruthValue, access=r, allowed=[True, False]
   profile_action: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.6}  # INTEGER, access=ru
-  datetime: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.4}  # HmTimeSeconds1970, access=r
+  fingerprint_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.14}  # TruthValue, access=r, allowed=[True, False]
+  sw_major: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.10}  # Integer32, access=r
+  encrypted: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.8}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.13}  # DisplayString (SIZE(40)), access=r
   name: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.3}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  storage_type: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.1}  # INTEGER, access=r, allowed=['nvm', 'envm']
+  active: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.5}  # INTEGER, access=ru, allowed=['active', 'inactive']
+  sw_bugfix: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.12}  # Integer32, access=r
+  datetime: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.4}  # HmTimeSeconds1970, access=r
+  sw_minor: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.11}  # Integer32, access=r
 }
 ```
 </details>
@@ -5009,18 +4950,18 @@ SNMP {
 
 ```
 SSH {
-  fingerprint: {read: "show config profiles nvm"}  # DisplayString (SIZE(40)), access=r
-  sw_bugfix: {read: "show config profiles nvm"}  # Integer32, access=r
-  active: {read: "show config profiles nvm", write: "config profile select nvm {_row_index}"}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  sw_minor: {read: "show config profiles nvm"}  # Integer32, access=r
-  encrypted: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
-  sw_major: {read: "show config profiles nvm"}  # Integer32, access=r
   index: {read: "show config profiles nvm"}  # Integer32 (1..100), access=r, range=1–100
   encryption_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
-  fingerprint_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
   profile_action: {write: "config profile delete nvm num {_row_index}"}  # INTEGER, access=ru
-  datetime: {read: "show config profiles nvm"}  # HmTimeSeconds1970, access=r
+  fingerprint_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
+  sw_major: {read: "show config profiles nvm"}  # Integer32, access=r
+  encrypted: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {read: "show config profiles nvm"}  # DisplayString (SIZE(40)), access=r
   name: {read: "show config profiles nvm"}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  active: {read: "show config profiles nvm", write: "config profile select nvm {_row_index}"}  # INTEGER, access=ru, allowed=['active', 'inactive']
+  sw_bugfix: {read: "show config profiles nvm"}  # Integer32, access=r
+  datetime: {read: "show config profiles nvm"}  # HmTimeSeconds1970, access=r
+  sw_minor: {read: "show config profiles nvm"}  # Integer32, access=r
 }
 ```
 </details>
@@ -5033,19 +4974,19 @@ SSH {
 
 ```
 MOPS {
-  storage_type: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileStorageType}  # INTEGER, access=r, allowed=['nvm', 'envm']
-  fingerprint: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprint}  # DisplayString (SIZE(40)), access=r
-  sw_bugfix: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwBugfixRelNum}  # Integer32, access=r
-  active: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileActive}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  sw_minor: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMinorRelNum}  # Integer32, access=r
-  encrypted: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionActive}  # TruthValue, access=r, allowed=[True, False]
-  sw_major: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMajorRelNum}  # Integer32, access=r
   index: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileIndex}  # Integer32 (1..100), access=r, range=1–100
   encryption_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionVerified}  # TruthValue, access=r, allowed=[True, False]
-  fingerprint_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprintVerified}  # TruthValue, access=r, allowed=[True, False]
   profile_action: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileAction}  # INTEGER, access=ru
-  datetime: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileDateTime}  # HmTimeSeconds1970, access=r
+  fingerprint_verified: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprintVerified}  # TruthValue, access=r, allowed=[True, False]
+  sw_major: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMajorRelNum}  # Integer32, access=r
+  encrypted: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileEncryptionActive}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileFingerprint}  # DisplayString (SIZE(40)), access=r
   name: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileName}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  storage_type: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileStorageType}  # INTEGER, access=r, allowed=['nvm', 'envm']
+  active: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileActive}  # INTEGER, access=ru, allowed=['active', 'inactive']
+  sw_bugfix: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwBugfixRelNum}  # Integer32, access=r
+  datetime: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileDateTime}  # HmTimeSeconds1970, access=r
+  sw_minor: {HM2-FILEMGMT-MIB / hm2FMProfileEntry.hm2FMProfileSwMinorRelNum}  # Integer32, access=r
 }
 ```
 </details>
@@ -5054,19 +4995,19 @@ MOPS {
 
 ```
 SNMP {
-  storage_type: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.1}  # INTEGER, access=r, allowed=['nvm', 'envm']
-  fingerprint: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.13}  # DisplayString (SIZE(40)), access=r
-  sw_bugfix: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.12}  # Integer32, access=r
-  active: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.5}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  sw_minor: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.11}  # Integer32, access=r
-  encrypted: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.8}  # TruthValue, access=r, allowed=[True, False]
-  sw_major: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.10}  # Integer32, access=r
   index: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.2}  # Integer32 (1..100), access=r, range=1–100
   encryption_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.9}  # TruthValue, access=r, allowed=[True, False]
-  fingerprint_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.14}  # TruthValue, access=r, allowed=[True, False]
   profile_action: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.6}  # INTEGER, access=ru
-  datetime: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.4}  # HmTimeSeconds1970, access=r
+  fingerprint_verified: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.14}  # TruthValue, access=r, allowed=[True, False]
+  sw_major: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.10}  # Integer32, access=r
+  encrypted: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.8}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.13}  # DisplayString (SIZE(40)), access=r
   name: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.3}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  storage_type: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.1}  # INTEGER, access=r, allowed=['nvm', 'envm']
+  active: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.5}  # INTEGER, access=ru, allowed=['active', 'inactive']
+  sw_bugfix: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.12}  # Integer32, access=r
+  datetime: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.4}  # HmTimeSeconds1970, access=r
+  sw_minor: {oid: 1.3.6.1.4.1.248.11.21.1.1.1.1.11}  # Integer32, access=r
 }
 ```
 </details>
@@ -5075,18 +5016,18 @@ SNMP {
 
 ```
 SSH {
-  fingerprint: {read: "show config profiles nvm"}  # DisplayString (SIZE(40)), access=r
-  sw_bugfix: {read: "show config profiles nvm"}  # Integer32, access=r
-  active: {read: "show config profiles nvm", write: "config profile select nvm {_row_index}"}  # INTEGER, access=ru, allowed=['active', 'inactive']
-  sw_minor: {read: "show config profiles nvm"}  # Integer32, access=r
-  encrypted: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
-  sw_major: {read: "show config profiles nvm"}  # Integer32, access=r
   index: {read: "show config profiles nvm"}  # Integer32 (1..100), access=r, range=1–100
   encryption_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
-  fingerprint_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
   profile_action: {write: "config profile delete nvm num {_row_index}"}  # INTEGER, access=ru
-  datetime: {read: "show config profiles nvm"}  # HmTimeSeconds1970, access=r
+  fingerprint_verified: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
+  sw_major: {read: "show config profiles nvm"}  # Integer32, access=r
+  encrypted: {read: "show config profiles nvm"}  # TruthValue, access=r, allowed=[True, False]
+  fingerprint: {read: "show config profiles nvm"}  # DisplayString (SIZE(40)), access=r
   name: {read: "show config profiles nvm"}  # DisplayString (SIZE(0..32)), access=r, range=0–32
+  active: {read: "show config profiles nvm", write: "config profile select nvm {_row_index}"}  # INTEGER, access=ru, allowed=['active', 'inactive']
+  sw_bugfix: {read: "show config profiles nvm"}  # Integer32, access=r
+  datetime: {read: "show config profiles nvm"}  # HmTimeSeconds1970, access=r
+  sw_minor: {read: "show config profiles nvm"}  # Integer32, access=r
 }
 ```
 </details>
@@ -5116,10 +5057,10 @@ get_storm_control() -> {
 
 ```
 MOPS {
-  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
   broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
   multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
 }
 ```
 </details>
@@ -5128,10 +5069,10 @@ MOPS {
 
 ```
 SNMP {
-  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
   broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
   multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
 }
 ```
 </details>
@@ -5140,10 +5081,10 @@ SNMP {
 
 ```
 SSH {
-  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
   broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
   multicast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
 }
 ```
 </details>
@@ -5156,15 +5097,15 @@ SSH {
 
 ```
 MOPS {
-  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfReset}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfTimer}  # Unsigned32, access=ru
-  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5173,15 +5114,15 @@ MOPS {
 
 ```
 SNMP {
-  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.5}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.4}  # Unsigned32, access=ru
-  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5190,10 +5131,10 @@ SNMP {
 
 ```
 SSH {
-  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
-  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
   multicast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -5219,15 +5160,15 @@ get_loop_protection() -> {
 
 ```
 MOPS {
-  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfReset}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfTimer}  # Unsigned32, access=ru
-  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5236,15 +5177,15 @@ MOPS {
 
 ```
 SNMP {
-  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.5}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.4}  # Unsigned32, access=ru
-  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5253,10 +5194,10 @@ SNMP {
 
 ```
 SSH {
-  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
-  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
   multicast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -5271,6 +5212,7 @@ get_auto_disable() -> {
     enabled: False  // bool
     reason: "none"  // str
     remaining_time: 0  // int
+    timer: 0  // int
 }
 ```
 
@@ -5283,15 +5225,15 @@ get_auto_disable() -> {
 
 ```
 MOPS {
-  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfReset}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfTimer}  # Unsigned32, access=ru
-  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5300,15 +5242,15 @@ MOPS {
 
 ```
 SNMP {
-  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.5}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.4}  # Unsigned32, access=ru
-  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5317,13 +5259,26 @@ SNMP {
 
 ```
 SSH {
-  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
-  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
   multicast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
+
+### `get_auto_disable_reasons()`
+
+**Read** | **Protocols:** None (Composed)
+Primary key: `reason`
+
+```
+get_auto_disable_reasons() -> {
+    enabled: False  // bool
+    category: ""  // str
+}
+```
+
 
 ### `set_auto_disable_reason()`
 
@@ -5333,15 +5288,15 @@ SSH {
 
 ```
 MOPS {
-  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfReset}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfTimer}  # Unsigned32, access=ru
-  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5350,15 +5305,15 @@ MOPS {
 
 ```
 SNMP {
-  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
-  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
+  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
   auto_disable_reset: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.5}  # TruthValue, access=ru, allowed=[True, False]
   auto_disable_timer: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.4}  # Unsigned32, access=ru
-  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
-  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
-  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
-  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
 }
 ```
 </details>
@@ -5367,10 +5322,60 @@ SNMP {
 
 ```
 SSH {
-  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
-  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
   multicast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+}
+```
+</details>
+
+### `auto_disable_reset()`
+
+**Update** | **Protocols:** MOPS, SNMP, SSH
+
+<details><summary>MOPS sources (9/9 attrs)</summary>
+
+```
+MOPS {
+  auto_disable_reason: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfErrorReason}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlMcastThreshold}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastThreshold}  # Unsigned32, access=ru, range=0–14880000
+  auto_disable_reset: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfReset}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable_timer: {HM2-DEVMGMT-MIB / hm2AutoDisableIntfEntry.hm2AutoDisableIntfTimer}  # Unsigned32, access=ru
+  loop_enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveState}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {HM2-TRAFFICMGMT-MIB / hm2TrafficMgmtIfEntry.hm2TrafficMgmtIfIngressStormCtlBcastMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentSwitchKeepaliveGroup.hm2AgentSwitchKeepaliveTransmitInterval}  # Integer32, access=ru, range=1–10
+}
+```
+</details>
+
+<details><summary>SNMP sources (9/9 attrs)</summary>
+
+```
+SNMP {
+  auto_disable_reason: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.3}  # INTEGER, access=r, allowed=['none', 'link-flap', 'crc-error', 'duplex-mismatch', 'dhcp-snooping', 'arp-rate', 'bpdu-rate', 'mac-based-port-security', 'overload-detection', 'speed-duplex', 'loop-protection']
+  multicast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.8}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.6}  # Unsigned32, access=ru, range=0–14880000
+  auto_disable_reset: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.5}  # TruthValue, access=ru, allowed=[True, False]
+  auto_disable_timer: {oid: 1.3.6.1.4.1.248.11.10.1.9.1.1.4}  # Unsigned32, access=ru
+  loop_enabled: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.1, method: get}  # INTEGER, access=ru, allowed=['enable', 'disable']
+  broadcast_enabled: {oid: 1.3.6.1.4.1.248.11.31.1.1.1.5}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  loop_interval: {oid: 1.3.6.1.4.1.248.12.1.2.8.43.2, method: get}  # Integer32, access=ru, range=1–10
+}
+```
+</details>
+
+<details><summary>SSH sources (4/9 attrs)</summary>
+
+```
+SSH {
+  multicast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  multicast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_threshold: {read: "show storm-control ingress"}  # Unsigned32, access=ru, range=0–14880000
+  broadcast_enabled: {read: "show storm-control ingress"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -5428,10 +5433,10 @@ SSH {
 
 ```
 MOPS {
-  default_priority: {P-BRIDGE-MIB / dot1dPortPriorityEntry.dot1dPortDefaultUserPriority}  # INTEGER, access=ru, range=0–7
-  num_traffic_classes: {P-BRIDGE-MIB / dot1dPortPriorityEntry.dot1dPortNumTrafficClasses}  # INTEGER, access=ru, range=1–8
   port_untrusted_tc: {HM2-PLATFORM-QOS-COS-MIB / hm2AgentCosMapIntfTrustEntry.hm2AgentCosMapUntrustedTrafficClass}  # Unsigned32, access=r
+  default_priority: {P-BRIDGE-MIB / dot1dPortPriorityEntry.dot1dPortDefaultUserPriority}  # INTEGER, access=ru, range=0–7
   port_trust_mode: {HM2-PLATFORM-QOS-COS-MIB / hm2AgentCosMapIntfTrustEntry.hm2AgentCosMapIntfTrustMode}  # INTEGER, access=ru, allowed=['untrusted', 'trustDot1p', 'trustIpPrecedence', 'trustIpDscp']
+  num_traffic_classes: {P-BRIDGE-MIB / dot1dPortPriorityEntry.dot1dPortNumTrafficClasses}  # INTEGER, access=ru, range=1–8
 }
 ```
 </details>
@@ -5440,10 +5445,10 @@ MOPS {
 
 ```
 SNMP {
-  default_priority: {oid: 1.3.6.1.2.1.17.6.1.2.1.1.1}  # INTEGER, access=ru, range=0–7
-  num_traffic_classes: {oid: 1.3.6.1.2.1.17.6.1.2.1.1.2}  # INTEGER, access=ru, range=1–8
   port_untrusted_tc: {oid: 1.3.6.1.4.1.248.12.3.3.1.3.1.3}  # Unsigned32, access=r
+  default_priority: {oid: 1.3.6.1.2.1.17.6.1.2.1.1.1}  # INTEGER, access=ru, range=0–7
   port_trust_mode: {oid: 1.3.6.1.4.1.248.12.3.3.1.3.1.2}  # INTEGER, access=ru, allowed=['untrusted', 'trustDot1p', 'trustIpPrecedence', 'trustIpDscp']
+  num_traffic_classes: {oid: 1.3.6.1.2.1.17.6.1.2.1.1.2}  # INTEGER, access=ru, range=1–8
 }
 ```
 </details>
@@ -5475,39 +5480,35 @@ get_qos_mapping() -> {
 }
 ```
 
-> Sub-table: **`dot1p`** — key: `dot1p_priority`
-> Sub-table: **`dscp`** — key: `dscp_value`
+> Sub-table: **`dot1p`** — key: `dot1p_traffic_class`
+> Sub-table: **`dscp`** — key: `dscp_traffic_class`
 
-<details><summary>MOPS sources (4/4 attrs)</summary>
+<details><summary>MOPS sources (2/2 attrs)</summary>
 
 ```
 MOPS {
-  dscp_traffic_class: {HM2-L2FORWARDING-MIB / hm2CosMapIpDscpEntry.hm2CosMapIpDscpTrafficClass}  # Unsigned32, access=ru, range=0–7
-  dot1p_priority: {HM2-L2FORWARDING-MIB / hm2TrafficClassEntry.hm2TrafficClassPriority}  # Integer32, access=r, range=0–7
-  dscp_value: {HM2-L2FORWARDING-MIB / hm2CosMapIpDscpEntry.hm2CosMapIpDscpValue}  # Unsigned32, access=r, range=0–63
   dot1p_traffic_class: {HM2-L2FORWARDING-MIB / hm2TrafficClassEntry.hm2TrafficClass}  # Integer32, access=ru, range=0–7
+  dscp_traffic_class: {HM2-L2FORWARDING-MIB / hm2CosMapIpDscpEntry.hm2CosMapIpDscpTrafficClass}  # Unsigned32, access=ru, range=0–7
 }
 ```
 </details>
 
-<details><summary>SNMP sources (4/4 attrs)</summary>
+<details><summary>SNMP sources (2/2 attrs)</summary>
 
 ```
 SNMP {
-  dscp_traffic_class: {oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.2}  # Unsigned32, access=ru, range=0–7
-  dot1p_priority: {oid: 1.3.6.1.4.1.248.11.30.1.2.1.1.1}  # Integer32, access=r, range=0–7
-  dscp_value: {oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.1}  # Unsigned32, access=r, range=0–63
   dot1p_traffic_class: {oid: 1.3.6.1.4.1.248.11.30.1.2.1.1.2}  # Integer32, access=ru, range=0–7
+  dscp_traffic_class: {oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.2}  # Unsigned32, access=ru, range=0–7
 }
 ```
 </details>
 
-<details><summary>SSH sources (2/4 attrs)</summary>
+<details><summary>SSH sources (2/2 attrs)</summary>
 
 ```
 SSH {
-  dot1p_priority: {read: "show classofservice dot1p-mapping"}  # Integer32, access=r, range=0–7
   dot1p_traffic_class: {read: "show classofservice dot1p-mapping"}  # Integer32, access=ru, range=0–7
+  dscp_traffic_class: {read: "show classofservice ip-dscp-mapping"}  # Unsigned32, access=ru, range=0–7
 }
 ```
 </details>
@@ -5520,10 +5521,10 @@ SSH {
 
 ```
 MOPS {
-  dot1p_priority: {HM2-L2FORWARDING-MIB / hm2TrafficClassEntry.hm2TrafficClassPriority}  # Integer32, access=r, range=0–7
   dscp_value: {HM2-L2FORWARDING-MIB / hm2CosMapIpDscpEntry.hm2CosMapIpDscpValue}  # Unsigned32, access=r, range=0–63
-  dscp_traffic_class: {HM2-L2FORWARDING-MIB / hm2CosMapIpDscpEntry.hm2CosMapIpDscpTrafficClass}  # Unsigned32, access=ru, range=0–7
   dot1p_traffic_class: {HM2-L2FORWARDING-MIB / hm2TrafficClassEntry.hm2TrafficClass}  # Integer32, access=ru, range=0–7
+  dscp_traffic_class: {HM2-L2FORWARDING-MIB / hm2CosMapIpDscpEntry.hm2CosMapIpDscpTrafficClass}  # Unsigned32, access=ru, range=0–7
+  dot1p_priority: {HM2-L2FORWARDING-MIB / hm2TrafficClassEntry.hm2TrafficClassPriority}  # Integer32, access=r, range=0–7
 }
 ```
 </details>
@@ -5532,10 +5533,10 @@ MOPS {
 
 ```
 SNMP {
-  dot1p_priority: {oid: 1.3.6.1.4.1.248.11.30.1.2.1.1.1}  # Integer32, access=r, range=0–7
   dscp_value: {oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.1}  # Unsigned32, access=r, range=0–63
-  dscp_traffic_class: {oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.2}  # Unsigned32, access=ru, range=0–7
   dot1p_traffic_class: {oid: 1.3.6.1.4.1.248.11.30.1.2.1.1.2}  # Integer32, access=ru, range=0–7
+  dscp_traffic_class: {oid: 1.3.6.1.4.1.248.11.30.1.2.2.1.2}  # Unsigned32, access=ru, range=0–7
+  dot1p_priority: {oid: 1.3.6.1.4.1.248.11.30.1.2.1.1.1}  # Integer32, access=r, range=0–7
 }
 ```
 </details>
@@ -5544,8 +5545,8 @@ SNMP {
 
 ```
 SSH {
-  dot1p_priority: {read: "show classofservice dot1p-mapping"}  # Integer32, access=r, range=0–7
   dot1p_traffic_class: {read: "show classofservice dot1p-mapping"}  # Integer32, access=ru, range=0–7
+  dscp_traffic_class: {read: "show classofservice ip-dscp-mapping"}  # Unsigned32, access=ru, range=0–7
 }
 ```
 </details>
@@ -5581,19 +5582,19 @@ get_remote_auth() -> {
 
 ```
 MOPS {
-  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
-  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
   ldap_enabled: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapConfigGroup.hm2LdapClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
-  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
   tacacs_accounting: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsAccountingGroup.hm2AgentTacacsCmdAccountingMode}  # INTEGER, access=ru
+  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
+  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
   radius_enabled: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusAccountingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   radius_retransmits: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusMaxTransmit}  # Unsigned32, access=ru, range=1–15
-  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
   ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
-  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
+  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
   address: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddress}  # InetAddress, access=ru
+  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
   radius_timeout: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusTimeout}  # Unsigned32, access=ru, range=1–30
+  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
+  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -5602,19 +5603,19 @@ MOPS {
 
 ```
 SNMP {
-  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
-  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
   ldap_enabled: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
-  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
   tacacs_accounting: {oid: 1.3.6.1.4.1.248.12.18.1.249.1, method: get}  # INTEGER, access=ru
+  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
+  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
   radius_enabled: {oid: 1.3.6.1.4.1.248.12.8.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   radius_retransmits: {oid: 1.3.6.1.4.1.248.12.8.1.1, method: get}  # Unsigned32, access=ru, range=1–15
-  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
   ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
-  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
+  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
   address: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.11}  # InetAddress, access=ru
+  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
   radius_timeout: {oid: 1.3.6.1.4.1.248.12.8.1.2, method: get}  # Unsigned32, access=ru, range=1–30
+  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
+  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -5623,19 +5624,19 @@ SNMP {
 
 ```
 SSH {
-  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
-  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
   ldap_enabled: {read: "show ldap global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
-  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
   tacacs_accounting: {read: "show tacacs global"}  # INTEGER, access=ru
+  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
+  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
   radius_enabled: {read: "show radius global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   radius_retransmits: {read: "show radius global"}  # Unsigned32, access=ru, range=1–15
-  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
   ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
-  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
+  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
   address: {read: "show radius auth servers", write: "radius server auth add {index} ip {address}"}  # InetAddress, access=ru
+  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
   radius_timeout: {read: "show radius global"}  # Unsigned32, access=ru, range=1–30
+  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
+  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -5648,27 +5649,27 @@ SSH {
 
 ```
 MOPS {
-  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
-  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
-  ldap_addr_type: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddrType}  # InetAddressType, access=ru
-  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
-  radius_timeout: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusTimeout}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerRowStatus}  # RowStatus, access=crud
-  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
-  ldap_row_status: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerRowStatus}  # RowStatus, access=crud
-  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusAccountingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapConfigGroup.hm2LdapClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
   ldap_index: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerIndex}  # Integer32, access=r, range=1–4
+  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
+  radius_timeout: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusTimeout}  # Unsigned32, access=ru, range=1–30
   radius_index: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerIndex}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerStatus}  # RowStatus, access=crud
+  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
+  radius_enabled: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusAccountingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
+  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsAccountingGroup.hm2AgentTacacsCmdAccountingMode}  # INTEGER, access=ru
+  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerRowStatus}  # RowStatus, access=crud
   radius_retransmits: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusMaxTransmit}  # Unsigned32, access=ru, range=1–15
   address: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddress}  # InetAddress, access=ru
+  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
+  ldap_addr_type: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddrType}  # InetAddressType, access=ru
+  ldap_enabled: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapConfigGroup.hm2LdapClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerStatus}  # RowStatus, access=crud
+  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
   tacacs_addr_type: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddrType}  # InetAddressType, access=r
+  ldap_row_status: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerRowStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5677,27 +5678,27 @@ MOPS {
 
 ```
 SNMP {
-  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
-  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
-  ldap_addr_type: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.3}  # InetAddressType, access=ru
-  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
-  radius_timeout: {oid: 1.3.6.1.4.1.248.12.8.1.2, method: get}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.9}  # RowStatus, access=crud
-  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
-  ldap_row_status: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.8}  # RowStatus, access=crud
-  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {oid: 1.3.6.1.4.1.248.12.8.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
   ldap_index: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.1}  # Integer32, access=r, range=1–4
+  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
+  radius_timeout: {oid: 1.3.6.1.4.1.248.12.8.1.2, method: get}  # Unsigned32, access=ru, range=1–30
   radius_index: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.1}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.7}  # RowStatus, access=crud
+  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
+  radius_enabled: {oid: 1.3.6.1.4.1.248.12.8.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
+  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {oid: 1.3.6.1.4.1.248.12.18.1.249.1, method: get}  # INTEGER, access=ru
+  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.9}  # RowStatus, access=crud
   radius_retransmits: {oid: 1.3.6.1.4.1.248.12.8.1.1, method: get}  # Unsigned32, access=ru, range=1–15
   address: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.11}  # InetAddress, access=ru
+  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
+  ldap_addr_type: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.3}  # InetAddressType, access=ru
+  ldap_enabled: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.7}  # RowStatus, access=crud
+  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
   tacacs_addr_type: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.1}  # InetAddressType, access=r
+  ldap_row_status: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.8}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5706,25 +5707,25 @@ SNMP {
 
 ```
 SSH {
-  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
-  ldap_addr_type: {read: "show ldap client server"}  # InetAddressType, access=ru
-  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
-  radius_timeout: {read: "show radius global"}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {write: "radius server auth add {index} ip {address}"}  # RowStatus, access=crud
-  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
-  ldap_row_status: {write: "ldap client server add {index} {ldap_address}"}  # RowStatus, access=crud
-  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {read: "show radius global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {read: "show ldap global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
   ldap_index: {read: "show ldap client server"}  # Integer32, access=r, range=1–4
+  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
+  radius_timeout: {read: "show radius global"}  # Unsigned32, access=ru, range=1–30
   radius_index: {read: "show radius auth servers"}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {write: "tacacs server add {tacacs_address}"}  # RowStatus, access=crud
+  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
+  radius_enabled: {read: "show radius global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
+  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {read: "show tacacs global"}  # INTEGER, access=ru
+  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {write: "radius server auth add {index} ip {address}"}  # RowStatus, access=crud
   radius_retransmits: {read: "show radius global"}  # Unsigned32, access=ru, range=1–15
   address: {read: "show radius auth servers", write: "radius server auth add {index} ip {address}"}  # InetAddress, access=ru
+  ldap_addr_type: {read: "show ldap client server"}  # InetAddressType, access=ru
+  ldap_enabled: {read: "show ldap global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {write: "tacacs server add {tacacs_address}"}  # RowStatus, access=crud
+  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
+  ldap_row_status: {write: "ldap client server add {index} {ldap_address}"}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5746,9 +5747,9 @@ create_radius_server() -> {
 
 ```
 MOPS {
-  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
-  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
   address: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddress}  # InetAddress, access=ru
+  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
+  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
 }
 ```
 </details>
@@ -5757,9 +5758,9 @@ MOPS {
 
 ```
 SNMP {
-  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
-  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
   address: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.11}  # InetAddress, access=ru
+  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
+  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
 }
 ```
 </details>
@@ -5768,8 +5769,8 @@ SNMP {
 
 ```
 SSH {
-  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
   address: {read: "show radius auth servers", write: "radius server auth add {index} ip {address}"}  # InetAddress, access=ru
+  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
 }
 ```
 </details>
@@ -5782,27 +5783,27 @@ SSH {
 
 ```
 MOPS {
-  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
-  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
-  ldap_addr_type: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddrType}  # InetAddressType, access=ru
-  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
-  radius_timeout: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusTimeout}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerRowStatus}  # RowStatus, access=crud
-  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
-  ldap_row_status: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerRowStatus}  # RowStatus, access=crud
-  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusAccountingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapConfigGroup.hm2LdapClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
   ldap_index: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerIndex}  # Integer32, access=r, range=1–4
+  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
+  radius_timeout: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusTimeout}  # Unsigned32, access=ru, range=1–30
   radius_index: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerIndex}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerStatus}  # RowStatus, access=crud
+  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
+  radius_enabled: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusAccountingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
+  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsAccountingGroup.hm2AgentTacacsCmdAccountingMode}  # INTEGER, access=ru
+  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerRowStatus}  # RowStatus, access=crud
   radius_retransmits: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusMaxTransmit}  # Unsigned32, access=ru, range=1–15
   address: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddress}  # InetAddress, access=ru
+  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
+  ldap_addr_type: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddrType}  # InetAddressType, access=ru
+  ldap_enabled: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapConfigGroup.hm2LdapClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerStatus}  # RowStatus, access=crud
+  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
   tacacs_addr_type: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddrType}  # InetAddressType, access=r
+  ldap_row_status: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerRowStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5811,27 +5812,27 @@ MOPS {
 
 ```
 SNMP {
-  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
-  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
-  ldap_addr_type: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.3}  # InetAddressType, access=ru
-  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
-  radius_timeout: {oid: 1.3.6.1.4.1.248.12.8.1.2, method: get}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.9}  # RowStatus, access=crud
-  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
-  ldap_row_status: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.8}  # RowStatus, access=crud
-  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {oid: 1.3.6.1.4.1.248.12.8.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
   ldap_index: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.1}  # Integer32, access=r, range=1–4
+  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
+  radius_timeout: {oid: 1.3.6.1.4.1.248.12.8.1.2, method: get}  # Unsigned32, access=ru, range=1–30
   radius_index: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.1}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.7}  # RowStatus, access=crud
+  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
+  radius_enabled: {oid: 1.3.6.1.4.1.248.12.8.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
+  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {oid: 1.3.6.1.4.1.248.12.18.1.249.1, method: get}  # INTEGER, access=ru
+  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.9}  # RowStatus, access=crud
   radius_retransmits: {oid: 1.3.6.1.4.1.248.12.8.1.1, method: get}  # Unsigned32, access=ru, range=1–15
   address: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.11}  # InetAddress, access=ru
+  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
+  ldap_addr_type: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.3}  # InetAddressType, access=ru
+  ldap_enabled: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.7}  # RowStatus, access=crud
+  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
   tacacs_addr_type: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.1}  # InetAddressType, access=r
+  ldap_row_status: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.8}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5840,25 +5841,25 @@ SNMP {
 
 ```
 SSH {
-  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
-  ldap_addr_type: {read: "show ldap client server"}  # InetAddressType, access=ru
-  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
-  radius_timeout: {read: "show radius global"}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {write: "radius server auth add {index} ip {address}"}  # RowStatus, access=crud
-  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
-  ldap_row_status: {write: "ldap client server add {index} {ldap_address}"}  # RowStatus, access=crud
-  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {read: "show radius global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {read: "show ldap global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
   ldap_index: {read: "show ldap client server"}  # Integer32, access=r, range=1–4
+  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
+  radius_timeout: {read: "show radius global"}  # Unsigned32, access=ru, range=1–30
   radius_index: {read: "show radius auth servers"}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {write: "tacacs server add {tacacs_address}"}  # RowStatus, access=crud
+  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
+  radius_enabled: {read: "show radius global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
+  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {read: "show tacacs global"}  # INTEGER, access=ru
+  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {write: "radius server auth add {index} ip {address}"}  # RowStatus, access=crud
   radius_retransmits: {read: "show radius global"}  # Unsigned32, access=ru, range=1–15
   address: {read: "show radius auth servers", write: "radius server auth add {index} ip {address}"}  # InetAddress, access=ru
+  ldap_addr_type: {read: "show ldap client server"}  # InetAddressType, access=ru
+  ldap_enabled: {read: "show ldap global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {write: "tacacs server add {tacacs_address}"}  # RowStatus, access=crud
+  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
+  ldap_row_status: {write: "ldap client server add {index} {ldap_address}"}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5880,8 +5881,8 @@ create_ldap_server() -> {
 
 ```
 MOPS {
-  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
   ldap_addr_type: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddrType}  # InetAddressType, access=ru
+  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
   ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
 }
 ```
@@ -5891,8 +5892,8 @@ MOPS {
 
 ```
 SNMP {
-  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
   ldap_addr_type: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.3}  # InetAddressType, access=ru
+  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
   ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
 }
 ```
@@ -5902,8 +5903,8 @@ SNMP {
 
 ```
 SSH {
-  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
   ldap_addr_type: {read: "show ldap client server"}  # InetAddressType, access=ru
+  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
   ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
 }
 ```
@@ -5917,27 +5918,27 @@ SSH {
 
 ```
 MOPS {
-  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
-  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
-  ldap_addr_type: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddrType}  # InetAddressType, access=ru
-  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
-  radius_timeout: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusTimeout}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerRowStatus}  # RowStatus, access=crud
-  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
-  ldap_row_status: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerRowStatus}  # RowStatus, access=crud
-  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusAccountingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapConfigGroup.hm2LdapClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
   ldap_index: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerIndex}  # Integer32, access=r, range=1–4
+  ldap_address: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddr}  # InetAddress, access=ru
+  radius_timeout: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusTimeout}  # Unsigned32, access=ru, range=1–30
   radius_index: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerIndex}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerStatus}  # RowStatus, access=crud
+  ldap_port: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerPort}  # InetPortNumber, access=ru
+  radius_enabled: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusAccountingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerSecret}  # DisplayString, access=ru
+  radius_port: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerPort}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsPortNumber}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsAccountingGroup.hm2AgentTacacsCmdAccountingMode}  # INTEGER, access=ru
+  tacacs_timeout: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsTimeOut}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerRowStatus}  # RowStatus, access=crud
   radius_retransmits: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusConfigGroup.hm2AgentRadiusMaxTransmit}  # Unsigned32, access=ru, range=1–15
   address: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddress}  # InetAddress, access=ru
+  radius_addr_type: {HM2-PLATFORM-RADIUS-MIB / hm2AgentRadiusServerConfigEntry.hm2AgentRadiusServerInetAddrType}  # InetAddressType, access=ru
+  ldap_addr_type: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerAddrType}  # InetAddressType, access=ru
+  ldap_enabled: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapConfigGroup.hm2LdapClientAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerStatus}  # RowStatus, access=crud
+  tacacs_address: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddress}  # InetAddress, access=r
   tacacs_addr_type: {HM2-PLATFORM-TACACSCLIENT-MIB / hm2AgentTacacsServerEntry.hm2AgentTacacsServerIpAddrType}  # InetAddressType, access=r
+  ldap_row_status: {HM2-REMOTE-AUTHENTICATION-MIB / hm2LdapClientServerAddrEntry.hm2LdapClientServerRowStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5946,27 +5947,27 @@ MOPS {
 
 ```
 SNMP {
-  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
-  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
-  ldap_addr_type: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.3}  # InetAddressType, access=ru
-  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
-  radius_timeout: {oid: 1.3.6.1.4.1.248.12.8.1.2, method: get}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.9}  # RowStatus, access=crud
-  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
-  ldap_row_status: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.8}  # RowStatus, access=crud
-  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {oid: 1.3.6.1.4.1.248.12.8.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
   ldap_index: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.1}  # Integer32, access=r, range=1–4
+  ldap_address: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.4}  # InetAddress, access=ru
+  radius_timeout: {oid: 1.3.6.1.4.1.248.12.8.1.2, method: get}  # Unsigned32, access=ru, range=1–30
   radius_index: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.1}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.7}  # RowStatus, access=crud
+  ldap_port: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.5}  # InetPortNumber, access=ru
+  radius_enabled: {oid: 1.3.6.1.4.1.248.12.8.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.5}  # DisplayString, access=ru
+  radius_port: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.4}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.3}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {oid: 1.3.6.1.4.1.248.12.18.1.249.1, method: get}  # INTEGER, access=ru
+  tacacs_timeout: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.4}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.9}  # RowStatus, access=crud
   radius_retransmits: {oid: 1.3.6.1.4.1.248.12.8.1.1, method: get}  # Unsigned32, access=ru, range=1–15
   address: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.11}  # InetAddress, access=ru
+  radius_addr_type: {oid: 1.3.6.1.4.1.248.12.8.1.8.1.248}  # InetAddressType, access=ru
+  ldap_addr_type: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.3}  # InetAddressType, access=ru
+  ldap_enabled: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.7}  # RowStatus, access=crud
+  tacacs_address: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.2}  # InetAddress, access=r
   tacacs_addr_type: {oid: 1.3.6.1.4.1.248.12.18.1.2.1.1}  # InetAddressType, access=r
+  ldap_row_status: {oid: 1.3.6.1.4.1.248.11.26.1.1.10.20.1.8}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -5975,25 +5976,25 @@ SNMP {
 
 ```
 SSH {
-  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
-  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
-  ldap_addr_type: {read: "show ldap client server"}  # InetAddressType, access=ru
-  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
-  radius_timeout: {read: "show radius global"}  # Unsigned32, access=ru, range=1–30
-  radius_row_status: {write: "radius server auth add {index} ip {address}"}  # RowStatus, access=crud
-  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
-  ldap_row_status: {write: "ldap client server add {index} {ldap_address}"}  # RowStatus, access=crud
-  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
-  radius_enabled: {read: "show radius global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
-  ldap_enabled: {read: "show ldap global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
   ldap_index: {read: "show ldap client server"}  # Integer32, access=r, range=1–4
+  ldap_address: {read: "show ldap client server", write: "ldap client server add {index} {ldap_address}"}  # InetAddress, access=ru
+  radius_timeout: {read: "show radius global"}  # Unsigned32, access=ru, range=1–30
   radius_index: {read: "show radius auth servers"}  # Integer32, access=r, range=1–2147483647
-  tacacs_row_status: {write: "tacacs server add {tacacs_address}"}  # RowStatus, access=crud
+  ldap_port: {read: "show ldap client server"}  # InetPortNumber, access=ru
+  radius_enabled: {read: "show radius global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  secret: {read: "show radius auth servers"}  # DisplayString, access=ru
+  radius_port: {read: "show radius auth servers"}  # Unsigned32, access=ru, range=0–65535
+  tacacs_port: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–65535
   tacacs_accounting: {read: "show tacacs global"}  # INTEGER, access=ru
+  tacacs_timeout: {read: "show tacacs server"}  # Unsigned32, access=ru, range=1–30
+  radius_row_status: {write: "radius server auth add {index} ip {address}"}  # RowStatus, access=crud
   radius_retransmits: {read: "show radius global"}  # Unsigned32, access=ru, range=1–15
   address: {read: "show radius auth servers", write: "radius server auth add {index} ip {address}"}  # InetAddress, access=ru
+  ldap_addr_type: {read: "show ldap client server"}  # InetAddressType, access=ru
+  ldap_enabled: {read: "show ldap global"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tacacs_row_status: {write: "tacacs server add {tacacs_address}"}  # RowStatus, access=crud
+  tacacs_address: {read: "show tacacs server", write: "tacacs server add {tacacs_address}"}  # InetAddress, access=r
+  ldap_row_status: {write: "ldap client server add {index} {ldap_address}"}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6094,12 +6095,12 @@ get_route_to() -> {
 
 ```
 MOPS {
-  next_hop: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteNextHop}  # InetAddress, access=r
-  destination: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteDest}  # InetAddress, access=r
-  protocol: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteProto}  # IANAipRouteProtocol, access=r
-  age: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteAge}  # Gauge32, access=r
-  preference: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteMetric1}  # Integer32, access=ru
   outgoing_interface: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteIfIndex}  # InterfaceIndexOrZero, access=ru
+  age: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteAge}  # Gauge32, access=r
+  destination: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteDest}  # InetAddress, access=r
+  preference: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteMetric1}  # Integer32, access=ru
+  protocol: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteProto}  # IANAipRouteProtocol, access=r
+  next_hop: {IP-FORWARD-MIB / inetCidrRouteEntry.inetCidrRouteNextHop}  # InetAddress, access=r
 }
 ```
 </details>
@@ -6108,12 +6109,12 @@ MOPS {
 
 ```
 SNMP {
-  next_hop: {oid: 1.3.6.1.2.1.4.24.7.1.6}  # InetAddress, access=r
-  destination: {oid: 1.3.6.1.2.1.4.24.7.1.2}  # InetAddress, access=r
-  protocol: {oid: 1.3.6.1.2.1.4.24.7.1.9}  # IANAipRouteProtocol, access=r
-  age: {oid: 1.3.6.1.2.1.4.24.7.1.10}  # Gauge32, access=r
-  preference: {oid: 1.3.6.1.2.1.4.24.7.1.12}  # Integer32, access=ru
   outgoing_interface: {oid: 1.3.6.1.2.1.4.24.7.1.7}  # InterfaceIndexOrZero, access=ru
+  age: {oid: 1.3.6.1.2.1.4.24.7.1.10}  # Gauge32, access=r
+  destination: {oid: 1.3.6.1.2.1.4.24.7.1.7}  # InetAddress, access=r
+  preference: {oid: 1.3.6.1.2.1.4.24.7.1.12}  # Integer32, access=ru
+  protocol: {oid: 1.3.6.1.2.1.4.24.7.1.9}  # IANAipRouteProtocol, access=r
+  next_hop: {oid: 1.3.6.1.2.1.4.24.7.1.7}  # InetAddress, access=r
 }
 ```
 </details>
@@ -6122,11 +6123,11 @@ SNMP {
 
 ```
 SSH {
-  next_hop: {read: "show ip route all"}  # InetAddress, access=r
-  destination: {read: "show ip route all"}  # InetAddress, access=r
-  protocol: {read: "show ip route all"}  # IANAipRouteProtocol, access=r
-  preference: {read: "show ip route all"}  # Integer32, access=ru
   outgoing_interface: {read: "show ip route all"}  # InterfaceIndexOrZero, access=ru
+  destination: {read: "show ip route all"}  # InetAddress, access=r
+  preference: {read: "show ip route all"}  # Integer32, access=ru
+  protocol: {read: "show ip route all"}  # IANAipRouteProtocol, access=r
+  next_hop: {read: "show ip route all"}  # InetAddress, access=r
 }
 ```
 </details>
@@ -6156,18 +6157,18 @@ get_router() -> {
 
 ```
 MOPS {
-  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
-  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
-  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
   routing_enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpGroup.hm2AgentSwitchIpRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
+  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
   port_directed_broadcast: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetdirectedBCMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpRedirects}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanId}  # VlanId, access=r
+  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceProxyARPMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
+  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
 }
 ```
 </details>
@@ -6176,18 +6177,18 @@ MOPS {
 
 ```
 SNMP {
-  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
-  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
-  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
   routing_enabled: {oid: 1.3.6.1.4.1.248.12.2.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
+  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
   port_directed_broadcast: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.248}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.1}  # VlanId, access=r
+  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
+  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
 }
 ```
 </details>
@@ -6196,15 +6197,15 @@ SNMP {
 
 ```
 SSH {
-  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
+  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
+  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_unreachables: {write: "ip icmp unreachables"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_netmask: {read: "show ip interface"}  # IpAddress, access=ru
-  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
   port_directed_broadcast: {write: "ip netdirbcast"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {write: "ip icmp redirects"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {write: "ip proxy-arp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
 }
 ```
 </details>
@@ -6217,19 +6218,19 @@ SSH {
 
 ```
 MOPS {
-  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
-  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
-  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
   routing_enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpGroup.hm2AgentSwitchIpRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
+  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
+  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
   port_directed_broadcast: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetdirectedBCMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpRedirects}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanId}  # VlanId, access=r
+  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceProxyARPMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
+  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
+  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6238,19 +6239,19 @@ MOPS {
 
 ```
 SNMP {
-  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
-  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
-  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
   routing_enabled: {oid: 1.3.6.1.4.1.248.12.2.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
+  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
+  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
   port_directed_broadcast: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.248}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.1}  # VlanId, access=r
+  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
+  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
+  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6259,15 +6260,15 @@ SNMP {
 
 ```
 SSH {
-  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
+  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
+  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_unreachables: {write: "ip icmp unreachables"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_netmask: {read: "show ip interface"}  # IpAddress, access=ru
-  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
   port_directed_broadcast: {write: "ip netdirbcast"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {write: "ip icmp redirects"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {write: "ip proxy-arp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
 }
 ```
 </details>
@@ -6280,19 +6281,19 @@ SSH {
 
 ```
 MOPS {
-  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
-  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
-  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
   routing_enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpGroup.hm2AgentSwitchIpRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
+  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
+  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
   port_directed_broadcast: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetdirectedBCMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpRedirects}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanId}  # VlanId, access=r
+  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceProxyARPMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
+  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
+  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6301,19 +6302,19 @@ MOPS {
 
 ```
 SNMP {
-  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
-  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
-  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
   routing_enabled: {oid: 1.3.6.1.4.1.248.12.2.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
+  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
+  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
   port_directed_broadcast: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.248}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.1}  # VlanId, access=r
+  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
+  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
+  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6322,15 +6323,15 @@ SNMP {
 
 ```
 SSH {
-  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
+  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
+  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_unreachables: {write: "ip icmp unreachables"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_netmask: {read: "show ip interface"}  # IpAddress, access=ru
-  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
   port_directed_broadcast: {write: "ip netdirbcast"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {write: "ip icmp redirects"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {write: "ip proxy-arp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
 }
 ```
 </details>
@@ -6343,19 +6344,19 @@ SSH {
 
 ```
 MOPS {
-  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
-  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
-  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
   routing_enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpGroup.hm2AgentSwitchIpRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
+  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
+  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
   port_directed_broadcast: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetdirectedBCMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpRedirects}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanId}  # VlanId, access=r
+  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceProxyARPMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
+  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
+  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6364,19 +6365,19 @@ MOPS {
 
 ```
 SNMP {
-  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
-  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
-  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
   routing_enabled: {oid: 1.3.6.1.4.1.248.12.2.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
+  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
+  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
   port_directed_broadcast: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.248}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.1}  # VlanId, access=r
+  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
+  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
+  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6385,15 +6386,15 @@ SNMP {
 
 ```
 SSH {
-  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
+  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
+  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_unreachables: {write: "ip icmp unreachables"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_netmask: {read: "show ip interface"}  # IpAddress, access=ru
-  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
   port_directed_broadcast: {write: "ip netdirbcast"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {write: "ip icmp redirects"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {write: "ip proxy-arp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
 }
 ```
 </details>
@@ -6406,19 +6407,19 @@ SSH {
 
 ```
 MOPS {
-  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
-  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
-  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
   routing_enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpGroup.hm2AgentSwitchIpRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
+  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
+  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
   port_directed_broadcast: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetdirectedBCMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpRedirects}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanId}  # VlanId, access=r
+  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceProxyARPMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
+  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
+  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6427,19 +6428,19 @@ MOPS {
 
 ```
 SNMP {
-  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
-  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
-  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
   routing_enabled: {oid: 1.3.6.1.4.1.248.12.2.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
+  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
+  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
   port_directed_broadcast: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.248}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.1}  # VlanId, access=r
+  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
+  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
+  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6448,15 +6449,15 @@ SNMP {
 
 ```
 SSH {
-  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
+  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
+  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_unreachables: {write: "ip icmp unreachables"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_netmask: {read: "show ip interface"}  # IpAddress, access=ru
-  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
   port_directed_broadcast: {write: "ip netdirbcast"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {write: "ip icmp redirects"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {write: "ip proxy-arp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
 }
 ```
 </details>
@@ -6469,19 +6470,19 @@ SSH {
 
 ```
 MOPS {
-  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
-  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
-  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
   routing_enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpGroup.hm2AgentSwitchIpRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
+  port_icmp_unreachables: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpUnreachables}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanIfIndex}  # InterfaceIndex, access=ru
+  port_netmask: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetMask}  # IpAddress, access=ru
+  port_mtu: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceMtuValue}  # Unsigned32, access=ru
   port_directed_broadcast: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceNetdirectedBCMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIcmpRedirects}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanId}  # VlanId, access=r
+  port_routing_mode: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceRoutingMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceProxyARPMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIpAddress}  # IpAddress, access=ru
+  port_ifindex: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpInterfaceEntry.hm2AgentSwitchIpInterfaceIfIndex}  # InterfaceIndex, access=r
+  vri_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSwitchIpVlanEntry.hm2AgentSwitchIpVlanRoutingStatus}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6490,19 +6491,19 @@ MOPS {
 
 ```
 SNMP {
-  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
-  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
-  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
-  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
   routing_enabled: {oid: 1.3.6.1.4.1.248.12.2.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
+  port_icmp_unreachables: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vri_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.2}  # InterfaceIndex, access=ru
+  port_netmask: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.4}  # IpAddress, access=ru
+  port_mtu: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.8}  # Unsigned32, access=ru
   port_directed_broadcast: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.248}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
   vri_vlan_id: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.1}  # VlanId, access=r
+  port_routing_mode: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.7}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.3}  # IpAddress, access=ru
+  port_ifindex: {oid: 1.3.6.1.4.1.248.12.2.2.3.1.1}  # InterfaceIndex, access=r
+  vri_status: {oid: 1.3.6.1.4.1.248.12.2.2.5.1.3}  # RowStatus, access=crud
 }
 ```
 </details>
@@ -6511,15 +6512,15 @@ SNMP {
 
 ```
 SSH {
-  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
+  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
+  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_unreachables: {write: "ip icmp unreachables"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_netmask: {read: "show ip interface"}  # IpAddress, access=ru
-  routing_enabled: {read: "show ip global", write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_mtu: {write: "ip mtu {value}"}  # Unsigned32, access=ru
   port_directed_broadcast: {write: "ip netdirbcast"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_icmp_redirects: {write: "ip icmp redirects"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port_routing_mode: {write: "ip routing"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port_proxy_arp: {write: "ip proxy-arp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_ip_address: {read: "show ip interface", write: "ip address primary {value} {netmask}"}  # IpAddress, access=ru
 }
 ```
 </details>
@@ -6550,11 +6551,11 @@ get_rstp() -> {
 
 ```
 MOPS {
-  priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgePriority}  # Unsigned32, access=ru, range=0–61440
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpSwitchConfigGroup.hm2AgentStpAdminMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeMaxAge}  # Unsigned32, access=ru, range=6–40
   forward_delay: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeFwdDelay}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpSwitchConfigGroup.hm2AgentStpBpduGuardMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgePriority}  # Unsigned32, access=ru, range=0–61440
   hello_time: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeHelloTime}  # Unsigned32, access=ru, range=1–2
 }
 ```
@@ -6564,11 +6565,11 @@ MOPS {
 
 ```
 SNMP {
-  priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.11, method: get}  # Unsigned32, access=ru, range=0–61440
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.15.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.9, method: get}  # Unsigned32, access=ru, range=6–40
   forward_delay: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.6, method: get}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {oid: 1.3.6.1.4.1.248.12.1.2.15.13, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.11, method: get}  # Unsigned32, access=ru, range=0–61440
   hello_time: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.7, method: get}  # Unsigned32, access=ru, range=1–2
 }
 ```
@@ -6578,11 +6579,11 @@ SNMP {
 
 ```
 SSH {
-  priority: {read: "show spanning-tree global", write: "spanning-tree drstp mst priority 0 {value}"}  # Unsigned32, access=ru, range=0–61440
   enabled: {read: "show spanning-tree global", write: "spanning-tree operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {read: "show spanning-tree global", write: "spanning-tree drstp max-age {value}"}  # Unsigned32, access=ru, range=6–40
   forward_delay: {read: "show spanning-tree global", write: "spanning-tree drstp forward-time {value}"}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {read: "show spanning-tree global", write: "spanning-tree bpdu-guard"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  priority: {read: "show spanning-tree global", write: "spanning-tree drstp mst priority 0 {value}"}  # Unsigned32, access=ru, range=0–61440
   hello_time: {read: "show spanning-tree global", write: "spanning-tree drstp hello-time {value}"}  # Unsigned32, access=ru, range=1–2
 }
 ```
@@ -6596,15 +6597,15 @@ SSH {
 
 ```
 MOPS {
-  priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgePriority}  # Unsigned32, access=ru, range=0–61440
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpSwitchConfigGroup.hm2AgentStpAdminMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  edge_port: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortEdge}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeMaxAge}  # Unsigned32, access=ru, range=6–40
+  port_priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortPriority}  # Unsigned32, access=ru, range=0–240
   port_path_cost: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortPathCost}  # Unsigned32, access=ru, range=0–200000000
   forward_delay: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeFwdDelay}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpSwitchConfigGroup.hm2AgentStpBpduGuardMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortPriority}  # Unsigned32, access=ru, range=0–240
+  priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgePriority}  # Unsigned32, access=ru, range=0–61440
   hello_time: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeHelloTime}  # Unsigned32, access=ru, range=1–2
-  edge_port: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortEdge}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -6613,15 +6614,15 @@ MOPS {
 
 ```
 SNMP {
-  priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.11, method: get}  # Unsigned32, access=ru, range=0–61440
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.15.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  edge_port: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.9, method: get}  # Unsigned32, access=ru, range=6–40
+  port_priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.8}  # Unsigned32, access=ru, range=0–240
   port_path_cost: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.7}  # Unsigned32, access=ru, range=0–200000000
   forward_delay: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.6, method: get}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {oid: 1.3.6.1.4.1.248.12.1.2.15.13, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.8}  # Unsigned32, access=ru, range=0–240
+  priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.11, method: get}  # Unsigned32, access=ru, range=0–61440
   hello_time: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.7, method: get}  # Unsigned32, access=ru, range=1–2
-  edge_port: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -6630,15 +6631,15 @@ SNMP {
 
 ```
 SSH {
-  priority: {read: "show spanning-tree global", write: "spanning-tree drstp mst priority 0 {value}"}  # Unsigned32, access=ru, range=0–61440
   enabled: {read: "show spanning-tree global", write: "spanning-tree operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  edge_port: {read: "show spanning-tree port {index}", write: "spanning-tree edge-port"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {read: "show spanning-tree global", write: "spanning-tree drstp max-age {value}"}  # Unsigned32, access=ru, range=6–40
+  port_priority: {read: "show spanning-tree port {index}", write: "spanning-tree priority {value}"}  # Unsigned32, access=ru, range=0–240
   port_path_cost: {read: "show spanning-tree port {index}", write: "spanning-tree cost {value}"}  # Unsigned32, access=ru, range=0–200000000
   forward_delay: {read: "show spanning-tree global", write: "spanning-tree drstp forward-time {value}"}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {read: "show spanning-tree global", write: "spanning-tree bpdu-guard"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_priority: {read: "show spanning-tree port {index}", write: "spanning-tree priority {value}"}  # Unsigned32, access=ru, range=0–240
+  priority: {read: "show spanning-tree global", write: "spanning-tree drstp mst priority 0 {value}"}  # Unsigned32, access=ru, range=0–61440
   hello_time: {read: "show spanning-tree global", write: "spanning-tree drstp hello-time {value}"}  # Unsigned32, access=ru, range=1–2
-  edge_port: {read: "show spanning-tree port {index}", write: "spanning-tree edge-port"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -6662,8 +6663,8 @@ get_rstp_port() -> {
 
 ```
 MOPS {
-  edge_port: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortEdge}  # HmEnabledStatus, access=ru, allowed=[True, False]
   priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgePriority}  # Unsigned32, access=ru, range=0–61440
+  edge_port: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortEdge}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpSwitchConfigGroup.hm2AgentStpAdminMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -6673,8 +6674,8 @@ MOPS {
 
 ```
 SNMP {
-  edge_port: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
   priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.11, method: get}  # Unsigned32, access=ru, range=0–61440
+  edge_port: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.15.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -6684,8 +6685,8 @@ SNMP {
 
 ```
 SSH {
-  edge_port: {read: "show spanning-tree port {index}", write: "spanning-tree edge-port"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   priority: {read: "show spanning-tree global", write: "spanning-tree drstp mst priority 0 {value}"}  # Unsigned32, access=ru, range=0–61440
+  edge_port: {read: "show spanning-tree port {index}", write: "spanning-tree edge-port"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   enabled: {read: "show spanning-tree global", write: "spanning-tree operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
@@ -6699,15 +6700,15 @@ SSH {
 
 ```
 MOPS {
-  priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgePriority}  # Unsigned32, access=ru, range=0–61440
   enabled: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpSwitchConfigGroup.hm2AgentStpAdminMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  edge_port: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortEdge}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeMaxAge}  # Unsigned32, access=ru, range=6–40
+  port_priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortPriority}  # Unsigned32, access=ru, range=0–240
   port_path_cost: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortPathCost}  # Unsigned32, access=ru, range=0–200000000
   forward_delay: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeFwdDelay}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpSwitchConfigGroup.hm2AgentStpBpduGuardMode}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortPriority}  # Unsigned32, access=ru, range=0–240
+  priority: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgePriority}  # Unsigned32, access=ru, range=0–61440
   hello_time: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstConfigGroup.hm2AgentStpCstBridgeHelloTime}  # Unsigned32, access=ru, range=1–2
-  edge_port: {HM2-PLATFORM-SWITCHING-MIB / hm2AgentStpCstPortEntry.hm2AgentStpCstPortEdge}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -6716,15 +6717,15 @@ MOPS {
 
 ```
 SNMP {
-  priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.11, method: get}  # Unsigned32, access=ru, range=0–61440
   enabled: {oid: 1.3.6.1.4.1.248.12.1.2.15.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  edge_port: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.9, method: get}  # Unsigned32, access=ru, range=6–40
+  port_priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.8}  # Unsigned32, access=ru, range=0–240
   port_path_cost: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.7}  # Unsigned32, access=ru, range=0–200000000
   forward_delay: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.6, method: get}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {oid: 1.3.6.1.4.1.248.12.1.2.15.13, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.8}  # Unsigned32, access=ru, range=0–240
+  priority: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.11, method: get}  # Unsigned32, access=ru, range=0–61440
   hello_time: {oid: 1.3.6.1.4.1.248.12.1.2.15.8.7, method: get}  # Unsigned32, access=ru, range=1–2
-  edge_port: {oid: 1.3.6.1.4.1.248.12.1.2.15.9.1.4}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -6733,15 +6734,15 @@ SNMP {
 
 ```
 SSH {
-  priority: {read: "show spanning-tree global", write: "spanning-tree drstp mst priority 0 {value}"}  # Unsigned32, access=ru, range=0–61440
   enabled: {read: "show spanning-tree global", write: "spanning-tree operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  edge_port: {read: "show spanning-tree port {index}", write: "spanning-tree edge-port"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   max_age: {read: "show spanning-tree global", write: "spanning-tree drstp max-age {value}"}  # Unsigned32, access=ru, range=6–40
+  port_priority: {read: "show spanning-tree port {index}", write: "spanning-tree priority {value}"}  # Unsigned32, access=ru, range=0–240
   port_path_cost: {read: "show spanning-tree port {index}", write: "spanning-tree cost {value}"}  # Unsigned32, access=ru, range=0–200000000
   forward_delay: {read: "show spanning-tree global", write: "spanning-tree drstp forward-time {value}"}  # Unsigned32, access=ru, range=4–30
   bpdu_guard: {read: "show spanning-tree global", write: "spanning-tree bpdu-guard"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port_priority: {read: "show spanning-tree port {index}", write: "spanning-tree priority {value}"}  # Unsigned32, access=ru, range=0–240
+  priority: {read: "show spanning-tree global", write: "spanning-tree drstp mst priority 0 {value}"}  # Unsigned32, access=ru, range=0–61440
   hello_time: {read: "show spanning-tree global", write: "spanning-tree drstp hello-time {value}"}  # Unsigned32, access=ru, range=1–2
-  edge_port: {read: "show spanning-tree port {index}", write: "spanning-tree edge-port"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -6780,17 +6781,17 @@ get_services() -> {
 
 ```
 MOPS {
-  https_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsPortNumber}  # InetPortNumber, access=ru
-  http_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshPortNumber}  # InetPortNumber, access=ru
-  snmp_v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpPortNumber}  # InetPortNumber, access=ru
-  ssh_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpPortNumber}  # InetPortNumber, access=ru
   snmp_v2_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV2AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp_v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   telnet_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerPort}  # InetPortNumber, access=ru
+  https_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsPortNumber}  # InetPortNumber, access=ru
+  ssh_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshPortNumber}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -6799,17 +6800,17 @@ MOPS {
 
 ```
 SNMP {
-  https_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.4, method: get}  # InetPortNumber, access=ru
-  http_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh_port: {oid: 1.3.6.1.4.1.248.11.25.1.4.3, method: get}  # InetPortNumber, access=ru
-  snmp_v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.3, method: get}  # InetPortNumber, access=ru
-  ssh_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.3, method: get}  # InetPortNumber, access=ru
   snmp_v2_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp_v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   telnet_port: {oid: 1.3.6.1.4.1.248.11.25.1.3.2, method: get}  # InetPortNumber, access=ru
+  https_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.4, method: get}  # InetPortNumber, access=ru
+  ssh_port: {oid: 1.3.6.1.4.1.248.11.25.1.4.3, method: get}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -6818,17 +6819,17 @@ SNMP {
 
 ```
 SSH {
-  https_port: {read: "show https"}  # InetPortNumber, access=ru
-  http_enabled: {read: "show http"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh_port: {read: "show ssh server"}  # InetPortNumber, access=ru
-  snmp_v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https_enabled: {read: "show https"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet_enabled: {read: "show telnet"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http_port: {read: "show http"}  # InetPortNumber, access=ru
-  ssh_enabled: {read: "show ssh server"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_port: {read: "show http"}  # InetPortNumber, access=ru
   snmp_v2_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_enabled: {read: "show https"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh_enabled: {read: "show ssh server"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet_enabled: {read: "show telnet"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp_v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_enabled: {read: "show http"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   telnet_port: {read: "show telnet"}  # InetPortNumber, access=ru
+  https_port: {read: "show https"}  # InetPortNumber, access=ru
+  ssh_port: {read: "show ssh server"}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -6841,18 +6842,18 @@ SSH {
 
 ```
 MOPS {
-  https_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsPortNumber}  # InetPortNumber, access=ru
-  snmp_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
-  http_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshPortNumber}  # InetPortNumber, access=ru
-  snmp_v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpPortNumber}  # InetPortNumber, access=ru
-  ssh_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_v2_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV2AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
+  http_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpPortNumber}  # InetPortNumber, access=ru
+  snmp_v2_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV2AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   telnet_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerPort}  # InetPortNumber, access=ru
+  snmp_v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebHttpsPortNumber}  # InetPortNumber, access=ru
+  ssh_port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshPortNumber}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -6861,18 +6862,18 @@ MOPS {
 
 ```
 SNMP {
-  https_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.4, method: get}  # InetPortNumber, access=ru
-  snmp_port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
-  http_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh_port: {oid: 1.3.6.1.4.1.248.11.25.1.4.3, method: get}  # InetPortNumber, access=ru
-  snmp_v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.3, method: get}  # InetPortNumber, access=ru
-  ssh_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_v2_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp_port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
+  http_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.3, method: get}  # InetPortNumber, access=ru
+  snmp_v2_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.4.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.3.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   telnet_port: {oid: 1.3.6.1.4.1.248.11.25.1.3.2, method: get}  # InetPortNumber, access=ru
+  snmp_v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_port: {oid: 1.3.6.1.4.1.248.11.25.1.2.4, method: get}  # InetPortNumber, access=ru
+  ssh_port: {oid: 1.3.6.1.4.1.248.11.25.1.4.3, method: get}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -6881,18 +6882,18 @@ SNMP {
 
 ```
 SSH {
-  https_port: {read: "show https"}  # InetPortNumber, access=ru
-  snmp_port: {read: "show snmp access"}  # InetPortNumber, access=ru
-  http_enabled: {read: "show http"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  ssh_port: {read: "show ssh server"}  # InetPortNumber, access=ru
-  snmp_v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  https_enabled: {read: "show https"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  telnet_enabled: {read: "show telnet"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  http_port: {read: "show http"}  # InetPortNumber, access=ru
-  ssh_enabled: {read: "show ssh server"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_v2_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  snmp_port: {read: "show snmp access"}  # InetPortNumber, access=ru
+  http_port: {read: "show http"}  # InetPortNumber, access=ru
+  snmp_v2_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_enabled: {read: "show https"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  ssh_enabled: {read: "show ssh server"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  telnet_enabled: {read: "show telnet"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  http_enabled: {read: "show http"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   telnet_port: {read: "show telnet"}  # InetPortNumber, access=ru
+  snmp_v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  https_port: {read: "show https"}  # InetPortNumber, access=ru
+  ssh_port: {read: "show ssh server"}  # InetPortNumber, access=ru
 }
 ```
 </details>
@@ -6921,10 +6922,10 @@ get_session_config() -> {
 
 ```
 MOPS {
-  telnet_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerSessionsTimeOut}  # Integer32, access=ru, range=0–160
   ssh_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshSessionTimeout}  # Integer32, access=ru, range=0–160
-  web_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebIntfTimeOut}  # Integer32, access=ru, range=0–160
   max_ssh_sessions: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshMaxSessionsCount}  # Integer32, access=ru, range=1–5
+  telnet_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerSessionsTimeOut}  # Integer32, access=ru, range=0–160
+  web_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebIntfTimeOut}  # Integer32, access=ru, range=0–160
 }
 ```
 </details>
@@ -6933,10 +6934,10 @@ MOPS {
 
 ```
 SNMP {
-  telnet_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.3.5, method: get}  # Integer32, access=ru, range=0–160
   ssh_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.4.6, method: get}  # Integer32, access=ru, range=0–160
-  web_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.2.8, method: get}  # Integer32, access=ru, range=0–160
   max_ssh_sessions: {oid: 1.3.6.1.4.1.248.11.25.1.4.5, method: get}  # Integer32, access=ru, range=1–5
+  telnet_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.3.5, method: get}  # Integer32, access=ru, range=0–160
+  web_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.2.8, method: get}  # Integer32, access=ru, range=0–160
 }
 ```
 </details>
@@ -6945,9 +6946,9 @@ SNMP {
 
 ```
 SSH {
-  telnet_timeout: {read: "show telnet", write: "telnet timeout {value}"}  # Integer32, access=ru, range=0–160
   ssh_timeout: {read: "show ssh server", write: "ssh timeout {value}"}  # Integer32, access=ru, range=0–160
   max_ssh_sessions: {read: "show ssh server", write: "ssh max-sessions {value}"}  # Integer32, access=ru, range=1–5
+  telnet_timeout: {read: "show telnet", write: "telnet timeout {value}"}  # Integer32, access=ru, range=0–160
 }
 ```
 </details>
@@ -6960,10 +6961,10 @@ SSH {
 
 ```
 MOPS {
-  telnet_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerSessionsTimeOut}  # Integer32, access=ru, range=0–160
   ssh_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshSessionTimeout}  # Integer32, access=ru, range=0–160
-  web_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebIntfTimeOut}  # Integer32, access=ru, range=0–160
   max_ssh_sessions: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSshGroup.hm2SshMaxSessionsCount}  # Integer32, access=ru, range=1–5
+  telnet_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessTelnetGroup.hm2TelnetServerSessionsTimeOut}  # Integer32, access=ru, range=0–160
+  web_timeout: {HM2-MGMTACCESS-MIB / hm2MgmtAccessWebGroup.hm2WebIntfTimeOut}  # Integer32, access=ru, range=0–160
 }
 ```
 </details>
@@ -6972,10 +6973,10 @@ MOPS {
 
 ```
 SNMP {
-  telnet_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.3.5, method: get}  # Integer32, access=ru, range=0–160
   ssh_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.4.6, method: get}  # Integer32, access=ru, range=0–160
-  web_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.2.8, method: get}  # Integer32, access=ru, range=0–160
   max_ssh_sessions: {oid: 1.3.6.1.4.1.248.11.25.1.4.5, method: get}  # Integer32, access=ru, range=1–5
+  telnet_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.3.5, method: get}  # Integer32, access=ru, range=0–160
+  web_timeout: {oid: 1.3.6.1.4.1.248.11.25.1.2.8, method: get}  # Integer32, access=ru, range=0–160
 }
 ```
 </details>
@@ -6984,9 +6985,9 @@ SNMP {
 
 ```
 SSH {
-  telnet_timeout: {read: "show telnet", write: "telnet timeout {value}"}  # Integer32, access=ru, range=0–160
   ssh_timeout: {read: "show ssh server", write: "ssh timeout {value}"}  # Integer32, access=ru, range=0–160
   max_ssh_sessions: {read: "show ssh server", write: "ssh max-sessions {value}"}  # Integer32, access=ru, range=1–5
+  telnet_timeout: {read: "show telnet", write: "telnet timeout {value}"}  # Integer32, access=ru, range=0–160
 }
 ```
 </details>
@@ -7019,13 +7020,13 @@ get_sflow_receiver() -> {
 
 ```
 MOPS {
-  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
-  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
-  port: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrPort}  # Integer32, access=ru
-  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
-  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
-  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
   owner: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrOwner}  # OwnerString, access=ru
+  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
+  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
+  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
+  port: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrPort}  # Integer32, access=ru
+  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
+  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7034,13 +7035,13 @@ MOPS {
 
 ```
 SNMP {
-  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.1}  # Integer32, access=r, range=1–65535
-  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
-  port: {oid: 1.3.6.1.4.1.14706.1.1.4.1.7}  # Integer32, access=ru
-  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
-  datagram_version: {oid: 1.3.6.1.4.1.14706.1.1.4.1.8}  # Integer32, access=ru
-  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
   owner: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # OwnerString, access=ru
+  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
+  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
+  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
+  port: {oid: 1.3.6.1.4.1.14706.1.1.4.1.7}  # Integer32, access=ru
+  datagram_version: {oid: 1.3.6.1.4.1.14706.1.1.4.1.8}  # Integer32, access=ru
+  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7049,9 +7050,9 @@ SNMP {
 
 ```
 SSH {
+  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
   timeout: {read: "show sflow receivers"}  # Integer32, access=ru, range=-1–2147483647
   address: {read: "show sflow receivers"}  # InetAddress, access=ru
-  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
 }
 ```
 </details>
@@ -7064,20 +7065,20 @@ SSH {
 
 ```
 MOPS {
-  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
-  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
+  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
+  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
   interval: {SFLOW-MIB / sFlowCpEntry.sFlowCpInterval}  # Integer32, access=ru
-  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
+  sampler_datasource: {SFLOW-MIB / sFlowFsEntry.sFlowFsDataSource}  # SFlowDataSource, access=r
+  owner: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrOwner}  # OwnerString, access=ru
+  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
+  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
+  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
   port: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrPort}  # Integer32, access=ru
   max_header_size: {SFLOW-MIB / sFlowFsEntry.sFlowFsMaximumHeaderSize}  # Integer32, access=ru
-  sampler_datasource: {SFLOW-MIB / sFlowFsEntry.sFlowFsDataSource}  # SFlowDataSource, access=r
-  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
-  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
-  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
+  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
   poller_datasource: {SFLOW-MIB / sFlowCpEntry.sFlowCpDataSource}  # SFlowDataSource, access=r
-  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
-  owner: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrOwner}  # OwnerString, access=ru
-  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
+  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
+  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7086,20 +7087,20 @@ MOPS {
 
 ```
 SNMP {
-  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.1}  # Integer32, access=r, range=1–65535
-  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
+  sampler_receiver: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowReceiver, access=ru
+  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
   interval: {oid: 1.3.6.1.4.1.14706.1.1.6.1.4}  # Integer32, access=ru
-  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
+  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowDataSource, access=r
+  owner: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # OwnerString, access=ru
+  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
+  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
+  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
   port: {oid: 1.3.6.1.4.1.14706.1.1.4.1.7}  # Integer32, access=ru
   max_header_size: {oid: 1.3.6.1.4.1.14706.1.1.5.1.5}  # Integer32, access=ru
-  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.1}  # SFlowDataSource, access=r
-  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
-  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
+  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
+  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowDataSource, access=r
   datagram_version: {oid: 1.3.6.1.4.1.14706.1.1.4.1.8}  # Integer32, access=ru
-  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.1}  # SFlowDataSource, access=r
-  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
-  owner: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # OwnerString, access=ru
-  sampler_receiver: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowReceiver, access=ru
+  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7108,15 +7109,15 @@ SNMP {
 
 ```
 SSH {
-  timeout: {read: "show sflow receivers"}  # Integer32, access=ru, range=-1–2147483647
-  interval: {read: "show sflow pollers", write: "sflow poller interval {value}"}  # Integer32, access=ru
-  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
-  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
-  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
-  poller_datasource: {read: "show sflow pollers"}  # SFlowDataSource, access=r
-  address: {read: "show sflow receivers"}  # InetAddress, access=ru
-  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
   sampler_receiver: {read: "show sflow samplers", write: "sflow sampler receiver {value}"}  # SFlowReceiver, access=ru
+  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
+  interval: {read: "show sflow pollers", write: "sflow poller interval {value}"}  # Integer32, access=ru
+  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
+  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
+  timeout: {read: "show sflow receivers"}  # Integer32, access=ru, range=-1–2147483647
+  address: {read: "show sflow receivers"}  # InetAddress, access=ru
+  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
+  poller_datasource: {read: "show sflow pollers"}  # SFlowDataSource, access=r
 }
 ```
 </details>
@@ -7140,10 +7141,10 @@ get_sflow_sampler() -> {
 
 ```
 MOPS {
+  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
+  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
   max_header_size: {SFLOW-MIB / sFlowFsEntry.sFlowFsMaximumHeaderSize}  # Integer32, access=ru
   sampler_datasource: {SFLOW-MIB / sFlowFsEntry.sFlowFsDataSource}  # SFlowDataSource, access=r
-  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
-  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
 }
 ```
 </details>
@@ -7152,10 +7153,10 @@ MOPS {
 
 ```
 SNMP {
-  max_header_size: {oid: 1.3.6.1.4.1.14706.1.1.5.1.5}  # Integer32, access=ru
-  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.1}  # SFlowDataSource, access=r
-  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
   sampler_receiver: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowReceiver, access=ru
+  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
+  max_header_size: {oid: 1.3.6.1.4.1.14706.1.1.5.1.5}  # Integer32, access=ru
+  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowDataSource, access=r
 }
 ```
 </details>
@@ -7164,9 +7165,9 @@ SNMP {
 
 ```
 SSH {
-  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
-  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
   sampler_receiver: {read: "show sflow samplers", write: "sflow sampler receiver {value}"}  # SFlowReceiver, access=ru
+  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
+  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
 }
 ```
 </details>
@@ -7179,20 +7180,20 @@ SSH {
 
 ```
 MOPS {
-  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
-  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
+  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
+  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
   interval: {SFLOW-MIB / sFlowCpEntry.sFlowCpInterval}  # Integer32, access=ru
-  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
+  sampler_datasource: {SFLOW-MIB / sFlowFsEntry.sFlowFsDataSource}  # SFlowDataSource, access=r
+  owner: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrOwner}  # OwnerString, access=ru
+  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
+  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
+  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
   port: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrPort}  # Integer32, access=ru
   max_header_size: {SFLOW-MIB / sFlowFsEntry.sFlowFsMaximumHeaderSize}  # Integer32, access=ru
-  sampler_datasource: {SFLOW-MIB / sFlowFsEntry.sFlowFsDataSource}  # SFlowDataSource, access=r
-  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
-  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
-  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
+  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
   poller_datasource: {SFLOW-MIB / sFlowCpEntry.sFlowCpDataSource}  # SFlowDataSource, access=r
-  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
-  owner: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrOwner}  # OwnerString, access=ru
-  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
+  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
+  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7201,20 +7202,20 @@ MOPS {
 
 ```
 SNMP {
-  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.1}  # Integer32, access=r, range=1–65535
-  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
+  sampler_receiver: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowReceiver, access=ru
+  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
   interval: {oid: 1.3.6.1.4.1.14706.1.1.6.1.4}  # Integer32, access=ru
-  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
+  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowDataSource, access=r
+  owner: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # OwnerString, access=ru
+  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
+  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
+  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
   port: {oid: 1.3.6.1.4.1.14706.1.1.4.1.7}  # Integer32, access=ru
   max_header_size: {oid: 1.3.6.1.4.1.14706.1.1.5.1.5}  # Integer32, access=ru
-  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.1}  # SFlowDataSource, access=r
-  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
-  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
+  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
+  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowDataSource, access=r
   datagram_version: {oid: 1.3.6.1.4.1.14706.1.1.4.1.8}  # Integer32, access=ru
-  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.1}  # SFlowDataSource, access=r
-  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
-  owner: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # OwnerString, access=ru
-  sampler_receiver: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowReceiver, access=ru
+  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7223,15 +7224,15 @@ SNMP {
 
 ```
 SSH {
-  timeout: {read: "show sflow receivers"}  # Integer32, access=ru, range=-1–2147483647
-  interval: {read: "show sflow pollers", write: "sflow poller interval {value}"}  # Integer32, access=ru
-  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
-  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
-  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
-  poller_datasource: {read: "show sflow pollers"}  # SFlowDataSource, access=r
-  address: {read: "show sflow receivers"}  # InetAddress, access=ru
-  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
   sampler_receiver: {read: "show sflow samplers", write: "sflow sampler receiver {value}"}  # SFlowReceiver, access=ru
+  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
+  interval: {read: "show sflow pollers", write: "sflow poller interval {value}"}  # Integer32, access=ru
+  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
+  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
+  timeout: {read: "show sflow receivers"}  # Integer32, access=ru, range=-1–2147483647
+  address: {read: "show sflow receivers"}  # InetAddress, access=ru
+  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
+  poller_datasource: {read: "show sflow pollers"}  # SFlowDataSource, access=r
 }
 ```
 </details>
@@ -7254,8 +7255,8 @@ get_sflow_poller() -> {
 
 ```
 MOPS {
-  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
   interval: {SFLOW-MIB / sFlowCpEntry.sFlowCpInterval}  # Integer32, access=ru
+  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
   poller_datasource: {SFLOW-MIB / sFlowCpEntry.sFlowCpDataSource}  # SFlowDataSource, access=r
 }
 ```
@@ -7265,9 +7266,9 @@ MOPS {
 
 ```
 SNMP {
-  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
   interval: {oid: 1.3.6.1.4.1.14706.1.1.6.1.4}  # Integer32, access=ru
-  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.1}  # SFlowDataSource, access=r
+  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
+  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowDataSource, access=r
 }
 ```
 </details>
@@ -7276,8 +7277,8 @@ SNMP {
 
 ```
 SSH {
-  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
   interval: {read: "show sflow pollers", write: "sflow poller interval {value}"}  # Integer32, access=ru
+  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
   poller_datasource: {read: "show sflow pollers"}  # SFlowDataSource, access=r
 }
 ```
@@ -7291,20 +7292,20 @@ SSH {
 
 ```
 MOPS {
-  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
-  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
+  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
+  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
   interval: {SFLOW-MIB / sFlowCpEntry.sFlowCpInterval}  # Integer32, access=ru
-  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
+  sampler_datasource: {SFLOW-MIB / sFlowFsEntry.sFlowFsDataSource}  # SFlowDataSource, access=r
+  owner: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrOwner}  # OwnerString, access=ru
+  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
+  timeout: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrTimeout}  # Integer32, access=ru, range=-1–2147483647
+  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
   port: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrPort}  # Integer32, access=ru
   max_header_size: {SFLOW-MIB / sFlowFsEntry.sFlowFsMaximumHeaderSize}  # Integer32, access=ru
-  sampler_datasource: {SFLOW-MIB / sFlowFsEntry.sFlowFsDataSource}  # SFlowDataSource, access=r
-  sampling_rate: {SFLOW-MIB / sFlowFsEntry.sFlowFsPacketSamplingRate}  # Integer32, access=ru
-  max_datagram_size: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrMaximumDatagramSize}  # Integer32, access=ru
-  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
+  poller_receiver: {SFLOW-MIB / sFlowCpEntry.sFlowCpReceiver}  # SFlowReceiver, access=ru
   poller_datasource: {SFLOW-MIB / sFlowCpEntry.sFlowCpDataSource}  # SFlowDataSource, access=r
-  address: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrAddress}  # InetAddress, access=ru
-  owner: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrOwner}  # OwnerString, access=ru
-  sampler_receiver: {SFLOW-MIB / sFlowFsEntry.sFlowFsReceiver}  # SFlowReceiver, access=ru
+  datagram_version: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrDatagramVersion}  # Integer32, access=ru
+  receiver_index: {SFLOW-MIB / sFlowRcvrEntry.sFlowRcvrIndex}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7313,20 +7314,20 @@ MOPS {
 
 ```
 SNMP {
-  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.1}  # Integer32, access=r, range=1–65535
-  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
+  sampler_receiver: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowReceiver, access=ru
+  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
   interval: {oid: 1.3.6.1.4.1.14706.1.1.6.1.4}  # Integer32, access=ru
-  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
+  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowDataSource, access=r
+  owner: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # OwnerString, access=ru
+  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
+  timeout: {oid: 1.3.6.1.4.1.14706.1.1.4.1.3}  # Integer32, access=ru, range=-1–2147483647
+  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
   port: {oid: 1.3.6.1.4.1.14706.1.1.4.1.7}  # Integer32, access=ru
   max_header_size: {oid: 1.3.6.1.4.1.14706.1.1.5.1.5}  # Integer32, access=ru
-  sampler_datasource: {oid: 1.3.6.1.4.1.14706.1.1.5.1.1}  # SFlowDataSource, access=r
-  sampling_rate: {oid: 1.3.6.1.4.1.14706.1.1.5.1.4}  # Integer32, access=ru
-  max_datagram_size: {oid: 1.3.6.1.4.1.14706.1.1.4.1.4}  # Integer32, access=ru
+  poller_receiver: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowReceiver, access=ru
+  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.3}  # SFlowDataSource, access=r
   datagram_version: {oid: 1.3.6.1.4.1.14706.1.1.4.1.8}  # Integer32, access=ru
-  poller_datasource: {oid: 1.3.6.1.4.1.14706.1.1.6.1.1}  # SFlowDataSource, access=r
-  address: {oid: 1.3.6.1.4.1.14706.1.1.4.1.6}  # InetAddress, access=ru
-  owner: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # OwnerString, access=ru
-  sampler_receiver: {oid: 1.3.6.1.4.1.14706.1.1.5.1.3}  # SFlowReceiver, access=ru
+  receiver_index: {oid: 1.3.6.1.4.1.14706.1.1.4.1.2}  # Integer32, access=r, range=1–65535
 }
 ```
 </details>
@@ -7335,15 +7336,15 @@ SNMP {
 
 ```
 SSH {
-  timeout: {read: "show sflow receivers"}  # Integer32, access=ru, range=-1–2147483647
-  interval: {read: "show sflow pollers", write: "sflow poller interval {value}"}  # Integer32, access=ru
-  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
-  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
-  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
-  poller_datasource: {read: "show sflow pollers"}  # SFlowDataSource, access=r
-  address: {read: "show sflow receivers"}  # InetAddress, access=ru
-  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
   sampler_receiver: {read: "show sflow samplers", write: "sflow sampler receiver {value}"}  # SFlowReceiver, access=ru
+  sampling_rate: {read: "show sflow samplers", write: "sflow sampler rate {value}"}  # Integer32, access=ru
+  interval: {read: "show sflow pollers", write: "sflow poller interval {value}"}  # Integer32, access=ru
+  sampler_datasource: {read: "show sflow samplers"}  # SFlowDataSource, access=r
+  owner: {read: "show sflow receivers"}  # OwnerString, access=ru
+  timeout: {read: "show sflow receivers"}  # Integer32, access=ru, range=-1–2147483647
+  address: {read: "show sflow receivers"}  # InetAddress, access=ru
+  poller_receiver: {read: "show sflow pollers", write: "sflow poller receiver {value}"}  # SFlowReceiver, access=ru
+  poller_datasource: {read: "show sflow pollers"}  # SFlowDataSource, access=r
 }
 ```
 </details>
@@ -7387,24 +7388,24 @@ get_signal_contact() -> {
 
 ```
 MOPS {
+  sense_link_failure: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseLinkFailure}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_not_in_sync: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmNotInSync}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_fan_module: {HM2-DIAGNOSTIC-MIB / hm2SigConFanModuleEntry.hm2SigConSenseFanModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ps_state: {HM2-DIAGNOSTIC-MIB / hm2SigConPSEntry.hm2SigConSensePSState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module: {HM2-DIAGNOSTIC-MIB / hm2SigConModuleEntry.hm2SigConSenseModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  contact_id: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConID}  # Integer32, access=r, range=1–2
+  sense_ethernet_loops: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseEthernetLoops}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_stp_port_block: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseStpPortBlock}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseModuleRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ring_redundancy: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseRingRedundancy}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_temperature: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseTemperature}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_if_link_alarm: {HM2-DIAGNOSTIC-MIB / hm2SigConInterfaceEntry.hm2SigConSenseIfLinkAlarm}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_fan: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseFan}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseModuleRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_link_failure: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseLinkFailure}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_fan_module: {HM2-DIAGNOSTIC-MIB / hm2SigConFanModuleEntry.hm2SigConSenseFanModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ring_redundancy: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseRingRedundancy}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  contact_id: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConID}  # Integer32, access=r, range=1–2
   trap_enabled: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConTrapEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module: {HM2-DIAGNOSTIC-MIB / hm2SigConModuleEntry.hm2SigConSenseModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_envm_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_humidity: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseHumidity}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_temperature: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseTemperature}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_stp_port_block: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseStpPortBlock}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConOperState}  # INTEGER, access=r, allowed=['open', 'close']
-  sense_envm_not_in_sync: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmNotInSync}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ethernet_loops: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseEthernetLoops}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ps_state: {HM2-DIAGNOSTIC-MIB / hm2SigConPSEntry.hm2SigConSensePSState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mode: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConMode}  # INTEGER, access=ru, allowed=['manual', 'monitor', 'deviceState', 'deviceSecurity', 'deviceStateAndSecurity']
+  state: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConOperState}  # INTEGER, access=r, allowed=['open', 'close']
+  sense_humidity: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseHumidity}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7413,24 +7414,24 @@ MOPS {
 
 ```
 SNMP {
+  sense_link_failure: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_not_in_sync: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_fan_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.5.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ps_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.4.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  contact_id: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.1}  # Integer32, access=r, range=1–2
+  sense_ethernet_loops: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_stp_port_block: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.18}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ring_redundancy: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.15}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_temperature: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_if_link_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.3.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_fan: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_link_failure: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_fan_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.5.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ring_redundancy: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.15}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  contact_id: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.1}  # Integer32, access=r, range=1–2
   trap_enabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.4.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_envm_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_humidity: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.17}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_temperature: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_stp_port_block: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.18}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.6}  # INTEGER, access=r, allowed=['open', 'close']
-  sense_envm_not_in_sync: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ethernet_loops: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ps_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mode: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.5}  # INTEGER, access=ru, allowed=['manual', 'monitor', 'deviceState', 'deviceSecurity', 'deviceStateAndSecurity']
+  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.6}  # INTEGER, access=r, allowed=['open', 'close']
+  sense_humidity: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.17}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7443,24 +7444,24 @@ SNMP {
 
 ```
 MOPS {
+  sense_link_failure: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseLinkFailure}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_not_in_sync: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmNotInSync}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_fan_module: {HM2-DIAGNOSTIC-MIB / hm2SigConFanModuleEntry.hm2SigConSenseFanModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ps_state: {HM2-DIAGNOSTIC-MIB / hm2SigConPSEntry.hm2SigConSensePSState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module: {HM2-DIAGNOSTIC-MIB / hm2SigConModuleEntry.hm2SigConSenseModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  contact_id: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConID}  # Integer32, access=r, range=1–2
+  sense_ethernet_loops: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseEthernetLoops}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_stp_port_block: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseStpPortBlock}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseModuleRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ring_redundancy: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseRingRedundancy}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_temperature: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseTemperature}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_if_link_alarm: {HM2-DIAGNOSTIC-MIB / hm2SigConInterfaceEntry.hm2SigConSenseIfLinkAlarm}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_fan: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseFan}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseModuleRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_link_failure: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseLinkFailure}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_fan_module: {HM2-DIAGNOSTIC-MIB / hm2SigConFanModuleEntry.hm2SigConSenseFanModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ring_redundancy: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseRingRedundancy}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  contact_id: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConID}  # Integer32, access=r, range=1–2
   trap_enabled: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConTrapEnable}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module: {HM2-DIAGNOSTIC-MIB / hm2SigConModuleEntry.hm2SigConSenseModule}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_envm_removal: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmRemoval}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_humidity: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseHumidity}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_temperature: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseTemperature}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_stp_port_block: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseStpPortBlock}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConOperState}  # INTEGER, access=r, allowed=['open', 'close']
-  sense_envm_not_in_sync: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseExtNvmNotInSync}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ethernet_loops: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseEthernetLoops}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ps_state: {HM2-DIAGNOSTIC-MIB / hm2SigConPSEntry.hm2SigConSensePSState}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mode: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConMode}  # INTEGER, access=ru, allowed=['manual', 'monitor', 'deviceState', 'deviceSecurity', 'deviceStateAndSecurity']
+  state: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConOperState}  # INTEGER, access=r, allowed=['open', 'close']
+  sense_humidity: {HM2-DIAGNOSTIC-MIB / hm2SigConCommonEntry.hm2SigConSenseHumidity}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7469,24 +7470,24 @@ MOPS {
 
 ```
 SNMP {
+  sense_link_failure: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_not_in_sync: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_fan_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.5.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ps_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.4.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  contact_id: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.1}  # Integer32, access=r, range=1–2
+  sense_ethernet_loops: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_stp_port_block: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.18}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_envm_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_module_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_ring_redundancy: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.15}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  sense_temperature: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_if_link_alarm: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.3.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   sense_fan: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.11}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.12}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_link_failure: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.9}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_fan_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.5.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ring_redundancy: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.15}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  contact_id: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.1}  # Integer32, access=r, range=1–2
   trap_enabled: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_module: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.4.1.2}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_envm_removal: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.13}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_humidity: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.17}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_temperature: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.10}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_stp_port_block: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.18}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.6}  # INTEGER, access=r, allowed=['open', 'close']
-  sense_envm_not_in_sync: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.14}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ethernet_loops: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.16}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  sense_ps_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1.1}  # HmEnabledStatus, access=ru, allowed=[True, False]
   mode: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.5}  # INTEGER, access=ru, allowed=['manual', 'monitor', 'deviceState', 'deviceSecurity', 'deviceStateAndSecurity']
+  state: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.6}  # INTEGER, access=r, allowed=['open', 'close']
+  sense_humidity: {oid: 1.3.6.1.4.1.248.11.22.1.3.1.1.1.17}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7518,13 +7519,13 @@ get_snmp_config() -> {
 
 ```
 MOPS {
-  v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   v2_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV2AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
-  trap_service: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpTrapServiceAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   community_access: {SNMP-VIEW-BASED-ACM-MIB / vacmAccessEntry.vacmAccessWriteViewName}  # SnmpAdminString, access=ru, range=0–32
   trap_destinations: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrName}  # SnmpAdminString, access=r, range=1–32
-  v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  trap_service: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpTrapServiceAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7533,13 +7534,13 @@ MOPS {
 
 ```
 SNMP {
-  v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   v2_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
-  trap_service: {oid: 1.3.6.1.4.1.248.11.25.1.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   community_access: {oid: 1.3.6.1.6.3.16.1.4.1.6}  # SnmpAdminString, access=ru, range=0–32
   trap_destinations: {oid: 1.3.6.1.6.3.12.1.2.1.1}  # SnmpAdminString, access=r, range=1–32
-  v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  trap_service: {oid: 1.3.6.1.4.1.248.11.25.1.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7548,12 +7549,12 @@ SNMP {
 
 ```
 SSH {
-  v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   v2_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port: {read: "show snmp access"}  # InetPortNumber, access=ru
-  trap_service: {read: "show snmp trap"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  trap_destinations: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
   v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port: {read: "show snmp access"}  # InetPortNumber, access=ru
+  trap_destinations: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
+  v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  trap_service: {read: "show snmp trap"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7566,25 +7567,25 @@ SSH {
 
 ```
 MOPS {
-  params_ref: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrParams}  # SnmpAdminString, access=ru, range=1–32
-  trap_service: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpTrapServiceAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  security_level: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityLevel}  # SnmpSecurityLevel, access=ru
-  tag_list: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTagList}  # SnmpTagList, access=ru
-  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   v2_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV2AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
-  addr_row_status: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrRowStatus}  # RowStatus, access=crud
+  params_ref: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrParams}  # SnmpAdminString, access=ru, range=1–32
+  params_row_status: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsRowStatus}  # RowStatus, access=crud
+  trap_service: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpTrapServiceAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  security_model: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityModel}  # SnmpSecurityModel, access=ru, range=1–2147483647
+  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
+  communities: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunityName}  # OCTET STRING, access=ru
+  addr_row_status: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrRowStatus}  # RowStatus, access=crud
+  address: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTAddress}  # TAddress, access=ru
+  community_security_name: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunitySecurityName}  # SnmpAdminString, access=ru, range=1–32
   community_access: {SNMP-VIEW-BASED-ACM-MIB / vacmAccessEntry.vacmAccessWriteViewName}  # SnmpAdminString, access=ru, range=0–32
   name: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrName}  # SnmpAdminString, access=r, range=1–32
-  communities: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunityName}  # OCTET STRING, access=ru
-  params_row_status: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsRowStatus}  # RowStatus, access=crud
-  community_group_name: {SNMP-VIEW-BASED-ACM-MIB / vacmSecurityToGroupEntry.vacmGroupName}  # SnmpAdminString, access=ru, range=1–32
-  security_model: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityModel}  # SnmpSecurityModel, access=ru, range=1–2147483647
-  community_security_name: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunitySecurityName}  # SnmpAdminString, access=ru, range=1–32
-  address: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTAddress}  # TAddress, access=ru
   trap_destinations: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrName}  # SnmpAdminString, access=r, range=1–32
+  security_level: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityLevel}  # SnmpSecurityLevel, access=ru
+  community_group_name: {SNMP-VIEW-BASED-ACM-MIB / vacmSecurityToGroupEntry.vacmGroupName}  # SnmpAdminString, access=ru, range=1–32
+  v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tag_list: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTagList}  # SnmpTagList, access=ru
 }
 ```
 </details>
@@ -7593,25 +7594,25 @@ MOPS {
 
 ```
 SNMP {
-  params_ref: {oid: 1.3.6.1.6.3.12.1.2.1.7}  # SnmpAdminString, access=ru, range=1–32
-  trap_service: {oid: 1.3.6.1.4.1.248.11.25.1.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  security_level: {oid: 1.3.6.1.6.3.12.1.3.1.5}  # SnmpSecurityLevel, access=ru
-  tag_list: {oid: 1.3.6.1.6.3.12.1.2.1.6}  # SnmpTagList, access=ru
-  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   v2_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
-  addr_row_status: {oid: 1.3.6.1.6.3.12.1.2.1.9}  # RowStatus, access=crud
+  params_ref: {oid: 1.3.6.1.6.3.12.1.2.1.7}  # SnmpAdminString, access=ru, range=1–32
+  params_row_status: {oid: 1.3.6.1.6.3.12.1.3.1.7}  # RowStatus, access=crud
+  trap_service: {oid: 1.3.6.1.4.1.248.11.25.1.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  security_model: {oid: 1.3.6.1.6.3.12.1.3.1.3}  # SnmpSecurityModel, access=ru, range=1–2147483647
+  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
+  communities: {oid: 1.3.6.1.6.3.18.1.1.1.2}  # OCTET STRING, access=ru
+  addr_row_status: {oid: 1.3.6.1.6.3.12.1.2.1.9}  # RowStatus, access=crud
+  address: {oid: 1.3.6.1.6.3.12.1.2.1.3}  # TAddress, access=ru
+  community_security_name: {oid: 1.3.6.1.6.3.18.1.1.1.3}  # SnmpAdminString, access=ru, range=1–32
   community_access: {oid: 1.3.6.1.6.3.16.1.4.1.6}  # SnmpAdminString, access=ru, range=0–32
   name: {oid: 1.3.6.1.6.3.12.1.2.1.1}  # SnmpAdminString, access=r, range=1–32
-  communities: {oid: 1.3.6.1.6.3.18.1.1.1.2}  # OCTET STRING, access=ru
-  params_row_status: {oid: 1.3.6.1.6.3.12.1.3.1.7}  # RowStatus, access=crud
-  community_group_name: {oid: 1.3.6.1.6.3.16.1.2.1.3}  # SnmpAdminString, access=ru, range=1–32
-  security_model: {oid: 1.3.6.1.6.3.12.1.3.1.3}  # SnmpSecurityModel, access=ru, range=1–2147483647
-  community_security_name: {oid: 1.3.6.1.6.3.18.1.1.1.3}  # SnmpAdminString, access=ru, range=1–32
-  address: {oid: 1.3.6.1.6.3.12.1.2.1.3}  # TAddress, access=ru
   trap_destinations: {oid: 1.3.6.1.6.3.12.1.2.1.1}  # SnmpAdminString, access=r, range=1–32
+  security_level: {oid: 1.3.6.1.6.3.12.1.3.1.5}  # SnmpSecurityLevel, access=ru
+  community_group_name: {oid: 1.3.6.1.6.3.16.1.2.1.3}  # SnmpAdminString, access=ru, range=1–32
+  v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tag_list: {oid: 1.3.6.1.6.3.12.1.2.1.6}  # SnmpTagList, access=ru
 }
 ```
 </details>
@@ -7620,17 +7621,17 @@ SNMP {
 
 ```
 SSH {
-  trap_service: {read: "show snmp trap"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   v2_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port: {read: "show snmp access"}  # InetPortNumber, access=ru
-  addr_row_status: {write: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}"}  # RowStatus, access=crud
-  v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  name: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
-  communities: {read: "show snmp community", write: "snmp community ro {community_name}"}  # OCTET STRING, access=ru
   params_row_status: {write: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}"}  # RowStatus, access=crud
+  trap_service: {read: "show snmp trap"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port: {read: "show snmp access"}  # InetPortNumber, access=ru
+  communities: {read: "show snmp community", write: "snmp community ro {community_name}"}  # OCTET STRING, access=ru
+  addr_row_status: {write: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}"}  # RowStatus, access=crud
   address: {read: "show snmp trap"}  # TAddress, access=ru
+  name: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
   trap_destinations: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
+  v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7654,8 +7655,8 @@ get_snmp_trap_destinations() -> {
 
 ```
 MOPS {
-  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   security_model: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityModel}  # SnmpSecurityModel, access=ru, range=1–2147483647
+  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   address: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTAddress}  # TAddress, access=ru
   name: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrName}  # SnmpAdminString, access=r, range=1–32
   security_level: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityLevel}  # SnmpSecurityLevel, access=ru
@@ -7667,8 +7668,8 @@ MOPS {
 
 ```
 SNMP {
-  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   security_model: {oid: 1.3.6.1.6.3.12.1.3.1.3}  # SnmpSecurityModel, access=ru, range=1–2147483647
+  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   address: {oid: 1.3.6.1.6.3.12.1.2.1.3}  # TAddress, access=ru
   name: {oid: 1.3.6.1.6.3.12.1.2.1.1}  # SnmpAdminString, access=r, range=1–32
   security_level: {oid: 1.3.6.1.6.3.12.1.3.1.5}  # SnmpSecurityLevel, access=ru
@@ -7709,10 +7710,10 @@ create_snmp_trap_dest() -> {
 ```
 MOPS {
   tag_list: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTagList}  # SnmpTagList, access=ru
-  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   security_model: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityModel}  # SnmpSecurityModel, access=ru, range=1–2147483647
-  port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
+  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   address: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTAddress}  # TAddress, access=ru
+  port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
   name: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrName}  # SnmpAdminString, access=r, range=1–32
   security_level: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityLevel}  # SnmpSecurityLevel, access=ru
 }
@@ -7724,10 +7725,10 @@ MOPS {
 ```
 SNMP {
   tag_list: {oid: 1.3.6.1.6.3.12.1.2.1.6}  # SnmpTagList, access=ru
-  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   security_model: {oid: 1.3.6.1.6.3.12.1.3.1.3}  # SnmpSecurityModel, access=ru, range=1–2147483647
-  port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
+  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   address: {oid: 1.3.6.1.6.3.12.1.2.1.3}  # TAddress, access=ru
+  port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
   name: {oid: 1.3.6.1.6.3.12.1.2.1.1}  # SnmpAdminString, access=r, range=1–32
   security_level: {oid: 1.3.6.1.6.3.12.1.3.1.5}  # SnmpSecurityLevel, access=ru
 }
@@ -7738,8 +7739,8 @@ SNMP {
 
 ```
 SSH {
-  port: {read: "show snmp access"}  # InetPortNumber, access=ru
   address: {read: "show snmp trap"}  # TAddress, access=ru
+  port: {read: "show snmp access"}  # InetPortNumber, access=ru
   name: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
 }
 ```
@@ -7755,25 +7756,25 @@ SSH {
 
 ```
 MOPS {
-  params_ref: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrParams}  # SnmpAdminString, access=ru, range=1–32
-  trap_service: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpTrapServiceAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  security_level: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityLevel}  # SnmpSecurityLevel, access=ru
-  tag_list: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTagList}  # SnmpTagList, access=ru
-  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   v2_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV2AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
-  addr_row_status: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrRowStatus}  # RowStatus, access=crud
+  params_ref: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrParams}  # SnmpAdminString, access=ru, range=1–32
+  params_row_status: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsRowStatus}  # RowStatus, access=crud
+  trap_service: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpTrapServiceAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  security_model: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityModel}  # SnmpSecurityModel, access=ru, range=1–2147483647
+  security_name: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityName}  # SnmpAdminString, access=ru
   v3_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV3AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpPortNumber}  # InetPortNumber, access=ru
+  communities: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunityName}  # OCTET STRING, access=ru
+  addr_row_status: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrRowStatus}  # RowStatus, access=crud
+  address: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTAddress}  # TAddress, access=ru
+  community_security_name: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunitySecurityName}  # SnmpAdminString, access=ru, range=1–32
   community_access: {SNMP-VIEW-BASED-ACM-MIB / vacmAccessEntry.vacmAccessWriteViewName}  # SnmpAdminString, access=ru, range=0–32
   name: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrName}  # SnmpAdminString, access=r, range=1–32
-  communities: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunityName}  # OCTET STRING, access=ru
-  params_row_status: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsRowStatus}  # RowStatus, access=crud
-  community_group_name: {SNMP-VIEW-BASED-ACM-MIB / vacmSecurityToGroupEntry.vacmGroupName}  # SnmpAdminString, access=ru, range=1–32
-  security_model: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityModel}  # SnmpSecurityModel, access=ru, range=1–2147483647
-  community_security_name: {SNMP-COMMUNITY-MIB / snmpCommunityEntry.snmpCommunitySecurityName}  # SnmpAdminString, access=ru, range=1–32
-  address: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTAddress}  # TAddress, access=ru
   trap_destinations: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrName}  # SnmpAdminString, access=r, range=1–32
+  security_level: {SNMP-TARGET-MIB / snmpTargetParamsEntry.snmpTargetParamsSecurityLevel}  # SnmpSecurityLevel, access=ru
+  community_group_name: {SNMP-VIEW-BASED-ACM-MIB / vacmSecurityToGroupEntry.vacmGroupName}  # SnmpAdminString, access=ru, range=1–32
+  v1_enabled: {HM2-MGMTACCESS-MIB / hm2MgmtAccessSnmpGroup.hm2SnmpV1AdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tag_list: {SNMP-TARGET-MIB / snmpTargetAddrEntry.snmpTargetAddrTagList}  # SnmpTagList, access=ru
 }
 ```
 </details>
@@ -7782,25 +7783,25 @@ MOPS {
 
 ```
 SNMP {
-  params_ref: {oid: 1.3.6.1.6.3.12.1.2.1.7}  # SnmpAdminString, access=ru, range=1–32
-  trap_service: {oid: 1.3.6.1.4.1.248.11.25.1.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  security_level: {oid: 1.3.6.1.6.3.12.1.3.1.5}  # SnmpSecurityLevel, access=ru
-  tag_list: {oid: 1.3.6.1.6.3.12.1.2.1.6}  # SnmpTagList, access=ru
-  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   v2_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
-  addr_row_status: {oid: 1.3.6.1.6.3.12.1.2.1.9}  # RowStatus, access=crud
+  params_ref: {oid: 1.3.6.1.6.3.12.1.2.1.7}  # SnmpAdminString, access=ru, range=1–32
+  params_row_status: {oid: 1.3.6.1.6.3.12.1.3.1.7}  # RowStatus, access=crud
+  trap_service: {oid: 1.3.6.1.4.1.248.11.25.1.1.6, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  security_model: {oid: 1.3.6.1.6.3.12.1.3.1.3}  # SnmpSecurityModel, access=ru, range=1–2147483647
+  security_name: {oid: 1.3.6.1.6.3.12.1.3.1.4}  # SnmpAdminString, access=ru
   v3_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.3, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port: {oid: 1.3.6.1.4.1.248.11.25.1.1.4, method: get}  # InetPortNumber, access=ru
+  communities: {oid: 1.3.6.1.6.3.18.1.1.1.2}  # OCTET STRING, access=ru
+  addr_row_status: {oid: 1.3.6.1.6.3.12.1.2.1.9}  # RowStatus, access=crud
+  address: {oid: 1.3.6.1.6.3.12.1.2.1.3}  # TAddress, access=ru
+  community_security_name: {oid: 1.3.6.1.6.3.18.1.1.1.3}  # SnmpAdminString, access=ru, range=1–32
   community_access: {oid: 1.3.6.1.6.3.16.1.4.1.6}  # SnmpAdminString, access=ru, range=0–32
   name: {oid: 1.3.6.1.6.3.12.1.2.1.1}  # SnmpAdminString, access=r, range=1–32
-  communities: {oid: 1.3.6.1.6.3.18.1.1.1.2}  # OCTET STRING, access=ru
-  params_row_status: {oid: 1.3.6.1.6.3.12.1.3.1.7}  # RowStatus, access=crud
-  community_group_name: {oid: 1.3.6.1.6.3.16.1.2.1.3}  # SnmpAdminString, access=ru, range=1–32
-  security_model: {oid: 1.3.6.1.6.3.12.1.3.1.3}  # SnmpSecurityModel, access=ru, range=1–2147483647
-  community_security_name: {oid: 1.3.6.1.6.3.18.1.1.1.3}  # SnmpAdminString, access=ru, range=1–32
-  address: {oid: 1.3.6.1.6.3.12.1.2.1.3}  # TAddress, access=ru
   trap_destinations: {oid: 1.3.6.1.6.3.12.1.2.1.1}  # SnmpAdminString, access=r, range=1–32
+  security_level: {oid: 1.3.6.1.6.3.12.1.3.1.5}  # SnmpSecurityLevel, access=ru
+  community_group_name: {oid: 1.3.6.1.6.3.16.1.2.1.3}  # SnmpAdminString, access=ru, range=1–32
+  v1_enabled: {oid: 1.3.6.1.4.1.248.11.25.1.1.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  tag_list: {oid: 1.3.6.1.6.3.12.1.2.1.6}  # SnmpTagList, access=ru
 }
 ```
 </details>
@@ -7809,17 +7810,17 @@ SNMP {
 
 ```
 SSH {
-  trap_service: {read: "show snmp trap"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   v2_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  port: {read: "show snmp access"}  # InetPortNumber, access=ru
-  addr_row_status: {write: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}"}  # RowStatus, access=crud
-  v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  name: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
-  communities: {read: "show snmp community", write: "snmp community ro {community_name}"}  # OCTET STRING, access=ru
   params_row_status: {write: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}"}  # RowStatus, access=crud
+  trap_service: {read: "show snmp trap"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  v3_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  port: {read: "show snmp access"}  # InetPortNumber, access=ru
+  communities: {read: "show snmp community", write: "snmp community ro {community_name}"}  # OCTET STRING, access=ru
+  addr_row_status: {write: "snmp notification host add {name} {address}:{port} user {security_name} {security_level}"}  # RowStatus, access=crud
   address: {read: "show snmp trap"}  # TAddress, access=ru
+  name: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
   trap_destinations: {read: "show snmp trap"}  # SnmpAdminString, access=r, range=1–32
+  v1_enabled: {read: "show snmp access"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -7847,8 +7848,8 @@ get_snmp_information() -> {
 
 ```
 MOPS {
-  contact: {SNMPv2-MIB / system.sysContact}  # DisplayString, access=ru, range=0–255
   chassis_id: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
+  contact: {SNMPv2-MIB / system.sysContact}  # DisplayString, access=ru, range=0–255
   location: {SNMPv2-MIB / system.sysLocation}  # DisplayString, access=ru, range=0–255
 }
 ```
@@ -7858,8 +7859,8 @@ MOPS {
 
 ```
 SNMP {
-  contact: {oid: 1.3.6.1.2.1.1.4, method: get}  # DisplayString, access=ru, range=0–255
   chassis_id: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
+  contact: {oid: 1.3.6.1.2.1.1.4, method: get}  # DisplayString, access=ru, range=0–255
   location: {oid: 1.3.6.1.2.1.1.6, method: get}  # DisplayString, access=ru, range=0–255
 }
 ```
@@ -7869,8 +7870,8 @@ SNMP {
 
 ```
 SSH {
-  contact: {read: "show system info", write: "system contact {value}"}  # DisplayString, access=ru, range=0–255
   chassis_id: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
+  contact: {read: "show system info", write: "system contact {value}"}  # DisplayString, access=ru, range=0–255
   location: {read: "show system info", write: "system location {value}"}  # DisplayString, access=ru, range=0–255
 }
 ```
@@ -7884,8 +7885,8 @@ SSH {
 
 ```
 MOPS {
-  contact: {SNMPv2-MIB / system.sysContact}  # DisplayString, access=ru, range=0–255
   chassis_id: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
+  contact: {SNMPv2-MIB / system.sysContact}  # DisplayString, access=ru, range=0–255
   location: {SNMPv2-MIB / system.sysLocation}  # DisplayString, access=ru, range=0–255
 }
 ```
@@ -7895,8 +7896,8 @@ MOPS {
 
 ```
 SNMP {
-  contact: {oid: 1.3.6.1.2.1.1.4, method: get}  # DisplayString, access=ru, range=0–255
   chassis_id: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
+  contact: {oid: 1.3.6.1.2.1.1.4, method: get}  # DisplayString, access=ru, range=0–255
   location: {oid: 1.3.6.1.2.1.1.6, method: get}  # DisplayString, access=ru, range=0–255
 }
 ```
@@ -7906,8 +7907,8 @@ SNMP {
 
 ```
 SSH {
-  contact: {read: "show system info", write: "system contact {value}"}  # DisplayString, access=ru, range=0–255
   chassis_id: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
+  contact: {read: "show system info", write: "system contact {value}"}  # DisplayString, access=ru, range=0–255
   location: {read: "show system info", write: "system location {value}"}  # DisplayString, access=ru, range=0–255
 }
 ```
@@ -7939,16 +7940,16 @@ get_software() -> {
 
 ```
 MOPS {
-  bootcode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareVersionGroup.hm2DevMgmtSwVersBootcode}  # DisplayString, access=r
-  image_location: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileLocation}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
-  image_type: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileType}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
   allow_unsigned: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareVersionGroup.hm2DevMgmtSwVersAllowUnsigned}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  bootcode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareVersionGroup.hm2DevMgmtSwVersBootcode}  # DisplayString, access=r
+  image_name: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileName}  # DisplayString, access=r
+  image_type: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileType}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
+  dev_mode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareSecureBootGroup.hm2DevMgmtSwSecureBootDevmodeStatus}  # HmEnabledStatus, access=r, allowed=[True, False]
+  image_location: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileLocation}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
   image_major: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwMajorRelNum}  # Integer32, access=r
   image_bugfix: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwBugfixRelNum}  # Integer32, access=r
-  image_minor: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwMinorRelNum}  # Integer32, access=r
-  dev_mode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareSecureBootGroup.hm2DevMgmtSwSecureBootDevmodeStatus}  # HmEnabledStatus, access=r, allowed=[True, False]
   secure_boot: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareSecureBootGroup.hm2DevMgmtSwSecureBootAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  image_name: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileName}  # DisplayString, access=r
+  image_minor: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwMinorRelNum}  # Integer32, access=r
 }
 ```
 </details>
@@ -7957,16 +7958,16 @@ MOPS {
 
 ```
 SNMP {
-  bootcode: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.1, method: get}  # DisplayString, access=r
-  image_location: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.1}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
-  image_type: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.2}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
   allow_unsigned: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  bootcode: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.1, method: get}  # DisplayString, access=r
+  image_name: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.4}  # DisplayString, access=r
+  image_type: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.2}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
+  dev_mode: {oid: 1.3.6.1.4.1.248.11.10.1.3.2.2, method: get}  # HmEnabledStatus, access=r, allowed=[True, False]
+  image_location: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.1}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
   image_major: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.6}  # Integer32, access=r
   image_bugfix: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.8}  # Integer32, access=r
-  image_minor: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.7}  # Integer32, access=r
-  dev_mode: {oid: 1.3.6.1.4.1.248.11.10.1.3.2.2, method: get}  # HmEnabledStatus, access=r, allowed=[True, False]
   secure_boot: {oid: 1.3.6.1.4.1.248.11.10.1.3.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  image_name: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.4}  # DisplayString, access=r
+  image_minor: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.7}  # Integer32, access=r
 }
 ```
 </details>
@@ -7975,8 +7976,8 @@ SNMP {
 
 ```
 SSH {
-  bootcode: {read: "show system info"}  # DisplayString, access=r
   allow_unsigned: {read: "show firmware allow-unsigned", write: "firmware allow-unsigned {value}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  bootcode: {read: "show system info"}  # DisplayString, access=r
   dev_mode: {read: "show system info"}  # HmEnabledStatus, access=r, allowed=[True, False]
   secure_boot: {read: "show system info"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
@@ -7991,16 +7992,16 @@ SSH {
 
 ```
 MOPS {
-  bootcode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareVersionGroup.hm2DevMgmtSwVersBootcode}  # DisplayString, access=r
-  image_location: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileLocation}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
-  image_type: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileType}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
   allow_unsigned: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareVersionGroup.hm2DevMgmtSwVersAllowUnsigned}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  image_name: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileName}  # DisplayString, access=r
+  bootcode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareVersionGroup.hm2DevMgmtSwVersBootcode}  # DisplayString, access=r
+  image_type: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileType}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
+  dev_mode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareSecureBootGroup.hm2DevMgmtSwSecureBootDevmodeStatus}  # HmEnabledStatus, access=r, allowed=[True, False]
+  image_location: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileLocation}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
   image_major: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwMajorRelNum}  # Integer32, access=r
   image_bugfix: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwBugfixRelNum}  # Integer32, access=r
-  image_minor: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwMinorRelNum}  # Integer32, access=r
-  dev_mode: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareSecureBootGroup.hm2DevMgmtSwSecureBootDevmodeStatus}  # HmEnabledStatus, access=r, allowed=[True, False]
   secure_boot: {HM2-DEVMGMT-MIB / hm2DeviceMgmtSoftwareSecureBootGroup.hm2DevMgmtSwSecureBootAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  image_name: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwFileName}  # DisplayString, access=r
+  image_minor: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwMinorRelNum}  # Integer32, access=r
 }
 ```
 </details>
@@ -8009,16 +8010,16 @@ MOPS {
 
 ```
 SNMP {
-  bootcode: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.1, method: get}  # DisplayString, access=r
-  image_location: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.1}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
-  image_type: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.2}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
   allow_unsigned: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  image_name: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.4}  # DisplayString, access=r
+  bootcode: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.1, method: get}  # DisplayString, access=r
+  image_type: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.2}  # INTEGER, access=r, allowed=['firmware', 'applet', 'logic']
+  dev_mode: {oid: 1.3.6.1.4.1.248.11.10.1.3.2.2, method: get}  # HmEnabledStatus, access=r, allowed=[True, False]
+  image_location: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.1}  # INTEGER, access=r, allowed=['ram', 'flash', 'sd-card', 'usb']
   image_major: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.6}  # Integer32, access=r
   image_bugfix: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.8}  # Integer32, access=r
-  image_minor: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.7}  # Integer32, access=r
-  dev_mode: {oid: 1.3.6.1.4.1.248.11.10.1.3.2.2, method: get}  # HmEnabledStatus, access=r, allowed=[True, False]
   secure_boot: {oid: 1.3.6.1.4.1.248.11.10.1.3.2.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  image_name: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.4}  # DisplayString, access=r
+  image_minor: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.7}  # Integer32, access=r
 }
 ```
 </details>
@@ -8027,8 +8028,8 @@ SNMP {
 
 ```
 SSH {
-  bootcode: {read: "show system info"}  # DisplayString, access=r
   allow_unsigned: {read: "show firmware allow-unsigned", write: "firmware allow-unsigned {value}"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  bootcode: {read: "show system info"}  # DisplayString, access=r
   dev_mode: {read: "show system info"}  # HmEnabledStatus, access=r, allowed=[True, False]
   secure_boot: {read: "show system info"}  # HmEnabledStatus, access=ru, allowed=[True, False]
 }
@@ -8058,11 +8059,11 @@ get_syslog() -> {
 
 ```
 MOPS {
+  servers: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
+  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
+  enabled: {HM2-LOGGING-MIB / hm2LogSyslogGroup.hm2LogSyslogAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   transport: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerTransportType}  # INTEGER, access=ru
   severity: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLevelUpto}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
-  servers: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
-  enabled: {HM2-LOGGING-MIB / hm2LogSyslogGroup.hm2LogSyslogAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerUdpPort}  # InetPortNumber, access=ru
 }
 ```
@@ -8072,11 +8073,11 @@ MOPS {
 
 ```
 SNMP {
+  servers: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
+  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
+  enabled: {oid: 1.3.6.1.4.1.248.11.23.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   transport: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.8}  # INTEGER, access=ru
   severity: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.5}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
-  servers: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
-  enabled: {oid: 1.3.6.1.4.1.248.11.23.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.4}  # InetPortNumber, access=ru
 }
 ```
@@ -8086,11 +8087,11 @@ SNMP {
 
 ```
 SSH {
+  servers: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
+  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
+  enabled: {read: "show logging syslog", write: "{'' if value else 'no '}logging syslog operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   transport: {read: "show logging host"}  # INTEGER, access=ru
   severity: {read: "show logging host"}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
-  servers: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
-  enabled: {read: "show logging syslog", write: "{'' if value else 'no '}logging syslog operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   port: {read: "show logging host"}  # InetPortNumber, access=ru
 }
 ```
@@ -8104,16 +8105,16 @@ SSH {
 
 ```
 MOPS {
-  transport: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerTransportType}  # INTEGER, access=ru
-  severity: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLevelUpto}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
   servers: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
+  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
   enabled: {HM2-LOGGING-MIB / hm2LogSyslogGroup.hm2LogSyslogAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  log_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLogType}  # INTEGER, access=ru
-  port: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerUdpPort}  # InetPortNumber, access=ru
-  server_index: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIndex}  # Integer32, access=r, range=1–8
-  server_row_status: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerRowStatus}  # RowStatus, access=crud
   addr_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddrType}  # InetAddressType, access=ru
+  server_index: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIndex}  # Integer32, access=r, range=1–8
+  transport: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerTransportType}  # INTEGER, access=ru
+  server_row_status: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerRowStatus}  # RowStatus, access=crud
+  severity: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLevelUpto}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
+  port: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerUdpPort}  # InetPortNumber, access=ru
+  log_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLogType}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8122,16 +8123,16 @@ MOPS {
 
 ```
 SNMP {
-  transport: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.8}  # INTEGER, access=ru
-  severity: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.5}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
   servers: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
+  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
   enabled: {oid: 1.3.6.1.4.1.248.11.23.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  log_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.6}  # INTEGER, access=ru
-  port: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.4}  # InetPortNumber, access=ru
-  server_index: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.1}  # Integer32, access=r, range=1–8
-  server_row_status: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.7}  # RowStatus, access=crud
   addr_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.2}  # InetAddressType, access=ru
+  server_index: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.1}  # Integer32, access=r, range=1–8
+  transport: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.8}  # INTEGER, access=ru
+  server_row_status: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.7}  # RowStatus, access=crud
+  severity: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.5}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
+  port: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.4}  # InetPortNumber, access=ru
+  log_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.6}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8140,15 +8141,15 @@ SNMP {
 
 ```
 SSH {
-  transport: {read: "show logging host"}  # INTEGER, access=ru
-  severity: {read: "show logging host"}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
   servers: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
+  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
   enabled: {read: "show logging syslog", write: "{'' if value else 'no '}logging syslog operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  log_type: {read: "show logging host"}  # INTEGER, access=ru
-  port: {read: "show logging host"}  # InetPortNumber, access=ru
   server_index: {read: "show logging host"}  # Integer32, access=r, range=1–8
+  transport: {read: "show logging host"}  # INTEGER, access=ru
   server_row_status: {write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # RowStatus, access=crud
+  severity: {read: "show logging host"}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
+  port: {read: "show logging host"}  # InetPortNumber, access=ru
+  log_type: {read: "show logging host"}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8173,12 +8174,12 @@ create_syslog_server() -> {
 
 ```
 MOPS {
+  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
+  addr_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddrType}  # InetAddressType, access=ru
   transport: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerTransportType}  # INTEGER, access=ru
   severity: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLevelUpto}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
-  log_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLogType}  # INTEGER, access=ru
   port: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerUdpPort}  # InetPortNumber, access=ru
-  addr_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddrType}  # InetAddressType, access=ru
+  log_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLogType}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8187,12 +8188,12 @@ MOPS {
 
 ```
 SNMP {
+  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
+  addr_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.2}  # InetAddressType, access=ru
   transport: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.8}  # INTEGER, access=ru
   severity: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.5}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
-  log_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.6}  # INTEGER, access=ru
   port: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.4}  # InetPortNumber, access=ru
-  addr_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.2}  # InetAddressType, access=ru
+  log_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.6}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8201,11 +8202,11 @@ SNMP {
 
 ```
 SSH {
+  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
   transport: {read: "show logging host"}  # INTEGER, access=ru
   severity: {read: "show logging host"}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
-  log_type: {read: "show logging host"}  # INTEGER, access=ru
   port: {read: "show logging host"}  # InetPortNumber, access=ru
+  log_type: {read: "show logging host"}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8218,16 +8219,16 @@ SSH {
 
 ```
 MOPS {
-  transport: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerTransportType}  # INTEGER, access=ru
-  severity: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLevelUpto}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
   servers: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
+  ip: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddr}  # InetAddress, access=ru
   enabled: {HM2-LOGGING-MIB / hm2LogSyslogGroup.hm2LogSyslogAdminStatus}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  log_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLogType}  # INTEGER, access=ru
-  port: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerUdpPort}  # InetPortNumber, access=ru
-  server_index: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIndex}  # Integer32, access=r, range=1–8
-  server_row_status: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerRowStatus}  # RowStatus, access=crud
   addr_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIPAddrType}  # InetAddressType, access=ru
+  server_index: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerIndex}  # Integer32, access=r, range=1–8
+  transport: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerTransportType}  # INTEGER, access=ru
+  server_row_status: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerRowStatus}  # RowStatus, access=crud
+  severity: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLevelUpto}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
+  port: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerUdpPort}  # InetPortNumber, access=ru
+  log_type: {HM2-LOGGING-MIB / hm2LogSyslogServerEntry.hm2LogSyslogServerLogType}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8236,16 +8237,16 @@ MOPS {
 
 ```
 SNMP {
-  transport: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.8}  # INTEGER, access=ru
-  severity: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.5}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
   servers: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
+  ip: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.3}  # InetAddress, access=ru
   enabled: {oid: 1.3.6.1.4.1.248.11.23.1.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  log_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.6}  # INTEGER, access=ru
-  port: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.4}  # InetPortNumber, access=ru
-  server_index: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.1}  # Integer32, access=r, range=1–8
-  server_row_status: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.7}  # RowStatus, access=crud
   addr_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.2}  # InetAddressType, access=ru
+  server_index: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.1}  # Integer32, access=r, range=1–8
+  transport: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.8}  # INTEGER, access=ru
+  server_row_status: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.7}  # RowStatus, access=crud
+  severity: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.5}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
+  port: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.4}  # InetPortNumber, access=ru
+  log_type: {oid: 1.3.6.1.4.1.248.11.23.1.5.10.1.6}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8254,15 +8255,15 @@ SNMP {
 
 ```
 SSH {
-  transport: {read: "show logging host"}  # INTEGER, access=ru
-  severity: {read: "show logging host"}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
-  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
   servers: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
+  ip: {read: "show logging host", write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # InetAddress, access=ru
   enabled: {read: "show logging syslog", write: "{'' if value else 'no '}logging syslog operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  log_type: {read: "show logging host"}  # INTEGER, access=ru
-  port: {read: "show logging host"}  # InetPortNumber, access=ru
   server_index: {read: "show logging host"}  # Integer32, access=r, range=1–8
+  transport: {read: "show logging host"}  # INTEGER, access=ru
   server_row_status: {write: "logging host add {index} addr {ip} port {port} severity {severity}"}  # RowStatus, access=crud
+  severity: {read: "show logging host"}  # INTEGER, access=ru, allowed=['alert', 'critical', 'error', 'warning', 'notice', 'info', 'debug']
+  port: {read: "show logging host"}  # InetPortNumber, access=ru
+  log_type: {read: "show logging host"}  # INTEGER, access=ru
 }
 ```
 </details>
@@ -8291,10 +8292,10 @@ get_system_info() -> {
 
 ```
 MOPS {
+  uptime: {SNMPv2-MIB / system.sysUpTime}  # TimeTicks, access=r
+  hostname: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
   contact: {SNMPv2-MIB / system.sysContact}  # DisplayString, access=ru, range=0–255
   location: {SNMPv2-MIB / system.sysLocation}  # DisplayString, access=ru, range=0–255
-  hostname: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
-  uptime: {SNMPv2-MIB / system.sysUpTime}  # TimeTicks, access=r
 }
 ```
 </details>
@@ -8303,10 +8304,10 @@ MOPS {
 
 ```
 SNMP {
+  uptime: {oid: 1.3.6.1.2.1.1.3, method: get}  # TimeTicks, access=r
+  hostname: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
   contact: {oid: 1.3.6.1.2.1.1.4, method: get}  # DisplayString, access=ru, range=0–255
   location: {oid: 1.3.6.1.2.1.1.6, method: get}  # DisplayString, access=ru, range=0–255
-  hostname: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
-  uptime: {oid: 1.3.6.1.2.1.1.3, method: get}  # TimeTicks, access=r
 }
 ```
 </details>
@@ -8315,9 +8316,9 @@ SNMP {
 
 ```
 SSH {
+  hostname: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
   contact: {read: "show system info", write: "system contact {value}"}  # DisplayString, access=ru, range=0–255
   location: {read: "show system info", write: "system location {value}"}  # DisplayString, access=ru, range=0–255
-  hostname: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
 }
 ```
 </details>
@@ -8344,12 +8345,12 @@ get_facts() -> {
 
 ```
 MOPS {
-  model: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtProductDescr}  # DisplayString, access=r
-  interface_list: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  uptime: {SNMPv2-MIB / system.sysUpTime}  # TimeTicks, access=r
-  hostname: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
-  os_version: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwVersion}  # DisplayString, access=r
   serial_number: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtSerialNumber}  # DisplayString, access=r
+  interface_list: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  os_version: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwVersion}  # DisplayString, access=r
+  hostname: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
+  uptime: {SNMPv2-MIB / system.sysUpTime}  # TimeTicks, access=r
+  model: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtProductDescr}  # DisplayString, access=r
 }
 ```
 </details>
@@ -8358,12 +8359,12 @@ MOPS {
 
 ```
 SNMP {
-  model: {oid: 1.3.6.1.4.1.248.11.10.1.1.2, method: get}  # DisplayString, access=r
-  interface_list: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  uptime: {oid: 1.3.6.1.2.1.1.3, method: get}  # TimeTicks, access=r
-  hostname: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
-  os_version: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.5}  # DisplayString, access=r
   serial_number: {oid: 1.3.6.1.4.1.248.11.10.1.1.3, method: get}  # DisplayString, access=r
+  interface_list: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  os_version: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.5}  # DisplayString, access=r
+  hostname: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
+  uptime: {oid: 1.3.6.1.2.1.1.3, method: get}  # TimeTicks, access=r
+  model: {oid: 1.3.6.1.4.1.248.11.10.1.1.2, method: get}  # DisplayString, access=r
 }
 ```
 </details>
@@ -8372,11 +8373,11 @@ SNMP {
 
 ```
 SSH {
-  model: {read: "show system info"}  # DisplayString, access=r
-  interface_list: {read: "show port"}  # DisplayString, access=r
-  hostname: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
-  os_version: {read: "show system info"}  # DisplayString, access=r
   serial_number: {read: "show system info"}  # DisplayString, access=r
+  interface_list: {read: "show port"}  # DisplayString, access=r
+  os_version: {read: "show system info"}  # DisplayString, access=r
+  hostname: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
+  model: {read: "show system info"}  # DisplayString, access=r
 }
 ```
 </details>
@@ -8442,10 +8443,10 @@ get_system_health() -> {
 
 ```
 MOPS {
-  product_description: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtProductDescr}  # DisplayString, access=r
   hardware_version: {HM2-DEVMGMT-MIB / hm2DeviceMgmtHardwareGroup.hm2DevMgmtHwVersion}  # DisplayString, access=r
-  temperature: {HM2-DEVMGMT-MIB / hm2DeviceMgmtTemperatureGroup.hm2DevMgmtTemperature}  # Integer32, access=r
   humidity: {HM2-DEVMGMT-MIB / hm2DeviceMgmtHumidityGroup.hm2DevMgmtHumidity}  # Unsigned32, access=r, range=0–100
+  product_description: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtProductDescr}  # DisplayString, access=r
+  temperature: {HM2-DEVMGMT-MIB / hm2DeviceMgmtTemperatureGroup.hm2DevMgmtTemperature}  # Integer32, access=r
 }
 ```
 </details>
@@ -8454,10 +8455,10 @@ MOPS {
 
 ```
 SNMP {
-  product_description: {oid: 1.3.6.1.4.1.248.11.10.1.1.2, method: get}  # DisplayString, access=r
   hardware_version: {oid: 1.3.6.1.4.1.248.11.10.1.4.1, method: get}  # DisplayString, access=r
-  temperature: {oid: 1.3.6.1.4.1.248.11.10.1.5.1, method: get}  # Integer32, access=r
   humidity: {oid: 1.3.6.1.4.1.248.11.10.1.12.1, method: get}  # Unsigned32, access=r, range=0–100
+  product_description: {oid: 1.3.6.1.4.1.248.11.10.1.1.2, method: get}  # DisplayString, access=r
+  temperature: {oid: 1.3.6.1.4.1.248.11.10.1.5.1, method: get}  # Integer32, access=r
 }
 ```
 </details>
@@ -8466,10 +8467,10 @@ SNMP {
 
 ```
 SSH {
-  product_description: {read: "show system info"}  # DisplayString, access=r
   hardware_version: {read: "show system info"}  # DisplayString, access=r
-  temperature: {read: "show system info"}  # Integer32, access=r
   humidity: {read: "show system info"}  # Unsigned32, access=r, range=0–100
+  product_description: {read: "show system info"}  # DisplayString, access=r
+  temperature: {read: "show system info"}  # Integer32, access=r
 }
 ```
 </details>
@@ -8483,17 +8484,17 @@ SSH {
 ```
 MOPS {
   product_description: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtProductDescr}  # DisplayString, access=r
-  location: {SNMPv2-MIB / system.sysLocation}  # DisplayString, access=ru, range=0–255
-  model: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtProductDescr}  # DisplayString, access=r
+  serial_number: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtSerialNumber}  # DisplayString, access=r
   interface_list: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
+  location: {SNMPv2-MIB / system.sysLocation}  # DisplayString, access=ru, range=0–255
+  temperature: {HM2-DEVMGMT-MIB / hm2DeviceMgmtTemperatureGroup.hm2DevMgmtTemperature}  # Integer32, access=r
+  contact: {SNMPv2-MIB / system.sysContact}  # DisplayString, access=ru, range=0–255
+  os_version: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwVersion}  # DisplayString, access=r
+  hardware_version: {HM2-DEVMGMT-MIB / hm2DeviceMgmtHardwareGroup.hm2DevMgmtHwVersion}  # DisplayString, access=r
+  hostname: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
   humidity: {HM2-DEVMGMT-MIB / hm2DeviceMgmtHumidityGroup.hm2DevMgmtHumidity}  # Unsigned32, access=r, range=0–100
   uptime: {SNMPv2-MIB / system.sysUpTime}  # TimeTicks, access=r
-  hostname: {SNMPv2-MIB / system.sysName}  # DisplayString, access=ru, range=0–255
-  hardware_version: {HM2-DEVMGMT-MIB / hm2DeviceMgmtHardwareGroup.hm2DevMgmtHwVersion}  # DisplayString, access=r
-  os_version: {HM2-DEVMGMT-MIB / hm2DevMgmtSwVersEntry.hm2DevMgmtSwVersion}  # DisplayString, access=r
-  temperature: {HM2-DEVMGMT-MIB / hm2DeviceMgmtTemperatureGroup.hm2DevMgmtTemperature}  # Integer32, access=r
-  serial_number: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtSerialNumber}  # DisplayString, access=r
-  contact: {SNMPv2-MIB / system.sysContact}  # DisplayString, access=ru, range=0–255
+  model: {HM2-DEVMGMT-MIB / hm2DeviceMgmtGroup.hm2DevMgmtProductDescr}  # DisplayString, access=r
 }
 ```
 </details>
@@ -8503,17 +8504,17 @@ MOPS {
 ```
 SNMP {
   product_description: {oid: 1.3.6.1.4.1.248.11.10.1.1.2, method: get}  # DisplayString, access=r
-  location: {oid: 1.3.6.1.2.1.1.6, method: get}  # DisplayString, access=ru, range=0–255
-  model: {oid: 1.3.6.1.4.1.248.11.10.1.1.2, method: get}  # DisplayString, access=r
+  serial_number: {oid: 1.3.6.1.4.1.248.11.10.1.1.3, method: get}  # DisplayString, access=r
   interface_list: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
+  location: {oid: 1.3.6.1.2.1.1.6, method: get}  # DisplayString, access=ru, range=0–255
+  temperature: {oid: 1.3.6.1.4.1.248.11.10.1.5.1, method: get}  # Integer32, access=r
+  contact: {oid: 1.3.6.1.2.1.1.4, method: get}  # DisplayString, access=ru, range=0–255
+  os_version: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.5}  # DisplayString, access=r
+  hardware_version: {oid: 1.3.6.1.4.1.248.11.10.1.4.1, method: get}  # DisplayString, access=r
+  hostname: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
   humidity: {oid: 1.3.6.1.4.1.248.11.10.1.12.1, method: get}  # Unsigned32, access=r, range=0–100
   uptime: {oid: 1.3.6.1.2.1.1.3, method: get}  # TimeTicks, access=r
-  hostname: {oid: 1.3.6.1.2.1.1.5, method: get}  # DisplayString, access=ru, range=0–255
-  hardware_version: {oid: 1.3.6.1.4.1.248.11.10.1.4.1, method: get}  # DisplayString, access=r
-  os_version: {oid: 1.3.6.1.4.1.248.11.10.1.3.1.10.1.5}  # DisplayString, access=r
-  temperature: {oid: 1.3.6.1.4.1.248.11.10.1.5.1, method: get}  # Integer32, access=r
-  serial_number: {oid: 1.3.6.1.4.1.248.11.10.1.1.3, method: get}  # DisplayString, access=r
-  contact: {oid: 1.3.6.1.2.1.1.4, method: get}  # DisplayString, access=ru, range=0–255
+  model: {oid: 1.3.6.1.4.1.248.11.10.1.1.2, method: get}  # DisplayString, access=r
 }
 ```
 </details>
@@ -8523,16 +8524,16 @@ SNMP {
 ```
 SSH {
   product_description: {read: "show system info"}  # DisplayString, access=r
-  location: {read: "show system info", write: "system location {value}"}  # DisplayString, access=ru, range=0–255
-  model: {read: "show system info"}  # DisplayString, access=r
-  interface_list: {read: "show port"}  # DisplayString, access=r
-  humidity: {read: "show system info"}  # Unsigned32, access=r, range=0–100
-  hostname: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
-  hardware_version: {read: "show system info"}  # DisplayString, access=r
-  os_version: {read: "show system info"}  # DisplayString, access=r
-  temperature: {read: "show system info"}  # Integer32, access=r
   serial_number: {read: "show system info"}  # DisplayString, access=r
+  interface_list: {read: "show port"}  # DisplayString, access=r
+  location: {read: "show system info", write: "system location {value}"}  # DisplayString, access=ru, range=0–255
+  temperature: {read: "show system info"}  # Integer32, access=r
   contact: {read: "show system info", write: "system contact {value}"}  # DisplayString, access=ru, range=0–255
+  os_version: {read: "show system info"}  # DisplayString, access=r
+  hardware_version: {read: "show system info"}  # DisplayString, access=r
+  hostname: {read: "show system info", write: "system name {value}"}  # DisplayString, access=ru, range=0–255
+  humidity: {read: "show system info"}  # Unsigned32, access=r, range=0–100
+  model: {read: "show system info"}  # DisplayString, access=r
 }
 ```
 </details>
@@ -8564,13 +8565,13 @@ get_device_monitor() -> {
 
 ```
 MOPS {
-  sec_status: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusIndex}  # Integer32, access=r
-  fan_status: {HM2-FAN-MIB / hm2FanMgmtEntry.hm2FanMgmtStatus}  # Hm2FanModuleStatus, access=r
-  monitor_status: {HM2-DIAGNOSTIC-MIB / hm2DevMonStatusEntry.hm2DevMonStatusIndex}  # Integer32, access=r
-  monitor_trap: {HM2-DIAGNOSTIC-MIB / hm2DevMonCommonEntry.hm2DevMonTrapCause}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
   monitor_state: {HM2-DIAGNOSTIC-MIB / hm2DevMonCommonEntry.hm2DevMonOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
-  sec_state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
+  fan_status: {HM2-FAN-MIB / hm2FanMgmtEntry.hm2FanMgmtStatus}  # Hm2FanModuleStatus, access=r
   sec_trap: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecTrapCause}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
+  monitor_status: {HM2-DIAGNOSTIC-MIB / hm2DevMonStatusEntry.hm2DevMonStatusIndex}  # Integer32, access=r
+  sec_state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
+  monitor_trap: {HM2-DIAGNOSTIC-MIB / hm2DevMonCommonEntry.hm2DevMonTrapCause}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
+  sec_status: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusIndex}  # Integer32, access=r
 }
 ```
 </details>
@@ -8579,13 +8580,13 @@ MOPS {
 
 ```
 SNMP {
-  sec_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.1}  # Integer32, access=r
-  fan_status: {oid: 1.3.6.1.4.1.248.11.13.1.1.3.1.2}  # Hm2FanModuleStatus, access=r
-  monitor_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.1}  # Integer32, access=r
-  monitor_trap: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.3}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
   monitor_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.5}  # INTEGER, access=r, allowed=['noerror', 'error']
-  sec_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
+  fan_status: {oid: 1.3.6.1.4.1.248.11.13.1.1.3.1.2}  # Hm2FanModuleStatus, access=r
   sec_trap: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.2, method: get}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
+  monitor_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.1}  # Integer32, access=r
+  sec_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
+  monitor_trap: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.3}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
+  sec_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.2}  # Integer32, access=r
 }
 ```
 </details>
@@ -8620,13 +8621,13 @@ get_devsec_status() -> {
 
 ```
 MOPS {
-  sec_status: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusIndex}  # Integer32, access=r
-  fan_status: {HM2-FAN-MIB / hm2FanMgmtEntry.hm2FanMgmtStatus}  # Hm2FanModuleStatus, access=r
-  monitor_status: {HM2-DIAGNOSTIC-MIB / hm2DevMonStatusEntry.hm2DevMonStatusIndex}  # Integer32, access=r
-  monitor_trap: {HM2-DIAGNOSTIC-MIB / hm2DevMonCommonEntry.hm2DevMonTrapCause}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
   monitor_state: {HM2-DIAGNOSTIC-MIB / hm2DevMonCommonEntry.hm2DevMonOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
-  sec_state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
+  fan_status: {HM2-FAN-MIB / hm2FanMgmtEntry.hm2FanMgmtStatus}  # Hm2FanModuleStatus, access=r
   sec_trap: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecTrapCause}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
+  monitor_status: {HM2-DIAGNOSTIC-MIB / hm2DevMonStatusEntry.hm2DevMonStatusIndex}  # Integer32, access=r
+  sec_state: {HM2-DIAGNOSTIC-MIB / hm2DevSecConfigGroup.hm2DevSecOperState}  # INTEGER, access=r, allowed=['noerror', 'error']
+  monitor_trap: {HM2-DIAGNOSTIC-MIB / hm2DevMonCommonEntry.hm2DevMonTrapCause}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
+  sec_status: {HM2-DIAGNOSTIC-MIB / hm2DevSecStatusEntry.hm2DevSecStatusIndex}  # Integer32, access=r
 }
 ```
 </details>
@@ -8635,13 +8636,13 @@ MOPS {
 
 ```
 SNMP {
-  sec_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.1}  # Integer32, access=r
-  fan_status: {oid: 1.3.6.1.4.1.248.11.13.1.1.3.1.2}  # Hm2FanModuleStatus, access=r
-  monitor_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.1}  # Integer32, access=r
-  monitor_trap: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.3}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
   monitor_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.5}  # INTEGER, access=r, allowed=['noerror', 'error']
-  sec_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
+  fan_status: {oid: 1.3.6.1.4.1.248.11.13.1.1.3.1.2}  # Hm2FanModuleStatus, access=r
   sec_trap: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.2, method: get}  # INTEGER, access=r, allowed=['none', 'password-change', 'password-min-length', 'password-policy-not-configured', 'password-policy-inactive', 'telnet-enabled', 'http-enabled', 'snmp-unsecure', 'sysmon-enabled', 'ext-nvm-update-enabled', 'no-link', 'hidisc-enabled', 'ext-nvm-config-load-unsecure', 'iec61850-mms-enabled', 'https-certificate-warning', 'modbus-tcp-enabled', 'ethernet-ip-enabled', 'profinet-io-enabled', 'pml-disabled', 'secure-boot-disabled', 'dev-mode-enabled']
+  monitor_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.10.1.1}  # Integer32, access=r
+  sec_state: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.1.4, method: get}  # INTEGER, access=r, allowed=['noerror', 'error']
+  monitor_trap: {oid: 1.3.6.1.4.1.248.11.22.1.3.2.1.1.3}  # INTEGER, access=r, allowed=['none', 'power-supply', 'link-failure', 'temperature', 'fan-failure', 'module-removal', 'ext-nvm-removal', 'ext-nvm-not-in-sync', 'ring-redundancy', 'humidity', 'stp-port-blocked']
+  sec_status: {oid: 1.3.6.1.4.1.248.11.22.1.3.3.10.1.2}  # Integer32, access=r
 }
 ```
 </details>
@@ -8693,13 +8694,13 @@ get_users() -> {
 
 ```
 MOPS {
-  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_enc: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncType}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
-  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
-  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
   level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
+  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
   snmp_auth: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthType}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
 }
 ```
 </details>
@@ -8708,13 +8709,13 @@ MOPS {
 
 ```
 SNMP {
-  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_enc: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
-  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
-  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
   level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
+  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
   snmp_auth: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.7}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
 }
 ```
 </details>
@@ -8723,12 +8724,12 @@ SNMP {
 
 ```
 SSH {
-  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
   snmp_enc: {read: "show users"}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  locked: {read: "show users"}  # TruthValue, access=ru, allowed=[True, False]
-  username: {read: "show users"}  # SnmpAdminString, access=r, range=1–32
   level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
+  locked: {read: "show users"}  # TruthValue, access=ru, allowed=[True, False]
   snmp_auth: {read: "show users"}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  username: {read: "show users"}  # SnmpAdminString, access=r, range=1–32
 }
 ```
 </details>
@@ -8737,45 +8738,53 @@ SSH {
 
 **Update** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (14/18 attrs)</summary>
+<details><summary>MOPS sources (18/18 attrs)</summary>
 
 ```
 MOPS {
-  snmp_enc_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncPassword}  # DisplayString, access=ru, range=0–64
-  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_auth_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthPassword}  # DisplayString, access=ru, range=0–64
-  lockout_time: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttemptsTimePeriod}  # Integer32, access=ru, range=0–60
   max_attempts: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttempts}  # Integer32, access=ru, range=0–5
-  snmp_enc: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncType}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
-  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
-  password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPassword}  # DisplayString, access=ru, range=0–64
-  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
-  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
-  level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  min_numeric: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinNumericNumbers}  # Integer32, access=ru, range=0–16
+  snmp_enc_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncPassword}  # DisplayString, access=ru, range=0–64
   snmp_auth: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthType}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  snmp_enc: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncType}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLowerCase}  # Integer32, access=ru, range=0–16
+  min_uppercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinUpperCase}  # Integer32, access=ru, range=0–16
+  lockout_time: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttemptsTimePeriod}  # Integer32, access=ru, range=0–60
+  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
+  password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPassword}  # DisplayString, access=ru, range=0–64
+  snmp_auth_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthPassword}  # DisplayString, access=ru, range=0–64
+  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
+  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
+  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinSpecialCharacters}  # Integer32, access=ru, range=0–16
+  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
   user_status: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserStatus}  # RowStatus, access=crud
 }
 ```
 </details>
 
-<details><summary>SNMP sources (14/18 attrs)</summary>
+<details><summary>SNMP sources (18/18 attrs)</summary>
 
 ```
 SNMP {
-  snmp_enc_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.11}  # DisplayString, access=ru, range=0–64
-  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_auth_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.10}  # DisplayString, access=ru, range=0–64
-  lockout_time: {oid: 1.3.6.1.4.1.248.11.24.1.2.7, method: get}  # Integer32, access=ru, range=0–60
   max_attempts: {oid: 1.3.6.1.4.1.248.11.24.1.2.2, method: get}  # Integer32, access=ru, range=0–5
-  snmp_enc: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
-  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
-  password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2}  # DisplayString, access=ru, range=0–64
-  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
-  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
-  level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  min_numeric: {oid: 1.3.6.1.4.1.248.11.24.1.2.5, method: get}  # Integer32, access=ru, range=0–16
+  snmp_enc_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.11}  # DisplayString, access=ru, range=0–64
   snmp_auth: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.7}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  snmp_enc: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.4, method: get}  # Integer32, access=ru, range=0–16
+  min_uppercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.3, method: get}  # Integer32, access=ru, range=0–16
+  lockout_time: {oid: 1.3.6.1.4.1.248.11.24.1.2.7, method: get}  # Integer32, access=ru, range=0–60
+  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
+  password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2}  # DisplayString, access=ru, range=0–64
+  snmp_auth_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.10}  # DisplayString, access=ru, range=0–64
+  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
+  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
+  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {oid: 1.3.6.1.4.1.248.11.24.1.2.6, method: get}  # Integer32, access=ru, range=0–16
+  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
   user_status: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.9}  # RowStatus, access=crud
 }
 ```
@@ -8785,20 +8794,20 @@ SNMP {
 
 ```
 SSH {
-  min_special: {read: "show passwords"}
-  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  lockout_time: {read: "show passwords"}  # Integer32, access=ru, range=0–60
   max_attempts: {read: "show passwords"}  # Integer32, access=ru, range=0–5
-  min_numeric: {read: "show passwords"}
+  min_numeric: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  snmp_auth: {read: "show users"}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
   snmp_enc: {read: "show users"}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  min_uppercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  lockout_time: {read: "show passwords"}  # Integer32, access=ru, range=0–60
   locked: {read: "show users"}  # TruthValue, access=ru, allowed=[True, False]
   password: {write: "users password {index} {password}"}  # DisplayString, access=ru, range=0–64
   min_length: {read: "show passwords"}  # Integer32, access=ru, range=1–64
-  min_lowercase: {read: "show passwords"}
-  min_uppercase: {read: "show passwords"}
+  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {read: "show passwords"}  # Integer32, access=ru, range=0–16
   username: {read: "show users"}  # SnmpAdminString, access=r, range=1–32
-  level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
-  snmp_auth: {read: "show users"}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
   user_status: {write: "users add {username}"}  # RowStatus, access=crud
 }
 ```
@@ -8820,8 +8829,8 @@ create_user() -> {
 
 ```
 MOPS {
-  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
   level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
   password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPassword}  # DisplayString, access=ru, range=0–64
 }
 ```
@@ -8831,8 +8840,8 @@ MOPS {
 
 ```
 SNMP {
-  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
   level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
   password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2}  # DisplayString, access=ru, range=0–64
 }
 ```
@@ -8842,8 +8851,8 @@ SNMP {
 
 ```
 SSH {
-  username: {read: "show users"}  # SnmpAdminString, access=r, range=1–32
   level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
+  username: {read: "show users"}  # SnmpAdminString, access=r, range=1–32
   password: {write: "users password {index} {password}"}  # DisplayString, access=ru, range=0–64
 }
 ```
@@ -8853,45 +8862,53 @@ SSH {
 
 **Delete** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (14/18 attrs)</summary>
+<details><summary>MOPS sources (18/18 attrs)</summary>
 
 ```
 MOPS {
-  snmp_enc_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncPassword}  # DisplayString, access=ru, range=0–64
-  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_auth_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthPassword}  # DisplayString, access=ru, range=0–64
-  lockout_time: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttemptsTimePeriod}  # Integer32, access=ru, range=0–60
   max_attempts: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttempts}  # Integer32, access=ru, range=0–5
-  snmp_enc: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncType}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
-  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
-  password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPassword}  # DisplayString, access=ru, range=0–64
-  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
-  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
-  level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  min_numeric: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinNumericNumbers}  # Integer32, access=ru, range=0–16
+  snmp_enc_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncPassword}  # DisplayString, access=ru, range=0–64
   snmp_auth: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthType}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  snmp_enc: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncType}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLowerCase}  # Integer32, access=ru, range=0–16
+  min_uppercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinUpperCase}  # Integer32, access=ru, range=0–16
+  lockout_time: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttemptsTimePeriod}  # Integer32, access=ru, range=0–60
+  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
+  password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPassword}  # DisplayString, access=ru, range=0–64
+  snmp_auth_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthPassword}  # DisplayString, access=ru, range=0–64
+  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
+  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
+  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinSpecialCharacters}  # Integer32, access=ru, range=0–16
+  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
   user_status: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserStatus}  # RowStatus, access=crud
 }
 ```
 </details>
 
-<details><summary>SNMP sources (14/18 attrs)</summary>
+<details><summary>SNMP sources (18/18 attrs)</summary>
 
 ```
 SNMP {
-  snmp_enc_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.11}  # DisplayString, access=ru, range=0–64
-  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_auth_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.10}  # DisplayString, access=ru, range=0–64
-  lockout_time: {oid: 1.3.6.1.4.1.248.11.24.1.2.7, method: get}  # Integer32, access=ru, range=0–60
   max_attempts: {oid: 1.3.6.1.4.1.248.11.24.1.2.2, method: get}  # Integer32, access=ru, range=0–5
-  snmp_enc: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
-  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
-  password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2}  # DisplayString, access=ru, range=0–64
-  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
-  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
-  level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  min_numeric: {oid: 1.3.6.1.4.1.248.11.24.1.2.5, method: get}  # Integer32, access=ru, range=0–16
+  snmp_enc_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.11}  # DisplayString, access=ru, range=0–64
   snmp_auth: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.7}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  snmp_enc: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.4, method: get}  # Integer32, access=ru, range=0–16
+  min_uppercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.3, method: get}  # Integer32, access=ru, range=0–16
+  lockout_time: {oid: 1.3.6.1.4.1.248.11.24.1.2.7, method: get}  # Integer32, access=ru, range=0–60
+  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
+  password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2}  # DisplayString, access=ru, range=0–64
+  snmp_auth_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.10}  # DisplayString, access=ru, range=0–64
+  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
+  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
+  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {oid: 1.3.6.1.4.1.248.11.24.1.2.6, method: get}  # Integer32, access=ru, range=0–16
+  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
   user_status: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.9}  # RowStatus, access=crud
 }
 ```
@@ -8901,20 +8918,20 @@ SNMP {
 
 ```
 SSH {
-  min_special: {read: "show passwords"}
-  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  lockout_time: {read: "show passwords"}  # Integer32, access=ru, range=0–60
   max_attempts: {read: "show passwords"}  # Integer32, access=ru, range=0–5
-  min_numeric: {read: "show passwords"}
+  min_numeric: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  snmp_auth: {read: "show users"}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
   snmp_enc: {read: "show users"}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  min_uppercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  lockout_time: {read: "show passwords"}  # Integer32, access=ru, range=0–60
   locked: {read: "show users"}  # TruthValue, access=ru, allowed=[True, False]
   password: {write: "users password {index} {password}"}  # DisplayString, access=ru, range=0–64
   min_length: {read: "show passwords"}  # Integer32, access=ru, range=1–64
-  min_lowercase: {read: "show passwords"}
-  min_uppercase: {read: "show passwords"}
+  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {read: "show passwords"}  # Integer32, access=ru, range=0–16
   username: {read: "show users"}  # SnmpAdminString, access=r, range=1–32
-  level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
-  snmp_auth: {read: "show users"}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
   user_status: {write: "users add {username}"}  # RowStatus, access=crud
 }
 ```
@@ -8929,39 +8946,55 @@ get_login_policy() -> {
     min_length: 8  // int
     max_attempts: 3  // int
     lockout_time: 300  // int
+    min_uppercase: 0  // int
+    min_lowercase: 0  // int
+    min_numeric: 0  // int
+    min_special: 0  // int
 }
 ```
 
 
-<details><summary>MOPS sources (3/3 attrs)</summary>
+<details><summary>MOPS sources (7/7 attrs)</summary>
 
 ```
 MOPS {
-  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
   max_attempts: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttempts}  # Integer32, access=ru, range=0–5
+  min_numeric: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinNumericNumbers}  # Integer32, access=ru, range=0–16
+  min_lowercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLowerCase}  # Integer32, access=ru, range=0–16
+  min_uppercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinUpperCase}  # Integer32, access=ru, range=0–16
   lockout_time: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttemptsTimePeriod}  # Integer32, access=ru, range=0–60
+  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
+  min_special: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinSpecialCharacters}  # Integer32, access=ru, range=0–16
 }
 ```
 </details>
 
-<details><summary>SNMP sources (3/3 attrs)</summary>
+<details><summary>SNMP sources (7/7 attrs)</summary>
 
 ```
 SNMP {
-  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
   max_attempts: {oid: 1.3.6.1.4.1.248.11.24.1.2.2, method: get}  # Integer32, access=ru, range=0–5
+  min_numeric: {oid: 1.3.6.1.4.1.248.11.24.1.2.5, method: get}  # Integer32, access=ru, range=0–16
+  min_lowercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.4, method: get}  # Integer32, access=ru, range=0–16
+  min_uppercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.3, method: get}  # Integer32, access=ru, range=0–16
   lockout_time: {oid: 1.3.6.1.4.1.248.11.24.1.2.7, method: get}  # Integer32, access=ru, range=0–60
+  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
+  min_special: {oid: 1.3.6.1.4.1.248.11.24.1.2.6, method: get}  # Integer32, access=ru, range=0–16
 }
 ```
 </details>
 
-<details><summary>SSH sources (3/3 attrs)</summary>
+<details><summary>SSH sources (7/7 attrs)</summary>
 
 ```
 SSH {
-  min_length: {read: "show passwords"}  # Integer32, access=ru, range=1–64
   max_attempts: {read: "show passwords"}  # Integer32, access=ru, range=0–5
+  min_numeric: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  min_lowercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  min_uppercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
   lockout_time: {read: "show passwords"}  # Integer32, access=ru, range=0–60
+  min_length: {read: "show passwords"}  # Integer32, access=ru, range=1–64
+  min_special: {read: "show passwords"}  # Integer32, access=ru, range=0–16
 }
 ```
 </details>
@@ -8970,45 +9003,53 @@ SSH {
 
 **Update** | **Protocols:** MOPS, SNMP, SSH
 
-<details><summary>MOPS sources (14/18 attrs)</summary>
+<details><summary>MOPS sources (18/18 attrs)</summary>
 
 ```
 MOPS {
-  snmp_enc_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncPassword}  # DisplayString, access=ru, range=0–64
-  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_auth_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthPassword}  # DisplayString, access=ru, range=0–64
-  lockout_time: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttemptsTimePeriod}  # Integer32, access=ru, range=0–60
   max_attempts: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttempts}  # Integer32, access=ru, range=0–5
-  snmp_enc: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncType}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
-  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
-  password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPassword}  # DisplayString, access=ru, range=0–64
-  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
-  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
-  level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  min_numeric: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinNumericNumbers}  # Integer32, access=ru, range=0–16
+  snmp_enc_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncPassword}  # DisplayString, access=ru, range=0–64
   snmp_auth: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthType}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  snmp_enc: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpEncType}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserAccessRole}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLowerCase}  # Integer32, access=ru, range=0–16
+  min_uppercase: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinUpperCase}  # Integer32, access=ru, range=0–16
+  lockout_time: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtLoginAttemptsTimePeriod}  # Integer32, access=ru, range=0–60
+  locked: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserLockoutStatus}  # TruthValue, access=ru, allowed=[True, False]
+  password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPassword}  # DisplayString, access=ru, range=0–64
+  snmp_auth_password: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserSnmpAuthPassword}  # DisplayString, access=ru, range=0–64
+  default_password: {HM2-USERMGMT-MIB / hm2PwdMgmtDefaultPwdStatusEntry.hm2PwdMgmtDefaultPwdStatusUserName}  # SnmpAdminString, access=r
+  min_length: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinLength}  # Integer32, access=ru, range=1–64
+  policy_check: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserPwdPolicyChk}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {HM2-USERMGMT-MIB / hm2PwdMgmtGroup.hm2PwdMgmtMinSpecialCharacters}  # Integer32, access=ru, range=0–16
+  username: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserName}  # SnmpAdminString, access=r, range=1–32
   user_status: {HM2-USERMGMT-MIB / hm2UserConfigEntry.hm2UserStatus}  # RowStatus, access=crud
 }
 ```
 </details>
 
-<details><summary>SNMP sources (14/18 attrs)</summary>
+<details><summary>SNMP sources (18/18 attrs)</summary>
 
 ```
 SNMP {
-  snmp_enc_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.11}  # DisplayString, access=ru, range=0–64
-  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  snmp_auth_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.10}  # DisplayString, access=ru, range=0–64
-  lockout_time: {oid: 1.3.6.1.4.1.248.11.24.1.2.7, method: get}  # Integer32, access=ru, range=0–60
   max_attempts: {oid: 1.3.6.1.4.1.248.11.24.1.2.2, method: get}  # Integer32, access=ru, range=0–5
-  snmp_enc: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
-  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
-  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
-  password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2}  # DisplayString, access=ru, range=0–64
-  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
-  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
-  level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  min_numeric: {oid: 1.3.6.1.4.1.248.11.24.1.2.5, method: get}  # Integer32, access=ru, range=0–16
+  snmp_enc_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.11}  # DisplayString, access=ru, range=0–64
   snmp_auth: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.7}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
+  snmp_enc: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.8}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.3}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.4, method: get}  # Integer32, access=ru, range=0–16
+  min_uppercase: {oid: 1.3.6.1.4.1.248.11.24.1.2.3, method: get}  # Integer32, access=ru, range=0–16
+  lockout_time: {oid: 1.3.6.1.4.1.248.11.24.1.2.7, method: get}  # Integer32, access=ru, range=0–60
+  locked: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.4}  # TruthValue, access=ru, allowed=[True, False]
+  password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.2}  # DisplayString, access=ru, range=0–64
+  snmp_auth_password: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.10}  # DisplayString, access=ru, range=0–64
+  default_password: {oid: 1.3.6.1.4.1.248.11.24.1.2.100.100.1.2}  # SnmpAdminString, access=r
+  min_length: {oid: 1.3.6.1.4.1.248.11.24.1.2.1, method: get}  # Integer32, access=ru, range=1–64
+  policy_check: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.6}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {oid: 1.3.6.1.4.1.248.11.24.1.2.6, method: get}  # Integer32, access=ru, range=0–16
+  username: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.1}  # SnmpAdminString, access=r, range=1–32
   user_status: {oid: 1.3.6.1.4.1.248.11.24.1.1.1.1.9}  # RowStatus, access=crud
 }
 ```
@@ -9018,20 +9059,20 @@ SNMP {
 
 ```
 SSH {
-  min_special: {read: "show passwords"}
-  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  lockout_time: {read: "show passwords"}  # Integer32, access=ru, range=0–60
   max_attempts: {read: "show passwords"}  # Integer32, access=ru, range=0–5
-  min_numeric: {read: "show passwords"}
+  min_numeric: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  snmp_auth: {read: "show users"}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
   snmp_enc: {read: "show users"}  # INTEGER, access=ru, allowed=['none', 'des', 'aesCfb128', 'aesCfb256']
+  level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
+  min_lowercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  min_uppercase: {read: "show passwords"}  # Integer32, access=ru, range=0–16
+  lockout_time: {read: "show passwords"}  # Integer32, access=ru, range=0–60
   locked: {read: "show users"}  # TruthValue, access=ru, allowed=[True, False]
   password: {write: "users password {index} {password}"}  # DisplayString, access=ru, range=0–64
   min_length: {read: "show passwords"}  # Integer32, access=ru, range=1–64
-  min_lowercase: {read: "show passwords"}
-  min_uppercase: {read: "show passwords"}
+  policy_check: {read: "show users"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  min_special: {read: "show passwords"}  # Integer32, access=ru, range=0–16
   username: {read: "show users"}  # SnmpAdminString, access=r, range=1–32
-  level: {read: "show users"}  # Hm2UserAccessRoles, access=ru
-  snmp_auth: {read: "show users"}  # INTEGER, access=ru, allowed=['hmacmd5', 'hmacsha']
   user_status: {write: "users add {username}"}  # RowStatus, access=crud
 }
 ```
@@ -9060,8 +9101,8 @@ get_vlans() -> {
 
 ```
 MOPS {
-  vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
   name: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticName}  # SnmpAdminString, access=ru, range=0–32
+  vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
 }
 ```
 </details>
@@ -9070,8 +9111,8 @@ MOPS {
 
 ```
 SNMP {
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
   name: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # SnmpAdminString, access=ru, range=0–32
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
 }
 ```
 </details>
@@ -9080,8 +9121,8 @@ SNMP {
 
 ```
 SSH {
-  vlan_id: {read: "show vlan brief"}  # VlanIndex, access=r, range=1–4094
   name: {read: "show vlan brief"}  # SnmpAdminString, access=ru, range=0–32
+  vlan_id: {read: "show vlan brief"}  # VlanIndex, access=r, range=1–4094
 }
 ```
 </details>
@@ -9104,7 +9145,7 @@ MOPS {
 
 ```
 SNMP {
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
 }
 ```
 </details>
@@ -9126,16 +9167,16 @@ SSH {
 
 ```
 MOPS {
-  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortIngressFiltering}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
+  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
   egress_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticEgressPorts}  # PortList, access=ru
-  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
   name: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticName}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
+  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
   vlan_status: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticRowStatus}  # RowStatus, access=crud
+  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9144,16 +9185,16 @@ MOPS {
 
 ```
 SNMP {
-  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.3}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
+  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
   egress_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.2}  # PortList, access=ru
-  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
   name: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
+  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
   vlan_status: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.5}  # RowStatus, access=crud
+  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9162,13 +9203,13 @@ SNMP {
 
 ```
 SSH {
-  interface_name: {read: "show port"}  # DisplayString, access=r
-  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {read: "show vlan port"}  # TruthValue, access=ru, allowed=[True, False]
+  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {read: "show vlan brief"}  # VlanIndex, access=r, range=1–4094
-  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   name: {read: "show vlan brief"}  # SnmpAdminString, access=ru, range=0–32
+  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   vlan_status: {write: "vlan add {index}"}  # RowStatus, access=crud
+  interface_name: {read: "show port"}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9181,16 +9222,16 @@ SSH {
 
 ```
 MOPS {
-  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortIngressFiltering}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
+  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
   egress_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticEgressPorts}  # PortList, access=ru
-  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
   name: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticName}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
+  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
   vlan_status: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticRowStatus}  # RowStatus, access=crud
+  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9199,16 +9240,16 @@ MOPS {
 
 ```
 SNMP {
-  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.3}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
+  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
   egress_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.2}  # PortList, access=ru
-  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
   name: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
+  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
   vlan_status: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.5}  # RowStatus, access=crud
+  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9217,13 +9258,13 @@ SNMP {
 
 ```
 SSH {
-  interface_name: {read: "show port"}  # DisplayString, access=r
-  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {read: "show vlan port"}  # TruthValue, access=ru, allowed=[True, False]
+  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {read: "show vlan brief"}  # VlanIndex, access=r, range=1–4094
-  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   name: {read: "show vlan brief"}  # SnmpAdminString, access=ru, range=0–32
+  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   vlan_status: {write: "vlan add {index}"}  # RowStatus, access=crud
+  interface_name: {read: "show port"}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9246,9 +9287,9 @@ get_vlan_ingress() -> {
 
 ```
 MOPS {
+  ingress_filtering: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortIngressFiltering}  # TruthValue, access=ru, allowed=[True, False]
   acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
-  ingress_filtering: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortIngressFiltering}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -9257,9 +9298,9 @@ MOPS {
 
 ```
 SNMP {
+  ingress_filtering: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.3}  # TruthValue, access=ru, allowed=[True, False]
   acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
-  ingress_filtering: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.3}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -9268,9 +9309,9 @@ SNMP {
 
 ```
 SSH {
+  ingress_filtering: {read: "show vlan port"}  # TruthValue, access=ru, allowed=[True, False]
   acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
-  ingress_filtering: {read: "show vlan port"}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -9283,16 +9324,16 @@ SSH {
 
 ```
 MOPS {
-  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortIngressFiltering}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
+  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
   egress_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticEgressPorts}  # PortList, access=ru
-  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
   name: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticName}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
+  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
   vlan_status: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticRowStatus}  # RowStatus, access=crud
+  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9301,16 +9342,16 @@ MOPS {
 
 ```
 SNMP {
-  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.3}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
+  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
   egress_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.2}  # PortList, access=ru
-  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
   name: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
+  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
   vlan_status: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.5}  # RowStatus, access=crud
+  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9319,13 +9360,13 @@ SNMP {
 
 ```
 SSH {
-  interface_name: {read: "show port"}  # DisplayString, access=r
-  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {read: "show vlan port"}  # TruthValue, access=ru, allowed=[True, False]
+  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {read: "show vlan brief"}  # VlanIndex, access=r, range=1–4094
-  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   name: {read: "show vlan brief"}  # SnmpAdminString, access=ru, range=0–32
+  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   vlan_status: {write: "vlan add {index}"}  # RowStatus, access=crud
+  interface_name: {read: "show port"}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9338,16 +9379,16 @@ SSH {
 
 ```
 MOPS {
-  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortIngressFiltering}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
+  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
   egress_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticEgressPorts}  # PortList, access=ru
-  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
   name: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticName}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
+  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
   vlan_status: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticRowStatus}  # RowStatus, access=crud
+  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9356,16 +9397,16 @@ MOPS {
 
 ```
 SNMP {
-  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.3}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
+  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
   egress_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.2}  # PortList, access=ru
-  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
   name: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
+  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
   vlan_status: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.5}  # RowStatus, access=crud
+  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9374,13 +9415,13 @@ SNMP {
 
 ```
 SSH {
-  interface_name: {read: "show port"}  # DisplayString, access=r
-  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {read: "show vlan port"}  # TruthValue, access=ru, allowed=[True, False]
+  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {read: "show vlan brief"}  # VlanIndex, access=r, range=1–4094
-  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   name: {read: "show vlan brief"}  # SnmpAdminString, access=ru, range=0–32
+  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   vlan_status: {write: "vlan add {index}"}  # RowStatus, access=crud
+  interface_name: {read: "show port"}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9402,9 +9443,9 @@ get_vlan_egress() -> {
 
 ```
 MOPS {
+  egress_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticEgressPorts}  # PortList, access=ru
   vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
   untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
-  egress_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticEgressPorts}  # PortList, access=ru
 }
 ```
 </details>
@@ -9413,9 +9454,9 @@ MOPS {
 
 ```
 SNMP {
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
-  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
   egress_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.2}  # PortList, access=ru
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
+  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
 }
 ```
 </details>
@@ -9437,16 +9478,16 @@ SSH {
 
 ```
 MOPS {
-  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
-  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortIngressFiltering}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
+  acceptable_frame_types: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPortAcceptableFrameTypes}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {Q-BRIDGE-MIB / dot1qVlanCurrentEntry.dot1qVlanIndex}  # VlanIndex, access=r, range=1–4094
   egress_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticEgressPorts}  # PortList, access=ru
-  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
   name: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticName}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanForbiddenEgressPorts}  # PortList, access=ru
+  pvid: {Q-BRIDGE-MIB / dot1qPortVlanEntry.dot1qPvid}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticUntaggedPorts}  # PortList, access=ru
   vlan_status: {Q-BRIDGE-MIB / dot1qVlanStaticEntry.dot1qVlanStaticRowStatus}  # RowStatus, access=crud
+  interface_name: {IF-MIB / ifXEntry.ifName}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9455,16 +9496,16 @@ MOPS {
 
 ```
 SNMP {
-  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
-  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.3}  # TruthValue, access=ru, allowed=[True, False]
-  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
-  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.2.1.2}  # VlanIndex, access=r, range=1–4094
+  acceptable_frame_types: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.2}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
+  vlan_id: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # VlanIndex, access=r, range=1–4094
   egress_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.2}  # PortList, access=ru
-  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
-  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
   name: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.1}  # SnmpAdminString, access=ru, range=0–32
+  forbidden_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.3}  # PortList, access=ru
+  pvid: {oid: 1.3.6.1.2.1.17.7.1.4.5.1.1}  # VlanIndex, access=ru, range=1–4094
+  untagged_ports: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.4}  # PortList, access=ru
   vlan_status: {oid: 1.3.6.1.2.1.17.7.1.4.3.1.5}  # RowStatus, access=crud
+  interface_name: {oid: 1.3.6.1.2.1.31.1.1.1.1}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9473,13 +9514,13 @@ SNMP {
 
 ```
 SSH {
-  interface_name: {read: "show port"}  # DisplayString, access=r
-  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   ingress_filtering: {read: "show vlan port"}  # TruthValue, access=ru, allowed=[True, False]
+  acceptable_frame_types: {read: "show vlan port"}  # INTEGER, access=ru, allowed=['admitAll', 'admitOnlyVlanTagged']
   vlan_id: {read: "show vlan brief"}  # VlanIndex, access=r, range=1–4094
-  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   name: {read: "show vlan brief"}  # SnmpAdminString, access=ru, range=0–32
+  pvid: {read: "show vlan port"}  # VlanIndex, access=ru, range=1–4094
   vlan_status: {write: "vlan add {index}"}  # RowStatus, access=crud
+  interface_name: {read: "show port"}  # DisplayString, access=r
 }
 ```
 </details>
@@ -9566,20 +9607,20 @@ get_vrrp_instances() -> {
 
 ```
 MOPS {
-  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
-  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
   interval: {VRRP-MIB / vrrpOperEntry.vrrpOperAdvertisementInterval}  # Integer32, access=ru, range=1–255
-  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
-  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
-  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
-  current_priority: {VRRP-MIB / vrrpOperEntry.vrrpOperPriority}  # Integer32, access=ru, range=0–255
-  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
   virtual_mac: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualMacAddr}  # MacAddress, access=r
-  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
-  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
-  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
-  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
+  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
   virtual_ip: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpPrimaryVirtualAddress}  # IpAddress, access=r
+  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
+  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
+  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
+  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
+  current_priority: {VRRP-MIB / vrrpOperEntry.vrrpOperPriority}  # Integer32, access=ru, range=0–255
+  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
+  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
+  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
+  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -9588,20 +9629,20 @@ MOPS {
 
 ```
 SNMP {
-  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
-  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
   interval: {oid: 1.3.6.1.2.1.68.1.3.1.11}  # Integer32, access=ru, range=1–255
-  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
-  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
-  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
-  current_priority: {oid: 1.3.6.1.2.1.68.1.3.1.5}  # Integer32, access=ru, range=0–255
-  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
   virtual_mac: {oid: 1.3.6.1.2.1.68.1.3.1.2}  # MacAddress, access=r
-  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
-  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
-  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
-  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
+  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
   virtual_ip: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.12}  # IpAddress, access=r
+  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
+  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
+  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
+  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
+  current_priority: {oid: 1.3.6.1.2.1.68.1.3.1.5}  # Integer32, access=ru, range=0–255
+  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
+  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
+  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
+  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -9610,15 +9651,15 @@ SNMP {
 
 ```
 SSH {
-  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
-  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
   interval: {write: "ip vrrp modify {vrid} interval {value}"}  # Integer32, access=ru, range=1–255
+  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
+  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
   primary_ip: {write: "ip vrrp modify {vrid} advertisement-ip {value}"}  # IpAddress, access=ru
   accept_mode: {write: "ip vrrp modify {vrid} accept-mode {value}"}  # TruthValue, access=ru, allowed=[True, False]
   current_priority: {write: "ip vrrp modify {vrid} priority {value}"}  # Integer32, access=ru, range=0–255
-  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
+  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
   state: {read: "show ip vrrp interface"}  # INTEGER, access=r
-  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
+  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
 }
 ```
 </details>
@@ -9631,31 +9672,31 @@ SSH {
 
 ```
 MOPS {
-  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
-  interval: {VRRP-MIB / vrrpOperEntry.vrrpOperAdvertisementInterval}  # Integer32, access=ru, range=1–255
   current_priority: {VRRP-MIB / vrrpOperEntry.vrrpOperPriority}  # Integer32, access=ru, range=0–255
-  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
-  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
-  virtual_ip: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpPrimaryVirtualAddress}  # IpAddress, access=r
-  auth_key: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthKey}  # OCTET STRING, access=ru, range=0–16
-  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
-  checksum_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterChecksumErrors}  # Counter32, access=r
-  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
-  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentRouterVrrpConfigGroup.hm2AgentRouterVrrpAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackRowStatus}  # RowStatus, access=crud
-  virtual_mac: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualMacAddr}  # MacAddress, access=r
-  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
-  version_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVersionErrors}  # Counter32, access=r
-  oper_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackOperStatus}  # INTEGER, access=r
-  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
-  trap_auth_failure: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPAuthFailureTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
-  decrement: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackDecrement}  # Integer32, access=ru, range=1–253
-  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
   trap_new_master: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPNewMasterTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
+  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
+  interval: {VRRP-MIB / vrrpOperEntry.vrrpOperAdvertisementInterval}  # Integer32, access=ru, range=1–255
+  version_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVersionErrors}  # Counter32, access=r
+  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
+  decrement: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackDecrement}  # Integer32, access=ru, range=1–253
+  checksum_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterChecksumErrors}  # Counter32, access=r
+  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
+  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
+  oper_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackOperStatus}  # INTEGER, access=r
+  virtual_mac: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualMacAddr}  # MacAddress, access=r
+  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
+  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
+  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
+  track_row_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackRowStatus}  # RowStatus, access=crud
+  trap_auth_failure: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPAuthFailureTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  auth_key: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthKey}  # OCTET STRING, access=ru, range=0–16
+  enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentRouterVrrpConfigGroup.hm2AgentRouterVrrpAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpPrimaryVirtualAddress}  # IpAddress, access=r
   row_status: {VRRP-MIB / vrrpOperEntry.vrrpOperRowStatus}  # RowStatus, access=crud
+  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
+  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
 }
 ```
 </details>
@@ -9664,31 +9705,31 @@ MOPS {
 
 ```
 SNMP {
-  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
-  interval: {oid: 1.3.6.1.2.1.68.1.3.1.11}  # Integer32, access=ru, range=1–255
   current_priority: {oid: 1.3.6.1.2.1.68.1.3.1.5}  # Integer32, access=ru, range=0–255
-  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
-  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
-  virtual_ip: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.12}  # IpAddress, access=r
-  auth_key: {oid: 1.3.6.1.2.1.68.1.3.1.10}  # OCTET STRING, access=ru, range=0–16
-  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
-  checksum_errors: {oid: 1.3.6.1.2.1.68.2.1, method: get}  # Counter32, access=r
-  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
-  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {oid: 1.3.6.1.4.1.248.12.2.8.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.6}  # RowStatus, access=crud
-  virtual_mac: {oid: 1.3.6.1.2.1.68.1.3.1.2}  # MacAddress, access=r
-  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
-  version_errors: {oid: 1.3.6.1.2.1.68.2.2, method: get}  # Counter32, access=r
-  oper_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.5}  # INTEGER, access=r
-  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
-  trap_auth_failure: {oid: 1.3.6.1.4.1.248.12.2.5.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
-  decrement: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.4}  # Integer32, access=ru, range=1–253
-  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
   trap_new_master: {oid: 1.3.6.1.4.1.248.12.2.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
+  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
+  interval: {oid: 1.3.6.1.2.1.68.1.3.1.11}  # Integer32, access=ru, range=1–255
+  version_errors: {oid: 1.3.6.1.2.1.68.2.2, method: get}  # Counter32, access=r
+  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
+  decrement: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.4}  # Integer32, access=ru, range=1–253
+  checksum_errors: {oid: 1.3.6.1.2.1.68.2.1, method: get}  # Counter32, access=r
+  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
+  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
+  oper_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.5}  # INTEGER, access=r
+  virtual_mac: {oid: 1.3.6.1.2.1.68.1.3.1.2}  # MacAddress, access=r
+  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
+  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
+  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
+  track_row_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.6}  # RowStatus, access=crud
+  trap_auth_failure: {oid: 1.3.6.1.4.1.248.12.2.5.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  auth_key: {oid: 1.3.6.1.2.1.68.1.3.1.10}  # OCTET STRING, access=ru, range=0–16
+  enabled: {oid: 1.3.6.1.4.1.248.12.2.8.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.12}  # IpAddress, access=r
   row_status: {oid: 1.3.6.1.2.1.68.1.3.1.15}  # RowStatus, access=crud
+  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
+  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
 }
 ```
 </details>
@@ -9697,24 +9738,24 @@ SNMP {
 
 ```
 SSH {
-  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
-  interval: {write: "ip vrrp modify {vrid} interval {value}"}  # Integer32, access=ru, range=1–255
   current_priority: {write: "ip vrrp modify {vrid} priority {value}"}  # Integer32, access=ru, range=0–255
-  state: {read: "show ip vrrp interface"}  # INTEGER, access=r
-  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
-  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  checksum_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
-  accept_mode: {write: "ip vrrp modify {vrid} accept-mode {value}"}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {read: "show ip vrrp global", write: "ip vrrp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {write: "ip vrrp track add {vrid} {track_name} decrement {decrement}"}  # RowStatus, access=crud
-  version_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {write: "ip vrrp modify {vrid} advertisement-ip {value}"}  # IpAddress, access=ru
-  trap_auth_failure: {read: "show ip vrrp global", write: "ip vrrp trap auth-failure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  decrement: {write: "ip vrrp track modify {vrid} {track_name} decrement {value}"}  # Integer32, access=ru, range=1–253
   trap_new_master: {read: "show ip vrrp global", write: "ip vrrp trap new-master"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  primary_ip: {write: "ip vrrp modify {vrid} advertisement-ip {value}"}  # IpAddress, access=ru
+  interval: {write: "ip vrrp modify {vrid} interval {value}"}  # Integer32, access=ru, range=1–255
+  version_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  accept_mode: {write: "ip vrrp modify {vrid} accept-mode {value}"}  # TruthValue, access=ru, allowed=[True, False]
+  decrement: {write: "ip vrrp track modify {vrid} {track_name} decrement {value}"}  # Integer32, access=ru, range=1–253
+  checksum_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  state: {read: "show ip vrrp interface"}  # INTEGER, access=r
+  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
+  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
+  track_row_status: {write: "ip vrrp track add {vrid} {track_name} decrement {decrement}"}  # RowStatus, access=crud
+  trap_auth_failure: {read: "show ip vrrp global", write: "ip vrrp trap auth-failure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show ip vrrp global", write: "ip vrrp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
   row_status: {write: "ip vrrp add {vrid} priority {priority} advertisement-ip {primary_ip}"}  # RowStatus, access=crud
+  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
 }
 ```
 </details>
@@ -9727,31 +9768,31 @@ SSH {
 
 ```
 MOPS {
-  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
-  interval: {VRRP-MIB / vrrpOperEntry.vrrpOperAdvertisementInterval}  # Integer32, access=ru, range=1–255
   current_priority: {VRRP-MIB / vrrpOperEntry.vrrpOperPriority}  # Integer32, access=ru, range=0–255
-  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
-  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
-  virtual_ip: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpPrimaryVirtualAddress}  # IpAddress, access=r
-  auth_key: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthKey}  # OCTET STRING, access=ru, range=0–16
-  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
-  checksum_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterChecksumErrors}  # Counter32, access=r
-  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
-  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentRouterVrrpConfigGroup.hm2AgentRouterVrrpAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackRowStatus}  # RowStatus, access=crud
-  virtual_mac: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualMacAddr}  # MacAddress, access=r
-  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
-  version_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVersionErrors}  # Counter32, access=r
-  oper_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackOperStatus}  # INTEGER, access=r
-  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
-  trap_auth_failure: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPAuthFailureTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
-  decrement: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackDecrement}  # Integer32, access=ru, range=1–253
-  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
   trap_new_master: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPNewMasterTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
+  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
+  interval: {VRRP-MIB / vrrpOperEntry.vrrpOperAdvertisementInterval}  # Integer32, access=ru, range=1–255
+  version_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVersionErrors}  # Counter32, access=r
+  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
+  decrement: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackDecrement}  # Integer32, access=ru, range=1–253
+  checksum_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterChecksumErrors}  # Counter32, access=r
+  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
+  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
+  oper_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackOperStatus}  # INTEGER, access=r
+  virtual_mac: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualMacAddr}  # MacAddress, access=r
+  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
+  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
+  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
+  track_row_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackRowStatus}  # RowStatus, access=crud
+  trap_auth_failure: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPAuthFailureTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  auth_key: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthKey}  # OCTET STRING, access=ru, range=0–16
+  enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentRouterVrrpConfigGroup.hm2AgentRouterVrrpAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpPrimaryVirtualAddress}  # IpAddress, access=r
   row_status: {VRRP-MIB / vrrpOperEntry.vrrpOperRowStatus}  # RowStatus, access=crud
+  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
+  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
 }
 ```
 </details>
@@ -9760,31 +9801,31 @@ MOPS {
 
 ```
 SNMP {
-  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
-  interval: {oid: 1.3.6.1.2.1.68.1.3.1.11}  # Integer32, access=ru, range=1–255
   current_priority: {oid: 1.3.6.1.2.1.68.1.3.1.5}  # Integer32, access=ru, range=0–255
-  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
-  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
-  virtual_ip: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.12}  # IpAddress, access=r
-  auth_key: {oid: 1.3.6.1.2.1.68.1.3.1.10}  # OCTET STRING, access=ru, range=0–16
-  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
-  checksum_errors: {oid: 1.3.6.1.2.1.68.2.1, method: get}  # Counter32, access=r
-  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
-  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {oid: 1.3.6.1.4.1.248.12.2.8.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.6}  # RowStatus, access=crud
-  virtual_mac: {oid: 1.3.6.1.2.1.68.1.3.1.2}  # MacAddress, access=r
-  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
-  version_errors: {oid: 1.3.6.1.2.1.68.2.2, method: get}  # Counter32, access=r
-  oper_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.5}  # INTEGER, access=r
-  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
-  trap_auth_failure: {oid: 1.3.6.1.4.1.248.12.2.5.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
-  decrement: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.4}  # Integer32, access=ru, range=1–253
-  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
   trap_new_master: {oid: 1.3.6.1.4.1.248.12.2.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
+  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
+  interval: {oid: 1.3.6.1.2.1.68.1.3.1.11}  # Integer32, access=ru, range=1–255
+  version_errors: {oid: 1.3.6.1.2.1.68.2.2, method: get}  # Counter32, access=r
+  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
+  decrement: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.4}  # Integer32, access=ru, range=1–253
+  checksum_errors: {oid: 1.3.6.1.2.1.68.2.1, method: get}  # Counter32, access=r
+  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
+  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
+  oper_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.5}  # INTEGER, access=r
+  virtual_mac: {oid: 1.3.6.1.2.1.68.1.3.1.2}  # MacAddress, access=r
+  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
+  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
+  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
+  track_row_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.6}  # RowStatus, access=crud
+  trap_auth_failure: {oid: 1.3.6.1.4.1.248.12.2.5.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  auth_key: {oid: 1.3.6.1.2.1.68.1.3.1.10}  # OCTET STRING, access=ru, range=0–16
+  enabled: {oid: 1.3.6.1.4.1.248.12.2.8.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.12}  # IpAddress, access=r
   row_status: {oid: 1.3.6.1.2.1.68.1.3.1.15}  # RowStatus, access=crud
+  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
+  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
 }
 ```
 </details>
@@ -9793,24 +9834,24 @@ SNMP {
 
 ```
 SSH {
-  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
-  interval: {write: "ip vrrp modify {vrid} interval {value}"}  # Integer32, access=ru, range=1–255
   current_priority: {write: "ip vrrp modify {vrid} priority {value}"}  # Integer32, access=ru, range=0–255
-  state: {read: "show ip vrrp interface"}  # INTEGER, access=r
-  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
-  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  checksum_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
-  accept_mode: {write: "ip vrrp modify {vrid} accept-mode {value}"}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {read: "show ip vrrp global", write: "ip vrrp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {write: "ip vrrp track add {vrid} {track_name} decrement {decrement}"}  # RowStatus, access=crud
-  version_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {write: "ip vrrp modify {vrid} advertisement-ip {value}"}  # IpAddress, access=ru
-  trap_auth_failure: {read: "show ip vrrp global", write: "ip vrrp trap auth-failure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  decrement: {write: "ip vrrp track modify {vrid} {track_name} decrement {value}"}  # Integer32, access=ru, range=1–253
   trap_new_master: {read: "show ip vrrp global", write: "ip vrrp trap new-master"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  primary_ip: {write: "ip vrrp modify {vrid} advertisement-ip {value}"}  # IpAddress, access=ru
+  interval: {write: "ip vrrp modify {vrid} interval {value}"}  # Integer32, access=ru, range=1–255
+  version_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  accept_mode: {write: "ip vrrp modify {vrid} accept-mode {value}"}  # TruthValue, access=ru, allowed=[True, False]
+  decrement: {write: "ip vrrp track modify {vrid} {track_name} decrement {value}"}  # Integer32, access=ru, range=1–253
+  checksum_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  state: {read: "show ip vrrp interface"}  # INTEGER, access=r
+  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
+  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
+  track_row_status: {write: "ip vrrp track add {vrid} {track_name} decrement {decrement}"}  # RowStatus, access=crud
+  trap_auth_failure: {read: "show ip vrrp global", write: "ip vrrp trap auth-failure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show ip vrrp global", write: "ip vrrp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
   row_status: {write: "ip vrrp add {vrid} priority {priority} advertisement-ip {primary_ip}"}  # RowStatus, access=crud
+  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
 }
 ```
 </details>
@@ -9939,31 +9980,31 @@ SSH {
 
 ```
 MOPS {
-  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
-  interval: {VRRP-MIB / vrrpOperEntry.vrrpOperAdvertisementInterval}  # Integer32, access=ru, range=1–255
   current_priority: {VRRP-MIB / vrrpOperEntry.vrrpOperPriority}  # Integer32, access=ru, range=0–255
-  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
-  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
-  virtual_ip: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpPrimaryVirtualAddress}  # IpAddress, access=r
-  auth_key: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthKey}  # OCTET STRING, access=ru, range=0–16
-  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
-  checksum_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterChecksumErrors}  # Counter32, access=r
-  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
-  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentRouterVrrpConfigGroup.hm2AgentRouterVrrpAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackRowStatus}  # RowStatus, access=crud
-  virtual_mac: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualMacAddr}  # MacAddress, access=r
-  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
-  version_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVersionErrors}  # Counter32, access=r
-  oper_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackOperStatus}  # INTEGER, access=r
-  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
-  trap_auth_failure: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPAuthFailureTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
-  decrement: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackDecrement}  # Integer32, access=ru, range=1–253
-  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
   trap_new_master: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPNewMasterTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
+  primary_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperPrimaryIpAddr}  # IpAddress, access=ru
+  interval: {VRRP-MIB / vrrpOperEntry.vrrpOperAdvertisementInterval}  # Integer32, access=ru, range=1–255
+  version_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVersionErrors}  # Counter32, access=r
+  accept_mode: {VRRP-MIB / vrrpOperEntry.vrrpOperAcceptMode}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthType}  # INTEGER, access=ru
+  decrement: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackDecrement}  # Integer32, access=ru, range=1–253
+  checksum_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterChecksumErrors}  # Counter32, access=r
+  state: {VRRP-MIB / vrrpOperEntry.vrrpOperState}  # INTEGER, access=r
+  preempt: {VRRP-MIB / vrrpOperEntry.vrrpOperPreemptMode}  # TruthValue, access=ru, allowed=[True, False]
+  oper_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackOperStatus}  # INTEGER, access=r
+  virtual_mac: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualMacAddr}  # MacAddress, access=r
+  admin_state: {VRRP-MIB / vrrpOperEntry.vrrpOperAdminState}  # INTEGER, access=ru
+  ip_count: {VRRP-MIB / vrrpOperEntry.vrrpOperIpAddrCount}  # Integer32, access=r, range=0–255
+  master_ip: {VRRP-MIB / vrrpOperEntry.vrrpOperMasterIpAddr}  # IpAddress, access=r
+  track_row_status: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpTrackingEntry.hm2AgentVrrpTrackRowStatus}  # RowStatus, access=crud
+  trap_auth_failure: {HM2-PLATFORM-ROUTING-MIB / hm2AgentSnmpTrapFlagsConfigGroupLayer3.hm2AgentSnmpVRRPAuthFailureTrapFlag}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  auth_key: {VRRP-MIB / vrrpOperEntry.vrrpOperAuthKey}  # OCTET STRING, access=ru, range=0–16
+  enabled: {HM2-PLATFORM-ROUTING-MIB / hm2AgentRouterVrrpConfigGroup.hm2AgentRouterVrrpAdminState}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpPrimaryVirtualAddress}  # IpAddress, access=r
   row_status: {VRRP-MIB / vrrpOperEntry.vrrpOperRowStatus}  # RowStatus, access=crud
+  priority: {HM2-PLATFORM-ROUTING-MIB / hm2AgentVrrpExtEntry.hm2AgentVrrpExtCfgPriority}  # Integer32, access=ru, range=1–254
+  uptime: {VRRP-MIB / vrrpOperEntry.vrrpOperVirtualRouterUpTime}  # TimeStamp, access=r
 }
 ```
 </details>
@@ -9972,31 +10013,31 @@ MOPS {
 
 ```
 SNMP {
-  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
-  interval: {oid: 1.3.6.1.2.1.68.1.3.1.11}  # Integer32, access=ru, range=1–255
   current_priority: {oid: 1.3.6.1.2.1.68.1.3.1.5}  # Integer32, access=ru, range=0–255
-  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
-  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
-  virtual_ip: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.12}  # IpAddress, access=r
-  auth_key: {oid: 1.3.6.1.2.1.68.1.3.1.10}  # OCTET STRING, access=ru, range=0–16
-  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
-  checksum_errors: {oid: 1.3.6.1.2.1.68.2.1, method: get}  # Counter32, access=r
-  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
-  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {oid: 1.3.6.1.4.1.248.12.2.8.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.6}  # RowStatus, access=crud
-  virtual_mac: {oid: 1.3.6.1.2.1.68.1.3.1.2}  # MacAddress, access=r
-  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
-  version_errors: {oid: 1.3.6.1.2.1.68.2.2, method: get}  # Counter32, access=r
-  oper_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.5}  # INTEGER, access=r
-  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
-  trap_auth_failure: {oid: 1.3.6.1.4.1.248.12.2.5.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
-  decrement: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.4}  # Integer32, access=ru, range=1–253
-  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
   trap_new_master: {oid: 1.3.6.1.4.1.248.12.2.5.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
+  primary_ip: {oid: 1.3.6.1.2.1.68.1.3.1.8}  # IpAddress, access=ru
+  interval: {oid: 1.3.6.1.2.1.68.1.3.1.11}  # Integer32, access=ru, range=1–255
+  version_errors: {oid: 1.3.6.1.2.1.68.2.2, method: get}  # Counter32, access=r
+  accept_mode: {oid: 1.3.6.1.2.1.68.1.3.1.16}  # TruthValue, access=ru, allowed=[True, False]
+  auth_type: {oid: 1.3.6.1.2.1.68.1.3.1.9}  # INTEGER, access=ru
+  decrement: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.4}  # Integer32, access=ru, range=1–253
+  checksum_errors: {oid: 1.3.6.1.2.1.68.2.1, method: get}  # Counter32, access=r
+  state: {oid: 1.3.6.1.2.1.68.1.3.1.3}  # INTEGER, access=r
+  preempt: {oid: 1.3.6.1.2.1.68.1.3.1.12}  # TruthValue, access=ru, allowed=[True, False]
+  oper_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.5}  # INTEGER, access=r
+  virtual_mac: {oid: 1.3.6.1.2.1.68.1.3.1.2}  # MacAddress, access=r
+  admin_state: {oid: 1.3.6.1.2.1.68.1.3.1.4}  # INTEGER, access=ru
+  ip_count: {oid: 1.3.6.1.2.1.68.1.3.1.6}  # Integer32, access=r, range=0–255
+  master_ip: {oid: 1.3.6.1.2.1.68.1.3.1.7}  # IpAddress, access=r
+  track_row_status: {oid: 1.3.6.1.4.1.248.12.2.260.1.1.6}  # RowStatus, access=crud
+  trap_auth_failure: {oid: 1.3.6.1.4.1.248.12.2.5.2, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  auth_key: {oid: 1.3.6.1.2.1.68.1.3.1.10}  # OCTET STRING, access=ru, range=0–16
+  enabled: {oid: 1.3.6.1.4.1.248.12.2.8.1, method: get}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.12}  # IpAddress, access=r
   row_status: {oid: 1.3.6.1.2.1.68.1.3.1.15}  # RowStatus, access=crud
+  priority: {oid: 1.3.6.1.4.1.248.12.2.260.2.1.8}  # Integer32, access=ru, range=1–254
+  uptime: {oid: 1.3.6.1.2.1.68.1.3.1.13}  # TimeStamp, access=r
 }
 ```
 </details>
@@ -10005,24 +10046,24 @@ SNMP {
 
 ```
 SSH {
-  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
-  interval: {write: "ip vrrp modify {vrid} interval {value}"}  # Integer32, access=ru, range=1–255
   current_priority: {write: "ip vrrp modify {vrid} priority {value}"}  # Integer32, access=ru, range=0–255
-  state: {read: "show ip vrrp interface"}  # INTEGER, access=r
-  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
-  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  checksum_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
-  accept_mode: {write: "ip vrrp modify {vrid} accept-mode {value}"}  # TruthValue, access=ru, allowed=[True, False]
-  enabled: {read: "show ip vrrp global", write: "ip vrrp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  track_row_status: {write: "ip vrrp track add {vrid} {track_name} decrement {decrement}"}  # RowStatus, access=crud
-  version_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
-  primary_ip: {write: "ip vrrp modify {vrid} advertisement-ip {value}"}  # IpAddress, access=ru
-  trap_auth_failure: {read: "show ip vrrp global", write: "ip vrrp trap auth-failure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
-  decrement: {write: "ip vrrp track modify {vrid} {track_name} decrement {value}"}  # Integer32, access=ru, range=1–253
   trap_new_master: {read: "show ip vrrp global", write: "ip vrrp trap new-master"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  primary_ip: {write: "ip vrrp modify {vrid} advertisement-ip {value}"}  # IpAddress, access=ru
+  interval: {write: "ip vrrp modify {vrid} interval {value}"}  # Integer32, access=ru, range=1–255
+  version_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  accept_mode: {write: "ip vrrp modify {vrid} accept-mode {value}"}  # TruthValue, access=ru, allowed=[True, False]
+  decrement: {write: "ip vrrp track modify {vrid} {track_name} decrement {value}"}  # Integer32, access=ru, range=1–253
+  checksum_errors: {read: "show ip vrrp global"}  # Counter32, access=r
+  state: {read: "show ip vrrp interface"}  # INTEGER, access=r
+  preempt: {write: "ip vrrp modify {vrid} preempt {value}"}  # TruthValue, access=ru, allowed=[True, False]
+  admin_state: {read: "show ip vrrp interface", write: "ip vrrp enable {vrid}"}  # INTEGER, access=ru
+  track_row_status: {write: "ip vrrp track add {vrid} {track_name} decrement {decrement}"}  # RowStatus, access=crud
+  trap_auth_failure: {read: "show ip vrrp global", write: "ip vrrp trap auth-failure"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  enabled: {read: "show ip vrrp global", write: "ip vrrp operation"}  # HmEnabledStatus, access=ru, allowed=[True, False]
+  virtual_ip: {read: "show ip vrrp interface"}  # IpAddress, access=r
   row_status: {write: "ip vrrp add {vrid} priority {priority} advertisement-ip {primary_ip}"}  # RowStatus, access=crud
+  priority: {read: "show ip vrrp interface"}  # Integer32, access=ru, range=1–254
 }
 ```
 </details>
@@ -10044,9 +10085,9 @@ get_vrrp_stats() -> {
 
 ```
 MOPS {
+  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
   checksum_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterChecksumErrors}  # Counter32, access=r
   version_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVersionErrors}  # Counter32, access=r
-  vrid_errors: {VRRP-MIB / vrrpStatistics.vrrpRouterVrIdErrors}  # Counter32, access=r
 }
 ```
 </details>
@@ -10055,9 +10096,9 @@ MOPS {
 
 ```
 SNMP {
+  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
   checksum_errors: {oid: 1.3.6.1.2.1.68.2.1, method: get}  # Counter32, access=r
   version_errors: {oid: 1.3.6.1.2.1.68.2.2, method: get}  # Counter32, access=r
-  vrid_errors: {oid: 1.3.6.1.2.1.68.2.3, method: get}  # Counter32, access=r
 }
 ```
 </details>
@@ -10066,9 +10107,9 @@ SNMP {
 
 ```
 SSH {
+  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
   checksum_errors: {read: "show ip vrrp global"}  # Counter32, access=r
   version_errors: {read: "show ip vrrp global"}  # Counter32, access=r
-  vrid_errors: {read: "show ip vrrp global"}  # Counter32, access=r
 }
 ```
 </details>
