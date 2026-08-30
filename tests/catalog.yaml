@@ -6,9 +6,9 @@ generated: true
 generator: scripts/generate_catalog.py
 source: 'crude_engine/schemas/*.yaml type: + drivers/*.yaml execute_methods'
 counts:
-  entries: 228
-  read: 75
-  roundtrip: 100
+  entries: 230
+  read: 76
+  roundtrip: 101
   execute: 12
   lifecycle: 41
 skipped_untyped:
@@ -32,6 +32,11 @@ entries:
   access: lifecycle
   feature: arp
   protocol: mops
+- name: auto_disable_reset.roundtrip
+  access: U
+  method: auto_disable_reset
+  feature: protection
+  schema_type: upsert
 - name: banner.lifecycle.mops
   access: lifecycle
   feature: banner
@@ -283,6 +288,11 @@ entries:
 - name: get_auto_disable.read
   access: R
   method: get_auto_disable
+  feature: protection
+  schema_type: dict
+- name: get_auto_disable_reasons.read
+  access: R
+  method: get_auto_disable_reasons
   feature: protection
   schema_type: dict
 - name: get_banner.read
