@@ -38,6 +38,10 @@ methods:
       min_length: 8
       max_attempts: 3
       lockout_time: 300
+      min_uppercase: 0
+      min_lowercase: 0
+      min_numeric: 0
+      min_special: 0
   set_login_policy:
     type: upsert
 attributes:
@@ -52,16 +56,16 @@ attributes:
     wire: hm2pwdmgmtloginattemptstimeperiod
     source: usermgmt
   min_uppercase:
-    wire: hm2pwdmgmtminuppercasechar
+    wire: hm2pwdmgmtminuppercase
     source: usermgmt
   min_lowercase:
-    wire: hm2pwdmgmtminlowercasechar
+    wire: hm2pwdmgmtminlowercase
     source: usermgmt
   min_numeric:
-    wire: hm2pwdmgmtminnumericchar
+    wire: hm2pwdmgmtminnumericnumbers
     source: usermgmt
   min_special:
-    wire: hm2pwdmgmtminspecialchar
+    wire: hm2pwdmgmtminspecialcharacters
     source: usermgmt
   # --- User table ---
   username:
