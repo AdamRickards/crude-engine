@@ -38,6 +38,10 @@ methods:
       min_length: 8
       max_attempts: 3
       lockout_time: 300
+      min_uppercase: 0
+      min_lowercase: 0
+      min_numeric: 0
+      min_special: 0
   set_login_policy:
     type: upsert
 attributes:
