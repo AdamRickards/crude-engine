@@ -2,7 +2,7 @@
 
 > One-pager. Every script in `tests/` listed once with: what it does, when to use it,
 > what NOT to use it for, and how to invoke it. Read this before adding new test code.
-> Linked from `AGENTS.md` (standing law) and `docs/RELEASE_GATE.md`. Leftover Claude: `local/archive/docs-legacy/claude/CLAUDE.md`.
+> Linked from `AGENTS.md` (the only root agent law) and `docs/RELEASE_GATE.md`. Leftover Claude is archive, not law: `local/archive/docs-legacy/claude/CLAUDE.md`.
 
 ## TL;DR — which script for which job
 
@@ -529,9 +529,8 @@ declaration get a no-op wrap (run normally).
 /tmp/crude-engine/.venv/bin/python3 tests/<script>.py ...
 ```
 
-If the venv doesn't exist:
+If the venv doesn't exist, from this repo root (engine is not on PyPI yet; the napalm-hios 2.0 shim is a separate unpublished repo):
 ```bash
 python3 -m venv /tmp/crude-engine/.venv
-/tmp/crude-engine/.venv/bin/pip install -e /home/adamr/obsidian-vault/Projects/crude-engine/
-/tmp/crude-engine/.venv/bin/pip install -e /home/adamr/obsidian-vault/Projects/napalm-hios/
+/tmp/crude-engine/.venv/bin/pip install -e .
 ```

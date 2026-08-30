@@ -22,7 +22,7 @@ Check against MIB source (`local/reference/MIBs/`) and MOPS schema (`local/refer
 
 ### Step 5: v1 reference
 
-How did v1 (`/home/adamr/obsidian-vault/Projects/napalm-hios/`) handle this table? Not to copy code, but to understand what encoding/sequence the device expects. v1's working code is empirical proof of what the wire needs.
+How did historical v1 (old napalm-hios monolith — a separate tree, not this repo) handle this table? Not to copy code, but to understand what encoding/sequence the device expects. v1's working code is empirical proof of what the wire needs. This product is this repo (`crude-engine`); do not assume a machine-local homelab path.
 
 ### Step 6: Fix the declaration, not the engine
 
