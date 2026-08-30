@@ -2,7 +2,7 @@
 
 Auto-generated from schema + protocol YAMLs. For full detail including per-protocol sources, see [API_REFERENCE.md](API_REFERENCE.md).
 
-**189 methods** (177C/R/U/D + 12E) across **45 features**
+**190 methods** (178C/R/U/D + 12E) across **46 features**
 
 ## aca
 _External NVM (ACA) configuration — selected memory, sync state, per-slot settings_
@@ -35,7 +35,7 @@ _Configuration management and watchdog status_
 - **`get_config()`** — Read
   Returns: `running`, `startup`
 - **`get_config_status()`** — Read
-  Returns: `saved`, `last_changed`, `nvm`, `aca`, `boot`
+  Returns: `saved`, `nvm`, `aca`, `boot`
 - **`get_config_remote()`** — Read
   Returns: `url`, `status`
 - **`set_config_remote()`** — Update
@@ -401,6 +401,12 @@ _Device monitoring and security status_
 - **`get_fan_status()`** — Read
   Returns: `status`
 
+## tracking
+_Object tracking config table (hm2TrackingConfigEntry)_
+
+- **`get_tracking()`** — Read, keyed by `name`
+  Returns: `name`, `description`, `operstate`, `changes`, `last_change`, `trap`, `status`
+
 ## user
 _User account management and password policy_
 
@@ -411,7 +417,7 @@ _User account management and password policy_
   Returns: `level`
 - **`delete_user()`** — Delete
 - **`get_login_policy()`** — Read
-  Returns: `min_length`, `max_attempts`, `lockout_time`
+  Returns: `min_length`, `max_attempts`, `lockout_time`, `min_uppercase`, `min_lowercase`, `min_numeric`, `min_special`
 - **`set_login_policy()`** — Update
 
 ## vlan

@@ -6,8 +6,8 @@ generated: true
 generator: scripts/generate_catalog.py
 source: 'crude_engine/schemas/*.yaml type: + drivers/*.yaml execute_methods'
 counts:
-  entries: 228
-  read: 75
+  entries: 229
+  read: 76
   roundtrip: 100
   execute: 12
   lifecycle: 41
@@ -599,6 +599,11 @@ entries:
   access: R
   method: get_system_info
   feature: system
+  schema_type: dict
+- name: get_tracking.read
+  access: R
+  method: get_tracking
+  feature: tracking
   schema_type: dict
 - name: get_users.read
   access: R
