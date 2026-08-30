@@ -1,5 +1,5 @@
 """
-offline_hios.py — Offline transport for napalm-hios.
+offline_hios.py — Offline transport for crude-engine.
 
 Layer: Transport. Loads config XML files via MOPS interface.
 Inherits MOPSHIOS — offline uses the same driver/engine path as MOPS.
