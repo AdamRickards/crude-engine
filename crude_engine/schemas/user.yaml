@@ -52,16 +52,16 @@ attributes:
     wire: hm2pwdmgmtloginattemptstimeperiod
     source: usermgmt
   min_uppercase:
-    wire: hm2pwdmgmtminuppercasechar
+    wire: hm2pwdmgmtminuppercase
     source: usermgmt
   min_lowercase:
-    wire: hm2pwdmgmtminlowercasechar
+    wire: hm2pwdmgmtminlowercase
     source: usermgmt
   min_numeric:
-    wire: hm2pwdmgmtminnumericchar
+    wire: hm2pwdmgmtminnumericnumbers
     source: usermgmt
   min_special:
-    wire: hm2pwdmgmtminspecialchar
+    wire: hm2pwdmgmtminspecialcharacters
     source: usermgmt
   # --- User table ---
   username:
