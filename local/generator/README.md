@@ -42,7 +42,7 @@ python3 local/generator/validate_schemas.py --json        # machine-readable
 | `docs/DIAGNOSTIC_PROCESS.md` | **Authored** — mandatory fault-finding ladder |
 | `docs/SCHEMA_PRIMITIVES.md` | **Authored** — YAML key reference |
 | `docs/ROADMAP.md` | **Authored** — milestones |
-| `docs/TODO.md` | **Authored** — work items |
+| GitHub issues | Leftover work (prove-then-file or comment-close). Not `docs/TODO.md`. |
 
 ## Optional read-only audits (retargeted at `crude_engine/`)
 

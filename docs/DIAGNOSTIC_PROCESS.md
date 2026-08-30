@@ -28,7 +28,7 @@ How did historical v1 (old napalm-hios monolith — a separate tree, not this re
 
 Schema fix first. Wire fix second. Engine fix never — unless the primitive genuinely doesn't exist and affects multiple features.
 
-If you fix a wire YAML manually, add a TODO in `docs/TODO.md` for the generator to learn.
+If you fix a wire YAML manually, file a GitHub issue for the generator leftover (prove-then-file). Do not add a live `docs/TODO.md`.
 
 ### Step 7: Engine changes — last resort
 

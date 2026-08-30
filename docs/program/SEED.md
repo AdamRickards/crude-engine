@@ -26,7 +26,7 @@ Those live on the roadmap as later versions. They do not steal cycles from the c
 ```
 SEED                 why / destination / bans          (this file)
   → ROADMAP          versions + exit criteria          (docs/ROADMAP.md + program/roadmap.yaml)
-    → cycle          this iteration's tasks            (program/cycles.yaml → docs/TODO.md)
+    → cycle          this iteration's tasks            (program/cycles.yaml; leftovers = GitHub issues)
       → proof        a command that fails when wrong   (scripts/ + matrix)
         → status     human HTML + machine JSON         (docs/status.html)
 ```

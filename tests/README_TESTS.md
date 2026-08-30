@@ -368,8 +368,8 @@ Add features to `--inspect`. Don't write scripts.
 THE tool that produces the per-cell matrix JSON used as the release gate.
 Imports the internals of `audit_getters_v2.py`, `test_setter_pairs.py`,
 `test_crud_pairs.py` (no subprocess), merges results into a hierarchical
-JSON DB, supports surgical re-runs, generates `docs/RELEASE_MATRIX.md`
-and `docs/TODO_HITLIST.md`.
+JSON DB, supports surgical re-runs, generates `docs/RELEASE_MATRIX.md`.
+Leftover failures live on GitHub issues, not a live `docs/TODO_HITLIST.md`.
 
 **Built and validated.** See `docs/RELEASE_GATE.md` for the full design.
 
@@ -387,7 +387,7 @@ gather → plan → execute → derive → render
 - **derive**  — auto-runs after any execute that included reads; updates
                 `device_state.devices.<ip>.has_configured_from_gather`
                 so the next plan/execute uses live truth
-- **render**  — generates `docs/RELEASE_MATRIX.md` + `docs/TODO_HITLIST.md`
+- **render**  — generates `docs/RELEASE_MATRIX.md`. Leftovers are GitHub issues (not a live `TODO_HITLIST.md`).
 
 **CLI:**
 ```bash
@@ -428,7 +428,6 @@ release_matrix.py --db-info     # one-line summary
 | `tests/release_test_plan.json` | Job manifest from plan generator | Never (regenerated each `--plan`) |
 | `tests/device_state.json` | Per-device gather output + auto-derived `has_configured_from_gather` | Never (regenerated each `--gather` and after each `--execute --kind read`) |
 | `docs/RELEASE_MATRIX.md` | Read-only scoreboard: summary, per-protocol, fleet, per-schema grid, perf, comms-lost | Never |
-| `docs/TODO_HITLIST.md` | Failures grouped by `#bucket` tag, NEEDS TRIAGE for untagged | Never |
 
 **Standing rules:**
 - `safe_for: [read]` devices CANNOT receive setter/CRUD jobs at any code path. Verified.
