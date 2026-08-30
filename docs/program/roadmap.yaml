@@ -43,7 +43,7 @@ versions:
         proof: python3 tests/release_matrix.py --execute --kind setter && python3 tests/release_matrix.py --execute --kind crud --render
         lane: lab
       - id: docs-curated
-        title: TODO.md and ROADMAP.md exist and match cycles.yaml / this file
+        title: ROADMAP.md exists and matches cycles.yaml / this file; leftovers live on GitHub issues
         proof: scripts/generate_status.py --check
         lane: offline
 
