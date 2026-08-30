@@ -39,7 +39,9 @@ methods:
       enabled: false
       reason: none
       remaining_time: 0
+      timer: 0
     attributes:
+      name: {}
       enabled:
         wire: hm2autodisableintfoperstate
         source: devmgmt
@@ -61,9 +63,47 @@ methods:
       remaining_time:
         wire: hm2autodisableintfremainingtime
         source: devmgmt
+      timer:
+        wire: hm2autodisableintftimer
+        source: devmgmt
   set_auto_disable:
     type: upsert
     index_filter: '^\d+/\d+$'
+  get_auto_disable_reasons:
+    type: dict
+    primary_key: reason
+    # INDEX hm2AutoDisableReasons is not-accessible. Drive from accessible
+    # ReasonOperation; suffix is the reason enum.
+    index_fields: [reason]
+    defaults:
+      enabled: false
+      category: ''
+    attributes:
+      reason:
+        wire: hm2autodisablereasonoperation
+        source: devmgmt
+        value_map:
+          '1': link-flap
+          '2': crc-error
+          '3': duplex-mismatch
+          '4': dhcp-snooping
+          '5': arp-rate
+          '6': bpdu-rate
+          '7': mac-based-port-security
+          '8': overload-detection
+          '9': speed-duplex
+          '10': loop-protection
+      enabled:
+        wire: hm2autodisablereasonoperation
+        source: devmgmt
+      category:
+        wire: hm2autodisablereasoncategory
+        source: devmgmt
+        value_map:
+          '1': other
+          '2': port-monitor
+          '3': network-security
+          '4': l2-redundancy
   set_auto_disable_reason:
     type: upsert
     index_key: auto_disable_reason
@@ -71,6 +111,10 @@ methods:
       enabled:
         wire: hm2autodisablereasonoperation
         source: devmgmt
+  auto_disable_reset:
+    type: upsert
+    fields: [auto_disable_reset]
+    index_filter: '^\d+/\d+$'
 attributes:
   broadcast_enabled:
     wire: hm2trafficmgmtifingressstormctlbcastmode
