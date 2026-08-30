@@ -23,6 +23,9 @@ Documented in `tests/README_TESTS.md` (use `--inspect`, never throwaway
 
 Device IP comes from the sidecar machine's gitignored
 `tests/device_pool.yaml`. Never from the request body. Never from git.
+Picker is the same read resolver as `generate_plan`: feature ∈
+`has_capable` and `read` ∈ `safe_for`. First match. If none, HTTP 503
+`not_ready` (no SSH hang).
 Example pool host is TEST-NET `192.0.2.10` in
 `tests/device_pool.yaml.example`. Passwords from the environment
 (`CRUDE_DEVICE_PASSWORD`).
