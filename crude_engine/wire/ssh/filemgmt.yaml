@@ -25,7 +25,7 @@ attributes:
   hm2fmprofileswmajorrelnum:
     sources:
       ssh:
-        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 4, regex: '0*(\d+)\.(\d+)\.(\d+)', regex_format: "{0}.{1}.{2:0>2}", tag: to_str}
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 4, regex: '0*(\d+)\.\d+\.\d+', tag: to_str}
 
   hm2fmprofileswminorrelnum:
     sources:
