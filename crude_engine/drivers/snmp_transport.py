@@ -1,5 +1,5 @@
 """
-snmp_transport.py — SNMP transport for napalm-hios.
+snmp_transport.py — SNMP transport for crude-engine.
 
 Layer: Transport. Owns session, auth, and raw OID GET/SET/WALK.
 Cannot: interpret data meaning, decide what to gather, know about features.
