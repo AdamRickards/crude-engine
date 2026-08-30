@@ -1,5 +1,5 @@
 """
-SNMP.py — SNMP protocol driver for napalm-hios.
+SNMP.py — SNMP protocol driver for crude-engine.
 
 Layer: Driver. Translates wire YAML source dicts into SNMP operations.
 Owns: walk batching, scalar normalization, index decomposition, tag dispatch.
