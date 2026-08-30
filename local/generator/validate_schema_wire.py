@@ -1,9 +1,11 @@
-"""
-Step 3: Validate schema→wire resolution.
-Run AFTER heal_schemas.py.
+"""Leftover v26/monolith script. Not live law. Do not run.
 
-Usage: python3 local/generator/validate_schema_wire.py
+Hardcoded napalm-hios-v2 / napalm_hios paths from the old monolith.
+Kept (not deleted) as archive. Live generators: generate_docs.py,
+generate_method_ref.py, generate_protocols.py. Live schema check:
+validate_schemas.py. See local/generator/README.md.
 """
+
 import yaml, os
 
 WIRE_DIR = "/home/adamr/obsidian-vault/Projects/napalm-hios-v2/local/reference/webUI"

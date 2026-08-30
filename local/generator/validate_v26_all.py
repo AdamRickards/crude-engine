@@ -1,12 +1,20 @@
+"""Read-only schema→wire integrity audit.
+
+Retargeted from leftover napalm-hios-v2 / napalm_hios paths to this
+repo's crude_engine/{wire,schemas}. Does not mutate YAML.
+Live schema law is validate_schemas.py (CI). This is an extra
+broken-link / duplicate-OID walk, not a live doc generator.
+"""
 import os
 import yaml
 import json
 from collections import defaultdict
 
-# Default Paths
-BASE_DIR = "/home/adamr/obsidian-vault/Projects/napalm-hios-v2"
-WIRE_DIR = os.path.join(BASE_DIR, "napalm_hios/wire")
-SCHEMA_DIR = os.path.join(BASE_DIR, "napalm_hios/schemas")
+# Default paths — this repo's crude_engine/ (not napalm-hios-v2)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PACKAGE_DIR = os.path.join(BASE_DIR, "../../crude_engine")
+WIRE_DIR = os.path.join(PACKAGE_DIR, "wire")
+SCHEMA_DIR = os.path.join(PACKAGE_DIR, "schemas")
 
 def run_validation(wire_path=WIRE_DIR, schema_path=SCHEMA_DIR):
     print(f"Starting v2.6 Multi-Stage Validation...")
