@@ -92,15 +92,38 @@ def name_to_inspect(name, entry):
     return method
 
 
-def pick_device_ip():
-    """First read-safe device in the local gitignored pool. None if absent."""
+def _load_pool_devices():
+    """Local gitignored pool. Empty if the file is absent."""
     if yaml is None or not POOL_PATH.is_file():
-        return None
+        return []
     data = yaml.safe_load(POOL_PATH.read_text()) or {}
-    for dev in data.get("devices") or []:
-        safe = dev.get("safe_for") or []
+    return list(data.get("devices") or [])
+
+
+def _matches_read(dev, feature):
+    """Same read resolver as generate_plan / _device_matches kind=read."""
+    tests_dir = str(ROOT / "tests")
+    if tests_dir not in sys.path:
+        sys.path.insert(0, tests_dir)
+    from release_matrix import _device_matches
+    return _device_matches(dev, feature, "read")
+
+
+def pick_device_ip(feature, devices=None):
+    """First pool device with feature in has_capable and read in safe_for.
+
+    Same rule as generate_plan. First match. None if none qualify.
+    """
+    if devices is None:
+        devices = _load_pool_devices()
+    if not feature:
+        return None
+    for dev in devices:
         ip = dev.get("ip")
-        if ip and (not safe or "read" in safe):
+        if not ip:
+            continue
+        ok, _reason = _matches_read(dev, feature)
+        if ok:
             return str(ip)
     return None
 
@@ -206,13 +229,31 @@ def handle_run(payload):
     if not method:
         return 400, {"error": "bad_name", "message": "name does not map to --method", "name": name}
 
-    device = pick_device_ip()
-    if transport() not in ("fake", "offline") and not device:
-        return 503, {
-            "error": "not_ready",
-            "message": "no local tests/device_pool.yaml (gitignored)",
+    feature = entry.get("feature")
+    if not feature:
+        return 400, {
+            "error": "bad_name",
+            "message": "catalog entry has no feature",
             "name": name,
         }
+
+    device = pick_device_ip(feature)
+    if transport() not in ("fake", "offline"):
+        if not POOL_PATH.is_file():
+            return 503, {
+                "error": "not_ready",
+                "message": "no local tests/device_pool.yaml (gitignored)",
+                "name": name,
+            }
+        if not device:
+            return 503, {
+                "error": "not_ready",
+                "message": (
+                    f"no eligible device: {feature} not in has_capable "
+                    "or read not in safe_for"
+                ),
+                "name": name,
+            }
 
     protocol = os.environ.get("CRUDE_SIDECAR_PROTOCOL") or None
 
