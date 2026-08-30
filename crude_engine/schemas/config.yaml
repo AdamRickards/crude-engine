@@ -11,7 +11,6 @@ methods:
     type: dict
     defaults:
       saved: true
-      last_changed: ''
       nvm: ok
       aca: absent
       boot: ok
@@ -20,6 +19,13 @@ methods:
     defaults:
       url: ''
       status: idle
+    attributes:
+      url:
+        wire: hm2fmconfigremotesavedestination
+        source: filemgmt
+      status:
+        wire: hm2fmconfigremotesaveadminstatus
+        source: filemgmt
   set_config_remote:
     type: upsert
   get_watchdog_status:
@@ -31,6 +37,9 @@ methods:
   set_watchdog:
     type: upsert
 attributes:
+  # 1.17 get_config is SSH execute (show running-config). No overlay in this ticket.
+  running: {}
+  startup: {}
   nvm:
     wire: hm2fmnvmstate
     source: filemgmt
