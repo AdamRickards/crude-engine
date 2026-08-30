@@ -34,6 +34,107 @@ If you fix a wire YAML manually, file a GitHub issue for the generator leftover 
 
 Only after proving the gap affects multiple features and can't be declared away. Then design the primitive generically. Never add `if/else` for specific features.
 
+## Fault detection
+
+Map the symptom to a doc, then a clerk. Do not skip to engine code. Do not pick a 2-of-3 winner.
+
+```mermaid
+flowchart TD
+  symptom[Symptom] --> kind{What failed?}
+  kind -->|parity_diffs| parity[Docs before HITL]
+  kind -->|empty or snmp=0| sibling[Passing sibling YAML]
+  kind -->|all defaults no raw| trace[Need sidecar trace]
+  kind -->|HTTP 503| cap[has_capable / picker]
+  kind -->|SSH hung-open| hang[#92 class not parser]
+  kind -->|emit vs live wire| gen[generator tag]
+  kind -->|NAPALM-shaped keys| shape[SCHEMA_MODEL.md]
+  kind -->|protocol sniff or swallow| prin[ENGINE_PRINCIPLES.md]
+
+  parity --> four[schema YAML + wire YAML + MIB + CLI JSON]
+  sibling --> diag["DIAGNOSTIC_PROCESS.md steps 1-4"]
+  four --> schemaFirst[Schema clerk]
+  diag --> schemaFirst
+  trace --> testBot[Test bot sidecar trace]
+  cap --> pool[Pool tag not YAML]
+  hang --> park[Parked engine / HITL]
+  gen --> emitSkill[MIB wire generator cycle]
+  shape --> docsAudit[Docs clerk vs SCHEMA_MODEL]
+  prin --> engine[Engine clerk vs checker vs live code]
+
+  schemaFirst --> yamlFix[Fix declaration not engine]
+  yamlFix --> leftover{Hand-fixed wire?}
+  leftover -->|yes| fileGen[File generator leftover]
+  leftover -->|no| sidecarProve[Sidecar prove]
+```
+
+| Symptom | Read these first | Then |
+|---------|------------------|------|
+| Protocols disagree on a field | Schema YAML, wire YAML + SSH overlay, MIB OBJECT-TYPE, CLI JSON | Schema clerk. Raw from sidecar trace, not a person. |
+| Empty table / snmp=0 | This doc step 1 sibling method, step 4 `index_field` / INDEX / AUGMENTS | Schema clerk. Not one engine bug. |
+| Getter equals schema defaults only | Not a fail, not a live pass. Need a field leaving default **or** trace/raw | Test bot `trace:true`. All-defaults + no raw = you know nothing. |
+| HTTP 503 | Picker: feature in `has_capable` AND `read` in `safe_for` | Pool / Test bot. Not a schema miss. |
+| SSH timeout, `open_ms`/`call_ms` null | Hung-open, not parser. YAML budgets may not reach hardcoded timeout | Engine parked (#92 class). Not a YAML overlay. |
+| Generator emit ≠ live wire | Leftover `batch_generate_MIB` vs `crude_engine/wire` | `generator` tag. Docs clerk leftover generator. Never write live wire. |
+| Keys look NAPALM (`is_up`, `remote_*`) | `docs/SCHEMA_MODEL.md` Canonical Output Shape Rules + hitlist | Docs audit. Schema patches YAML. Shim keeps reshape. |
+| `if protocol ==` / swallow / device heuristic | `docs/ENGINE_PRINCIPLES.md` + `scripts/check_principles.py` | Engine clerk. Checker is not assumed perfect. HITL before patch. |
+| Gate 1/2/3 / commitFailed / unknown field | This doc Common Root Causes table | Schema / assemble. Engine last, and only as a generic primitive. |
+
+## Tagged fix cycles
+
+GitHub tags pick the loop. Architect triages and merges. Proof kicks upstairs. Never `--gate` from the VM.
+
+```mermaid
+flowchart TD
+  ticket[GitHub issue] --> triage[Architect triage]
+  triage -->|no tag yet| label[Add protocol + cycle tag]
+  label --> triage
+  triage -->|schema or wire| yaml[Live YAML loop]
+  triage -->|generator| gen[Generator emit-diff loop]
+  triage -->|engine| eng[Principles loop HITL]
+  triage -->|test| test[Sidecar / veracity]
+  yaml --> schemaPR[Schema clerk PR]
+  schemaPR --> sidecar[Sidecar prove with trace]
+  sidecar -->|field left default or raw matches| mergeY[Architect merge]
+  sidecar -->|miss / hung-open| issueStay[Leave open or split]
+  gen --> docsGen[Docs clerk leftover generator]
+  docsGen --> emit[Isolated venv: emit temp, diff live wire]
+  emit --> mergeG[Architect merge on emit-diff + offline CI]
+  eng --> engineClerk[Engine clerk]
+  engineClerk --> hitl[Thought-test then HITL]
+  test --> testBot[Test bot]
+  testBot --> sidecar
+  mergeY --> docsMaybe[Docs clerk only if generated pages would lie]
+```
+
+| Tag | Start | Who | Proof kicked upstairs | End |
+|-----|-------|-----|----------------------|-----|
+| `schema` / `wire` | YAML vs MIB/CLI/live | Schema clerk | Sidecar YAML prove (`*.read` + trace; not all-defaults-without-raw) | Architect merge |
+| `generator` | Leftover emit vs live `crude_engine/wire` | Docs clerk (`local/generator`) | Isolated emit-diff (never write live `crude_engine/wire`); keep-list shrunk | Architect merge, no sidecar |
+| `engine` | Live code vs `ENGINE_PRINCIPLES.md` | Engine clerk | Principles vs checker; no patch until HITL | HITL |
+| `test` | Catalog / sidecar / veracity | Test bot | Sidecar / veracity inspect dump or offline proof | Architect merge if a PR |
+| `docs-generated` | Generated page would lie | Docs clerk | Generator PR, no hand-edit of pages | Architect merge |
+| untagged | New issue | Architect | Labels + one confirm-only order | Loop starts |
+
+`--gate` / PyPI stays human (Adam HITL). Not a VM tag loop.
+
+## Where answers live
+
+| Question | Doc / tree |
+|----------|------------|
+| Output shape | `docs/SCHEMA_MODEL.md` |
+| YAML key → pipeline stage | `docs/SCHEMA_PRIMITIVES.md` |
+| Must not live in Python | `docs/ENGINE_PRINCIPLES.md` |
+| Method failing, ordered steps | this doc (ladder) |
+| Wire binding / OID / overlay | `crude_engine/wire/` + `docs/WIRE_SPEC.md` |
+| Device OBJECT-TYPE | `local/reference/MIBs/` |
+| CLI spelling / range | `local/reference/CLI/cli_ref_hios_merged.json` |
+| MOPS field names | `local/reference/MOPS/mops_hios.xml` |
+| Release / `--gate` | `docs/ROADMAP.md`, `docs/RELEASE_GATE.md` — HITL |
+
+## Future: vendor profile (not current)
+
+A new vendor profile for crude-engine is MIB + documentation + generator (MIB-standard rules consistent across SNMP vendors; vendor leftovers as overlays) + sidecar prove on a pointed-at device. HITL shrinks to first device and `--gate`, not every field. That is the ceiling. It is not true today.
+
 ## Key Principles
 
 - **The YAML declares what should happen.** The engine executes unambiguously.
