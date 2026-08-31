@@ -2,7 +2,7 @@
 
 Auto-generated from schema + protocol YAMLs. For full detail including per-protocol sources, see [API_REFERENCE.md](API_REFERENCE.md).
 
-**191 methods** (179C/R/U/D + 12E) across **45 features**
+**192 methods** (180C/R/U/D + 12E) across **46 features**
 
 ## aca
 _External NVM (ACA) configuration — selected memory, sync state, per-slot settings_
@@ -403,6 +403,12 @@ _Device monitoring and security status_
 - **`set_devsec_status()`** — Update
 - **`get_fan_status()`** — Read
   Returns: `status`
+
+## tracking
+_Object tracking config table (hm2TrackingConfigEntry)_
+
+- **`get_tracking()`** — Read, keyed by `name`
+  Returns: `name`, `description`, `operstate`, `changes`, `last_change`, `trap`, `status`
 
 ## user
 _User account management and password policy_

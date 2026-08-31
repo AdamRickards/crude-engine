@@ -102,6 +102,6 @@ Config XML file acts as a device. Uses MOPS engine protocol internally. Auto-det
 
 | Protocol | Wire Attrs | Methods | Method % |
 | :--- | :--- | :--- | :--- |
-| MOPS | 7927 / 7928 | 179 / 179 | 100% |
-| SNMP | 7928 / 7928 | 179 / 179 | 100% |
-| SSH | 286 / 7928 | 165 / 179 | 92% |
+| MOPS | 7927 / 7928 | 180 / 180 | 100% |
+| SNMP | 7928 / 7928 | 180 / 180 | 100% |
+| SSH | 286 / 7928 | 165 / 180 | 92% |
