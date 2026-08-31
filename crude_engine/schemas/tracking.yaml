@@ -1,0 +1,53 @@
+version: 2.7.0
+feature: tracking
+description: Object tracking config table (hm2TrackingConfigEntry)
+methods:
+  get_tracking:
+    type: dict
+    primary_key: name
+    # INDEX { hm2TrackType, hm2TrackId } — both accessible-for-notify.
+    # Drive rows from accessible hm2TrackName. Sibling tables (interface /
+    # ping / logical / application / static-route / interface-status) are
+    # leftover, not this schema.
+    index_fields: [type, id]
+    defaults:
+      name: ''
+      description: ''
+      operstate: ''
+      changes: 0
+      last_change: ''
+      trap: false
+      status: 0
+attributes:
+  # Compound INDEX — not getter defaults.
+  type:
+    value_map:
+      '1': interface
+      '2': ping
+      '3': logical
+  id: {}
+  name:
+    wire: hm2trackname
+    source: tracking
+  description:
+    wire: hm2trackdescription
+    source: tracking
+  operstate:
+    wire: hm2trackoperstate
+    source: tracking
+    value_map:
+      '1': up
+      '2': down
+      '3': notReady
+  changes:
+    wire: hm2tracknumberofchanges
+    source: tracking
+  last_change:
+    wire: hm2tracktimelastchange
+    source: tracking
+  trap:
+    wire: hm2tracksendstatechangetrap
+    source: tracking
+  status:
+    wire: hm2trackstatus
+    source: tracking
