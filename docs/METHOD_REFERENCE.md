@@ -2,7 +2,7 @@
 
 Auto-generated from schema + protocol YAMLs. For full detail including per-protocol sources, see [API_REFERENCE.md](API_REFERENCE.md).
 
-**189 methods** (177C/R/U/D + 12E) across **45 features**
+**191 methods** (179C/R/U/D + 12E) across **45 features**
 
 ## aca
 _External NVM (ACA) configuration — selected memory, sync state, per-slot settings_
@@ -244,9 +244,12 @@ _Network protection features: Storm Control, Loop Protection, and Auto-Disable_
   Returns: `enabled`, `transmission_interval`, `rx_threshold`
 - **`set_loop_protection()`** — Update
 - **`get_auto_disable()`** — Read, keyed by `name`
-  Returns: `enabled`, `reason`, `remaining_time`
+  Returns: `enabled`, `reason`, `remaining_time`, `timer`
 - **`set_auto_disable()`** — Update
+- **`get_auto_disable_reasons()`** — Read, keyed by `reason`
+  Returns: `enabled`, `category`
 - **`set_auto_disable_reason()`** — Update
+- **`auto_disable_reset()`** — Update
 
 ## qos
 _Quality of Service (QoS) and Traffic Class mapping_
