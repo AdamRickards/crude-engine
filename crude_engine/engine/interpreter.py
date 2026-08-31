@@ -212,7 +212,7 @@ class FeatureEngine:
         # Build keyed rows
         result = {}
         for idx, pk_value in pk_data.items():
-            output_key = pk_value
+            output_key = idx if key_map else pk_value
             entry = dict(defaults)
             all_data = {}
             output_type = method_def.get("type", "dict")
