@@ -78,6 +78,8 @@ attributes:
     value_map:
       '1': admitAll
       '2': admitOnlyVlanTagged
+      'admit all': admitAll
+      vlanonly: admitOnlyVlanTagged
   vlan_status:
     wire: dot1qvlanstaticrowstatus
     source: q-bridge
