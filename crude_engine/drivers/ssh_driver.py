@@ -109,7 +109,7 @@ class SSHGatherDriver(BaseDriver):
             if val is None:
                 continue
             tag = self._resolve_tag(source.get("tag", ""), source, attr_name=name)
-            if isinstance(val, dict) and tag in AGGREGATE_TAGS:
+            if isinstance(val, dict) and self._tag_name(tag) in AGGREGATE_TAGS:
                 # Aggregate tag: pass whole dict to transform
                 results[name] = self._apply_pipeline(val, source, tag, value_maps)
             elif isinstance(val, dict):
@@ -189,7 +189,7 @@ class SSHGatherDriver(BaseDriver):
                 resp = iterate_cache[cache_key]
                 val = self._parse_response(resp, source)
                 if val is not None:
-                    if isinstance(val, dict) and tag in AGGREGATE_TAGS:
+                    if isinstance(val, dict) and self._tag_name(tag) in AGGREGATE_TAGS:
                         val = self._apply_pipeline(val, source, tag, value_maps)
                     elif isinstance(val, dict):
                         val = {k: self._apply_pipeline(v, source, tag, value_maps)
