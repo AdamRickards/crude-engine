@@ -20,9 +20,13 @@ Find a method that passes using the same schema, engine path, or primitive. Diff
 
 Check against MIB source (`local/reference/MIBs/`) and MOPS schema (`local/reference/MOPS/mops_hios.xml`). Is `access:` right? Is `type:` right? Is `index_field:` present? Is `create_method:` correct? Is `index_type:` declared?
 
-### Step 5: v1 reference
+SSH overlay / hang: `local/reference/CLI/CLI_REFERENCE.md` (prompt regex `[>#]\s*$`, method→command map) and `local/reference/CLI/cli_ref_hios_merged.json` (1,849 commands, firmware 9.0–10.3). Output that never hits that prompt regex is the hang-to-timeout leftover (`#92`), not a silent parse miss.
 
-How did historical v1 (old napalm-hios monolith — a separate tree, not this repo) handle this table? Not to copy code, but to understand what encoding/sequence the device expects. v1's working code is empirical proof of what the wire needs. This product is this repo (`crude-engine`); do not assume a machine-local homelab path.
+### Step 5: Empirical reference material
+
+In-repo `local/reference/` (MIB, MOPS XML, CLI). That is the empirical device material for this product. Do not leave the repo. Do not point at a machine-local napalm-hios clone — after the package split that tree is the thin 2.0 shim, not v1 working code, and it is unreachable from CI or any other VM. Do not re-add a homelab absolute path here.
+
+Not to copy code. Encoding leftover that still needs live v1.17 comparison is a separate clerk tree, not this path.
 
 ### Step 6: Fix the declaration, not the engine
 
@@ -127,7 +131,7 @@ flowchart TD
 | Method failing, ordered steps | this doc (ladder) |
 | Wire binding / OID / overlay | `crude_engine/wire/` + `docs/WIRE_SPEC.md` |
 | Device OBJECT-TYPE | `local/reference/MIBs/` |
-| CLI spelling / range | `local/reference/CLI/cli_ref_hios_merged.json` |
+| CLI spelling / range / prompt regex | `local/reference/CLI/CLI_REFERENCE.md` + `cli_ref_hios_merged.json` |
 | MOPS field names | `local/reference/MOPS/mops_hios.xml` |
 | Release / `--gate` | `docs/ROADMAP.md`, `docs/RELEASE_GATE.md` — HITL |
 
