@@ -72,6 +72,11 @@ class BaseDriver(ABC):
         """Schema type → default tag from driver YAML."""
         return self._driver_config.get("wire_type_defaults", {})
 
+    @staticmethod
+    def _tag_name(tag):
+        """Bare registry function name from a _resolve_tag() result."""
+        return tag[0] if isinstance(tag, tuple) else tag
+
     @property
     def protocol_defaults(self) -> Dict[str, Any]:
         """Protocol-level source defaults (e.g. method: walk)."""
