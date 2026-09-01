@@ -3,29 +3,28 @@ feature: trafficmgmt-ssh
 description: "SSH CLI sources for traffic management (storm control, flow control)"
 
 attributes:
+  # Dash-range is 4 groups (Intf | B Mode+Level | M blob | U blob), not 7
+  # whitespace fields. Mode and threshold share a cell; regex splits them.
+  # Unicast blob (col 3) is unused by get_storm_control. Egress stays #129.
   hm2trafficmgmtifingressstormctlbcastmode:
-    type: string
     sources:
       ssh:
-        read: {command: "show storm-control ingress", parser: table, column: 1}
+        read: {command: "show storm-control ingress", parser: table, column: 1, key_column: 0, regex: '^(\S+)'}
 
   hm2trafficmgmtifingressstormctlbcastthreshold:
-    type: string
     sources:
       ssh:
-        read: {command: "show storm-control ingress", parser: table, column: 2}
+        read: {command: "show storm-control ingress", parser: table, column: 1, key_column: 0, regex: '(\d+)'}
 
   hm2trafficmgmtifingressstormctlmcastmode:
-    type: string
     sources:
       ssh:
-        read: {command: "show storm-control ingress", parser: table, column: 3}
+        read: {command: "show storm-control ingress", parser: table, column: 2, key_column: 0, regex: '^(\S+)'}
 
   hm2trafficmgmtifingressstormctlmcastthreshold:
-    type: string
     sources:
       ssh:
-        read: {command: "show storm-control ingress", parser: table, column: 4}
+        read: {command: "show storm-control ingress", parser: table, column: 2, key_column: 0, regex: '(\d+)'}
 
   # Flow control (interface write)
   hm2trafficmgmtifflowcontrol:
