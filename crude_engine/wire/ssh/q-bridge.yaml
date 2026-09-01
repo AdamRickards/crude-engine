@@ -16,18 +16,18 @@ attributes:
   dot1qpvid:
     sources:
       ssh:
-        read: {command: "show vlan port", parser: table, column: 1}
+        read: {command: "show vlan port", parser: table, column: 1, key_column: 0}
 
   dot1qportingressfiltering:
     sources:
       ssh:
-        read: {command: "show vlan port", parser: table, column: 3}
+        read: {command: "show vlan port", parser: table, column: 3, key_column: 0}
 
   dot1qportacceptableframetypes:
     type: string
     sources:
       ssh:
-        read: {command: "show vlan port", parser: table, column: 2}
+        read: {command: "show vlan port", parser: table, column: 2, key_column: 0}
 
   # MAC address table
   dot1qtpfdbaddress:

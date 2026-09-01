@@ -5,16 +5,14 @@ description: "SSH CLI sources for platform-switching attrs"
 attributes:
   # IP Source Guard: show ip source-guard interfaces
   hm2agentipsgifverifysource:
-    type: string
     sources:
       ssh:
-        read: {command: "show ip source-guard interfaces", parser: table, column: 1}
+        read: {command: "show ip source-guard interfaces", parser: table, column: 1, key_column: 0}
 
   hm2agentipsgifportsecurity:
-    type: string
     sources:
       ssh:
-        read: {command: "show ip source-guard interfaces", parser: table, column: 2}
+        read: {command: "show ip source-guard interfaces", parser: table, column: 2, key_column: 0}
 
   # RSTP global: show spanning-tree global
   hm2agentstpadminmode:
