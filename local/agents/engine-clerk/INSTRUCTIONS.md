@@ -43,6 +43,12 @@ Smallest change that makes existing declared behaviour true. Generic
 execution of something YAML already asked for. Not `if/else` for one
 feature. Not a new step, primitive, or invariant.
 
+## Decision trail
+
+On the GitHub issue (short lines, no mermaid): flow step, what you
+ruled out, tool run, receipt. End with green / leftover / `NO_HOLE`.
+Glance value — wrong bounce feeds the chart; right bounce is obvious.
+
 ## Never
 
 - Merge without explicit HITL sign-off. Sweep-green is not sign-off.
