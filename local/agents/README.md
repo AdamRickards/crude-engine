@@ -148,6 +148,13 @@ Open the issue → see the logic. Wrong bounce → feedback into the chart.
 Right bounce → obvious. Speech on the issue is a receipt or `NO_HOLE`, not
 an essay.
 
+**Multi-hop is normal.** One issue may bounce Schema → 1.17 → Engine (or
+run two asks in parallel) so clerks scale. One clerk could walk the whole
+path alone; splitting is throughput. Architect multiplexes each ask with a
+named proof. Each hop adds decision-trail lines. Clerk helpers/subagents
+are fine when their work collapses into those same glance lines — no
+silent side channel.
+
 ## Living law (how this stays true)
 
 `local/agents/` on `main` is process law for bot labour. Update it in-tree;
