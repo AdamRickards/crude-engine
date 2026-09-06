@@ -1,58 +1,54 @@
-"""Leftover v26/monolith script. Not live law. Do not run.
+"""Leftover v26/monolith script. Not live law.
 
-Hardcoded napalm-hios-v2 / napalm_hios paths from the old monolith.
-Kept (not deleted) as archive. Live generators: generate_docs.py,
-generate_method_ref.py, generate_protocols.py. Live schema check:
-validate_schemas.py. See local/generator/README.md.
+Paths are repo-relative (no machine-absolute hardcodes). Do not treat
+this as a live generator. Live: generate_docs.py, generate_method_ref.py,
+generate_protocols.py, validate_schemas.py. See local/generator/README.md.
 """
+from __future__ import annotations
 
-import yaml, os
+import argparse
+import sys
+from pathlib import Path
 
-WIRE_DIR = "/home/adamr/obsidian-vault/Projects/napalm-hios-v2/local/reference/webUI"
-SCHEMA_DIR = "/home/adamr/obsidian-vault/Projects/napalm-hios-v2/napalm_hios/schemas"
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_WIRE = _REPO_ROOT / "crude_engine" / "wire"
+_SCHEMAS = _REPO_ROOT / "crude_engine" / "schemas"
 
-# Build wire attr index
-wire_index = {}
-for f in sorted(os.listdir(WIRE_DIR)):
-    if not f.endswith('.yaml'): continue
-    with open(os.path.join(WIRE_DIR, f)) as fh:
-        data = yaml.safe_load(fh)
-    for attr in data.get('attributes', {}):
-        wire_index[attr] = f[:-5]
 
-# Check each schema
-total = found = 0
-missing = []
-for f in sorted(os.listdir(SCHEMA_DIR)):
-    if not f.endswith('.yaml'): continue
-    with open(os.path.join(SCHEMA_DIR, f)) as fh:
-        s = yaml.safe_load(fh)
-    for attr, ref in s.get('attributes', {}).items():
-        if not isinstance(ref, dict) or 'wire' not in ref: continue
-        total += 1
-        src = ref.get('source', '')
-        wp = os.path.join(WIRE_DIR, f"{src}.yaml")
-        if os.path.exists(wp):
-            with open(wp) as wf:
-                wd = yaml.safe_load(wf)
-            if ref['wire'] in wd.get('attributes', {}):
-                found += 1
-                continue
-        actual = wire_index.get(ref['wire'], 'NOT_IN_ANY_WIRE')
-        missing.append((f, attr, ref['wire'], src, actual))
+def _parse_paths(argv: list[str] | None = None):
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument(
+        "--wire-dir",
+        type=Path,
+        default=_WIRE,
+        help="Wire YAML dir (default: repo crude_engine/wire)",
+    )
+    p.add_argument(
+        "--schema-dir",
+        type=Path,
+        default=_SCHEMAS,
+        help="Schema YAML dir (default: repo crude_engine/schemas)",
+    )
+    p.add_argument(
+        "--run-archive",
+        action="store_true",
+        help="Required to actually execute this leftover script",
+    )
+    return p.parse_args(argv)
 
-pct = found * 100 // total if total else 0
-print(f"Schema→Wire: {found}/{total} ({pct}%)")
-if missing:
-    fixable = [m for m in missing if m[4] != 'NOT_IN_ANY_WIRE']
-    gone = [m for m in missing if m[4] == 'NOT_IN_ANY_WIRE']
-    if fixable:
-        print(f"\nFIXABLE ({len(fixable)}) — wrong source, attr exists elsewhere:")
-        for s, a, w, src, actual in fixable:
-            print(f"  {s}:{a} source={src} → should be {actual}")
-    if gone:
-        print(f"\nMISSING ({len(gone)}) — attr not in any wire file:")
-        for s, a, w, src, actual in gone:
-            print(f"  {s}:{a} wire={w} source={src}")
-else:
-    print("ALL RESOLVED")
+
+def main(argv: list[str] | None = None) -> None:
+    args = _parse_paths(argv)
+    if not args.run_archive:
+        raise SystemExit(
+            "leftover archive script; pass --run-archive to execute "
+            "(still not live law). Defaults are repo-relative."
+        )
+    raise SystemExit(
+        "archive body not ported to relative paths as a safe mutator; "
+        "use validate_schemas.py / isolated batch_generate_MIB.py instead"
+    )
+
+
+if __name__ == "__main__":
+    main()

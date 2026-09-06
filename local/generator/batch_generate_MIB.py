@@ -12,13 +12,14 @@ import json
 import re
 import yaml
 
-# Historical monolith default (dead). Isolated --outdir retargets the RUN.
+# Repo-relative only (no machine-absolute paths). Isolated --outdir required to write.
 _REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-BASE_DIR = '/home/adamr/obsidian-vault/Projects/napalm-hios-v2'
-captured_dir = os.path.join(BASE_DIR, 'local/reference/captured')
+BASE_DIR = _REPO_ROOT
+captured_dir = os.path.join(_REPO_ROOT, 'local/reference/captured')
 xml_schema_path = os.path.join(_REPO_ROOT, 'local/reference/MOPS/mops_hios.xml')
 master_schema_path = os.path.join(_REPO_ROOT, 'docs/napalm-hios-2-6-schema.md')
-output_dir = os.path.join(BASE_DIR, 'local/reference/webUI')
+# Default output stays off live wire; --isolated --outdir overrides.
+output_dir = os.path.join(_REPO_ROOT, 'local/reference/webUI')
 overrides_path = os.path.join(_REPO_ROOT, 'local/generator/overrides.yaml')
 
 def _refuse_live_wire(path):

@@ -59,9 +59,11 @@ Live schema law remains `validate_schemas.py` (CI).
 
 ## Leftover v26/monolith scripts (not live law)
 
-These still hardcode `napalm-hios-v2` / `napalm_hios/` (or the old
-`local/reference/webUI` / v1 `hios.py` / LocalUI tree). **Kept, not
-deleted.** Do not heal/enrich/batch-generate against live YAML.
+Machine-absolute monolith paths (`/home/adamr/...`) are **removed**.
+Leftover scripts are either repo-relative + `--run-archive` stubs, or
+(for MIB emit) isolated temp outdir only. Original absolute-path bodies
+live under `local/archive/generator-monolith-abs/` for archaeology.
+Do not heal/enrich/batch-generate against live YAML.
 `batch_generate_MIB.py` may be invoked **isolated** into a TEMP outdir
 for emit-diff only — never `crude_engine/wire`:
 
