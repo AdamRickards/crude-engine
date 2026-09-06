@@ -128,6 +128,26 @@ language is tested/untested and pass/fail. Architect enforces at ingress.
 Device identity stays in gitignored `device_pool` / local sidecar notes.
 
 
+
+## Decision trail (glance value)
+
+Auditable for improvement, not distrust. The GitHub issue is the log
+(on-disk only when there is no ticket). Do **not** paste mermaids onto the
+issue — the charts stay in this folder; the issue holds the decisions.
+
+Fixed shape, short lines:
+
+1. **Architect triage** — hole pick + named proof command  
+   e.g. `hole: schema/wire · proof: release_matrix --inspect --method X`
+2. **Clerk steps** — which flow step, what was ruled out, tool run, receipt  
+   e.g. `step: ladder-4 · ruled-out: overlay miss · tool: validate_schemas --errors · receipt: …`
+3. **End** — green on that proof, leftover filed, or `NO_HOLE` naming the
+   missing hole/tool
+
+Open the issue → see the logic. Wrong bounce → feedback into the chart.
+Right bounce → obvious. Speech on the issue is a receipt or `NO_HOLE`, not
+an essay.
+
 ## Living law (how this stays true)
 
 `local/agents/` on `main` is process law for bot labour. Update it in-tree;
@@ -146,7 +166,9 @@ do not let bot profile prose drift ahead of this folder.
    here and reports differentials in the Architect chat: missing clerk,
    extra bot, description drift, or chart/instructions mismatch. Fix by
    updating the profile or the pack — keep one truth.
-5. **Claude on the VPS** stays local-only (no push). Architect turns
+5. **Decision trail on the issue** (see above). Profiles and INSTRUCTIONS
+   require those glance lines; weekday sync flags essays or silent work.
+6. **Claude on the VPS** stays local-only (no push). Architect turns
    detailed sidecar receipts into GitHub issues without device identity.
 
 ## Not standing law
