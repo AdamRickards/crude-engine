@@ -104,7 +104,7 @@ not quietly rewrite the sieve.
    instructions. If it is green, good. If not, that is schema work with
    that command as the proof, not a roster edit.
 4. **Dual trees** — this folder lives in a Syncthing copy. The audit's
-   `/home/adamr/crude-sidecar/crude-engine` may be gone. Do not assume
+   the sidecar checkout path on a personal machine may be gone. Do not assume
    GitHub or the VPS matches until a SHA/receipt says so.
 5. **No new `flow.md`** for architect, schema, docs, 1.17 unless a real
    issue fails to fall through an existing hole. Then branch the mermaid
