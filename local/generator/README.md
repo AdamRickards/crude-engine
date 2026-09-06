@@ -59,7 +59,7 @@ Live schema law remains `validate_schemas.py` (CI).
 
 ## Leftover v26/monolith scripts (not live law)
 
-Machine-absolute monolith paths (`/home/adamr/...`) are **removed**.
+Machine-absolute monolith paths are **removed**.
 Leftover scripts are either repo-relative + `--run-archive` stubs, or
 (for MIB emit) isolated temp outdir only. Original absolute-path bodies
 live under `local/archive/generator-monolith-abs/` for archaeology.

@@ -23,9 +23,9 @@ The NAPALM adapter (`napalm-hios`) is largely complete. The engine is production
 
 | Package | Path | Version | Role |
 |---------|------|---------|------|
-| **crude-engine** | `obsidian-vault/Projects/crude-engine/` | 2.9.0 | Engine, drivers, schemas, wire YAMLs |
-| **napalm-hios** | `obsidian-vault/Projects/napalm-hios/` | 2.0.0 | Thin NAPALM adapter shim |
-| **napalm-hios-v2** (legacy) | `obsidian-vault/Projects/napalm-hios-v2/` | — | Orphaned `tests/` only; history in `Backup/napalm-hios-v2-*.tar.gz` |
+| **crude-engine** | this repo | 2.9.0 | Engine, drivers, schemas, wire YAMLs |
+| **napalm-hios** | sibling `napalm-hios` repo | 2.0.0 | Thin NAPALM adapter shim |
+| **napalm-hios-v2** (legacy) | archived sibling tree | — | Orphaned `tests/` only |
 
 ---
 
