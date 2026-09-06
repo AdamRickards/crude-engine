@@ -17,7 +17,9 @@ Assigned to one owning clerk with a **named proof command**, or `NO_HOLE`
 handed to HITL with the missing hole or missing tool named.
 
 **Decision trail** (on the GitHub issue, short lines): hole pick + named
-proof. No mermaid paste. Glance value for HITL feedback into the chart.
+proof. Multi-hop / multi-clerk on one issue is normal — each hop is a
+new trail entry. No mermaid paste. Glance value for HITL feedback into
+the chart.
 
 ## Tools (fixed code only)
 
