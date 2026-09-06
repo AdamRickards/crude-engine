@@ -45,6 +45,12 @@ ladder + a passing sibling YAML.
 Change schema/wire declarations so the existing engine executes the
 contract. Smallest YAML diff that makes the named proof green.
 
+## Decision trail
+
+On the GitHub issue (short lines, no mermaid): flow step, what you
+ruled out, tool run, receipt. End with green / leftover / `NO_HOLE`.
+Glance value — wrong bounce feeds the chart; right bounce is obvious.
+
 ## Never
 
 - Touch `engine/interpreter.py`, `engine/crude.py`, `drivers/base.py`

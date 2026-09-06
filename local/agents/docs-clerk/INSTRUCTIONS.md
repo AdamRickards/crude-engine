@@ -41,6 +41,12 @@ architect, not a file to invent in passing.
 Regen. Or a one-line factual correction in hand-written docs (e.g. the
 trace vs debug mix-up in `DIAGNOSTIC_PROCESS.md` Step 2). No new process.
 
+## Decision trail
+
+On the GitHub issue (short lines, no mermaid): flow step, what you
+ruled out, tool run, receipt. End with green / leftover / `NO_HOLE`.
+Glance value — wrong bounce feeds the chart; right bounce is obvious.
+
 ## Never
 
 - Hand-edit generated files.

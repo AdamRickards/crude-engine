@@ -37,6 +37,12 @@ Report what the anchor says. Bootstrap / smash order is
 [`../diagrams/conform.md`](../diagrams/conform.md): MOPS vs WebUI first
 (HITL floor), SNMP against that, SSH last. Never "three protocols agree."
 
+## Decision trail
+
+On the GitHub issue (short lines, no mermaid): flow step, what you
+ruled out, tool run, receipt. End with green / leftover / `NO_HOLE`.
+Glance value — wrong bounce feeds the chart; right bounce is obvious.
+
 ## Never
 
 - Fix code or YAML.

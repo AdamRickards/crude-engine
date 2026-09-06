@@ -44,6 +44,12 @@ Choose the proof lane the flowchart says. Capture/update
 `tests/fixtures/` with an honest `verified_via` when the hole says so.
 Validate content, not just shape (row count matching is not correctness).
 
+## Decision trail
+
+On the GitHub issue (short lines, no mermaid): flow step, what you
+ruled out, tool run, receipt. End with green / leftover / `NO_HOLE`.
+Glance value — wrong bounce feeds the chart; right bounce is obvious.
+
 ## Never
 
 - Author or "just tweak" the fix.

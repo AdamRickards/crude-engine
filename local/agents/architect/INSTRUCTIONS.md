@@ -16,6 +16,9 @@ A signal: new issue, sweep finding, or HITL input.
 Assigned to one owning clerk with a **named proof command**, or `NO_HOLE`
 handed to HITL with the missing hole or missing tool named.
 
+**Decision trail** (on the GitHub issue, short lines): hole pick + named
+proof. No mermaid paste. Glance value for HITL feedback into the chart.
+
 ## Tools (fixed code only)
 
 - GitHub issues: file, label, link. Do not treat Issues as the brain;
@@ -28,8 +31,8 @@ handed to HITL with the missing hole or missing tool named.
 
 ## Bounds
 
-Pick the hole. Write the start (proof command + never-touch). That is the
-whole job.
+Pick the hole. Write the start (proof command + never-touch). Post that
+as the first decision-trail lines on the issue. That is the whole job.
 
 ## Never
 
