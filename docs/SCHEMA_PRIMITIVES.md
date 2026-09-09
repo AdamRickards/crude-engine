@@ -15,8 +15,8 @@
 | `bit_map:` (dict) | dict | both | CRUDE transform | `crude_bits` via `to_bits` | inline bit position → name mapping |
 | `bit_map:` (str) | str | both | CRUDE transform | `crude_bits` via `to_bits` | named reference in wire YAML `value_maps` |
 | `collect: walk` | str | egress | resolve | `_egress_gather` | gathers as dict, resolves to `list(dict.values())` at read time |
-| `compute:` | dict | egress | Phase C formatters (scalar), per-row in table shaper | `_apply_compute`, `_shape_table_output` | keys: `from`, `format`, `expr`, `fallback`, `sort` |
-| `assemble:` / `set_format:` | str | ingress | pre-pipeline | `_apply_assemble` | reverse of compute — builds one wire value from multiple kwargs |
+| `compute:` | dict | egress | Phase C formatters (scalar), per-row in table shaper | `_apply_compute`, `_shape_table_output` | keys: `from`, `format`, `expr`, `fallback`, `sort`. **Not bidirectional** — see below |
+| `assemble:` / `set_format:` | str | ingress | pre-pipeline | `_apply_assemble` | write-side twin of compute when needed — many kwargs → one wire blob. Existing primitive; not auto-derived from `compute` |
 | `membership_of:` | str | egress | Phase C formatters | `_apply_membership` | cross-table boolean: is key in that attr's value set? |
 | `lookup:` | dict | egress | Phase C formatters | `_apply_lookup` | cross-table join. Keys: `from`, `index_field`, `resolve` |
 | `lookup.index_field` | str | egress | gather | `_egress_gather` | injected into proto_source so driver rekeys the table |
@@ -87,3 +87,23 @@
 - `value_map: ifindex` on attr + `key_map: ifindex` on method → different operations: value_map maps VALUES, key_map maps KEYS
 - `index_filter` only applies when index is a list (from `all` expansion) — single index passes through unchanged
 - Method-scoped `attributes:` overrides schema-level attrs with same name — `_load_method` merges method on top of schema
+
+
+## `compute:` vs bidirectional primitives (HITL 2026-09-10, closed #109)
+
+**Bidirectional by design** applies to same-wire-atom encode/decode
+(`value_map`, `bit_map`, …): egress wire→human, ingress human→wire.
+
+**`compute:` is egress-only.** It builds a read-side view from other attrs
+(often no `wire:`). The interpreter does not auto-invert `expr:` /
+`sort:`. That is intentional, not a missing Engine feature.
+
+**When a future SET needs the derived name**, do not invent a new
+primitive. Prefer, in order:
+
+1. SET the `compute.from` source attrs (they carry wire + bidirectional maps), or use a dedicated write method whose `fields:` name those sources.
+2. Only if the caller must SET *through* the derived attr name, declare existing `assemble:` / `set_format:` on that attr (template many kwargs → one wire value). Example already in-tree: `port_security` `set_format: "{vlan} {mac}"`.
+
+**Do not** extend Engine to auto-inverse `compute.expr`. That would be new meaning.
+
+Search cue: `assemble` / `set_format` / “compute egress-only” / closed issue #109.
