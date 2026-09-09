@@ -116,3 +116,13 @@ YAML (a sort registry / defaults), not as a hardcoded key lambda in
 `interpreter.py`. Engine looks up the named recipe and applies it
 generically. Silent HiOS `1/1`-style heuristics in Python are an oversight
 (opinion executed without consulting user intent). See open issue #116.
+
+
+## Boolean in/out via matrix (HITL 2026-09-10, open #115)
+
+Schema declares output type (`boolean`). Wire declares input syntax/type
+(`TruthValue`, …). `crude_matrix.yaml` maps `(syntax, type)` → transform;
+Gate 2 binds schema→wire; the matrix resolves both directions. True/false
+vocab and wire tokens belong in matrix args / `bool_map` (declared), not as
+hardcoded English lists or bare SNMP 1/2 invents in `crude.py`. See open
+issue #115.
