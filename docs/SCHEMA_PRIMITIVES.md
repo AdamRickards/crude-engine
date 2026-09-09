@@ -126,3 +126,8 @@ Gate 2 binds schema→wire; the matrix resolves both directions. True/false
 vocab and wire tokens belong in matrix args / `bool_map` (declared), not as
 hardcoded English lists or bare SNMP 1/2 invents in `crude.py`. See open
 issue #115.
+
+**Test floor:** offline proof walks every `(syntax, schema_type)` cell
+already in `crude_matrix.yaml` — egress and ingress round-trip for pairings
+that make sense (the matrix *is* the sense table). New syntax ⇒ new cell +
+fixture row. Not live `--gate`.
