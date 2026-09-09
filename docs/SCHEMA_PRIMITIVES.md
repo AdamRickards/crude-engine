@@ -107,3 +107,12 @@ primitive. Prefer, in order:
 **Do not** extend Engine to auto-inverse `compute.expr`. That would be new meaning.
 
 Search cue: `assemble` / `set_format` / “compute egress-only” / closed issue #109.
+
+
+## `compute.sort` (HITL 2026-09-10, open #116)
+
+`sort: <name>` is declared intent. The **recipe** for each name belongs in
+YAML (a sort registry / defaults), not as a hardcoded key lambda in
+`interpreter.py`. Engine looks up the named recipe and applies it
+generically. Silent HiOS `1/1`-style heuristics in Python are an oversight
+(opinion executed without consulting user intent). See open issue #116.
