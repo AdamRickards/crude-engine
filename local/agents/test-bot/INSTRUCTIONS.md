@@ -34,6 +34,10 @@ actual diff or output — not "looks good." On live work, sidecar ran it.
 - `python3 scripts/check_principles.py`
 - `python3 scripts/generate_status.py --check` and
   `python3 scripts/check_catalogue.py` for docs-only holes.
+- `python3 tests/test_crude_matrix.py` — offline wire-syntax ×
+  schema-type transform prove / discover / all (see #115).
+  Until the script exists: missing-tool `NO_HOLE` / `BLOCKED`, do
+  not improvise.
 
 If sidecar only exposes inspect today, a proof that needs `--compare` or
 replay and cannot be run is `BLOCKED` (mesh), not a skip.

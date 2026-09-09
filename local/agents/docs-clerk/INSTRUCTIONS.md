@@ -38,6 +38,11 @@ architect, not a file to invent in passing.
 
 ## Bounds
 
+When `tests/test_crude_matrix.py` lands (#115), document it next to
+the Gate 2 / `crude_matrix` note in `SCHEMA_PRIMITIVES.md` — harness
+modes prove/discover/all. Do not hand-edit generated pages for it.
+
+
 Regen. Or a one-line factual correction in hand-written docs (e.g. the
 trace vs debug mix-up in `DIAGNOSTIC_PROCESS.md` Step 2). No new process.
 
