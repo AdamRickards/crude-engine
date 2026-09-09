@@ -193,7 +193,7 @@ No other top-level keys are valid.
 | Key | Req | Type | Description |
 |-----|-----|------|-------------|
 | `value_map` | OPT | dict or string | Dict = inline enum map. String = context map reference. **Do not use for booleans** — see note below. |
-| `compute` | OPT | dict | Derived from other attributes (keys: `from`, `expr`/`format`, `fallback`, `sort`) |
+| `compute` | OPT | dict | Derived from other attributes (keys: `from`, `expr`/`format`, `fallback`, `sort`). Egress-only — not auto-inverted; see SCHEMA_PRIMITIVES.md (`compute:` vs bidirectional) |
 | `lookup` | OPT | dict | Cross-attribute join (keys: `from`, `index_field`, `resolve`) |
 | `membership_of` | OPT | string | Test if row key exists in another attr's values |
 | `collect` | OPT | enum | `value` (scalar) or `list` (aggregate as list) |
