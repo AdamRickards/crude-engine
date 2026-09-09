@@ -127,7 +127,9 @@ vocab and wire tokens belong in matrix args / `bool_map` (declared), not as
 hardcoded English lists or bare SNMP 1/2 invents in `crude.py`. See open
 issue #115.
 
-**Test floor:** offline proof walks every `(syntax, schema_type)` cell
-already in `crude_matrix.yaml` — egress and ingress round-trip for pairings
-that make sense (the matrix *is* the sense table). New syntax ⇒ new cell +
-fixture row. Not live `--gate`.
+**Test floor / harness:** fixed-code
+`python3 tests/test_crude_matrix.py` (Test bot runs; Docs documents).
+Modes: **prove** one `(wire syntax, schema type)` egress+ingress;
+**discover** coverage/gaps; **all** walk every cell in `crude_matrix.yaml`.
+New syntax ⇒ new cell + fixture row. Not live `--gate`. Until the script
+exists this lane is missing-tool (`NO_HOLE`). See open issue #115.
