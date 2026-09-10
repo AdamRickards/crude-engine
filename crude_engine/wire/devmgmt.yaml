@@ -1768,7 +1768,7 @@ attributes:
           field: hm2ExtNvmTable
   hm2extnvmtableindex:
     syntax: Hm2DeviceExtNVMType
-    type: string
+    type: integer
     access: r
     sources:
       snmp:
