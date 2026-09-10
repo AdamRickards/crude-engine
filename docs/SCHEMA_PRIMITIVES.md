@@ -48,8 +48,8 @@
 
 | Key | Default | Purpose |
 |-----|---------|---------|
-| `trace` | `False` | Enable pipeline trace — stored on `engine.last_trace` / `device.last_trace` |
-| `debug` | `False` | Adapter-level: enables trace + transport logging. Never reaches engine |
+| `trace` | `False` | Ours: engine pipeline recording — `engine.last_trace` / `device.last_trace` (sidecar / `--inspect --trace`) |
+| `debug` | `False` | Goal: foreign library logs (netmiko, paramiko, pysnmp, …), not engine thoughts. Today tools `--debug` opens some of those; adapter `debug=True` still also ORs into `trace` (leftover). Schema YAML `debug: true` is a legacy alias of engine `trace`, not this meaning. |
 | `validate` | `True` | Enable validation gates — `False` skips rejection, gates still produce context |
 | `index` | `None` | Row index for per-row operations. Also accepted as first positional arg |
 | `interface` | `None` | Alias for `index` (popped from kwargs) |

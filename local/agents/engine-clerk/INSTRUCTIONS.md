@@ -28,9 +28,9 @@ that, not a case-file essay.
 ## Tools (fixed code only)
 
 - Sidecar / `python3 tests/release_matrix.py --inspect --method X --device Y --trace`
-  (`trace=True` is pipeline recording. `debug=True` is adapter/transport
-  logging. Do not confuse them. `DIAGNOSTIC_PROCESS.md` Step 2 still says
-  `debug=True`; that doc is wrong — follow this.)
+  (**Goal:** `trace` = ours — engine pipeline / `device.last_trace`.
+  `debug` = foreign / not-ours logs — netmiko, paramiko, pysnmp, ….
+  Do not confuse them. Ladder Step 2 is `trace=True`.)
 - Same inspect with `--no-validate` (ladder: works without gates? then it
   is a declaration bug, not engine — exit to schema clerk).
 - `python3 tests/audit_getters.py <device> --compare <baseline.json>`

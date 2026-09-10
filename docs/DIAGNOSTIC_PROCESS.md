@@ -10,7 +10,9 @@ Find a method that passes using the same schema, engine path, or primitive. Diff
 
 ### Step 2: Trace
 
-`device.method_name(args, debug=True)` — see exactly what the pipeline produces at each step. What did intent resolution emit? What did the wire transform produce? What did the driver receive?
+`device.method_name(args, trace=True)` — or sidecar / `release_matrix --inspect --trace` — see exactly what the **engine** pipeline produces at each step (`device.last_trace`). What did intent resolution emit? What did the wire transform produce? What did the driver receive?
+
+**debug vs trace (goal):** `trace` = ours (engine thoughts). `debug` = foreign / not-ours library logs (netmiko, paramiko, pysnmp, …). Do not use `debug` for pipeline recording.
 
 ### Step 3: Validate off
 
