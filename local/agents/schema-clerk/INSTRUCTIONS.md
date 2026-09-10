@@ -25,6 +25,10 @@ structural errors. No new YAML primitive invented.
 ## Tools (fixed code only)
 
 - `python3 local/generator/validate_schemas.py --errors`
+  — structural schema law. Weekend/#115: extend this (same script)
+  so schema attr types vs wire `syntax` must be a legal edge in
+  `crude_matrix.yaml` (nonsense pairings = error). Inventory starts
+  from matrix keys + wire syntaxes (`test_crude_matrix.py discover`).
 - Sidecar / `python3 tests/release_matrix.py --inspect --method X --device Y [--trace] [--protocol P] [--no-validate]`
 - Sibling schema/wire YAML (read a passing method, diff declarations)
 - `local/reference/MIBs/`, `local/reference/MOPS/mops_hios.xml`,
