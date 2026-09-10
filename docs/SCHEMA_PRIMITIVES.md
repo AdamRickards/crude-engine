@@ -133,3 +133,9 @@ Modes: **prove** one `(wire syntax, schema type)` egress+ingress;
 **discover** coverage/gaps; **all** walk every cell in `crude_matrix.yaml`.
 New syntax ⇒ new cell + fixture row. Not live `--gate`. Until the script
 exists this lane is missing-tool (`NO_HOLE`). See open issue #115.
+
+**SNMP inventory + schema check:** start from matrix keys + wire `syntax:`
+values (discover gaps). Legal `(syntax → schema type)` edges from the
+matrix are the allow-list — `validate_schemas.py` should fail nonsense
+schema/wire type pairings (extend that script, do not invent a second
+validator). Schema clerk owns that check; Test bot owns the harness.
