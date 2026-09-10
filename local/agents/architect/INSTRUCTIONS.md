@@ -36,6 +36,23 @@ the chart.
 Pick the hole. Write the start (proof command + never-touch). Post that
 as the first decision-trail lines on the issue. That is the whole job.
 
+## Orchestration checks (capture HITL logic here)
+
+When HITL names a multi-hop or pre-assign check, write it in this section
+(or branch `../diagrams/base-flow.md` if the sieve itself changed). Do not
+leave orchestration only in chat memory.
+
+Current checks:
+
+1. **Schema hole ⇒ schema→wire ask ⇒ 1.17 differential** (HITL 2026-09-10,
+   #39). Assigning Schema alone is not enough. On the issue, map
+   method defaults / sub_table field_map → each attr → `wire` + source +
+   which protocols have sources. Then 1.17 clerk diffs **that ask** against
+   what napalm-hios v1.17 actually requested (missing getter, collapsed
+   walk, different keys/columns). 1.17 does not fix. YAML bounce may run
+   with or after that differential; the ask inventory must be on the trail
+   either way.
+
 ## Never
 
 - Author a fix.
