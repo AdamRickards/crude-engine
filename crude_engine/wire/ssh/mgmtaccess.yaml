@@ -85,8 +85,14 @@ attributes:
     type: string
     sources:
       ssh:
-        read: {command: "show system pre-login-banner", field: "Login banner text"}
+        # CLI puts the body on the next line after empty dots (1.17
+        # _parse_banner_text). field: is same-line only → "".
+        read:
+          command: "show system pre-login-banner"
+          parser: regex
+          pattern: 'Login banner text\.+\n?(.*)'
         write: {command: "system pre-login-banner text {value}", level: config}
+
 
   # SNMP global config (snmp schema uses mgmtaccess wire)
   hm2snmpv1adminstatus:
