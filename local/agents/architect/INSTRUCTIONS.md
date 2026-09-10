@@ -26,7 +26,8 @@ the chart.
 - GitHub issues: file, label, link. Do not treat Issues as the brain;
   `cycles.yaml` / this folder wins if they disagree.
 - Sidecar `POST /v1/run` when routing needs a live inspect before the hole
-  is obvious.
+  is obvious. Prefer `trace:true` (engine pipeline recording) when the miss
+  may be ours — see Orchestration check 2. Not `debug` (foreign library logs).
 - Grep / issue text only for "same file/function/symptom already open."
   There is no cross-reference tool yet — that gap is `NO_HOLE` for tooling,
   not a reason to invent a match.
@@ -52,6 +53,14 @@ Current checks:
    walk, different keys/columns). 1.17 does not fix. YAML bounce may run
    with or after that differential; the ask inventory must be on the trail
    either way.
+
+2. **Named proof includes engine `trace` when locating a pipeline miss**
+   (HITL 2026-09-10). `trace` records *our* steps (intent → wire bind →
+   transform → driver). When parity/empty/defaults look like crude missed
+   the contract, the named proof is inspect/`POST` with `trace:true` (or
+   `trace=True`), and the trail should say which step diverged — not a
+   guess from schema text alone. `debug` is foreign library logs only
+   (#155/#156); do not substitute it for pipeline recording.
 
 ## Never
 
