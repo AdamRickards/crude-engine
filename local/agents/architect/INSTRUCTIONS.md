@@ -62,6 +62,14 @@ Current checks:
    guess from schema text alone. `debug` is foreign library logs only
    (#155/#156); do not substitute it for pipeline recording.
 
+3. **Prefer existing schema/wire tools before new primitives** (HITL
+   2026-09-10, #41/#160). If an existing declaration (e.g. SSH
+   `parser: regex`, value_map, overlay field) meets the contract without
+   a mess, Schema sits with that — no new primitive. Only when the need
+   cannot be met, or the existing tool becomes overly complex / dishonest,
+   hand HITL a `NO_HOLE` naming the missing declarative tool. Do not invent
+   engine parse ports to avoid using a working overlay tool.
+
 ## Never
 
 - Author a fix.
