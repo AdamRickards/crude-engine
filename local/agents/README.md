@@ -76,6 +76,13 @@ only: hole, start, end, tools, bounds, never, `NO_HOLE`.
 - **Never:** essays, new primitives, guessing device behaviour from a
   code-read, claiming a fix without a receipt from the named tool.
 
+## Architect orchestration
+
+Logic checks for how Architect multiplexes clerks live in
+`architect/INSTRUCTIONS.md` § Orchestration checks (e.g. schema
+hole ⇒ schema→wire ask ⇒ 1.17 differential). HITL-named checks
+get written there — not only in chat memory.
+
 ## Roster
 
 Six holes. Do not add a seventh until a real object collides two of these.
