@@ -37,7 +37,8 @@ actual diff or output — not "looks good." On live work, sidecar ran it.
 - `python3 tests/test_crude_matrix.py` — offline wire-syntax ×
   schema-type transform prove / discover / all (see #115).
   Until the script exists: missing-tool `NO_HOLE` / `BLOCKED`, do
-  not improvise.
+  not improvise. On wire changes: run discover/prove **before and
+  after** so the receipt shows schema follow-ups or a datatype fix.
 
 If sidecar only exposes inspect today, a proof that needs `--compare` or
 replay and cannot be run is `BLOCKED` (mesh), not a skip.
