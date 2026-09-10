@@ -146,3 +146,9 @@ current declarative nonsense to fail when the check lands, then Schema
 shortens toward a shorter standard list. Wire PRs: run
 `test_crude_matrix.py` **before and after** so the receipt names schema
 follow-ups or proves the datatype fix.
+
+**Discover aim:** completeness + compliance map across SNMP/SMIv2 → wire →
+matrix → schema. Classify covered / missing matrix / missing wire /
+schema nonsense / **custom-should-be-standard** (collapse to standard
+syntax + attributes when the last refactor pattern applies). Scoreboard
+is how we see transform coverage over time.
