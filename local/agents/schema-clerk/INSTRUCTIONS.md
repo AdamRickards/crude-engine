@@ -29,6 +29,9 @@ structural errors. No new YAML primitive invented.
   so schema attr types vs wire `syntax` must be a legal edge in
   `crude_matrix.yaml` (nonsense pairings = error). Inventory starts
   from matrix keys + wire syntaxes (`test_crude_matrix.py discover`).
+  Wire (MIB) has more rights — nonsense is usually schema-side. When
+  the allow-list lands, beat existing schemas into shape (shorter
+  standard list OK). Wire PRs: harness before/after with Test bot.
 - Sidecar / `python3 tests/release_matrix.py --inspect --method X --device Y [--trace] [--protocol P] [--no-validate]`
 - Sibling schema/wire YAML (read a passing method, diff declarations)
 - `local/reference/MIBs/`, `local/reference/MOPS/mops_hios.xml`,

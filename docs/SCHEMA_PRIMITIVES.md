@@ -139,3 +139,10 @@ values (discover gaps). Legal `(syntax → schema type)` edges from the
 matrix are the allow-list — `validate_schemas.py` should fail nonsense
 schema/wire type pairings (extend that script, do not invent a second
 validator). Schema clerk owns that check; Test bot owns the harness.
+
+**Beat existing into shape (circular causation):** wire syntax (MIB/SNMP)
+has more rights; matrix is the allow-list; schema types must fit — expect
+current declarative nonsense to fail when the check lands, then Schema
+shortens toward a shorter standard list. Wire PRs: run
+`test_crude_matrix.py` **before and after** so the receipt names schema
+follow-ups or proves the datatype fix.
