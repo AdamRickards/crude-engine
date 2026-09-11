@@ -24,6 +24,10 @@ Check against MIB source (`local/reference/MIBs/`) and MOPS schema (`local/refer
 
 SSH overlay / hang: `local/reference/CLI/CLI_REFERENCE.md` (prompt regex `[>#]\s*$`, method→command map) and `local/reference/CLI/cli_ref_hios_merged.json` (1,849 commands, firmware 9.0–10.3). Output that never hits that prompt regex is the hang-to-timeout leftover (`#92`), not a silent parse miss.
 
+### Step 4b: Wire wrong input (schema looks weird)
+
+If the pipeline is honest but wire type/shape/OID fed the engine bad input: identify (schema→wire + `trace:true`) → **temp-patch** wire on a branch → prove vs known-good / HITL → permanent wire PR. If the mistype is generator-shaped, teach leftover generator in TEMP (#162) so regen keeps the fix. Do not silently heal live wire from a bad emit.
+
 ### Step 5: Empirical reference material
 
 In-repo `local/reference/` (MIB, MOPS XML, CLI). That is the empirical device material for this product. Do not leave the repo. Do not point at a machine-local napalm-hios clone — after the package split that tree is the thin 2.0 shim, not v1 working code, and it is unreachable from CI or any other VM. Do not re-add a homelab absolute path here.
