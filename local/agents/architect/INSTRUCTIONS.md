@@ -70,6 +70,23 @@ Current checks:
    hand HITL a `NO_HOLE` naming the missing declarative tool. Do not invent
    engine parse ports to avoid using a working overlay tool.
 
+4. **Generator align iterates in TEMP** (HITL 2026-09-11, #162). Docs
+   clerk leftover-generator cycle: isolated emit → diff live
+   `crude_engine/wire` → named-TC teach on a **copy** → re-emit. Goal:
+   emit matches live (or the bulk). Archive TODO generator hints are
+   hints only — re-prove vs current live. If emit looks right and a live
+   hand-patch looks wrong, file/split a **wire** leftover (do not teach
+   the bug). Never overlay emit onto live wire until HITL regen.
+
+5. **Wire wrong input → schema looks weird** (HITL 2026-09-11). When
+   engine output is odd because wire fed the wrong type/shape/OID:
+   (1) **Identify** — schema→wire ask + `trace:true` + emit-diff if
+   generator-shaped. (2) **Temp patch** live-shaped wire in a branch/temp
+   only. (3) **Prove** vs known-good (1.17 / fixtures / HITL MOPS or
+   offline XML). (4) **Permanent** — Schema/wire PR after green; if the
+   mistype is generator-shaped, also teach leftover generator (#162 loop)
+   so regen does not lose the fix.
+
 ## Never
 
 - Author a fix.

@@ -8,6 +8,11 @@ No private `flow.md` until a real branch appears.
 Generated docs stay generated. Hand-written docs stay true. Almost always
 a post-merge reaction, not an originating fix.
 
+Also: GitHub label `generator` — leftover MIB wire generator cycle
+(isolated TEMP emit-diff vs live `crude_engine/wire`; teach leftover
+source so regen does not lose hand-fixes). See Architect orchestration
+check 4 and skill `mib-wire-generator-cycle`. Never write live wire.
+
 ## Start
 
 A merge (or a found stale claim) that added/removed/renamed a method,
@@ -26,6 +31,7 @@ Hand-written files either still match the tree or got a factual fix.
 - `python3 local/generator/generate_protocols.py`
 - `python3 scripts/generate_status.py` and `--check`
 - `python3 scripts/check_catalogue.py`
+- Leftover generator (TEMP only): `python3 local/generator/batch_generate_MIB.py --isolated --outdir <TEMP>` (isolated venv; never `crude_engine/wire`)
 
 Generated-only (never hand-edit): `docs/API_REFERENCE.md`,
 `docs/RELEASE_MATRIX.md`, `docs/status.html`. If they look wrong, fix the
