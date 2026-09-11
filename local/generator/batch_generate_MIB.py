@@ -4,7 +4,9 @@
 # Live generators: generate_docs.py, generate_method_ref.py, generate_protocols.py.
 # Live schema check: validate_schemas.py. See local/generator/README.md.
 #
-# Version: 2.6.2 - AUGMENTS index, BITS TC unwrap, composite INDEX, SFlowReceiver
+# Version: 2.6.3 - named-TC teach (#162): InetAddressType/Version/PrefixLength→string;
+#   TC-BITS→string drop inline bit_map; keep literal BITS/PortList list+bit_map;
+#   INTEGER{enabled,disabled}→boolean (not TruthValue→integer). No blanket Inet*/8802.
 import os
 import argparse
 import xml.etree.ElementTree as ET
@@ -73,17 +75,25 @@ def parse_constraints(raw, syntax, mib_range=None):
 
 def syntax_to_type(syntax, enumerations=None, tc_info=None):
     s = str(syntax).strip()
+    # Keep TruthValue / HmEnabledStatus / EnabledStatus → boolean (#103 / archive).
+    # Do NOT map TruthValue→integer (falsified teach created 418 new diffs).
     if any(x in s for x in ("TruthValue", "HmEnabledStatus", "EnabledStatus")): return "boolean"
     # INTEGER{enabled(1),disabled(2)} — same semantics as HmEnabledStatus, inline enum
     if enumerations:
         pairs = {(e.get("name"), str(e.get("value"))) for e in enumerations}
         if pairs == {("enabled", "1"), ("disabled", "2")}:
             return "boolean"
-    if s == "INTEGER" or any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number", "StorageType", "TimeStamp", "TimeInterval", "TimeFilter", "InetAddressPrefixLength", "InetAddressType", "InetPortNumber", "InetVersion", "Timeout", "Metric", "VlanId", "RouterID", "AreaID", "LacpKey", "DesignatedRouterPriority", "SFlowReceiver")): return "integer"
+    # Named Inet TCs only → string (proved vs live). Do not blanket every "Inet*"
+    # (InetZoneIndex overshot). InetPortNumber stays integer below.
+    if any(x in s for x in ("InetAddressType", "InetVersion", "InetAddressPrefixLength")):
+        return "string"
+    if s == "INTEGER" or any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number", "StorageType", "TimeStamp", "TimeInterval", "TimeFilter", "InetPortNumber", "Timeout", "Metric", "VlanId", "RouterID", "AreaID", "LacpKey", "DesignatedRouterPriority", "SFlowReceiver")): return "integer"
+    # Literal BITS / PortList stay list + bit_map (live already keeps those).
     if any(x in s for x in ("BITS", "PortList")): return "list"
-    # TextualConvention whose base syntax is BITS (LldpSystemCapabilitiesMap, …)
+    # TC-BITS (textual-convention whose base syntax is BITS) → string; caller drops
+    # inline bit_map for these. Leave literal BITS path above as list.
     if tc_info and tc_info.get("syntax") == "BITS":
-        return "list"
+        return "string"
     # Hm2* BITS types have bit_map in their MIB definition — handled by bit_map detection
     # Don't blanket-classify all Hm2* as list — many are integer enums
     return "string"
@@ -377,9 +387,20 @@ def process_captured_pages():
                         mops_read["key_tag"] = "to_hex_decode"
                 attr_entry = {"syntax": syntax, "type": stype, "access": access, "sources": {"snmp": {"read": snmp_read}, "mops": {"read": mops_read}}}
                 if validation: attr_entry["validation"] = validation
+                # bit_map: keep for literal BITS / PortList (list). Drop for TC-BITS
+                # where live wants string without inline map (#162 named teach).
                 if "bit_map" in meta:
-                    attr_entry["bit_map"] = meta["bit_map"]
-                    attr_entry["type"] = "list"  # BITS fields → list output
+                    tc = meta.get("tc") or {}
+                    # TC-BITS: syntax_to_type already returned string; skip inline map.
+                    if (
+                        stype == "string"
+                        and tc.get("syntax") == "BITS"
+                        and str(meta.get("syntax", "")).strip() != "BITS"
+                    ):
+                        pass
+                    else:
+                        attr_entry["bit_map"] = meta["bit_map"]
+                        attr_entry["type"] = "list"  # literal BITS / PortList → list
                 if "create_method" in meta: attr_entry["create_method"] = meta["create_method"]
                 if "index_type" in meta: attr_entry["index_type"] = meta["index_type"]
                 # Apply overrides from overrides.yaml
