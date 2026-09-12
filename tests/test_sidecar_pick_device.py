@@ -6,6 +6,7 @@ Does not add hosts. Does not call a switch. #74 stays open.
 """
 from __future__ import annotations
 
+import json
 import os
 import sys
 import tempfile
@@ -17,18 +18,20 @@ os.environ["CRUDE_SIDECAR_TRANSPORT"] = "fake"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from sidecar.app import handle_run, pick_device_ip  # noqa: E402
+from sidecar.app import handle_run, pick_device, pick_device_ip  # noqa: E402
 import sidecar.app as sidecar_app  # noqa: E402
 
 L2 = {
     "ip": "192.0.2.10",
     "label": "example-l2",
+    "sw_level": "L2A",
     "safe_for": ["read"],
     "has_capable": ["vlan", "dns"],
 }
 L3 = {
     "ip": "192.0.2.20",
     "label": "example-l3",
+    "sw_level": "L3A_MR",
     "safe_for": ["read"],
     "has_capable": ["vrrp", "route", "router"],
 }
@@ -139,6 +142,71 @@ def test_handle_run_picks_l3_for_vrrp():
     assert seen == [("get_vrrp_instances", "192.0.2.20")], seen
 
 
+def test_pick_device_returns_full_record_not_just_ip():
+    dev = pick_device("vrrp", [L2, L3])
+    assert dev is L3, dev
+    assert dev["label"] == "example-l3", dev
+    assert dev["sw_level"] == "L3A_MR", dev
+
+
+def test_pick_device_none_when_no_match():
+    assert pick_device("vrrp", [L2]) is None
+
+
+def test_handle_run_echoes_label_sw_level_and_feature():
+    """Issue #131: result.feature + result.device must name the box that ran."""
+    prev_pool = sidecar_app.POOL_PATH
+    prev_inspect = sidecar_app.call_inspect
+    prev_transport = os.environ.get("CRUDE_SIDECAR_TRANSPORT")
+
+    def fake_inspect(method, device, protocol=None, trace=False):
+        return {"exit": 0, "fake": True, "protocols": {}, "parity_diffs": []}
+
+    tmp = Path(tempfile.mkdtemp()) / "device_pool.yaml"
+    tmp.write_text(
+        "devices:\n"
+        "  - ip: 192.0.2.10\n"
+        "    label: example-l2\n"
+        "    sw_level: L2A\n"
+        "    safe_for: [read]\n"
+        "    has_capable: [vlan, dns]\n"
+        "  - ip: 192.0.2.20\n"
+        "    label: example-l3\n"
+        "    sw_level: L3A_MR\n"
+        "    safe_for: [read]\n"
+        "    has_capable: [vrrp, route, router]\n"
+    )
+    sidecar_app.POOL_PATH = tmp
+    sidecar_app.call_inspect = fake_inspect
+    os.environ["CRUDE_SIDECAR_TRANSPORT"] = "live"
+    try:
+        code, body = handle_run({"name": "get_vrrp_instances.read"})
+    finally:
+        sidecar_app.POOL_PATH = prev_pool
+        sidecar_app.call_inspect = prev_inspect
+        if prev_transport is None:
+            os.environ.pop("CRUDE_SIDECAR_TRANSPORT", None)
+        else:
+            os.environ["CRUDE_SIDECAR_TRANSPORT"] = prev_transport
+
+    assert code == 200, (code, body)
+    result = body.get("result") or {}
+    assert result.get("feature") == "vrrp", result
+    device = result.get("device") or {}
+    assert device.get("label") == "example-l3", result
+    assert device.get("sw_level") == "L3A_MR", result
+    assert "192.0.2.20" not in json.dumps(result), "ip must not leak into the body"
+
+
+def test_handle_run_device_null_on_fake_transport():
+    """No pool device is picked under fake/offline; device must be null, not omitted."""
+    code, body = handle_run({"name": "get_dns.read"})
+    assert code == 200, (code, body)
+    result = body.get("result") or {}
+    assert result.get("feature") == "dns", result
+    assert result.get("device") is None, result
+
+
 def main():
     tests = [
         test_vrrp_skips_first_l2,
@@ -147,6 +215,10 @@ def main():
         test_route_and_router_same_rule,
         test_handle_run_no_eligible_does_not_inspect,
         test_handle_run_picks_l3_for_vrrp,
+        test_pick_device_returns_full_record_not_just_ip,
+        test_pick_device_none_when_no_match,
+        test_handle_run_echoes_label_sw_level_and_feature,
+        test_handle_run_device_null_on_fake_transport,
     ]
     failed = 0
     for fn in tests:
