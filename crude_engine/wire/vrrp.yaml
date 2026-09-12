@@ -10,7 +10,7 @@ schemas:
       vrrpassoipaddrrowstatus: 0
       vrrpassoipaddrtable: ''
       vrrpnodeversion: 0
-      vrrpnotificationcntl: 0
+      vrrpnotificationcntl: false
       vrrpoperacceptmode: false
       vrrpoperadminstate: 0
       vrrpoperadvertisementinterval: 0
@@ -144,7 +144,7 @@ attributes:
           field: vrrpNodeVersion
   vrrpnotificationcntl:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:
