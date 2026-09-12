@@ -115,6 +115,34 @@
    <Scalar name="dot1qBase">
     <Attribute name="dot1qGvrpStatus">2</Attribute>
    </Scalar>
+   <Table name="dot1qVlanStaticEntry">
+    <Entry>
+     <Attribute name="dot1qVlanIndex">1</Attribute>
+     <Attribute name="dot1qVlanStaticName" convert="ascii">default</Attribute>
+     <Attribute name="dot1qVlanStaticEgressPorts" convert="portlist">1/1,1/2</Attribute>
+     <Attribute name="dot1qVlanStaticRowStatus">1</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="dot1qVlanIndex">100</Attribute>
+     <Attribute name="dot1qVlanStaticName" convert="ascii"></Attribute>
+     <Attribute name="dot1qVlanStaticEgressPorts" convert="portlist">1/1,1/2</Attribute>
+     <Attribute name="dot1qVlanStaticRowStatus">1</Attribute>
+    </Entry>
+   </Table>
+   <Table name="dot1qPortVlanEntry">
+    <Entry>
+     <Attribute name="dot1dBasePort" convert="ifname">1/1</Attribute>
+     <Attribute name="dot1qPvid">1</Attribute>
+     <Attribute name="dot1qPortAcceptableFrameTypes">1</Attribute>
+     <Attribute name="dot1qPortIngressFiltering">2</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="dot1dBasePort" convert="ifname">1/2</Attribute>
+     <Attribute name="dot1qPvid">1</Attribute>
+     <Attribute name="dot1qPortAcceptableFrameTypes">1</Attribute>
+     <Attribute name="dot1qPortIngressFiltering">2</Attribute>
+    </Entry>
+   </Table>
   </MIB>
   <MIB name="P-BRIDGE-MIB">
    <Scalar name="dot1dExtBase">
@@ -145,6 +173,11 @@
     <Attribute name="hm2AgentStpCstBridgeMaxAge">20</Attribute>
     <Attribute name="hm2AgentStpCstBridgePriority">32768</Attribute>
    </Scalar>
+   <Scalar name="hm2AgentSwitchKeepaliveGroup">
+    <Attribute name="hm2AgentSwitchKeepaliveState">2</Attribute>
+    <Attribute name="hm2AgentSwitchKeepaliveTransmitInterval">5</Attribute>
+    <Attribute name="hm2AgentSwitchKeepaliveRxThreshold">1</Attribute>
+   </Scalar>
   </MIB>
   <MIB name="HM2-MGMTACCESS-MIB">
    <Scalar name="hm2MgmtAccessSshGroup">
@@ -172,6 +205,19 @@
     <Attribute name="hm2SnmpPortNumber">161</Attribute>
     <Attribute name="hm2SnmpTrapServiceAdminStatus">1</Attribute>
    </Scalar>
+  </MIB>
+
+  <MIB name="HM2-DEVMGMT-MIB">
+   <Table name="hm2AutoDisableReasonEntry">
+    <Entry>
+     <Attribute name="hm2AutoDisableReasons">1</Attribute>
+     <Attribute name="hm2AutoDisableReasonOperation">2</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="hm2AutoDisableReasons">4</Attribute>
+     <Attribute name="hm2AutoDisableReasonOperation">2</Attribute>
+    </Entry>
+   </Table>
   </MIB>
  </MibData>
  <Footer>
