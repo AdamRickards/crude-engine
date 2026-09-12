@@ -1083,7 +1083,7 @@ attributes:
           field: hm2NetOobMgmtOperState
   hm2netoobmgmtprefixlength:
     syntax: InetAddressPrefixLength
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -1199,7 +1199,7 @@ attributes:
           field: hm2NetOobUsbMgmtIPAddrType
   hm2netoobusbmgmtprefixlength:
     syntax: InetAddressPrefixLength
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -1213,7 +1213,7 @@ attributes:
           field: hm2NetOobUsbMgmtPrefixLength
   hm2netprefixlength:
     syntax: InetAddressPrefixLength
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
