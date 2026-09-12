@@ -254,6 +254,57 @@
     <Attribute name="hm2AgentGlobalPortSecurityMode">2</Attribute>
    </Scalar>
   </MIB>
+
+  <MIB name="HM2-FILEMGMT-MIB">
+   <Scalar name="hm2FileMgmtConfigRemoteSaveGroup">
+    <Attribute name="hm2FMConfigRemoteSaveAdminStatus">2</Attribute>
+    <Attribute name="hm2FMConfigRemoteSaveDestination" convert="ascii"></Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="HM2-L2FORWARDING-MIB">
+   <Table name="hm2TrafficClassEntry">
+    <Entry>
+     <Attribute name="hm2TrafficClassPriority">0</Attribute>
+     <Attribute name="hm2TrafficClass">2</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="hm2TrafficClassPriority">1</Attribute>
+     <Attribute name="hm2TrafficClass">0</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="hm2TrafficClassPriority">7</Attribute>
+     <Attribute name="hm2TrafficClass">7</Attribute>
+    </Entry>
+   </Table>
+   <Table name="hm2CosMapIpDscpEntry">
+    <Entry>
+     <Attribute name="hm2CosMapIpDscpValue">0</Attribute>
+     <Attribute name="hm2CosMapIpDscpTrafficClass">2</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="hm2CosMapIpDscpValue">46</Attribute>
+     <Attribute name="hm2CosMapIpDscpTrafficClass">6</Attribute>
+    </Entry>
+   </Table>
+  </MIB>
+  <MIB name="HM2-TRAFFICMGMT-MIB">
+   <Table name="hm2TrafficMgmtIfEntry">
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlBcastMode">2</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlBcastThreshold">0</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlMcastMode">2</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlMcastThreshold">0</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/2</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlBcastMode">2</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlBcastThreshold">0</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlMcastMode">2</Attribute>
+     <Attribute name="hm2TrafficMgmtIfIngressStormCtlMcastThreshold">0</Attribute>
+    </Entry>
+   </Table>
+  </MIB>
  </MibData>
  <Footer>
   <Checksum type="SHA1" value="0000000000000000000000000000000000000000"/>
