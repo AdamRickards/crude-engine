@@ -4,7 +4,7 @@ No device identity. Classes are first-pass heuristics from schema + wire +
 mops/ssh capture fixtures + sanitized floors. Untestable oper attrs are
 hints until a method is floored and `config_absent` receipts list them.
 
-**Counts:** `{"config_backed": 38, "gold_ready_no_floor": 17, "no_gold_yet": 11, "online_only": 13}`
+**Counts:** `{"config_backed": 41, "gold_ready_no_floor": 14, "no_gold_yet": 11, "online_only": 13}`
 
 | method | class | note |
 | --- | --- | --- |
@@ -36,10 +36,10 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_management` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_management_priority` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_mrp_sub_ring` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_ntp_servers` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['client_status', 'server_oper_status', 'server_row_status'] |
+| `get_ntp_servers` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_poe` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['status'] |
 | `get_port_security` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_profiles` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
+| `get_profiles` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_qos` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_qos_mapping` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_remote_auth` | `config_backed` | sanitized floor; config-backed attrs only |
@@ -54,7 +54,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_snmp_trap_destinations` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['addr_row_status', 'params_row_status'] |
 | `get_storm_control` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_system_info` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_users` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['user_status'] |
+| `get_users` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_vlan_egress` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['vlan_status'] |
 | `get_vlan_ingress` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_vlans` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['vlan_status'] |

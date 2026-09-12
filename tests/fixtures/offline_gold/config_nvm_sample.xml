@@ -85,6 +85,16 @@
    <Scalar name="hm2NtpServerConfigGroup">
     <Attribute name="hm2NtpServerLocalClockStratum">1</Attribute>
    </Scalar>
+   <Table name="hm2SntpClientServerAddrEntry">
+    <Entry>
+     <Attribute name="hm2SntpClientServerIndex">1</Attribute>
+     <Attribute name="hm2SntpClientServerAddrType">1</Attribute>
+     <Attribute name="hm2SntpClientServerAddr" convert="ascii">10.0.0.1</Attribute>
+     <Attribute name="hm2SntpClientServerPort">123</Attribute>
+     <Attribute name="hm2SntpClientServerDescr" convert="ascii">lab</Attribute>
+     <Attribute name="hm2SntpClientServerRowStatus">1</Attribute>
+    </Entry>
+   </Table>
   </MIB>
   <MIB name="HM2-LOGGING-MIB">
    <Scalar name="hm2LogSyslogGroup">
@@ -110,6 +120,16 @@
     <Attribute name="hm2PwdMgmtMinNumericNumbers">1</Attribute>
     <Attribute name="hm2PwdMgmtMinSpecialCharacters">1</Attribute>
    </Scalar>
+   <Table name="hm2UserConfigEntry">
+    <Entry>
+     <Attribute name="hm2UserName" convert="ascii">admin</Attribute>
+     <Attribute name="hm2UserAccessRole">15</Attribute>
+     <Attribute name="hm2UserLockoutStatus">2</Attribute>
+     <Attribute name="hm2UserPwdPolicyChk">2</Attribute>
+     <Attribute name="hm2UserSnmpAuthType">1</Attribute>
+     <Attribute name="hm2UserSnmpEncType">1</Attribute>
+    </Entry>
+   </Table>
   </MIB>
   <MIB name="Q-BRIDGE-MIB">
    <Scalar name="dot1qBase">
@@ -280,6 +300,14 @@
     <Attribute name="hm2FMConfigRemoteSaveAdminStatus">2</Attribute>
     <Attribute name="hm2FMConfigRemoteSaveDestination" convert="ascii"></Attribute>
    </Scalar>
+   <Table name="hm2FMProfileEntry">
+    <Entry>
+     <Attribute name="hm2FMProfileStorageType">1</Attribute>
+     <Attribute name="hm2FMProfileIndex">1</Attribute>
+     <Attribute name="hm2FMProfileName" convert="ascii">config</Attribute>
+     <Attribute name="hm2FMProfileActive">1</Attribute>
+    </Entry>
+   </Table>
   </MIB>
   <MIB name="HM2-L2FORWARDING-MIB">
    <Table name="hm2TrafficClassEntry">

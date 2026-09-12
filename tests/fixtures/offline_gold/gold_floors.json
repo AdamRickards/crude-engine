@@ -281,6 +281,28 @@
       "enabled": false,
       "trap_auth_failure": false,
       "trap_new_master": false
+    },
+    "get_ntp_servers": {
+      "1": {
+        "address": "31 30 2e 30 2e 30 2e 31",
+        "port": 123,
+        "description": "lab"
+      }
+    },
+    "get_users": {
+      "admin": {
+        "level": "administrator",
+        "locked": false,
+        "policy_check": false,
+        "snmp_auth": "md5",
+        "snmp_enc": "des"
+      }
+    },
+    "get_profiles": {
+      "1": {
+        "name": "config",
+        "active": true
+      }
     }
   }
 }
