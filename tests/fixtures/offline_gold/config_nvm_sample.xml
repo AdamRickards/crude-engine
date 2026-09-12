@@ -219,6 +219,25 @@
     </Entry>
    </Table>
   </MIB>
+
+  <MIB name="HM2-PLATFORM-QOS-COS-MIB">
+   <Table name="hm2AgentCosMapIntfTrustEntry">
+    <Entry>
+     <Attribute name="hm2AgentCosMapIntfTrustIntfIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="hm2AgentCosMapIntfTrustMode">2</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="hm2AgentCosMapIntfTrustIntfIndex" convert="ifname">1/2</Attribute>
+     <Attribute name="hm2AgentCosMapIntfTrustMode">2</Attribute>
+    </Entry>
+   </Table>
+  </MIB>
+  <MIB name="HM2-REMOTE-AUTHENTICATION-MIB">
+   <Scalar name="hm2LdapConfigGroup">
+    <Attribute name="hm2LdapClientAdminState">2</Attribute>
+    <Attribute name="hm2LdapClientCacheTimeout">10</Attribute>
+   </Scalar>
+  </MIB>
  </MibData>
  <Footer>
   <Checksum type="SHA1" value="0000000000000000000000000000000000000000"/>
