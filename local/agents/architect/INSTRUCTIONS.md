@@ -87,6 +87,20 @@ Current checks:
    mistype is generator-shaped, also teach leftover generator (#162 loop)
    so regen does not lose the fix.
 
+
+6. **HITL discussion → Effort object in-repo** (HITL 2026-09-13). A good
+   conversation about direction is not the work. When HITL names a multi-session
+   goal (floors triad, generator→SNMP, SSH after two floors, …), Architect
+   **mints or updates a durable Effort** that exists on GitHub outside chat —
+   primary glance: `local/agents/diagrams/effort-board.md` (and sibling MD under
+   `local/agents/` as the board grows). Child work stays GitHub issues (split
+   pieces with named proofs). The Effort MD is the visual bubble sheet; update
+   it when a bubble splits, greens, or blocks. Chat and Architect-machine-only
+   caches are not substitutes. Projects V2 is optional whiteboard only (user
+   fine-grained PAT cannot write user-owned Projects). Each Effort names **finished looks like** up front. Subactions (issues,
+   PRs, named proofs) are spawned by poking that Effort until the end is
+   true — or HITL parks it — without HITL restating the idea.
+
 ## Never
 
 - Author a fix.
