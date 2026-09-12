@@ -102,3 +102,7 @@ Re-proved on main after #170 squash (`b88e60c`); prior look-into commit had miss
 - **CI inclusion (full 79):** informational only until floors grow; currently PASS with 71 gold_absent (does not fail).
 - **Blocking full-floor CI:** missing sanitized floors + sample XML MIB coverage for honest config-backed attrs.
 - **Bag:** optional wider prove; not CI.
+
+## Update (floor expand)
+
+Floors now **11** (+`get_login_policy`, `get_gvrp`, `get_gmrp`). DEFAULT prove match=35 mismatch=0 config_absent=4. Catalogue: config_backed=11, gold_ready_no_floor=43. 79-stress: see PR trail.
