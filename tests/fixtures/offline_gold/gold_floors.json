@@ -124,6 +124,31 @@
       "max_age": 20,
       "forward_delay": 15,
       "bpdu_guard": false
+    },
+    "get_loop_protection": {
+      "enabled": 2,
+      "transmission_interval": 5,
+      "rx_threshold": 1
+    },
+    "get_vlan_ingress": {
+      "1": {
+        "pvid": 1,
+        "ingress_filtering": false,
+        "acceptable_frame_types": "admitAll"
+      },
+      "2": {
+        "pvid": 1,
+        "ingress_filtering": false,
+        "acceptable_frame_types": "admitAll"
+      }
+    },
+    "get_auto_disable_reasons": {
+      "1": {
+        "enabled": false
+      },
+      "4": {
+        "enabled": false
+      }
     }
   }
 }
