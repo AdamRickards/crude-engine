@@ -130,3 +130,11 @@ Floors **26** (+`get_system_info`, `get_port_security`, `get_rstp_port`). VLAN O
 ## Update (floor expand #7)
 
 Floors **29** (+`get_config_remote`, `get_qos_mapping`, `get_storm_control`). VLAN Offline-empty look-into unchanged.
+
+## Update (floor expand #8)
+
+Floors **32** (+`get_ip_restrict`, `get_arp_inspection`, `get_signal_contact`). VLAN Offline-empty look-into unchanged.
+
+## Harness note
+
+`_get_path` now coerces numeric string gold keys to int Offline row keys (and reverse) — needed for `get_signal_contact` / similar.
