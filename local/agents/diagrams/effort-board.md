@@ -22,7 +22,7 @@ Chat names the Effort once. The board + child issues *are* the Effort after that
 | --- | --- | --- |
 | **A** Offline↔gold floor growth | **DONE** floors=50 | #169 closeout; unfloorables → #193 |
 | **A′** Live MOPS triad (gold / config Offline / live) | **OPEN** | not started |
-| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162: RouterID taught (#197); next poke **AreaID** |
+| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162: RouterID+AreaID+VlanId taught (#197/#199/#201); next **LacpKey**; 1 VlanId wire-leftover |
 | **C** SSH after two good floors | **BLOCKED** | #92 budgets; #41 banner live; #178 get_aca SSH |
 
 ```mermaid
