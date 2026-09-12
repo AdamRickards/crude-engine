@@ -158,6 +158,22 @@
     <Attribute name="hm2AgentDaiDstMacValidate">2</Attribute>
     <Attribute name="hm2AgentDaiIPValidate">2</Attribute>
    </Scalar>
+   <Table name="hm2AgentDaiIfConfigEntry">
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="hm2AgentDaiIfTrustEnable">2</Attribute>
+     <Attribute name="hm2AgentDaiIfRateLimit">-1</Attribute>
+     <Attribute name="hm2AgentDaiIfBurstInterval">1</Attribute>
+     <Attribute name="hm2AgentDaiIfAutoDisable">1</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/2</Attribute>
+     <Attribute name="hm2AgentDaiIfTrustEnable">2</Attribute>
+     <Attribute name="hm2AgentDaiIfRateLimit">-1</Attribute>
+     <Attribute name="hm2AgentDaiIfBurstInterval">1</Attribute>
+     <Attribute name="hm2AgentDaiIfAutoDisable">1</Attribute>
+    </Entry>
+   </Table>
    <Scalar name="hm2AgentDhcpSnoopingConfigGroup">
     <Attribute name="hm2AgentDhcpSnoopingAdminMode">2</Attribute>
     <Attribute name="hm2AgentDhcpSnoopingVerifyMac">2</Attribute>
@@ -214,6 +230,10 @@
     <Attribute name="hm2SnmpV3AdminStatus">1</Attribute>
     <Attribute name="hm2SnmpPortNumber">161</Attribute>
     <Attribute name="hm2SnmpTrapServiceAdminStatus">1</Attribute>
+   </Scalar>
+   <Scalar name="hm2RestrictedMgmtAccessGroup">
+    <Attribute name="hm2RmaOperation">2</Attribute>
+    <Attribute name="hm2RmaLoggingGlobal">0</Attribute>
    </Scalar>
   </MIB>
 
@@ -302,6 +322,18 @@
      <Attribute name="hm2TrafficMgmtIfIngressStormCtlBcastThreshold">0</Attribute>
      <Attribute name="hm2TrafficMgmtIfIngressStormCtlMcastMode">2</Attribute>
      <Attribute name="hm2TrafficMgmtIfIngressStormCtlMcastThreshold">0</Attribute>
+    </Entry>
+   </Table>
+  </MIB>
+
+  <MIB name="HM2-DIAGNOSTIC-MIB">
+   <Table name="hm2SigConCommonEntry">
+    <Entry>
+     <Attribute name="hm2SigConID">1</Attribute>
+     <Attribute name="hm2SigConTrapEnable">2</Attribute>
+     <Attribute name="hm2SigConMode">2</Attribute>
+     <Attribute name="hm2SigConSenseTemperature">1</Attribute>
+     <Attribute name="hm2SigConSenseHumidity">1</Attribute>
     </Entry>
    </Table>
   </MIB>
