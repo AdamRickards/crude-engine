@@ -205,7 +205,7 @@ attributes:
           index_field: hm2DnsClientServerIndex
   hm2dnsclientserveraddresstype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
