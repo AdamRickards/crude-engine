@@ -67,6 +67,21 @@
     "get_gmrp": {
       "enabled": false,
       "unknown_multicast": "discard"
+    },
+    "get_dai_global": {
+      "validate_src_mac": false,
+      "validate_dst_mac": false,
+      "validate_ip": false
+    },
+    "get_dhcp_snooping": {
+      "enabled": false,
+      "verify_mac": false
+    },
+    "get_session_config": {
+      "ssh_timeout": 5,
+      "telnet_timeout": 5,
+      "web_timeout": 5,
+      "max_ssh_sessions": 5
     }
   }
 }

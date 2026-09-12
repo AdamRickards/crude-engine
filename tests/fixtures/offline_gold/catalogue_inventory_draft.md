@@ -4,7 +4,7 @@ No device identity. Classes are first-pass heuristics from schema + wire +
 mops/ssh capture fixtures + sanitized floors. Untestable oper attrs are
 hints until a method is floored and `config_absent` receipts list them.
 
-**Counts:** `{"config_backed": 11, "gold_ready_no_floor": 43, "no_gold_yet": 12, "online_only": 13}`
+**Counts:** `{"config_backed": 14, "gold_ready_no_floor": 40, "no_gold_yet": 12, "online_only": 13}`
 
 | method | class | note |
 | --- | --- | --- |
@@ -22,9 +22,9 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_config` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_config_remote` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_config_status` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
-| `get_dai_global` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
+| `get_dai_global` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_devsec_status` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['monitor_state', 'monitor_status', 'sec_state', 'sec_status', 'fan_status'] |
-| `get_dhcp_snooping` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
+| `get_dhcp_snooping` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gmrp` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gvrp` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_interfaces_ip` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
@@ -47,7 +47,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_rstp` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_rstp_port` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_services` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
-| `get_session_config` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
+| `get_session_config` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_signal_contact` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['state', 'sense_temperature', 'sense_fan', 'sense_fan_module', 'sense_ps_state'] |
 | `get_snmp_config` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['addr_row_status', 'params_row_status'] |
 | `get_snmp_information` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
