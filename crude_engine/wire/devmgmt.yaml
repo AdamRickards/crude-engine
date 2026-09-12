@@ -1768,13 +1768,21 @@ attributes:
           field: hm2ExtNvmTable
   hm2extnvmtableindex:
     syntax: Hm2DeviceExtNVMType
-    type: string
+    type: integer
     access: r
     sources:
       snmp:
         read:
-          oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.1
+          # Accessible hm2ExtNvmStatus. INDEX hm2ExtNvmTableIndex is
+          # not-accessible; walk of .8.2.1.1 returns empty → slots n=0.
+          # Suffix is Hm2DeviceExtNVMType (none/sd/usb/serial = 0..3).
+          oid: 1.3.6.1.4.1.248.11.10.1.8.2.1.2
           method: walk
+          index_fields:
+            - name: hm2ExtNvmTableIndex
+              type: integer
+          key_field: hm2ExtNvmTableIndex
+          value_from_index: hm2ExtNvmTableIndex
       mops:
         read:
           mib: HM2-DEVMGMT-MIB
