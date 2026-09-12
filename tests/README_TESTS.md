@@ -32,6 +32,7 @@ If you find yourself wanting to write a one-shot script, ask "can `release_matri
 | Run the CRUD round-trips directly | `test_crud_pairs.py` |
 | Capture multi-layer fixtures (transport/driver/engine/adapter) | `capture.py` |
 | Replay captured fixtures as offline regression tests (pytest) | `test_replay.py` |
+| Offline vs gold/config read matrix (FeatureEngine + OfflineHIOS) | `offline_gold_matrix.py` |
 | Orchestrate getters + setters across the lab fleet (legacy) | `audit_all.py` |
 | Gather one device's state for diagnostics | `audit_common.py <ip>` |
 
