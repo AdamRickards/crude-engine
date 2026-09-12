@@ -218,6 +218,38 @@
         "multicast_enabled": false,
         "multicast_threshold": 0
       }
+    },
+    "get_ip_restrict": {
+      "enabled": false,
+      "logging": false
+    },
+    "get_arp_inspection": {
+      "validate_src_mac": false,
+      "validate_dst_mac": false,
+      "validate_ip": false,
+      "ports": {
+        "1": {
+          "trusted": false,
+          "rate_limit": -1,
+          "burst_interval": 1,
+          "auto_disable": true
+        },
+        "2": {
+          "trusted": false,
+          "rate_limit": -1,
+          "burst_interval": 1,
+          "auto_disable": true
+        }
+      }
+    },
+    "get_signal_contact": {
+      "1": {
+        "contact_id": 1,
+        "mode": "monitor",
+        "trap_enabled": false,
+        "sense_temperature": true,
+        "sense_humidity": true
+      }
     }
   }
 }
