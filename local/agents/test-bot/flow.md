@@ -9,7 +9,7 @@ flowchart TD
     Q1 -->|Schema or wire, one method| Q2{Known-good anchor?}
     Q1 -->|Engine or shared primitive| Full["audit_getters.py --compare\nfull sweep"]
     Q1 -->|Matrix / CRUDE type transform| Matrix["test_crude_matrix.py\nprove | discover | all"]
-    Q1 -->|MOPS/Offline kinship / expand floors| OfflineGold["offline_gold_matrix.py\nSTART Offline+XML; END mismatch-only fail"]
+    Q1 -->|MOPS/Offline kinship / expand floors| OfflineGold["offline_gold_matrix.py\nCI gate: Offline+gold; END mismatch fail"]
     Q2 -->|No anchor| Anchor[["NO_HOLE for 1.17 / HITL.\nDo not verify against a guess."]]
     Q2 -->|Fixture with verified_via| Replay["test_replay.py"]
     Q2 -->|Manual WebUI/CLI, not captured| Inspect["sidecar / release_matrix.py --inspect\nthen capture fixture + verified_via"]
@@ -28,27 +28,32 @@ flowchart TD
     Q5 -->|Clean| Done
 ```
 
-## Offline vs gold (standing)
+## Offline vs gold (standing) — CI/CD gate
 
-**Goal:** prove Offline (saved config / OfflineHIOS). Offline shares the MOPS
-driver path, so a green prove is also kinship that MOPS gather shape works
-against that config. Gold is not a second offline loader — it is the
-**floor** (what should come back) and the mismatch catcher. Config prove
-first, gold floor second; live sidecar is not required for this lane.
+**Purpose / END:** gate MOPS/Offline changes. Offline prove vs saved config +
+gold floors = kinship that MOPS gather shape holds. Gold is the **floor**
+(mismatch catcher), not a second loader. Live sidecar not required for this
+lane. Prove the tool **by using it** (fuller sweeps); sweep feedback →
+look-into list (issues later). If the harness breaks: issue → temp fix →
+prove → PR → merge.
 
-- **START:** schema method + Offline transport + saved mibconf XML
-  (config = configured state = Offline’s literal intention). Named proof:
-  `PYTHONPATH=. python3 tests/offline_gold_matrix.py` (optional bag
-  `--config` / `--gold`; never commit identity — sanitized floors stay under
-  `tests/fixtures/offline_gold/`).
-- **WHERE WE ARE:** method coverage vs floors (committed sanitized vs
-  bag-local), last proof counts, open `config_absent` followups. Expand
-  floors method-by-method after the lane is named.
-- **END:** receipt with classifications — real fail only on `mismatch`;
-  `config_absent`∩gold = followup (oper/live not in NVM), not fail. Exit ≠ 0
-  only on `mismatch`.
+- **START:** schema gather method(s) + Offline + mibconf XML. Named proofs:
+  - CI / sanitized: `PYTHONPATH=. python3 tests/offline_gold_matrix.py`
+    (DEFAULT_METHODS = floored set). Optional `--methods` catalogue-wide
+    for stress (missing floors → `gold_absent` feedback, not fail).
+  - Bag-local (optional, never CI identity): `--config` / `--gold` against
+    a local bag NVM + bag gold. Committed floors stay under
+    `tests/fixtures/offline_gold/`.
+- **WHERE WE ARE:** floored coverage vs catalogue; last sanitized + bag
+  counts; look-into list (`gold_absent`, `config_absent` followups,
+  `offline_empty`, mismatches, blocked). Improve this section when
+  good/bad/ugly hits (what is CI vs bag-only).
+- **END:** receipt — fail only on `mismatch` (exit ≠ 0). `config_absent`∩gold
+  = oper/live followup, not fail. `gold_absent` = missing floor (feedback).
+  Gate-ready for CI when floored DEFAULT_METHODS stay green on sanitized
+  fixtures after MOPS/Offline/FeatureEngine gather changes.
 
-When: after MOPS/Offline client or FeatureEngine gather changes; when
-expanding sanitized floors; before treating Offline as kinship-proof for
-live MOPS.
+When: after MOPS/Offline client or FeatureEngine gather changes; expanding
+floors; catalogue stress sweeps; before treating Offline as kinship for live
+MOPS.
 
