@@ -343,6 +343,20 @@
     },
     "get_interfaces_ip": {
       "ipv4": {}
+    },
+    "get_vrrp_tracking": {
+      "trk1::": {
+        "decrement": 10,
+        "oper_status": "down"
+      }
+    },
+    "get_ip_addresses": {
+      "ipv4": {}
+    },
+    "get_devsec_status": {
+      "oper_state": "",
+      "status_index": {},
+      "trap_cause": ""
     }
   }
 }
