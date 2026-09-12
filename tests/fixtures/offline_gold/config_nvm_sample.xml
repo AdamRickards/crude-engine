@@ -178,6 +178,16 @@
     <Attribute name="hm2AgentSwitchKeepaliveTransmitInterval">5</Attribute>
     <Attribute name="hm2AgentSwitchKeepaliveRxThreshold">1</Attribute>
    </Scalar>
+   <Table name="hm2AgentStpPortEntry">
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="hm2AgentStpPortState">1</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/2</Attribute>
+     <Attribute name="hm2AgentStpPortState">1</Attribute>
+    </Entry>
+   </Table>
   </MIB>
   <MIB name="HM2-MGMTACCESS-MIB">
    <Scalar name="hm2MgmtAccessSshGroup">
@@ -236,6 +246,12 @@
    <Scalar name="hm2LdapConfigGroup">
     <Attribute name="hm2LdapClientAdminState">2</Attribute>
     <Attribute name="hm2LdapClientCacheTimeout">10</Attribute>
+   </Scalar>
+  </MIB>
+
+  <MIB name="HM2-PLATFORM-PORTSECURITY-MIB">
+   <Scalar name="hm2AgentPortSecurityGroup">
+    <Attribute name="hm2AgentGlobalPortSecurityMode">2</Attribute>
    </Scalar>
   </MIB>
  </MibData>
