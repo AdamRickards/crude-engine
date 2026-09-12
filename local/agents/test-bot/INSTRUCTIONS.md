@@ -40,9 +40,10 @@ actual diff or output — not "looks good." On live work, sidecar ran it.
   not improvise. On wire changes: run discover/prove **before and
   after** so the receipt shows schema follow-ups or a datatype fix.
 - `python3 tests/offline_gold_matrix.py [--config XML] [--gold JSON] [--methods …] [--strict]`
-  — Offline transport only (`OfflineHIOS` / saved mibconf XML). Schema
-  methods via FeatureEngine vs gold floors. `config_absent`∩gold is
-  followup, not fail; exit ≠ 0 only on real `mismatch` (see #165).
+  — CI/CD **gate** candidate for MOPS/Offline gather changes: OfflineHIOS +
+  saved mibconf vs gold floors (MOPS kinship). `config_absent`∩gold and
+  `gold_absent` are feedback, not fail; exit ≠ 0 only on `mismatch`
+  (see #165/#169). Sanitized fixtures in CI; bag prove is local-only.
 
 If sidecar only exposes inspect today, a proof that needs `--compare` or
 replay and cannot be run is `BLOCKED` (mesh), not a skip.
