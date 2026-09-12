@@ -105,6 +105,10 @@ paths:
                       actual:
                         comms: ok
                         rollback: confirmed
+                      feature: dns
+                      device:
+                        label: example-l3a
+                        sw_level: L3A_MR
                     audit:
                       diff:
                         buckets: []
@@ -130,6 +134,10 @@ paths:
                       actual:
                         comms: lost_then_ok
                         rollback: fired
+                      feature: dns
+                      device:
+                        label: example-l3
+                        sw_level: L3S
                     audit:
                       diff:
                         buckets: []
@@ -313,10 +321,30 @@ components:
         - actual
         - protocols
         - parity_diffs
+        - feature
+        - device
       properties:
         name:
           type: string
           description: Echo of the catalog name that ran.
+        feature:
+          type: string
+          description: Echo of the catalog entry's `feature` (issue #131).
+        device:
+          type: object
+          nullable: true
+          additionalProperties: false
+          description: |
+            Pool device pick_device chose for this run (issue #131). Label
+            and sw_level only — never the ip, never credentials. Null on
+            fake/offline transport or when no pool device was eligible.
+          properties:
+            label:
+              type: string
+              nullable: true
+            sw_level:
+              type: string
+              nullable: true
         passed:
           type: boolean
           description: |
