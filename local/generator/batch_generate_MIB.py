@@ -4,10 +4,14 @@
 # Live generators: generate_docs.py, generate_method_ref.py, generate_protocols.py.
 # Live schema check: validate_schemas.py. See local/generator/README.md.
 #
-# Version: 2.6.7 - named-TC teach (#162): LacpKey→string (defaults via get_default_for_type).
-#   Prior 2.6.6: VlanId→string. Prior 2.6.5: AreaID→string. Prior 2.6.4: RouterID→string.
-#   Prior 2.6.3: InetAddressType/Version/PrefixLength→string; TC-BITS→string drop bit_map;
-#   INTEGER{enabled,disabled}→boolean. No blanket integer→string. No VlanId/AreaID/RouterID re-teach.
+# Version: 2.6.8 - named-TC teach (#162): Timeout→string (defaults via get_default_for_type).
+#   Prior 2.6.7: LacpKey→string. Prior 2.6.6: VlanId→string. Prior 2.6.5: AreaID→string.
+#   Prior 2.6.4: RouterID→string. Prior 2.6.3: InetAddressType/Version/PrefixLength→string;
+#   TC-BITS→string drop bit_map; INTEGER{enabled,disabled}→boolean.
+#   Explicitly NOT Metric/DesignatedRouterPriority/BigMetric. Exact s=="Timeout" only.
+#   Keep "Timeout" in integer-any list as defensive substring catch so
+#   Hm2AgentSwitchAddressAgingTimeoutEntry stays integer (product Entry/Table — do not teach).
+#   No blanket integer→string. No LacpKey/VlanId/AreaID/RouterID re-teach.
 import os
 import argparse
 import xml.etree.ElementTree as ET
@@ -97,8 +101,14 @@ def syntax_to_type(syntax, enumerations=None, tc_info=None):
     # Named VlanId TC → string (already on main #201). Do not re-teach here.
     if "VlanId" in s:
         return "string"
-    # Named LacpKey TC → string (proved vs live #162).
+    # Named LacpKey TC → string (already on main #203). Do not re-teach here.
     if "LacpKey" in s:
+        return "string"
+    # Named Timeout TC → string (proved vs live #162). Exact match only.
+    # Keep "Timeout" in integer-any below so Hm2AgentSwitchAddressAgingTimeoutEntry
+    # (product Entry/Table) still matches integer via substring — do not teach it.
+    # Explicitly NOT Metric / DesignatedRouterPriority / BigMetric.
+    if s == "Timeout":
         return "string"
     if s == "INTEGER" or any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number", "StorageType", "TimeStamp", "TimeInterval", "TimeFilter", "InetPortNumber", "Timeout", "Metric", "DesignatedRouterPriority", "SFlowReceiver")): return "integer"
     # Literal BITS / PortList stay list + bit_map (live already keeps those).
