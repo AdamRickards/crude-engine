@@ -20,6 +20,22 @@
       "enabled": false,
       "timeout": 3,
       "retransmits": 2
+    },
+    "get_banner": {
+      "pre_login_enabled": false,
+      "pre_login_text": ""
+    },
+    "get_interfaces": {
+      "1": {
+        "admin_status": "enabled",
+        "mtu": 1518,
+        "oper_status": "up"
+      },
+      "2": {
+        "admin_status": "enabled",
+        "mtu": 1518,
+        "oper_status": "up"
+      }
     }
   }
 }
