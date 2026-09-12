@@ -178,6 +178,25 @@ def _fanout() -> int:
         def close(self):
             type(self).closed[self.proto] = threading.get_ident()
 
+    class _HangOpenMops:
+        """Issue #92: hangs during open(), not call() -- proves the two
+        deadlines are independent, not just one combined budget."""
+
+        closed: dict = {}
+
+        def __init__(self, *args, **kwargs):
+            self.proto = (kwargs.get("optional_args") or {}).get("protocol")
+
+        def open(self):
+            if self.proto == "mops":
+                time.sleep(2)
+
+        def get_dns(self, **kwargs):
+            return {"enabled": True, "servers": {"1": {}}}
+
+        def close(self):
+            type(self).closed[self.proto] = threading.get_ident()
+
     try:
         rm.get_network_driver = lambda _name: _Healthy
 
@@ -246,6 +265,10 @@ def _fanout() -> int:
         others = {k: (v or {}).get("status") for k, v in protos.items() if k != "mops"}
         if mops.get("status") != "timeout":
             rc |= fail(f"hung mops should be overall timeout, got {mops}")
+        elif mops.get("phase") != "call":
+            rc |= fail(f"hang in get_dns() should attribute phase=call, got {mops}")
+        elif mops.get("open_ms") is None:
+            rc |= fail(f"call-phase timeout should still report open_ms, got {mops}")
         elif wall > 1.0:
             rc |= fail(f"overall wait hung {wall:.2f}s")
         elif any(s != "ok" for s in others.values()):
@@ -255,7 +278,34 @@ def _fanout() -> int:
         else:
             rc |= ok(
                 f"hung sibling isolated ({wall:.2f}s); others {others}; "
-                "no cross-thread close"
+                f"phase={mops.get('phase')}; no cross-thread close"
+            )
+
+        _HangOpenMops.closed = {}
+        rm.get_network_driver = lambda _name: _HangOpenMops
+        rm._inspect_budget_s = _short
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None)
+        wall = time.monotonic() - t0
+        protos = out.get("protocols") or {}
+        mops = protos.get("mops") or {}
+        others = {k: (v or {}).get("status") for k, v in protos.items() if k != "mops"}
+        if mops.get("status") != "timeout":
+            rc |= fail(f"hung-open mops should be timeout, got {mops}")
+        elif mops.get("phase") != "open":
+            rc |= fail(f"hang in open() should attribute phase=open, got {mops}")
+        elif mops.get("open_ms") is not None:
+            rc |= fail(f"open-phase timeout should not report a finished open_ms: {mops}")
+        elif wall > 1.0:
+            rc |= fail(f"overall wait hung {wall:.2f}s")
+        elif any(s != "ok" for s in others.values()):
+            rc |= fail(f"siblings should be ok, got {others}")
+        elif "mops" in _HangOpenMops.closed:
+            rc |= fail("caller must not close() a hung worker's device")
+        else:
+            rc |= ok(
+                f"hang-in-open isolated ({wall:.2f}s); others {others}; "
+                "phase=open distinct from phase=call"
             )
 
         class _WithCli:
