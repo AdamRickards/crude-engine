@@ -135,17 +135,42 @@
     <Attribute name="hm2AgentDhcpSnoopingVerifyMac">2</Attribute>
     <Attribute name="hm2AgentDhcpSnoopingRemoteFileName"></Attribute>
    </Scalar>
+   <Scalar name="hm2AgentStpSwitchConfigGroup">
+    <Attribute name="hm2AgentStpAdminMode">1</Attribute>
+    <Attribute name="hm2AgentStpBpduGuardMode">2</Attribute>
+   </Scalar>
+   <Scalar name="hm2AgentStpCstConfigGroup">
+    <Attribute name="hm2AgentStpCstBridgeFwdDelay">15</Attribute>
+    <Attribute name="hm2AgentStpCstBridgeHelloTime">2</Attribute>
+    <Attribute name="hm2AgentStpCstBridgeMaxAge">20</Attribute>
+    <Attribute name="hm2AgentStpCstBridgePriority">32768</Attribute>
+   </Scalar>
   </MIB>
   <MIB name="HM2-MGMTACCESS-MIB">
    <Scalar name="hm2MgmtAccessSshGroup">
     <Attribute name="hm2SshSessionTimeout">5</Attribute>
     <Attribute name="hm2SshMaxSessionsCount">5</Attribute>
+    <Attribute name="hm2SshAdminStatus">1</Attribute>
+    <Attribute name="hm2SshPortNumber">22</Attribute>
    </Scalar>
    <Scalar name="hm2MgmtAccessTelnetGroup">
     <Attribute name="hm2TelnetServerSessionsTimeOut">5</Attribute>
+    <Attribute name="hm2TelnetServerAdminStatus">2</Attribute>
+    <Attribute name="hm2TelnetServerPort">23</Attribute>
    </Scalar>
    <Scalar name="hm2MgmtAccessWebGroup">
     <Attribute name="hm2WebIntfTimeOut">5</Attribute>
+    <Attribute name="hm2WebHttpAdminStatus">1</Attribute>
+    <Attribute name="hm2WebHttpPortNumber">80</Attribute>
+    <Attribute name="hm2WebHttpsAdminStatus">1</Attribute>
+    <Attribute name="hm2WebHttpsPortNumber">443</Attribute>
+   </Scalar>
+   <Scalar name="hm2MgmtAccessSnmpGroup">
+    <Attribute name="hm2SnmpV1AdminStatus">2</Attribute>
+    <Attribute name="hm2SnmpV2AdminStatus">2</Attribute>
+    <Attribute name="hm2SnmpV3AdminStatus">1</Attribute>
+    <Attribute name="hm2SnmpPortNumber">161</Attribute>
+    <Attribute name="hm2SnmpTrapServiceAdminStatus">1</Attribute>
    </Scalar>
   </MIB>
  </MibData>

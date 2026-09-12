@@ -35,7 +35,7 @@ if str(ROOT) not in sys.path:
 
 DEFAULT_CONFIG = HERE / "fixtures" / "offline_gold" / "config_nvm_sample.xml"
 DEFAULT_GOLD = HERE / "fixtures" / "offline_gold" / "gold_floors.json"
-DEFAULT_METHODS = ("get_facts", "get_mrp", "get_dns", "get_interfaces", "get_banner", "get_ntp", "get_syslog", "get_hidiscovery", "get_login_policy", "get_gvrp", "get_gmrp", "get_dai_global", "get_dhcp_snooping", "get_session_config")
+DEFAULT_METHODS = ("get_facts", "get_mrp", "get_dns", "get_interfaces", "get_banner", "get_ntp", "get_syslog", "get_hidiscovery", "get_login_policy", "get_gvrp", "get_gmrp", "get_dai_global", "get_dhcp_snooping", "get_session_config", "get_snmp_config", "get_services", "get_rstp")
 
 # Schema defaults that count as "empty" for offline vs gold (not a hard
 # oper list — used only to detect empty offline leaves).
