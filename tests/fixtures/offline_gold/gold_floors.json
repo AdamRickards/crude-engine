@@ -1,0 +1,25 @@
+{
+  "description": "Sanitized schema-shaped gold floors for offline_gold_matrix. No device identity.",
+  "methods": {
+    "get_facts": {
+      "hostname": "sample-host",
+      "vendor": "Belden"
+    },
+    "get_mrp": {
+      "ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff": {
+        "vlan": 100,
+        "operation": true,
+        "role": "manager",
+        "ring_port1": "1/1",
+        "ring_port2": "1/2",
+        "ring_port1_state": "forwarding",
+        "ring_state": "closed"
+      }
+    },
+    "get_dns": {
+      "enabled": false,
+      "timeout": 3,
+      "retransmits": 2
+    }
+  }
+}
