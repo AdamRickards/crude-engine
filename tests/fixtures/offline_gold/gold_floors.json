@@ -36,6 +36,21 @@
         "mtu": 1518,
         "oper_status": "up"
       }
+    },
+    "get_ntp": {
+      "enabled": false,
+      "request_interval": 30,
+      "server_enabled": false,
+      "server_stratum": 1
+    },
+    "get_syslog": {
+      "enabled": false
+    },
+    "get_hidiscovery": {
+      "enabled": true,
+      "mode": "readWrite",
+      "relay_enabled": false,
+      "blinking": false
     }
   }
 }
