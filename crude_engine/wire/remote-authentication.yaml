@@ -112,7 +112,7 @@ attributes:
           field: hm2LdapClientServerAddrTable
   hm2ldapclientserveraddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:

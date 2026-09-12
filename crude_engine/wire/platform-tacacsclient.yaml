@@ -161,7 +161,7 @@ attributes:
           field: hm2AgentTacacsServerEntry
   hm2agenttacacsserveripaddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: r
     sources:
       snmp:

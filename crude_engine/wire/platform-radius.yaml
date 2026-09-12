@@ -179,7 +179,7 @@ attributes:
           index_field: hm2AgentRadiusAccountingServerIndex
   hm2agentradiusaccountingserveraddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -209,7 +209,7 @@ attributes:
           index_field: hm2AgentRadiusAccountingServerIndex
   hm2agentradiusaccountingserveraddresstype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -380,7 +380,7 @@ attributes:
           field: hm2AgentRadiusNasIpAddress
   hm2agentradiusserveraddresstype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -503,7 +503,7 @@ attributes:
           index_field: hm2AgentRadiusServerIndex
   hm2agentradiusserverinetaddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
