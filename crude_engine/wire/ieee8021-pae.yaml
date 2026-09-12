@@ -72,7 +72,7 @@ schemas:
       dot1xpaeportprotocolversion: 0
       dot1xpaeportreauthenticate: false
       dot1xpaeporttable: ''
-      dot1xpaesystemauthcontrol: 0
+      dot1xpaesystemauthcontrol: false
       dot1xsuppauthperiod: 0
       dot1xsuppconfigentry: ''
       dot1xsuppconfigtable: ''
@@ -1146,7 +1146,7 @@ attributes:
           field: dot1xPaePortTable
   dot1xpaesystemauthcontrol:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:
