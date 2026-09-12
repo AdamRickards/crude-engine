@@ -89,9 +89,9 @@
     <Entry>
      <Attribute name="hm2SntpClientServerIndex">1</Attribute>
      <Attribute name="hm2SntpClientServerAddrType">1</Attribute>
-     <Attribute name="hm2SntpClientServerAddr" convert="ascii">10.0.0.1</Attribute>
+     <Attribute name="hm2SntpClientServerAddr" convert="ascii">192.0.2.1</Attribute>
      <Attribute name="hm2SntpClientServerPort">123</Attribute>
-     <Attribute name="hm2SntpClientServerDescr" convert="ascii">lab</Attribute>
+     <Attribute name="hm2SntpClientServerDescr" convert="ascii">sample-ntp</Attribute>
      <Attribute name="hm2SntpClientServerRowStatus">1</Attribute>
     </Entry>
    </Table>

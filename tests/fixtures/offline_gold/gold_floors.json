@@ -284,9 +284,9 @@
     },
     "get_ntp_servers": {
       "1": {
-        "address": "31 30 2e 30 2e 30 2e 31",
+        "address": "31 39 32 2e 30 2e 32 2e 31",
         "port": 123,
-        "description": "lab"
+        "description": "sample-ntp"
       }
     },
     "get_users": {
