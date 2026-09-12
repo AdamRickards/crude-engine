@@ -83,6 +83,15 @@ Logic checks for how Architect multiplexes clerks live in
 hole ⇒ schema→wire ask ⇒ 1.17 differential). HITL-named checks
 get written there — not only in chat memory.
 
+
+### Effort objects (tangible goals)
+
+HITL ideas that span sessions become **GitHub Effort issues**, not chat
+memory. Architect mints/updates them (orchestration check 6). Living board:
+track open Efforts and their child issues on a dedicated Effort-board issue
+so a human can glance bubbles without reconstructing the thread. Local MD
+under Architect's machine is cache only.
+
 ## Roster
 
 Six holes. Do not add a seventh until a real object collides two of these.
