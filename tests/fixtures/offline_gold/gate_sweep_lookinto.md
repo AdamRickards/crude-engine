@@ -106,3 +106,7 @@ Re-proved on main after #170 squash (`b88e60c`); prior look-into commit had miss
 ## Update (floor expand)
 
 Floors now **11** (+`get_login_policy`, `get_gvrp`, `get_gmrp`). DEFAULT prove match=35 mismatch=0 config_absent=4. Catalogue: config_backed=11, gold_ready_no_floor=43. 79-stress: see PR trail.
+
+## Update (floor expand #2)
+
+Floors **14** (+`get_dai_global`, `get_dhcp_snooping`, `get_session_config`).
