@@ -125,6 +125,28 @@
    <Scalar name="hm2AgentSwitchGARPGroup">
     <Attribute name="hm2AgentSwitchGmrpUnknownMulticastFilterMode">1</Attribute>
    </Scalar>
+   <Scalar name="hm2AgentDaiConfigGroup">
+    <Attribute name="hm2AgentDaiSrcMacValidate">2</Attribute>
+    <Attribute name="hm2AgentDaiDstMacValidate">2</Attribute>
+    <Attribute name="hm2AgentDaiIPValidate">2</Attribute>
+   </Scalar>
+   <Scalar name="hm2AgentDhcpSnoopingConfigGroup">
+    <Attribute name="hm2AgentDhcpSnoopingAdminMode">2</Attribute>
+    <Attribute name="hm2AgentDhcpSnoopingVerifyMac">2</Attribute>
+    <Attribute name="hm2AgentDhcpSnoopingRemoteFileName"></Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="HM2-MGMTACCESS-MIB">
+   <Scalar name="hm2MgmtAccessSshGroup">
+    <Attribute name="hm2SshSessionTimeout">5</Attribute>
+    <Attribute name="hm2SshMaxSessionsCount">5</Attribute>
+   </Scalar>
+   <Scalar name="hm2MgmtAccessTelnetGroup">
+    <Attribute name="hm2TelnetServerSessionsTimeOut">5</Attribute>
+   </Scalar>
+   <Scalar name="hm2MgmtAccessWebGroup">
+    <Attribute name="hm2WebIntfTimeOut">5</Attribute>
+   </Scalar>
   </MIB>
  </MibData>
  <Footer>
