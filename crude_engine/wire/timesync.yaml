@@ -2198,7 +2198,7 @@ attributes:
           field: hm2SntpClientServerAddrTable
   hm2sntpclientserveraddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:

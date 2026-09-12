@@ -503,7 +503,7 @@ attributes:
       max: 5
   hm2logemailsmtpaddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -1255,7 +1255,7 @@ attributes:
           index_field: hm2LogSyslogServerIndex
   hm2logsyslogserveripaddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
