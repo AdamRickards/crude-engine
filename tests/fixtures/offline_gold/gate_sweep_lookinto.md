@@ -138,3 +138,7 @@ Floors **32** (+`get_ip_restrict`, `get_arp_inspection`, `get_signal_contact`). 
 ## Harness note
 
 `_get_path` now coerces numeric string gold keys to int Offline row keys (and reverse) — needed for `get_signal_contact` / similar.
+
+## Harness note
+
+`_walk_leaves` / `_get_path` quote dict keys containing `.` as `["10.0.0.10"]` so ARP-style IP keys match.

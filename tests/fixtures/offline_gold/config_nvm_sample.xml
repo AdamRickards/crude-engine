@@ -163,6 +163,14 @@
      <Attribute name="dot1qPortIngressFiltering">2</Attribute>
     </Entry>
    </Table>
+   <Table name="dot1qTpFdbEntry">
+    <Entry>
+     <Attribute name="dot1qFdbId">1</Attribute>
+     <Attribute name="dot1qTpFdbAddress">02 00 00 00 00 02</Attribute>
+     <Attribute name="dot1qTpFdbPort">1</Attribute>
+     <Attribute name="dot1qTpFdbStatus">5</Attribute>
+    </Entry>
+   </Table>
   </MIB>
   <MIB name="P-BRIDGE-MIB">
    <Scalar name="dot1dExtBase">
@@ -416,6 +424,16 @@
      <Attribute name="snmpTargetParamsSecurityName" convert="ascii">public</Attribute>
      <Attribute name="snmpTargetParamsSecurityLevel">1</Attribute>
      <Attribute name="snmpTargetParamsRowStatus">1</Attribute>
+    </Entry>
+   </Table>
+  </MIB>
+  <MIB name="IP-MIB">
+   <Table name="ipNetToMediaEntry">
+    <Entry>
+     <Attribute name="ipNetToMediaIfIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="ipNetToMediaNetAddress">0a 00 00 0a</Attribute>
+     <Attribute name="ipNetToMediaPhysAddress">02 00 00 00 00 01</Attribute>
+     <Attribute name="ipNetToMediaType">3</Attribute>
     </Entry>
    </Table>
   </MIB>
