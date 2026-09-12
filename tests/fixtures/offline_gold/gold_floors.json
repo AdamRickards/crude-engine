@@ -163,6 +163,22 @@
     },
     "get_remote_auth": {
       "ldap_enabled": false
+    },
+    "get_system_info": {
+      "hostname": "sample-host",
+      "contact": "example-contact",
+      "location": "example-rack"
+    },
+    "get_port_security": {
+      "global_enabled": false
+    },
+    "get_rstp_port": {
+      "1/1": {
+        "enabled": true
+      },
+      "1/2": {
+        "enabled": true
+      }
     }
   }
 }

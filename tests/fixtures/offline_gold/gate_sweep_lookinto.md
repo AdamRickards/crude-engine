@@ -122,3 +122,7 @@ Floors **20** (+`get_loop_protection`, `get_vlan_ingress`, `get_auto_disable_rea
 ## Update (floor expand #5)
 
 Floors **23** (+`get_snmp_information`, `get_qos`, `get_remote_auth`). `get_vlans`/`get_vlan_egress` still Offline-empty — look-into.
+
+## Update (floor expand #6)
+
+Floors **26** (+`get_system_info`, `get_port_security`, `get_rstp_port`). VLAN Offline-empty look-into unchanged.
