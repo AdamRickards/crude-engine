@@ -51,6 +51,22 @@
       "mode": "readWrite",
       "relay_enabled": false,
       "blinking": false
+    },
+    "get_login_policy": {
+      "min_length": 6,
+      "max_attempts": 0,
+      "lockout_time": 0,
+      "min_uppercase": 1,
+      "min_lowercase": 1,
+      "min_numeric": 1,
+      "min_special": 1
+    },
+    "get_gvrp": {
+      "enabled": false
+    },
+    "get_gmrp": {
+      "enabled": false,
+      "unknown_multicast": "discard"
     }
   }
 }
