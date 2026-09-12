@@ -12,7 +12,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_dns` | `config_backed` | sanitized floor; oper-ish schema attrs: ['server_status'] |
 | `get_facts` | `config_backed` | sanitized floor; oper-ish schema attrs: ['uptime', 'temperature'] |
 | `get_hidiscovery` | `config_backed` | sanitized floor (PR after inventory); oper followups none in floor |
-| `get_interfaces` | `config_backed` | sanitized floor; oper-ish schema attrs: ['oper_status', 'admin_status', 'power_state', 'signal', 'flush_statistics'] |
+| `get_interfaces` | `config_backed` | sanitized floor; admin_status=config-backed (not oper); oper-ish schema attrs: ['oper_status', 'power_state', 'signal', 'flush_statistics'] |
 | `get_mrp` | `config_backed` | sanitized floor; oper-ish schema attrs: ['operation', 'ring_port1_state', 'ring_port2_state', 'ring_state', 'mrp_status'] |
 | `get_ntp` | `config_backed` | sanitized floor (PR after inventory); oper followups none in floor |
 | `get_syslog` | `config_backed` | sanitized floor (PR after inventory); oper followups none in floor |
@@ -27,8 +27,8 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_dhcp_snooping` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_gmrp` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_gvrp` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
-| `get_interfaces_ip` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'admin_status', 'power_state', 'signal', 'flush_statistics'] |
-| `get_ip_addresses` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'admin_status', 'power_state', 'signal', 'flush_statistics'] |
+| `get_interfaces_ip` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
+| `get_ip_addresses` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
 | `get_ip_restrict` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['rule_status'] |
 | `get_login_policy` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['user_status'] |
 | `get_loop_protection` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
