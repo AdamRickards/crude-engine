@@ -109,10 +109,11 @@ def _matches_read(dev, feature):
     return _device_matches(dev, feature, "read")
 
 
-def pick_device_ip(feature, devices=None):
+def pick_device(feature, devices=None):
     """First pool device with feature in has_capable and read in safe_for.
 
     Same rule as generate_plan. First match. None if none qualify.
+    Returns the full pool record (ip/label/sw_level/...), not just the ip.
     """
     if devices is None:
         devices = _load_pool_devices()
@@ -124,15 +125,25 @@ def pick_device_ip(feature, devices=None):
             continue
         ok, _reason = _matches_read(dev, feature)
         if ok:
-            return str(ip)
+            return dev
     return None
 
 
-def shape_inspect(name, inspect_out):
+def pick_device_ip(feature, devices=None):
+    """Back-compat: ip only. See pick_device for label/sw_level."""
+    dev = pick_device(feature, devices)
+    return str(dev["ip"]) if dev else None
+
+
+def shape_inspect(name, inspect_out, feature=None, device_info=None):
     """HTTP body for a read inspect. passed = at least one protocol ok (or fake).
 
     parity_diffs are first-class: callers file GitHub issues from them.
     Disagreement does not flip passed to false.
+
+    device_info (issue #131) is the pool record pick_device chose, so the
+    label/sw_level that actually ran are checkable against the HITL floor.
+    None on fake/offline transport or when no device was eligible.
     """
     if not isinstance(inspect_out, dict):
         inspect_out = {"exit": 0 if inspect_out in (0, None) else inspect_out,
@@ -147,6 +158,10 @@ def shape_inspect(name, inspect_out):
     comms = "ok" if passed else "lost"
     expected = {"comms": "ok", "rollback": "not_armed"}
     actual = {"comms": comms, "rollback": "not_armed"}
+    device = (
+        {"label": device_info.get("label"), "sw_level": device_info.get("sw_level")}
+        if device_info else None
+    )
     return {
         "result": {
             "name": name,
@@ -158,6 +173,8 @@ def shape_inspect(name, inspect_out):
             "actual": actual,
             "protocols": protocols,
             "parity_diffs": diffs,
+            "feature": feature,
+            "device": device,
         },
         "sidecar": current_head(),
         "audit": {"diff": {"buckets": []}},
@@ -237,7 +254,10 @@ def handle_run(payload):
             "name": name,
         }
 
-    device = pick_device_ip(feature)
+    # Fake/offline never touches the (possibly real, gitignored) pool file:
+    # no device was actually used, so none is echoed in the receipt either.
+    picked = None if transport() in ("fake", "offline") else pick_device(feature)
+    device = str(picked["ip"]) if picked else None
     if transport() not in ("fake", "offline"):
         if not POOL_PATH.is_file():
             return 503, {
@@ -274,7 +294,7 @@ def handle_run(payload):
                     "message": "release_matrix --inspect returned 2",
                     "name": name,
                 }
-        return 200, shape_inspect(name, out)
+        return 200, shape_inspect(name, out, feature=feature, device_info=picked)
     finally:
         LOCK.release()
 
