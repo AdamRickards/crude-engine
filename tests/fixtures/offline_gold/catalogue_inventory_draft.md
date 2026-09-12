@@ -4,7 +4,7 @@ No device identity. Classes are first-pass heuristics from schema + wire +
 mops/ssh capture fixtures + sanitized floors. Untestable oper attrs are
 hints until a method is floored and `config_absent` receipts list them.
 
-**Counts:** `{"config_backed": 41, "gold_ready_no_floor": 14, "no_gold_yet": 11, "online_only": 13}`
+**Counts:** `{"config_backed": 44, "gold_ready_no_floor": 11, "no_gold_yet": 11, "online_only": 13}`
 
 | method | class | note |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_arp_inspection` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_arp_table` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['dai_vlan_acl_static'] |
 | `get_auto_disable` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
-| `get_config` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
+| `get_config` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_config_remote` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_config_status` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_dai_global` | `config_backed` | sanitized floor; config-backed attrs only |
@@ -51,7 +51,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_signal_contact` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_snmp_config` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_snmp_information` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_snmp_trap_destinations` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['addr_row_status', 'params_row_status'] |
+| `get_snmp_trap_destinations` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_storm_control` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_system_info` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_users` | `config_backed` | sanitized floor; config-backed attrs only |
@@ -59,7 +59,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_vlan_ingress` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_vlans` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['vlan_status'] |
 | `get_vrrp` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_vrrp_instances` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['admin_state', 'row_status', 'state', 'uptime', 'oper_status', 'track_row_status'] |
+| `get_vrrp_instances` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_vrrp_tracking` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['admin_state', 'row_status', 'state', 'uptime', 'oper_status', 'track_row_status'] |
 | `get_watchdog_status` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_aca` | `no_gold_yet` | wire yes; no capture fixture; oper-ish=['envm_state', 'slot_status'] |

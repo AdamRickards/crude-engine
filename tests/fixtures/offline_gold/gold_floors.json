@@ -303,6 +303,27 @@
         "name": "config",
         "active": true
       }
+    },
+    "get_snmp_trap_destinations": {
+      "trap1": {
+        "address": "trap1",
+        "security_model": "2",
+        "security_name": "public",
+        "security_level": "no-auth"
+      }
+    },
+    "get_vrrp_instances": {
+      "1/1:": {
+        "admin_state": "down",
+        "priority": 100,
+        "current_priority": 100,
+        "preempt": true,
+        "interval": 1
+      }
+    },
+    "get_config": {
+      "running": "",
+      "startup": ""
     }
   }
 }
