@@ -333,6 +333,14 @@ def current_head():
     return {"sha": sha_s, "ref": ref_s}
 
 
+class SyncNotReady(RuntimeError):
+    """503 sync refusal with structured detail (issue #159): dirty paths + HEAD."""
+
+    def __init__(self, message, detail=None):
+        super().__init__(message)
+        self.detail = detail or {}
+
+
 def _git(*args):
     return subprocess.run(
         ["git", *args],
@@ -343,12 +351,24 @@ def _git(*args):
     )
 
 
-def _git_sync_main():
-    dirty = _git("status", "--porcelain")
-    if dirty.returncode != 0:
-        raise RuntimeError(dirty.stderr[-300:] or "git status failed")
-    if dirty.stdout.strip():
-        raise RuntimeError("working tree dirty")
+def _dirty_paths():
+    """Porcelain path list, empty if clean. Raises on git status failure."""
+    status = _git("status", "--porcelain")
+    if status.returncode != 0:
+        raise RuntimeError(status.stderr[-300:] or "git status failed")
+    return [line[3:].strip() for line in status.stdout.splitlines() if line.strip()]
+
+
+def _require_clean():
+    dirty = _dirty_paths()
+    if dirty:
+        raise SyncNotReady(
+            "working tree dirty",
+            {"dirty": dirty, "head": current_head()},
+        )
+
+
+def _ff_to_main():
     fetched = _git("fetch", "origin", "main")
     if fetched.returncode != 0:
         raise RuntimeError((fetched.stderr or fetched.stdout)[-300:])
@@ -360,12 +380,13 @@ def _git_sync_main():
         raise RuntimeError((merged.stderr or merged.stdout)[-300:])
 
 
+def _git_sync_main():
+    _require_clean()
+    _ff_to_main()
+
+
 def _git_sync_pr(number):
-    dirty = _git("status", "--porcelain")
-    if dirty.returncode != 0:
-        raise RuntimeError(dirty.stderr[-300:] or "git status failed")
-    if dirty.stdout.strip():
-        raise RuntimeError("working tree dirty")
+    _require_clean()
     refspec = "pull/%d/head" % int(number)
     fetched = _git("fetch", "origin", refspec)
     if fetched.returncode != 0:
@@ -373,6 +394,23 @@ def _git_sync_pr(number):
     checked = _git("checkout", "--detach", "FETCH_HEAD")
     if checked.returncode != 0:
         raise RuntimeError((checked.stderr or checked.stdout)[-300:])
+
+
+def _git_sync_clean():
+    """Real op:clean (issue #159): discard dirty state, land ff-only on main.
+
+    Unlike main/pr, clean's entire job is to recover from a dirty or
+    detached checkout, so it does not call _require_clean() first. Never
+    force-pushes, never touches gitignored files (-fd, not -fdx), never a
+    caller-supplied ref.
+    """
+    reset = _git("reset", "--hard", "HEAD")
+    if reset.returncode != 0:
+        raise RuntimeError((reset.stderr or reset.stdout)[-300:])
+    cleaned = _git("clean", "-fd")
+    if cleaned.returncode != 0:
+        raise RuntimeError((cleaned.stderr or cleaned.stdout)[-300:])
+    _ff_to_main()
 
 
 def lookup_pr_author_github(number, cfg):
@@ -432,13 +470,13 @@ def handle_sync(payload):
     try:
         cfg = load_sync_yaml()
     except (FileNotFoundError, ValueError) as exc:
-        return 503, {"error": "not_ready", "message": str(exc)}
+        return 503, {"error": "not_ready", "message": str(exc), "op": op}
 
     if op == "pr":
         try:
             login = lookup_pr_author(number, cfg)
         except RuntimeError as exc:
-            return 503, {"error": "not_ready", "message": str(exc)}
+            return 503, {"error": "not_ready", "message": str(exc), "op": op}
         if not login or login not in cfg["allow_pr_authors"]:
             return 403, {
                 "error": "forbidden",
@@ -454,10 +492,16 @@ def handle_sync(payload):
             try:
                 if op == "pr":
                     _git_sync_pr(number)
+                elif op == "clean":
+                    _git_sync_clean()
                 else:
                     _git_sync_main()
+            except SyncNotReady as exc:
+                body = {"error": "not_ready", "message": str(exc), "op": op}
+                body.update(exc.detail)
+                return 503, body
             except RuntimeError as exc:
-                return 503, {"error": "not_ready", "message": str(exc)}
+                return 503, {"error": "not_ready", "message": str(exc), "op": op}
         if fake:
             if op == "pr":
                 head = {"sha": "fake", "ref": "pr-%d" % number}
