@@ -437,6 +437,18 @@
     </Entry>
    </Table>
   </MIB>
+  <MIB name="HM2-PLATFORM-ROUTING-MIB">
+   <Table name="hm2AgentVrrpTrackingEntry">
+    <Entry>
+     <Attribute name="hm2AgentVrrpTrackIfIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="hm2AgentVrrpTrackVrid">1</Attribute>
+     <Attribute name="hm2AgentVrrpTrackId" convert="ascii">trk1</Attribute>
+     <Attribute name="hm2AgentVrrpTrackDecrement">10</Attribute>
+     <Attribute name="hm2AgentVrrpTrackOperStatus">2</Attribute>
+     <Attribute name="hm2AgentVrrpTrackRowStatus">1</Attribute>
+    </Entry>
+   </Table>
+  </MIB>
  </MibData>
  <Footer>
   <Checksum type="SHA1" value="0000000000000000000000000000000000000000"/>
