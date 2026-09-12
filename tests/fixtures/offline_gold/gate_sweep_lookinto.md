@@ -126,3 +126,7 @@ Floors **23** (+`get_snmp_information`, `get_qos`, `get_remote_auth`). `get_vlan
 ## Update (floor expand #6)
 
 Floors **26** (+`get_system_info`, `get_port_security`, `get_rstp_port`). VLAN Offline-empty look-into unchanged.
+
+## Update (floor expand #7)
+
+Floors **29** (+`get_config_remote`, `get_qos_mapping`, `get_storm_control`). VLAN Offline-empty look-into unchanged.
