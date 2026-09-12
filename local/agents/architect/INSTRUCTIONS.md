@@ -88,18 +88,17 @@ Current checks:
    so regen does not lose the fix.
 
 
-6. **HITL discussion → Effort object on GitHub** (HITL 2026-09-13). A good
+6. **HITL discussion → Effort object in-repo** (HITL 2026-09-13). A good
    conversation about direction is not the work. When HITL names a multi-session
    goal (floors triad, generator→SNMP, SSH after two floors, …), Architect
-   **mints or updates a durable Effort** — a GitHub issue that exists outside
-   chat — before spinning clerks. That Effort is the visual bubble: it owns
-   child issues (split pieces), carries WHERE, and stays open until children
-   resolve or HITL parks it. Chat, local MD caches, and Projects V2 (unwritable
-   via user fine-grained PAT) are not substitutes. Subactions are spawned by the
-   Effort's existence (assign hops, named proofs, reopen residuals) so iteration
-   continues without waiting for the human to restate the idea. Glance surface:
-   keep a living Effort board issue linked from this folder's README; update it
-   when a bubble splits, greens, or blocks — not only in conversation.
+   **mints or updates a durable Effort** that exists on GitHub outside chat —
+   primary glance: `local/agents/diagrams/effort-board.md` (and sibling MD under
+   `local/agents/` as the board grows). Child work stays GitHub issues (split
+   pieces with named proofs). The Effort MD is the visual bubble sheet; update
+   it when a bubble splits, greens, or blocks. Chat and Architect-machine-only
+   caches are not substitutes. Projects V2 is optional whiteboard only (user
+   fine-grained PAT cannot write user-owned Projects). Subactions are spawned by
+   the Effort's existence so iteration continues without HITL restating the idea.
 
 ## Never
 

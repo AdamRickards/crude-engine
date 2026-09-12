@@ -86,11 +86,11 @@ get written there — not only in chat memory.
 
 ### Effort objects (tangible goals)
 
-HITL ideas that span sessions become **GitHub Effort issues**, not chat
-memory. Architect mints/updates them (orchestration check 6). Living board:
-track open Efforts and their child issues on a dedicated Effort-board issue
-so a human can glance bubbles without reconstructing the thread. Local MD
-under Architect's machine is cache only.
+HITL ideas that span sessions become **in-repo Effort boards** under
+`local/agents/` (primary: [`diagrams/effort-board.md`](diagrams/effort-board.md)),
+not chat memory. Child work is GitHub issues. Architect updates the board when
+bubbles split/green/block (orchestration check 6). Architect-machine-only MD
+is cache only.
 
 ## Roster
 
