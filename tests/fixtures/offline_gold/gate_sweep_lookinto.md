@@ -118,3 +118,7 @@ Floors **17** (+`get_snmp_config`, `get_services`, `get_rstp`).
 ## Update (floor expand #4)
 
 Floors **20** (+`get_loop_protection`, `get_vlan_ingress`, `get_auto_disable_reasons`). `get_vlans` still empty Offline gather — look-into.
+
+## Update (floor expand #5)
+
+Floors **23** (+`get_snmp_information`, `get_qos`, `get_remote_auth`). `get_vlans`/`get_vlan_egress` still Offline-empty — look-into.
