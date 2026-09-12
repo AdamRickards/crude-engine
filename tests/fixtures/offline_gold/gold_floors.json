@@ -82,6 +82,48 @@
       "telnet_timeout": 5,
       "web_timeout": 5,
       "max_ssh_sessions": 5
+    },
+    "get_snmp_config": {
+      "v1_enabled": false,
+      "v2_enabled": false,
+      "v3_enabled": true,
+      "port": 161,
+      "trap_service": true
+    },
+    "get_services": {
+      "http": {
+        "enabled": true,
+        "port": 80
+      },
+      "https": {
+        "enabled": true,
+        "port": 443
+      },
+      "telnet": {
+        "enabled": false,
+        "port": 23
+      },
+      "ssh": {
+        "enabled": true,
+        "port": 22
+      },
+      "snmp_v1": {
+        "enabled": false
+      },
+      "snmp_v2": {
+        "enabled": false
+      },
+      "snmp_v3": {
+        "enabled": true
+      }
+    },
+    "get_rstp": {
+      "enabled": true,
+      "priority": 32768,
+      "hello_time": 2,
+      "max_age": 20,
+      "forward_delay": 15,
+      "bpdu_guard": false
     }
   }
 }

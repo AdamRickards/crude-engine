@@ -110,3 +110,7 @@ Floors now **11** (+`get_login_policy`, `get_gvrp`, `get_gmrp`). DEFAULT prove m
 ## Update (floor expand #2)
 
 Floors **14** (+`get_dai_global`, `get_dhcp_snooping`, `get_session_config`).
+
+## Update (floor expand #3)
+
+Floors **17** (+`get_snmp_config`, `get_services`, `get_rstp`).
