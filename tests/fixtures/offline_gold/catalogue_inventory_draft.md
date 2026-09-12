@@ -4,7 +4,7 @@ No device identity. Classes are first-pass heuristics from schema + wire +
 mops/ssh capture fixtures + sanitized floors. Untestable oper attrs are
 hints until a method is floored and `config_absent` receipts list them.
 
-**Counts:** `{"config_backed": 44, "gold_ready_no_floor": 11, "no_gold_yet": 11, "online_only": 13}`
+**Counts:** `{"config_backed": 47, "gold_ready_no_floor": 8, "no_gold_yet": 11, "online_only": 13}`
 
 | method | class | note |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_ntp` | `config_backed` | sanitized floor (PR after inventory); oper followups none in floor |
 | `get_syslog` | `config_backed` | sanitized floor (PR after inventory); oper followups none in floor |
 | `get_arp_inspection` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_arp_table` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['dai_vlan_acl_static'] |
+| `get_arp_table` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_auto_disable` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_config` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_config_remote` | `config_backed` | sanitized floor; config-backed attrs only |
@@ -27,12 +27,12 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_dhcp_snooping` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gmrp` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gvrp` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_interfaces_ip` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
+| `get_interfaces_ip` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_ip_addresses` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
 | `get_ip_restrict` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_login_policy` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_loop_protection` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_mac_address_table` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['status'] |
+| `get_mac_address_table` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_management` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_management_priority` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_mrp_sub_ring` | `config_backed` | sanitized floor; config-backed attrs only |
