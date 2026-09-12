@@ -4,10 +4,10 @@
 # Live generators: generate_docs.py, generate_method_ref.py, generate_protocols.py.
 # Live schema check: validate_schemas.py. See local/generator/README.md.
 #
-# Version: 2.6.6 - named-TC teach (#162): VlanId→string (defaults via get_default_for_type).
-#   Prior 2.6.5: AreaID→string. Prior 2.6.4: RouterID→string. Prior 2.6.3: InetAddressType/
-#   Version/PrefixLength→string; TC-BITS→string drop bit_map; INTEGER{enabled,disabled}→boolean.
-#   NOT LacpKey. No blanket integer→string. No AreaID/RouterID re-teach.
+# Version: 2.6.7 - named-TC teach (#162): LacpKey→string (defaults via get_default_for_type).
+#   Prior 2.6.6: VlanId→string. Prior 2.6.5: AreaID→string. Prior 2.6.4: RouterID→string.
+#   Prior 2.6.3: InetAddressType/Version/PrefixLength→string; TC-BITS→string drop bit_map;
+#   INTEGER{enabled,disabled}→boolean. No blanket integer→string. No VlanId/AreaID/RouterID re-teach.
 import os
 import argparse
 import xml.etree.ElementTree as ET
@@ -94,10 +94,13 @@ def syntax_to_type(syntax, enumerations=None, tc_info=None):
     # Named AreaID TC → string (already on main #199). Do not re-teach here.
     if "AreaID" in s:
         return "string"
-    # Named VlanId TC → string (proved vs live #162). NOT LacpKey.
+    # Named VlanId TC → string (already on main #201). Do not re-teach here.
     if "VlanId" in s:
         return "string"
-    if s == "INTEGER" or any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number", "StorageType", "TimeStamp", "TimeInterval", "TimeFilter", "InetPortNumber", "Timeout", "Metric", "LacpKey", "DesignatedRouterPriority", "SFlowReceiver")): return "integer"
+    # Named LacpKey TC → string (proved vs live #162).
+    if "LacpKey" in s:
+        return "string"
+    if s == "INTEGER" or any(x in s for x in ("Counter", "Gauge", "Integer", "Unsigned", "RowStatus", "Index", "Percent", "TimeTicks", "Number", "StorageType", "TimeStamp", "TimeInterval", "TimeFilter", "InetPortNumber", "Timeout", "Metric", "DesignatedRouterPriority", "SFlowReceiver")): return "integer"
     # Literal BITS / PortList stay list + bit_map (live already keeps those).
     if any(x in s for x in ("BITS", "PortList")): return "list"
     # TC-BITS (textual-convention whose base syntax is BITS) → string; caller drops
