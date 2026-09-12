@@ -97,8 +97,9 @@ Current checks:
    pieces with named proofs). The Effort MD is the visual bubble sheet; update
    it when a bubble splits, greens, or blocks. Chat and Architect-machine-only
    caches are not substitutes. Projects V2 is optional whiteboard only (user
-   fine-grained PAT cannot write user-owned Projects). Subactions are spawned by
-   the Effort's existence so iteration continues without HITL restating the idea.
+   fine-grained PAT cannot write user-owned Projects). Each Effort names **finished looks like** up front. Subactions (issues,
+   PRs, named proofs) are spawned by poking that Effort until the end is
+   true — or HITL parks it — without HITL restating the idea.
 
 ## Never
 
