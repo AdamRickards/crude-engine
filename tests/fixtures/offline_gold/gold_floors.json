@@ -149,6 +149,20 @@
       "4": {
         "enabled": false
       }
+    },
+    "get_snmp_information": {
+      "chassis_id": "sample-host",
+      "contact": "example-contact",
+      "location": "example-rack"
+    },
+    "get_qos": {
+      "port_trust_mode": {
+        "1": 2,
+        "2": 2
+      }
+    },
+    "get_remote_auth": {
+      "ldap_enabled": false
     }
   }
 }
