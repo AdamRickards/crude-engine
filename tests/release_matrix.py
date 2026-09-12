@@ -2214,11 +2214,18 @@ def _inspect_one_protocol(
     method_name: str,
     call_kwargs: dict,
     trace: bool,
+    progress: dict,
 ):
     """One thread, one device, full lifecycle. Never raises.
 
-    Hang never returns; the caller wait() marks timeout without
-    touching this device. close() only runs in this thread.
+    Hang never returns; the caller's poll loop marks timeout (attributed
+    to whichever phase `progress` last reported) without touching this
+    device. close() only runs in this thread.
+
+    `progress` is a plain dict shared with the caller: {"phase": "open"}
+    at submit time, flipped to {"phase": "call", "t_call_start": ...}
+    right after open() succeeds. Single-key dict writes are GIL-atomic,
+    so no lock is needed for this one-way producer/poller handoff.
     """
     t_open = time.monotonic()
     try:
@@ -2256,6 +2263,8 @@ def _inspect_one_protocol(
         open_ms = round((time.monotonic() - t_open) * 1000)
 
         t_call = time.monotonic()
+        progress["t_call_start"] = t_call
+        progress["phase"] = "call"
         try:
             fn = getattr(device, method_name)
             try:
@@ -2463,7 +2472,7 @@ def run_inspect(method_name: str | None,
         call_kwargs["validate"] = False
 
     to_run = []
-    overall_s = 0.0
+    budgets: dict[str, tuple[float, float]] = {}
     for proto in protocols:
         try:
             open_s = _inspect_budget_s(proto, "open_timeout_s")
@@ -2478,12 +2487,15 @@ def run_inspect(method_name: str | None,
             }
             continue
         to_run.append(proto)
-        overall_s = max(overall_s, open_s + call_s)
+        budgets[proto] = (open_s, call_s)
 
     pool = concurrent.futures.ThreadPoolExecutor(max_workers=max(1, len(to_run)))
     futures: dict = {}
+    progress: dict = {}
     try:
+        start = time.monotonic()
         for proto in to_run:
+            progress[proto] = {"phase": "open", "t_open_start": start}
             fut = pool.submit(
                 _inspect_one_protocol,
                 driver,
@@ -2494,21 +2506,56 @@ def run_inspect(method_name: str | None,
                 method_name,
                 call_kwargs,
                 trace,
+                progress[proto],
             )
             futures[fut] = proto
-        done, not_done = concurrent.futures.wait(futures, timeout=overall_s)
-        for fut in done:
-            proto, result = fut.result()
-            protocols_out[proto] = result
-        for fut in not_done:
-            proto = futures[fut]
-            protocols_out[proto] = {
-                "status": "timeout",
-                "elapsed_ms": round(overall_s * 1000),
-                "open_ms": None,
-                "call_ms": None,
-                "error": "overall deadline exceeded",
-            }
+
+        # Two independently-enforced deadlines per protocol (issue #92):
+        # open and call each get their own budget instead of one combined
+        # wait(). A worker reports its own phase transition in `progress`;
+        # we poll and retire a future the moment ITS current phase blows
+        # ITS budget, so a timeout is attributed to open or call instead
+        # of always landing as an undifferentiated "overall deadline".
+        pending = set(futures)
+        poll_interval_s = 0.05
+        while pending:
+            done_now = {fut for fut in pending if fut.done()}
+            pending -= done_now
+            for fut in done_now:
+                proto, result = fut.result()
+                protocols_out[proto] = result
+
+            still_pending = set()
+            for fut in pending:
+                proto = futures[fut]
+                phase = progress[proto].get("phase", "open")
+                open_s, call_s = budgets[proto]
+                if phase == "open":
+                    elapsed = time.monotonic() - progress[proto]["t_open_start"]
+                    budget = open_s
+                else:
+                    elapsed = time.monotonic() - progress[proto]["t_call_start"]
+                    budget = call_s
+                if elapsed <= budget:
+                    still_pending.add(fut)
+                    continue
+                open_ms = None
+                if phase == "call":
+                    open_ms = round(
+                        (progress[proto]["t_call_start"]
+                         - progress[proto]["t_open_start"]) * 1000
+                    )
+                protocols_out[proto] = {
+                    "status": "timeout",
+                    "elapsed_ms": round(elapsed * 1000),
+                    "open_ms": open_ms,
+                    "call_ms": None,
+                    "phase": phase,
+                    "error": f"{phase} deadline exceeded",
+                }
+            pending = still_pending
+            if pending:
+                time.sleep(poll_interval_s)
     finally:
         # Hung workers stay isolated. Waiting would hold sidecar RunLock.
         # Do not close() their device from this thread.
