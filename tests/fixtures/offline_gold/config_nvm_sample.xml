@@ -73,6 +73,32 @@
     <Attribute name="hm2DnsClientCacheAdminState">2</Attribute>
    </Scalar>
   </MIB>
+
+  <MIB name="HM2-TIMESYNC-MIB">
+   <Scalar name="hm2SntpClientGroup">
+    <Attribute name="hm2SntpClientAdminState">2</Attribute>
+    <Attribute name="hm2SntpClientRequestInterval">30</Attribute>
+   </Scalar>
+   <Scalar name="hm2SntpServerGroup">
+    <Attribute name="hm2SntpServerAdminState">2</Attribute>
+   </Scalar>
+   <Scalar name="hm2NtpServerConfigGroup">
+    <Attribute name="hm2NtpServerLocalClockStratum">1</Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="HM2-LOGGING-MIB">
+   <Scalar name="hm2LogSyslogGroup">
+    <Attribute name="hm2LogSyslogAdminStatus">2</Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="HM2-NETCONFIG-MIB">
+   <Scalar name="hm2NetHiDiscoveryGroup">
+    <Attribute name="hm2NetHiDiscoveryOperation">1</Attribute>
+    <Attribute name="hm2NetHiDiscoveryMode">1</Attribute>
+    <Attribute name="hm2NetHiDiscoveryRelay">2</Attribute>
+    <Attribute name="hm2NetHiDiscoveryBlinking">2</Attribute>
+   </Scalar>
+  </MIB>
  </MibData>
  <Footer>
   <Checksum type="SHA1" value="0000000000000000000000000000000000000000"/>
