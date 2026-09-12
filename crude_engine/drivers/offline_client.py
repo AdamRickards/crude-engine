@@ -326,13 +326,10 @@ class OfflineClient:
     def get_multi(self, queries, decode_strings=True):
         """Multi-node lookup from in-memory data.
 
-        Returns: full parsed response dict (same as MOPSClient.get_multi)
+        Returns: dict keyed by MIB name, then node name: {mib: {node: [rows]}}
+        — same shape as MOPSClient.get_multi (parsed["mibs"]).
         """
-        result = {
-            "message_id": "0",
-            "mibs": {},
-            "errors": [],
-        }
+        mibs = {}
 
         for mib_name, node_name, attrs in queries:
             mib_data = self._data.get(mib_name)
@@ -354,11 +351,11 @@ class OfflineClient:
                         filtered[attr] = value
                 filtered_entries.append(filtered)
 
-            if mib_name not in result["mibs"]:
-                result["mibs"][mib_name] = {}
-            result["mibs"][mib_name][node_name] = filtered_entries
+            if mib_name not in mibs:
+                mibs[mib_name] = {}
+            mibs[mib_name][node_name] = filtered_entries
 
-        return result
+        return mibs
 
     # ------------------------------------------------------------------
     # MOPSClient interface — write
