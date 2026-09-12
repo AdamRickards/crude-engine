@@ -35,7 +35,7 @@ if str(ROOT) not in sys.path:
 
 DEFAULT_CONFIG = HERE / "fixtures" / "offline_gold" / "config_nvm_sample.xml"
 DEFAULT_GOLD = HERE / "fixtures" / "offline_gold" / "gold_floors.json"
-DEFAULT_METHODS = ("get_facts", "get_mrp", "get_dns")
+DEFAULT_METHODS = ("get_facts", "get_mrp", "get_dns", "get_interfaces", "get_banner")
 
 # Schema defaults that count as "empty" for offline vs gold (not a hard
 # oper list — used only to detect empty offline leaves).
@@ -320,12 +320,14 @@ def run(config: Path, gold_path: Path, methods: list[str], strict: bool) -> int:
     transport = OfflineHIOS(str(config), "", "", 5)
     transport.open()
     client = transport.client
-    engine = FeatureEngine()
 
     all_rows: list[dict] = []
     results: dict[str, Any] = {}
 
+    # Fresh FeatureEngine per method — shared caches can remap row keys
+    # across methods (e.g. get_mrp then get_interfaces → "1/1" vs ifIndex).
     for method in methods:
+        engine = FeatureEngine()
         try:
             results[method] = engine.execute(method, "mops", transport)
             err = None
