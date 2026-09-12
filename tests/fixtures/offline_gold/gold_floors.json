@@ -179,6 +179,45 @@
       "1/2": {
         "enabled": true
       }
+    },
+    "get_config_remote": {
+      "url": "",
+      "status": false
+    },
+    "get_qos_mapping": {
+      "dot1p": {
+        "0": {
+          "value": 2
+        },
+        "1": {
+          "value": 0
+        },
+        "7": {
+          "value": 7
+        }
+      },
+      "dscp": {
+        "0": {
+          "value": 2
+        },
+        "46": {
+          "value": 6
+        }
+      }
+    },
+    "get_storm_control": {
+      "1/1": {
+        "broadcast_enabled": false,
+        "broadcast_threshold": 0,
+        "multicast_enabled": false,
+        "multicast_threshold": 0
+      },
+      "1/2": {
+        "broadcast_enabled": false,
+        "broadcast_threshold": 0,
+        "multicast_enabled": false,
+        "multicast_threshold": 0
+      }
     }
   }
 }
