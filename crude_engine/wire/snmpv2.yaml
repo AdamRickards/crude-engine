@@ -4,7 +4,7 @@ schemas:
   read_snmpv2:
     type: dict
     defaults:
-      snmpenableauthentraps: 0
+      snmpenableauthentraps: false
       snmpinasnparseerrs: 0
       snmpinbadcommunitynames: 0
       snmpinbadcommunityuses: 0
@@ -54,7 +54,7 @@ schemas:
 attributes:
   snmpenableauthentraps:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:

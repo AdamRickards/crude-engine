@@ -11,7 +11,7 @@ schemas:
       ipmrouteboundarystatus: 0
       ipmrouteboundarytable: ''
       ipmroutedifferentinifpackets: 0
-      ipmrouteenable: 0
+      ipmrouteenable: false
       ipmrouteentry: ''
       ipmrouteentrycount: 0
       ipmrouteexpirytime: 0
@@ -178,7 +178,7 @@ attributes:
           - ipMRouteSource
   ipmrouteenable:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:
