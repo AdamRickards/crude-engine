@@ -114,3 +114,7 @@ Floors **14** (+`get_dai_global`, `get_dhcp_snooping`, `get_session_config`).
 ## Update (floor expand #3)
 
 Floors **17** (+`get_snmp_config`, `get_services`, `get_rstp`).
+
+## Update (floor expand #4)
+
+Floors **20** (+`get_loop_protection`, `get_vlan_ingress`, `get_auto_disable_reasons`). `get_vlans` still empty Offline gather — look-into.

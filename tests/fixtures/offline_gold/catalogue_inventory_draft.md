@@ -4,7 +4,7 @@ No device identity. Classes are first-pass heuristics from schema + wire +
 mops/ssh capture fixtures + sanitized floors. Untestable oper attrs are
 hints until a method is floored and `config_absent` receipts list them.
 
-**Counts:** `{"config_backed": 17, "gold_ready_no_floor": 37, "no_gold_yet": 12, "online_only": 13}`
+**Counts:** `{"config_backed": 20, "gold_ready_no_floor": 35, "no_gold_yet": 11, "online_only": 13}`
 
 | method | class | note |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_ip_addresses` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
 | `get_ip_restrict` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['rule_status'] |
 | `get_login_policy` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_loop_protection` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
+| `get_loop_protection` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_mac_address_table` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['status'] |
 | `get_management` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_management_priority` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
@@ -56,14 +56,14 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_system_info` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['uptime', 'temperature'] |
 | `get_users` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['user_status'] |
 | `get_vlan_egress` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['vlan_status'] |
-| `get_vlan_ingress` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['vlan_status'] |
+| `get_vlan_ingress` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_vlans` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['vlan_status'] |
 | `get_vrrp` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['admin_state', 'row_status', 'state', 'uptime', 'oper_status', 'track_row_status'] |
 | `get_vrrp_instances` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['admin_state', 'row_status', 'state', 'uptime', 'oper_status', 'track_row_status'] |
 | `get_vrrp_tracking` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['admin_state', 'row_status', 'state', 'uptime', 'oper_status', 'track_row_status'] |
 | `get_watchdog_status` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_aca` | `no_gold_yet` | wire yes; no capture fixture; oper-ish=['envm_state', 'slot_status'] |
-| `get_auto_disable_reasons` | `no_gold_yet` | wire yes; no capture fixture; oper-ish=[] |
+| `get_auto_disable_reasons` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_devsec` | `no_gold_yet` | wire yes; no capture fixture; oper-ish=['state'] |
 | `get_devsec_history` | `no_gold_yet` | wire yes; no capture fixture; oper-ish=['state'] |
 | `get_ip_source_guard_bindings` | `no_gold_yet` | wire yes; no capture fixture; oper-ish=['binding_hw_status', 'binding_status'] |
