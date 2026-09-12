@@ -35,7 +35,7 @@ if str(ROOT) not in sys.path:
 
 DEFAULT_CONFIG = HERE / "fixtures" / "offline_gold" / "config_nvm_sample.xml"
 DEFAULT_GOLD = HERE / "fixtures" / "offline_gold" / "gold_floors.json"
-DEFAULT_METHODS = ("get_facts", "get_mrp", "get_dns", "get_interfaces", "get_banner", "get_ntp", "get_syslog", "get_hidiscovery", "get_login_policy", "get_gvrp", "get_gmrp", "get_dai_global", "get_dhcp_snooping", "get_session_config", "get_snmp_config", "get_services", "get_rstp", "get_loop_protection", "get_vlan_ingress", "get_auto_disable_reasons", "get_snmp_information", "get_qos", "get_remote_auth", "get_system_info", "get_port_security", "get_rstp_port", "get_config_remote", "get_qos_mapping", "get_storm_control", "get_ip_restrict", "get_arp_inspection", "get_signal_contact", "get_config_status", "get_management_priority", "get_watchdog_status", "get_management", "get_mrp_sub_ring", "get_vrrp", "get_ntp_servers", "get_users", "get_profiles", "get_snmp_trap_destinations", "get_vrrp_instances", "get_config")
+DEFAULT_METHODS = ("get_facts", "get_mrp", "get_dns", "get_interfaces", "get_banner", "get_ntp", "get_syslog", "get_hidiscovery", "get_login_policy", "get_gvrp", "get_gmrp", "get_dai_global", "get_dhcp_snooping", "get_session_config", "get_snmp_config", "get_services", "get_rstp", "get_loop_protection", "get_vlan_ingress", "get_auto_disable_reasons", "get_snmp_information", "get_qos", "get_remote_auth", "get_system_info", "get_port_security", "get_rstp_port", "get_config_remote", "get_qos_mapping", "get_storm_control", "get_ip_restrict", "get_arp_inspection", "get_signal_contact", "get_config_status", "get_management_priority", "get_watchdog_status", "get_management", "get_mrp_sub_ring", "get_vrrp", "get_ntp_servers", "get_users", "get_profiles", "get_snmp_trap_destinations", "get_vrrp_instances", "get_config", "get_arp_table", "get_mac_address_table", "get_interfaces_ip")
 
 # Schema defaults that count as "empty" for offline vs gold (not a hard
 # oper list — used only to detect empty offline leaves).
@@ -72,6 +72,24 @@ def _values_equal(a: Any, b: Any) -> bool:
     return False
 
 
+def _path_seg(key: Any) -> str:
+    """Path segment; quote keys that contain path metacharacters."""
+    k = str(key)
+    if any(c in k for c in '.[]"\\') or k == "":
+        esc = k.replace("\\", "\\\\").replace('"', '\\"')
+        return f'["{esc}"]'
+    return k
+
+
+def _path_join(prefix: str, key: Any) -> str:
+    seg = _path_seg(key)
+    if not prefix:
+        return seg
+    if seg.startswith("["):
+        return f"{prefix}{seg}"
+    return f"{prefix}.{seg}"
+
+
 def _walk_leaves(obj: Any, prefix: str = "") -> list[tuple[str, Any]]:
     """Flatten dict/list trees to (path, leaf_value)."""
     out: list[tuple[str, Any]] = []
@@ -80,8 +98,7 @@ def _walk_leaves(obj: Any, prefix: str = "") -> list[tuple[str, Any]]:
             out.append((prefix or "$", obj))
             return out
         for k, v in obj.items():
-            path = f"{prefix}.{k}" if prefix else str(k)
-            out.extend(_walk_leaves(v, path))
+            out.extend(_walk_leaves(v, _path_join(prefix, k)))
         return out
     if isinstance(obj, list):
         if not obj:
@@ -95,11 +112,11 @@ def _walk_leaves(obj: Any, prefix: str = "") -> list[tuple[str, Any]]:
 
 
 def _get_path(obj: Any, path: str) -> Any:
-    """Best-effort get of a dotted path including [n] segments."""
+    """Best-effort get of a dotted path including [n] and ["k"] segments."""
     if not path or path == "$":
         return obj
     cur = obj
-    # tokenize: a.b[0].c → ['a','b',0,'c']
+    # tokenize: a.b[0]["10.0.0.1"].c → ['a','b',0,'10.0.0.1','c']
     tokens: list[Any] = []
     buf = ""
     i = 0
@@ -115,6 +132,25 @@ def _get_path(obj: Any, path: str) -> Any:
             if buf:
                 tokens.append(buf)
                 buf = ""
+            if i + 1 < len(path) and path[i + 1] == '"':
+                j = i + 2
+                out_chars: list[str] = []
+                while j < len(path):
+                    if path[j] == "\\" and j + 1 < len(path):
+                        out_chars.append(path[j + 1])
+                        j += 2
+                        continue
+                    if path[j] == '"':
+                        break
+                    out_chars.append(path[j])
+                    j += 1
+                tokens.append("".join(out_chars))
+                if j < len(path) and path[j] == '"':
+                    j += 1
+                if j < len(path) and path[j] == "]":
+                    j += 1
+                i = j
+                continue
             j = path.index("]", i)
             tokens.append(int(path[i + 1 : j]))
             i = j + 1

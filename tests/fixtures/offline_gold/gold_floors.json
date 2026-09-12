@@ -324,6 +324,25 @@
     "get_config": {
       "running": "",
       "startup": ""
+    },
+    "get_arp_table": {
+      "10.0.0.10": {
+        "interface": 1,
+        "mac": "02:00:00:00:00:01",
+        "ip": "10.0.0.10",
+        "age": 0.0
+      }
+    },
+    "get_mac_address_table": {
+      "02:00:00:00:00:02": {
+        "mac": "02:00:00:00:00:02",
+        "interface": 1,
+        "vlan": 0,
+        "status": "mgmt"
+      }
+    },
+    "get_interfaces_ip": {
+      "ipv4": {}
     }
   }
 }
