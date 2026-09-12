@@ -265,6 +265,22 @@
       "watchdog_enabled": false,
       "watchdog_interval": 0,
       "watchdog_remaining": 0
+    },
+    "get_management": {
+      "ip_address": "",
+      "prefix_length": 0,
+      "netmask": "",
+      "gateway": "",
+      "vlan_id": 1,
+      "protocol": ""
+    },
+    "get_mrp_sub_ring": {
+      "enabled": false
+    },
+    "get_vrrp": {
+      "enabled": false,
+      "trap_auth_failure": false,
+      "trap_new_master": false
     }
   }
 }
