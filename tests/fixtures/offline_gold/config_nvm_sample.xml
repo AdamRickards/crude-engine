@@ -99,6 +99,33 @@
     <Attribute name="hm2NetHiDiscoveryBlinking">2</Attribute>
    </Scalar>
   </MIB>
+
+  <MIB name="HM2-USERMGMT-MIB">
+   <Scalar name="hm2PwdMgmtGroup">
+    <Attribute name="hm2PwdMgmtMinLength">6</Attribute>
+    <Attribute name="hm2PwdMgmtLoginAttempts">0</Attribute>
+    <Attribute name="hm2PwdMgmtLoginAttemptsTimePeriod">0</Attribute>
+    <Attribute name="hm2PwdMgmtMinUpperCase">1</Attribute>
+    <Attribute name="hm2PwdMgmtMinLowerCase">1</Attribute>
+    <Attribute name="hm2PwdMgmtMinNumericNumbers">1</Attribute>
+    <Attribute name="hm2PwdMgmtMinSpecialCharacters">1</Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="Q-BRIDGE-MIB">
+   <Scalar name="dot1qBase">
+    <Attribute name="dot1qGvrpStatus">2</Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="P-BRIDGE-MIB">
+   <Scalar name="dot1dExtBase">
+    <Attribute name="dot1dGmrpStatus">2</Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="HM2-PLATFORM-SWITCHING-MIB">
+   <Scalar name="hm2AgentSwitchGARPGroup">
+    <Attribute name="hm2AgentSwitchGmrpUnknownMulticastFilterMode">1</Attribute>
+   </Scalar>
+  </MIB>
  </MibData>
  <Footer>
   <Checksum type="SHA1" value="0000000000000000000000000000000000000000"/>
