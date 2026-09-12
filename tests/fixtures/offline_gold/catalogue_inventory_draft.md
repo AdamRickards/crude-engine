@@ -4,7 +4,7 @@ No device identity. Classes are first-pass heuristics from schema + wire +
 mops/ssh capture fixtures + sanitized floors. Untestable oper attrs are
 hints until a method is floored and `config_absent` receipts list them.
 
-**Counts:** `{"config_backed": 8, "gold_ready_no_floor": 46, "no_gold_yet": 12, "online_only": 13}`
+**Counts:** `{"config_backed": 11, "gold_ready_no_floor": 43, "no_gold_yet": 12, "online_only": 13}`
 
 | method | class | note |
 | --- | --- | --- |
@@ -25,12 +25,12 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_dai_global` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_devsec_status` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['monitor_state', 'monitor_status', 'sec_state', 'sec_status', 'fan_status'] |
 | `get_dhcp_snooping` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
-| `get_gmrp` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
-| `get_gvrp` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
+| `get_gmrp` | `config_backed` | sanitized floor; config-backed attrs only |
+| `get_gvrp` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_interfaces_ip` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
 | `get_ip_addresses` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['oper_status', 'power_state', 'signal', 'flush_statistics'] |
 | `get_ip_restrict` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['rule_status'] |
-| `get_login_policy` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['user_status'] |
+| `get_login_policy` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_loop_protection` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
 | `get_mac_address_table` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=['status'] |
 | `get_management` | `gold_ready_no_floor` | mops-fix+ssh-fix; wire=yes; oper-ish=[] |
