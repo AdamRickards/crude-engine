@@ -9,7 +9,7 @@ schemas:
       efmcufltstatus: []
       efmculowratecrossingenable: false
       efmcunumpmes: 0
-      efmcupafadminstate: 0
+      efmcupafadminstate: false
       efmcupafcapacity: 0
       efmcupafdiscoverycode: ''
       efmcupafinbadfragments: 0
@@ -192,7 +192,7 @@ attributes:
       max: 32
   efmcupafadminstate:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:

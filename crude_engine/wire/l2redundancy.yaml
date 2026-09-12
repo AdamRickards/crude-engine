@@ -9,11 +9,11 @@ schemas:
       hm2mrpdomainname: ''
       hm2mrpentry: ''
       hm2mrpfastmrp: 0
-      hm2mrpmrcblockedsupported: 0
+      hm2mrpmrcblockedsupported: false
       hm2mrpmrmlastringopenchange: 0
-      hm2mrpmrmnonblockingmrcsupported: 0
+      hm2mrpmrmnonblockingmrcsupported: false
       hm2mrpmrmpriority: 0
-      hm2mrpmrmreactonlinkchange: 0
+      hm2mrpmrmreactonlinkchange: false
       hm2mrpmrmringopencount: 0
       hm2mrpmrmroundtripdelaymax: 0
       hm2mrpmrmroundtripdelaymin: 0
@@ -184,7 +184,7 @@ attributes:
       - notSupported
   hm2mrpmrcblockedsupported:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: r
     sources:
       snmp:
@@ -220,7 +220,7 @@ attributes:
           key_tag: to_hex_decode
   hm2mrpmrmnonblockingmrcsupported:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: r
     sources:
       snmp:
@@ -255,7 +255,7 @@ attributes:
       max: 65535
   hm2mrpmrmreactonlinkchange:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:

@@ -15,7 +15,7 @@ schemas:
       ifjackindex: 0
       ifjacktable: ''
       ifjacktype: ''
-      ifmauautonegadminstatus: 0
+      ifmauautonegadminstatus: false
       ifmauautonegcapadvertised: 0
       ifmauautonegcapadvertisedbits: ''
       ifmauautonegcapreceived: 0
@@ -243,7 +243,7 @@ attributes:
           index_fields: *id002
   ifmauautonegadminstatus:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:

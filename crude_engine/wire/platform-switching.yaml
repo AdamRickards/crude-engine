@@ -211,7 +211,7 @@ schemas:
       hm2agentportvoicevlanid: 0
       hm2agentportvoicevlanmode: 0
       hm2agentportvoicevlannonemode: 0
-      hm2agentportvoicevlanoperationalstatus: 0
+      hm2agentportvoicevlanoperationalstatus: false
       hm2agentportvoicevlanpriority: 0
       hm2agentportvoicevlanuntagged: 0
       hm2agentprivatevlanassociate: ''
@@ -3839,7 +3839,7 @@ attributes:
           index_field: hm2AgentPortDot1dBasePort
   hm2agentportvoicevlanoperationalstatus:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: r
     sources:
       snmp:
