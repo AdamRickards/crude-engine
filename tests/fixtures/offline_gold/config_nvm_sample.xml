@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Config version="1.0" xmlns="urn:xml:ns:mibconf:base:1.0">
+ <Header>
+  <Variable name="productId">sample_switch</Variable>
+  <Variable name="swMajorRelNum">10</Variable>
+  <Variable name="swMinorRelNum">3</Variable>
+  <Variable name="swBugFixRelNum">6</Variable>
+ </Header>
+ <MibData>
+  <MIB name="SNMPv2-MIB">
+   <Scalar name="system">
+    <Attribute name="sysDescr" convert="ascii">Sample HiOS switch</Attribute>
+    <Attribute name="sysObjectID">1.3.6.1.4.1.248.14</Attribute>
+    <Attribute name="sysContact" convert="ascii">example-contact</Attribute>
+    <Attribute name="sysName" convert="ascii">sample-host</Attribute>
+    <Attribute name="sysLocation" convert="ascii">example-rack</Attribute>
+   </Scalar>
+  </MIB>
+  <MIB name="IF-MIB">
+   <Table name="ifEntry">
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="ifAdminStatus">1</Attribute>
+     <Attribute name="ifType">6</Attribute>
+     <Attribute name="ifMtu">1518</Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/2</Attribute>
+     <Attribute name="ifAdminStatus">1</Attribute>
+     <Attribute name="ifType">6</Attribute>
+     <Attribute name="ifMtu">1518</Attribute>
+    </Entry>
+   </Table>
+   <Table name="ifXEntry">
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="ifName" convert="ascii">1/1</Attribute>
+     <Attribute name="ifAlias" convert="ascii"></Attribute>
+    </Entry>
+    <Entry>
+     <Attribute name="ifIndex" convert="ifname">1/2</Attribute>
+     <Attribute name="ifName" convert="ascii">1/2</Attribute>
+     <Attribute name="ifAlias" convert="ascii"></Attribute>
+    </Entry>
+   </Table>
+  </MIB>
+  <MIB name="HM2-L2REDUNDANCY-MIB">
+   <Table name="hm2MrpEntry">
+    <Entry>
+     <Attribute name="hm2MrpDomainID">FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF</Attribute>
+     <Attribute name="hm2MrpDomainName" convert="ascii"></Attribute>
+     <Attribute name="hm2MrpRowStatus">1</Attribute>
+     <Attribute name="hm2MrpAdminState">1</Attribute>
+     <Attribute name="hm2MrpRoleAdminState">2</Attribute>
+     <Attribute name="hm2MrpVlanID">100</Attribute>
+     <Attribute name="hm2MrpRingport1IfIndex" convert="ifname">1/1</Attribute>
+     <Attribute name="hm2MrpRingport2IfIndex" convert="ifname">1/2</Attribute>
+     <Attribute name="hm2MrpRecoveryDelay">2</Attribute>
+     <Attribute name="hm2MrpMRMReactOnLinkChange">1</Attribute>
+     <Attribute name="hm2MrpRingport2FixedBackup">2</Attribute>
+    </Entry>
+   </Table>
+  </MIB>
+  <MIB name="HM2-DNS-MIB">
+   <Scalar name="hm2DnsClientGroup">
+    <Attribute name="hm2DnsClientAdminState">2</Attribute>
+    <Attribute name="hm2DnsClientConfigSource">2</Attribute>
+   </Scalar>
+   <Scalar name="hm2DnsClientGlobalGroup">
+    <Attribute name="hm2DnsClientDefaultDomainName" convert="ascii"></Attribute>
+    <Attribute name="hm2DnsClientRequestTimeout">3</Attribute>
+    <Attribute name="hm2DnsClientRequestRetransmits">2</Attribute>
+    <Attribute name="hm2DnsClientCacheAdminState">2</Attribute>
+   </Scalar>
+  </MIB>
+ </MibData>
+ <Footer>
+  <Checksum type="SHA1" value="0000000000000000000000000000000000000000"/>
+ </Footer>
+</Config>
