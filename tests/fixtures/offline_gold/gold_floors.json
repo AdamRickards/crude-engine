@@ -250,6 +250,21 @@
         "sense_temperature": true,
         "sense_humidity": true
       }
+    },
+    "get_config_status": {
+      "saved": true,
+      "nvm": "ok",
+      "aca": "absent",
+      "boot": "ok"
+    },
+    "get_management_priority": {
+      "source": "local",
+      "priority": 1
+    },
+    "get_watchdog_status": {
+      "watchdog_enabled": false,
+      "watchdog_interval": 0,
+      "watchdog_remaining": 0
     }
   }
 }
