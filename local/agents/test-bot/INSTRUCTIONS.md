@@ -39,6 +39,10 @@ actual diff or output — not "looks good." On live work, sidecar ran it.
   Until the script exists: missing-tool `NO_HOLE` / `BLOCKED`, do
   not improvise. On wire changes: run discover/prove **before and
   after** so the receipt shows schema follow-ups or a datatype fix.
+- `python3 tests/offline_gold_matrix.py [--config XML] [--gold JSON] [--methods …] [--strict]`
+  — Offline transport only (`OfflineHIOS` / saved mibconf XML). Schema
+  methods via FeatureEngine vs gold floors. `config_absent`∩gold is
+  followup, not fail; exit ≠ 0 only on real `mismatch` (see #165).
 
 If sidecar only exposes inspect today, a proof that needs `--compare` or
 replay and cannot be run is `BLOCKED` (mesh), not a skip.
