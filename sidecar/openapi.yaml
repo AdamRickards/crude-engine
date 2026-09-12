@@ -189,6 +189,15 @@ paths:
         Mismatch is 403; no checkout, no restart. `main` and `clean`
         do not need that check. Never a caller-supplied ref, never
         push, never force. Same RunLock as `/v1/run`.
+
+        **`op: clean` (issue #159).** Optional, caller-invoked recovery:
+        `git reset --hard` + `git clean -fd` (never `-x` — gitignored
+        files like the local device pool are never touched), then the
+        same fetch/checkout/ff-only-merge to `origin/main` as `op: main`.
+        Unlike `main`/`pr`, `clean` does not refuse on a dirty tree —
+        discarding dirty state is the point. `main` and `pr` do refuse on
+        dirty, and the 503 now echoes the dirty paths and current HEAD
+        sha/ref so a caller can tell what is blocking without SSH access.
       requestBody:
         required: true
         content:
@@ -521,4 +530,19 @@ components:
           type: string
         name:
           type: string
-          description: Echo of the requested name when known.
+          description: Echo of the requested name when known (/v1/run).
+        op:
+          type: string
+          enum: [main, pr, clean]
+          description: Echo of the requested op when known (/v1/sync, issue #159).
+        dirty:
+          type: array
+          description: |
+            /v1/sync 503 dirty-tree refusal (issue #159). Porcelain paths
+            blocking `main`/`pr`; `op: clean` never returns this — clean
+            discards dirty state instead of refusing on it.
+          items:
+            type: string
+        head:
+          $ref: '#/components/schemas/SidecarHead'
+          description: HEAD sha/ref at the moment a /v1/sync op refused (issue #159).
