@@ -112,7 +112,7 @@ attributes:
     type: string
     sources:
       ssh:
-        read: {command: "show ip dhcp-snooping global", field: "Bindings Database Location"}
+        read: {command: "show ip dhcp-snooping global", field: "Bindings Database Location", tag: value_map, map: dhcp_snooping_db_location}
         write: {command: "ip dhcp-snooping database storage {value}", level: config}
 
   hm2agentdhcpsnoopingiftrustenable:
