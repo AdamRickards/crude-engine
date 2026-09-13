@@ -122,8 +122,8 @@ class SSHDriver:
             return
         try:
             prog["session_log_tail"] = self.session_log_tail()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("session_log_tail publish failed: %s", e)
 
     # ------------------------------------------------------------------
     # Connection lifecycle
