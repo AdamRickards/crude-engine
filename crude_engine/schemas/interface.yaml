@@ -28,6 +28,11 @@ methods:
     type: dict
     primary_key: name
     key_map: ifindex
+    # SSH identity from show interface counters (ifdescr), not show port ifname
+    attributes:
+      name:
+        wire: ifdescr
+        source: if
     defaults:
       tx_errors: 0
       rx_errors: 0
