@@ -21,9 +21,9 @@ Chat names the Effort once. The board + child issues *are* the Effort after that
 | Bubble | Status | Children |
 | --- | --- | --- |
 | **A** Offline↔gold floor growth | **DONE** floors=50 | #169 closeout; unfloorables → #193 |
-| **A′** Live MOPS triad (gold / config Offline / live) | **OPEN** | not started |
-| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162/#205: vd 105→63 overnight; wire leftovers ~4 left (TC-BITS parked); SNMP-vs-MOPS morning |
-| **C** SSH after two good floors | **IN PROGRESS** | #215 budgets; call-timeout ladder (`inspect-timeout.md`); holds #47/#48/#56/#61; #62/#178 parse |
+| **A′** Live MOPS triad (gold / config Offline / live) | **IN PROGRESS** | #229 first sweep 45/50; floors 49; look-intos held |
+| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | live 36/43; Schema #233–#235; #231→#12 parked; TC-BITS parked; see `hitl-engine-park.md` |
+| **C** SSH after two good floors | **SOFT** | timeout detect done; parse leftovers #226–#228 parked; Engine park list `hitl-engine-park.md` |
 
 ```mermaid
 flowchart TD
