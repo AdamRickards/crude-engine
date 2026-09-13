@@ -9,3 +9,5 @@ matching `--gold` JSON. Do not commit bag or device identity.
 
 `catalogue_inventory_draft.md` is the #169 first-pass method catalogue
 (no identity). Classes are heuristics until floored receipts refine them.
+
+Floors in `gold_floors.json`: **49** (canonical names only; schema alias `get_interfaces_ip` not floored — see #230).
