@@ -33,38 +33,19 @@ attributes:
       ssh:
         write: {command: "port-security mode {value}", level: config}
 
-  hm2agentportsecurityautodisable:
-    sources:
-      ssh:
-        read: {command: "show port-security interface {index}", field: "Automatic disable"}
+  # #56: dropped N× `show port-security interface {index}` read fanout (call-budget).
+  # Prefer global + table `show port-security interface` above. Port counters / auto-disable /
+  # trap / last-MAC stay on MOPS/SNMP for get_port_security.read. Writes below unchanged.
 
   hm2agentportsecurityviolationtrapmode:
     sources:
       ssh:
-        read: {command: "show port-security interface {index}", field: "Violation trap mode"}
         write: {command: "port-security violation-traps operation", level: config_interface}
 
   hm2agentportsecurityviolationtrapfrequency:
     sources:
       ssh:
-        read: {command: "show port-security interface {index}", field: "Violation trap frequency"}
         write: {command: "port-security violation-traps operation frequency {value}", level: config_interface}
-
-  hm2agentportsecuritydynamiccount:
-    sources:
-      ssh:
-        read: {command: "show port-security interface {index}", field: "Current dynamic"}
-
-  hm2agentportsecuritystaticcount:
-    sources:
-      ssh:
-        read: {command: "show port-security interface {index}", field: "Current static"}
-
-  hm2agentportsecuritylastdiscardedmac:
-    type: string
-    sources:
-      ssh:
-        read: {command: "show port-security interface {index}", field: "Last violating VLAN ID/MAC"}
 
   hm2agentportsecuritymacaddressadd:
     sources:
