@@ -38,6 +38,17 @@ methods:
     defaults:
       egress_ports: []
       untagged_ports: []
+    attributes:
+      # wire+compute on same name loses to defaults←all_data overwrite;
+      # gather raw, coerce None/'None' (ifindex miss) to [].
+      untagged_ports_raw:
+        wire: dot1qvlanstaticuntaggedports
+        source: q-bridge
+        value_map: ifindex
+      untagged_ports:
+        compute:
+          from: [untagged_ports_raw]
+          expr: "untagged_ports_raw if untagged_ports_raw not in (None, 'None') else []"
   set_vlan_egress:
     type: upsert
 attributes:
