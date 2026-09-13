@@ -4,7 +4,7 @@ No device identity. Classes are first-pass heuristics from schema + wire +
 mops/ssh capture fixtures + sanitized floors. Untestable oper attrs are
 hints until a method is floored and `config_absent` receipts list them.
 
-**Counts:** `{"config_backed": 50, "gold_ready_no_floor": 5, "no_gold_yet": 11, "online_only": 13}`
+**Counts:** `{"config_backed": 49, "gold_ready_no_floor": 5, "no_gold_yet": 11, "online_only": 13}`  (#230: alias `get_interfaces_ip` dropped; keep canonical `get_ip_addresses`)
 
 | method | class | note |
 | --- | --- | --- |
@@ -27,8 +27,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_dhcp_snooping` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gmrp` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gvrp` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_interfaces_ip` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_ip_addresses` | `config_backed` | sanitized floor; config-backed attrs only |
+| `get_ip_addresses` | `config_backed` | sanitized floor; config-backed attrs only (canonical; schema alias `get_interfaces_ip` not floored) |
 | `get_ip_restrict` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_login_policy` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_loop_protection` | `config_backed` | sanitized floor; config-backed attrs only |
