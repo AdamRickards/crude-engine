@@ -6,14 +6,24 @@ methods:
     type: dict
     primary_key: name
     key_map: ifindex
+    index_filter: '^\d+/\d+$'
     defaults:
       tx_power: 0.0
       rx_power: 0.0
       temperature: 0.0
 attributes:
+  # Identity is detected-SFP ifIndex from hm2SfpDiagEntry (MIB: "Entry for
+  # a detected SFP"), not if.ifname (full ifTable). Drive rows from an
+  # accessible walked column — same pattern as get_users / trap dests.
+  # Do NOT use scalar hm2sfpdiagtable + lookup resolve:"key": SNMP/MOPS
+  # GET of the table OID returns {} (dict), so _apply_lookup takes the
+  # dict-match branch and yields n=0; SSH parser:none returns a string
+  # and the non-dict branch works (HITL on #76 tip). key_map remaps
+  # ifIndex → ifName. Defaults 0.0 cannot manufacture cpu/vlan/empty-cage
+  # rows because they are not in hm2SfpDiagEntry.
   name:
-    wire: ifname
-    source: if
+    wire: hm2sfpcurrenttxpower
+    source: devmgmt
   tx_power:
     wire: hm2sfpcurrenttxpower
     source: devmgmt
