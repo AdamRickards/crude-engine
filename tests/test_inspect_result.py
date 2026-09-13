@@ -308,7 +308,7 @@ def _fanout() -> int:
                 "phase=open distinct from phase=call"
             )
 
-        # --- #218 last_command heartbeat on phase=call hang ---
+        # --- #218/#222 last_command + session_log_tail on phase=call hang ---
         import sys
         from unittest.mock import MagicMock
         sys.modules.setdefault("netmiko", MagicMock())
@@ -340,8 +340,12 @@ def _fanout() -> int:
             rc |= fail(f"transport.last_command unset: {getattr(tport, 'last_command', None)}")
         elif out.get("show port") != "out-for-show port":
             rc |= fail(f"cli output broken: {out}")
+        elif "send: show port" not in (prog.get("session_log_tail") or ""):
+            rc |= fail(f"session_log_tail missing send note: {prog.get('session_log_tail')!r}")
+        elif "recv:" not in (prog.get("session_log_tail") or ""):
+            rc |= fail(f"session_log_tail missing recv note: {prog.get('session_log_tail')!r}")
         else:
-            rc |= ok("ssh_transport.cli publishes last_command before send")
+            rc |= ok("ssh_transport.cli publishes last_command + session_log_tail")
 
         class _HangSshCli:
             """Call hang after SSH cli heartbeat — names the stuck show (#218)."""
@@ -388,17 +392,23 @@ def _fanout() -> int:
             rc |= fail(f"hung ssh cli should be phase=call, got {ssh}")
         elif ssh.get("last_command") != "show port":
             rc |= fail(f"call-timeout missing last_command show port: {ssh}")
+        elif "send: show port" not in (ssh.get("session_log_tail") or ""):
+            rc |= fail(
+                f"call-timeout missing session_log_tail send: "
+                f"{ssh.get('session_log_tail')!r}"
+            )
         elif wall > 1.0:
             rc |= fail(f"ssh hang wait hung {wall:.2f}s")
         elif any(s != "ok" for s in others.values()):
             rc |= fail(f"siblings should be ok, got {others}")
         else:
             rc |= ok(
-                f"phase=call timeout names last_command={ssh.get('last_command')!r} "
-                f"({wall:.2f}s)"
+                f"phase=call timeout last_command={ssh.get('last_command')!r} "
+                f"+ session_log_tail ({wall:.2f}s)"
             )
 
-        # phase=open hang must stay open and must not invent last_command
+        # phase=open hang must stay open and must not invent last_command /
+        # session_log_tail (not applicable before call wiring).
         _HangOpenMops.closed = {}
         rm.get_network_driver = lambda _name: _HangOpenMops
         rm._inspect_budget_s = _short
@@ -408,8 +418,10 @@ def _fanout() -> int:
             rc |= fail(f"open hang regression phase: {mops}")
         elif "last_command" in mops:
             rc |= fail(f"phase=open must not carry last_command: {mops}")
+        elif "session_log_tail" in mops:
+            rc |= fail(f"phase=open must not require session_log_tail: {mops}")
         else:
-            rc |= ok("phase=open timeout still open; no last_command")
+            rc |= ok("phase=open timeout still open; no last_command/session_log")
 
         class _WithCli:
             def __init__(self, *args, **kwargs):

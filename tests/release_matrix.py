@@ -2206,10 +2206,11 @@ def _collect_cli(device):
 
 
 def _wire_inspect_progress(device, progress: dict) -> None:
-    """Let SSH transports publish last_command into shared inspect progress.
+    """Let SSH transports publish last_command / session_log into progress.
 
     Hang never returns, so call-timeout receipts cannot wait for last_cli.
     Transport.cli sets progress["last_command"] before each send (#218).
+    Session ring + Netmiko SessionLog snap via session_log_tail (#222).
     """
     objs = []
     transports = getattr(device, "_transports", None)
@@ -2224,6 +2225,17 @@ def _wire_inspect_progress(device, progress: dict) -> None:
         if obj is None or not hasattr(obj, "cli"):
             continue
         obj._inspect_progress = progress
+        # Fresh snap callable so hang poller can read Netmiko buffer + ring
+        # without waiting for the hung worker thread to return.
+        snap = getattr(obj, "session_log_tail", None)
+        if callable(snap):
+            progress["session_log_snapshot"] = snap
+            try:
+                tail = snap()
+                if tail:
+                    progress["session_log_tail"] = tail
+            except Exception:
+                pass
 
 
 def _inspect_one_protocol(
@@ -2246,9 +2258,10 @@ def _inspect_one_protocol(
     `progress` is a plain dict shared with the caller: {"phase": "open"}
     at submit time, flipped to {"phase": "call", "t_call_start": ...}
     right after open() succeeds. SSH transports may also write
-    progress["last_command"] before each send (#218). Single-key dict
-    writes are GIL-atomic, so no lock is needed for this one-way
-    producer/poller handoff.
+    progress["last_command"] before each send (#218) and publish
+    session_log_tail / session_log_snapshot for hang diagnosis (#222).
+    Single-key dict writes are GIL-atomic, so no lock is needed for
+    this one-way producer/poller handoff.
     """
     t_open = time.monotonic()
     try:
@@ -2392,6 +2405,14 @@ def _print_inspect_protocol(proto: str, result: dict, trace: bool) -> None:
         )
         if result.get("last_command"):
             print(f"  last_command: {result.get('last_command')!r}")
+        tail = result.get("session_log_tail")
+        if tail:
+            # Bounded; show last lines for mid-hang fault find (#222).
+            lines = str(tail).splitlines()
+            show = lines[-12:] if len(lines) > 12 else lines
+            print("  session_log_tail:")
+            for line in show:
+                print(f"    {line[:200]}")
     elif status == "connect_failed":
         print(f"  CONNECT_FAILED: {(result.get('error') or '')[:200]}")
     else:
@@ -2583,6 +2604,20 @@ def run_inspect(method_name: str | None,
                     last_command = progress[proto].get("last_command")
                     if last_command:
                         timed["last_command"] = last_command
+                    # Prefer live snapshot (Netmiko buffer may have partial
+                    # recv while worker is hung); fall back to last published
+                    # tail from transport ring (#222).
+                    tail = None
+                    snap = progress[proto].get("session_log_snapshot")
+                    if callable(snap):
+                        try:
+                            tail = snap()
+                        except Exception:
+                            tail = None
+                    if not tail:
+                        tail = progress[proto].get("session_log_tail")
+                    if tail:
+                        timed["session_log_tail"] = tail
                 protocols_out[proto] = timed
             pending = still_pending
             if pending:
