@@ -23,7 +23,7 @@ Chat names the Effort once. The board + child issues *are* the Effort after that
 | **A** Offline↔gold floor growth | **DONE** floors=**52** | #169 trail; unfloorables → #193 (poe status-null + route_to); merge #257 `3ca9974` (#258 closed duplicate) |
 | **A′** Live MOPS triad (gold / Offline / live) | **IN PROGRESS** | #229 — floored MOPS receipts done (49/49 class); look-intos as filed |
 | **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162 teach progressed; live 36/43; Schema #233–#235 **closed**; #231→#12 parked; TC-BITS in #205 parked — see `hitl-engine-park.md` |
-| **C** SSH after two good floors | **SOFT** | Timeout detection done (#179–#225); **#92 stays closed**. Parse/parity leftovers: #226 #227 #228 #217 #178 #62 + older fold-ins #44 #46 #54 #55. Prefer A′/B over stalling. |
+| **C** SSH after two good floors | **SOFT** | Timeout detection done (#179–#225); **#92 stays closed**. Parse/parity: #226 #227 #228 #217 #178 #62 #44 #54 #46(+SSH) #55; SNMP fan-in child #264 (from #46). Prefer A′/B over stalling. |
 
 ```mermaid
 flowchart TD
@@ -58,7 +58,7 @@ Every open issue must hang on this board or `hitl-engine-park.md`. These were op
 | --- | --- | --- |
 | **R** Release / RC | **PARKED** — needs HITL `--gate` | #14 setter/CRUD matrix (260 jobs). Not a floors poke; Architect does not close release without hand-back. |
 | **L** Lab / fixture capture | **PARKED** — HITL | #110 multi-device leftover fixture trees (office L3 vs other profiles). No lab identity on GitHub. |
-| **F** Feature gap (webUI tab) | **BACKLOG** | #129 Traffic Management Egress / shaping-rate getter — Schema/wire when HITL prioritises; not A′/B blocker. |
+| **F** Feature gap (webUI tab) | **INVENTORY DONE** | #129 → proposed `get_egress_shaping` (ask map on issue); implement when ordered; not A′/B blocker. |
 | **T** Tooling | **SOFT** | #156 honour `debug=foreign` / `trace=engine` (post #155). Docs/Engine soft when free; not floors-critical. |
 
 Engine cycle-0 that need primitives or checker work live on **`hitl-engine-park.md`**: #30 SNMPHIOS.close tax; #115 `to_bool` false-vocab; #116 `sort:natural` port heuristic — plus existing #12/#68/#106 rows.
