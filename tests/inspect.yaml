@@ -7,17 +7,21 @@
 # Combined wall time is not a failure signal. A protocol that opens and
 # calls inside these two budgets is status: ok.
 #
-# Starting budgets from live get_dns (home-office). Tune here, not in Python.
-# MOPS open is two TLS handshakes (~1.5s), not a bug. SNMP call needs
-# headroom for sub_table + per-OID fallback. SSH open is prompt/login.
+# Phase attribution (#179): timeouts report phase=open or phase=call.
+# Real phase timeouts are honest feedback — tune values here.
+#
+# 2026-09-13 headroom (post-#179 live SSH timeout-cluster retest + #92 note):
+# SSH open measured ~6.0–6.4s vs old 6s; several SSH/MOPS/SNMP calls
+# 4–5s+ vs old call budgets. Bump for headroom; do not mask hangs
+# (attribution still names the phase). Fail-fast on invalid CLI is separate.
 
 protocols:
   mops:
-    open_timeout_s: 3
-    call_timeout_s: 2
+    open_timeout_s: 4
+    call_timeout_s: 6
   snmp:
-    open_timeout_s: 2
-    call_timeout_s: 4
+    open_timeout_s: 3
+    call_timeout_s: 8
   ssh:
-    open_timeout_s: 6
-    call_timeout_s: 3
+    open_timeout_s: 8
+    call_timeout_s: 6
