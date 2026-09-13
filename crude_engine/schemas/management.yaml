@@ -15,11 +15,14 @@ methods:
     type: upsert
   get_management_priority:
     type: dict
+    # HM2-NETCONFIG-MIB management-reply priorities (wire already in netconfig.yaml).
+    # napalm-hios names: dot1p / ip_dscp. Stub source/priority had no attrs → both_absent (#240).
     defaults:
-      source: local
-      priority: 1
+      dot1p: 0
+      ip_dscp: 0
   set_management_priority:
     type: upsert
+    fields: [dot1p, ip_dscp]
 attributes:
   ip_address:
     wire: hm2netlocalipaddr
@@ -44,3 +47,10 @@ attributes:
       '1': static
       '2': bootp
       '3': dhcp
+  # Management reply priorities (get/set_management_priority)
+  dot1p:
+    wire: hm2netvlanpriority
+    source: netconfig
+  ip_dscp:
+    wire: hm2netipdscppriority
+    source: netconfig
