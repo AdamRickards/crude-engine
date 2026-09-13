@@ -26,7 +26,7 @@ attributes:
     type: string
     sources:
       ssh:
-        read: {command: "show network parms", field: "Protocol"}
+        read: {command: "show network parms", field: "Protocol", tag: value_map, map: management_protocol}
 
   # HiDiscovery: show network hidiscovery
   hm2nethidiscoveryoperation:

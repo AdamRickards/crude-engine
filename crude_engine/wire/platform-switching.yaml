@@ -1,5 +1,9 @@
 version: 2.6.0
 feature: platform-switching
+value_maps:
+  # SSH Location local/tftp-loc; RemoteFileName empty when local (#44).
+  dhcp_snooping_db_location:
+    local: ''
 schemas:
   read_platform-switching:
     type: dict
