@@ -187,6 +187,13 @@ class SSHDriver:
         verify = cmd_verify if cmd_verify is not None else self._cmd_verify
         results = {}
         for cmd in commands:
+            # Inspect hang never returns, so last_cli is empty on call-timeout.
+            # Publish last_command before send so the harness can snapshot it
+            # from shared progress without waiting for this thread (#218).
+            self.last_command = cmd
+            prog = getattr(self, "_inspect_progress", None)
+            if isinstance(prog, dict):
+                prog["last_command"] = cmd
             output = self.connection.send_command(
                 cmd, expect_string=self._prompt_re, read_timeout=10,
                 cmd_verify=verify
