@@ -23,7 +23,7 @@ Chat names the Effort once. The board + child issues *are* the Effort after that
 | **A** Offline↔gold floor growth | **DONE** floors=50 | #169 closeout; unfloorables → #193 |
 | **A′** Live MOPS triad (gold / config Offline / live) | **OPEN** | not started |
 | **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162/#205: vd 105→63 overnight; wire leftovers ~4 left (TC-BITS parked); SNMP-vs-MOPS morning |
-| **C** SSH after two good floors | **BLOCKED** | #92 budgets; #41 banner live; #178 get_aca SSH |
+| **C** SSH after two good floors | **IN PROGRESS** | post-#179 retest: 0 closed; all phase=open/call → #92 budgets (mops/snmp call too); #92 fail-fast still HITL |
 
 ```mermaid
 flowchart TD
