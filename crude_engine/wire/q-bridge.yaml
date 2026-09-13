@@ -936,8 +936,16 @@ attributes:
     sources:
       snmp:
         read:
-          oid: 1.3.6.1.2.1.17.7.1.2.2.1.1
+          # Address INDEX not-accessible (.1); walk Port (.2) + value_from_index mac (#234 / #39)
+          oid: 1.3.6.1.2.1.17.7.1.2.2.1.2
           method: walk
+          index_fields: &id004snmp
+            - {name: dot1qFdbId, type: integer}
+            - {name: dot1qTpFdbAddress, type: fixed_string, size: 6}
+          key_field: dot1qTpFdbAddress
+          key_format: mac
+          value_from_index: dot1qTpFdbAddress
+          value_format: mac
       mops:
         read:
           mib: Q-BRIDGE-MIB
@@ -970,6 +978,9 @@ attributes:
         read:
           oid: 1.3.6.1.2.1.17.7.1.2.2.1.2
           method: walk
+          index_fields: *id004snmp
+          key_field: dot1qTpFdbAddress
+          key_format: mac
       mops:
         read:
           mib: Q-BRIDGE-MIB
@@ -989,6 +1000,9 @@ attributes:
         read:
           oid: 1.3.6.1.2.1.17.7.1.2.2.1.3
           method: walk
+          index_fields: *id004snmp
+          key_field: dot1qTpFdbAddress
+          key_format: mac
       mops:
         read:
           mib: Q-BRIDGE-MIB
