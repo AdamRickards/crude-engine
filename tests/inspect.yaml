@@ -7,8 +7,10 @@
 # Combined wall time is not a failure signal. A protocol that opens and
 # calls inside these two budgets is status: ok.
 #
-# Phase attribution (#179): timeouts report phase=open or phase=call.
-# Real phase timeouts are honest feedback — tune values here.
+# Phase attribution (#179 / #224): timeouts report phase=open, phase=call,
+# or phase=close (teardown / logout). Real phase timeouts are honest
+# feedback — tune values here. Prefer fixing close gates / harness
+# phase=close over bumping call_timeout_s to mask logout Y/N.
 #
 # 2026-09-13 headroom (post-#179 live SSH timeout-cluster retest + #92 note):
 # SSH open measured ~6.0–6.4s vs old 6s; several SSH/MOPS/SNMP calls

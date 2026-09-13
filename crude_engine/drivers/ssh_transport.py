@@ -122,8 +122,8 @@ class SSHDriver:
             return
         try:
             prog["session_log_tail"] = self.session_log_tail()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug("session_log_tail publish failed: %s", e)
 
     # ------------------------------------------------------------------
     # Connection lifecycle
@@ -180,7 +180,14 @@ class SSHDriver:
             raise ConnectionException(f"SSH connection failed: {str(e)}")
 
     def close(self):
-        """Disconnect, handling logout gates from YAML."""
+        """Disconnect, handling logout gates from YAML.
+
+        Gate `detect` strings in SSH_state.yaml are literal prompt fragments
+        (e.g. ``Are you sure (Y/N)``). Netmiko ``read_until_pattern`` compiles
+        them as regex, so parentheses must be escaped or the live logout
+        confirm never matches and teardown hangs under the inspect call
+        wall (#224).
+        """
         if self.connection:
             try:
                 # Navigate to user level first, then logout
@@ -195,14 +202,27 @@ class SSHDriver:
                 gates = user_def.get('gates', [])
 
                 if exit_def and exit_def.get('command'):
-                    self.connection.write_channel(exit_def['command'] + '\n')
+                    logout_cmd = exit_def['command']
+                    # Publish logout as last_command so close hang receipts
+                    # are not stuck on a stale show (#224).
+                    self.last_command = logout_cmd
+                    prog = getattr(self, "_inspect_progress", None)
+                    if isinstance(prog, dict):
+                        prog["last_command"] = logout_cmd
+                    self._session_append(f"send: {logout_cmd}")
+                    self.connection.write_channel(logout_cmd + '\n')
                     for gate in gates:
                         try:
+                            detect = gate['detect']
                             gate_timeout = gate.get('read_timeout', 1)
                             output = self.connection.read_until_pattern(
-                                gate['detect'], read_timeout=gate_timeout
+                                re.escape(detect), read_timeout=gate_timeout
                             )
-                            if gate['detect'] in output:
+                            if detect in (output or ''):
+                                self._session_append(
+                                    f"close gate: {detect!r} -> "
+                                    f"{gate.get('response')!r}"
+                                )
                                 self.connection.write_channel(
                                     gate['response'] + '\n'
                                 )

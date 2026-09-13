@@ -2257,11 +2257,15 @@ def _inspect_one_protocol(
 
     `progress` is a plain dict shared with the caller: {"phase": "open"}
     at submit time, flipped to {"phase": "call", "t_call_start": ...}
-    right after open() succeeds. SSH transports may also write
-    progress["last_command"] before each send (#218) and publish
-    session_log_tail / session_log_snapshot for hang diagnosis (#222).
-    Single-key dict writes are GIL-atomic, so no lock is needed for
-    this one-way producer/poller handoff.
+    right after open() succeeds. After the method returns (ok or
+    dispatch_error), this worker publishes progress["result"] and flips
+    to {"phase": "close"} *before* device.close() so a logout Y/N hang
+    is not attributed as phase=call and gather success is not lost
+    (#224). SSH transports may also write progress["last_command"]
+    before each send (#218) and publish session_log_tail /
+    session_log_snapshot for hang diagnosis (#222). Single-key dict
+    writes are GIL-atomic, so no lock is needed for this one-way
+    producer/poller handoff.
     """
     t_open = time.monotonic()
     try:
@@ -2324,10 +2328,15 @@ def _inspect_one_protocol(
                 out["trace"] = last_trace
                 if last_cli:
                     out["cli"] = last_cli
+            # Publish before close so logout Y/N hang is not phase=call
+            # and gather success is not lost (#224).
+            progress["result"] = out
+            progress["t_close_start"] = time.monotonic()
+            progress["phase"] = "close"
             return proto, out
         except Exception as e:
             call_ms = round((time.monotonic() - t_call) * 1000)
-            return proto, {
+            out = {
                 "status": "dispatch_error",
                 "phase": "call",
                 "elapsed_ms": open_ms + call_ms,
@@ -2335,9 +2344,18 @@ def _inspect_one_protocol(
                 "call_ms": call_ms,
                 "error": str(e)[:300],
             }
+            progress["result"] = out
+            progress["t_close_start"] = time.monotonic()
+            progress["phase"] = "close"
+            return proto, out
     finally:
         if device is not None:
             try:
+                # Safety net: if we reach close still inside call (e.g.
+                # unexpected exit), flip phase so teardown != call (#224).
+                if progress.get("phase") == "call":
+                    progress["t_close_start"] = time.monotonic()
+                    progress["phase"] = "close"
                 device.close()
             except Exception:
                 pass
@@ -2577,6 +2595,56 @@ def run_inspect(method_name: str | None,
                 proto = futures[fut]
                 phase = progress[proto].get("phase", "open")
                 open_s, call_s = budgets[proto]
+
+                # #224: gather/call finished; close may hang on logout Y/N.
+                # Prefer the published result so success is not lost and
+                # teardown is not attributed as phase=call.
+                if phase == "close":
+                    early = progress[proto].get("result")
+                    if isinstance(early, dict) and "status" in early:
+                        protocols_out[proto] = early
+                        continue
+                    t_close = progress[proto].get("t_close_start")
+                    if t_close is None:
+                        still_pending.add(fut)
+                        continue
+                    elapsed = time.monotonic() - t_close
+                    # Close has no separate YAML budget; use call budget as
+                    # grace. Receipt stays phase=close (not call).
+                    if elapsed <= call_s:
+                        still_pending.add(fut)
+                        continue
+                    open_ms = None
+                    if progress[proto].get("t_call_start") is not None:
+                        open_ms = round(
+                            (progress[proto]["t_call_start"]
+                             - progress[proto]["t_open_start"]) * 1000
+                        )
+                    timed = {
+                        "status": "timeout",
+                        "elapsed_ms": round(elapsed * 1000),
+                        "open_ms": open_ms,
+                        "call_ms": None,
+                        "phase": "close",
+                        "error": "close deadline exceeded",
+                    }
+                    last_command = progress[proto].get("last_command")
+                    if last_command:
+                        timed["last_command"] = last_command
+                    tail = None
+                    snap = progress[proto].get("session_log_snapshot")
+                    if callable(snap):
+                        try:
+                            tail = snap()
+                        except Exception:
+                            tail = None
+                    if not tail:
+                        tail = progress[proto].get("session_log_tail")
+                    if tail:
+                        timed["session_log_tail"] = tail
+                    protocols_out[proto] = timed
+                    continue
+
                 if phase == "open":
                     elapsed = time.monotonic() - progress[proto]["t_open_start"]
                     budget = open_s
