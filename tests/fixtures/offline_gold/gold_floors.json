@@ -354,6 +354,46 @@
       "oper_state": "",
       "status_index": {},
       "trap_cause": ""
+    },
+    "get_vlans": {
+      "1": {
+        "name": "default",
+        "ports": {
+          "1/1": "T",
+          "1/2": "T"
+        }
+      },
+      "100": {
+        "name": "",
+        "ports": {
+          "1/1": "T",
+          "1/2": "T"
+        }
+      }
+    },
+    "get_vlan_egress": {
+      "1": {
+        "egress_ports": [
+          "1/1",
+          "1/2"
+        ],
+        "untagged_ports": []
+      },
+      "100": {
+        "egress_ports": [
+          "1/1",
+          "1/2"
+        ],
+        "untagged_ports": []
+      }
+    },
+    "get_auto_disable": {
+      "1/1": {
+        "enabled": false,
+        "reason": "none",
+        "remaining_time": null,
+        "timer": 60
+      }
     }
   }
 }
