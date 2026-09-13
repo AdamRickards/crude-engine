@@ -110,6 +110,15 @@ Current checks:
    receipts often lack `cli` — YAML+CLI.json is the first poke. Do not
    invent a seventh clerk for transport.
 
+8. **Engine/HITL NO_HOLE ⇒ auto-park, do not wait** (HITL 2026-09-13).
+   When Schema/Docs exhaust tools and the hole is Engine primitive or
+   human eyes: add/update a row in `diagrams/hitl-engine-park.md`, link
+   consumers, keep soft proveable hops (Schema/Docs/Test) moving. Do not
+   send a go/no-go widget that stalls A′/B. Engine inventing meaning still
+   needs HITL sign-off *when the PR is ready* — parking is not a silent
+   Engine kick.
+
+
 ## Never
 
 - Author a fix.
