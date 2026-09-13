@@ -341,9 +341,6 @@
         "status": "mgmt"
       }
     },
-    "get_interfaces_ip": {
-      "ipv4": {}
-    },
     "get_vrrp_tracking": {
       "trk1::": {
         "decrement": 10,

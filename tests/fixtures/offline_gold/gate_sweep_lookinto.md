@@ -37,7 +37,6 @@ Re-proved on main after #170 squash (`b88e60c`); prior look-into commit had miss
 - `get_gmrp`
 - `get_gvrp`
 - `get_interface_statistics`
-- `get_interfaces_ip`
 - `get_ip_addresses`
 - `get_ip_restrict`
 - `get_ip_source_guard_bindings`
@@ -142,3 +141,7 @@ Floors **32** (+`get_ip_restrict`, `get_arp_inspection`, `get_signal_contact`). 
 ## Harness note
 
 `_walk_leaves` / `_get_path` quote dict keys containing `.` as `["10.0.0.10"]` so ARP-style IP keys match.
+
+## Update (#230 floor rename)
+
+Dropped alias floor `get_interfaces_ip` — floors keep canonical `get_ip_addresses` only (49 floors). Schema alias stays; catalog already has `get_ip_addresses.read` (alias remains `skipped_untyped`). No live wire.
