@@ -92,10 +92,9 @@ boring on real issues first.
 Verify, then either fix in-tree or file as `NO_HOLE` / missing tool — do
 not quietly rewrite the sieve.
 
-1. **`docs/DIAGNOSTIC_PROCESS.md` Step 2** still says `debug=True` for
-   pipeline trace. Engine clerk now says `trace=True`. One-line doc fix
-   if Adam wants docs clerk to ship it; until then Bots follow
-   `engine-clerk/INSTRUCTIONS.md`.
+1. **`docs/DIAGNOSTIC_PROCESS.md` Step 2** — **done** (#155): Step 2 is
+   `trace=True` (pipeline / `device.last_trace`). `debug` = foreign library
+   logs only. Do not reopen as a docs hole.
 2. **Tool commands in INSTRUCTIONS** — run or read each listed command on
    *this* checkout. Dead `napalm-hios-v2` paths, missing
    `WIRING_GUIDE.md`, sidecar only exposing inspect: confirm and leave as
