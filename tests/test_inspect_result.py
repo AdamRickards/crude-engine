@@ -308,6 +308,109 @@ def _fanout() -> int:
                 "phase=open distinct from phase=call"
             )
 
+        # --- #218 last_command heartbeat on phase=call hang ---
+        import sys
+        from unittest.mock import MagicMock
+        sys.modules.setdefault("netmiko", MagicMock())
+        try:
+            import napalm.base.exceptions  # noqa: F401
+        except Exception:
+            _nb = MagicMock()
+            class _CE(Exception):
+                pass
+            _nb.ConnectionException = _CE
+            sys.modules.setdefault("napalm", MagicMock())
+            sys.modules.setdefault("napalm.base", MagicMock())
+            sys.modules["napalm.base.exceptions"] = _nb
+        from crude_engine.drivers.ssh_transport import SSHDriver as _SSHTransport
+
+        prog = {}
+        tport = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+        tport._inspect_progress = prog
+
+        class _ConnOk:
+            def send_command(self, cmd, **kwargs):
+                return f"out-for-{cmd}"
+
+        tport.connection = _ConnOk()
+        out = tport.cli("show port")
+        if prog.get("last_command") != "show port":
+            rc |= fail(f"transport.cli should publish last_command, got {prog}")
+        elif getattr(tport, "last_command", None) != "show port":
+            rc |= fail(f"transport.last_command unset: {getattr(tport, 'last_command', None)}")
+        elif out.get("show port") != "out-for-show port":
+            rc |= fail(f"cli output broken: {out}")
+        else:
+            rc |= ok("ssh_transport.cli publishes last_command before send")
+
+        class _HangSshCli:
+            """Call hang after SSH cli heartbeat — names the stuck show (#218)."""
+
+            closed: dict = {}
+
+            def __init__(self, *args, **kwargs):
+                self.proto = (kwargs.get("optional_args") or {}).get("protocol")
+                self._transports = {}
+                if self.proto == "ssh":
+                    t = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+
+                    class _HangConn:
+                        def send_command(self, cmd, **kwargs):
+                            time.sleep(2)
+                            return ""
+
+                    t.connection = _HangConn()
+                    self._transports["ssh"] = t
+
+            def open(self):
+                pass
+
+            def get_dns(self, **kwargs):
+                if self.proto == "ssh":
+                    return self._transports["ssh"].cli("show port")
+                return {"enabled": True, "servers": {"1": {}}}
+
+            def close(self):
+                type(self).closed[self.proto] = threading.get_ident()
+
+        _HangSshCli.closed = {}
+        rm.get_network_driver = lambda _name: _HangSshCli
+        rm._inspect_budget_s = _short
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None, trace=True)
+        wall = time.monotonic() - t0
+        protos = out.get("protocols") or {}
+        ssh = protos.get("ssh") or {}
+        others = {k: (v or {}).get("status") for k, v in protos.items() if k != "ssh"}
+        if ssh.get("status") != "timeout":
+            rc |= fail(f"hung ssh cli should timeout, got {ssh}")
+        elif ssh.get("phase") != "call":
+            rc |= fail(f"hung ssh cli should be phase=call, got {ssh}")
+        elif ssh.get("last_command") != "show port":
+            rc |= fail(f"call-timeout missing last_command show port: {ssh}")
+        elif wall > 1.0:
+            rc |= fail(f"ssh hang wait hung {wall:.2f}s")
+        elif any(s != "ok" for s in others.values()):
+            rc |= fail(f"siblings should be ok, got {others}")
+        else:
+            rc |= ok(
+                f"phase=call timeout names last_command={ssh.get('last_command')!r} "
+                f"({wall:.2f}s)"
+            )
+
+        # phase=open hang must stay open and must not invent last_command
+        _HangOpenMops.closed = {}
+        rm.get_network_driver = lambda _name: _HangOpenMops
+        rm._inspect_budget_s = _short
+        out = rm.run_inspect("get_dns", "192.0.2.10", None, trace=True)
+        mops = (out.get("protocols") or {}).get("mops") or {}
+        if mops.get("phase") != "open":
+            rc |= fail(f"open hang regression phase: {mops}")
+        elif "last_command" in mops:
+            rc |= fail(f"phase=open must not carry last_command: {mops}")
+        else:
+            rc |= ok("phase=open timeout still open; no last_command")
+
         class _WithCli:
             def __init__(self, *args, **kwargs):
                 blob = [
@@ -343,7 +446,7 @@ def _fanout() -> int:
         if "show dns client servers" not in cmds:
             rc |= fail(f"trace last_cli missing show: {cli}")
         else:
-            rc |= ok("trace last_cli round-trips show dns client servers")
+            rc |= ok("trace last_cli round-trips show dns client servers (ok path)")
     finally:
         rm.get_network_driver = orig_driver
         rm._inspect_budget_s = orig_budget
