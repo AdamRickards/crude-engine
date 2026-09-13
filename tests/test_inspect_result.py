@@ -423,6 +423,120 @@ def _fanout() -> int:
         else:
             rc |= ok("phase=open timeout still open; no last_command/session_log")
 
+        # --- #224: gather ok + close hang on logout Y/N ≠ phase=call ---
+        class _HangCloseAfterOk:
+            """Gather succeeds; close() hangs on logout confirm (#224)."""
+
+            closed: dict = {}
+            gate_patterns: list = []
+
+            def __init__(self, *args, **kwargs):
+                self.proto = (kwargs.get("optional_args") or {}).get("protocol")
+                self._transports = {}
+                if self.proto == "ssh":
+                    t = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+                    t._current_level = "user"
+                    seen = type(self).gate_patterns
+
+                    class _CloseHangConn:
+                        def write_channel(self, data):
+                            pass
+
+                        def read_until_pattern(self, pattern, read_timeout=1):
+                            seen.append(pattern)
+                            # Simulate unanswered logout confirm hang.
+                            time.sleep(2)
+                            return ""
+
+                        def disconnect(self):
+                            pass
+
+                        def send_command(self, cmd, **kwargs):
+                            return f"out-for-{cmd}"
+
+                    t.connection = _CloseHangConn()
+                    self._transports["ssh"] = t
+                    self._ssh_t = t
+
+            def open(self):
+                pass
+
+            def get_dns(self, **kwargs):
+                if self.proto == "ssh":
+                    # Mimic gather that finished show port before close.
+                    self._transports["ssh"].cli("show port")
+                    return {"enabled": True, "servers": {"1": {}}}
+                return {"enabled": True, "servers": {"1": {}}}
+
+            def close(self):
+                type(self).closed[self.proto] = threading.get_ident()
+                if self.proto == "ssh":
+                    # Real path: device.close() → transport.close() logout.
+                    self._transports["ssh"].close()
+
+        _HangCloseAfterOk.closed = {}
+        _HangCloseAfterOk.gate_patterns = []
+        rm.get_network_driver = lambda _name: _HangCloseAfterOk
+        rm._inspect_budget_s = _short
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None, trace=True)
+        wall = time.monotonic() - t0
+        protos = out.get("protocols") or {}
+        ssh = protos.get("ssh") or {}
+        others = {k: (v or {}).get("status") for k, v in protos.items() if k != "ssh"}
+        if ssh.get("status") != "ok":
+            rc |= fail(
+                f"gather+close-hang must keep ok (or phase=close), got {ssh}"
+            )
+        elif ssh.get("phase") == "call":
+            rc |= fail(f"close hang must not be phase=call: {ssh}")
+        elif wall > 1.0:
+            rc |= fail(f"close-hang wait burned call wall {wall:.2f}s")
+        elif any(s != "ok" for s in others.values()):
+            rc |= fail(f"siblings should be ok, got {others}")
+        else:
+            rc |= ok(
+                f"gather ok preserved on close hang; not phase=call "
+                f"({wall:.2f}s)"
+            )
+
+        # Unit: close answers live "Are you sure (Y/N)?" via existing gate.
+        answered = []
+        prog = {}
+        tport = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+        tport._inspect_progress = prog
+        tport._current_level = "user"
+
+        class _LogoutConn:
+            def write_channel(self, data):
+                answered.append(data)
+
+            def read_until_pattern(self, pattern, read_timeout=1):
+                # Netmiko would see the live confirm; pattern must match.
+                live = "Are you sure (Y/N)? "
+                if __import__("re").search(pattern, live):
+                    return live
+                raise TimeoutError(f"no match for {pattern!r}")
+
+            def disconnect(self):
+                answered.append("disconnect")
+
+        tport.connection = _LogoutConn()
+        tport.close()
+        if "y\n" not in answered:
+            rc |= fail(f"close should answer logout Y/N with y, got {answered}")
+        elif "logout\n" not in answered:
+            rc |= fail(f"close should send logout, got {answered}")
+        elif "close gate:" not in (prog.get("session_log_tail") or ""):
+            rc |= fail(
+                f"close gate answer missing from session_log: "
+                f"{prog.get('session_log_tail')!r}"
+            )
+        elif prog.get("last_command") != "logout":
+            rc |= fail(f"close should publish last_command=logout: {prog}")
+        else:
+            rc |= ok("close answers Are you sure (Y/N) via SSH_state gate")
+
         class _WithCli:
             def __init__(self, *args, **kwargs):
                 blob = [
