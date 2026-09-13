@@ -3203,9 +3203,8 @@ attributes:
     access: ru
     sources:
       snmp:
-        read:
-          oid: 1.3.6.1.4.1.248.12.1.2.13.1.19
-          method: walk
+        write:
+          oid: 1.3.6.1.4.1.248.12.1.2.13.1.19  # #47: no gather walk (call-budget); SET keeps oid
       mops:
         read:
           mib: HM2-PLATFORM-SWITCHING-MIB
