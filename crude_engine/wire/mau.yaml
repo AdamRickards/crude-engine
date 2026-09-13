@@ -247,9 +247,8 @@ attributes:
     access: ru
     sources:
       snmp:
-        read:
-          oid: 1.3.6.1.2.1.26.5.1.1.1
-          method: walk
+        write:
+          oid: 1.3.6.1.2.1.26.5.1.1.1  # #47: no gather walk (call-budget); SET keeps oid
       mops:
         read:
           mib: MAU-MIB
@@ -459,9 +458,8 @@ attributes:
     access: r
     sources:
       snmp:
-        read:
-          oid: 1.3.6.1.2.1.26.2.1.1.12
-          method: walk
+        write:
+          oid: 1.3.6.1.2.1.26.2.1.1.12  # #47: no gather walk (call-budget); SET keeps oid
       mops:
         read:
           mib: MAU-MIB
@@ -495,9 +493,8 @@ attributes:
     access: ru
     sources:
       snmp:
-        read:
-          oid: 1.3.6.1.2.1.26.2.1.1.11
-          method: walk
+        write:
+          oid: 1.3.6.1.2.1.26.2.1.1.11  # #47: no gather walk (call-budget); SET keeps oid
       mops:
         read:
           mib: MAU-MIB
@@ -624,9 +621,8 @@ attributes:
     access: r
     sources:
       snmp:
-        read:
-          oid: 1.3.6.1.2.1.26.2.1.1.5
-          method: walk
+        write:
+          oid: 1.3.6.1.2.1.26.2.1.1.5  # #47: no gather walk (call-budget); SET keeps oid
       mops:
         read:
           mib: MAU-MIB
