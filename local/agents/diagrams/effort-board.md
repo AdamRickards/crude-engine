@@ -23,7 +23,7 @@ Chat names the Effort once. The board + child issues *are* the Effort after that
 | **A** Offline↔gold floor growth | **DONE** floors=**52** | #169 trail; unfloorables → #193 (poe status-null + route_to); merge #257 `3ca9974` (#258 closed duplicate) |
 | **A′** Live MOPS triad (gold / Offline / live) | **IN PROGRESS** | #229 — floored MOPS receipts done (49/49 class); look-intos as filed |
 | **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162 teach progressed; live 36/43; Schema #233–#235 **closed**; #231→#12 parked; TC-BITS in #205 parked — see `hitl-engine-park.md` |
-| **C** SSH after two good floors | **SOFT** | Timeout detection done; **#92 stays closed**. Open: #226 #227 #228 #217 #178 #62 #272 #274(optics keys); **#44/#54/#264/#46/#55 closed** (#76 merged). Prefer A′/B over stalling. |
+| **C** SSH after two good floors | **SOFT** | Timeout detection done; **#92 stays closed**. Open soft: #226 #227 #228 #217 #178 #62; **#272 Engine park**; closed recently #44/#54/#264/#46/#55/#274. Prefer A′/B over stalling. |
 
 ```mermaid
 flowchart TD
