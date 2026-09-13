@@ -101,6 +101,15 @@ Current checks:
    PRs, named proofs) are spawned by poking that Effort until the end is
    true — or HITL parks it — without HITL restating the idea.
 
+7. **Inspect timeout ⇒ phase ⇒ call ladder** (HITL 2026-09-13, #92/#215).
+   After `#179`, do not stop at "still timeout." Test bot must run the
+   call-timeout resolution in `test-bot/flow.md` /
+   `diagrams/inspect-timeout.md`: `phase=open` vs `phase=call`; on call,
+   declared SSH read commands + CLI.json cross-check → bucket → Schema /
+   `#92` HITL / Engine heartbeat `NO_HOLE` / SSH-parse remainder. Hang
+   receipts often lack `cli` — YAML+CLI.json is the first poke. Do not
+   invent a seventh clerk for transport.
+
 ## Never
 
 - Author a fix.

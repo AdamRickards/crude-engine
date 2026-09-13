@@ -55,7 +55,8 @@ flowchart TD
   kind -->|empty or snmp=0| sibling[Passing sibling YAML]
   kind -->|all defaults no raw| trace[Need sidecar trace]
   kind -->|HTTP 503| cap[has_capable / picker]
-  kind -->|SSH hung-open| hang[#92 class not parser]
+  kind -->|timeout phase=open| hang[#92 open path]
+  kind -->|timeout phase=call| callT[Call-timeout ladder / CLI.json]
   kind -->|emit vs live wire| gen[generator tag]
   kind -->|NAPALM-shaped keys| shape[SCHEMA_MODEL.md]
   kind -->|protocol sniff or swallow| prin[ENGINE_PRINCIPLES.md]
@@ -67,6 +68,7 @@ flowchart TD
   trace --> testBot[Test bot sidecar trace]
   cap --> pool[Pool tag not YAML]
   hang --> park[Parked engine / HITL]
+  callT --> testBot
   gen --> emitSkill[MIB wire generator cycle]
   shape --> docsAudit[Docs clerk vs SCHEMA_MODEL]
   prin --> engine[Engine clerk vs checker vs live code]
@@ -83,7 +85,9 @@ flowchart TD
 | Empty table / snmp=0 | This doc step 1 sibling method, step 4 `index_field` / INDEX / AUGMENTS | Schema clerk. Not one engine bug. |
 | Getter equals schema defaults only | Not a fail, not a live pass. Need a field leaving default **or** trace/raw | Test bot `trace:true`. All-defaults + no raw = you know nothing. |
 | HTTP 503 | Picker: feature in `has_capable` AND `read` in `safe_for` | Pool / Test bot. Not a schema miss. |
-| SSH timeout, `open_ms`/`call_ms` null | Hung-open, not parser. YAML budgets may not reach hardcoded timeout | Engine parked (#92 class). Not a YAML overlay. |
+| SSH/MOPS/SNMP timeout with `phase=open` | Open path (login/prompt/budget). See `local/agents/diagrams/inspect-timeout.md` | `#92` / budgets. Not a YAML overlay. |
+| Timeout with `phase=call` | Declared wire SSH reads + CLI.json before another live poke; hang often has no `cli` | Test bot call-timeout ladder → Schema fanout/invalid CLI, or `#92` HITL, or Engine heartbeat `NO_HOLE`. |
+| SSH timeout, timings null (pre-phase harness) | Legacy overall-deadline shape; treat like unknown phase until re-inspect on main with `#179+` | Re-prove with phase attribution; then open vs call ladder. |
 | Generator emit ≠ live wire | Leftover `batch_generate_MIB` vs `crude_engine/wire` | `generator` tag. Docs clerk leftover generator. Never write live wire. |
 | Keys look NAPALM (`is_up`, `remote_*`) | `docs/SCHEMA_MODEL.md` Canonical Output Shape Rules + hitlist | Docs audit. Schema patches YAML. Shim keeps reshape. |
 | `if protocol ==` / swallow / device heuristic | `docs/ENGINE_PRINCIPLES.md` + `scripts/check_principles.py` | Engine clerk. Checker is not assumed perfect. HITL before patch. |
