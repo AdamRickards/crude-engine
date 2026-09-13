@@ -19,6 +19,7 @@ lands or HITL kills the need.
 | #115 `to_bool` English/SNMP false-vocab hardcoded | Checker-blind Engine; schema cannot declare | bool matrices / parity | Soft YAML elsewhere; park Engine |
 | #116 `compute sort:natural` HiOS port-name heuristic | Checker-blind Engine encodes vendor sort | port-ordered tables | Soft elsewhere; park Engine |
 | #156 Engine/tools debug↔trace conflation (post Docs #262) | Docs wording cleared; code still maps debug→trace / missing --debug / audit_setters debug=True | napalm-hios _call; tools CLI; interpreter schema debug alias; sidecar/release_matrix; audit_setters | Soft Docs done; park Engine/tools until HITL opens |
+| #272 get_interface_statistics egress physical filter | `index_filter` ingress-only; mops/snmp keep cpu/vlan n=36 vs SSH physical ~28 | Port Statistics–shaped callers | Soft SSH #271 done; park Engine egress filter |
 | Fail-fast / invalid-CLI redefine | Needs HITL eyes on live invalid/missing/bad-attr | was #92 title — **do not reopen #92**; new ticket if poked | Timeout detection done (#179–#225); SSH parse = #226/#227/#228 |
 
 ## Rules
