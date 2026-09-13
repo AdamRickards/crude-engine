@@ -107,7 +107,7 @@ This is iteration, not recursion. The pipeline does not call `execute()` or
 resolve user intent (Block 2 does that), or know about specific protocols.
 
 **Design rule:** `_translate` is the single choke point. Every step runs through
-it. Debug trace appends here and nowhere else. If a step is not in steps.yaml,
+it. Pipeline trace appends here and nowhere else. If a step is not in steps.yaml,
 it does not run.
 
 ---
