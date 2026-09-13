@@ -57,3 +57,48 @@ When: after MOPS/Offline client or FeatureEngine gather changes; expanding
 floors; catalogue stress sweeps; before treating Offline as kinship for live
 MOPS.
 
+
+## Call-timeout resolution (standing) — after phase attribution
+
+**Purpose / END:** when inspect reports `status=timeout` with
+`phase=call` (or `phase=open`), **classify why** and route — do not stop
+at "still timeout under budgets." Chart:
+[`../diagrams/inspect-timeout.md`](../diagrams/inspect-timeout.md).
+
+**START (every timeout leftover):**
+
+1. Quote per-protocol `status`, `phase`, `open_ms`, `call_ms`, budgets from
+   `tests/inspect.yaml`. `trace:true` on the named read.
+2. **Split on phase** (finder from `#179`):
+   - `phase=open` → open path (login/prompt/budget). Park as `#92` class
+     until fail-fast HITL. Do not Schema-fake an overlay.
+   - `phase=call` → continue this ladder (call path).
+3. **Declared CLI inventory** (required on call-timeout — hang often has
+   **no** `cli` in the receipt): from `crude_engine/wire/ssh/` for this
+   method, list every **read** `command:`. Count distinct shows vs
+   `{index}` / per-row fanouts.
+4. **CLI.json cross-check** (`local/reference/CLI/cli_ref_hios_merged.json`
+   + `CLI_REFERENCE.md`): does each base `show …` exist? Any invented
+   spelling? Literal placeholder tokens?
+5. **Bucket** (one glance line on the issue — see diagram table):
+   `open-budget` | `call-budget-fanout` | `call-invalid-cmd` |
+   `call-unknown-hang` | `timeout-cleared-parse`.
+6. **Route** (Architect multiplexes; Test bot does not fix):
+   - fanout / wrong CLI spelling → Schema (overlay honesty).
+   - invalid hang / fail-fast redefine → `#92` HITL (user eyes).
+   - unknown hang after inventory → trail + optional Engine `NO_HOLE`
+     for harness `last_command` heartbeat on timeout.
+   - timeout cleared, parse/shape wrong → close timeout intention; one
+     SSH remainder ticket (standing SSH-split law).
+
+**WHERE WE ARE:** learn by repeating this poke on each call-timeout
+leftover; wrong bounce feeds the chart; right bounce is obvious on the
+decision trail.
+
+**END:** decision-trail comment with bucket + declared command list +
+CLI.json hit/miss + route. Green only when live receipt clears *this*
+leftover's intention — not when budgets alone move.
+
+**Never:** author the fix; treat pre-`#179` "overall deadline" null timings
+as the same as phase-attributed call; skip CLI.json because mops/snmp
+were ok (finder, not a vote).

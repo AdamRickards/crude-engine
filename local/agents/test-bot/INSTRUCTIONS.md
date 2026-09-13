@@ -50,6 +50,12 @@ replay and cannot be run is `BLOCKED` (mesh), not a skip.
 
 ## Bounds
 
+On inspect **timeout**, follow [`flow.md`](flow.md) § Call-timeout
+resolution and [`../diagrams/inspect-timeout.md`](../diagrams/inspect-timeout.md):
+attribute `phase`, then for `phase=call` inventory declared wire CLI +
+CLI.json before parking as "budgets." Classification is proof work;
+fixes stay with Schema/Engine/HITL.
+
 Choose the proof lane the flowchart says. Capture/update
 `tests/fixtures/` with an honest `verified_via` when the hole says so.
 Validate content, not just shape (row count matching is not correctness).
