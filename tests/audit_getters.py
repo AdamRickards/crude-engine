@@ -68,7 +68,7 @@ def audit_method(device, method_name):
         return {"status": "error", "error": str(e)[:100], "time_ms": 0}
     dt = round((time.monotonic() - t0) * 1000)
 
-    # Handle (result, trace) tuple from debug
+    # Handle legacy (result, trace) tuple return if present
     if isinstance(result, tuple):
         result = result[0]
 
