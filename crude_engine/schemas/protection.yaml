@@ -45,6 +45,9 @@ methods:
       enabled:
         wire: hm2autodisableintfoperstate
         source: devmgmt
+        value_map:
+          '1': true
+          '2': false
       reason:
         wire: hm2autodisableintferrorreason
         source: devmgmt

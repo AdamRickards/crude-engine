@@ -61,7 +61,7 @@ attributes:
   ports:
     compute:
       from: [egress_ports, untagged_ports, forbidden_ports]
-      expr: "{**{p: 'U' for p in untagged_ports}, **{p: 'T' for p in egress_ports if p not in untagged_ports}, **{p: 'F' for p in forbidden_ports}}"
+      expr: "{**{p: 'U' for p in (untagged_ports if untagged_ports not in (None, 'None') else [])}, **{p: 'T' for p in (egress_ports if egress_ports not in (None, 'None') else []) if p not in (untagged_ports if untagged_ports not in (None, 'None') else [])}, **{p: 'F' for p in (forbidden_ports if forbidden_ports not in (None, 'None') else [])}}"
       sort: natural
   interface_name:
     wire: ifname
