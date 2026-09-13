@@ -1378,11 +1378,11 @@ attributes:
           value_from_index: vlan_id
       mops:
         read:
+          # Offline seeds StaticEntry only; CurrentEntry → noSuchName / n=0 (#243)
           mib: Q-BRIDGE-MIB
-          table: dot1qVlanCurrentEntry
+          table: dot1qVlanStaticEntry
           field: dot1qVlanIndex
           index_field: dot1qVlanIndex
-          index_fields: *id008
     validation:
       min: 1
       max: 4094
