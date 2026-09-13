@@ -13,6 +13,9 @@ levels:
   user:
     prompt_pattern: '[^#]>\s*$'
     exit: {command: "logout", to: null}
+    # Gate detect strings are literal prompt fragments (not regex).
+    # ssh_transport.close() re.escapes them for Netmiko read_until_pattern
+    # so "(Y/N)" matches the live logout confirm (#224 / session_log).
     gates:
       - {detect: "Are you sure (Y/N)", response: "y", read_timeout: 2}
       - {detect: "do you want to save", response: "n", read_timeout: 1}
