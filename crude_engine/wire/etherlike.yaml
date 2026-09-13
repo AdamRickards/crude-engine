@@ -7,6 +7,5 @@ attributes:
     access: r
     sources:
       snmp:
-        read:
-          oid: 1.3.6.1.2.1.10.7.2.1.8
-          method: walk
+        write:
+          oid: 1.3.6.1.2.1.10.7.2.1.8  # #264: no gather walk (call-budget); SET keeps oid
