@@ -20,19 +20,19 @@ Chat names the Effort once. The board + child issues *are* the Effort after that
 
 | Bubble | Status | Children |
 | --- | --- | --- |
-| **A** Offline↔gold floor growth | **DONE** floors=50 | #169 closeout; unfloorables → #193 |
-| **A′** Live MOPS triad (gold / config Offline / live) | **IN PROGRESS** | #229 first sweep 45/50; floors 49; look-intos held |
-| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | live 36/43; Schema #233–#235; #231→#12 parked; TC-BITS parked; see `hitl-engine-park.md` |
-| **C** SSH after two good floors | **SOFT** | timeout detect done; parse leftovers #226–#228 parked; Engine park list `hitl-engine-park.md` |
+| **A** Offline↔gold floor growth | **DONE** floors=**52** | #169 trail; unfloorables → #193 (poe status-null + route_to); merge #257 `3ca9974` (#258 closed duplicate) |
+| **A′** Live MOPS triad (gold / Offline / live) | **IN PROGRESS** | #229 — floored MOPS receipts done (49/49 class); look-intos as filed |
+| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162 teach progressed; live 36/43; Schema #233–#235 **closed**; #231→#12 parked; TC-BITS in #205 parked — see `hitl-engine-park.md` |
+| **C** SSH after two good floors | **SOFT** | Timeout detection done (#179–#225); **#92 stays closed**. Parse leftovers: #226 #227 #228 #217 #178 #62. Prefer A′/B over stalling. |
 
 ```mermaid
 flowchart TD
   HITL["HITL idea / discussion"] --> E["Update this Effort board MD"]
   E --> Split["Split into child GitHub issues\nnamed proof each"]
-  Split --> A["A Offline↔gold floors\nDONE 50 / #193 look-into"]
-  Split --> Ap["A′ Live MOPS triad\nOPEN"]
+  Split --> A["A Offline↔gold floors\nDONE 52 / #193 look-into"]
+  Split --> Ap["A′ Live MOPS triad\nIN PROGRESS"]
   Split --> B["B Generator→SNMP\n#162 IN PROGRESS"]
-  Split --> C["C SSH after two floors\nBLOCKED"]
+  Split --> C["C SSH after two floors\nSOFT"]
   A --> Re["Recombine: update WHERE here\nthen park or open next bubble"]
   Ap --> Re
   B --> Re
@@ -41,6 +41,8 @@ flowchart TD
 
 ## Rules
 
+- Companion issue [#195](https://github.com/AdamRickards/crude-engine/issues/195) mirrors this table — update **both** in one hop when bubbles change.
+- HITL/Engine park lives in `hitl-engine-park.md` (not duplicated as a fifth bubble).
 - Tangibility: if it is not on GitHub in this folder (or a child issue), it is not the Effort.
 - Architect updates this file when a bubble splits, greens, or blocks.
 - Six clerks only; Architect holds the board and assigns hops.
@@ -50,7 +52,7 @@ flowchart TD
 
 | Bubble | Finished looks like |
 | --- | --- |
-| **A** | Offline↔gold floor growth done for floorable methods; unfloorables filed — **met** (50 floors, #193) |
+| **A** | Offline↔gold floor growth done for floorable methods; unfloorables filed — **met** (52 floors, #193) |
 | **A′** | MOPS + Offline proved against Gold, Config/XML Offline, and Live (named sweeps; look-into list exists) |
 | **B** | Generator emit≈live for teachable residuals; SNMP meets MOPS known-good floor on named proves |
-| **C** | SSH leftovers worked only after A′+B floors hold; #92 budget/attribution floor honest |
+| **C** | SSH leftovers worked only after A′+B floors hold; timeout *detection* done (#179–#225); #92 stays closed; parse = soft backlog |
