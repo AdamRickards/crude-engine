@@ -94,9 +94,3 @@ attributes:
     sources:
       ssh:
         read: {command: "show sfp", parser: paired_rows, lines_per_record: 1, key_column: 0, regex_extract: '(\d+)/\d+', index: 1}
-
-  hm2sfpdiagtable:
-    sources:
-      ssh:
-        read: {command: "show sfp", parser: none}
-

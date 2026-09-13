@@ -12,18 +12,18 @@ methods:
       rx_power: 0.0
       temperature: 0.0
 attributes:
-  # Identity is detected-SFP ifIndex, not if.ifname (full ifTable).
-  # hm2sfpdiagtable is a scalar on the wire; lookup from tx_power keys
-  # rebuilds {ifIndex: ifIndex} (SCHEMA_MODEL lookup resolve, non-dict
-  # branch). Method key_map remaps those values to ifName. Defaults 0.0
-  # cannot manufacture cpu/vlan/empty-cage rows because they are not
-  # in hm2SfpDiagEntry ("Entry for a detected SFP").
+  # Identity is detected-SFP ifIndex from hm2SfpDiagEntry (MIB: "Entry for
+  # a detected SFP"), not if.ifname (full ifTable). Drive rows from an
+  # accessible walked column — same pattern as get_users / trap dests.
+  # Do NOT use scalar hm2sfpdiagtable + lookup resolve:"key": SNMP/MOPS
+  # GET of the table OID returns {} (dict), so _apply_lookup takes the
+  # dict-match branch and yields n=0; SSH parser:none returns a string
+  # and the non-dict branch works (HITL on #76 tip). key_map remaps
+  # ifIndex → ifName. Defaults 0.0 cannot manufacture cpu/vlan/empty-cage
+  # rows because they are not in hm2SfpDiagEntry.
   name:
-    wire: hm2sfpdiagtable
+    wire: hm2sfpcurrenttxpower
     source: devmgmt
-    lookup:
-      from: tx_power
-      resolve: "key"
   tx_power:
     wire: hm2sfpcurrenttxpower
     source: devmgmt
