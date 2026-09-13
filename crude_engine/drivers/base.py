@@ -1,5 +1,5 @@
 """
-base.py — Base driver interface for napalm-hios.
+base.py — Base driver interface for crude-engine.
 
 Layer: Driver (abstract). The contract between engine and transport.
 Engine calls gather() and set_values(). Driver calls transport. Nothing
@@ -71,6 +71,11 @@ class BaseDriver(ABC):
     def wire_type_defaults(self) -> Dict[str, str]:
         """Schema type → default tag from driver YAML."""
         return self._driver_config.get("wire_type_defaults", {})
+
+    @staticmethod
+    def _tag_name(tag):
+        """Bare registry function name from a _resolve_tag() result."""
+        return tag[0] if isinstance(tag, tuple) else tag
 
     @property
     def protocol_defaults(self) -> Dict[str, Any]:

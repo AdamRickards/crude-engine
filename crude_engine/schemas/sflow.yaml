@@ -5,6 +5,8 @@ methods:
   get_sflow_receiver:
     type: dict
     primary_key: receiver_index
+    # SNMP: accessible sFlowRcvrOwner, index from walk suffix (1.17).
+    # Not INDEX sFlowRcvrIndex. Sampler/poller DataSource is a different suffix.
     defaults:
       receiver_index: 0
       owner: ''
@@ -19,6 +21,7 @@ methods:
     type: dict
     primary_key: sampler_datasource
     key_map: ifindex
+    # SNMP: accessible FsReceiver; DataSource suffix {oid_len}.…ifIndex.instance.
     defaults:
       sampler_datasource: ''
       sampler_receiver: 0
@@ -30,6 +33,7 @@ methods:
     type: dict
     primary_key: poller_datasource
     key_map: ifindex
+    # Same DataSource suffix encoding as sampler (1.17 _sflow_suffix_to_ifindex).
     defaults:
       poller_datasource: ''
       poller_receiver: 0
@@ -63,7 +67,8 @@ attributes:
   sampler_datasource:
     wire: sflowfsdatasource
     source: sflow
-    regex: '(\d+)$'
+    # ifIndex in ifEntry DataSource (MOPS OID or SNMP suffix+instance).
+    regex: '2\.2\.1\.1\.(\d+)'
   sampler_receiver:
     wire: sflowfsreceiver
     source: sflow
@@ -77,7 +82,7 @@ attributes:
   poller_datasource:
     wire: sflowcpdatasource
     source: sflow
-    regex: '\.(\d+)$'
+    regex: '2\.2\.1\.1\.(\d+)'
   poller_receiver:
     wire: sflowcpreceiver
     source: sflow

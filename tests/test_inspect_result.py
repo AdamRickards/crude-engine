@@ -178,6 +178,25 @@ def _fanout() -> int:
         def close(self):
             type(self).closed[self.proto] = threading.get_ident()
 
+    class _HangOpenMops:
+        """Issue #92: hangs during open(), not call() -- proves the two
+        deadlines are independent, not just one combined budget."""
+
+        closed: dict = {}
+
+        def __init__(self, *args, **kwargs):
+            self.proto = (kwargs.get("optional_args") or {}).get("protocol")
+
+        def open(self):
+            if self.proto == "mops":
+                time.sleep(2)
+
+        def get_dns(self, **kwargs):
+            return {"enabled": True, "servers": {"1": {}}}
+
+        def close(self):
+            type(self).closed[self.proto] = threading.get_ident()
+
     try:
         rm.get_network_driver = lambda _name: _Healthy
 
@@ -246,6 +265,10 @@ def _fanout() -> int:
         others = {k: (v or {}).get("status") for k, v in protos.items() if k != "mops"}
         if mops.get("status") != "timeout":
             rc |= fail(f"hung mops should be overall timeout, got {mops}")
+        elif mops.get("phase") != "call":
+            rc |= fail(f"hang in get_dns() should attribute phase=call, got {mops}")
+        elif mops.get("open_ms") is None:
+            rc |= fail(f"call-phase timeout should still report open_ms, got {mops}")
         elif wall > 1.0:
             rc |= fail(f"overall wait hung {wall:.2f}s")
         elif any(s != "ok" for s in others.values()):
@@ -255,8 +278,264 @@ def _fanout() -> int:
         else:
             rc |= ok(
                 f"hung sibling isolated ({wall:.2f}s); others {others}; "
-                "no cross-thread close"
+                f"phase={mops.get('phase')}; no cross-thread close"
             )
+
+        _HangOpenMops.closed = {}
+        rm.get_network_driver = lambda _name: _HangOpenMops
+        rm._inspect_budget_s = _short
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None)
+        wall = time.monotonic() - t0
+        protos = out.get("protocols") or {}
+        mops = protos.get("mops") or {}
+        others = {k: (v or {}).get("status") for k, v in protos.items() if k != "mops"}
+        if mops.get("status") != "timeout":
+            rc |= fail(f"hung-open mops should be timeout, got {mops}")
+        elif mops.get("phase") != "open":
+            rc |= fail(f"hang in open() should attribute phase=open, got {mops}")
+        elif mops.get("open_ms") is not None:
+            rc |= fail(f"open-phase timeout should not report a finished open_ms: {mops}")
+        elif wall > 1.0:
+            rc |= fail(f"overall wait hung {wall:.2f}s")
+        elif any(s != "ok" for s in others.values()):
+            rc |= fail(f"siblings should be ok, got {others}")
+        elif "mops" in _HangOpenMops.closed:
+            rc |= fail("caller must not close() a hung worker's device")
+        else:
+            rc |= ok(
+                f"hang-in-open isolated ({wall:.2f}s); others {others}; "
+                "phase=open distinct from phase=call"
+            )
+
+        # --- #218/#222 last_command + session_log_tail on phase=call hang ---
+        import sys
+        from unittest.mock import MagicMock
+        sys.modules.setdefault("netmiko", MagicMock())
+        try:
+            import napalm.base.exceptions  # noqa: F401
+        except Exception:
+            _nb = MagicMock()
+            class _CE(Exception):
+                pass
+            _nb.ConnectionException = _CE
+            sys.modules.setdefault("napalm", MagicMock())
+            sys.modules.setdefault("napalm.base", MagicMock())
+            sys.modules["napalm.base.exceptions"] = _nb
+        from crude_engine.drivers.ssh_transport import SSHDriver as _SSHTransport
+
+        prog = {}
+        tport = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+        tport._inspect_progress = prog
+
+        class _ConnOk:
+            def send_command(self, cmd, **kwargs):
+                return f"out-for-{cmd}"
+
+        tport.connection = _ConnOk()
+        out = tport.cli("show port")
+        if prog.get("last_command") != "show port":
+            rc |= fail(f"transport.cli should publish last_command, got {prog}")
+        elif getattr(tport, "last_command", None) != "show port":
+            rc |= fail(f"transport.last_command unset: {getattr(tport, 'last_command', None)}")
+        elif out.get("show port") != "out-for-show port":
+            rc |= fail(f"cli output broken: {out}")
+        elif "send: show port" not in (prog.get("session_log_tail") or ""):
+            rc |= fail(f"session_log_tail missing send note: {prog.get('session_log_tail')!r}")
+        elif "recv:" not in (prog.get("session_log_tail") or ""):
+            rc |= fail(f"session_log_tail missing recv note: {prog.get('session_log_tail')!r}")
+        else:
+            rc |= ok("ssh_transport.cli publishes last_command + session_log_tail")
+
+        class _HangSshCli:
+            """Call hang after SSH cli heartbeat — names the stuck show (#218)."""
+
+            closed: dict = {}
+
+            def __init__(self, *args, **kwargs):
+                self.proto = (kwargs.get("optional_args") or {}).get("protocol")
+                self._transports = {}
+                if self.proto == "ssh":
+                    t = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+
+                    class _HangConn:
+                        def send_command(self, cmd, **kwargs):
+                            time.sleep(2)
+                            return ""
+
+                    t.connection = _HangConn()
+                    self._transports["ssh"] = t
+
+            def open(self):
+                pass
+
+            def get_dns(self, **kwargs):
+                if self.proto == "ssh":
+                    return self._transports["ssh"].cli("show port")
+                return {"enabled": True, "servers": {"1": {}}}
+
+            def close(self):
+                type(self).closed[self.proto] = threading.get_ident()
+
+        _HangSshCli.closed = {}
+        rm.get_network_driver = lambda _name: _HangSshCli
+        rm._inspect_budget_s = _short
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None, trace=True)
+        wall = time.monotonic() - t0
+        protos = out.get("protocols") or {}
+        ssh = protos.get("ssh") or {}
+        others = {k: (v or {}).get("status") for k, v in protos.items() if k != "ssh"}
+        if ssh.get("status") != "timeout":
+            rc |= fail(f"hung ssh cli should timeout, got {ssh}")
+        elif ssh.get("phase") != "call":
+            rc |= fail(f"hung ssh cli should be phase=call, got {ssh}")
+        elif ssh.get("last_command") != "show port":
+            rc |= fail(f"call-timeout missing last_command show port: {ssh}")
+        elif "send: show port" not in (ssh.get("session_log_tail") or ""):
+            rc |= fail(
+                f"call-timeout missing session_log_tail send: "
+                f"{ssh.get('session_log_tail')!r}"
+            )
+        elif wall > 1.0:
+            rc |= fail(f"ssh hang wait hung {wall:.2f}s")
+        elif any(s != "ok" for s in others.values()):
+            rc |= fail(f"siblings should be ok, got {others}")
+        else:
+            rc |= ok(
+                f"phase=call timeout last_command={ssh.get('last_command')!r} "
+                f"+ session_log_tail ({wall:.2f}s)"
+            )
+
+        # phase=open hang must stay open and must not invent last_command /
+        # session_log_tail (not applicable before call wiring).
+        _HangOpenMops.closed = {}
+        rm.get_network_driver = lambda _name: _HangOpenMops
+        rm._inspect_budget_s = _short
+        out = rm.run_inspect("get_dns", "192.0.2.10", None, trace=True)
+        mops = (out.get("protocols") or {}).get("mops") or {}
+        if mops.get("phase") != "open":
+            rc |= fail(f"open hang regression phase: {mops}")
+        elif "last_command" in mops:
+            rc |= fail(f"phase=open must not carry last_command: {mops}")
+        elif "session_log_tail" in mops:
+            rc |= fail(f"phase=open must not require session_log_tail: {mops}")
+        else:
+            rc |= ok("phase=open timeout still open; no last_command/session_log")
+
+        # --- #224: gather ok + close hang on logout Y/N ≠ phase=call ---
+        class _HangCloseAfterOk:
+            """Gather succeeds; close() hangs on logout confirm (#224)."""
+
+            closed: dict = {}
+            gate_patterns: list = []
+
+            def __init__(self, *args, **kwargs):
+                self.proto = (kwargs.get("optional_args") or {}).get("protocol")
+                self._transports = {}
+                if self.proto == "ssh":
+                    t = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+                    t._current_level = "user"
+                    seen = type(self).gate_patterns
+
+                    class _CloseHangConn:
+                        def write_channel(self, data):
+                            pass
+
+                        def read_until_pattern(self, pattern, read_timeout=1):
+                            seen.append(pattern)
+                            # Simulate unanswered logout confirm hang.
+                            time.sleep(2)
+                            return ""
+
+                        def disconnect(self):
+                            pass
+
+                        def send_command(self, cmd, **kwargs):
+                            return f"out-for-{cmd}"
+
+                    t.connection = _CloseHangConn()
+                    self._transports["ssh"] = t
+                    self._ssh_t = t
+
+            def open(self):
+                pass
+
+            def get_dns(self, **kwargs):
+                if self.proto == "ssh":
+                    # Mimic gather that finished show port before close.
+                    self._transports["ssh"].cli("show port")
+                    return {"enabled": True, "servers": {"1": {}}}
+                return {"enabled": True, "servers": {"1": {}}}
+
+            def close(self):
+                type(self).closed[self.proto] = threading.get_ident()
+                if self.proto == "ssh":
+                    # Real path: device.close() → transport.close() logout.
+                    self._transports["ssh"].close()
+
+        _HangCloseAfterOk.closed = {}
+        _HangCloseAfterOk.gate_patterns = []
+        rm.get_network_driver = lambda _name: _HangCloseAfterOk
+        rm._inspect_budget_s = _short
+        t0 = time.monotonic()
+        out = rm.run_inspect("get_dns", "192.0.2.10", None, trace=True)
+        wall = time.monotonic() - t0
+        protos = out.get("protocols") or {}
+        ssh = protos.get("ssh") or {}
+        others = {k: (v or {}).get("status") for k, v in protos.items() if k != "ssh"}
+        if ssh.get("status") != "ok":
+            rc |= fail(
+                f"gather+close-hang must keep ok (or phase=close), got {ssh}"
+            )
+        elif ssh.get("phase") == "call":
+            rc |= fail(f"close hang must not be phase=call: {ssh}")
+        elif wall > 1.0:
+            rc |= fail(f"close-hang wait burned call wall {wall:.2f}s")
+        elif any(s != "ok" for s in others.values()):
+            rc |= fail(f"siblings should be ok, got {others}")
+        else:
+            rc |= ok(
+                f"gather ok preserved on close hang; not phase=call "
+                f"({wall:.2f}s)"
+            )
+
+        # Unit: close answers live "Are you sure (Y/N)?" via existing gate.
+        answered = []
+        prog = {}
+        tport = _SSHTransport("192.0.2.1", "u", "p", timeout=1)
+        tport._inspect_progress = prog
+        tport._current_level = "user"
+
+        class _LogoutConn:
+            def write_channel(self, data):
+                answered.append(data)
+
+            def read_until_pattern(self, pattern, read_timeout=1):
+                # Netmiko would see the live confirm; pattern must match.
+                live = "Are you sure (Y/N)? "
+                if __import__("re").search(pattern, live):
+                    return live
+                raise TimeoutError(f"no match for {pattern!r}")
+
+            def disconnect(self):
+                answered.append("disconnect")
+
+        tport.connection = _LogoutConn()
+        tport.close()
+        if "y\n" not in answered:
+            rc |= fail(f"close should answer logout Y/N with y, got {answered}")
+        elif "logout\n" not in answered:
+            rc |= fail(f"close should send logout, got {answered}")
+        elif "close gate:" not in (prog.get("session_log_tail") or ""):
+            rc |= fail(
+                f"close gate answer missing from session_log: "
+                f"{prog.get('session_log_tail')!r}"
+            )
+        elif prog.get("last_command") != "logout":
+            rc |= fail(f"close should publish last_command=logout: {prog}")
+        else:
+            rc |= ok("close answers Are you sure (Y/N) via SSH_state gate")
 
         class _WithCli:
             def __init__(self, *args, **kwargs):
@@ -293,7 +572,7 @@ def _fanout() -> int:
         if "show dns client servers" not in cmds:
             rc |= fail(f"trace last_cli missing show: {cli}")
         else:
-            rc |= ok("trace last_cli round-trips show dns client servers")
+            rc |= ok("trace last_cli round-trips show dns client servers (ok path)")
     finally:
         rm.get_network_driver = orig_driver
         rm._inspect_budget_s = orig_budget

@@ -92,8 +92,29 @@ attributes:
     sources:
       snmp:
         read:
-          oid: 1.3.6.1.2.1.4.24.7.1.2
+          # Accessible inetCidrRouteIfIndex. INDEX inetCidrRouteDest
+          # (1.3.6.1.2.1.4.24.7.1.2) is not-accessible. Suffix is RFC 4292
+          # destType.dest.pfxLen.policy.nextHopType.nextHop; dest/nextHop
+          # are length-prefixed InetAddress. IPv4 only (dest_type 1).
+          oid: 1.3.6.1.2.1.4.24.7.1.7
           method: walk
+          index_fields:
+            - name: dest_type
+              type: integer
+            - name: destination
+              type: octet_string
+            - name: pfx_len
+              type: integer
+            - name: policy
+              type: octet_string
+            - name: nexthop_type
+              type: integer
+            - name: next_hop
+              type: octet_string
+          value_from_index: destination
+          value_format: ipv4
+          index_filter:
+            dest_type: 1
       mops:
         read:
           mib: IP-FORWARD-MIB
@@ -248,8 +269,27 @@ attributes:
     sources:
       snmp:
         read:
-          oid: 1.3.6.1.2.1.4.24.7.1.6
+          # INDEX inetCidrRouteNextHop is not-accessible. Same IfIndex walk
+          # as dest; next_hop comes from the suffix.
+          oid: 1.3.6.1.2.1.4.24.7.1.7
           method: walk
+          index_fields:
+            - name: dest_type
+              type: integer
+            - name: destination
+              type: octet_string
+            - name: pfx_len
+              type: integer
+            - name: policy
+              type: octet_string
+            - name: nexthop_type
+              type: integer
+            - name: next_hop
+              type: octet_string
+          value_from_index: next_hop
+          value_format: ipv4
+          index_filter:
+            dest_type: 1
       mops:
         read:
           mib: IP-FORWARD-MIB

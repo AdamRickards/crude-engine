@@ -20,11 +20,13 @@ No feature-specific Python. Wire YAMLs (generated from MIB) declare device truth
 
 ## Installation
 
+Not on PyPI yet (first publish is 2.10.0). From this repo:
+
 ```
-pip install crude-engine
+pip install -e .
 ```
 
-For NAPALM integration: `pip install napalm-hios` (installs crude-engine as a dependency).
+NAPALM integration is the separate `napalm-hios` 2.0 shim — not on PyPI yet.
 
 ## Usage
 
@@ -66,7 +68,7 @@ for operation in ['create', 'read', 'upsert', 'delete', 'execute']:
 | [status.html](docs/status.html) | Program poster — where we are, next task, proofs |
 | [SEED.md](docs/program/SEED.md) | Why + how work is allowed to happen |
 | [ROADMAP.md](docs/ROADMAP.md) | Versions and exit criteria (2.10 = first PyPI) |
-| [TODO.md](docs/TODO.md) | Current cycle tasks |
+| [GitHub issues](https://github.com/AdamRickards/crude-engine/issues) | Leftover work (prove-then-file or comment-close) |
 | [METHOD_REFERENCE.md](docs/METHOD_REFERENCE.md) | Quick reference — methods, return keys, one line each |
 | [API_REFERENCE.md](docs/API_REFERENCE.md) | Full reference — return schemas, per-protocol sources, wire detail |
 | [SCHEMA_MODEL.md](docs/SCHEMA_MODEL.md) | Canonical schema contract — structural rules + shape rules |

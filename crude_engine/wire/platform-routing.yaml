@@ -5155,7 +5155,7 @@ attributes:
           field: hm2AgentSwitchIpVlanEntry
   hm2agentswitchipvlanid:
     syntax: VlanId
-    type: integer
+    type: string
     access: r
     sources:
       snmp:

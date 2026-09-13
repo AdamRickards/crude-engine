@@ -10,7 +10,7 @@ See docs/RELEASE_GATE.md for the full design. This file implements:
   Component 4 — MatrixDB (write API for the central JSON, lock+backoff)
   Component 5 — worker function (one thread per device)
   Component 6 — orchestrator CLI
-  Component 7 — doc renderer (RELEASE_MATRIX.md + TODO_HITLIST.md)
+  Component 7 — doc renderer (RELEASE_MATRIX.md scoreboard only)
 
 Phases 0.2 (gather) and 0.3 (plan generator) live below as well.
 
@@ -23,7 +23,7 @@ CLI surface (see docs/RELEASE_GATE.md § "CLI surface"):
     release_matrix.py --gather                       # live read pass per device
     release_matrix.py --plan                         # generate test plan
     release_matrix.py --execute                      # run the plan
-    release_matrix.py --render                       # regenerate docs
+    release_matrix.py --render                       # regenerate RELEASE_MATRIX.md
     release_matrix.py --gate                         # all four in one shot
 
     # Recovery
@@ -72,7 +72,7 @@ DEVICE_STATE_PATH = os.path.join(HERE, "device_state.json")
 
 DOCS_DIR = os.path.join(PROJECT, "docs")
 RENDERED_MATRIX_PATH = os.path.join(DOCS_DIR, "RELEASE_MATRIX.md")
-RENDERED_HITLIST_PATH = os.path.join(DOCS_DIR, "TODO_HITLIST.md")
+# docs/TODO_HITLIST.md is archived. --render must not recreate it (#104 leftover).
 
 # Make `tests/` importable so we can pull in the run_one_* callables.
 sys.path.insert(0, HERE)
@@ -1069,9 +1069,43 @@ def _values_equal(a, b) -> bool:
     return False
 
 
+def _compare_nested(diffs: list, pa: str, pb: str, va, vb, default_val,
+                    path: str) -> None:
+    """Compare a row-level dict/list that is not a named sub_table."""
+    if isinstance(default_val, dict):
+        da = va if isinstance(va, dict) else {}
+        db = vb if isinstance(vb, dict) else {}
+        if da == db:
+            return
+        if len(da) != len(db):
+            diffs.append(f"{path}: {pa} keys={len(da)} vs {pb} keys={len(db)}")
+            return
+        diffs.append(
+            f"{path}: {pa}={repr(da)[:40]} vs {pb}={repr(db)[:40]}"
+        )
+        return
+    if isinstance(default_val, list):
+        la = va if isinstance(va, list) else []
+        lb = vb if isinstance(vb, list) else []
+        if la == lb:
+            return
+        if len(la) != len(lb):
+            diffs.append(f"{path}: {pa} len={len(la)} vs {pb} len={len(lb)}")
+            return
+        diffs.append(
+            f"{path}: {pa}={repr(la)[:40]} vs {pb}={repr(lb)[:40]}"
+        )
+
+
 def _compare_flat(diffs: list, pa: str, pb: str, a: dict, b: dict,
-                  defaults: dict, path: str = "") -> None:
-    """Compare two flat dicts field-by-field. Adds diffs in place. Caps at MAX."""
+                  defaults: dict, path: str = "",
+                  skip_nested: set | None = None) -> None:
+    """Compare two dicts field-by-field. Adds diffs in place. Caps at MAX.
+
+    Named sub_tables (skip_nested) are walked by the caller. Other dict/list
+    defaults are row-level nested fields and must compare (issue #89).
+    """
+    skip_nested = skip_nested or set()
     if len(diffs) >= _MAX_DIFFS_PER_PAIR:
         return
     for field in defaults:
@@ -1081,8 +1115,13 @@ def _compare_flat(diffs: list, pa: str, pb: str, a: dict, b: dict,
         if field in _PARITY_TIMING_FIELDS:
             continue
         default_val = defaults[field]
-        # Skip nested structures — caller handles sub_tables separately
         if isinstance(default_val, (dict, list)):
+            if field in skip_nested:
+                continue
+            _compare_nested(
+                diffs, pa, pb, a.get(field), b.get(field), default_val,
+                path=f"{path}{field}",
+            )
             continue
         va = a.get(field)
         vb = b.get(field)
@@ -1098,7 +1137,8 @@ def _compare_flat(diffs: list, pa: str, pb: str, a: dict, b: dict,
 
 def _compare_table(diffs: list, pa: str, pb: str,
                    table_a: dict, table_b: dict,
-                   defaults: dict, path: str = "") -> None:
+                   defaults: dict, path: str = "",
+                   skip_nested: set | None = None) -> None:
     """Compare two table dicts (keyed by row identity) row-by-row.
 
     Reports row keys present in one but not the other, then for common
@@ -1137,7 +1177,8 @@ def _compare_table(diffs: list, pa: str, pb: str,
         row_b = table_b[row_key]
         if isinstance(row_a, dict) and isinstance(row_b, dict):
             _compare_flat(diffs, pa, pb, row_a, row_b, defaults,
-                          path=f"{path}[{row_key}].")
+                          path=f"{path}[{row_key}].",
+                          skip_nested=skip_nested)
         elif row_a != row_b:
             diffs.append(f"{path}[{row_key}]: {pa}={repr(row_a)[:40]} "
                          f"vs {pb}={repr(row_b)[:40]}")
@@ -1148,8 +1189,9 @@ def _compute_parity(method_name: str, schema_meta: dict,
     """Compare read results across protocols for one method.
 
     Real cross-protocol value parity — not just row-count comparison.
-    Recursively descends into sub_tables. Compares every non-timing
-    scalar field across protocols.
+    Recursively descends into named sub_tables. Compares every non-timing
+    scalar field, plus row-level dict/list fields that are not named
+    sub_tables (issue #89).
 
     Returns a list of diff strings. Empty list = parity OK.
     """
@@ -1173,14 +1215,15 @@ def _compute_parity(method_name: str, schema_meta: dict,
                                  f"({type(a).__name__} vs {type(b).__name__})")
                 continue
 
+            skip_nested = set(sub_tables)
             if pk:
                 # Top-level dict IS a table keyed by row identity
-                _compare_table(diffs, pa, pb, a, b, defaults)
+                _compare_table(diffs, pa, pb, a, b, defaults,
+                               skip_nested=skip_nested)
             elif sub_tables:
                 # Flat globals + named sub_tables
-                # Compare top-level scalars
-                _compare_flat(diffs, pa, pb, a, b, defaults)
-                # Compare each sub_table separately
+                _compare_flat(diffs, pa, pb, a, b, defaults,
+                              skip_nested=skip_nested)
                 for st_name, st_def in sub_tables.items():
                     sa = a.get(st_name)
                     sb = b.get(st_name)
@@ -1192,8 +1235,9 @@ def _compute_parity(method_name: str, schema_meta: dict,
                         diffs.append(f"{st_name}: {pa}={type(sa).__name__} "
                                      f"vs {pb}={type(sb).__name__}")
             else:
-                # Pure flat dict
-                _compare_flat(diffs, pa, pb, a, b, defaults)
+                # Pure flat dict (nested row fields still compare)
+                _compare_flat(diffs, pa, pb, a, b, defaults,
+                              skip_nested=skip_nested)
 
             if len(diffs) >= _MAX_DIFFS_PER_PAIR:
                 break
@@ -1496,20 +1540,10 @@ def run_execute(scope: list[str],
 # Component 7 — Doc renderer
 # =============================================================================
 #
-# Generates two files from release_matrix.json + release_test_plan.json:
-#
-#   docs/RELEASE_MATRIX.md  — read-only scoreboard. Summary tables, fleet
-#                              overview, per-schema verdict matrix, comms_lost
-#                              list. Never hand-edited.
-#
-#   docs/TODO_HITLIST.md   — failures grouped by #bucket tag. Untagged
-#                              failures land in NEEDS TRIAGE for human
-#                              assignment. tag_map.yaml provides the
-#                              auto-categorization.
-#
-# Both files are regenerated on every --render call. Manual additions
-# happen in tests/tag_map.yaml (sticky across runs) and docs/TODO.md
-# (human-curated, not regenerated).
+# Generates docs/RELEASE_MATRIX.md from release_matrix.json +
+# release_test_plan.json — read-only scoreboard. Never hand-edited.
+# Leftover failures live on GitHub issues. Do not recreate
+# docs/TODO_HITLIST.md or docs/TODO.md. ROADMAP.md stays.
 # -----------------------------------------------------------------------------
 
 
@@ -2077,113 +2111,8 @@ def _render_matrix_md(db: dict, plan: dict | None, device_pool: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def _render_hitlist_md(db: dict, patterns: list[dict]) -> str:
-    """Generate docs/TODO_HITLIST.md from failures grouped by tag."""
-    lines: list[str] = []
-    lines.append("# TODO_HITLIST")
-    lines.append("")
-    lines.append("> Auto-generated by `tests/release_matrix.py --render`. Do not edit.")
-    lines.append("> Source: `tests/release_matrix.json` failures, grouped by `#bucket` tag.")
-    lines.append("> Curated working list lives in `docs/TODO.md` (not auto-generated).")
-    lines.append("> Tag stickiness: add patterns to `tests/tag_map.yaml` to auto-categorize "
-                 "future runs.")
-    lines.append("")
-
-    # Walk failures and bucket them by tag
-    by_bucket: dict[str, list[dict]] = {}
-    triage: list[dict] = []
-    failure_count = 0
-    for schema, method, protocol, device, cell in _iter_cells(db):
-        verdict = cell.get("verdict")
-        if verdict not in ("fail", "error"):
-            continue
-        failure_count += 1
-        tags = _classify_failure(cell, schema, method, protocol, patterns)
-        item = {
-            "schema": schema, "method": method, "protocol": protocol,
-            "device": device, "cell": cell, "tags": tags,
-        }
-        if not tags:
-            triage.append(item)
-            continue
-        # Use the first bucket tag as the section
-        bucket = next((t for t in tags if t.startswith("#") and
-                       t in ("#engine", "#schema", "#wire", "#driver",
-                             "#crude", "#test", "#release", "#roadmap")), None)
-        if bucket is None:
-            triage.append(item)
-            continue
-        by_bucket.setdefault(bucket, []).append(item)
-
-    lines.append("## Summary")
-    lines.append("")
-    lines.append(f"- **Total failures:** {failure_count}")
-    lines.append(f"- **Tagged (auto-categorized):** {failure_count - len(triage)}")
-    lines.append(f"- **Needs triage:** {len(triage)}")
-    lines.append(f"- **Buckets:** {len(by_bucket)}")
-    lines.append("")
-
-    if failure_count == 0:
-        lines.append("Nothing failing. RELEASE_MATRIX.md verdict will tell you "
-                     "if the gate is open.")
-        lines.append("")
-        return "\n".join(lines) + "\n"
-
-    # Render each bucket
-    bucket_order = ["#engine", "#schema", "#wire", "#driver", "#crude",
-                    "#test", "#release", "#roadmap"]
-    for bucket in bucket_order:
-        if bucket not in by_bucket:
-            continue
-        lines.append(f"## {bucket}")
-        lines.append("")
-        for item in by_bucket[bucket]:
-            tag_line = " ".join(item["tags"])
-            ev = item["cell"].get("evidence") or {}
-            ev_str = json.dumps(ev, default=str) if ev else ""
-            contract = item["cell"].get("contract") or []
-            types = item["cell"].get("types") or []
-            lines.append(f"- [ ] {tag_line}")
-            lines.append(f"      `{item['method']}` on `{item['device']}` via "
-                         f"`{item['protocol']}` (kind={item['cell'].get('kind', '?')})")
-            if contract:
-                lines.append(f"      contract: `{contract}`")
-            if types:
-                lines.append(f"      type: `{types}`")
-            if ev_str and ev_str != "{}":
-                lines.append(f"      evidence: `{ev_str[:200]}`")
-            lines.append(f"      first seen: `{item['cell'].get('ran_at', '?')}`")
-            lines.append("")
-
-    if triage:
-        lines.append("## NEEDS TRIAGE — no tag assigned")
-        lines.append("")
-        lines.append("Review each item below, decide its `#bucket #ID` tag, and add a "
-                     "matching pattern to `tests/tag_map.yaml`. On the next `--render` "
-                     "the item will move into the appropriate bucket above.")
-        lines.append("")
-        for item in triage:
-            ev = item["cell"].get("evidence") or {}
-            ev_str = json.dumps(ev, default=str) if ev else ""
-            contract = item["cell"].get("contract") or []
-            types = item["cell"].get("types") or []
-            lines.append(f"- [ ] `{item['method']}` on `{item['device']}` via "
-                         f"`{item['protocol']}`")
-            lines.append(f"      kind: `{item['cell'].get('kind', '?')}`  "
-                         f"verdict: `{item['cell'].get('verdict')}`")
-            if contract:
-                lines.append(f"      contract: `{contract}`")
-            if types:
-                lines.append(f"      type: `{types}`")
-            if ev_str and ev_str != "{}":
-                lines.append(f"      evidence: `{ev_str[:200]}`")
-            lines.append("")
-
-    return "\n".join(lines) + "\n"
-
-
 def run_render() -> None:
-    """Generate docs/RELEASE_MATRIX.md and docs/TODO_HITLIST.md from current state."""
+    """Generate docs/RELEASE_MATRIX.md from current state. Not a HITLIST."""
     db = MatrixDB().read()
     plan: dict | None = None
     if os.path.exists(PLAN_PATH):
@@ -2194,7 +2123,6 @@ def run_render() -> None:
                 plan = None
 
     pool = _load_device_pool()
-    patterns = _load_tag_map()
     exemptions = _load_method_exemptions()
 
     # Apply method exemptions — fail/error cells matching an exemption pattern
@@ -2205,16 +2133,12 @@ def run_render() -> None:
         print(f"  applied {n_overridden} method exemption(s)")
 
     matrix_md = _render_matrix_md(db, plan, pool)
-    hitlist_md = _render_hitlist_md(db, patterns)
 
     os.makedirs(DOCS_DIR, exist_ok=True)
     with open(RENDERED_MATRIX_PATH, "w") as f:
         f.write(matrix_md)
-    with open(RENDERED_HITLIST_PATH, "w") as f:
-        f.write(hitlist_md)
 
     print(f"  wrote {RENDERED_MATRIX_PATH} ({len(matrix_md)} bytes)")
-    print(f"  wrote {RENDERED_HITLIST_PATH} ({len(hitlist_md)} bytes)")
 
 
 # =============================================================================
@@ -2281,6 +2205,39 @@ def _collect_cli(device):
     return found
 
 
+def _wire_inspect_progress(device, progress: dict) -> None:
+    """Let SSH transports publish last_command / session_log into progress.
+
+    Hang never returns, so call-timeout receipts cannot wait for last_cli.
+    Transport.cli sets progress["last_command"] before each send (#218).
+    Session ring + Netmiko SessionLog snap via session_log_tail (#222).
+    """
+    objs = []
+    transports = getattr(device, "_transports", None)
+    if isinstance(transports, dict):
+        objs.extend(transports.values())
+    elif transports:
+        objs.append(transports)
+    t = getattr(device, "transport", None)
+    if t is not None:
+        objs.append(t)
+    for obj in objs:
+        if obj is None or not hasattr(obj, "cli"):
+            continue
+        obj._inspect_progress = progress
+        # Fresh snap callable so hang poller can read Netmiko buffer + ring
+        # without waiting for the hung worker thread to return.
+        snap = getattr(obj, "session_log_tail", None)
+        if callable(snap):
+            progress["session_log_snapshot"] = snap
+            try:
+                tail = snap()
+                if tail:
+                    progress["session_log_tail"] = tail
+            except Exception:
+                pass
+
+
 def _inspect_one_protocol(
     driver,
     proto: str,
@@ -2290,11 +2247,25 @@ def _inspect_one_protocol(
     method_name: str,
     call_kwargs: dict,
     trace: bool,
+    progress: dict,
 ):
     """One thread, one device, full lifecycle. Never raises.
 
-    Hang never returns; the caller wait() marks timeout without
-    touching this device. close() only runs in this thread.
+    Hang never returns; the caller's poll loop marks timeout (attributed
+    to whichever phase `progress` last reported) without touching this
+    device. close() only runs in this thread.
+
+    `progress` is a plain dict shared with the caller: {"phase": "open"}
+    at submit time, flipped to {"phase": "call", "t_call_start": ...}
+    right after open() succeeds. After the method returns (ok or
+    dispatch_error), this worker publishes progress["result"] and flips
+    to {"phase": "close"} *before* device.close() so a logout Y/N hang
+    is not attributed as phase=call and gather success is not lost
+    (#224). SSH transports may also write progress["last_command"]
+    before each send (#218) and publish session_log_tail /
+    session_log_snapshot for hang diagnosis (#222). Single-key dict
+    writes are GIL-atomic, so no lock is needed for this one-way
+    producer/poller handoff.
     """
     t_open = time.monotonic()
     try:
@@ -2332,6 +2303,9 @@ def _inspect_one_protocol(
         open_ms = round((time.monotonic() - t_open) * 1000)
 
         t_call = time.monotonic()
+        progress["t_call_start"] = t_call
+        progress["phase"] = "call"
+        _wire_inspect_progress(device, progress)
         try:
             fn = getattr(device, method_name)
             try:
@@ -2354,10 +2328,15 @@ def _inspect_one_protocol(
                 out["trace"] = last_trace
                 if last_cli:
                     out["cli"] = last_cli
+            # Publish before close so logout Y/N hang is not phase=call
+            # and gather success is not lost (#224).
+            progress["result"] = out
+            progress["t_close_start"] = time.monotonic()
+            progress["phase"] = "close"
             return proto, out
         except Exception as e:
             call_ms = round((time.monotonic() - t_call) * 1000)
-            return proto, {
+            out = {
                 "status": "dispatch_error",
                 "phase": "call",
                 "elapsed_ms": open_ms + call_ms,
@@ -2365,9 +2344,18 @@ def _inspect_one_protocol(
                 "call_ms": call_ms,
                 "error": str(e)[:300],
             }
+            progress["result"] = out
+            progress["t_close_start"] = time.monotonic()
+            progress["phase"] = "close"
+            return proto, out
     finally:
         if device is not None:
             try:
+                # Safety net: if we reach close still inside call (e.g.
+                # unexpected exit), flip phase so teardown != call (#224).
+                if progress.get("phase") == "call":
+                    progress["t_close_start"] = time.monotonic()
+                    progress["phase"] = "close"
                 device.close()
             except Exception:
                 pass
@@ -2433,6 +2421,16 @@ def _print_inspect_protocol(proto: str, result: dict, trace: bool) -> None:
             f"  TIMEOUT: {result.get('error')} "
             f"open_ms={result.get('open_ms')} call_ms={result.get('call_ms')}"
         )
+        if result.get("last_command"):
+            print(f"  last_command: {result.get('last_command')!r}")
+        tail = result.get("session_log_tail")
+        if tail:
+            # Bounded; show last lines for mid-hang fault find (#222).
+            lines = str(tail).splitlines()
+            show = lines[-12:] if len(lines) > 12 else lines
+            print("  session_log_tail:")
+            for line in show:
+                print(f"    {line[:200]}")
     elif status == "connect_failed":
         print(f"  CONNECT_FAILED: {(result.get('error') or '')[:200]}")
     else:
@@ -2539,7 +2537,7 @@ def run_inspect(method_name: str | None,
         call_kwargs["validate"] = False
 
     to_run = []
-    overall_s = 0.0
+    budgets: dict[str, tuple[float, float]] = {}
     for proto in protocols:
         try:
             open_s = _inspect_budget_s(proto, "open_timeout_s")
@@ -2554,12 +2552,15 @@ def run_inspect(method_name: str | None,
             }
             continue
         to_run.append(proto)
-        overall_s = max(overall_s, open_s + call_s)
+        budgets[proto] = (open_s, call_s)
 
     pool = concurrent.futures.ThreadPoolExecutor(max_workers=max(1, len(to_run)))
     futures: dict = {}
+    progress: dict = {}
     try:
+        start = time.monotonic()
         for proto in to_run:
+            progress[proto] = {"phase": "open", "t_open_start": start}
             fut = pool.submit(
                 _inspect_one_protocol,
                 driver,
@@ -2570,21 +2571,125 @@ def run_inspect(method_name: str | None,
                 method_name,
                 call_kwargs,
                 trace,
+                progress[proto],
             )
             futures[fut] = proto
-        done, not_done = concurrent.futures.wait(futures, timeout=overall_s)
-        for fut in done:
-            proto, result = fut.result()
-            protocols_out[proto] = result
-        for fut in not_done:
-            proto = futures[fut]
-            protocols_out[proto] = {
-                "status": "timeout",
-                "elapsed_ms": round(overall_s * 1000),
-                "open_ms": None,
-                "call_ms": None,
-                "error": "overall deadline exceeded",
-            }
+
+        # Two independently-enforced deadlines per protocol (issue #92):
+        # open and call each get their own budget instead of one combined
+        # wait(). A worker reports its own phase transition in `progress`;
+        # we poll and retire a future the moment ITS current phase blows
+        # ITS budget, so a timeout is attributed to open or call instead
+        # of always landing as an undifferentiated "overall deadline".
+        pending = set(futures)
+        poll_interval_s = 0.05
+        while pending:
+            done_now = {fut for fut in pending if fut.done()}
+            pending -= done_now
+            for fut in done_now:
+                proto, result = fut.result()
+                protocols_out[proto] = result
+
+            still_pending = set()
+            for fut in pending:
+                proto = futures[fut]
+                phase = progress[proto].get("phase", "open")
+                open_s, call_s = budgets[proto]
+
+                # #224: gather/call finished; close may hang on logout Y/N.
+                # Prefer the published result so success is not lost and
+                # teardown is not attributed as phase=call.
+                if phase == "close":
+                    early = progress[proto].get("result")
+                    if isinstance(early, dict) and "status" in early:
+                        protocols_out[proto] = early
+                        continue
+                    t_close = progress[proto].get("t_close_start")
+                    if t_close is None:
+                        still_pending.add(fut)
+                        continue
+                    elapsed = time.monotonic() - t_close
+                    # Close has no separate YAML budget; use call budget as
+                    # grace. Receipt stays phase=close (not call).
+                    if elapsed <= call_s:
+                        still_pending.add(fut)
+                        continue
+                    open_ms = None
+                    if progress[proto].get("t_call_start") is not None:
+                        open_ms = round(
+                            (progress[proto]["t_call_start"]
+                             - progress[proto]["t_open_start"]) * 1000
+                        )
+                    timed = {
+                        "status": "timeout",
+                        "elapsed_ms": round(elapsed * 1000),
+                        "open_ms": open_ms,
+                        "call_ms": None,
+                        "phase": "close",
+                        "error": "close deadline exceeded",
+                    }
+                    last_command = progress[proto].get("last_command")
+                    if last_command:
+                        timed["last_command"] = last_command
+                    tail = None
+                    snap = progress[proto].get("session_log_snapshot")
+                    if callable(snap):
+                        try:
+                            tail = snap()
+                        except Exception:
+                            tail = None
+                    if not tail:
+                        tail = progress[proto].get("session_log_tail")
+                    if tail:
+                        timed["session_log_tail"] = tail
+                    protocols_out[proto] = timed
+                    continue
+
+                if phase == "open":
+                    elapsed = time.monotonic() - progress[proto]["t_open_start"]
+                    budget = open_s
+                else:
+                    elapsed = time.monotonic() - progress[proto]["t_call_start"]
+                    budget = call_s
+                if elapsed <= budget:
+                    still_pending.add(fut)
+                    continue
+                open_ms = None
+                if phase == "call":
+                    open_ms = round(
+                        (progress[proto]["t_call_start"]
+                         - progress[proto]["t_open_start"]) * 1000
+                    )
+                timed = {
+                    "status": "timeout",
+                    "elapsed_ms": round(elapsed * 1000),
+                    "open_ms": open_ms,
+                    "call_ms": None,
+                    "phase": phase,
+                    "error": f"{phase} deadline exceeded",
+                }
+                if phase == "call":
+                    last_command = progress[proto].get("last_command")
+                    if last_command:
+                        timed["last_command"] = last_command
+                    # Prefer live snapshot (Netmiko buffer may have partial
+                    # recv while worker is hung); fall back to last published
+                    # tail from transport ring (#222).
+                    tail = None
+                    snap = progress[proto].get("session_log_snapshot")
+                    if callable(snap):
+                        try:
+                            tail = snap()
+                        except Exception:
+                            tail = None
+                    if not tail:
+                        tail = progress[proto].get("session_log_tail")
+                    if tail:
+                        timed["session_log_tail"] = tail
+                protocols_out[proto] = timed
+            pending = still_pending
+            if pending:
+                time.sleep(poll_interval_s)
     finally:
         # Hung workers stay isolated. Waiting would hold sidecar RunLock.
         # Do not close() their device from this thread.
@@ -2638,7 +2743,7 @@ def main():
     parser.add_argument("--execute", action="store_true",
                         help="Execute the test plan (worker pool)")
     parser.add_argument("--render", action="store_true",
-                        help="Render docs/RELEASE_MATRIX.md and docs/TODO_HITLIST.md")
+                        help="Render docs/RELEASE_MATRIX.md (not TODO_HITLIST.md)")
     parser.add_argument("--gate", action="store_true",
                         help="Full pipeline: gather → plan → execute → render → verdict")
     parser.add_argument("--resume", action="store_true",

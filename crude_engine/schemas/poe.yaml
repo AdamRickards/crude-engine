@@ -4,7 +4,9 @@ description: Power over Ethernet (PoE) status and configuration
 methods:
   get_poe:
     type: dict
-    primary_key: name
+    # Wired primary + key_map ifindex (storm_control / #244). bare name pk → Offline {} (#245)
+    primary_key: enabled
+    key_map: ifindex
     defaults:
       enabled: false
       power_limit: 0.0

@@ -10,12 +10,18 @@ import os
 import re
 import logging
 import yaml
+from collections import deque
 from typing import Dict, List, Union, Any, Optional
 
 from netmiko import ConnectHandler
 from napalm.base.exceptions import ConnectionException
 
 logger = logging.getLogger(__name__)
+
+# Bounded append-only inspect session log (#222). Hang never returns last_cli;
+# progress snaps this tail on phase=call timeout without waiting for the thread.
+_SESSION_RING_MAX = 200
+_SESSION_LOG_TAIL_CHARS = 8192
 
 
 class SSHDriver:
@@ -46,6 +52,12 @@ class SSHDriver:
                 proto_defaults = yaml.safe_load(f).get('defaults', {})
         self._cmd_verify = proto_defaults.get('cmd_verify', True)
 
+        # Append-only session ring for inspect hang diagnosis (#222).
+        # Prefer Netmiko SessionLog on the live connection; ring always
+        # records structured open/nav/send/recv so offline mocks still work.
+        self._session_ring: deque = deque(maxlen=_SESSION_RING_MAX)
+        self._netmiko_session_log = None
+
     # ------------------------------------------------------------------
     # YAML loading
     # ------------------------------------------------------------------
@@ -66,6 +78,54 @@ class SSHDriver:
         return '|'.join(f'(?:{p})' for p in patterns)
 
     # ------------------------------------------------------------------
+    # Inspect session log (#222)
+    # ------------------------------------------------------------------
+
+    def _session_append(self, line: str) -> None:
+        """Record one append-only session event; publish progress tail."""
+        if not line:
+            return
+        # Never put credentials in the ring (auth password is noted as marker).
+        self._session_ring.append(line)
+        self._publish_session_log_tail()
+
+    def session_log_tail(self, max_chars: int = _SESSION_LOG_TAIL_CHARS) -> str:
+        """Bounded tail: structured ring + Netmiko SessionLog buffer if any.
+
+        Safe to call from the harness poller while the worker thread is hung —
+        StringIO.getvalue / deque copy are the snapshot surface.
+        """
+        parts = list(self._session_ring)
+        buf = self._netmiko_session_log
+        if buf is not None:
+            raw = ""
+            try:
+                # netmiko.SessionLog keeps an in-memory slog_buffer
+                slog = getattr(buf, "slog_buffer", None)
+                if slog is not None:
+                    raw = slog.getvalue() or ""
+                elif hasattr(buf, "getvalue"):
+                    raw = buf.getvalue() or ""
+            except Exception:
+                raw = ""
+            if raw:
+                parts.append("--- netmiko ---")
+                parts.append(raw if len(raw) <= max_chars else raw[-max_chars:])
+        text = "\n".join(parts)
+        if len(text) > max_chars:
+            text = text[-max_chars:]
+        return text
+
+    def _publish_session_log_tail(self) -> None:
+        prog = getattr(self, "_inspect_progress", None)
+        if not isinstance(prog, dict):
+            return
+        try:
+            prog["session_log_tail"] = self.session_log_tail()
+        except Exception as e:
+            logger.debug("session_log_tail publish failed: %s", e)
+
+    # ------------------------------------------------------------------
     # Connection lifecycle
     # ------------------------------------------------------------------
 
@@ -81,26 +141,53 @@ class SSHDriver:
                 'timeout': self.timeout,
                 'fast_cli': False,
             }
+            # Prefer Netmiko SessionLog (in-memory) on the same transport path.
+            try:
+                from netmiko.session_log import SessionLog
+                no_log = {}
+                if self.password:
+                    no_log["password"] = self.password
+                self._netmiko_session_log = SessionLog(
+                    record_writes=True, no_log=no_log or None
+                )
+                device["session_log"] = self._netmiko_session_log
+            except Exception as e:
+                logger.debug("SSH session_log unavailable: %s", e)
+                self._netmiko_session_log = None
+
+            self._session_append("open")
             self.connection = ConnectHandler(**device)
             self.connection.set_base_prompt()
 
             output = self.connection.read_channel()
+            self._session_append(
+                f"open: read_channel {len(output or '')} bytes"
+            )
 
             # Check factory default gate
             factory_gate = self._state.get('gates', {}).get('factory_default', {})
             if factory_gate and factory_gate.get('detect') in (output or ''):
                 self._factory_default = True
+                self._session_append("open: factory_default gate")
                 return
 
             self._current_level = self._state['initial_level']
             self.navigate_to('priv')
+            self._session_append("open: at priv")
         except ConnectionException:
             raise
         except Exception as e:
             raise ConnectionException(f"SSH connection failed: {str(e)}")
 
     def close(self):
-        """Disconnect, handling logout gates from YAML."""
+        """Disconnect, handling logout gates from YAML.
+
+        Gate `detect` strings in SSH_state.yaml are literal prompt fragments
+        (e.g. ``Are you sure (Y/N)``). Netmiko ``read_until_pattern`` compiles
+        them as regex, so parentheses must be escaped or the live logout
+        confirm never matches and teardown hangs under the inspect call
+        wall (#224).
+        """
         if self.connection:
             try:
                 # Navigate to user level first, then logout
@@ -115,14 +202,27 @@ class SSHDriver:
                 gates = user_def.get('gates', [])
 
                 if exit_def and exit_def.get('command'):
-                    self.connection.write_channel(exit_def['command'] + '\n')
+                    logout_cmd = exit_def['command']
+                    # Publish logout as last_command so close hang receipts
+                    # are not stuck on a stale show (#224).
+                    self.last_command = logout_cmd
+                    prog = getattr(self, "_inspect_progress", None)
+                    if isinstance(prog, dict):
+                        prog["last_command"] = logout_cmd
+                    self._session_append(f"send: {logout_cmd}")
+                    self.connection.write_channel(logout_cmd + '\n')
                     for gate in gates:
                         try:
+                            detect = gate['detect']
                             gate_timeout = gate.get('read_timeout', 1)
                             output = self.connection.read_until_pattern(
-                                gate['detect'], read_timeout=gate_timeout
+                                re.escape(detect), read_timeout=gate_timeout
                             )
-                            if gate['detect'] in output:
+                            if detect in (output or ''):
+                                self._session_append(
+                                    f"close gate: {detect!r} -> "
+                                    f"{gate.get('response')!r}"
+                                )
                                 self.connection.write_channel(
                                     gate['response'] + '\n'
                                 )
@@ -187,9 +287,23 @@ class SSHDriver:
         verify = cmd_verify if cmd_verify is not None else self._cmd_verify
         results = {}
         for cmd in commands:
+            # Inspect hang never returns, so last_cli is empty on call-timeout.
+            # Publish last_command + session_log_tail before send so the
+            # harness can snapshot from shared progress without waiting
+            # for this thread (#218 / #222).
+            self.last_command = cmd
+            prog = getattr(self, "_inspect_progress", None)
+            if isinstance(prog, dict):
+                prog["last_command"] = cmd
+            self._session_append(f"send: {cmd}")
             output = self.connection.send_command(
                 cmd, expect_string=self._prompt_re, read_timeout=10,
                 cmd_verify=verify
+            )
+            # Recv note (only reached if prompt matched / send returned).
+            preview = (output or "").strip().replace("\n", " ")[:160]
+            self._session_append(
+                f"recv: {len((output or '').strip())}B {preview!r}"
             )
             results[cmd] = output.strip()
         return results
@@ -221,12 +335,17 @@ class SSHDriver:
         if self._current_level == target and not is_parameterized:
             return
 
+        self._session_append(
+            f"navigate: {self._current_level} -> {target}"
+        )
+
         # For parameterized levels at the same level, exit first so we
         # re-enter with new params (e.g. switching from interface 1/1
         # to interface 1/2)
         if self._current_level == target and is_parameterized:
             exit_def = target_def.get('exit', {})
             if exit_def and exit_def.get('command'):
+                self._session_append(f"nav exit: {exit_def['command']}")
                 self.connection.send_command(
                     exit_def['command'],
                     expect_string=self._prompt_re,
@@ -262,6 +381,7 @@ class SSHDriver:
             level_def = levels[level]
             exit_def = level_def.get('exit', {})
             if exit_def and exit_def.get('command'):
+                self._session_append(f"nav exit: {exit_def['command']}")
                 self.connection.send_command(
                     exit_def['command'],
                     expect_string=self._prompt_re,
@@ -290,20 +410,23 @@ class SSHDriver:
 
             if enter_def.get('auth'):
                 # Auth transition: send command, wait for password prompt,
-                # send password
+                # send password (never log the password itself).
                 auth_pattern = enter_def.get('auth_pattern', 'Password:')
+                self._session_append(f"nav enter: {cmd} (auth)")
                 output = self.connection.send_command(
                     cmd,
                     expect_string=f'{auth_pattern}|{self._prompt_re}',
                     read_timeout=5
                 )
                 if auth_pattern in output:
+                    self._session_append("nav enter: (password)")
                     self.connection.send_command(
                         self.password,
                         expect_string=self._prompt_re,
                         read_timeout=5
                     )
             else:
+                self._session_append(f"nav enter: {cmd}")
                 self.connection.send_command(
                     cmd,
                     expect_string=self._prompt_re,
@@ -315,6 +438,7 @@ class SSHDriver:
             # Run on_enter setup commands (once per session)
             if level not in self._setup_done:
                 for setup_cmd in level_def.get('on_enter', []):
+                    self._session_append(f"nav on_enter: {setup_cmd}")
                     self.connection.send_command(
                         setup_cmd,
                         expect_string=self._prompt_re,

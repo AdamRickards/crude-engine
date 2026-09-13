@@ -1,0 +1,399 @@
+{
+  "description": "Sanitized schema-shaped gold floors for offline_gold_matrix. No device identity.",
+  "methods": {
+    "get_facts": {
+      "hostname": "sample-host",
+      "vendor": "Belden"
+    },
+    "get_mrp": {
+      "ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff:ff": {
+        "vlan": 100,
+        "operation": true,
+        "role": "manager",
+        "ring_port1": "1/1",
+        "ring_port2": "1/2",
+        "ring_port1_state": "forwarding",
+        "ring_state": "closed"
+      }
+    },
+    "get_dns": {
+      "enabled": false,
+      "timeout": 3,
+      "retransmits": 2
+    },
+    "get_banner": {
+      "pre_login_enabled": false,
+      "pre_login_text": ""
+    },
+    "get_interfaces": {
+      "1": {
+        "admin_status": "enabled",
+        "mtu": 1518,
+        "oper_status": "up"
+      },
+      "2": {
+        "admin_status": "enabled",
+        "mtu": 1518,
+        "oper_status": "up"
+      }
+    },
+    "get_ntp": {
+      "enabled": false,
+      "request_interval": 30,
+      "server_enabled": false,
+      "server_stratum": 1
+    },
+    "get_syslog": {
+      "enabled": false
+    },
+    "get_hidiscovery": {
+      "enabled": true,
+      "mode": "readWrite",
+      "relay_enabled": false,
+      "blinking": false
+    },
+    "get_login_policy": {
+      "min_length": 6,
+      "max_attempts": 0,
+      "lockout_time": 0,
+      "min_uppercase": 1,
+      "min_lowercase": 1,
+      "min_numeric": 1,
+      "min_special": 1
+    },
+    "get_gvrp": {
+      "enabled": false
+    },
+    "get_gmrp": {
+      "enabled": false,
+      "unknown_multicast": "discard"
+    },
+    "get_dai_global": {
+      "validate_src_mac": false,
+      "validate_dst_mac": false,
+      "validate_ip": false
+    },
+    "get_dhcp_snooping": {
+      "enabled": false,
+      "verify_mac": false
+    },
+    "get_session_config": {
+      "ssh_timeout": 5,
+      "telnet_timeout": 5,
+      "web_timeout": 5,
+      "max_ssh_sessions": 5
+    },
+    "get_snmp_config": {
+      "v1_enabled": false,
+      "v2_enabled": false,
+      "v3_enabled": true,
+      "port": 161,
+      "trap_service": true
+    },
+    "get_services": {
+      "http": {
+        "enabled": true,
+        "port": 80
+      },
+      "https": {
+        "enabled": true,
+        "port": 443
+      },
+      "telnet": {
+        "enabled": false,
+        "port": 23
+      },
+      "ssh": {
+        "enabled": true,
+        "port": 22
+      },
+      "snmp_v1": {
+        "enabled": false
+      },
+      "snmp_v2": {
+        "enabled": false
+      },
+      "snmp_v3": {
+        "enabled": true
+      }
+    },
+    "get_rstp": {
+      "enabled": true,
+      "priority": 32768,
+      "hello_time": 2,
+      "max_age": 20,
+      "forward_delay": 15,
+      "bpdu_guard": false
+    },
+    "get_loop_protection": {
+      "enabled": 2,
+      "transmission_interval": 5,
+      "rx_threshold": 1
+    },
+    "get_vlan_ingress": {
+      "1": {
+        "pvid": 1,
+        "ingress_filtering": false,
+        "acceptable_frame_types": "admitAll"
+      },
+      "2": {
+        "pvid": 1,
+        "ingress_filtering": false,
+        "acceptable_frame_types": "admitAll"
+      }
+    },
+    "get_auto_disable_reasons": {
+      "1": {
+        "enabled": false
+      },
+      "4": {
+        "enabled": false
+      }
+    },
+    "get_snmp_information": {
+      "chassis_id": "sample-host",
+      "contact": "example-contact",
+      "location": "example-rack"
+    },
+    "get_qos": {
+      "port_trust_mode": {
+        "1": 2,
+        "2": 2
+      }
+    },
+    "get_remote_auth": {
+      "ldap_enabled": false
+    },
+    "get_system_info": {
+      "hostname": "sample-host",
+      "contact": "example-contact",
+      "location": "example-rack"
+    },
+    "get_port_security": {
+      "global_enabled": false
+    },
+    "get_rstp_port": {
+      "1/1": {
+        "enabled": true
+      },
+      "1/2": {
+        "enabled": true
+      }
+    },
+    "get_config_remote": {
+      "url": "",
+      "status": false
+    },
+    "get_qos_mapping": {
+      "dot1p": {
+        "0": {
+          "value": 2
+        },
+        "1": {
+          "value": 0
+        },
+        "7": {
+          "value": 7
+        }
+      },
+      "dscp": {
+        "0": {
+          "value": 2
+        },
+        "46": {
+          "value": 6
+        }
+      }
+    },
+    "get_storm_control": {
+      "1/1": {
+        "broadcast_enabled": false,
+        "broadcast_threshold": 0,
+        "multicast_enabled": false,
+        "multicast_threshold": 0
+      },
+      "1/2": {
+        "broadcast_enabled": false,
+        "broadcast_threshold": 0,
+        "multicast_enabled": false,
+        "multicast_threshold": 0
+      }
+    },
+    "get_ip_restrict": {
+      "enabled": false,
+      "logging": false
+    },
+    "get_arp_inspection": {
+      "validate_src_mac": false,
+      "validate_dst_mac": false,
+      "validate_ip": false,
+      "ports": {
+        "1": {
+          "trusted": false,
+          "rate_limit": -1,
+          "burst_interval": 1,
+          "auto_disable": true
+        },
+        "2": {
+          "trusted": false,
+          "rate_limit": -1,
+          "burst_interval": 1,
+          "auto_disable": true
+        }
+      }
+    },
+    "get_signal_contact": {
+      "1": {
+        "contact_id": 1,
+        "mode": "monitor",
+        "trap_enabled": false,
+        "sense_temperature": true,
+        "sense_humidity": true
+      }
+    },
+    "get_config_status": {
+      "saved": true,
+      "nvm": "ok",
+      "aca": "absent",
+      "boot": "ok"
+    },
+    "get_management_priority": {
+      "source": "local",
+      "priority": 1
+    },
+    "get_watchdog_status": {
+      "watchdog_enabled": false,
+      "watchdog_interval": 0,
+      "watchdog_remaining": 0
+    },
+    "get_management": {
+      "ip_address": "",
+      "prefix_length": 0,
+      "netmask": "",
+      "gateway": "",
+      "vlan_id": 1,
+      "protocol": ""
+    },
+    "get_mrp_sub_ring": {
+      "enabled": false
+    },
+    "get_vrrp": {
+      "enabled": false,
+      "trap_auth_failure": false,
+      "trap_new_master": false
+    },
+    "get_ntp_servers": {
+      "1": {
+        "address": "31 39 32 2e 30 2e 32 2e 31",
+        "port": 123,
+        "description": "sample-ntp"
+      }
+    },
+    "get_users": {
+      "admin": {
+        "level": "administrator",
+        "locked": false,
+        "policy_check": false,
+        "snmp_auth": "md5",
+        "snmp_enc": "des"
+      }
+    },
+    "get_profiles": {
+      "1": {
+        "name": "config",
+        "active": true
+      }
+    },
+    "get_snmp_trap_destinations": {
+      "trap1": {
+        "address": "trap1",
+        "security_model": "2",
+        "security_name": "public",
+        "security_level": "no-auth"
+      }
+    },
+    "get_vrrp_instances": {
+      "1/1:": {
+        "admin_state": "down",
+        "priority": 100,
+        "current_priority": 100,
+        "preempt": true,
+        "interval": 1
+      }
+    },
+    "get_config": {
+      "running": "",
+      "startup": ""
+    },
+    "get_arp_table": {
+      "10.0.0.10": {
+        "interface": 1,
+        "mac": "02:00:00:00:00:01",
+        "ip": "10.0.0.10",
+        "age": 0.0
+      }
+    },
+    "get_mac_address_table": {
+      "02:00:00:00:00:02": {
+        "mac": "02:00:00:00:00:02",
+        "interface": 1,
+        "vlan": 0,
+        "status": "mgmt"
+      }
+    },
+    "get_vrrp_tracking": {
+      "trk1::": {
+        "decrement": 10,
+        "oper_status": "down"
+      }
+    },
+    "get_ip_addresses": {
+      "ipv4": {}
+    },
+    "get_devsec_status": {
+      "oper_state": "",
+      "status_index": {},
+      "trap_cause": ""
+    },
+    "get_vlans": {
+      "1": {
+        "name": "default",
+        "ports": {
+          "1/1": "T",
+          "1/2": "T"
+        }
+      },
+      "100": {
+        "name": "",
+        "ports": {
+          "1/1": "T",
+          "1/2": "T"
+        }
+      }
+    },
+    "get_vlan_egress": {
+      "1": {
+        "egress_ports": [
+          "1/1",
+          "1/2"
+        ],
+        "untagged_ports": []
+      },
+      "100": {
+        "egress_ports": [
+          "1/1",
+          "1/2"
+        ],
+        "untagged_ports": []
+      }
+    },
+    "get_auto_disable": {
+      "1/1": {
+        "enabled": false,
+        "reason": "none",
+        "remaining_time": null,
+        "timer": 60
+      }
+    }
+  }
+}

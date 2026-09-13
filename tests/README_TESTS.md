@@ -2,7 +2,7 @@
 
 > One-pager. Every script in `tests/` listed once with: what it does, when to use it,
 > what NOT to use it for, and how to invoke it. Read this before adding new test code.
-> Linked from `AGENTS.md` (standing law) and `docs/RELEASE_GATE.md`. Leftover Claude: `local/archive/docs-legacy/claude/CLAUDE.md`.
+> Linked from `AGENTS.md` (the only root agent law) and `docs/RELEASE_GATE.md`. Leftover Claude is archive, not law: `local/archive/docs-legacy/claude/CLAUDE.md`.
 
 ## TL;DR — which script for which job
 
@@ -32,6 +32,7 @@ If you find yourself wanting to write a one-shot script, ask "can `release_matri
 | Run the CRUD round-trips directly | `test_crud_pairs.py` |
 | Capture multi-layer fixtures (transport/driver/engine/adapter) | `capture.py` |
 | Replay captured fixtures as offline regression tests (pytest) | `test_replay.py` |
+| Offline vs gold/config read matrix (FeatureEngine + OfflineHIOS) | `offline_gold_matrix.py` |
 | Orchestrate getters + setters across the lab fleet (legacy) | `audit_all.py` |
 | Gather one device's state for diagnostics | `audit_common.py <ip>` |
 
@@ -201,6 +202,8 @@ python3 tests/test_crud_pairs.py 192.168.60.80 --protocol snmp
 
 ### `capture.py` — multi-layer fixture capture
 
+**Status:** leftover live-capture helper, **not** the offline CI floor (`scripts/ci_offline.sh` does not run it). Tap4 goes through the 2.0 NAPALM shim (`napalm_hios.hios.HIOSDriver`). Do not fold that shim into `crude_engine`.
+
 **Purpose:** record everything that happens on a single device call, at four boundaries, so it can be replayed offline.
 
 **What it captures:**
@@ -228,6 +231,8 @@ python3 tests/capture.py 192.168.1.4 --methods get_facts get_interfaces
 
 ### `test_replay.py` — pytest-based fixture replay
 
+**Status:** leftover, **not** the live offline floor. CI does not run it. Fixtures are local/untracked. Engine import is `crude_engine.FeatureEngine`. `test_napalm` compares captured JSON; it does not import the shim.
+
 **Purpose:** offline regression tests using captured fixtures. No live device needed.
 
 **What it does:**
@@ -238,9 +243,8 @@ python3 tests/capture.py 192.168.1.4 --methods get_facts get_interfaces
 - Standard pytest discovery; `-k` filters work
 
 **When to use it:**
-- CI / pre-commit gate (fast, no network).
+- Local replay of captured fixtures (not CI).
 - Refactoring engine internals without risking a regression.
-- Testing on a plane.
 
 **When NOT to use it:**
 - Not for SET/CRUD — captures are read-only.
@@ -365,8 +369,8 @@ Add features to `--inspect`. Don't write scripts.
 THE tool that produces the per-cell matrix JSON used as the release gate.
 Imports the internals of `audit_getters_v2.py`, `test_setter_pairs.py`,
 `test_crud_pairs.py` (no subprocess), merges results into a hierarchical
-JSON DB, supports surgical re-runs, generates `docs/RELEASE_MATRIX.md`
-and `docs/TODO_HITLIST.md`.
+JSON DB, supports surgical re-runs, generates `docs/RELEASE_MATRIX.md`.
+Leftover failures live on GitHub issues, not a live `docs/TODO_HITLIST.md`.
 
 **Built and validated.** See `docs/RELEASE_GATE.md` for the full design.
 
@@ -384,7 +388,7 @@ gather → plan → execute → derive → render
 - **derive**  — auto-runs after any execute that included reads; updates
                 `device_state.devices.<ip>.has_configured_from_gather`
                 so the next plan/execute uses live truth
-- **render**  — generates `docs/RELEASE_MATRIX.md` + `docs/TODO_HITLIST.md`
+- **render**  — generates `docs/RELEASE_MATRIX.md`. Leftovers are GitHub issues (not a live `TODO_HITLIST.md`).
 
 **CLI:**
 ```bash
@@ -425,7 +429,6 @@ release_matrix.py --db-info     # one-line summary
 | `tests/release_test_plan.json` | Job manifest from plan generator | Never (regenerated each `--plan`) |
 | `tests/device_state.json` | Per-device gather output + auto-derived `has_configured_from_gather` | Never (regenerated each `--gather` and after each `--execute --kind read`) |
 | `docs/RELEASE_MATRIX.md` | Read-only scoreboard: summary, per-protocol, fleet, per-schema grid, perf, comms-lost | Never |
-| `docs/TODO_HITLIST.md` | Failures grouped by `#bucket` tag, NEEDS TRIAGE for untagged | Never |
 
 **Standing rules:**
 - `safe_for: [read]` devices CANNOT receive setter/CRUD jobs at any code path. Verified.
@@ -529,9 +532,8 @@ declaration get a no-op wrap (run normally).
 /tmp/crude-engine/.venv/bin/python3 tests/<script>.py ...
 ```
 
-If the venv doesn't exist:
+If the venv doesn't exist, from this repo root (engine is not on PyPI yet; the napalm-hios 2.0 shim is a separate unpublished repo):
 ```bash
 python3 -m venv /tmp/crude-engine/.venv
-/tmp/crude-engine/.venv/bin/pip install -e /home/adamr/obsidian-vault/Projects/crude-engine/
-/tmp/crude-engine/.venv/bin/pip install -e /home/adamr/obsidian-vault/Projects/napalm-hios/
+/tmp/crude-engine/.venv/bin/pip install -e .
 ```

@@ -8,12 +8,15 @@ methods:
       dot1p: {}
       dscp: {}
     sub_tables:
+      # Drive rows from the accessible value column. SNMP walk suffix is the
+      # INDEX (hm2TrafficClassPriority 0..7 / hm2CosMapIpDscpValue 0..63).
+      # Do not walk the not-accessible INDEX objects (1.17 same-wire).
       dot1p:
-        primary_key: dot1p_priority
+        primary_key: dot1p_traffic_class
         field_map:
           value: dot1p_traffic_class
       dscp:
-        primary_key: dscp_value
+        primary_key: dscp_traffic_class
         field_map:
           value: dscp_traffic_class
   set_qos_mapping:

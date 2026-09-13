@@ -34,7 +34,7 @@ Each layer has one job. No layer reaches into another layer's concerns.
 
 ### Block 1 — Adapter → Schema boundary
 **What it does:** Load the schema for the requested method. Extract `method_def`.
-Pop `debug` and `validate` from kwargs — these are engine flags, not user data.
+Pop `trace` and `validate` from kwargs — engine flags, not user data. (`debug` is the adapter/tools flag for foreign library logs; schema YAML `debug: true` is only a legacy alias that enables `trace`.)
 Determine direction: getter (egress) or setter/create/delete (ingress).
 
 **What it must not do:** Know anything about wire names, OIDs, protocol specifics,
@@ -107,7 +107,7 @@ This is iteration, not recursion. The pipeline does not call `execute()` or
 resolve user intent (Block 2 does that), or know about specific protocols.
 
 **Design rule:** `_translate` is the single choke point. Every step runs through
-it. Debug trace appends here and nowhere else. If a step is not in steps.yaml,
+it. Pipeline trace appends here and nowhere else. If a step is not in steps.yaml,
 it does not run.
 
 ---

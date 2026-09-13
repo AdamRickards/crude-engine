@@ -10,6 +10,12 @@ This document is the formal specification for schema YAMLs in crude-engine. Ever
 
 1. **Schemas describe the device, not the consumer.** Key names come from MIB concepts, not NAPALM conventions. The adapter reshapes for its consumer.
 2. **`defaults` is the output contract.** Every key in `defaults` MUST appear in the getter output. Gate 1 exit enforces this.
+   - A getter returns its `defaults` keys.
+   - Every `defaults` key MUST exist as an attribute (feature-level or method-scoped).
+   - Device-touching attributes MUST have `wire` + `source` so Gate 2 resolves — that is the matrix lookup and the formatting.
+   - An undeclared `defaults` key never enters Gate 2; Gate 1 exit alone is a lie.
+   - Empty `{}` is only for honest no-wire (e.g. SSH execute blobs like `get_config` running/startup).
+   - Floor for this class: `python3 scripts/check_catalogue.py --composed`.
 3. **`type` determines shape.** `dict` = flat or keyed dict. `list` / `list_append` = list of dicts. `upsert` / `create` / `delete` = write operations.
 4. **`wire` + `source` bind to the device.** Every attribute that touches the device MUST declare its wire binding. Compute-only attributes MAY omit them.
 5. **Method scope is explicit.** `defaults` keys define what a getter returns. `fields` restrict what a setter accepts. `sub_tables.field_map` declares nested structure.
@@ -36,7 +42,7 @@ Schema (one per feature)
 
 ### Read method output contract
 
-`defaults` defines every key the getter returns. Gate 1 exit enforces this — if a key is in `defaults`, it MUST appear in the output.
+`defaults` defines every key the getter returns. Gate 1 exit enforces this — if a key is in `defaults`, it MUST appear in the output. Every `defaults` key MUST also exist as an attribute; undeclared keys never enter Gate 2 (principle 2).
 
 ```yaml
 get_dns:
@@ -130,6 +136,7 @@ No other top-level keys are valid.
 | `primary_key` | COND | string | Required for table getters (dict keyed by this field) |
 | `key_map` | OPT | string | Context map name for key remapping (e.g. `ifindex`) |
 | `index_fields` | OPT | list | RFC 2578 compound index decomposition fields |
+| `index_type` | OPT | string | Last INDEX field encoding. `implied_string` = RFC 2578 IMPLIED (remaining sub-IDs as ASCII). Used with `index_fields`. |
 | `sub_tables` | OPT | dict | Nested table definitions (see Sub-Table Keys) |
 | `index_filter` | OPT | string | Regex filter on valid index values |
 
@@ -186,7 +193,7 @@ No other top-level keys are valid.
 | Key | Req | Type | Description |
 |-----|-----|------|-------------|
 | `value_map` | OPT | dict or string | Dict = inline enum map. String = context map reference. **Do not use for booleans** — see note below. |
-| `compute` | OPT | dict | Derived from other attributes (keys: `from`, `expr`/`format`, `fallback`, `sort`) |
+| `compute` | OPT | dict | Derived from other attributes (keys: `from`, `expr`/`format`, `fallback`, `sort`). Egress-only — not auto-inverted; see SCHEMA_PRIMITIVES.md (`compute:` vs bidirectional) |
 | `lookup` | OPT | dict | Cross-attribute join (keys: `from`, `index_field`, `resolve`) |
 | `membership_of` | OPT | string | Test if row key exists in another attr's values |
 | `collect` | OPT | enum | `value` (scalar) or `list` (aggregate as list) |
@@ -267,13 +274,15 @@ These rules define what "canonical" means. Violations are not errors — they ar
 
 ## Known NAPALM-Shaped Schemas (Reshaping Hitlist)
 
-| Schema | Keys | Canonical Alternative | Consumer Reshaper |
-|--------|------|----------------------|-------------------|
-| `interface` | `is_up`, `is_enabled`, `last_flapped`, `speed`, `mtu`, `mac_address`, `description` | `oper_status`, `admin_status`, `last_change`, `highspeed`, `mtu`, `phys_address`, `alias` | napalm-hios maps back |
-| `lldp` | `remote_hostname`, `remote_port`, `remote_chassis_id`, `remote_system_description` | `sys_name`, `port_id`, `chassis_id`, `sys_description` | napalm-hios maps back |
-| `mac` | `active`, `static`, `moves`, `last_move` | `status` (forward/permanent/etc) | napalm-hios derives booleans |
-| `optics` | Nested `physical_channels` structure | Flat `tx_power_dbm`, `rx_power_dbm` per port | napalm-hios nests for NAPALM |
-| `vlan` (get_vlans) | `ports` dict with U/T/F values | Separate `egress_ports`, `untagged_ports`, `forbidden_ports` lists | napalm-hios merges to ports dict |
+Live `defaults` (`origin/main` `139fe69`, 45 schemas): four of these five rows are already canonical. Only `vlan` `get_vlans` is still a consumer/shim leftover. Extra scan found no further hitlist rows. Canonical shape stays engine formatters; consumer reshape stays adapter/shim.
+
+| Schema | Live defaults keys | Status | Consumer |
+|--------|--------------------|--------|----------|
+| `interface` (`get_interfaces`) | `oper_status`, `admin_status` (was `is_up`/`is_enabled`). `phys_address`, `alias` present; `last_flapped`, `mac_address`, `description` gone. | Already canonical. Leftover naming: `speed` vs canonical `highspeed` (wire `ifhighspeed`). `mtu` is live and canonical — not a NAPALM violation. | napalm-hios maps back if needed |
+| `lldp` (`get_lldp_neighbors`, `get_lldp_neighbors_detail`) | `sys_name`, `port_id`, `chassis_id`, `sys_description` (was `remote_*`) | Already canonical | napalm-hios maps back if needed |
+| `mac` (`get_mac_address_table`) | `status` MIB enum `other`/`invalid`/`learned`/`self`/`mgmt` (was `active`/`static`/`moves`/`last_move`) | Already canonical | napalm-hios derives booleans if needed |
+| `optics` (`get_optics`) | flat `tx_power`, `rx_power`, `temperature` (was nested `physical_channels`) | Already canonical | napalm-hios nests for NAPALM if needed |
+| `vlan` (`get_vlans`) | `ports` dict with U/T/F | Honest leftover. Canonical already exists as `get_vlan_egress`. | Consumer/shim still merges if needed |
 
 ### Acceptable (MIB-standard keys, NAPALM method name coincidence)
 

@@ -42,38 +42,48 @@ python3 local/generator/validate_schemas.py --json        # machine-readable
 | `docs/DIAGNOSTIC_PROCESS.md` | **Authored** — mandatory fault-finding ladder |
 | `docs/SCHEMA_PRIMITIVES.md` | **Authored** — YAML key reference |
 | `docs/ROADMAP.md` | **Authored** — milestones |
-| `docs/TODO.md` | **Authored** — work items |
+| GitHub issues | Leftover work (prove-then-file or comment-close). Not `docs/TODO.md`. |
 
-## Wire Generators
+## Optional read-only audits (retargeted at `crude_engine/`)
 
-Tools that produce wire YAMLs from MIB/MOPS device truth.
+These are leftover v26 walks whose `BASE_DIR` was retargeted at this
+repo's `crude_engine/{wire,schemas}`. They do not mutate YAML. They are
+**not** live doc generators — do not treat their output as catalogue law.
 
-| Generator | Output | What it reads |
-|-----------|--------|---------------|
-| `batch_generate_MIB.py` | `local/reference/webUI/*.yaml` | MIB XML (`local/reference/MOPS/mops_hios.xml`) + optional WebUI captures |
+| Audit | Output | What it reads |
+|-------|--------|---------------|
+| `validate_v26_all.py` | stdout | Schema→wire broken links + duplicate OIDs |
+| `audit_wire.py` | `docs/WIRE_INTEGRITY.md` (only if you run it) | Wire protocol coverage + duplicate names |
 
-### Wire Generation Pipeline
+Live schema law remains `validate_schemas.py` (CI).
+
+## Leftover v26/monolith scripts (not live law)
+
+Machine-absolute monolith paths are **removed**.
+Leftover scripts are either repo-relative + `--run-archive` stubs, or
+(for MIB emit) isolated temp outdir only. Original absolute-path bodies
+live under `local/archive/generator-monolith-abs/` for archaeology.
+Do not heal/enrich/batch-generate against live YAML.
+`batch_generate_MIB.py` may be invoked **isolated** into a TEMP outdir
+for emit-diff only — never `crude_engine/wire`:
 
 ```bash
-# Step 1: Generate wire YAMLs from MIB
-python3 local/generator/batch_generate_MIB.py
-
-# Step 2: Map schemas to generated wires
-python3 local/generator/heal_schemas.py
-
-# Step 3: Audit integrity
-python3 local/generator/validate_v26_all.py
+python3 local/generator/batch_generate_MIB.py --isolated --outdir /tmp/crude-mib-emit
 ```
 
-See the [WIRE_SPEC.md](../../docs/WIRE_SPEC.md) for format details.
+| File | Why leftover |
+|------|----------------|
+| `batch_generate_MIB.py` | One-shot MIB→wire generator; not live law. Isolated `--outdir` only |
+| `batch_generate_webui.py.stable` | Same class (sibling one-shot) |
+| `heal_schemas.py` | Mutates schema `source:` against old webUI wires |
+| `enrich_schema_v26.py` | Mutates `docs/napalm-hios-2-6-schema.md` |
+| `cross_validate_v26.py` | v26 master-schema markdown vs webUI |
+| `validate_schema_wire.py` | Post-heal check against `local/reference/webUI` |
+| `audit_v26_coverage.py` | Needs v1 `hios.py` + shim `adapters/napalm.yaml` |
+| `audit_v26_integrity.py` | Same + old webUI wires |
+| `audit_web_coverage.py` | Needs machine-local LocalUI captures |
+| `audit_claims.py` | Needs monolith `hios.py` adapter + v2.6 claim numbers |
 
-## Other Tools
+`overrides.yaml` is data for the leftover MIB generator, not live law.
 
-| Tool | Purpose |
-|------|---------|
-| `heal_schemas.py` | Remap schema `source:` fields to MIB-named wire files |
-| `cross_validate_v26.py` | Validate generated YAMLs against schema contract |
-| `validate_v26_all.py` | Full broken-link + duplicate OID audit |
-| `audit_claims.py` | Audit v2.6 coverage claims against wire reality |
-| `audit_wire.py` | Wire-level integrity checks |
-| `overrides.yaml` | Manual corrections for generator output (create_method, type) |
+See [WIRE_SPEC.md](../../docs/WIRE_SPEC.md) for live wire format.

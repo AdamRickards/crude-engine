@@ -566,7 +566,7 @@ attributes:
           index_field: hm2RmaIndex
   hm2rmaipaddrtype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -1166,7 +1166,7 @@ attributes:
           index_field: hm2SshKnownHostIndex
   hm2sshknownhostaddresstype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -1284,7 +1284,7 @@ attributes:
           field: hm2SshLastLoginInetAddress
   hm2sshlastlogininetaddresstype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: r
     sources:
       snmp:
@@ -1530,7 +1530,7 @@ attributes:
           field: hm2TelnetLastLoginInetAddress
   hm2telnetlastlogininetaddresstype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: r
     sources:
       snmp:
@@ -1924,7 +1924,7 @@ attributes:
           field: hm2WebLastLoginInetAddress
   hm2weblastlogininetaddresstype:
     syntax: InetAddressType
-    type: integer
+    type: string
     access: r
     sources:
       snmp:

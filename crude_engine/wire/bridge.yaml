@@ -31,7 +31,7 @@ schemas:
       dot1dstpportdesignatedcost: 0
       dot1dstpportdesignatedport: ''
       dot1dstpportdesignatedroot: ''
-      dot1dstpportenable: 0
+      dot1dstpportenable: false
       dot1dstpportforwardtransitions: 0
       dot1dstpportpathcost: 0
       dot1dstpportpathcost32: 0
@@ -481,7 +481,7 @@ attributes:
           index_field: dot1dStpPort
   dot1dstpportenable:
     syntax: INTEGER
-    type: integer
+    type: boolean
     access: ru
     sources:
       snmp:

@@ -92,24 +92,58 @@ def name_to_inspect(name, entry):
     return method
 
 
-def pick_device_ip():
-    """First read-safe device in the local gitignored pool. None if absent."""
+def _load_pool_devices():
+    """Local gitignored pool. Empty if the file is absent."""
     if yaml is None or not POOL_PATH.is_file():
-        return None
+        return []
     data = yaml.safe_load(POOL_PATH.read_text()) or {}
-    for dev in data.get("devices") or []:
-        safe = dev.get("safe_for") or []
+    return list(data.get("devices") or [])
+
+
+def _matches_read(dev, feature):
+    """Same read resolver as generate_plan / _device_matches kind=read."""
+    tests_dir = str(ROOT / "tests")
+    if tests_dir not in sys.path:
+        sys.path.insert(0, tests_dir)
+    from release_matrix import _device_matches
+    return _device_matches(dev, feature, "read")
+
+
+def pick_device(feature, devices=None):
+    """First pool device with feature in has_capable and read in safe_for.
+
+    Same rule as generate_plan. First match. None if none qualify.
+    Returns the full pool record (ip/label/sw_level/...), not just the ip.
+    """
+    if devices is None:
+        devices = _load_pool_devices()
+    if not feature:
+        return None
+    for dev in devices:
         ip = dev.get("ip")
-        if ip and (not safe or "read" in safe):
-            return str(ip)
+        if not ip:
+            continue
+        ok, _reason = _matches_read(dev, feature)
+        if ok:
+            return dev
     return None
 
 
-def shape_inspect(name, inspect_out):
+def pick_device_ip(feature, devices=None):
+    """Back-compat: ip only. See pick_device for label/sw_level."""
+    dev = pick_device(feature, devices)
+    return str(dev["ip"]) if dev else None
+
+
+def shape_inspect(name, inspect_out, feature=None, device_info=None):
     """HTTP body for a read inspect. passed = at least one protocol ok (or fake).
 
     parity_diffs are first-class: callers file GitHub issues from them.
     Disagreement does not flip passed to false.
+
+    device_info (issue #131) is the pool record pick_device chose, so the
+    label/sw_level that actually ran are checkable against the HITL floor.
+    None on fake/offline transport or when no device was eligible.
     """
     if not isinstance(inspect_out, dict):
         inspect_out = {"exit": 0 if inspect_out in (0, None) else inspect_out,
@@ -124,6 +158,10 @@ def shape_inspect(name, inspect_out):
     comms = "ok" if passed else "lost"
     expected = {"comms": "ok", "rollback": "not_armed"}
     actual = {"comms": comms, "rollback": "not_armed"}
+    device = (
+        {"label": device_info.get("label"), "sw_level": device_info.get("sw_level")}
+        if device_info else None
+    )
     return {
         "result": {
             "name": name,
@@ -135,6 +173,8 @@ def shape_inspect(name, inspect_out):
             "actual": actual,
             "protocols": protocols,
             "parity_diffs": diffs,
+            "feature": feature,
+            "device": device,
         },
         "sidecar": current_head(),
         "audit": {"diff": {"buckets": []}},
@@ -206,13 +246,34 @@ def handle_run(payload):
     if not method:
         return 400, {"error": "bad_name", "message": "name does not map to --method", "name": name}
 
-    device = pick_device_ip()
-    if transport() not in ("fake", "offline") and not device:
-        return 503, {
-            "error": "not_ready",
-            "message": "no local tests/device_pool.yaml (gitignored)",
+    feature = entry.get("feature")
+    if not feature:
+        return 400, {
+            "error": "bad_name",
+            "message": "catalog entry has no feature",
             "name": name,
         }
+
+    # Fake/offline never touches the (possibly real, gitignored) pool file:
+    # no device was actually used, so none is echoed in the receipt either.
+    picked = None if transport() in ("fake", "offline") else pick_device(feature)
+    device = str(picked["ip"]) if picked else None
+    if transport() not in ("fake", "offline"):
+        if not POOL_PATH.is_file():
+            return 503, {
+                "error": "not_ready",
+                "message": "no local tests/device_pool.yaml (gitignored)",
+                "name": name,
+            }
+        if not device:
+            return 503, {
+                "error": "not_ready",
+                "message": (
+                    f"no eligible device: {feature} not in has_capable "
+                    "or read not in safe_for"
+                ),
+                "name": name,
+            }
 
     protocol = os.environ.get("CRUDE_SIDECAR_PROTOCOL") or None
 
@@ -233,7 +294,7 @@ def handle_run(payload):
                     "message": "release_matrix --inspect returned 2",
                     "name": name,
                 }
-        return 200, shape_inspect(name, out)
+        return 200, shape_inspect(name, out, feature=feature, device_info=picked)
     finally:
         LOCK.release()
 
@@ -272,6 +333,14 @@ def current_head():
     return {"sha": sha_s, "ref": ref_s}
 
 
+class SyncNotReady(RuntimeError):
+    """503 sync refusal with structured detail (issue #159): dirty paths + HEAD."""
+
+    def __init__(self, message, detail=None):
+        super().__init__(message)
+        self.detail = detail or {}
+
+
 def _git(*args):
     return subprocess.run(
         ["git", *args],
@@ -282,12 +351,24 @@ def _git(*args):
     )
 
 
-def _git_sync_main():
-    dirty = _git("status", "--porcelain")
-    if dirty.returncode != 0:
-        raise RuntimeError(dirty.stderr[-300:] or "git status failed")
-    if dirty.stdout.strip():
-        raise RuntimeError("working tree dirty")
+def _dirty_paths():
+    """Porcelain path list, empty if clean. Raises on git status failure."""
+    status = _git("status", "--porcelain")
+    if status.returncode != 0:
+        raise RuntimeError(status.stderr[-300:] or "git status failed")
+    return [line[3:].strip() for line in status.stdout.splitlines() if line.strip()]
+
+
+def _require_clean():
+    dirty = _dirty_paths()
+    if dirty:
+        raise SyncNotReady(
+            "working tree dirty",
+            {"dirty": dirty, "head": current_head()},
+        )
+
+
+def _ff_to_main():
     fetched = _git("fetch", "origin", "main")
     if fetched.returncode != 0:
         raise RuntimeError((fetched.stderr or fetched.stdout)[-300:])
@@ -299,12 +380,13 @@ def _git_sync_main():
         raise RuntimeError((merged.stderr or merged.stdout)[-300:])
 
 
+def _git_sync_main():
+    _require_clean()
+    _ff_to_main()
+
+
 def _git_sync_pr(number):
-    dirty = _git("status", "--porcelain")
-    if dirty.returncode != 0:
-        raise RuntimeError(dirty.stderr[-300:] or "git status failed")
-    if dirty.stdout.strip():
-        raise RuntimeError("working tree dirty")
+    _require_clean()
     refspec = "pull/%d/head" % int(number)
     fetched = _git("fetch", "origin", refspec)
     if fetched.returncode != 0:
@@ -312,6 +394,23 @@ def _git_sync_pr(number):
     checked = _git("checkout", "--detach", "FETCH_HEAD")
     if checked.returncode != 0:
         raise RuntimeError((checked.stderr or checked.stdout)[-300:])
+
+
+def _git_sync_clean():
+    """Real op:clean (issue #159): discard dirty state, land ff-only on main.
+
+    Unlike main/pr, clean's entire job is to recover from a dirty or
+    detached checkout, so it does not call _require_clean() first. Never
+    force-pushes, never touches gitignored files (-fd, not -fdx), never a
+    caller-supplied ref.
+    """
+    reset = _git("reset", "--hard", "HEAD")
+    if reset.returncode != 0:
+        raise RuntimeError((reset.stderr or reset.stdout)[-300:])
+    cleaned = _git("clean", "-fd")
+    if cleaned.returncode != 0:
+        raise RuntimeError((cleaned.stderr or cleaned.stdout)[-300:])
+    _ff_to_main()
 
 
 def lookup_pr_author_github(number, cfg):
@@ -371,13 +470,13 @@ def handle_sync(payload):
     try:
         cfg = load_sync_yaml()
     except (FileNotFoundError, ValueError) as exc:
-        return 503, {"error": "not_ready", "message": str(exc)}
+        return 503, {"error": "not_ready", "message": str(exc), "op": op}
 
     if op == "pr":
         try:
             login = lookup_pr_author(number, cfg)
         except RuntimeError as exc:
-            return 503, {"error": "not_ready", "message": str(exc)}
+            return 503, {"error": "not_ready", "message": str(exc), "op": op}
         if not login or login not in cfg["allow_pr_authors"]:
             return 403, {
                 "error": "forbidden",
@@ -393,10 +492,16 @@ def handle_sync(payload):
             try:
                 if op == "pr":
                     _git_sync_pr(number)
+                elif op == "clean":
+                    _git_sync_clean()
                 else:
                     _git_sync_main()
+            except SyncNotReady as exc:
+                body = {"error": "not_ready", "message": str(exc), "op": op}
+                body.update(exc.detail)
+                return 503, body
             except RuntimeError as exc:
-                return 503, {"error": "not_ready", "message": str(exc)}
+                return 503, {"error": "not_ready", "message": str(exc), "op": op}
         if fake:
             if op == "pr":
                 head = {"sha": "fake", "ref": "pr-%d" % number}

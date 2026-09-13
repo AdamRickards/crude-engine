@@ -59,22 +59,22 @@ attributes:
       ssh:
         read: {command: "show passwords", field: "Login attempts period [min]"}
 
-  hm2pwdmgmtminuppercasechar:
+  hm2pwdmgmtminuppercase:
     sources:
       ssh:
         read: {command: "show passwords", field: "Minimum upper case characters"}
 
-  hm2pwdmgmtminlowercasechar:
+  hm2pwdmgmtminlowercase:
     sources:
       ssh:
         read: {command: "show passwords", field: "Minimum lower case characters"}
 
-  hm2pwdmgmtminnumericchar:
+  hm2pwdmgmtminnumericnumbers:
     sources:
       ssh:
         read: {command: "show passwords", field: "Minimum numeric characters"}
 
-  hm2pwdmgmtminspecialchar:
+  hm2pwdmgmtminspecialcharacters:
     sources:
       ssh:
         read: {command: "show passwords", field: "Minimum special characters"}

@@ -2,6 +2,14 @@ version: "2.9.0"
 feature: if-ssh
 description: "SSH CLI sources for IF-MIB"
 
+# show port — get_interfaces identity + admin/alias (unchanged)
+# show interface counters — 3 lines per interface (1.17 / fixture layout):
+#   line0 tokens: Intf RxUcast RxMcast RxBcast RxOctets RxDiscard RxErrors
+#   line1 tokens: TxUcast TxMcast TxBcast TxOctets TxDiscard TxErrors
+#   line2 tokens: RxUnknPro (ignored)
+# Wide Counter64-looking values overflow dash columns; paired_rows
+# regex_extract \S+ + index matches napalm-hios-1.17 whitespace split.
+
 attributes:
   ifname:
     sources:
@@ -21,3 +29,69 @@ attributes:
       ssh:
         read: {command: "show port", parser: paired_rows, line: 1, column: 0}
         write: {command: "name {value}", level: config_interface}
+
+  # Identity for get_interface_statistics (method-scoped name → ifdescr)
+  ifdescr:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 0}
+
+  ifhcinucastpkts:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 1}
+
+  ifhcinmulticastpkts:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 2}
+
+  ifhcinbroadcastpkts:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 3}
+
+  ifinoctets:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 4}
+
+  ifindiscards:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 5}
+
+  ifinerrors:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 6}
+
+  ifhcoutucastpkts:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 7}
+
+  ifhcoutmulticastpkts:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 8}
+
+  ifhcoutbroadcastpkts:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 9}
+
+  ifoutoctets:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 10}
+
+  ifoutdiscards:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 11}
+
+  ifouterrors:
+    sources:
+      ssh:
+        read: {command: "show interface counters", parser: paired_rows, lines_per_record: 3, regex_extract: '\S+', index: 12}

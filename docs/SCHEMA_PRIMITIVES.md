@@ -15,8 +15,8 @@
 | `bit_map:` (dict) | dict | both | CRUDE transform | `crude_bits` via `to_bits` | inline bit position → name mapping |
 | `bit_map:` (str) | str | both | CRUDE transform | `crude_bits` via `to_bits` | named reference in wire YAML `value_maps` |
 | `collect: walk` | str | egress | resolve | `_egress_gather` | gathers as dict, resolves to `list(dict.values())` at read time |
-| `compute:` | dict | egress | Phase C formatters (scalar), per-row in table shaper | `_apply_compute`, `_shape_table_output` | keys: `from`, `format`, `expr`, `fallback`, `sort` |
-| `assemble:` / `set_format:` | str | ingress | pre-pipeline | `_apply_assemble` | reverse of compute — builds one wire value from multiple kwargs |
+| `compute:` | dict | egress | Phase C formatters (scalar), per-row in table shaper | `_apply_compute`, `_shape_table_output` | keys: `from`, `format`, `expr`, `fallback`, `sort`. **Not bidirectional** — see below |
+| `assemble:` / `set_format:` | str | ingress | pre-pipeline | `_apply_assemble` | write-side twin of compute when needed — many kwargs → one wire blob. Existing primitive; not auto-derived from `compute` |
 | `membership_of:` | str | egress | Phase C formatters | `_apply_membership` | cross-table boolean: is key in that attr's value set? |
 | `lookup:` | dict | egress | Phase C formatters | `_apply_lookup` | cross-table join. Keys: `from`, `index_field`, `resolve` |
 | `lookup.index_field` | str | egress | gather | `_egress_gather` | injected into proto_source so driver rekeys the table |
@@ -48,8 +48,8 @@
 
 | Key | Default | Purpose |
 |-----|---------|---------|
-| `trace` | `False` | Enable pipeline trace — stored on `engine.last_trace` / `device.last_trace` |
-| `debug` | `False` | Adapter-level: enables trace + transport logging. Never reaches engine |
+| `trace` | `False` | Ours: engine pipeline recording — `engine.last_trace` / `device.last_trace` (sidecar / `--inspect --trace`) |
+| `debug` | `False` | Goal: foreign library logs (netmiko, paramiko, pysnmp, …), not engine thoughts. Today tools `--debug` opens some of those; adapter `debug=True` still also ORs into `trace` (leftover). Schema YAML `debug: true` is a legacy alias of engine `trace`, not this meaning. |
 | `validate` | `True` | Enable validation gates — `False` skips rejection, gates still produce context |
 | `index` | `None` | Row index for per-row operations. Also accepted as first positional arg |
 | `interface` | `None` | Alias for `index` (popped from kwargs) |
@@ -87,3 +87,68 @@
 - `value_map: ifindex` on attr + `key_map: ifindex` on method → different operations: value_map maps VALUES, key_map maps KEYS
 - `index_filter` only applies when index is a list (from `all` expansion) — single index passes through unchanged
 - Method-scoped `attributes:` overrides schema-level attrs with same name — `_load_method` merges method on top of schema
+
+
+## `compute:` vs bidirectional primitives (HITL 2026-09-10, closed #109)
+
+**Bidirectional by design** applies to same-wire-atom encode/decode
+(`value_map`, `bit_map`, …): egress wire→human, ingress human→wire.
+
+**`compute:` is egress-only.** It builds a read-side view from other attrs
+(often no `wire:`). The interpreter does not auto-invert `expr:` /
+`sort:`. That is intentional, not a missing Engine feature.
+
+**When a future SET needs the derived name**, do not invent a new
+primitive. Prefer, in order:
+
+1. SET the `compute.from` source attrs (they carry wire + bidirectional maps), or use a dedicated write method whose `fields:` name those sources.
+2. Only if the caller must SET *through* the derived attr name, declare existing `assemble:` / `set_format:` on that attr (template many kwargs → one wire value). Example already in-tree: `port_security` `set_format: "{vlan} {mac}"`.
+
+**Do not** extend Engine to auto-inverse `compute.expr`. That would be new meaning.
+
+Search cue: `assemble` / `set_format` / “compute egress-only” / closed issue #109.
+
+
+## `compute.sort` (HITL 2026-09-10, open #116)
+
+`sort: <name>` is declared intent. The **recipe** for each name belongs in
+YAML (a sort registry / defaults), not as a hardcoded key lambda in
+`interpreter.py`. Engine looks up the named recipe and applies it
+generically. Silent HiOS `1/1`-style heuristics in Python are an oversight
+(opinion executed without consulting user intent). See open issue #116.
+
+
+## Boolean in/out via matrix (HITL 2026-09-10, open #115)
+
+Schema declares output type (`boolean`). Wire declares input syntax/type
+(`TruthValue`, …). `crude_matrix.yaml` maps `(syntax, type)` → transform;
+Gate 2 binds schema→wire; the matrix resolves both directions. True/false
+vocab and wire tokens belong in matrix args / `bool_map` (declared), not as
+hardcoded English lists or bare SNMP 1/2 invents in `crude.py`. See open
+issue #115.
+
+**Test floor / harness:** fixed-code
+`python3 tests/test_crude_matrix.py` (Test bot runs; Docs documents).
+Modes: **prove** one `(wire syntax, schema type)` egress+ingress;
+**discover** coverage/gaps; **all** walk every cell in `crude_matrix.yaml`.
+New syntax ⇒ new cell + fixture row. Not live `--gate`. Until the script
+exists this lane is missing-tool (`NO_HOLE`). See open issue #115.
+
+**SNMP inventory + schema check:** start from matrix keys + wire `syntax:`
+values (discover gaps). Legal `(syntax → schema type)` edges from the
+matrix are the allow-list — `validate_schemas.py` should fail nonsense
+schema/wire type pairings (extend that script, do not invent a second
+validator). Schema clerk owns that check; Test bot owns the harness.
+
+**Beat existing into shape (circular causation):** wire syntax (MIB/SNMP)
+has more rights; matrix is the allow-list; schema types must fit — expect
+current declarative nonsense to fail when the check lands, then Schema
+shortens toward a shorter standard list. Wire PRs: run
+`test_crude_matrix.py` **before and after** so the receipt names schema
+follow-ups or proves the datatype fix.
+
+**Discover aim:** completeness + compliance map across SNMP/SMIv2 → wire →
+matrix → schema. Classify covered / missing matrix / missing wire /
+schema nonsense / **custom-should-be-standard** (collapse to standard
+syntax + attributes when the last refactor pattern applies). Scoreboard
+is how we see transform coverage over time.

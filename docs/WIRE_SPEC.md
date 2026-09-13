@@ -14,7 +14,7 @@ Wire YAMLs are **machine-generated** from MIB XML + MOPS webUI proxy captures. T
 | Overrides | `local/generator/overrides.yaml` | Manual corrections (create_method, type) |
 | MIB source | `local/reference/MIBs/` | 66 firmware MIB files |
 | MIB schema | `local/reference/MOPS/mops_hios.xml` | MOPS MIB tree for OID/table resolution |
-| Master schema doc | `docs/napalm-hios-2-6-schema.md` | 4,058 attribute reference (1.3M) |
+| Historical attribute reference (leftover filename) | `docs/napalm-hios-2-6-schema.md` | 4,058 attribute dump (1.3M). Filename is leftover; not the live product name. Live schema contracts are `crude_engine/schemas/*.yaml`. |
 
 ## The Three-File Model
 

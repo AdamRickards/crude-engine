@@ -5,6 +5,8 @@ methods:
   get_vlans:
     type: dict
     primary_key: vlan_id
+    # SNMP: accessible dot1qVlanStaticTable, vlan_id from walk suffix.
+    # Not CurrentTable INDEX (1.17 same-wire).
     defaults:
       name: ''
       ports: {}
@@ -36,6 +38,17 @@ methods:
     defaults:
       egress_ports: []
       untagged_ports: []
+    attributes:
+      # wire+compute on same name loses to defaults←all_data overwrite;
+      # gather raw, coerce None/'None' (ifindex miss) to [].
+      untagged_ports_raw:
+        wire: dot1qvlanstaticuntaggedports
+        source: q-bridge
+        value_map: ifindex
+      untagged_ports:
+        compute:
+          from: [untagged_ports_raw]
+          expr: "untagged_ports_raw if untagged_ports_raw not in (None, 'None') else []"
   set_vlan_egress:
     type: upsert
 attributes:
@@ -59,7 +72,7 @@ attributes:
   ports:
     compute:
       from: [egress_ports, untagged_ports, forbidden_ports]
-      expr: "{**{p: 'U' for p in untagged_ports}, **{p: 'T' for p in egress_ports if p not in untagged_ports}, **{p: 'F' for p in forbidden_ports}}"
+      expr: "{**{p: 'U' for p in (untagged_ports if untagged_ports not in (None, 'None') else [])}, **{p: 'T' for p in (egress_ports if egress_ports not in (None, 'None') else []) if p not in (untagged_ports if untagged_ports not in (None, 'None') else [])}, **{p: 'F' for p in (forbidden_ports if forbidden_ports not in (None, 'None') else [])}}"
       sort: natural
   interface_name:
     wire: ifname
@@ -76,6 +89,8 @@ attributes:
     value_map:
       '1': admitAll
       '2': admitOnlyVlanTagged
+      'admit all': admitAll
+      vlanonly: admitOnlyVlanTagged
   vlan_status:
     wire: dot1qvlanstaticrowstatus
     source: q-bridge

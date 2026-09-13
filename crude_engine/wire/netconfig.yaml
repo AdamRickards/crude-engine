@@ -1,5 +1,13 @@
 version: 2.6.0
 feature: netconfig
+value_maps:
+  hidiscovery_mode:
+    read-write: readWrite
+    read-only: readOnly
+  # SSH Protocol none/local; schema MIB 1→static (#54).
+  management_protocol:
+    none: static
+    local: static
 schemas:
   read_netconfig:
     type: dict
@@ -1079,7 +1087,7 @@ attributes:
           field: hm2NetOobMgmtOperState
   hm2netoobmgmtprefixlength:
     syntax: InetAddressPrefixLength
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -1195,7 +1203,7 @@ attributes:
           field: hm2NetOobUsbMgmtIPAddrType
   hm2netoobusbmgmtprefixlength:
     syntax: InetAddressPrefixLength
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
@@ -1209,7 +1217,7 @@ attributes:
           field: hm2NetOobUsbMgmtPrefixLength
   hm2netprefixlength:
     syntax: InetAddressPrefixLength
-    type: integer
+    type: string
     access: ru
     sources:
       snmp:
