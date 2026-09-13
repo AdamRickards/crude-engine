@@ -33,7 +33,8 @@ methods:
     type: upsert
   get_auto_disable:
     type: dict
-    primary_key: name
+    # Wired primary + key_map (storm_control sibling). name: {} → empty pk → Offline {} (#244)
+    primary_key: enabled
     key_map: ifindex
     defaults:
       enabled: false
@@ -41,7 +42,6 @@ methods:
       remaining_time: 0
       timer: 0
     attributes:
-      name: {}
       enabled:
         wire: hm2autodisableintfoperstate
         source: devmgmt
