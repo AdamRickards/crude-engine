@@ -41,6 +41,7 @@ else
 fi
 
 run "program-files" "$PY" scripts/generate_status.py --check
+run "floors-board" "$PY" scripts/generate_floors_board.py --check
 run "inspect-result" "$PY" tests/test_inspect_result.py
 run "inspect-reaches-driver" "$PY" tests/test_inspect_reaches_driver.py
 run "ssh-dns-key-column" "$PY" tests/test_ssh_dns_key_column.py
@@ -74,12 +75,13 @@ if [[ "${REQUIRE_RELEASE_PROOFS:-0}" == "1" ]]; then
   exit $?
 fi
 
-# Soft lane (cycle 0): fail only on import + program files.
+# Soft lane (cycle 0): fail only on import + program files + floors board.
 # Validator / principles / catalogue are scored above and stay red
 # until their cycle tasks close. Flip REQUIRE_RELEASE_PROOFS=1 for 2.10.
 soft=0
 "$PY" -c "from crude_engine import FeatureEngine" || soft=1
 "$PY" scripts/generate_status.py --check || soft=1
+"$PY" scripts/generate_floors_board.py --check || soft=1
 "$PY" tests/test_inspect_result.py || soft=1
 "$PY" tests/test_inspect_reaches_driver.py || soft=1
 "$PY" tests/test_ssh_dns_key_column.py || soft=1

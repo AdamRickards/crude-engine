@@ -66,6 +66,7 @@ for operation in ['create', 'read', 'upsert', 'delete', 'execute']:
 | Document | Contents |
 |----------|----------|
 | [status.html](docs/status.html) | Program poster — where we are, next task, proofs |
+| [FLOORS_BOARD.md](docs/FLOORS_BOARD.md) | Living method × protocol × floor glance (generated; #195) |
 | [SEED.md](docs/program/SEED.md) | Why + how work is allowed to happen |
 | [ROADMAP.md](docs/ROADMAP.md) | Versions and exit criteria (2.10 = first PyPI) |
 | [GitHub issues](https://github.com/AdamRickards/crude-engine/issues) | Leftover work (prove-then-file or comment-close) |
@@ -92,6 +93,7 @@ python3 local/generator/validate_schemas.py
 
 # Regenerate the program status page
 python3 scripts/generate_status.py
+python3 scripts/generate_floors_board.py --check
 ```
 
 ## Protocol Support

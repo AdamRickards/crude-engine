@@ -5,6 +5,7 @@ open it on GitHub anytime. Chart first: when HITL names a multi-session goal,
 update this board before (or as) clerks spin. Children are GitHub issues.
 Chat is signal, not storage.
 
+**Living floors glance (generated SoT):** [`docs/FLOORS_BOARD.md`](../../../docs/FLOORS_BOARD.md) — `python3 scripts/generate_floors_board.py` (never hand-edit; stub until Test provenance wiring).
 
 ## What an Effort is
 
