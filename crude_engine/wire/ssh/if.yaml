@@ -2,7 +2,11 @@ version: "2.9.0"
 feature: if-ssh
 description: "SSH CLI sources for IF-MIB"
 
-# show port — get_interfaces identity + admin/alias (unchanged)
+# show port — get_interfaces identity (#226 Rank1): 2-line records; bind line0 only.
+#   line0: Interface Name / Role / Admin / Phys.Mode / Cross / Phys.Stat / Link / STP
+#   line1: Trackname / Trackstate — not port alias (1.17 alias hardcoded "")
+# show mtu → hm2agentportmaxframesize in platform-switching-ssh
+# show system info MAC → ifphysaddress via default_from keys_from ifname
 # show interface counters — 3 lines per interface (1.17 / fixture layout):
 #   line0 tokens: Intf RxUcast RxMcast RxBcast RxOctets RxDiscard RxErrors
 #   line1 tokens: TxUcast TxMcast TxBcast TxOctets TxDiscard TxErrors
@@ -14,21 +18,47 @@ attributes:
   ifname:
     sources:
       ssh:
-        read: {command: "show port", parser: paired_rows, column: 0}
+        read: {command: "show port", parser: paired_rows, lines_per_record: 2, line: 0, column: 0}
 
   ifadminstatus:
     type: string
     sources:
       ssh:
-        read: {command: "show port", parser: paired_rows, column: 2}
+        read: {command: "show port", parser: paired_rows, lines_per_record: 2, line: 0, column: 2}
         write: {command: "shutdown", level: config_interface}
 
+  # Link ≈ fields[-2] / last-but-one dash column (existing negative column index)
+  ifoperstatus:
+    sources:
+      ssh:
+        read: {command: "show port", parser: paired_rows, lines_per_record: 2, line: 0, column: -2}
+
+  # Phys.Stat token → Mbps digits when present; "-" / non-digit → "" (honest vs MOPS ifHighSpeed)
+  ifhighspeed:
+    sources:
+      ssh:
+        read: {command: "show port", parser: paired_rows, lines_per_record: 2, line: 0, column: 5, regex: '(\d+)'}
+
+  # Drop SSH read of line1 col0 (Trackname invent). Keep write; schema default alias ''.
   ifalias:
     type: string
     sources:
       ssh:
-        read: {command: "show port", parser: paired_rows, line: 1, column: 0}
         write: {command: "name {value}", level: config_interface}
+
+  # Management MAC scalar → all ifname keys (empty table primary + default_from broadcast)
+  ifphysaddress:
+    type: string
+    sources:
+      ssh:
+        read:
+          command: "show system info"
+          parser: table
+          column: 0
+          default_from:
+            command: "show system info"
+            field: "MAC address (management)"
+            keys_from: ifname
 
   # Identity for get_interface_statistics (method-scoped name → ifdescr)
   ifdescr:
