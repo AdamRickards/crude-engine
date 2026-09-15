@@ -3,6 +3,13 @@ feature: platform-switching-ssh
 description: "SSH CLI sources for platform-switching attrs"
 
 attributes:
+  # MTU: show mtu → get_interfaces.mtu (schema wire hm2agentportmaxframesize)
+  hm2agentportmaxframesize:
+    sources:
+      ssh:
+        read: {command: "show mtu", parser: paired_rows, lines_per_record: 1, column: 1}
+        write: {command: "mtu {value}", level: config_interface}
+
   # IP Source Guard: show ip source-guard interfaces
   hm2agentipsgifverifysource:
     sources:
