@@ -7,7 +7,7 @@
 
 We are preparing crude-engine for its first real release. The work plan, the matrix tool design, the cross-reference scheme, and the exit criteria all live here so a fresh session can pick up from this doc and `AGENTS.md` (the only root agent law), not leftover Claude. Leftover Claude lives at `local/archive/docs-legacy/claude/CLAUDE.md` (archive, not law). Do not update a live `CLAUDE.md`. Archived TODO trio lives at `local/archive/docs-legacy/` (not live law). Leftover work is GitHub issues (prove-then-file or comment-close).
 
-The old `docs/TODO.md`, `docs/TODO-old.md`, and `docs/TODO_HITLIST.md` are archived at `local/archive/docs-legacy/` — **not live law.** Leftovers live on GitHub issues. `docs/ROADMAP.md` stays — feature target + release gate (plus GitHub milestones). Do not treat a live `docs/TODO.md` as the current cycle. `docs/ROADMAP-old.md` remains in `docs/` (untrusted hint).
+The old `docs/TODO.md`, `docs/TODO-old.md`, and `docs/TODO_HITLIST.md` are archived at `local/archive/docs-legacy/` — **not live law.** Leftovers live on GitHub issues. `docs/ROADMAP.md` stays — feature target + release gate (plus GitHub milestones). Do not treat a live `docs/TODO.md` as the current cycle. `docs/ROADMAP-old.md` was culled (v1 cleanup); untrusted archive hints live under `local/archive/` when kept.
 
 ## Phase 0 status (2026-04-14): COMPLETE
 
@@ -963,7 +963,7 @@ After each fix:
 - **JSON file location** — `tests/release_matrix.json` ✓
 - **Rendered doc location** — `docs/RELEASE_MATRIX.md` ✓
 - **Tag scheme** — `#bucket #ID` two-token format ✓ (see "Cross-reference tag scheme" above)
-- **TODO trio archived** — `TODO.md` / `TODO-old.md` / `TODO_HITLIST.md` live under `local/archive/docs-legacy/` (not live law). `ROADMAP.md` stays. `ROADMAP-old.md` remains in `docs/` (untrusted) ✓
+- **TODO trio archived** — `TODO.md` / `TODO-old.md` / `TODO_HITLIST.md` live under `local/archive/docs-legacy/` (not live law). `ROADMAP.md` stays. `ROADMAP-old.md` culled in v1 cleanup ✓
 
 ## Deferred until needed
 

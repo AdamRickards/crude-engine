@@ -24,7 +24,7 @@ the chart.
 ## Tools (fixed code only)
 
 - GitHub issues: file, label, link. Do not treat Issues as the brain;
-  `cycles.yaml` / this folder wins if they disagree.
+  `local/agents/` (this folder) wins if Issues disagree.
 - Sidecar `POST /v1/run` when routing needs a live inspect before the hole
   is obvious. Prefer `trace:true` (engine pipeline recording) when the miss
   may be ours — see Orchestration check 2. Not `debug` (foreign library logs).

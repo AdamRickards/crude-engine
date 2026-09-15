@@ -1,4 +1,29 @@
-# Agents — sieve, tools, bounded gap
+# Agents — Destination, sieve, tools, bounded gap
+
+## Destination
+
+A **typed, enumerable, self-describing capability surface** for Hirschmann
+HiOS (then any device with a formal interface description).
+
+YAML declares. Python executes. No decisions in code.
+
+The engine is the commodity. **The contracts are the product.**
+
+First public artifact: **crude-engine 2.10.0 on PyPI**, with MOPS + SNMP
+verified through the napalm-hios adapter by the release matrix.
+
+### Destination rules
+
+1. **Brain is the repo.** GitHub is the host (CI, releases, Issues as a
+   *presenter*). Issues are not the source of truth.
+2. **Tight proofs, loose instructions.** The agent may take any route that
+   survives the check — not a license to narrate. Speech is a receipt or
+   `NO_HOLE`.
+3. **Extract before generate.** Contracts from working code, not from vision.
+4. **Failure changes the spec**, not just the Python.
+5. **Lab truth ≠ PR truth.** Offline CI must stay green without a switch.
+6. **One Effort poke at a time.** Finish or park. Do not open a second
+   inversion.
 
 Flowcharts in this folder are the process. They are how a human sees the
 holes, and how a Bot gets its personality (derived, fixed format, not a
@@ -6,9 +31,8 @@ novel). Anything that fits an existing hole runs to done with no human.
 Anything that does not fit is HITL — then the chart gets a new hole, or a
 new fixed-code tool, so the next one falls through.
 
-This folder is the 2.0 of `docs/program/METHOD.md` for bot labour. Destination
-still lives in `docs/program/SEED.md`. Do not treat `SEED.md`'s "loose
-instructions" as a license to narrate. Speech is a receipt or `NO_HOLE`.
+This folder is process law for bot labour. Competing v1 program law
+under `docs/program/` is removed.
 
 ## The sieve
 
@@ -180,8 +204,7 @@ do not let bot profile prose drift ahead of this folder.
    real object does not fit. Then shorten that clerk's `INSTRUCTIONS.md` to
    match. Never patch instructions and leave the mermaid lying.
 2. **Ship via PR** into `AdamRickards/crude-engine`. Architect owns GitHub
-   ingress and redaction. Historical snapshots (`AGENTS-TODO.md`,
-   `AUDIT-*.md`) are not law.
+   ingress and redaction. Historical snapshots are not law (see Earned).
 3. **Bot profiles follow the roster.** Each live clerk description is a
    short leash derived from its `INSTRUCTIONS.md` (hole, tools, never) plus
    a pointer to this folder. Architect does not invent a seventh clerk.
@@ -191,11 +214,16 @@ do not let bot profile prose drift ahead of this folder.
    updating the profile or the pack — keep one truth.
 5. **Decision trail on the issue** (see above). Profiles and INSTRUCTIONS
    require those glance lines; weekday sync flags essays or silent work.
-6. **Claude on the VPS** stays local-only (no push). Architect turns
+6. **VPS sidecar worker** stays local-only (no push). Architect turns
    detailed sidecar receipts into GitHub issues without device identity.
 
-## Not standing law
+## Earned (folded 2026-09-15)
 
-`AGENTS-TODO.md` and `AUDIT-2026-09-04.md` are historical snapshots. Bots
-do not read them. The living spec of this refactor is
-[`local-agents-refactor.md`](local-agents-refactor.md).
+Brief archaeology — Bots do not load these as instructions:
+
+- **2026-09-04 audit + AGENTS-TODO** — session punch list / drift snapshot.
+  Living law is this README + `diagrams/` + clerk `INSTRUCTIONS.md`.
+- **local-agents-refactor (2026-09-05)** — flowchart personality, fixed-code
+  tools, AI gap only between red and green named proofs; HITL on `NO_HOLE`
+  or new meaning; engine files always need HITL sign-off (receipt + one
+  line). Intent folded into Destination and Living law above; file deleted.
