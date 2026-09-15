@@ -1,11 +1,11 @@
 # ROADMAP — crude-engine
 
-Curated. Machine twin: `docs/program/roadmap.yaml`.
-Old file: `docs/ROADMAP-old.md` (untrusted).
+Curated. Destination + bot process law: `local/agents/README.md`.
+Effort progress: `local/agents/diagrams/effort-board.md`.
 
 **Now:** 2.9.0 shipped as architecture.
 **Next:** 2.10.0 first PyPI.
-**Host:** GitHub (`AdamRickards/crude-engine`) — not created until `git init`. The files in `docs/program/` work either way.
+**Host:** GitHub (`AdamRickards/crude-engine`).
 
 ---
 
@@ -23,16 +23,16 @@ Old file: `docs/ROADMAP-old.md` (untrusted).
 | `principles-grep` | offline | `scripts/check_principles.py` | `if protocol ==` and `except Exception: pass` stay banned. |
 | `parity-gate` | lab | `release_matrix.py --execute --kind parity --render` | 145 blocking cells (2026-04-14), almost all `#SNMP-Compound-Index-Decode`. |
 | `setter-crud-fleet` | lab | `--kind setter` then `--kind crud` | Read path green ≠ write path proven. |
-| `docs-curated` | offline | `generate_status.py --check` | ROADMAP.md exists and matches the cycle. Leftovers live on GitHub issues. |
+| `docs-curated` | offline | `generate_status.py --check` | Agents Destination + Effort board + ROADMAP present. Leftovers live on GitHub issues. |
 
 Gate definition (unchanged): every in-scope method has a verified MOPS and SNMP verdict. Truth from execution, not prose.
 
 Version number: **2.10.0** (not a 1.0 reset). 2.9 already exists in the package.
 
-### Cycle 0 (current) — honest catalogue
+### Current focus — honest catalogue + Effort board
 
-Offline only. See `docs/program/cycles.yaml`. Leftover work is GitHub issues.
-Lab P0 items are on the cycle as `lab: true` but **not started** until offline proofs are green.
+Offline proofs first. Live progress: `local/agents/diagrams/effort-board.md`.
+Leftover work is GitHub issues.
 
 ---
 
@@ -40,7 +40,7 @@ Lab P0 items are on the cycle as `lab: true` but **not started** until offline p
 
 Promote or park with exemptions after 2.10.
 
-- `#driver` SSH parsers still untrusted (`SSH_HITLIST.md` is a hint)
+- `#driver` SSH parsers still untrusted until the matrix re-verifies
 - `#release #Offline-1st-Class` — one real matrix run decides
 
 ## #roadmap #v3.0.0 — Second OS or transport

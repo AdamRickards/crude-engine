@@ -65,8 +65,8 @@ for operation in ['create', 'read', 'upsert', 'delete', 'execute']:
 
 | Document | Contents |
 |----------|----------|
-| [status.html](docs/status.html) | Program poster — where we are, next task, proofs |
-| [SEED.md](docs/program/SEED.md) | Why + how work is allowed to happen |
+| [status.html](docs/status.html) | Agents/Effort poster — Destination pointer + live bubbles |
+| [local/agents/README.md](local/agents/README.md) | Destination + process law for bot labour |
 | [ROADMAP.md](docs/ROADMAP.md) | Versions and exit criteria (2.10 = first PyPI) |
 | [GitHub issues](https://github.com/AdamRickards/crude-engine/issues) | Leftover work (prove-then-file or comment-close) |
 | [METHOD_REFERENCE.md](docs/METHOD_REFERENCE.md) | Quick reference — methods, return keys, one line each |
@@ -90,7 +90,7 @@ python3 local/generator/generate_docs.py
 # Validate all schemas against the canonical model
 python3 local/generator/validate_schemas.py
 
-# Regenerate the program status page
+# Regenerate the agents/Effort status page
 python3 scripts/generate_status.py
 ```
 

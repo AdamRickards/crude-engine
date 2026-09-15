@@ -38,7 +38,7 @@ Generated-only (never hand-edit): `docs/API_REFERENCE.md`,
 generator or the YAML they read.
 
 Hand-written to keep honest: `CLAUDE.md`, `docs/DIAGNOSTIC_PROCESS.md`,
-`docs/ARCHITECTURE.md`, `docs/program/METHOD.md`, `docs/ROADMAP.md`.
+`docs/ARCHITECTURE.md`, `local/agents/README.md`, `docs/ROADMAP.md`.
 `docs/WIRING_GUIDE.md` is cited and missing — that is a signal for
 architect, not a file to invent in passing.
 
