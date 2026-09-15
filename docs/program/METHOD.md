@@ -25,6 +25,7 @@ Read this when you sit down to work, or when an agent resumes.
 | `docs/RELEASE_MATRIX.md` | Gate scoreboard | **Generated only** |
 | `docs/API_REFERENCE.md` | Catalogue rendering | **Generated only** (`generate_docs.py`) |
 | `docs/status.html` | Poster | **Generated only** (`generate_status.py`) |
+| `docs/FLOORS_BOARD.md` | Method × protocol × floor glance | **Generated only** (`generate_floors_board.py`) |
 
 If two files disagree, the machine file wins and the human file is regenerated or fixed.
 
