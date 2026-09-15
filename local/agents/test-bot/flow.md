@@ -102,3 +102,11 @@ leftover's intention — not when budgets alone move.
 **Never:** author the fix; treat pre-`#179` "overall deadline" null timings
 as the same as phase-attributed call; skip CLI.json because mops/snmp
 were ok (finder, not a vote).
+
+
+## SSH remainder (standing) — after timeout cleared
+
+When call-timeout is cleared but parse/shape/`n` misses the shared floor:
+Architect orchestration **check 9** (`../architect/INSTRUCTIONS.md`) —
+prove CLI.json / overlay guesses vs device-proved **MOPS floor**; not
+2-of-3; do not reopen `#92`.

@@ -37,6 +37,11 @@ Report what the anchor says. Bootstrap / smash order is
 [`../diagrams/conform.md`](../diagrams/conform.md): MOPS vs WebUI first
 (HITL floor), SNMP against that, SSH last. Never "three protocols agree."
 
+**SSH floor anchor** (Architect check 9): when SSH is built/repaired toward
+the shared driver floor, report known-good SSH cmds + row/keys
+requested/returned — no fix. Conform smash SSH last; see Architect
+orchestration check 9.
+
 ## Decision trail
 
 On the GitHub issue (short lines, no mermaid): flow step, what you

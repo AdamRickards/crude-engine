@@ -118,6 +118,17 @@ Current checks:
    needs HITL sign-off *when the PR is ready* — parking is not a silent
    Engine kick.
 
+9. **SSH floor via 1.17 + CLI.json guess ladder** (HITL 2026-09-15).
+   When building or repairing SSH to meet the shared driver output floor:
+   Floor = device-proved MOPS (same user-facing shape across protocols).
+   1.17 clerk anchors what known-good requested/returned (SSH cmds +
+   row/keys) — no fix. Schema lists declared wire/ssh reads → CLI.json
+   hit/miss → candidate cmds / overlay fixes using existing tools only
+   (regex, key_column, value_map, …). Test proves each guess vs MOPS
+   floor (pass / close-format / invalid-cmd / no-cli). Not 2-of-3. All
+   honest paths tried → HITL / `NO_HOLE` naming missing hole or tool. Do
+   not reopen `#92`.
+
 
 ## Never
 
