@@ -1665,6 +1665,11 @@ class FeatureEngine:
                 continue
             wire_attr = map_spec["wire_attr"]
             if wire_attr in seen:
+                # Already in this batch (e.g. ifname for get_interfaces). Still
+                # register so _populate_context_maps fills the cache from the
+                # same gather — otherwise a later _resolve_context_map re-gather
+                # overwrites SSH last_cli and hides multi-show cmds from inspect.
+                context_map_batch[map_name] = wire_attr
                 continue
             seen.add(wire_attr)
             attr_ref = {"source": map_spec["wire_source"], "wire": wire_attr}

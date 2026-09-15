@@ -5,6 +5,7 @@ description: "SSH CLI sources for IF-MIB"
 # show port — get_interfaces identity (#226 Rank1): 2-line records; bind line0 only.
 #   line0: Interface Name / Role / Admin / Phys.Mode / Cross / Phys.Stat / Link / STP
 #   line1: Trackname / Trackstate — not port alias (1.17 alias hardcoded "")
+# oper: regex_extract \\b(up|down)\\b + type string (not column -2 / not integer→0)
 # show mtu → hm2agentportmaxframesize in platform-switching-ssh
 # show system info MAC → ifphysaddress via default_from keys_from ifname
 # show interface counters — 3 lines per interface (1.17 / fixture layout):
@@ -27,11 +28,17 @@ attributes:
         read: {command: "show port", parser: paired_rows, lines_per_record: 2, line: 0, column: 2}
         write: {command: "shutdown", level: config_interface}
 
-  # Link ≈ fields[-2] / last-but-one dash column (existing negative column index)
+  # Link up/down: type string (avoid crude_numeric→0); regex beats dash-col/-2 STP miss
   ifoperstatus:
+    type: string
     sources:
       ssh:
-        read: {command: "show port", parser: paired_rows, lines_per_record: 2, line: 0, column: -2}
+        read:
+          command: "show port"
+          parser: paired_rows
+          lines_per_record: 2
+          line: 0
+          regex_extract: '\b(up|down)\b'
 
   # Phys.Stat token → Mbps digits when present; "-" / non-digit → "" (honest vs MOPS ifHighSpeed)
   ifhighspeed:
@@ -46,7 +53,9 @@ attributes:
       ssh:
         write: {command: "name {value}", level: config_interface}
 
-  # Management MAC scalar → all ifname keys (empty table primary + default_from broadcast)
+  # Management MAC scalar → all ifname keys.
+  # Primary read declares show system info so gather/cli lists it; table walk is
+  # empty/non-port keys, default_from broadcasts MAC onto ifname keys.
   ifphysaddress:
     type: string
     sources:
