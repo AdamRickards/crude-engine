@@ -9,16 +9,12 @@ Row set (documented source):
   Keys present only in tests/fixtures/offline_gold/gold_floors.json are unioned
   in so catalogue floors are never silently dropped if a schema hole appears.
 
-Stub honesty (Architect #195 — gold = device-proved only):
-  Today's gold_floors.json is sanitized schema-shaped sample (see its
-  description). Presence in that file is NOT a floor until Test wires a
-  device-proved / HITL-gold provenance flag. Therefore this stub sets
-  floor_source=no-floor for every row and leaves offline/mops/snmp/ssh as
-  untested. Do not invent floors from sanitized XML. No lab IPs.
-
-  Optional offline fill from tests/offline_gold_matrix.py is deferred: that
-  harness needs napalm/OfflineHIOS and must not be treated as floor provenance.
-  Test wiring follow-up will feed real cell enums.
+Provenance (Test-owned fixture):
+  tests/fixtures/floors_provenance.json — redacted method →
+  {floor_source, offline, mops, snmp, ssh}. Aggregates only; no host/IP keys.
+  floor_source=gold only when device-proved MOPS exists (release_matrix mops
+  verdict=pass). Sanitized gold_floors.json alone never sets gold.
+  Missing method → floor_source=no-floor, protocol cells=untested.
 
 Cell enum: pass | fail | untested | no-floor | empty (optional)
 
@@ -41,11 +37,14 @@ except ImportError:
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SCHEMAS = os.path.join(ROOT, "crude_engine", "schemas")
 GOLD = os.path.join(ROOT, "tests", "fixtures", "offline_gold", "gold_floors.json")
+PROVENANCE = os.path.join(ROOT, "tests", "fixtures", "floors_provenance.json")
 OUT = os.path.join(ROOT, "docs", "FLOORS_BOARD.md")
 
 READ_TYPES = {"dict", "list", "list_append"}
 COLUMNS = ("method", "floor_source", "offline", "mops", "snmp", "ssh")
 CELL_ENUM = ("pass", "fail", "untested", "no-floor", "empty")
+FLOOR_SOURCES = ("gold", "no-floor")
+PROTO_CELLS = ("pass", "fail", "untested", "empty")
 
 
 def load_yaml(path: str):
@@ -91,7 +90,55 @@ def row_methods() -> list[str]:
     return sorted(set(schema_read_methods()) | set(gold_method_keys()))
 
 
-def render(methods: list[str]) -> str:
+def load_provenance() -> dict[str, dict[str, str]]:
+    """Redacted aggregates; empty dict if fixture missing (honest stub)."""
+    if not os.path.isfile(PROVENANCE):
+        return {}
+    with open(PROVENANCE) as f:
+        data = json.load(f)
+    methods = data.get("methods") if isinstance(data, dict) else None
+    if not isinstance(methods, dict):
+        return {}
+    out: dict[str, dict[str, str]] = {}
+    for name, entry in methods.items():
+        if not isinstance(entry, dict):
+            continue
+        floor = str(entry.get("floor_source") or "no-floor")
+        if floor not in FLOOR_SOURCES:
+            floor = "no-floor"
+        cells = {"floor_source": floor}
+        for col in ("offline", "mops", "snmp", "ssh"):
+            v = str(entry.get(col) or "untested")
+            if v not in PROTO_CELLS:
+                v = "untested"
+            cells[col] = v
+        # Sanitize rule: never promote gold from missing mops pass
+        if cells["floor_source"] == "gold" and cells["mops"] != "pass":
+            cells["floor_source"] = "no-floor"
+        out[str(name)] = cells
+    return out
+
+
+def cell_for(method: str, prov: dict[str, dict[str, str]]) -> dict[str, str]:
+    if method in prov:
+        return prov[method]
+    return {
+        "floor_source": "no-floor",
+        "offline": "untested",
+        "mops": "untested",
+        "snmp": "untested",
+        "ssh": "untested",
+    }
+
+
+def render(methods: list[str], prov: dict[str, dict[str, str]]) -> str:
+    n_gold = sum(1 for m in methods if cell_for(m, prov)["floor_source"] == "gold")
+    n_off_pass = sum(1 for m in methods if cell_for(m, prov)["offline"] == "pass")
+    n_mops_pass = sum(1 for m in methods if cell_for(m, prov)["mops"] == "pass")
+    n_snmp_pass = sum(1 for m in methods if cell_for(m, prov)["snmp"] == "pass")
+    n_ssh_pass = sum(1 for m in methods if cell_for(m, prov)["ssh"] == "pass")
+    has_prov = bool(prov)
+
     lines: list[str] = []
     lines.append("# FLOORS_BOARD")
     lines.append("")
@@ -103,20 +150,32 @@ def render(methods: list[str]) -> str:
         "Glance chart: `local/agents/diagrams/effort-board.md`."
     )
     lines.append("")
-    lines.append("## Stub note — Test provenance wiring follow-up")
-    lines.append("")
-    lines.append(
-        "Architect rule: **floor** means MOPS gather proved from an end device "
-        "(device-proved / HITL gold), not sanitized-only invent."
-    )
-    lines.append("")
-    lines.append(
-        "`tests/fixtures/offline_gold/gold_floors.json` today is sanitized "
-        "schema-shaped sample. This stub therefore sets `floor_source=no-floor` "
-        "for all rows and leaves protocol cells `untested` until Test feeds "
-        "device-proved provenance and honest offline/mops/snmp/ssh aggregates "
-        "(no lab identity in this page)."
-    )
+    if has_prov:
+        lines.append("## Provenance")
+        lines.append("")
+        lines.append(
+            "Cells from Test-owned `tests/fixtures/floors_provenance.json` "
+            "(redacted aggregates — **no host/IP identity**)."
+        )
+        lines.append("")
+        lines.append(
+            "**floor_source=`gold`** only when device-proved MOPS exists "
+            "(`mops=pass` from `tests/release_matrix.json` verdicts). "
+            "Sanitized `gold_floors.json` alone never sets gold."
+        )
+        lines.append("")
+        lines.append(
+            f"Counts: floor_source gold **{n_gold}** / {len(methods)}; "
+            f"offline pass **{n_off_pass}**; mops pass **{n_mops_pass}**; "
+            f"snmp pass **{n_snmp_pass}**; ssh pass **{n_ssh_pass}**."
+        )
+    else:
+        lines.append("## Stub note — provenance fixture missing")
+        lines.append("")
+        lines.append(
+            "No `tests/fixtures/floors_provenance.json`. "
+            "All rows `floor_source=no-floor`, protocol cells `untested`."
+        )
     lines.append("")
     lines.append("### Cell vocabulary")
     lines.append("")
@@ -141,13 +200,14 @@ def render(methods: list[str]) -> str:
     lines.append("| " + " | ".join(COLUMNS) + " |")
     lines.append("| " + " | ".join("---" for _ in COLUMNS) + " |")
     for method in methods:
+        c = cell_for(method, prov)
         cells = [
             f"`{method}`",
-            "`no-floor`",
-            "`untested`",
-            "`untested`",
-            "`untested`",
-            "`untested`",
+            f"`{c['floor_source']}`",
+            f"`{c['offline']}`",
+            f"`{c['mops']}`",
+            f"`{c['snmp']}`",
+            f"`{c['ssh']}`",
         ]
         lines.append("| " + " | ".join(cells) + " |")
     lines.append("")
@@ -164,7 +224,7 @@ def render(methods: list[str]) -> str:
 
 def main() -> int:
     p = argparse.ArgumentParser(
-        description="Generate docs/FLOORS_BOARD.md (floors glance stub, #195)"
+        description="Generate docs/FLOORS_BOARD.md (floors glance, #195)"
     )
     p.add_argument(
         "--check",
@@ -177,9 +237,13 @@ def main() -> int:
     if not methods:
         print("FAIL  no gather methods found (schemas / gold_floors)")
         return 1
-    text = render(methods)
+    prov = load_provenance()
+    text = render(methods, prov)
     rel = os.path.relpath(OUT, ROOT)
-    print(f"floors board rows={len(methods)} enum={','.join(CELL_ENUM)}")
+    print(
+        f"floors board rows={len(methods)} provenance={len(prov)} "
+        f"enum={','.join(CELL_ENUM)}"
+    )
 
     if args.check:
         if not os.path.isfile(OUT):
