@@ -77,18 +77,20 @@ attributes:
       ssh:
         write: {command: "auto-power-down {value}", level: config_interface}
 
-  # get_optics (#55/#274): show sfp is plugged modules, not show port / ifname.
+  # get_optics (#55/#274/#294): show sfp is plugged modules, not show port / ifname.
   # Line layout (napalm-hios 1.17): Intf  Part-ID  ModType  Temp  TxPower  RxPower
   # Part-ID is variable width (single spaces); flexible key_column:0 overflows
   # into Part-ID → composite keys "1/1 M-SFP-…". column_overflow:strict clips
   # Intf to dash width so keys match MOPS/SNMP ifName (port id only).
+  # Power: left of each dBm/mW pair → dBm float onto *PowerdBm wires (not
+  # Integer32 0.1 µW Current{Tx,Rx}Power — that was the #294 scale hole).
   # Value fields still use regex_extract (not column index).
-  hm2sfpcurrenttxpower:
+  hm2sfpcurrenttxpowerdbm:
     sources:
       ssh:
         read: {command: "show sfp", parser: paired_rows, lines_per_record: 1, key_column: 0, column_overflow: strict, regex_extract: '(-?\d+\.\d+)\s*/\s*\d+\.\d+', index: 0}
 
-  hm2sfpcurrentrxpower:
+  hm2sfpcurrentrxpowerdbm:
     sources:
       ssh:
         read: {command: "show sfp", parser: paired_rows, lines_per_record: 1, key_column: 0, column_overflow: strict, regex_extract: '(-?\d+\.\d+)\s*/\s*\d+\.\d+', index: 1}
