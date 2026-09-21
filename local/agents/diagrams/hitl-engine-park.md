@@ -21,6 +21,7 @@ lands or HITL kills the need.
 | Fail-fast / invalid-CLI redefine | Needs HITL eyes on live invalid/missing/bad-attr | was #92 title — **do not reopen #92**; new ticket if poked | Timeout detection done (#179–#225); SSH parse = #226/#227/#228 |
 | SSH gather `last_cli` / multi-cmd visibility (ifindex re-gather overwrite) | Engine — last_cli does not retain all shows when overlay multi-cmd gather runs; Schema YAML-only cannot evidence multi-show in cli | #226 get_interfaces Rank1 (mtu/sysinfo fields may populate; cli lists show port only) | Schema soft overlays continue; do not reopen #92 |
 | SSH VLAN PortList / `show vlan member` T/U/F | Schema NO_HOLE — per-VLAN `show vlan id` fanout call-timeouts (#290 HARD); invent from PVID ruled out; CLI.json `show vlan member current|static` needs custom T/U/F PortList parser = Engine primitive | #291 get_vlan_egress; #290 Rank2 T/F remainder | Soft PVID Rank1v2 merged (#303); other Σ SSH close-format continue |
+| SSH MAC table composite PK / per-row VLAN | Schema NO_HOLE — dict `primary_key: mac` collapses VLAN when MAC repeats; YAML composite PK / `type: list` / `list_append` / fake key_map invent ruled out; 1.17 returns list of rows | #296 get_mac_address_table | Soft Σ SSH close-format continue (#297+) |
 
 ## Rules
 
