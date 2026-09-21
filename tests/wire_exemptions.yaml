@@ -63,7 +63,9 @@ exemptions:
   filemgmt:hm2fmprofilestoragetype:
     - ssh
 
-  # SSH: VLAN PortList bitmasks — needs custom parser for T/U/F/- format (TODO)
+  # SSH: VLAN PortList bitmasks — no CLI PortList show. get_vlans Rank1v2 (#290)
+  # binds membership from show vlan port PVID via schema lookup broadcast → U;
+  # full T/U/F remains get_vlan_egress / SNMP·MOPS PortList path.
   q-bridge:dot1qvlanstaticegressports:
     - ssh
   q-bridge:dot1qvlanstaticuntaggedports:

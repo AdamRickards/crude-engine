@@ -10,6 +10,25 @@ methods:
     defaults:
       name: ''
       ports: {}
+    attributes:
+      # Rank1v2 #290 SSH: show vlan port PVID→membership (1.17). No value_map
+      # so SSH ifNames survive. lookup broadcast rekeys full {intf:PVID} under
+      # each vlan row (table parser is last-wins; cannot group alone).
+      # Ruled out: per-VLAN show vlan id iterate (call-timeout fanout).
+      # Honest bucket: PVID→U only; no invent T/F. get_vlans.ports is the
+      # SCHEMA leftover vs get_vlan_egress (1.17-shaped here for all protos).
+      # Full PortList T/U/F remains on get_vlan_egress (SNMP/MOPS).
+      membership:
+        wire: dot1qpvid
+        source: q-bridge
+        lookup:
+          from: vlan_id
+          resolve: broadcast
+      ports:
+        compute:
+          from: [membership, vlan_id]
+          expr: "{p: 'U' for p, v in membership.items() if str(v) == str(vlan_id)}"
+          sort: natural
   create_vlan:
     type: create
     row_status: vlan_status
