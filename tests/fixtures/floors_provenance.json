@@ -488,7 +488,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vlan_egress": {
       "floor_source": "gold",
