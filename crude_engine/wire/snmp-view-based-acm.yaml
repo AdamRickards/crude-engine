@@ -1,5 +1,13 @@
 version: 2.6.0
 feature: snmp-view-based-acm
+value_maps:
+  # SSH show snmp community Access mode → community_access ro/rw (#298).
+  # Same light map as archive snmp_config / 1.17 get_snmp_information mode.
+  # Not VACM writeView invent — CLI Access mode is already ro/rw semantic.
+  community_access_ssh:
+    read-only: ro
+    read-write: rw
+    default: ro
 schemas:
   read_snmp-view-based-acm:
     type: dict

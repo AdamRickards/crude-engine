@@ -81,6 +81,8 @@ attributes:
     lookup:
       from: community_security_name
       index_field: vacmSecurityName
+  # MOPS/SNMP: VACM writeView → ro/rw. SSH: no VACM — wire overlay binds
+  # show snmp community Access mode (col1) via community_access_ssh (#298).
   community_access:
     wire: vacmaccesswriteviewname
     source: snmp-view-based-acm

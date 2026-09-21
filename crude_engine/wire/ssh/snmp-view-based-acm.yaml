@@ -1,0 +1,12 @@
+version: "2.6.0"
+feature: snmp-view-based-acm-ssh
+description: "SSH CLI sources for VACM community_access — Access mode from show snmp community (#298)"
+
+attributes:
+  # community_access schema wire. SSH has no VACM tables; show snmp community
+  # Access mode is the honest ro/rw source (1.17 get_snmp_information pattern).
+  # Lookup from community_group_name is empty on SSH → gathered dict kept.
+  vacmaccesswriteviewname:
+    sources:
+      ssh:
+        read: {command: "show snmp community", parser: simple_table, column: 1, tag: value_map, map: community_access_ssh}
