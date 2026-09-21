@@ -21,4 +21,14 @@ attributes:
         read: {command: "show system info", field: "System location"}
         write: {command: "system location {value}", level: config}
 
-  # sysuptime: SSH returns human string '37 days, 06:24:38', needs to_timeticks transform (TODO)
+  # System uptime "37 days, 06:24:38" → seconds (1.17 _parse_uptime). Pack DHMS via
+  # regex_format then unpack with math — existing overlay tools, no new transform.
+  sysuptime:
+    sources:
+      ssh:
+        read:
+          command: "show system info"
+          field: "System uptime"
+          regex: '(\d+)\s+days?,\s*(\d+):(\d+):(\d+)'
+          regex_format: '{0}{1:02d}{2:02d}{3:02d}'
+          math: "val // 1000000 * 86400 + (val // 10000 % 100) * 3600 + (val // 100 % 100) * 60 + (val % 100)"
