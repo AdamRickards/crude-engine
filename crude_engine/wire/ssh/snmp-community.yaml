@@ -15,3 +15,10 @@ attributes:
       ssh:
         create: {command: "snmp community ro {community_name}", level: config}
         delete: {command: "no snmp community ro {index}", level: config}
+
+  # SSH has no separate securityName; community name is the join key for
+  # community_access lookup chain (#298 Rank1v2). Not a VACM invent.
+  snmpcommunitysecurityname:
+    sources:
+      ssh:
+        read: {command: "show snmp community", parser: simple_table, column: 0}

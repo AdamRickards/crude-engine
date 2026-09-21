@@ -81,13 +81,16 @@ attributes:
     lookup:
       from: community_security_name
       index_field: vacmSecurityName
+  # MOPS/SNMP: VACM writeView → ro/rw. SSH: Access mode via community_access_ssh;
+  # upstream SSH join keys keep lookup from non-empty (#298 Rank1v2).
+  # resolve: identity for already-mapped ro/rw; else writeView→rw/ro.
   community_access:
     wire: vacmaccesswriteviewname
     source: snmp-view-based-acm
     lookup:
       from: community_group_name
       index_field: vacmGroupName
-      resolve: "'rw' if value != 'none' and value != '' else 'ro'"
+      resolve: "value if value in ('ro', 'rw') else ('rw' if value not in ('none', '') else 'ro')"
   # --- Trap destination tables (linked: addr + params) ---
   trap_destinations:
     wire: snmptargetaddrname
