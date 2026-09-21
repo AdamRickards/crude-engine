@@ -99,3 +99,43 @@ attributes:
     sources:
       ssh:
         read: {command: "show sfp", parser: paired_rows, lines_per_record: 1, key_column: 0, column_overflow: strict, regex_extract: '(\d+)/\d+', index: 1}
+
+  # get_auto_disable (#292 Rank1): show auto-disable brief + reasons — not show port.
+  # Prefer archive auto_disable.yaml + napalm-hios 1.17 column layout (2-line records).
+  # line0: Intf Reason Remaining Error_time State; line1: Component Reset_timer.
+  # Fanout: 2 shows total (brief once + reasons once), no per-port {index}.
+  hm2autodisableintfoperstate:
+    sources:
+      ssh:
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 0, column: 4, tag: value_map, map: autodisable_operstate_ssh}
+
+  hm2autodisableintferrorreason:
+    sources:
+      ssh:
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 0, column: 1, tag: value_map, map: autodisable_reason_cli}
+
+  hm2autodisableintfremainingtime:
+    sources:
+      ssh:
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 0, column: 2}
+
+  hm2autodisableintftimer:
+    sources:
+      ssh:
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 1, column: 2}
+
+  # get_auto_disable_reasons — same Rank1 shows pair (CLI_REFERENCE / 1.17).
+  hm2autodisablereasons:
+    sources:
+      ssh:
+        read: {command: "show auto-disable reasons", parser: table, key_column: 0, column: 0}
+
+  hm2autodisablereasonoperation:
+    sources:
+      ssh:
+        read: {command: "show auto-disable reasons", parser: table, key_column: 0, column: 1, tag: value_map, map: autodisable_reason_enabled_ssh}
+
+  hm2autodisablereasoncategory:
+    sources:
+      ssh:
+        read: {command: "show auto-disable reasons", parser: table, key_column: 0, column: 0, tag: value_map, map: autodisable_reason_to_category}
