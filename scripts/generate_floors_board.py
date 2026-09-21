@@ -169,6 +169,36 @@ def render(methods: list[str], prov: dict[str, dict[str, str]]) -> str:
             f"offline pass **{n_off_pass}**; mops pass **{n_mops_pass}**; "
             f"snmp pass **{n_snmp_pass}**; ssh pass **{n_ssh_pass}**."
         )
+        # End-game coverage: among gold rows, protocol cells that pass
+        # vs cells that could meet a floor (offline/mops/snmp/ssh).
+        protocols = ("offline", "mops", "snmp", "ssh")
+        possible = 0
+        proven = 0
+        for m in methods:
+            c = cell_for(m, prov)
+            if c["floor_source"] != "gold":
+                continue
+            for proto in protocols:
+                possible += 1
+                if c[proto] == "pass":
+                    proven += 1
+        pct = (100.0 * proven / possible) if possible else 0.0
+        lines.append("")
+        lines.append("## Coverage (Σ end-game progress)")
+        lines.append("")
+        lines.append(
+            "Effort **Σ Coverage** (`local/agents/diagrams/effort-board.md` + "
+            "`diagrams/resolution-loop.md`). "
+            "**Possible** = rows with `floor_source=gold` × "
+            "`{offline,mops,snmp,ssh}`. **Proven** = those cells = `pass`. "
+            "HITL exceptions are explicit only — never silent gaps."
+        )
+        lines.append("")
+        lines.append(
+            f"**Rollup: proven `{proven}` / possible `{possible}` "
+            f"({pct:.1f}%).** Create→Execute→Resolve thickens this forever; "
+            "lanes A′/B/C feed it."
+        )
     else:
         lines.append("## Stub note — provenance fixture missing")
         lines.append("")

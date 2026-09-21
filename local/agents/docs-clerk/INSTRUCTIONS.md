@@ -35,6 +35,8 @@ Hand-written files either still match the tree or got a factual fix.
 - `python3 scripts/check_catalogue.py`
 - Leftover generator (TEMP only): `python3 local/generator/batch_generate_MIB.py --isolated --outdir <TEMP>` (isolated venv; never `crude_engine/wire`)
 
+Σ Coverage visibility: `docs/FLOORS_BOARD.md` coverage rollup is generated from `floors_provenance.json` — Docs **renders only**, never originates status (`diagrams/resolution-loop.md`). Optional future Pages grid = same rule.
+
 Generated-only (never hand-edit): `docs/API_REFERENCE.md`,
 `docs/RELEASE_MATRIX.md`, `docs/status.html`, `docs/FLOORS_BOARD.md`. If they look wrong, fix the
 generator or the YAML they read.
