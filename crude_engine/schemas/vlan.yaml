@@ -10,6 +10,20 @@ methods:
     defaults:
       name: ''
       ports: {}
+    attributes:
+      # Rank1 #290 SSH: show vlan id {N} Include rows → {intf: tagging}.
+      # No value_map so SSH ifNames are not dropped by ifindex map.
+      # SNMP still uses global egress/untagged/forbidden (+ ifindex).
+      membership:
+        wire: dot1qvlanstaticegressports
+        source: q-bridge
+      ports:
+        compute:
+          from: [membership, egress_ports, untagged_ports, forbidden_ports]
+          # SSH: membership dict from show vlan id tagging; merge forbidden as F.
+          # SNMP/MOPS: membership is PortList list (not dict) → legacy list path.
+          expr: "(({p: ('U' if str(t).lower() == 'untagged' else 'T') for p, t in membership.items()} | ({p: 'F' for p in (list(forbidden_ports.keys()) if isinstance(forbidden_ports, dict) else (forbidden_ports if forbidden_ports not in (None, 'None') else []))})) if isinstance(membership, dict) and membership else {**{p: 'U' for p in (untagged_ports if untagged_ports not in (None, 'None') else [])}, **{p: 'T' for p in (egress_ports if egress_ports not in (None, 'None') else []) if p not in (untagged_ports if untagged_ports not in (None, 'None') else [])}, **{p: 'F' for p in (forbidden_ports if forbidden_ports not in (None, 'None') else [])}})"
+          sort: natural
   create_vlan:
     type: create
     row_status: vlan_status

@@ -63,12 +63,9 @@ exemptions:
   filemgmt:hm2fmprofilestoragetype:
     - ssh
 
-  # SSH: VLAN PortList bitmasks — needs custom parser for T/U/F/- format (TODO)
-  q-bridge:dot1qvlanstaticegressports:
-    - ssh
+  # SSH: VLAN PortList — egress/forbidden Rank1 via show vlan id {N} (#290).
+  # Untagged still derived from egress tagging on SSH; no separate PortList show.
   q-bridge:dot1qvlanstaticuntaggedports:
-    - ssh
-  q-bridge:dot1qvlanforbiddenegressports:
     - ssh
 
   # SSH: ip_restrict fields not in CLI output
