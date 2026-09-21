@@ -20,6 +20,7 @@ lands or HITL kills the need.
 | #156 Engine/tools debug↔trace conflation (post Docs #262) | Docs wording cleared; code still maps debug→trace / missing --debug / audit_setters debug=True | napalm-hios _call; tools CLI; interpreter schema debug alias; sidecar/release_matrix; audit_setters | Soft Docs done; park Engine/tools until HITL opens |
 | Fail-fast / invalid-CLI redefine | Needs HITL eyes on live invalid/missing/bad-attr | was #92 title — **do not reopen #92**; new ticket if poked | Timeout detection done (#179–#225); SSH parse = #226/#227/#228 |
 | SSH gather `last_cli` / multi-cmd visibility (ifindex re-gather overwrite) | Engine — last_cli does not retain all shows when overlay multi-cmd gather runs; Schema YAML-only cannot evidence multi-show in cli | #226 get_interfaces Rank1 (mtu/sysinfo fields may populate; cli lists show port only) | Schema soft overlays continue; do not reopen #92 |
+| SSH VLAN PortList / `show vlan member` T/U/F | Schema NO_HOLE — per-VLAN `show vlan id` fanout call-timeouts (#290 HARD); invent from PVID ruled out; CLI.json `show vlan member current|static` needs custom T/U/F PortList parser = Engine primitive | #291 get_vlan_egress; #290 Rank2 T/F remainder | Soft PVID Rank1v2 merged (#303); other Σ SSH close-format continue |
 
 ## Rules
 
