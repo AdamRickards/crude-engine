@@ -81,7 +81,3 @@ exemptions:
   mgmtaccess:hm2rmaipaddrtype:
     - ssh
 
-  # SSH: uptime returns human string, needs to_timeticks CRUDE transform (TODO)
-  snmpv2:sysuptime:
-    - ssh
-
