@@ -29,39 +29,6 @@ attributes:
       ssh:
         read: {command: "show vlan port", parser: table, column: 2, key_column: 0}
 
-
-  # get_vlans.ports Rank1 (#290): 1.17 get_vlans uses show vlan port PVID→interfaces
-  # (not PortList T/U/F). Table parser is last-wins per key — cannot group multi-iface
-  # under one VLAN id from show vlan port alone. Parent-allowed alternate: show vlan id
-  # {N} (1.17 get_vlan_egress) → Include + tagging → ports U/T; Exclude → F.
-  # iterate_from dot1qvlanindex (brief col0) fans out one show per VLAN.
-  # type string: avoid PortList/octet crude on SSH path.
-  dot1qvlanstaticegressports:
-    type: string
-    sources:
-      ssh:
-        read:
-          command: "show vlan id {entity}"
-          iterate_from: dot1qvlanindex
-          parser: table
-          key_column: 0
-          column: 3
-          filter_column: 1
-          filter_value: Include
-
-  dot1qvlanforbiddenegressports:
-    type: string
-    sources:
-      ssh:
-        read:
-          command: "show vlan id {entity}"
-          iterate_from: dot1qvlanindex
-          parser: table
-          key_column: 0
-          column: 0
-          filter_column: 2
-          filter_value: Exclude
-
   # MAC address table
   dot1qtpfdbaddress:
     sources:
