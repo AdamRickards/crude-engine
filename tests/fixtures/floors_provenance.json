@@ -306,7 +306,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_poe": {
       "floor_source": "gold",
