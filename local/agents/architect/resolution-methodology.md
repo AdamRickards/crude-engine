@@ -1,4 +1,17 @@
-# Resolution methodology — HITL handover, not final system law
+# Resolution methodology — HITL handover (DISTILLED)
+
+> **Distilled 2026-09-21** into living law — prefer these over re-reading this
+> whole file:
+> - End-game + loop: [`../diagrams/resolution-loop.md`](../diagrams/resolution-loop.md)
+> - Effort bubble **Σ Coverage**: [`../diagrams/effort-board.md`](../diagrams/effort-board.md)
+> - Progress rollup: [`../../../docs/FLOORS_BOARD.md`](../../../docs/FLOORS_BOARD.md)
+> - Architect check **10** in [`INSTRUCTIONS.md`](INSTRUCTIONS.md)
+>
+> This file remains the raw HITL session record (#287). Do not treat every
+> paragraph below as active process law; distill may lag new HITL edits here.
+
+---
+
 
 This is HITL-articulated methodology from a working session (2026-09-20/21),
 handed over as raw input for Architect to fold into `local/agents/` as fits —

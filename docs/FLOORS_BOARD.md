@@ -11,6 +11,12 @@ Cells from Test-owned `tests/fixtures/floors_provenance.json` (redacted aggregat
 
 Counts: floor_source gold **75** / 77; offline pass **51**; mops pass **75**; snmp pass **75**; ssh pass **0**.
 
+## Coverage (Σ end-game progress)
+
+Effort **Σ Coverage** (`local/agents/diagrams/effort-board.md` + `diagrams/resolution-loop.md`). **Possible** = rows with `floor_source=gold` × `{offline,mops,snmp,ssh}`. **Proven** = those cells = `pass`. HITL exceptions are explicit only — never silent gaps.
+
+**Rollup: proven `200` / possible `300` (66.7%).** Create→Execute→Resolve thickens this forever; lanes A′/B/C feed it.
+
 ### Cell vocabulary
 
 | value | meaning |

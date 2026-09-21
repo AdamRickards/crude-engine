@@ -5,7 +5,7 @@ open it on GitHub anytime. Chart first: when HITL names a multi-session goal,
 update this board before (or as) clerks spin. Children are GitHub issues.
 Chat is signal, not storage.
 
-**Living floors glance (generated SoT):** [`docs/FLOORS_BOARD.md`](../../../docs/FLOORS_BOARD.md) — `python3 scripts/generate_floors_board.py` (never hand-edit; stub until Test provenance wiring).
+**Living floors glance + Σ coverage rollup (generated SoT):** [`docs/FLOORS_BOARD.md`](../../../docs/FLOORS_BOARD.md) — `python3 scripts/generate_floors_board.py` (never hand-edit). Loop chart: [`resolution-loop.md`](resolution-loop.md).
 
 ## What an Effort is
 
@@ -21,30 +21,34 @@ Chat names the Effort once. The board + child issues *are* the Effort after that
 
 | Bubble | Status | Children |
 | --- | --- | --- |
+| **Σ** Coverage end-game | **IN PROGRESS** | Every floored method×protocol → `pass` (or HITL exception). Glance+rollup: `docs/FLOORS_BOARD.md`. Loop: `resolution-loop.md`. HITL source: `architect/resolution-methodology.md` (#287). Lanes A′/B/C **feed** Σ. |
 | **A** Offline↔gold floor growth | **DONE** floors=**52** | #169 trail; unfloorables → #193 (poe status-null + route_to); merge #257 `3ca9974` (#258 closed duplicate) |
 | **A′** Live MOPS triad (gold / Offline / live) | **IN PROGRESS** | #229 — floored MOPS receipts done (49/49 class); look-intos as filed |
-| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162 teach progressed; live 36/43; Schema #233–#235 **closed**; #231→#12 parked; TC-BITS in #205 parked — see `hitl-engine-park.md` |
-| **C** SSH after two good floors | **SOFT** | Timeout detection done; **#92 stays closed**. Open soft: #226 #227 #228 #217 #178 #62; **#272 Engine park**; closed recently #44/#54/#264/#46/#55/#274. Prefer A′/B over stalling. Architect **check 9** = SSH floor + CLI.json guess ladder (#226 pilot). |
+| **B** Generator → SNMP vs MOPS known-good | **IN PROGRESS** | #162 **closed**; residuals **#205**; Schema #233–#235 **closed**; #231→#12 parked; TC-BITS parked — see `hitl-engine-park.md` |
+| **C** SSH after two good floors | **SOFT** | Timeout detection done; **#92 stays closed**. Open soft: #226 #227 #228 #217 #178 #62; **#272** + **last_cli** Engine park; Rank1 #226/#285 soft win. Check **9** SSH floor ladder. Prefer A′/B over stalling. |
 
 ```mermaid
 flowchart TD
   HITL["HITL idea / discussion"] --> E["Update this Effort board MD"]
   E --> Split["Split into child GitHub issues\nnamed proof each"]
+  Split --> Sig["Σ Coverage end-game\nFLOORS_BOARD rollup"]
   Split --> A["A Offline↔gold floors\nDONE 52 / #193 look-into"]
   Split --> Ap["A′ Live MOPS triad\nIN PROGRESS"]
-  Split --> B["B Generator→SNMP\n#162 IN PROGRESS"]
+  Split --> B["B Generator→SNMP\n#205 residuals"]
   Split --> C["C SSH after two floors\nSOFT"]
-  A --> Re["Recombine: update WHERE here\nthen park or open next bubble"]
-  Ap --> Re
-  B --> Re
-  C --> Re
+  A --> Sig
+  Ap --> Sig
+  B --> Sig
+  C --> Sig
+  Sig --> Re["Recombine: update WHERE here\nCreate→Execute→Resolve"]
 ```
 
 ## Rules
 
 - Every open issue hangs on this board, companion #195, or `hitl-engine-park.md` — fold orphans in; do not leave silent backlog.
 - Companion issue [#195](https://github.com/AdamRickards/crude-engine/issues/195) mirrors this table — update **both** in one hop when bubbles change.
-- HITL/Engine park lives in `hitl-engine-park.md` (not duplicated as a fifth bubble).
+- HITL/Engine park lives in `hitl-engine-park.md` (not duplicated as a Coverage child).
+- **Σ** is the end-game progress bar; **R** in the fold-in table remains Release/RC (different letter, different bucket).
 - Tangibility: if it is not on GitHub in this folder (or a child issue), it is not the Effort.
 - Architect updates this file when a bubble splits, greens, or blocks.
 - Six clerks only; Architect holds the board and assigns hops.
@@ -68,6 +72,7 @@ Engine cycle-0 that need primitives or checker work live on **`hitl-engine-park.
 
 | Bubble | Finished looks like |
 | --- | --- |
+| **Σ** | Coverage rollup → 100% of *possible* (gold rows × offline/mops/snmp/ssh), or every shortfall is an explicit HITL exception with evidence — no silent gaps. Loop never “ends the product”; it only ends *this* board when that count is true. |
 | **A** | Offline↔gold floor growth done for floorable methods; unfloorables filed — **met** (52 floors, #193) |
 | **A′** | MOPS + Offline proved against Gold, Config/XML Offline, and Live (named sweeps; look-into list exists) |
 | **B** | Generator emit≈live for teachable residuals; SNMP meets MOPS known-good floor on named proves |

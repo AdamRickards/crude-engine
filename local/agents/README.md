@@ -116,6 +116,10 @@ not chat memory. Child work is GitHub issues. Architect updates the board when
 bubbles split/green/block (orchestration check 6). Architect-machine-only MD
 is cache only.
 
+End-game progress is Effort bubble **Σ Coverage** — countable method×protocol
+proven/possible on [`docs/FLOORS_BOARD.md`](../docs/FLOORS_BOARD.md), loop in
+[`diagrams/resolution-loop.md`](diagrams/resolution-loop.md) (Architect check 10).
+
 ## Roster
 
 Six holes. Do not add a seventh until a real object collides two of these.
