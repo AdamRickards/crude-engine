@@ -20,7 +20,7 @@ attributes:
   hm2fmprofiledatetime:
     sources:
       ssh:
-        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, columns: [2, 3]}
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 3}
 
   hm2fmprofileswmajorrelnum:
     sources:
