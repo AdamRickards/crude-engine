@@ -17,6 +17,11 @@ value_maps:
   sigcon_sense_ssh:
     monitored: true
     default: false
+  # SSH show security-status all OperState → schema noerror/error (#323 / 1.17).
+  devsec_oper_ssh:
+    ok: noerror
+    error: error
+    noerror: noerror
 schemas:
   read_diagnostic:
     type: dict
