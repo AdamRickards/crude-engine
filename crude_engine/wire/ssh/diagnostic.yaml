@@ -123,3 +123,78 @@ attributes:
       ssh:
         read: {command: "show security-status monitor", field: "IEC 61850 MMS is enabled"}
         write: {command: "security-status monitor iec61850-mms-enabled", level: config}
+
+  # get_signal_contact (#293 Rank1): show signal-contact {1|2} all — fanout=2.
+  # Prefer archive signal_contact.yaml + napalm-hios 1.17 (ssh_hios get_signal_contact).
+  # Dedup: one CLI exec per contact across fields. No invent floors.
+  # Left undeclared (no simple 1.17 dot-key / table≠schema-bool): sense_fan_module,
+  # sense_module, sense_ps_state (PS table), sense_if_link_alarm (Intf table).
+  hm2sigconid:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Signal Contact"}
+
+  hm2sigconmode:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: Mode, tag: value_map, map: sigcon_cli_mode}
+
+  hm2sigconoperstate:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Operating State (current)", tag: value_map, map: sigcon_oper_ssh}
+
+  hm2sigcontrapenable:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Trap Status"}
+
+  hm2sigconsenselinkfailure:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Link Failure", tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsensetemperature:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: Temperature, tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsensefan:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Fan Failure", tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsensemoduleremoval:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Module Removal", tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsenseextnvmremoval:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "ACA not present", tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsenseextnvmnotinsync:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "ACA not in sync", tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsenseringredundancy:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Ring Redundancy", tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsenseethernetloops:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "Ethernet Loops", tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsensehumidity:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: Humidity, tag: value_map, map: sigcon_sense_ssh}
+
+  hm2sigconsensestpportblock:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "STP Port Block", tag: value_map, map: sigcon_sense_ssh}

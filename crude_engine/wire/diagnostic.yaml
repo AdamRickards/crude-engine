@@ -1,5 +1,22 @@
 version: 2.6.0
 feature: diagnostic
+value_maps:
+  # SSH show signal-contact N all Mode → schema mode (#293 Rank1 / archive + 1.17 _SC_CLI_MODE).
+  sigcon_cli_mode:
+    manual: manual
+    monitor: monitor
+    device-status: deviceState
+    security-status: deviceSecurity
+    dev-sec-status: deviceStateAndSecurity
+  # SSH Operating State (current) close → schema closed.
+  sigcon_oper_ssh:
+    open: open
+    close: closed
+    closed: closed
+  # SSH sense flags: monitored → true; anything else → false (1.17 _SC_CLI_SENSE).
+  sigcon_sense_ssh:
+    monitored: true
+    default: false
 schemas:
   read_diagnostic:
     type: dict
