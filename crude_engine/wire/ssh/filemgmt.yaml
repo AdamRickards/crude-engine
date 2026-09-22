@@ -101,6 +101,18 @@ attributes:
       ssh:
         read: {command: "show config watchdog", field: "Current Timer Value"}
 
+  # Remote backup / get_config_remote: show config remote-backup
+  # Field labels from archive CLI capture (test_get_config_remote + archive config.yaml).
+  hm2fmconfigremotesaveadminstatus:
+    sources:
+      ssh:
+        read: {command: "show config remote-backup", field: "Remote backup"}
+
+  hm2fmconfigremotesavedestination:
+    sources:
+      ssh:
+        read: {command: "show config remote-backup", field: "Destination URL"}
+
   hm2fmprofileaction:
     sources:
       ssh:
