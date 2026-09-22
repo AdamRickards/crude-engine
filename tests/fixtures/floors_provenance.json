@@ -68,14 +68,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_dai_global": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_device_monitor": {
       "floor_source": "gold",
@@ -124,7 +124,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_facts": {
       "floor_source": "gold",
@@ -159,7 +159,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_interface_statistics": {
       "floor_source": "gold",
@@ -271,7 +271,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_mrp_sub_ring": {
       "floor_source": "gold",
@@ -292,14 +292,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ntp_stats": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_optics": {
       "floor_source": "gold",
@@ -348,7 +348,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_route_to": {
       "floor_source": "gold",
@@ -369,7 +369,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_rstp_port": {
       "floor_source": "gold",
@@ -390,7 +390,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_sflow_poller": {
       "floor_source": "gold",
@@ -432,7 +432,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_snmp_trap_destinations": {
       "floor_source": "gold",
@@ -460,14 +460,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_system_health": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_system_info": {
       "floor_source": "gold",
@@ -502,7 +502,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vlans": {
       "floor_source": "gold",
@@ -516,14 +516,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp_instances": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp_stats": {
       "floor_source": "gold",
@@ -537,14 +537,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_watchdog_status": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     }
   }
 }
