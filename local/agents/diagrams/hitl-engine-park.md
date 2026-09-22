@@ -27,6 +27,8 @@ lands or HITL kills the need.
 
 | SSH get_software images / DevmodeStatus honesty | Schema NO_HOLE — no CLI SwVers table / no honest image wires; invent-wrong Admin state ≠ DevmodeStatus; support-mode has no captured field label. Prefer existing tools exhausted. Related #68 MOPS multi-field INDEX already parked | #322 get_software | Soft Σ SSH close-format continue (#323+) |
 
+| SSH get_config execute-blob gather | Schema NO_HOLE — composed Protocols:None; running/startup honest {}; no MIB wire for `show running-config` / startup. Prefer existing tools exhausted | #324 get_config | Soft Σ SSH no-cli continue (#325+) |
+
 ## Rules
 
 1. Engine merge still needs HITL sign-off when it invents meaning / new primitive.
