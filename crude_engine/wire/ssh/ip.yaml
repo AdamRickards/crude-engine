@@ -3,26 +3,27 @@ feature: ip-ssh
 description: "SSH CLI sources for IP-MIB"
 
 attributes:
-  ipnettophysicalifindex:
+  # get_arp_table (#295 Rank1): schema binds Media (ipnettomedia*), not Physical.
+  # Prefer archive arp.yaml + CLI_REFERENCE + napalm-hios 1.17 primary:
+  #   show ip arp table (L3 table → Intf / IP / MAC cols 0/1/3).
+  # Overlay gather is single-dict read only — archive list-fallback
+  #   show arp (paired_rows) is not expressible here without engine list-source.
+  # age unbound (Media has no lastUpdated; schema age: {}).
+  # cmd_verify:false — HiOS may autocomplete show ip arp* on L2 (YAML_SPEC).
+  ipnettomediaifindex:
     type: string
     sources:
       ssh:
-        read: {command: "show arp", parser: paired_rows, column: 0}
+        read: {command: "show ip arp table", parser: table, column: 0, cmd_verify: false}
 
-  ipnettophysicalnetaddress:
+  ipnettomedianetaddress:
     type: string
     sources:
       ssh:
-        read: {command: "show arp", parser: paired_rows, column: 1}
+        read: {command: "show ip arp table", parser: table, column: 1, cmd_verify: false}
 
-  ipnettophysicallastupdated:
+  ipnettomediaphysaddress:
     type: string
     sources:
       ssh:
-        read: {command: "show arp", parser: paired_rows, column: 2}
-
-  ipnettophysicalphysaddress:
-    type: string
-    sources:
-      ssh:
-        read: {command: "show arp", parser: paired_rows, line: 1, column: 0}
+        read: {command: "show ip arp table", parser: table, column: 3, cmd_verify: false, tag: to_str, case: lower}
