@@ -29,6 +29,8 @@ lands or HITL kills the need.
 
 | SSH get_config execute-blob gather | Schema NO_HOLE — composed Protocols:None; running/startup honest {}; no MIB wire for `show running-config` / startup. Prefer existing tools exhausted | #324 get_config | Soft Σ SSH no-cli continue (#325+) |
 
+| SSH get_gmrp field-label capture | Schema NO_HOLE — CLI.json names shows but no captured field labels (archive TODO); invent risk without sample. Soft Rank1 exhausted | #327 get_gmrp | Soft Σ SSH no-cli continue (#328+); HITL/1.17 sample capture when opened |
+
 ## Rules
 
 1. Engine merge still needs HITL sign-off when it invents meaning / new primitive.
