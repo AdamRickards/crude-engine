@@ -1,13 +1,14 @@
 version: 2.6.0
 feature: platform-qos-cos
 value_maps:
-  # SSH show classofservice trust Trust Mode CLI → MIB INTEGER (#317 Rank1 / 1.17).
-  # CLI.json P-1 + archive qos.yaml qos_trust_mode_rev; MOPS floor is int.
+  # SSH show classofservice trust Trust mode CLI → MIB INTEGER (#317 Rank1v2).
+  # Live cells: dot1p (col2); CLI.json P-1 + archive qos_trust_mode_rev.
+  # Quote keys — YAML 1.1 bool-key trap (#336 yes/no lesson).
   cos_trust_mode_ssh:
-    untrusted: 1
-    dot1p: 2
-    ip-precedence: 3
-    ip-dscp: 4
+    'untrusted': 1
+    'dot1p': 2
+    'ip-precedence': 3
+    'ip-dscp': 4
 schemas:
   read_platform-qos-cos:
     type: dict
