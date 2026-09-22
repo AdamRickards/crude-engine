@@ -29,7 +29,7 @@ lands or HITL kills the need.
 
 | SSH get_config execute-blob gather | Schema NO_HOLE — composed Protocols:None; running/startup honest {}; no MIB wire for `show running-config` / startup. Prefer existing tools exhausted | #324 get_config | Soft Σ SSH no-cli continue (#325+) |
 
-| SSH get_gmrp field-label capture | Schema NO_HOLE — CLI.json names shows but no captured field labels (archive TODO); invent risk without sample. Soft Rank1 exhausted | #327 get_gmrp | Soft Σ SSH no-cli continue (#328+); HITL/1.17 sample capture when opened |
+| SSH GARP GVRP/GMRP field-label capture | Schema NO_HOLE — CLI.json names shows but no captured field labels (archive TODO); invent risk without sample. Soft Rank1 exhausted | #327 get_gmrp; #328 get_gvrp | Soft Σ SSH no-cli continue (#329+); HITL/1.17 sample capture when opened |
 
 ## Rules
 
