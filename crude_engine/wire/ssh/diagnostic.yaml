@@ -21,6 +21,16 @@ attributes:
       ssh:
         read: {command: "show security-status all", field: OperState, tag: value_map, map: devsec_oper_ssh}
 
+  # get_devsec_status (#326 Rank1): trap_cause = hm2devsectrapcause — missing SSH.
+  # Archive + CLI.json: show security-status all field "Trap Cause". Same show as
+  # oper_state (#323) → fanout stays 1 (dedup). CLI strings match schema enums
+  # (parity); no invent map. status_index: no simple declared field (events table
+  # ≠ scalar) — leave undeclared. Prefer existing tools. No invent. No #92.
+  hm2devsectrapcause:
+    sources:
+      ssh:
+        read: {command: "show security-status all", field: "Trap Cause"}
+
   # Security status monitors: show security-status monitor
   hm2devsecsensehttpenabled:
     sources:
