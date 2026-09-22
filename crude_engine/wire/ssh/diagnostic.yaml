@@ -10,6 +10,17 @@ attributes:
       ssh:
         read: {command: "show device-status all", field: "Device Monitor"}
 
+
+  # get_devsec (#323 Rank1): state = hm2devsecoperstate — missing SSH source.
+  # 1.17 get_devsec_status + archive: show security-status all field OperState
+  # (ok|error). Schema wants noerror|error — existing-tool value_map pattern
+  # (sigcon_oper_ssh sibling). Extra show vs monitor: fanout=2, not VLAN-scale
+  # (#290/#303 HARD). Prefer existing tools. No invent. No #92.
+  hm2devsecoperstate:
+    sources:
+      ssh:
+        read: {command: "show security-status all", field: OperState, tag: value_map, map: devsec_oper_ssh}
+
   # Security status monitors: show security-status monitor
   hm2devsecsensehttpenabled:
     sources:
@@ -95,9 +106,14 @@ attributes:
         read: {command: "show security-status monitor", field: "Secure Boot is inactive"}
         write: {command: "security-status monitor secure-boot-disabled", level: config}
 
+  # get_devsec (#323 Rank1): pml_disabled was write-only — add read from same
+  # show security-status monitor as sibling senses. Field from 1.17
+  # _DEVSEC_CLI_SENSE + archive. Shape: reuse existing sigcon_sense_ssh
+  # (monitored→true, default→false). Fanout stays 1 with other monitors.
   hm2devsecsensepmldisabled:
     sources:
       ssh:
+        read: {command: "show security-status monitor", field: "PML LLDP Protocol is disabled", tag: value_map, map: sigcon_sense_ssh}
         write: {command: "security-status monitor pml-disabled", level: config}
 
   hm2devsecsensemodbustcpenabled:
