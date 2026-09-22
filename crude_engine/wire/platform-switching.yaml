@@ -19,6 +19,25 @@ value_maps:
   # Epoch-zero Last-Timestamp → empty (archive epoch_zero_to_empty / 1.17).
   keepalive_epoch_zero_ssh:
     '1970-01-01 00:00:00.0': ''
+  # SSH DAI global Verification fields → bool (#315 Rank1 / 1.17).
+  dai_global_verify_ssh:
+    enabled: true
+    disabled: false
+  # SSH DAI table cells yes/enable/enabled (#315 Rank1v2 / 1.17 _is_on).
+  # Quote yes/no — bare YAML 1.1 bool keys never match CLI "yes"/"no" strings.
+  dai_on_ssh:
+    'yes': true
+    'no': false
+    enable: true
+    enabled: true
+    disable: false
+    disabled: false
+  # SSH RateLimit '-' → unlimited -1 (1.17).
+  dai_rate_limit_ssh:
+    '-': -1
+  # SSH BurstInterval '-' → 1 (1.17 default).
+  dai_burst_interval_ssh:
+    '-': 1
 schemas:
   read_platform-switching:
     type: dict

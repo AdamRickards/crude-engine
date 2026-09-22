@@ -83,24 +83,84 @@ attributes:
         read: {command: "show spanning-tree port {index}", field: "Port path cost"}
         write: {command: "spanning-tree cost {value}", level: config_interface}
 
-  # DAI global: show ip arp-inspection global
+  # get_arp_inspection (#315 Rank1): show ip arp-inspection global + vlan + interfaces.
+  # Prefer archive arp_inspection.yaml + napalm-hios 1.17 (ssh_hios.get_arp_inspection).
+  # Fanout=3 fixed shows — NOT show port; NOT per-VLAN id fanout (#290/#303 HARD).
+  # Global: Source/Destination MAC + IP Address Verification.
+  # VLAN table (min 5): VLAN Enabled Log BindingCheck ACLStatic [ACLName].
+  # Interfaces table (min 5): Interface Trust Auto-Disable RateLimit BurstInterval.
+  # Dedup: one CLI exec per show across fields. No invent floors.
   hm2agentdaisrcmacvalidate:
     sources:
       ssh:
-        read: {command: "show ip arp-inspection global", field: "Source MAC Verification"}
+        read: {command: "show ip arp-inspection global", field: "Source MAC Verification", tag: value_map, map: dai_global_verify_ssh}
         write: {command: "ip arp-inspection verify src-mac", level: config}
 
   hm2agentdaidstmacvalidate:
     sources:
       ssh:
-        read: {command: "show ip arp-inspection global", field: "Destination MAC Verification"}
+        read: {command: "show ip arp-inspection global", field: "Destination MAC Verification", tag: value_map, map: dai_global_verify_ssh}
         write: {command: "ip arp-inspection verify dst-mac", level: config}
 
   hm2agentdaiipvalidate:
     sources:
       ssh:
-        read: {command: "show ip arp-inspection global", field: "IP Address Verification"}
+        read: {command: "show ip arp-inspection global", field: "IP Address Verification", tag: value_map, map: dai_global_verify_ssh}
         write: {command: "ip arp-inspection verify ip", level: config}
+
+  hm2agentdaivlanindex:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection vlan", parser: table, key_column: 0, column: 0}
+
+  hm2agentdaivlandynarpinspenable:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection vlan", parser: table, key_column: 0, column: 1, tag: value_map, map: dai_on_ssh}
+        write: {command: "ip arp-inspection", level: vlan_config}
+
+  hm2agentdaivlanloggingenable:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection vlan", parser: table, key_column: 0, column: 2, tag: value_map, map: dai_on_ssh}
+
+  hm2agentdaivlanbindingcheckenable:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection vlan", parser: table, key_column: 0, column: 3, tag: value_map, map: dai_on_ssh}
+
+  hm2agentdaivlanarpaclstaticflag:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection vlan", parser: table, key_column: 0, column: 4, tag: value_map, map: dai_on_ssh}
+
+  hm2agentdaivlanarpaclname:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection vlan", parser: table, key_column: 0, column: 5}
+
+  hm2agentdaiiftrustenable:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection interfaces", parser: table, key_column: 0, column: 1, tag: value_map, map: dai_on_ssh}
+        write: {command: "ip arp-inspection trust", level: config_interface}
+
+  hm2agentdaiifautodisable:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection interfaces", parser: table, key_column: 0, column: 2, tag: value_map, map: dai_on_ssh}
+        write: {command: "ip arp-inspection auto-disable", level: config_interface}
+
+  hm2agentdaiifratelimit:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection interfaces", parser: table, key_column: 0, column: 3, tag: value_map, map: dai_rate_limit_ssh}
+        write: {command: "ip arp-inspection limit {value}", level: config_interface}
+
+  hm2agentdaiifburstinterval:
+    sources:
+      ssh:
+        read: {command: "show ip arp-inspection interfaces", parser: table, key_column: 0, column: 4, tag: value_map, map: dai_burst_interval_ssh}
 
   # DHCP Snooping: show ip dhcp-snooping global / interfaces
   hm2agentdhcpsnoopingadminmode:
