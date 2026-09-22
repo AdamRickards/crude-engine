@@ -25,6 +25,8 @@ lands or HITL kills the need.
 
 | SSH QoS DSCP table key normalize (`key_tag` / `key_regex`) | Schema NO_HOLE — SNMP/MOPS drivers apply `key_tag`; SSH table gather is per-value only. Rank1 tried value_map/key_map/dot_keys/fanout ruled out; Fastpath keys are `N(name)` vs MOPS bare numeric | #318 get_qos_mapping | Soft Σ SSH close-format continue (#319+) |
 
+| SSH get_software images / DevmodeStatus honesty | Schema NO_HOLE — no CLI SwVers table / no honest image wires; invent-wrong Admin state ≠ DevmodeStatus; support-mode has no captured field label. Prefer existing tools exhausted. Related #68 MOPS multi-field INDEX already parked | #322 get_software | Soft Σ SSH close-format continue (#323+) |
+
 ## Rules
 
 1. Engine merge still needs HITL sign-off when it invents meaning / new primitive.
