@@ -23,6 +23,8 @@ lands or HITL kills the need.
 | SSH VLAN PortList / `show vlan member` T/U/F | Schema NO_HOLE — per-VLAN `show vlan id` fanout call-timeouts (#290 HARD); invent from PVID ruled out; CLI.json `show vlan member current|static` needs custom T/U/F PortList parser = Engine primitive | #291 get_vlan_egress; #290 Rank2 T/F remainder | Soft PVID Rank1v2 merged (#303); other Σ SSH close-format continue |
 | SSH MAC table composite PK / per-row VLAN | Schema NO_HOLE — dict `primary_key: mac` collapses VLAN when MAC repeats; YAML composite PK / `type: list` / `list_append` / fake key_map invent ruled out; 1.17 returns list of rows | #296 get_mac_address_table | Soft Σ SSH close-format continue (#297+) |
 
+| SSH QoS DSCP table key normalize (`key_tag` / `key_regex`) | Schema NO_HOLE — SNMP/MOPS drivers apply `key_tag`; SSH table gather is per-value only. Rank1 tried value_map/key_map/dot_keys/fanout ruled out; Fastpath keys are `N(name)` vs MOPS bare numeric | #318 get_qos_mapping | Soft Σ SSH close-format continue (#319+) |
+
 ## Rules
 
 1. Engine merge still needs HITL sign-off when it invents meaning / new primitive.

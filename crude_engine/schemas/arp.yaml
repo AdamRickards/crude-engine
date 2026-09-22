@@ -21,9 +21,14 @@ methods:
       auto_disable: false
       ports: {}
       vlans: {}
+    # Fanout=3: global + vlan + interfaces (#315 Rank1 / archive + 1.17).
+    # NOT show port (was empty-vlans / invent-default ports). No per-VLAN show fanout.
+    # key_map ifindex (MOPS); SSH table keys port-name — key-shape remainder honest.
+    # Top-level auto_disable: arp-rate reason bool (devmgmt; Rank1v2 compute shape).
+    # Port auto_disable is DAI if (interfaces col; dai_on_ssh).
     sub_tables:
       ports:
-        primary_key: port_ifindex
+        primary_key: dai_trusted
         key_map: ifindex
         field_map:
           trusted: dai_trusted
@@ -75,18 +80,45 @@ attributes:
   validate_src_mac:
     wire: hm2agentdaisrcmacvalidate
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      enabled: true
+      disabled: false
   validate_dst_mac:
     wire: hm2agentdaidstmacvalidate
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      enabled: true
+      disabled: false
   validate_ip:
     wire: hm2agentdaiipvalidate
     source: platform-switching
-  auto_disable:
+    value_map:
+      '1': true
+      '2': false
+      enabled: true
+      disabled: false
+  # Raw arp-rate reason op. index_filter → scalar (MOPS/SNMP); SSH returns full dict
+  # (driver ignores _index_filter). Not in defaults — hidden from output.
+  auto_disable_reason_arp:
     wire: hm2autodisablereasonoperation
     source: devmgmt
     index_filter: arp-rate
     value_map:
       '5': arp-rate
+      '1': true
+      '2': false
+      enabled: true
+      disabled: false
+  # Shape to bool: pass MOPS/SNMP scalar; SSH dict → arp-rate (or SNMP key '5').
+  # collect:{key:arp-rate} alone would None-out scalars after index_filter.
+  auto_disable:
+    compute:
+      from: [auto_disable_reason_arp]
+      expr: "auto_disable_reason_arp if str(auto_disable_reason_arp) in ('True', 'False') else auto_disable_reason_arp.get('arp-rate', auto_disable_reason_arp.get('5', False))"
   # DAI per-port
   port_ifindex:
     wire: ifname
@@ -94,15 +126,33 @@ attributes:
   dai_trusted:
     wire: hm2agentdaiiftrustenable
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      'yes': true
+      'no': false
+      enabled: true
+      disabled: false
   dai_rate_limit:
     wire: hm2agentdaiifratelimit
     source: platform-switching
+    value_map:
+      '-': -1
   dai_burst_interval:
     wire: hm2agentdaiifburstinterval
     source: platform-switching
+    value_map:
+      '-': 1
   dai_port_auto_disable:
     wire: hm2agentdaiifautodisable
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      'yes': true
+      'no': false
+      enabled: true
+      disabled: false
   # DAI per-VLAN
   dai_vlan_index:
     wire: hm2agentdaivlanindex
@@ -110,15 +160,43 @@ attributes:
   dai_vlan_enabled:
     wire: hm2agentdaivlandynarpinspenable
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      'yes': true
+      'no': false
+      enabled: true
+      disabled: false
   dai_vlan_logging:
     wire: hm2agentdaivlanloggingenable
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      'yes': true
+      'no': false
+      enabled: true
+      disabled: false
   dai_vlan_binding_check:
     wire: hm2agentdaivlanbindingcheckenable
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      'yes': true
+      'no': false
+      enabled: true
+      disabled: false
   dai_vlan_acl_static:
     wire: hm2agentdaivlanarpaclstaticflag
     source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      'yes': true
+      'no': false
+      enabled: true
+      disabled: false
   dai_vlan_acl_name:
     wire: hm2agentdaivlanarpaclname
     source: platform-switching
