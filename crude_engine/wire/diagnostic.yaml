@@ -22,6 +22,15 @@ value_maps:
     ok: noerror
     error: error
     noerror: noerror
+  # SSH show security-status all Trap Cause → schema cause tokens (#326 Rank1v2).
+  # Live tip: field binds secure-boot-disabled, but type:integer defaults to
+  # crude_numeric → invent 0. Explicit value_map overrides (oper_state sibling).
+  # Prefer archive devsec_cause_cli; quote keys (YAML 1.1). Unmapped pass through.
+  devsec_cause_cli:
+    'hidisc-enabled': hidisc-enabled
+    'password-policy-not-configured': password-policy-not-configured
+    'password-policy-inactive': password-policy-inactive
+    'secure-boot-disabled': secure-boot-disabled
 schemas:
   read_diagnostic:
     type: dict
