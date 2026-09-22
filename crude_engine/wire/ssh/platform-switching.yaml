@@ -126,3 +126,54 @@ attributes:
     sources:
       ssh:
         read: {command: "show ip dhcp-snooping interfaces", parser: table, column: 1}
+
+  # get_loop_protection (#299 Rank1): show loop-protection global + interface — fanout=2.
+  # Prefer archive loop_protection.yaml + napalm-hios 1.17 (ssh_hios get_loop_protection).
+  # Global: Operational State / Transmit Timeout (sec) / Receive PDU threshold.
+  # Interface table (min 7): Intf Admin Mode Action VLAN Loop Last-Timestamp.
+  # Dedup: one CLI exec per show across fields. No invent floors. No per-port {index}.
+  hm2agentswitchkeepalivestate:
+    sources:
+      ssh:
+        read: {command: "show loop-protection global", field: "Operational State", tag: value_map, map: keepalive_oper_ssh}
+
+  hm2agentswitchkeepalivetransmitinterval:
+    sources:
+      ssh:
+        read: {command: "show loop-protection global", field: "Transmit Timeout (sec)"}
+
+  hm2agentswitchkeepaliverxthreshold:
+    sources:
+      ssh:
+        read: {command: "show loop-protection global", field: "Receive PDU threshold"}
+
+  hm2agentkeepaliveportstate:
+    sources:
+      ssh:
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 1, tag: value_map, map: keepalive_port_admin_ssh}
+
+  hm2agentkeepaliveportmode:
+    sources:
+      ssh:
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 2}
+
+  hm2agentkeepaliveportrxaction:
+    sources:
+      ssh:
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 3}
+
+  hm2agentkeepaliveportvlanid:
+    sources:
+      ssh:
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 4}
+
+  hm2agentkeepaliveportloopdetected:
+    sources:
+      ssh:
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 5, tag: value_map, map: keepalive_loop_detected_ssh}
+
+  hm2agentkeepaliveportlastloopdetectedtime:
+    sources:
+      ssh:
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: -1, tag: value_map, map: keepalive_epoch_zero_ssh}
+

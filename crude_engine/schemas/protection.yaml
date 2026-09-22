@@ -19,6 +19,7 @@ methods:
       enabled: false
       transmission_interval: 2
       rx_threshold: 0
+      interfaces: {}
     attributes:
       enabled:
         wire: hm2agentswitchkeepalivestate
@@ -29,6 +30,26 @@ methods:
       rx_threshold:
         wire: hm2agentswitchkeepaliverxthreshold
         source: platform-switching
+    # Fanout=2: global scalars + interface table (#299 Rank1 / archive + 1.17).
+    # key_map ifindex (MOPS); SSH table keys port-name — key-shape remainder honest.
+    sub_tables:
+      interfaces:
+        primary_key: lp_port_enabled
+        key_map: ifindex
+        field_map:
+          enabled: lp_port_enabled
+          mode: lp_port_mode
+          action: lp_port_action
+          vlan_id: lp_port_vlan_id
+          loop_detected: lp_port_loop_detected
+          last_loop_time: lp_port_last_loop_time
+        defaults:
+          enabled: false
+          mode: passive
+          action: auto-disable
+          vlan_id: 0
+          loop_detected: false
+          last_loop_time: ''
   set_loop_protection:
     type: upsert
   get_auto_disable:
@@ -131,6 +152,47 @@ attributes:
   multicast_threshold:
     wire: hm2trafficmgmtifingressstormctlmcastthreshold
     source: trafficmgmt
+  # get_loop_protection.interfaces (#299 Rank1) — keepalive port wires.
+  lp_port_enabled:
+    wire: hm2agentkeepaliveportstate
+    source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      enabled: true
+      disabled: false
+  lp_port_mode:
+    wire: hm2agentkeepaliveportmode
+    source: platform-switching
+    value_map:
+      '1': active
+      '2': passive
+      active: active
+      passive: passive
+  lp_port_action:
+    wire: hm2agentkeepaliveportrxaction
+    source: platform-switching
+    value_map:
+      '10': trap
+      '11': auto-disable
+      '12': all
+      trap: trap
+      auto-disable: auto-disable
+      all: all
+  lp_port_vlan_id:
+    wire: hm2agentkeepaliveportvlanid
+    source: platform-switching
+  lp_port_loop_detected:
+    wire: hm2agentkeepaliveportloopdetected
+    source: platform-switching
+    value_map:
+      '1': true
+      '2': false
+      yes: true
+      no: false
+  lp_port_last_loop_time:
+    wire: hm2agentkeepaliveportlastloopdetectedtime
+    source: platform-switching
   loop_enabled:
     wire: hm2agentswitchkeepalivestate
     source: platform-switching
