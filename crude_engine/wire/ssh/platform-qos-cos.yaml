@@ -3,11 +3,17 @@ feature: platform-qos-cos-ssh
 description: "SSH CLI sources for QoS class of service"
 
 attributes:
+  # get_qos (#317 Rank1): show classofservice trust — fanout=1 (same show).
+  # Archive qos.yaml + napalm-hios 1.17 / CLI.json: Intf | Trust Mode [| Default Priority].
+  # Current table parser is 0-based: key_column 0 = Intf, column 1 = Trust Mode.
+  # Prefer existing value_map; CLI strings → MIB ints to match MOPS floor.
+  # cpu/1 (n 28 vs 29): no egress key-filter tool — shape remainder honest if still red.
+  # No invent floors. No per-port fanout (#290/#303 HARD).
   hm2agentcosmapintftrustmode:
-    type: string
+    type: integer
     sources:
       ssh:
-        read: {command: "show classofservice trust", parser: table, column: 2}
+        read: {command: "show classofservice trust", parser: table, key_column: 0, column: 1, tag: value_map, map: cos_trust_mode_ssh}
 
   hm2agentcosmapuntrustedtrafficclass:
     type: string
