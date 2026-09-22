@@ -21,6 +21,17 @@ attributes:
       ssh:
         read: {command: "show security-status all", field: OperState, tag: value_map, map: devsec_oper_ssh}
 
+  # get_devsec_status (#326 Rank1v2): trap_cause = hm2devsectrapcause.
+  # Live tip CLI cell "Trap Cause"..................................secure-boot-disabled
+  # (archive + show security-status all). Rank1 bound field but omitted value_map;
+  # type:integer → crude_numeric invent 0 ≠ MOPS token. Fix: tag value_map map
+  # devsec_cause_cli (archive; quote keys). Same show as oper_state → fanout 1.
+  # status_index leftover OK (dict vs int). Prefer existing tools. No invent. No #92.
+  hm2devsectrapcause:
+    sources:
+      ssh:
+        read: {command: "show security-status all", field: "Trap Cause", tag: value_map, map: devsec_cause_cli}
+
   # Security status monitors: show security-status monitor
   hm2devsecsensehttpenabled:
     sources:
