@@ -23,10 +23,11 @@ value_maps:
   dai_global_verify_ssh:
     enabled: true
     disabled: false
-  # SSH DAI table cells yes/enable/enabled (#315 Rank1 / 1.17 _is_on).
+  # SSH DAI table cells yes/enable/enabled (#315 Rank1v2 / 1.17 _is_on).
+  # Quote yes/no — bare YAML 1.1 bool keys never match CLI "yes"/"no" strings.
   dai_on_ssh:
-    yes: true
-    no: false
+    'yes': true
+    'no': false
     enable: true
     enabled: true
     disable: false
