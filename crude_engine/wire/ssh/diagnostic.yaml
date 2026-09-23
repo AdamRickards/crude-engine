@@ -3,13 +3,28 @@ feature: diagnostic-ssh
 description: "SSH CLI sources for HM2-DIAGNOSTIC-MIB"
 
 attributes:
-  # Device monitor: show device-status all
+  # get_device_monitor (#362 Rank1): oper_state = hm2devmonoperstate.
+  # Archive + CLI.json: show device-status all field Operating State (current).
+  # Prior field Device Monitor returned token; align archive + value_map
+  # (ok→noerror) sibling to devsec_oper_ssh. Same show → fanout 1.
+  # Shape leftover OK: MOPS walk index-dict {'1':…} vs SSH scalar (no wrap
+  # tool; #326 status_index class). Prefer existing tools. No invent. No #92.
   hm2devmonoperstate:
     type: string
     sources:
       ssh:
-        read: {command: "show device-status all", field: "Device Monitor"}
+        read: {command: "show device-status all", field: "Operating State (current)", tag: value_map, map: devmon_oper_ssh}
 
+  # get_device_monitor (#362 Rank1): trap_cause = hm2devmontrapcause.
+  # Archive: Trap Cause on show device-status all. type:integer → crude_numeric
+  # invent 0 without map (#326 Rank1v2). Fit: tag value_map map devmon_cause_cli
+  # (MIB allowed; quote keys). Same show → fanout 1.
+  # status_index undeclared leftover OK ({} vs default 0; events≠scalar).
+  # Index-dict vs scalar leftover OK (no SSH wrap primitive).
+  hm2devmontrapcause:
+    sources:
+      ssh:
+        read: {command: "show device-status all", field: "Trap Cause", tag: value_map, map: devmon_cause_cli}
 
   # get_devsec (#323 Rank1): state = hm2devsecoperstate — missing SSH source.
   # 1.17 get_devsec_status + archive: show security-status all field OperState
