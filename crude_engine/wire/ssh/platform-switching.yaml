@@ -21,6 +21,44 @@ attributes:
       ssh:
         read: {command: "show ip source-guard interfaces", parser: table, column: 2, key_column: 0}
 
+  # get_ip_source_guard_bindings (#364 Rank1): no-cli — static binding wires
+  # undeclared. CLI.json + 1.17: show ip source-guard bindings static
+  # header MAC|IP|Interface|VLAN|Status[+HW]. Columns from unit fixture +
+  # ssh_hios.get_ip_source_guard. Prefer static (schema wires are static*).
+  # pk = binding_ip = col1. Fanout 1. Prefer existing tools. No invent. No #92.
+  hm2agentstaticipsgbindingmacaddr:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip source-guard bindings static", parser: table, key_column: 1, column: 0}
+
+  hm2agentstaticipsgbindingipaddr:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip source-guard bindings static", parser: table, key_column: 1, column: 1}
+
+  hm2agentstaticipsgbindingifindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip source-guard bindings static", parser: table, key_column: 1, column: 2}
+
+  hm2agentstaticipsgbindingvlanid:
+    sources:
+      ssh:
+        read: {command: "show ip source-guard bindings static", parser: table, key_column: 1, column: 3}
+
+  hm2agentstaticipsgbindingrowstatus:
+    sources:
+      ssh:
+        read: {command: "show ip source-guard bindings static", parser: table, key_column: 1, column: 4, tag: value_map, map: ipsg_binding_active_ssh}
+
+  hm2agentstaticipsgbindinghwstatus:
+    sources:
+      ssh:
+        read: {command: "show ip source-guard bindings static", parser: table, key_column: 1, column: 5, tag: value_map, map: ipsg_binding_active_ssh}
+
   # RSTP global: show spanning-tree global
   hm2agentstpadminmode:
     sources:

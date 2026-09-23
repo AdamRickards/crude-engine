@@ -44,6 +44,8 @@ attributes:
   binding_ifindex:
     wire: hm2agentstaticipsgbindingifindex
     source: platform-switching
+    # #364: MOPS ifIndex → ifName to match SSH Interface column (1.17).
+    value_map: ifindex
   binding_vlan:
     wire: hm2agentstaticipsgbindingvlanid
     source: platform-switching
