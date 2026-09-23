@@ -9,13 +9,13 @@ Cells from Test-owned `tests/fixtures/floors_provenance.json` (redacted aggregat
 
 **floor_source=`gold`** only when device-proved MOPS exists (`mops=pass` from `tests/release_matrix.json` verdicts). Sanitized `gold_floors.json` alone never sets gold.
 
-Counts: floor_source gold **75** / 77; offline pass **51**; mops pass **75**; snmp pass **75**; ssh pass **35**.
+Counts: floor_source gold **75** / 77; offline pass **51**; mops pass **75**; snmp pass **75**; ssh pass **37**.
 
 ## Coverage (Σ end-game progress)
 
 Effort **Σ Coverage** (`local/agents/diagrams/effort-board.md` + `diagrams/resolution-loop.md`). **Possible** = rows with `floor_source=gold` × `{offline,mops,snmp,ssh}`. **Proven** = those cells = `pass`. HITL exceptions are explicit only — never silent gaps.
 
-**Rollup: proven `235` / possible `300` (78.3%).** Create→Execute→Resolve thickens this forever; lanes A′/B/C feed it.
+**Rollup: proven `237` / possible `300` (79.0%).** Create→Execute→Resolve thickens this forever; lanes A′/B/C feed it.
 
 ### Cell vocabulary
 
@@ -62,7 +62,7 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | `get_ip_addresses` | `gold` | `pass` | `pass` | `pass` | `untested` |
 | `get_ip_restrict` | `gold` | `pass` | `pass` | `pass` | `untested` |
 | `get_ip_source_guard_bindings` | `gold` | `untested` | `pass` | `pass` | `untested` |
-| `get_ip_source_guard_port` | `gold` | `untested` | `pass` | `pass` | `untested` |
+| `get_ip_source_guard_port` | `gold` | `untested` | `pass` | `pass` | `pass` |
 | `get_ipv6_neighbors` | `gold` | `untested` | `pass` | `pass` | `untested` |
 | `get_ipv6_neighbors_table` | `gold` | `untested` | `pass` | `pass` | `untested` |
 | `get_lldp_neighbors` | `gold` | `untested` | `pass` | `pass` | `untested` |
@@ -109,7 +109,7 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | `get_vlans` | `gold` | `pass` | `pass` | `pass` | `untested` |
 | `get_vrrp` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_vrrp_instances` | `gold` | `pass` | `pass` | `pass` | `pass` |
-| `get_vrrp_stats` | `gold` | `untested` | `pass` | `pass` | `untested` |
+| `get_vrrp_stats` | `gold` | `untested` | `pass` | `pass` | `pass` |
 | `get_vrrp_tracking` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_watchdog_status` | `gold` | `pass` | `pass` | `pass` | `pass` |
 
