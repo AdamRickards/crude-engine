@@ -31,6 +31,8 @@ lands or HITL kills the need.
 
 | SSH GARP GVRP/GMRP field-label capture | Schema NO_HOLE — CLI.json names shows but no captured field labels (archive TODO); invent risk without sample. Soft Rank1 exhausted | #327 get_gmrp; #328 get_gvrp | Soft Σ SSH no-cli continue (#329+); HITL/1.17 sample capture when opened |
 
+| SSH get_ip_addresses nested ip_table / composed ipv4 | Schema NO_HOLE — defaults only `ipv4: {}` (no sub_tables) → attr scope empty → cli=[] honest; CLI.json names `show ip interface` (L3) + `show network parms` (L2 fallback) but archive needs `tag: ip_table` / intf→ipv4→ip→prefix_length nest (Engine). Binding management scalars invents NAPALM floor (both empty). Soft Rank1 exhausted | #329 get_ip_addresses | Soft Σ SSH no-cli continue (#330+); Engine ip_table / HITL when opened |
+
 ## Rules
 
 1. Engine merge still needs HITL sign-off when it invents meaning / new primitive.
