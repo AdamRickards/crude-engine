@@ -194,7 +194,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ip_source_guard_port": {
       "floor_source": "gold",
@@ -397,7 +397,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_sflow_receiver": {
       "floor_source": "gold",
@@ -411,7 +411,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_signal_contact": {
       "floor_source": "gold",
