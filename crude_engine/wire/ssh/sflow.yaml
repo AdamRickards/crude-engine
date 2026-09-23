@@ -4,35 +4,48 @@ description: "SSH CLI sources for sFlow"
 
 attributes:
   # Receivers: show sflow receivers
+  # get_sflow_receiver (#366 Rank1): cli listed (~1.3k) but ssh n=0 vs MOPS n=8.
+  # Root: primary_key receiver_index = sflowrcvrindex had no SSH source → pk_data {}
+  # → shape {}. Also maxdatagram wire name miss (max vs maximum) and col4 was
+  # wrongly addresstype (CLI header: Index Owner Timeout MaxDgram Port IP).
+  # Fit: archive key_column:0 + columns; bind index/owner/timeout/max/port/address.
+  # datagram_version not in CLI table — leave undeclared leftover (default 5).
+  # Prefer existing tools. No invent. No fanout. No #92.
+  sflowrcvrindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 0}
+
   sflowrcvrowner:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 1}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 1}
 
   sflowrcvrtimeout:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 2}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 2}
 
-  sflowrcvrmaxdatagramsize:
+  sflowrcvrmaximumdatagramsize:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 3}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 3}
 
-  sflowrcvraddresstype:
+  sflowrcvrport:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 4}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 4}
 
   sflowrcvraddress:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 5}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 5}
 
   # Samplers: show sflow samplers
   sflowfsdatasource:
