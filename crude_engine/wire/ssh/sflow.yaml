@@ -73,20 +73,24 @@ attributes:
         write: {command: "sflow sampler maxheadersize {value}", level: config_interface}
 
   # Pollers: show sflow pollers
+  # get_sflow_poller (#365 Rank1): without key_column keys were row_num 0..n
+  # vs MOPS OID/DataSource. Archive + snmp-target sibling: key_column: 0 = port.
+  # Schema regex+value_map:ifindex → ifName keys/values both sides. No invent.
+  # No key_tag on SSH (#318 NO_HOLE class). No fanout. No #92.
   sflowcpdatasource:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow pollers", parser: table, column: 0}
+        read: {command: "show sflow pollers", parser: table, key_column: 0, column: 0}
 
   sflowcpreceiver:
     sources:
       ssh:
-        read: {command: "show sflow pollers", parser: table, column: 1}
+        read: {command: "show sflow pollers", parser: table, key_column: 0, column: 1}
         write: {command: "sflow poller receiver {value}", level: config_interface}
 
   sflowcpinterval:
     sources:
       ssh:
-        read: {command: "show sflow pollers", parser: table, column: 2}
+        read: {command: "show sflow pollers", parser: table, key_column: 0, column: 2}
         write: {command: "sflow poller interval {value}", level: config_interface}
