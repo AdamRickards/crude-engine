@@ -33,7 +33,8 @@ methods:
   get_sflow_poller:
     type: dict
     primary_key: poller_datasource
-    key_map: ifindex
+    # #365 Rank1: drop key_map ifindex — walk idx is OID/DataSource (not ifIndex),
+    # so key_map never remapped. Keys come from pk_value after regex+value_map.
     # Same DataSource suffix encoding as sampler (1.17 _sflow_suffix_to_ifindex).
     defaults:
       poller_datasource: ''
@@ -85,7 +86,10 @@ attributes:
   poller_datasource:
     wire: sflowcpdatasource
     source: sflow
+    # OID/DataSource → ifIndex (regex) → ifName (value_map ifindex). YAML order.
+    # SSH CLI already ifName; regex miss passes through; value_map miss passes through.
     regex: '2\.2\.1\.1\.(\d+)'
+    value_map: ifindex
   poller_receiver:
     wire: sflowcpreceiver
     source: sflow
