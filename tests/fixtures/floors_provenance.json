@@ -264,7 +264,7 @@
       "offline": "empty",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_mrp": {
       "floor_source": "gold",
