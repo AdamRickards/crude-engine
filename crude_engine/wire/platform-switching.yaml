@@ -32,6 +32,17 @@ value_maps:
     enabled: true
     disable: false
     disabled: false
+  # SSH show ip source-guard bindings static Status/HW (#364 / 1.17).
+  # Quote yes/no (YAML 1.1). active from unit fixture Status column.
+  ipsg_binding_active_ssh:
+    'active': true
+    'yes': true
+    'no': false
+    enable: true
+    enabled: true
+    disable: false
+    disabled: false
+    default: false
   # SSH RateLimit '-' → unlimited -1 (1.17).
   dai_rate_limit_ssh:
     '-': -1
