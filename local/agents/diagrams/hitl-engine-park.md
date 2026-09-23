@@ -33,6 +33,9 @@ lands or HITL kills the need.
 
 | SSH get_ip_addresses nested ip_table / composed ipv4 | Schema NO_HOLE — defaults only `ipv4: {}` (no sub_tables) → attr scope empty → cli=[] honest; CLI.json names `show ip interface` (L3) + `show network parms` (L2 fallback) but archive needs `tag: ip_table` / intf→ipv4→ip→prefix_length nest (Engine). Binding management scalars invents NAPALM floor (both empty). Soft Rank1 exhausted | #329 get_ip_addresses | Soft Σ SSH no-cli continue (#330+); Engine ip_table / HITL when opened |
 
+| SSH get_fan_status multi-row `parser: fan_status` | Schema NO_HOLE — CLI.json `show fan`; archive uses Engine `parser: fan_status` (multi-row walk). No scalar field for `hm2fanmgmtstatus`; schema invent floor `defaults.status: running` vs MOPS `{}`. Soft Rank1 exhausted | #332 get_fan_status | Soft Σ SSH fail continue (#333+#334); Engine fan_status / HITL when opened |
+
+
 ## Rules
 
 1. Engine merge still needs HITL sign-off when it invents meaning / new primitive.
