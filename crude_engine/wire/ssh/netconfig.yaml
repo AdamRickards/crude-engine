@@ -53,3 +53,18 @@ attributes:
       ssh:
         read: {command: "show network hidiscovery", field: "Relay status"}
         write: {command: "network hidiscovery relay", level: priv}
+
+  # Management reply priorities (get/set_management_priority) — archive
+  # management.yaml + show_network_parms.txt field labels. Same show as
+  # parms siblings → fanout stays 1 (dedup). No invent floors.
+  hm2netvlanpriority:
+    sources:
+      ssh:
+        read: {command: "show network parms", field: "Management VLAN priority"}
+        write: {command: "network management priority dot1p {value}", level: priv}
+
+  hm2netipdscppriority:
+    sources:
+      ssh:
+        read: {command: "show network parms", field: "Management IP-DSCP value"}
+        write: {command: "network management priority ip-dscp {value}", level: priv}
