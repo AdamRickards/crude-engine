@@ -201,7 +201,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ipv6_neighbors": {
       "floor_source": "gold",
@@ -530,7 +530,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp_tracking": {
       "floor_source": "gold",
