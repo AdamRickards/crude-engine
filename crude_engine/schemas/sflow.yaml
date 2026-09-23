@@ -20,7 +20,8 @@ methods:
   get_sflow_sampler:
     type: dict
     primary_key: sampler_datasource
-    key_map: ifindex
+    # #367 Rank1: mirror #365 poller — drop key_map ifindex (OID idx never remaps);
+    # keys from pk_value after regex+value_map:ifindex.
     # SNMP: accessible FsReceiver; DataSource suffix {oid_len}.…ifIndex.instance.
     defaults:
       sampler_datasource: ''
@@ -69,7 +70,9 @@ attributes:
     wire: sflowfsdatasource
     source: sflow
     # ifIndex in ifEntry DataSource (MOPS OID or SNMP suffix+instance).
+    # #367: regex then value_map:ifindex → ifName (mirror poller #365).
     regex: '2\.2\.1\.1\.(\d+)'
+    value_map: ifindex
   sampler_receiver:
     wire: sflowfsreceiver
     source: sflow
