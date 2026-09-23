@@ -31,6 +31,28 @@ value_maps:
     'password-policy-not-configured': password-policy-not-configured
     'password-policy-inactive': password-policy-inactive
     'secure-boot-disabled': secure-boot-disabled
+  # SSH show device-status all Operating State → schema noerror/error (#362).
+  # Archive field; ok/no error aliases. Sibling to devsec_oper_ssh.
+  devmon_oper_ssh:
+    noerror: noerror
+    ok: noerror
+    error: error
+    'no error': noerror
+  # SSH show device-status all Trap Cause → schema cause tokens (#362).
+  # type:integer → crude_numeric invent 0 without map (#326 Rank1v2 class).
+  # Archive/MIB allowed list; quote keys. Unmapped pass through.
+  devmon_cause_cli:
+    'none': none
+    'power-supply': power-supply
+    'link-failure': link-failure
+    'temperature': temperature
+    'fan-failure': fan-failure
+    'module-removal': module-removal
+    'ext-nvm-removal': ext-nvm-removal
+    'ext-nvm-not-in-sync': ext-nvm-not-in-sync
+    'ring-redundancy': ring-redundancy
+    'humidity': humidity
+    'stp-port-blocked': stp-port-blocked
 schemas:
   read_diagnostic:
     type: dict
