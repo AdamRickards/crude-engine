@@ -69,6 +69,8 @@ attributes:
   interface:
     wire: ipnettomediaifindex
     source: ip
+    # MOPS/SNMP ifIndex → ifName (sflow/mrp sibling); SSH ifName misses pass through (#295).
+    value_map: ifindex
   mac:
     wire: ipnettomediaphysaddress
     source: ip
