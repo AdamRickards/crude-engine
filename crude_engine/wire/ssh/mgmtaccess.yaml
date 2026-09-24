@@ -8,20 +8,23 @@ attributes:
       ssh:
         read: {command: "show network management access global", field: "Operation"}
 
+  # get_ip_restrict (#217 Rank1): rules are 2-line records (line0 ID/IP/…; line1 Prefix/…)
+  # split by a blank line. Blank-line detect made line1 a phantom row '24' with prefix 0;
+  # lines_per_record: 2 pairs them (blank lines dropped). Same show, no fanout.
   hm2rmaindex:
     sources:
       ssh:
-        read: {command: "show network management access rules", parser: paired_rows, column: 0}
+        read: {command: "show network management access rules", parser: paired_rows, lines_per_record: 2, column: 0}
 
   hm2rmaprefixlength:
     sources:
       ssh:
-        read: {command: "show network management access rules", parser: paired_rows, line: 1, column: 0}
+        read: {command: "show network management access rules", parser: paired_rows, lines_per_record: 2, line: 1, column: 0}
 
   hm2rmaipaddr:
     sources:
       ssh:
-        read: {command: "show network management access rules", parser: paired_rows, column: 1}
+        read: {command: "show network management access rules", parser: paired_rows, lines_per_record: 2, column: 1}
 
   hm2rmarowstatus:
     sources:
