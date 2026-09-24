@@ -104,25 +104,27 @@ attributes:
   # Prefer archive auto_disable.yaml + napalm-hios 1.17 column layout (2-line records).
   # line0: Intf Reason Remaining Error_time State; line1: Component Reset_timer.
   # Fanout: 2 shows total (brief once + reasons once), no per-port {index}.
+  # column_overflow: strict (#292 leftover): flexible key col0 ran into Reason on a
+  # single-space gap → composite '1/1 none' keys; strict clips at dash bounds (show sfp sibling).
   hm2autodisableintfoperstate:
     sources:
       ssh:
-        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 0, column: 4, tag: value_map, map: autodisable_operstate_ssh}
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, column_overflow: strict, line: 0, column: 4, tag: value_map, map: autodisable_operstate_ssh}
 
   hm2autodisableintferrorreason:
     sources:
       ssh:
-        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 0, column: 1, tag: value_map, map: autodisable_reason_cli}
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, column_overflow: strict, line: 0, column: 1, tag: value_map, map: autodisable_reason_cli}
 
   hm2autodisableintfremainingtime:
     sources:
       ssh:
-        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 0, column: 2}
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, column_overflow: strict, line: 0, column: 2}
 
   hm2autodisableintftimer:
     sources:
       ssh:
-        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, line: 1, column: 2}
+        read: {command: "show auto-disable brief", parser: paired_rows, lines_per_record: 2, column_overflow: strict, line: 1, column: 2}
 
   # get_auto_disable_reasons — same Rank1 shows pair (CLI_REFERENCE / 1.17).
   hm2autodisablereasons:
