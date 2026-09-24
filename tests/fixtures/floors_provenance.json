@@ -26,14 +26,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_auto_disable": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_auto_disable_reasons": {
       "floor_source": "no-floor",
@@ -187,7 +187,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ip_source_guard_bindings": {
       "floor_source": "gold",
@@ -243,7 +243,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_mac_address_table": {
       "floor_source": "gold",
@@ -418,7 +418,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_snmp_config": {
       "floor_source": "gold",
@@ -509,7 +509,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp": {
       "floor_source": "gold",
