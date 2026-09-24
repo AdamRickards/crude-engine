@@ -24,6 +24,10 @@ methods:
       enabled:
         wire: hm2agentswitchkeepalivestate
         source: platform-switching
+        # MOPS/SNMP enum 1/2 → bool (lp_port_enabled / loop_enabled sibling); SSH bool passes (#299).
+        value_map:
+          '1': true
+          '2': false
       transmission_interval:
         wire: hm2agentswitchkeepalivetransmitinterval
         source: platform-switching
@@ -188,8 +192,8 @@ attributes:
     value_map:
       '1': true
       '2': false
-      yes: true
-      no: false
+      'yes': true
+      'no': false
   lp_port_last_loop_time:
     wire: hm2agentkeepaliveportlastloopdetectedtime
     source: platform-switching
