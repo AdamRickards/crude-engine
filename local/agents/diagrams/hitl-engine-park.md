@@ -13,7 +13,9 @@ lands or HITL kills the need.
 | #12 SNMP compound-index / `key_format` (ascii) | Engine primitive — Schema tools exhausted | #231 `community_access` mops ascii vs snmp 0; trap-dest class | Lane B continues; leave #231 open as NO_HOLE consumer |
 | TC-BITS (~3) prove-before-flip | Generator teach needs live prove first | #205 residual | Parked — not overnight flip |
 | MOPS/SNMP multi-field INDEX / singular `index_field` collapse | Driver `_list_to_dict` / compound INDEX — Schema cannot un-collapse | #68 get_software images; #106 MOPS multi-field INDEX; #12 SNMP compound | Soft hops elsewhere; park Engine |
-| SNMP inspect `last_oid` / walk heartbeat | Hang never returns; snmp call-timeout has no last_command (SSH-only today) | #47 get_interfaces snmp fanout | Schema walk fan-in first; park Engine heartbeat |
+| SNMP inspect `last_oid` / walk heartbeat | Hang never returns; snmp call-timeout has no last_command (SSH-only today) | #47 get_interfaces snmp fanout (closed) | Schema walk fan-in first; park Engine heartbeat |
+| #272 get_interface_statistics | Engine NO_HOLE (accepted 2026-09-13) — `index_filter` only applies on writes, and physical-only read parity needs a read-side filter in Engine. | #272 get_interface_statistics | Next step: park Engine until HITL opens. |
+| #62 get_rstp_port | Engine NO_HOLE — `enabled` / `edge` / `priority` / `path_cost` exist only on per-port `show spanning-tree port {port}`; `{index}` is never bound on dict reads, and `iterate_from` fanout hits the HARD call-timeout class. Needs Engine index binding or a fanout budget | #62 get_rstp_port | No honest Schema-only path; park Engine until HITL opens |
 | #30 SNMPHIOS.close() asyncio tax | Engine/transport — ~2s close destroys pending tasks | sequential sidecar / concurrent prove noise | Soft floors continue; Engine park until HITL opens |
 | #115 `to_bool` English/SNMP false-vocab hardcoded | Checker-blind Engine; schema cannot declare | bool matrices / parity | Soft YAML elsewhere; park Engine |
 | #116 `compute sort:natural` HiOS port-name heuristic | Checker-blind Engine encodes vendor sort | port-ordered tables | Soft elsewhere; park Engine |
