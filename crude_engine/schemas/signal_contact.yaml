@@ -16,7 +16,8 @@ methods:
       sense_fan_module: false
       sense_module: false
       sense_module_removal: false
-      sense_ps_state: false
+      # Per-PSU dict {psid: bool} (#293 / 1.17 anchor); no PS rows → {} (not bool/None).
+      sense_ps_state: {}
       sense_envm_removal: false
       sense_envm_not_in_sync: false
       sense_ring_redundancy: false

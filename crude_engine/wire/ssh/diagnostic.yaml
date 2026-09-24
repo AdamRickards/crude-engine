@@ -194,7 +194,7 @@ attributes:
   # Prefer archive signal_contact.yaml + napalm-hios 1.17 (ssh_hios get_signal_contact).
   # Dedup: one CLI exec per contact across fields. No invent floors.
   # Left undeclared (no simple 1.17 dot-key / table≠schema-bool): sense_fan_module,
-  # sense_module, sense_ps_state (PS table), sense_if_link_alarm (Intf table).
+  # sense_module, sense_if_link_alarm (Intf table).
   hm2sigconid:
     sources:
       ssh:
@@ -244,6 +244,14 @@ attributes:
     sources:
       ssh:
         read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "ACA not in sync", tag: value_map, map: sigcon_sense_ssh}
+
+  # sense_ps_state (#293 Rank1): per-PSU dict {psid: bool} — Power Supply/Status table
+  # (1.17 ssh_hios PS rows; archive ps_state: table section 1, key_column 0, column 1).
+  # Same per-contact show (iterate cache) — no extra fanout. No table → {} (honest).
+  hm2sigconsensepsstate:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], parser: table, section: 1, key_column: 0, column: 1, tag: value_map, map: sigcon_sense_ssh}
 
   hm2sigconsenseringredundancy:
     sources:
