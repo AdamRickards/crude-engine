@@ -3647,22 +3647,21 @@ attributes:
     sources:
       snmp:
         read:
-          # INDEX {hm2SigConID, hm2PSID}; key by contact for get_signal_contact (#235)
+          # INDEX {hm2SigConID, hm2PSID} → per-PSU dict {psid: bool} per contact
+          # (#293 Rank1; 1.17 anchor + archive signal_contact.yaml ps_state).
+          # group=SigConID (row key), inner=PSID. Was key_field collapse → scalar (#235).
           oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1.1
           method: walk
-          index_fields:
-            - {name: hm2SigConID, type: integer}
-            - {name: hm2PSID, type: integer}
-          key_field: hm2SigConID
+          index: [group, inner]
       mops:
         read:
           mib: HM2-DIAGNOSTIC-MIB
           table: hm2SigConPSEntry
           field: hm2SigConSensePSState
           index_field: hm2SigConID
-          index_fields:
-          - hm2SigConID
-          - hm2PSID
+          # MOPS rows carry no hm2PSID column → PSID from per-contact row order
+          # (1.17 mops_hios + archive inner_index_field: _enumerate). #293 Rank1.
+          inner_index_field: _enumerate
     validation:
       allowed:
       - true
