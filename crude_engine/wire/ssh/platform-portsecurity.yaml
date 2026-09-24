@@ -9,10 +9,13 @@ attributes:
         read: {command: "show port-security global", field: "Port Security"}
         write: {command: "{'' if value else 'no '}port-security operation", level: config}
 
+  # get_port_security (#227 Rank1): 2-line records per port — table parser split each
+  # line into its own row_num key (56 vs 28). paired_rows lpr:2 like the limit siblings
+  # → port-name keys. HmEnabledStatus crude_boolean maps disabled/enabled. No fanout.
   hm2agentportsecuritymode:
     sources:
       ssh:
-        read: {command: "show port-security interface", parser: table, column: 1}
+        read: {command: "show port-security interface", parser: paired_rows, lines_per_record: 2, column: 1}
         write: {command: "{'' if value else 'no '}port-security operation", level: config_interface}
 
   hm2agentportsecuritydynamiclimit:
