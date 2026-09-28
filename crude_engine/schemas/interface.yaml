@@ -28,6 +28,7 @@ methods:
     type: dict
     primary_key: name
     key_map: ifindex
+    index_filter: '^\d+/\d+$'
     # SSH identity from show interface counters (ifdescr), not show port ifname
     attributes:
       name:
