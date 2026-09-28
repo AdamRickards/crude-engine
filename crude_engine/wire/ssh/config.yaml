@@ -1,0 +1,20 @@
+version: "2.9.0"
+feature: config-ssh
+description: "SSH CLI execute-blob source for get_config.running (#324)"
+
+attributes:
+  # Tested live over SSH: bare "show running-config" is rejected
+  # ("Incomplete command"); "script" is the working form. parser: none is
+  # REQUIRED here, not optional: SSH.yaml's protocol-level default parser is
+  # dot_keys, and omitting this key returned {} against the raw text.
+  #
+  # Considered "show running-config xml" for shape consistency with a future
+  # MOPS get_config (an XML config file). On the tested firmware "xml" is
+  # rejected as an invalid command, although the CLI reference lists it.
+  # "script all" hung the SSH session (prompt-pattern timeout) and was not
+  # pursued. No XML-shape source is reachable via SSH on the tested devices;
+  # a future MOPS get_config needs its own shape-reconciliation pass.
+  hm2configrunning:
+    sources:
+      ssh:
+        read: {command: "show running-config script", parser: none}
