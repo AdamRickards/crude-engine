@@ -348,7 +348,9 @@
       }
     },
     "get_ip_addresses": {
-      "ipv4": {}
+      "ipv4_address": "192.0.2.10",
+      "ipv4_prefix": 24,
+      "ipv4_gateway": "192.0.2.1"
     },
     "get_devsec_status": {
       "oper_state": "",
