@@ -103,10 +103,12 @@ attributes:
 
   # Remote backup / get_config_remote: show config remote-backup
   # Field labels from archive CLI capture (test_get_config_remote + archive config.yaml).
+  # #325: live label is "Admin state" (enabled/disabled), not "Remote backup" — miss fell
+  # back to schema default. HmEnabledStatus/boolean crude_boolean → bool (= MOPS type).
   hm2fmconfigremotesaveadminstatus:
     sources:
       ssh:
-        read: {command: "show config remote-backup", field: "Remote backup"}
+        read: {command: "show config remote-backup", field: "Admin state"}
 
   hm2fmconfigremotesavedestination:
     sources:
