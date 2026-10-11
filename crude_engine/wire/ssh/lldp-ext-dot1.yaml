@@ -1,0 +1,13 @@
+version: "2.9.0"
+feature: lldp-ext-dot1-ssh
+description: "SSH CLI sources for HM2-LLDP-EXT-DOT1-MIB (get_lldp_neighbors_detail)"
+
+attributes:
+  # #333/#334 pvid. "Port VLAN ID....1" — clean digit string, no extra
+  # parsing needed. Live-verified 2026-09-27 per the patch note.
+  # Base wire/lldp-ext-dot1.yaml already declares type: integer for the
+  # SNMP source — this overlay only adds the ssh: sources block.
+  lldpxdot1remportvlanid:
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Port VLAN ID"}

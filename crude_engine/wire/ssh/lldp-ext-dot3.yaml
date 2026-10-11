@@ -1,0 +1,44 @@
+version: "2.9.0"
+feature: lldp-ext-dot3-ssh
+description: "SSH CLI sources for HM2-LLDP-EXT-DOT3-MIB (get_lldp_neighbors_detail)"
+
+attributes:
+  # #333/#334. "Link Agg. port ID....0" — clean digit string. Live-verified
+  # 2026-09-27 per the patch note.
+  lldpxdot3remlinkaggportid:
+    type: integer
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Link Agg. port ID"}
+
+  # "Port oper. MAU type....30 (1000BaseTFD)" — SNMP's syntax is a bare
+  # Integer32 (e.g. 30); regex strips the "(1000BaseTFD)" annotation SSH
+  # adds that SNMP's OID value doesn't carry.
+  lldpxdot3remportopermautype:
+    type: integer
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Port oper. MAU type", regex: '^(\d+)'}
+
+  # "Autoneg. supp./enabled.....yes/yes" — one combined CLI field feeds two
+  # separate schema attributes (supported and enabled), each pulling its own
+  # half via regex against the same source field.
+  lldpxdot3remportautonegsupported:
+    type: boolean
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Autoneg. supp./enabled", regex: '^(\w+)/'}
+
+  lldpxdot3remportautonegenabled:
+    type: boolean
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Autoneg. supp./enabled", regex: '/(\w+)$'}
+
+  # NOT wired, deliberately: lldpxdot3remlinkaggstatus (aggregation_enabled).
+  # SNMP's shape is a bit_map-decoded list (lldp_agg_status: 0=aggCapable,
+  # 1=aggEnabled). SSH's "Link Agg. status....agg. capable" is human text,
+  # not raw bits — needs a value_map from every observed text phrase to the
+  # matching list, and only one phrase ("agg. capable") has been observed
+  # live so far. Needs more captures (esp. an "enabled" case) before the
+  # value_map can be written without guessing.

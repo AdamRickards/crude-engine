@@ -13,6 +13,13 @@ methods:
     type: list_append
     primary_key: local_port
     key_map: ifindex
+    # #333/#334 SSH: 11/14 attributes wired and live-verified 2026-09-27.
+    # Still SNMP/MOPS-only (partial, not a bug) — see wire/ssh/lldp.yaml and
+    # wire/ssh/lldp-ext-dot3.yaml comments for why each is deferred:
+    #   sys_capabilities / sys_enabled_capabilities — this command's SSH
+    #     output has no capabilities field at all; needs a different command.
+    #   aggregation_enabled — needs a value_map only one text phrase has
+    #     been observed for so far; the "enabled" phrase is unconfirmed.
     defaults:
       port_id: ''
       sys_name: ''
