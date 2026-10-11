@@ -35,10 +35,16 @@ attributes:
       ssh:
         read: {command: "show lldp remote-data", parser: sections, field: "Autoneg. supp./enabled", regex: '/(\w+)$'}
 
-  # NOT wired, deliberately: lldpxdot3remlinkaggstatus (aggregation_enabled).
-  # SNMP's shape is a bit_map-decoded list (lldp_agg_status: 0=aggCapable,
-  # 1=aggEnabled). SSH's "Link Agg. status....agg. capable" is human text,
-  # not raw bits — needs a value_map from every observed text phrase to the
-  # matching list, and only one phrase ("agg. capable") has been observed
-  # live so far. Needs more captures (esp. an "enabled" case) before the
-  # value_map can be written without guessing.
+  # lldpxdot3remlinkaggstatus (aggregation_enabled) — #395. SNMP's shape is a
+  # bit_map-decoded list (lldp_agg_status: 0=aggCapable, 1=aggEnabled); SSH's
+  # "Link Agg. status....agg. capable" is human text, so value_map
+  # lldp_agg_status_ssh (wire/lldp-ext-dot3.yaml) maps it to the same list.
+  # PARTIAL: only 'agg. capable' → [aggCapable] has been observed live. The
+  # aggEnabled text and the both-bits case are unobserved and NOT guessed —
+  # such a phrase would pass through raw until captured. Missing label → []
+  # via the '' entry. Same sections reader as Link Agg. port ID above.
+  lldpxdot3remlinkaggstatus:
+    type: list
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Link Agg. status", tag: value_map, map: lldp_agg_status_ssh}
