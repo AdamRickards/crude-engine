@@ -268,7 +268,7 @@
     },
     "get_management": {
       "ip_address": "",
-      "prefix_length": 0,
+      "prefix_length": 24,
       "netmask": "",
       "gateway": "",
       "vlan_id": 1,
