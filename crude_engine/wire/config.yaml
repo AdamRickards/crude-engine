@@ -1,0 +1,10 @@
+version: "2.9.0"
+feature: config
+description: "Config management — running-config text blob. SSH-only: no SNMP/MOPS equivalent exists for a raw config-text dump (#324)."
+
+attributes:
+  # Synthetic identifier — no real HM2 MIB object backs this (there is no
+  # SNMP/MOPS way to fetch config as text). Named to match house hm2*
+  # convention for readability, not because it's a real OID.
+  hm2configrunning:
+    type: string
