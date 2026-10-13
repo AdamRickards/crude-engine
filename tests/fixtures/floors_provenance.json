@@ -180,7 +180,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ip_restrict": {
       "floor_source": "gold",

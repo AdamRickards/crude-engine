@@ -65,8 +65,19 @@ methods:
     type: upsert
   get_ip_addresses:
     type: dict
+    # #329: was `defaults: {ipv4: {}}` — a stub for a nested per-interface
+    # ip_table that never got built (needs an Engine primitive, see
+    # hitl-engine-park.md). The audit's own "Management IP" schema comment
+    # (below, on ipv4_address) says this method is a flat scalar dict, not
+    # a real table — confirmed live 2026-09-27: ipv4_address/ipv4_prefix/
+    # ipv4_gateway are already fully wired (SNMP/MOPS always were; SSH as
+    # of this same patch) and were being silently discarded because they
+    # were never referenced in defaults, so nothing was ever gathered on
+    # ANY protocol (confirmed via a live SNMP capture: 0 calls made).
     defaults:
-      ipv4: {}
+      ipv4_address: ''
+      ipv4_prefix: 0
+      ipv4_gateway: ''
   get_interfaces_ip:
     schema: get_ip_addresses
   set_interface:
