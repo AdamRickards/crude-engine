@@ -45,6 +45,12 @@ lands or HITL kills the need.
 | SSH get_fan_status multi-row `parser: fan_status` | Schema NO_HOLE — CLI.json `show fan`; archive uses Engine `parser: fan_status` (multi-row walk). No scalar field for `hm2fanmgmtstatus`; schema invent floor `defaults.status: running` vs MOPS `{}`. Soft Rank1 exhausted | #332 get_fan_status | Soft Σ SSH fail continue; Engine fan_status / HITL when opened |
 
 
+| #401 `_apply_lookup` suffix-match sniffs SNMP wire keys | Engine HITL — ARCHITECTURE.md:278-281: Gate 1 must not sniff G3 wire key shapes. Confirmed clerk @4149b59. Soft Schema cannot stop the fallback. | #401; atlas G2→G1 proofs | Soft Schema/Docs continue; park Engine until HITL opens. Tied to owner D1 (where coercion/G2 lives). |
+| #402 shaping / lookup / membership / compute bypass `_translate` | Engine HITL — untraced G2→G1 path; formatters and `_shape_table_output` run outside the translate choke point. Confirmed clerk @4149b59. | #402; atlas per-gate capture | Soft Docs arch-typedefs segment 05 DRAFT; park Engine until HITL opens (owner D6 shaping stage identity). |
+| #403 `_egress_gather` swallows Gate 3 exceptions into `{}` | Engine HITL / bug — ARCHITECTURE.md:280 and ENGINE_PRINCIPLES.md fail-fast. Confirmed clerk repro: failed gather returns all-defaults and Gate 1 exit passes. Driver twins (mops/ssh gather swallow) noted on issue. | #403; empty-default gold/floor passes | Soft path none for honesty; park Engine until HITL opens (owner D5 missing vs default). |
+| #404 Gate 2/3 definition conflict + trace gate numbering | Docs/Engine HITL — ARCHITECTURE.md vs ENGINE_PRINCIPLES.md disagree; `_gate2_check_constraints` emits `gate:3`. Confirmed clerk @4149b59. Broker trace: G2 is context resolver only, not the matrix broker. | #404; G2 testability / atlas | Soft Docs arch-typedefs INDEX D1–D2 DRAFT; park until owner picks D1 (coercion home) and D2 (gate boundary). |
+
+
 ## Rules
 
 1. Engine merge still needs HITL sign-off when it invents meaning / new primitive.
