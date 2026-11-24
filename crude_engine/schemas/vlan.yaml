@@ -18,9 +18,13 @@ methods:
       # Honest bucket: PVID→U only; no invent T/F. get_vlans.ports is the
       # SCHEMA leftover vs get_vlan_egress (1.17-shaped here for all protos).
       # Full PortList T/U/F remains on get_vlan_egress (SNMP/MOPS).
+      # #290 Rank1: attr key_map bridge_port (get_vlan_ingress sibling, same
+      # dot1qpvid wire) rekeys MOPS/SNMP basePort keys → ifName before lookup
+      # broadcast; SSH ifName keys miss and pass through. Values (PVID) untouched.
       membership:
         wire: dot1qpvid
         source: q-bridge
+        key_map: bridge_port
         lookup:
           from: vlan_id
           resolve: broadcast

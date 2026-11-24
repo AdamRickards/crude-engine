@@ -253,12 +253,12 @@ attributes:
   hm2agentkeepaliveportmode:
     sources:
       ssh:
-        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 2}
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 2, tag: value_map, map: keepalive_port_mode_ssh}
 
   hm2agentkeepaliveportrxaction:
     sources:
       ssh:
-        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 3}
+        read: {command: "show loop-protection interface", parser: table, key_column: 0, column: 3, tag: value_map, map: keepalive_port_action_ssh}
 
   hm2agentkeepaliveportvlanid:
     sources:
