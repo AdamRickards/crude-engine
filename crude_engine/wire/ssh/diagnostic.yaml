@@ -47,6 +47,30 @@ attributes:
       ssh:
         read: {command: "show security-status all", field: "Trap Cause", tag: value_map, map: devsec_cause_cli}
 
+  # get_devsec_history (#363 Rank1): no-cli — history wires undeclared on SSH.
+  # CLI.json: show security-status events; archive uses show security-status all
+  # section last (timestamp/cause/cause_index). Prefer archive section:last on
+  # same show family as #323/#326 (events dedicated show also exists).
+  # pk = hm2devsecstatusindex ← col2 Trap Cause Index (archive event_cause_index).
+  # cause type:integer → value_map devsec_cause_cli (#326 class). Fanout +1 show
+  # section only (same command string as all → driver dedup). Prefer existing.
+  # No invent. No #92. No fanout-per-row.
+  hm2devsecstatusindex:
+    sources:
+      ssh:
+        read: {command: "show security-status all", parser: table, section: "last", key_column: 2, column: 2}
+
+  hm2devsecstatustimestamp:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show security-status all", parser: table, section: "last", key_column: 2, column: 0}
+
+  hm2devsecstatustrapcause:
+    sources:
+      ssh:
+        read: {command: "show security-status all", parser: table, section: "last", key_column: 2, column: 1, tag: value_map, map: devsec_cause_cli}
+
   # Security status monitors: show security-status monitor
   hm2devsecsensehttpenabled:
     sources:
@@ -170,7 +194,7 @@ attributes:
   # Prefer archive signal_contact.yaml + napalm-hios 1.17 (ssh_hios get_signal_contact).
   # Dedup: one CLI exec per contact across fields. No invent floors.
   # Left undeclared (no simple 1.17 dot-key / table≠schema-bool): sense_fan_module,
-  # sense_module, sense_ps_state (PS table), sense_if_link_alarm (Intf table).
+  # sense_module, sense_if_link_alarm (Intf table).
   hm2sigconid:
     sources:
       ssh:
@@ -220,6 +244,14 @@ attributes:
     sources:
       ssh:
         read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], field: "ACA not in sync", tag: value_map, map: sigcon_sense_ssh}
+
+  # sense_ps_state (#293 Rank1): per-PSU dict {psid: bool} — Power Supply/Status table
+  # (1.17 ssh_hios PS rows; archive ps_state: table section 1, key_column 0, column 1).
+  # Same per-contact show (iterate cache) — no extra fanout. No table → {} (honest).
+  hm2sigconsensepsstate:
+    sources:
+      ssh:
+        read: {command: "show signal-contact {entity} all", iterate_from: [1, 2], parser: table, section: 1, key_column: 0, column: 1, tag: value_map, map: sigcon_sense_ssh}
 
   hm2sigconsenseringredundancy:
     sources:
