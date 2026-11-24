@@ -129,6 +129,17 @@ Current checks:
    honest paths tried → HITL / `NO_HOLE` naming missing hole or tool. Do
    not reopen `#92`.
 
+10. **Σ Coverage — Create → Execute → Resolve** (HITL 2026-09-21, #287
+   distill). End-game is countable: proven method×protocol pairs against a
+   floor / pairs possible once a floor exists; silent gaps forbidden.
+   Living rollup: `docs/FLOORS_BOARD.md`. Loop chart:
+   `diagrams/resolution-loop.md`. Raw HITL handover stays at
+   `architect/resolution-methodology.md` (not verbatim law). Before Resolve,
+   run the readiness gate (floor + test, or build/park). Do not conflate
+   Create (real capture only; Tier 1 `capture.py` vs Tier 2 sidecar) with
+   Execute (observe/file) or Resolve (gates not hacks). Lanes A′/B/C feed Σ;
+   they do not replace it. Batch-scan park piles before resolving one item.
+
 
 ## Never
 

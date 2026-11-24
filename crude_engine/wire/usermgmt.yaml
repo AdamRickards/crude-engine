@@ -1,5 +1,27 @@
 version: 2.6.0
 feature: usermgmt
+value_maps:
+  # SSH show users Access Mode / Authentication / Encryption CLI strings
+  # → schema canonical tokens (#297; same light maps as napalm-hios 1.17).
+  ssh_user_access_role:
+    unauthorized: unauthorized
+    guest: guest
+    auditor: auditor
+    custom1: custom1
+    custom2: custom2
+    custom3: custom3
+    operator: operator
+    administrator: administrator
+  ssh_user_snmp_auth:
+    md5: md5
+    sha: sha
+    sha1: sha
+  ssh_user_snmp_enc:
+    none: none
+    des: des
+    aescfb128: aes128
+    aes128: aes128
+    aes256: aes256
 schemas:
   read_usermgmt:
     type: dict

@@ -22,7 +22,7 @@ attributes:
   hm2useraccessrole:
     sources:
       ssh:
-        read: {command: "show users", parser: paired_rows, line: 1, column: 0}
+        read: {command: "show users", parser: paired_rows, line: 1, column: 0, tag: value_map, map: ssh_user_access_role}
 
   hm2userlockoutstatus:
     sources:
@@ -37,12 +37,12 @@ attributes:
   hm2usersnmpauthtype:
     sources:
       ssh:
-        read: {command: "show users", parser: paired_rows, column: 1}
+        read: {command: "show users", parser: paired_rows, column: 1, tag: value_map, map: ssh_user_snmp_auth}
 
   hm2usersnmpenctype:
     sources:
       ssh:
-        read: {command: "show users", parser: paired_rows, line: 1, column: 1}
+        read: {command: "show users", parser: paired_rows, line: 1, column: 1, tag: value_map, map: ssh_user_snmp_enc}
 
   hm2pwdmgmtminlength:
     sources:

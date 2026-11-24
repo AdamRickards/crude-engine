@@ -1,5 +1,31 @@
 version: 2.6.0
 feature: devmgmt
+value_maps:
+  # SSH show auto-disable brief State → enabled bool (#292 Rank1 / archive + 1.17).
+  autodisable_operstate_ssh:
+    active: true
+    inactive: false
+  # SSH show auto-disable reasons State → enabled bool.
+  autodisable_reason_enabled_ssh:
+    enabled: true
+    disabled: false
+  # CLI reason token alias → schema canonical (archive auto_disable.yaml).
+  autodisable_reason_cli:
+    port-security: mac-based-port-security
+  # Reason name → category (archive reason_to_category / 1.17 _AD_REASON_CATEGORY).
+  autodisable_reason_to_category:
+    link-flap: port-monitor
+    crc-error: port-monitor
+    duplex-mismatch: port-monitor
+    overload-detection: port-monitor
+    speed-duplex: port-monitor
+    dhcp-snooping: network-security
+    arp-rate: network-security
+    port-security: network-security
+    mac-based-port-security: network-security
+    bpdu-rate: l2-redundancy
+    loop-protection: l2-redundancy
+    default: other
 schemas:
   read_devmgmt:
     type: dict

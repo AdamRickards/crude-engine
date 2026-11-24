@@ -110,3 +110,18 @@ When call-timeout is cleared but parse/shape/`n` misses the shared floor:
 Architect orchestration **check 9** (`../architect/INSTRUCTIONS.md`) —
 prove CLI.json / overlay guesses vs device-proved **MOPS floor**; not
 2-of-3; do not reopen `#92`.
+
+## Create vs Execute (Σ Coverage — Architect check 10)
+
+Do not conflate jobs (HITL #287 distill / `diagrams/resolution-loop.md`):
+
+| Job | Test bot does | Does not |
+| --- | --- | --- |
+| **Create** | Own Tier-1/2 capture→fixture when ordered (`tests/capture.py` Tier 1; sidecar Tier 2 for `test_napalm` only) | Invent expected values; use sanitized `gold_floors.json` as tap fixture |
+| **Execute** | Run named proves / matrix / offline_gold / sidecar inspect; file disagreements | Fix YAML or engine |
+| **Resolve** | Re-prove a clerk's tip vs floor | Author the fix |
+
+**Tier 1** (`test_engine` / tap1+tap3): direct capture — sidecar never exposes MOPS/SNMP tap1 raw. **Tier 2** (`test_napalm`): sidecar OK; fixture dirs keyed by sidecar `label`, never IP.
+
+FLOORS_BOARD ssh/mops/… cells thicken only from honest Execute receipts into `floors_provenance.json`.
+
