@@ -4,6 +4,14 @@ value_maps:
   lldp_agg_status:
     0: aggCapable
     1: aggEnabled
+  # SSH `Link Agg. status` text → same list shape as the bit_map above (#395).
+  # PARTIAL: only the observed phrase 'agg. capable' is mapped. The aggEnabled
+  # text and the both-bits case have never been observed — deliberately absent
+  # (no guess; an unmapped phrase passes through raw). '' = label absent in a
+  # neighbor block → [] (what mops/snmp return with no bits set).
+  lldp_agg_status_ssh:
+    'agg. capable': [aggCapable]
+    '': []
 schemas:
   read_lldp-ext-dot3:
     type: dict
