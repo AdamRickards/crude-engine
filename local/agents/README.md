@@ -123,6 +123,8 @@ proven/possible on [`docs/FLOORS_BOARD.md`](../docs/FLOORS_BOARD.md), loop in
 ## Roster
 
 Six holes. Do not add a seventh until a real object collides two of these.
+One owning clerk per issue, and no two bots author the same diff
+(overlapping authorship degrades results).
 
 | Clerk | Hole | Flow | Ships when |
 |---|---|---|---|
