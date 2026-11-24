@@ -37,8 +37,15 @@ methods:
   set_watchdog:
     type: upsert
 attributes:
-  # 1.17 get_config is SSH execute (show running-config). No overlay in this ticket.
-  running: {}
+  # #324: running wired to SSH "show running-config script" (raw text,
+  # parser: none). SSH-only; MOPS/SNMP stay empty.
+  running:
+    wire: hm2configrunning
+    source: config
+  # startup stays unwired, deliberately: "show startup-config" is rejected as
+  # an invalid command on the tested firmware, and the saved (nvm) config can
+  # only be read by first loading it into running (a mutating copy), which a
+  # read-only getter must not do. Not a wiring gap; there is nothing to wire.
   startup: {}
   nvm:
     wire: hm2fmnvmstate
