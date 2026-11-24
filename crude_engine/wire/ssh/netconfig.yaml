@@ -16,6 +16,14 @@ attributes:
       ssh:
         read: {command: "show network parms", field: "Gateway address"}
 
+  # #329. value_map lives in base wire/netconfig.yaml, not here — load_wire()
+  # only merges the overlay's `attributes:`, never a top-level `value_maps:`
+  # block, so declaring it in this file would have silently never resolved.
+  hm2netprefixlength:
+    sources:
+      ssh:
+        read: {command: "show network parms", field: "Subnetmask", tag: value_map, map: net_mask_to_prefix}
+
   hm2netvlanid:
     sources:
       ssh:

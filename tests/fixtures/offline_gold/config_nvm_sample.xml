@@ -108,6 +108,19 @@
     <Attribute name="hm2NetHiDiscoveryRelay">2</Attribute>
     <Attribute name="hm2NetHiDiscoveryBlinking">2</Attribute>
    </Scalar>
+   <!-- #329: sanitized TEST-NET-1 (RFC 5737) placeholder, same convention
+        as tests/device_pool.yaml.example. Structure/encoding (hex bytes
+        for IP addrs, plain decimal for prefix length) verified real
+        2026-09-27 against a live device capture and a local (gitignored)
+        reference config's hm2NetStaticGroup block — same shape, not
+        invented. -->
+   <Scalar name="hm2NetStaticGroup">
+    <Attribute name="hm2NetLocalIPAddrType">1</Attribute>
+    <Attribute name="hm2NetLocalIPAddr">C0 00 02 0A</Attribute>
+    <Attribute name="hm2NetPrefixLength">24</Attribute>
+    <Attribute name="hm2NetGatewayIPAddrType">1</Attribute>
+    <Attribute name="hm2NetGatewayIPAddr">C0 00 02 01</Attribute>
+   </Scalar>
   </MIB>
 
   <MIB name="HM2-USERMGMT-MIB">

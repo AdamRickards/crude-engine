@@ -27,7 +27,7 @@ hints until a method is floored and `config_absent` receipts list them.
 | `get_dhcp_snooping` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gmrp` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_gvrp` | `config_backed` | sanitized floor; config-backed attrs only |
-| `get_ip_addresses` | `config_backed` | sanitized floor; config-backed attrs only (canonical; schema alias `get_interfaces_ip` not floored) |
+| `get_ip_addresses` | `config_backed` | sanitized floor; config-backed attrs only (canonical; schema alias `get_interfaces_ip` not floored). Counted here since #192, but the floor was `{"ipv4": {}}` — vacuously empty, not a real comparison — because `defaults:` never referenced `ipv4_address`/`ipv4_prefix`/`ipv4_gateway`. Fixed #329 (2026-09-27): defaults corrected, `hm2NetStaticGroup` added to the XML sample (TEST-NET-1 placeholder), gold regenerated to 3 real leaves. |
 | `get_ip_restrict` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_login_policy` | `config_backed` | sanitized floor; config-backed attrs only |
 | `get_loop_protection` | `config_backed` | sanitized floor; config-backed attrs only |
