@@ -3,7 +3,7 @@
 Architect-owned. When a leftover needs **Engine HITL**, a **new primitive**,
 or Schema/Docs `NO_HOLE` that only Engine can fill: **auto-park here** and
 keep soft Schema/Docs/Test proveable hops moving. Do **not** widget-wait
-HITL (Jaysue 2026-09-13).
+HITL (2026-09-13).
 
 Glance: open rows = parked for human/Engine. Close rows when the primitive
 lands or HITL kills the need.
