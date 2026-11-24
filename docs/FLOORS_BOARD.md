@@ -9,13 +9,13 @@ Cells from Test-owned `tests/fixtures/floors_provenance.json` (redacted aggregat
 
 **floor_source=`gold`** only when device-proved MOPS exists (`mops=pass` from `tests/release_matrix.json` verdicts). Sanitized `gold_floors.json` alone never sets gold.
 
-Counts: floor_source gold **75** / 77; offline pass **51**; mops pass **75**; snmp pass **75**; ssh pass **46**.
+Counts: floor_source gold **75** / 77; offline pass **51**; mops pass **75**; snmp pass **75**; ssh pass **47**.
 
 ## Coverage (Σ end-game progress)
 
 Effort **Σ Coverage** (`local/agents/diagrams/effort-board.md` + `diagrams/resolution-loop.md`). **Possible** = rows with `floor_source=gold` × `{offline,mops,snmp,ssh}`. **Proven** = those cells = `pass`. HITL exceptions are explicit only — never silent gaps.
 
-**Rollup: proven `246` / possible `300` (82.0%).** Create→Execute→Resolve thickens this forever; lanes A′/B/C feed it.
+**Rollup: proven `247` / possible `300` (82.3%).** Create→Execute→Resolve thickens this forever; lanes A′/B/C feed it.
 
 ### Cell vocabulary
 
@@ -91,7 +91,7 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | `get_services` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_session_config` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_sflow_poller` | `gold` | `untested` | `pass` | `pass` | `pass` |
-| `get_sflow_receiver` | `gold` | `untested` | `pass` | `pass` | `untested` |
+| `get_sflow_receiver` | `gold` | `untested` | `pass` | `pass` | `pass` |
 | `get_sflow_sampler` | `gold` | `untested` | `pass` | `pass` | `pass` |
 | `get_signal_contact` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_snmp_config` | `gold` | `pass` | `pass` | `pass` | `untested` |
