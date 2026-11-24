@@ -13,9 +13,19 @@ value_maps:
     enabled: true
     disabled: false
   # SSH Loop column yes/no → bool (1.17 fields[5] == 'yes').
+  # Quote yes/no — bare YAML 1.1 bool keys never match CLI "yes"/"no" strings (#299).
   keepalive_loop_detected_ssh:
-    yes: true
-    no: false
+    'yes': true
+    'no': false
+  # SSH Mode / Action columns keep CLI tokens (MIB allowed + archive fixture);
+  # value_map tag stops type:integer crude_numeric inventing 0 (#299).
+  keepalive_port_mode_ssh:
+    active: active
+    passive: passive
+  keepalive_port_action_ssh:
+    trap: trap
+    auto-disable: auto-disable
+    all: all
   # Epoch-zero Last-Timestamp → empty (archive epoch_zero_to_empty / 1.17).
   keepalive_epoch_zero_ssh:
     '1970-01-01 00:00:00.0': ''
@@ -32,6 +42,17 @@ value_maps:
     enabled: true
     disable: false
     disabled: false
+  # SSH show ip source-guard bindings static Status/HW (#364 / 1.17).
+  # Quote yes/no (YAML 1.1). active from unit fixture Status column.
+  ipsg_binding_active_ssh:
+    'active': true
+    'yes': true
+    'no': false
+    enable: true
+    enabled: true
+    disable: false
+    disabled: false
+    default: false
   # SSH RateLimit '-' → unlimited -1 (1.17).
   dai_rate_limit_ssh:
     '-': -1
