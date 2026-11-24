@@ -4,76 +4,96 @@ description: "SSH CLI sources for sFlow"
 
 attributes:
   # Receivers: show sflow receivers
+  # get_sflow_receiver (#366 Rank1): cli listed (~1.3k) but ssh n=0 vs MOPS n=8.
+  # Root: primary_key receiver_index = sflowrcvrindex had no SSH source → pk_data {}
+  # → shape {}. Also maxdatagram wire name miss (max vs maximum) and col4 was
+  # wrongly addresstype (CLI header: Index Owner Timeout MaxDgram Port IP).
+  # Fit: archive key_column:0 + columns; bind index/owner/timeout/max/port/address.
+  # datagram_version not in CLI table — leave undeclared leftover (default 5).
+  # Prefer existing tools. No invent. No fanout. No #92.
+  sflowrcvrindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 0}
+
   sflowrcvrowner:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 1}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 1}
 
   sflowrcvrtimeout:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 2}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 2}
 
-  sflowrcvrmaxdatagramsize:
+  sflowrcvrmaximumdatagramsize:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 3}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 3}
 
-  sflowrcvraddresstype:
+  sflowrcvrport:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 4}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 4}
 
   sflowrcvraddress:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow receivers", parser: table, column: 5}
+        read: {command: "show sflow receivers", parser: table, key_column: 0, column: 5}
 
   # Samplers: show sflow samplers
+  # get_sflow_sampler (#367 Rank1): mirror poller #365 — key_column:0 (was 0..n);
+  # rename maxheadersize → maximumheadersize to match schema/MIB wire.
+  # Schema regex+value_map:ifindex → ifName. No invent. No SSH key_tag. No #92.
   sflowfsdatasource:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow samplers", parser: table, column: 0}
+        read: {command: "show sflow samplers", parser: table, key_column: 0, column: 0}
 
   sflowfsreceiver:
     sources:
       ssh:
-        read: {command: "show sflow samplers", parser: table, column: 1}
+        read: {command: "show sflow samplers", parser: table, key_column: 0, column: 1}
         write: {command: "sflow sampler receiver {value}", level: config_interface}
 
   sflowfspacketsamplingrate:
     sources:
       ssh:
-        read: {command: "show sflow samplers", parser: table, column: 2}
+        read: {command: "show sflow samplers", parser: table, key_column: 0, column: 2}
         write: {command: "sflow sampler rate {value}", level: config_interface}
 
-  sflowfsmaxheadersize:
+  sflowfsmaximumheadersize:
     sources:
       ssh:
-        read: {command: "show sflow samplers", parser: table, column: 3}
+        read: {command: "show sflow samplers", parser: table, key_column: 0, column: 3}
         write: {command: "sflow sampler maxheadersize {value}", level: config_interface}
 
   # Pollers: show sflow pollers
+  # get_sflow_poller (#365 Rank1): without key_column keys were row_num 0..n
+  # vs MOPS OID/DataSource. Archive + snmp-target sibling: key_column: 0 = port.
+  # Schema regex+value_map:ifindex → ifName keys/values both sides. No invent.
+  # No key_tag on SSH (#318 NO_HOLE class). No fanout. No #92.
   sflowcpdatasource:
     type: string
     sources:
       ssh:
-        read: {command: "show sflow pollers", parser: table, column: 0}
+        read: {command: "show sflow pollers", parser: table, key_column: 0, column: 0}
 
   sflowcpreceiver:
     sources:
       ssh:
-        read: {command: "show sflow pollers", parser: table, column: 1}
+        read: {command: "show sflow pollers", parser: table, key_column: 0, column: 1}
         write: {command: "sflow poller receiver {value}", level: config_interface}
 
   sflowcpinterval:
     sources:
       ssh:
-        read: {command: "show sflow pollers", parser: table, column: 2}
+        read: {command: "show sflow pollers", parser: table, key_column: 0, column: 2}
         write: {command: "sflow poller interval {value}", level: config_interface}
