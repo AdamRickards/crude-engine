@@ -111,6 +111,25 @@ Architect orchestration **check 9** (`../architect/INSTRUCTIONS.md`) —
 prove CLI.json / overlay guesses vs device-proved **MOPS floor**; not
 2-of-3; do not reopen `#92`.
 
+## Proof lane (draft PR)
+
+Prove a clerk's draft tip against the claims on the issue or PR.
+Not a merge. Test bot still does not author the fix.
+
+1. The claim set comes from the issue or PR.
+2. Sidecar `POST /v1/sync`: named proof on the base (before), then
+   `{op: pr, number: N}` on the draft PR tip (after).
+3. For each claim, record confirmed / denied / untested with a
+   one-line receipt reference.
+4. Output is one claim comment on the related issue in that shape.
+
+Never merge. The PR stays draft for human re-review. Engine files
+still need HITL sign-off.
+
+The claim comment is the current proof format. The per-method JSON
+proof (raw, transformed, output) is meant to replace it later with
+the same three verdicts, so nothing else needs renaming.
+
 ## Create vs Execute (Σ Coverage — Architect check 10)
 
 Do not conflate jobs (HITL #287 distill / `diagrams/resolution-loop.md`):

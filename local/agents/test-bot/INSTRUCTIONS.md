@@ -56,7 +56,9 @@ attribute `phase`, then for `phase=call` inventory declared wire CLI +
 CLI.json before parking as "budgets." Classification is proof work;
 fixes stay with Schema/Engine/HITL.
 
-Choose the proof lane the flowchart says. Capture/update
+Choose the proof lane the flowchart says. On a draft PR, follow
+[`flow.md`](flow.md) § Proof lane (draft PR): `POST /v1/sync`
+before/after, one claim comment, never merge. Capture/update
 `tests/fixtures/` with an honest `verified_via` when the hole says so.
 Validate content, not just shape (row count matching is not correctness).
 
