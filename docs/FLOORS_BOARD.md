@@ -9,13 +9,13 @@ Cells from Test-owned `tests/fixtures/floors_provenance.json` (redacted aggregat
 
 **floor_source=`gold`** only when device-proved MOPS exists (`mops=pass` from `tests/release_matrix.json` verdicts). Sanitized `gold_floors.json` alone never sets gold.
 
-Counts: floor_source gold **75** / 77; offline pass **51**; mops pass **75**; snmp pass **75**; ssh pass **40**.
+Counts: floor_source gold **75** / 77; offline pass **51**; mops pass **75**; snmp pass **75**; ssh pass **46**.
 
 ## Coverage (Σ end-game progress)
 
 Effort **Σ Coverage** (`local/agents/diagrams/effort-board.md` + `diagrams/resolution-loop.md`). **Possible** = rows with `floor_source=gold` × `{offline,mops,snmp,ssh}`. **Proven** = those cells = `pass`. HITL exceptions are explicit only — never silent gaps.
 
-**Rollup: proven `240` / possible `300` (80.0%).** Create→Execute→Resolve thickens this forever; lanes A′/B/C feed it.
+**Rollup: proven `246` / possible `300` (82.0%).** Create→Execute→Resolve thickens this forever; lanes A′/B/C feed it.
 
 ### Cell vocabulary
 
@@ -37,8 +37,8 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | --- | --- | --- | --- | --- | --- |
 | `get_aca` | `gold` | `untested` | `pass` | `pass` | `untested` |
 | `get_arp_inspection` | `gold` | `pass` | `pass` | `pass` | `untested` |
-| `get_arp_table` | `gold` | `pass` | `pass` | `pass` | `untested` |
-| `get_auto_disable` | `gold` | `pass` | `pass` | `pass` | `untested` |
+| `get_arp_table` | `gold` | `pass` | `pass` | `pass` | `pass` |
+| `get_auto_disable` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_auto_disable_reasons` | `no-floor` | `pass` | `untested` | `untested` | `untested` |
 | `get_banner` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_config` | `gold` | `pass` | `pass` | `pass` | `untested` |
@@ -60,7 +60,7 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | `get_interface_statistics` | `gold` | `untested` | `pass` | `pass` | `untested` |
 | `get_interfaces` | `gold` | `pass` | `pass` | `pass` | `untested` |
 | `get_ip_addresses` | `gold` | `pass` | `pass` | `pass` | `untested` |
-| `get_ip_restrict` | `gold` | `pass` | `pass` | `pass` | `untested` |
+| `get_ip_restrict` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_ip_source_guard_bindings` | `gold` | `untested` | `pass` | `pass` | `pass` |
 | `get_ip_source_guard_port` | `gold` | `untested` | `pass` | `pass` | `pass` |
 | `get_ipv6_neighbors` | `gold` | `untested` | `pass` | `pass` | `untested` |
@@ -68,7 +68,7 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | `get_lldp_neighbors` | `gold` | `untested` | `pass` | `pass` | `untested` |
 | `get_lldp_neighbors_detail` | `gold` | `untested` | `pass` | `pass` | `untested` |
 | `get_login_policy` | `gold` | `pass` | `pass` | `pass` | `pass` |
-| `get_loop_protection` | `gold` | `pass` | `pass` | `pass` | `untested` |
+| `get_loop_protection` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_mac_address_table` | `gold` | `pass` | `pass` | `pass` | `untested` |
 | `get_management` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_management_priority` | `gold` | `empty` | `pass` | `pass` | `pass` |
@@ -93,7 +93,7 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | `get_sflow_poller` | `gold` | `untested` | `pass` | `pass` | `pass` |
 | `get_sflow_receiver` | `gold` | `untested` | `pass` | `pass` | `untested` |
 | `get_sflow_sampler` | `gold` | `untested` | `pass` | `pass` | `pass` |
-| `get_signal_contact` | `gold` | `pass` | `pass` | `pass` | `untested` |
+| `get_signal_contact` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_snmp_config` | `gold` | `pass` | `pass` | `pass` | `untested` |
 | `get_snmp_information` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_snmp_trap_destinations` | `gold` | `pass` | `pass` | `pass` | `pass` |
@@ -106,7 +106,7 @@ Schema typed reads (`type:` in `dict, list, list_append`) union `gold_floors.jso
 | `get_users` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_vlan_egress` | `gold` | `pass` | `pass` | `pass` | `untested` |
 | `get_vlan_ingress` | `gold` | `pass` | `pass` | `pass` | `pass` |
-| `get_vlans` | `gold` | `pass` | `pass` | `pass` | `untested` |
+| `get_vlans` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_vrrp` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_vrrp_instances` | `gold` | `pass` | `pass` | `pass` | `pass` |
 | `get_vrrp_stats` | `gold` | `untested` | `pass` | `pass` | `pass` |
