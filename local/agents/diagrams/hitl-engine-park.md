@@ -3,7 +3,7 @@
 Architect-owned. When a leftover needs **Engine HITL**, a **new primitive**,
 or Schema/Docs `NO_HOLE` that only Engine can fill: **auto-park here** and
 keep soft Schema/Docs/Test proveable hops moving. Do **not** widget-wait
-HITL (Jaysue 2026-09-13).
+HITL (2026-09-13).
 
 Glance: open rows = parked for human/Engine. Close rows when the primitive
 lands or HITL kills the need.
@@ -11,9 +11,14 @@ lands or HITL kills the need.
 | Parked | Why | Consumers | Soft path meanwhile |
 | --- | --- | --- | --- |
 | #12 SNMP compound-index / `key_format` (ascii) | Engine primitive — Schema tools exhausted | #231 `community_access` mops ascii vs snmp 0; trap-dest class | Lane B continues; leave #231 open as NO_HOLE consumer |
+| #298 get_snmp_config | Engine NO_HOLE — For SSH to meet gold (MOPS' 3 keys), the trap community from the already-cached `show snmp trap` would have to be merged into `community_access` and into every link of its 4-link lookup chain (`communities`, then `security_name`, then `group_name`, then `access`). Every link is keyed from `show snmp community`. Engine has no primitive that merges a key from a second show output into one dict attribute plus its chain, and `show snmp trap` carries no access token, so `ro` would be invented. Engine ask: a multi-command key merge with access class. SNMP=0 stays with #231. | #298 get_snmp_config | Next step: park Engine until HITL opens. |
+| #178 get_aca | HITL NO_HOLE — The `show config envm` labels and slot layout have never been captured, no sidecar catalog entry sends that command, and Tier1 direct capture isn't authorized. Live result: ssh selected_memory none / 0 slots vs mops/snmp sd / 2 slots. | #178 get_aca | Next step: reopens when a raw capture exists, then soft Schema candidate. |
 | TC-BITS (~3) prove-before-flip | Generator teach needs live prove first | #205 residual | Parked — not overnight flip |
 | MOPS/SNMP multi-field INDEX / singular `index_field` collapse | Driver `_list_to_dict` / compound INDEX — Schema cannot un-collapse | #68 get_software images; #106 MOPS multi-field INDEX; #12 SNMP compound | Soft hops elsewhere; park Engine |
-| SNMP inspect `last_oid` / walk heartbeat | Hang never returns; snmp call-timeout has no last_command (SSH-only today) | #47 get_interfaces snmp fanout | Schema walk fan-in first; park Engine heartbeat |
+| SNMP inspect `last_oid` / walk heartbeat | Hang never returns; snmp call-timeout has no last_command (SSH-only today) | #47 get_interfaces snmp fanout (closed) | Schema walk fan-in first; park Engine heartbeat |
+| #272 get_interface_statistics | Engine NO_HOLE (accepted 2026-09-13) — `index_filter` only applies on writes, and physical-only read parity needs a read-side filter in Engine. | #272 get_interface_statistics | Next step: park Engine until HITL opens. |
+| #62 get_rstp_port | Engine NO_HOLE — `enabled` / `edge` / `priority` / `path_cost` exist only on per-port `show spanning-tree port {port}`; `{index}` is never bound on dict reads, and `iterate_from` fanout hits the HARD call-timeout class. Needs Engine index binding or a fanout budget | #62 get_rstp_port | No honest Schema-only path; park Engine until HITL opens |
+| #326 get_devsec_status + #363 get_devsec_history (SSH `hm2devsecstatusindex`) | Engine NO_HOLE — hm2DevSecStatusIndex is the events-table row index. Live `show security-status all` Events table has only Time stamp / Event / Info (no index column); the `Trap Cause Index` dot-key is a different object (hm2DevSecTrapCauseIndex). bc4c4bd (#373) bound the pk to events col 2 = free-text Info → crude_numeric 0, giving #363 row key '0' and #326 status_index `{'<Info text>': 0}` vs MOPS `{'1': 1}`. The SSH parsers only give 0-based `row_num` keys, never the 1-based ordinal, so a match needs an Engine row-ordinal key option (1-based) on the table parser. Using timestamp keys or a math step on the value would still miss the key. | #326 get_devsec_status, #363 get_devsec_history | Next step: park Engine until HITL opens. Meanwhile cause/timestamp already match; HITL to decide whether to keep or drop the col-2 index binding (dropping it empties history rows on SSH). |
 | #30 SNMPHIOS.close() asyncio tax | Engine/transport — ~2s close destroys pending tasks | sequential sidecar / concurrent prove noise | Soft floors continue; Engine park until HITL opens |
 | #115 `to_bool` English/SNMP false-vocab hardcoded | Checker-blind Engine; schema cannot declare | bool matrices / parity | Soft YAML elsewhere; park Engine |
 | #116 `compute sort:natural` HiOS port-name heuristic | Checker-blind Engine encodes vendor sort | port-ordered tables | Soft elsewhere; park Engine |
@@ -22,6 +27,23 @@ lands or HITL kills the need.
 | SSH gather `last_cli` / multi-cmd visibility (ifindex re-gather overwrite) | Engine — last_cli does not retain all shows when overlay multi-cmd gather runs; Schema YAML-only cannot evidence multi-show in cli | #226 get_interfaces Rank1 (mtu/sysinfo fields may populate; cli lists show port only) | Schema soft overlays continue; do not reopen #92 |
 | SSH VLAN PortList / `show vlan member` T/U/F | Schema NO_HOLE — per-VLAN `show vlan id` fanout call-timeouts (#290 HARD); invent from PVID ruled out; CLI.json `show vlan member current|static` needs custom T/U/F PortList parser = Engine primitive | #291 get_vlan_egress; #290 Rank2 T/F remainder | Soft PVID Rank1v2 merged (#303); other Σ SSH close-format continue |
 | SSH MAC table composite PK / per-row VLAN | Schema NO_HOLE — dict `primary_key: mac` collapses VLAN when MAC repeats; YAML composite PK / `type: list` / `list_append` / fake key_map invent ruled out; 1.17 returns list of rows | #296 get_mac_address_table | Soft Σ SSH close-format continue (#297+) |
+
+| SSH QoS DSCP table key normalize (`key_tag` / `key_regex`) | Schema NO_HOLE — SNMP/MOPS drivers apply `key_tag`; SSH table gather is per-value only. Rank1 tried value_map/key_map/dot_keys/fanout ruled out; Fastpath keys are `N(name)` vs MOPS bare numeric | #318 get_qos_mapping | Soft Σ SSH close-format continue (#319+) |
+
+| SSH get_software images / DevmodeStatus honesty | Schema NO_HOLE — no CLI SwVers table / no honest image wires; invent-wrong Admin state ≠ DevmodeStatus; support-mode has no captured field label. Prefer existing tools exhausted. Related #68 MOPS multi-field INDEX already parked | #322 get_software | Soft Σ SSH close-format continue (#323+) |
+
+| SSH get_config execute-blob gather | Schema NO_HOLE — composed Protocols:None; running/startup honest {}; no MIB wire for `show running-config` / startup. Prefer existing tools exhausted | #324 get_config | Soft Σ SSH no-cli continue (#325+) |
+
+| SSH GARP GVRP/GMRP field-label capture | Schema NO_HOLE — CLI.json names shows but no captured field labels (archive TODO); invent risk without sample. Soft Rank1 exhausted | #327 get_gmrp; #328 get_gvrp | Soft Σ SSH no-cli continue (#329+); HITL/1.17 sample capture when opened |
+
+| SSH get_ip_addresses nested ip_table / composed ipv4 | Schema NO_HOLE — defaults only `ipv4: {}` (no sub_tables) → attr scope empty → cli=[] honest; CLI.json names `show ip interface` (L3) + `show network parms` (L2 fallback) but archive needs `tag: ip_table` / intf→ipv4→ip→prefix_length nest (Engine). Binding management scalars invents NAPALM floor (both empty). Soft Rank1 exhausted | #329 get_ip_addresses | Soft Σ SSH no-cli continue (#330+); Engine ip_table / HITL when opened |
+
+| `load_wire()` overlay merge drops `value_maps:` | Engine NO_HOLE — `load_wire()`'s protocol-overlay merge (`interpreter.py`) only merges the overlay file's `attributes:` block; a top-level `value_maps:` declared in `wire/{overlay_dir}/{wire_id}.yaml` (e.g. `wire/ssh/netconfig.yaml`) is silently never read — only the base file's `value_maps:` is ever consulted. Confirmed live 2026-09-27 building #329's SSH-only `net_mask_to_prefix` map: declaring it in the SSH overlay resolved to nothing (raw string passed through unmapped); had to move it to base `wire/netconfig.yaml` instead, even though it's meaningless to snmp/mops. Confuses ownership (protocol-specific data forced into the shared base file) and risks a name collision if two different overlays ever need a same-named map. Fix shape: mirror the existing attributes-merge loop for `value_maps` (`base.setdefault("value_maps", {}).update(override.get("value_maps", {}))` or equivalent) — same file, same pattern, small. | #329 get_ip_addresses (`net_mask_to_prefix` currently lives in base `wire/netconfig.yaml` as a workaround, documented inline) | Soft path: value_maps needed only by one protocol stay in the base file for now (workaround, not a fix); park Engine merge fix until HITL opens |
+
+| ssh_driver `_parse_sections` same-header overwrite | Engine NO_HOLE — `_parse_sections` silently overwrites sections that share a header key (data loss, no error). Confirmed with a synthetic test while reviewing #390. Any `parser: sections` attribute is exposed; `get_lldp_neighbors_detail` is `type: list_append` for several neighbors per port, so this is a real gap (not exercised live so far). Open HITL question: return a list of dicts per key, or treat as a primitive change. | #396 | Soft #333/#334 closed via #390 (`parser: sections` read side). Remaining Schema SSH fields are #395 (capabilities / aggregation_enabled) — not this park. Park Engine overwrite until HITL opens. |
+
+| SSH get_fan_status multi-row `parser: fan_status` | Schema NO_HOLE — CLI.json `show fan`; archive uses Engine `parser: fan_status` (multi-row walk). No scalar field for `hm2fanmgmtstatus`; schema invent floor `defaults.status: running` vs MOPS `{}`. Soft Rank1 exhausted | #332 get_fan_status | Soft Σ SSH fail continue; Engine fan_status / HITL when opened |
+
 
 ## Rules
 

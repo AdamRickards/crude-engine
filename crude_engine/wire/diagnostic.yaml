@@ -1,5 +1,58 @@
 version: 2.6.0
 feature: diagnostic
+value_maps:
+  # SSH show signal-contact N all Mode → schema mode (#293 Rank1 / archive + 1.17 _SC_CLI_MODE).
+  sigcon_cli_mode:
+    manual: manual
+    monitor: monitor
+    device-status: deviceState
+    security-status: deviceSecurity
+    dev-sec-status: deviceStateAndSecurity
+  # SSH Operating State (current) close → schema closed.
+  sigcon_oper_ssh:
+    open: open
+    close: closed
+    closed: closed
+  # SSH sense flags: monitored → true; anything else → false (1.17 _SC_CLI_SENSE).
+  sigcon_sense_ssh:
+    monitored: true
+    default: false
+  # SSH show security-status all OperState → schema noerror/error (#323 / 1.17).
+  devsec_oper_ssh:
+    ok: noerror
+    error: error
+    noerror: noerror
+  # SSH show security-status all Trap Cause → schema cause tokens (#326 Rank1v2).
+  # Live tip: field binds secure-boot-disabled, but type:integer defaults to
+  # crude_numeric → invent 0. Explicit value_map overrides (oper_state sibling).
+  # Prefer archive devsec_cause_cli; quote keys (YAML 1.1). Unmapped pass through.
+  devsec_cause_cli:
+    'hidisc-enabled': hidisc-enabled
+    'password-policy-not-configured': password-policy-not-configured
+    'password-policy-inactive': password-policy-inactive
+    'secure-boot-disabled': secure-boot-disabled
+  # SSH show device-status all Operating State → schema noerror/error (#362).
+  # Archive field; ok/no error aliases. Sibling to devsec_oper_ssh.
+  devmon_oper_ssh:
+    noerror: noerror
+    ok: noerror
+    error: error
+    'no error': noerror
+  # SSH show device-status all Trap Cause → schema cause tokens (#362).
+  # type:integer → crude_numeric invent 0 without map (#326 Rank1v2 class).
+  # Archive/MIB allowed list; quote keys. Unmapped pass through.
+  devmon_cause_cli:
+    'none': none
+    'power-supply': power-supply
+    'link-failure': link-failure
+    'temperature': temperature
+    'fan-failure': fan-failure
+    'module-removal': module-removal
+    'ext-nvm-removal': ext-nvm-removal
+    'ext-nvm-not-in-sync': ext-nvm-not-in-sync
+    'ring-redundancy': ring-redundancy
+    'humidity': humidity
+    'stp-port-blocked': stp-port-blocked
 schemas:
   read_diagnostic:
     type: dict
@@ -3594,22 +3647,21 @@ attributes:
     sources:
       snmp:
         read:
-          # INDEX {hm2SigConID, hm2PSID}; key by contact for get_signal_contact (#235)
+          # INDEX {hm2SigConID, hm2PSID} → per-PSU dict {psid: bool} per contact
+          # (#293 Rank1; 1.17 anchor + archive signal_contact.yaml ps_state).
+          # group=SigConID (row key), inner=PSID. Was key_field collapse → scalar (#235).
           oid: 1.3.6.1.4.1.248.11.22.1.3.1.2.1.1
           method: walk
-          index_fields:
-            - {name: hm2SigConID, type: integer}
-            - {name: hm2PSID, type: integer}
-          key_field: hm2SigConID
+          index: [group, inner]
       mops:
         read:
           mib: HM2-DIAGNOSTIC-MIB
           table: hm2SigConPSEntry
           field: hm2SigConSensePSState
           index_field: hm2SigConID
-          index_fields:
-          - hm2SigConID
-          - hm2PSID
+          # MOPS rows carry no hm2PSID column → PSID from per-contact row order
+          # (1.17 mops_hios + archive inner_index_field: _enumerate). #293 Rank1.
+          inner_index_field: _enumerate
     validation:
       allowed:
       - true

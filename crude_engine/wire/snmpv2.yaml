@@ -718,6 +718,9 @@ attributes:
     validation:
       min: 0
       max: 127
+  # TimeTicks centiseconds → seconds (1.17 snmp/mops //100; NAPALM units).
+  # SSH already seconds via wire/ssh/snmpv2.yaml (#289/#301). Shared by
+  # get_system_info.uptime + get_facts.uptime — scale honesty vs MOPS (#320).
   sysuptime:
     syntax: TimeTicks
     type: integer
@@ -727,8 +730,10 @@ attributes:
         read:
           oid: 1.3.6.1.2.1.1.3
           method: get
+          math: "val / 100"
       mops:
         read:
           mib: SNMPv2-MIB
           table: system
           field: sysUpTime
+          math: "val / 100"
