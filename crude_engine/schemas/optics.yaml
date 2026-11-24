@@ -21,14 +21,18 @@ attributes:
   # and the non-dict branch works (HITL on #76 tip). key_map remaps
   # ifIndex → ifName. Defaults 0.0 cannot manufacture cpu/vlan/empty-cage
   # rows because they are not in hm2SfpDiagEntry.
+  # Power unit: dBm (1.17 / #294). Integer32 hm2SfpCurrent{Tx,Rx}Power is
+  # 0.1 µW — do not bind SSH show-sfp dBm floats onto those wires.
+  # Sibling DisplayString columns …PowerdBm (OID …7.2.1.5/.6) are the dBm
+  # semantic; SSH overlay + MOPS/SNMP share one unit.
   name:
-    wire: hm2sfpcurrenttxpower
+    wire: hm2sfpcurrenttxpowerdbm
     source: devmgmt
   tx_power:
-    wire: hm2sfpcurrenttxpower
+    wire: hm2sfpcurrenttxpowerdbm
     source: devmgmt
   rx_power:
-    wire: hm2sfpcurrentrxpower
+    wire: hm2sfpcurrentrxpowerdbm
     source: devmgmt
   temperature:
     wire: hm2sfpcurrenttemperature

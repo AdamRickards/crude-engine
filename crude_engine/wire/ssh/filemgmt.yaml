@@ -20,7 +20,7 @@ attributes:
   hm2fmprofiledatetime:
     sources:
       ssh:
-        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, columns: [2, 3]}
+        read: {command: "show config profiles nvm", parser: paired_rows, lines_per_record: 3, line: 0, column: 3}
 
   hm2fmprofileswmajorrelnum:
     sources:
@@ -100,6 +100,20 @@ attributes:
     sources:
       ssh:
         read: {command: "show config watchdog", field: "Current Timer Value"}
+
+  # Remote backup / get_config_remote: show config remote-backup
+  # Field labels from archive CLI capture (test_get_config_remote + archive config.yaml).
+  # #325: live label is "Admin state" (enabled/disabled), not "Remote backup" — miss fell
+  # back to schema default. HmEnabledStatus/boolean crude_boolean → bool (= MOPS type).
+  hm2fmconfigremotesaveadminstatus:
+    sources:
+      ssh:
+        read: {command: "show config remote-backup", field: "Admin state"}
+
+  hm2fmconfigremotesavedestination:
+    sources:
+      ssh:
+        read: {command: "show config remote-backup", field: "Destination URL"}
 
   hm2fmprofileaction:
     sources:

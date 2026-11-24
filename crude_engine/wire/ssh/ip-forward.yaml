@@ -4,11 +4,16 @@ description: "SSH CLI sources for IP routing table (L3 only)"
 
 attributes:
   # show ip route all — table parser
+  # Network col is CIDR-suffixed (e.g. 192.168.1.0/24); MOPS/SNMP
+  # inetCidrRouteDest is bare InetAddress (pfxLen separate). primary_key
+  # destination uses this value as dict key — strip /prefix via existing
+  # regex tool (SSH gather applies regex per-value). Prefer existing tools.
+  # Fanout stays 1 (same show). No invent. No #92.
   inetcidrroutedest:
     type: string
     sources:
       ssh:
-        read: {command: "show ip route all", parser: table, column: 0}
+        read: {command: "show ip route all", parser: table, column: 0, regex: '^([^/]+)'}
 
   inetcidrrouteproto:
     type: string

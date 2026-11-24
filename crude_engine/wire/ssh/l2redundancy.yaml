@@ -93,3 +93,21 @@ attributes:
     sources:
       ssh:
         read: {command: "show mrp", field: "Fixed backup port"}
+
+  # SRM / get_mrp_sub_ring (#331 Rank1): protocol was absent — 0 SSH on hm2srm*.
+  # CLI.json: show sub-ring global (§103.2.1), show sub-ring ring (§103.2.2).
+  # Field labels from archive mrp_sub_ring.yaml + unit fixture
+  # (test_get_mrp_sub_ring mock CLI). Prefer existing tools.
+  # Fanout: global + list shows only (fanout 1 each, dedup). Per-ring
+  # `show sub-ring ring {id}` detail fanout ruled out (#290/#303 HARD).
+  # Detail instance fields (admin_state, vlan, …) need that fanout or
+  # HITL one-shot capture — leave undeclared. No invent floors. No --gate. No #92.
+  hm2srmglobaladminstate:
+    sources:
+      ssh:
+        read: {command: "show sub-ring global", field: "Global admin state"}
+
+  hm2srmringid:
+    sources:
+      ssh:
+        read: {command: "show sub-ring ring", parser: table, column: 0, key_column: 0}

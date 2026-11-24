@@ -1,8 +1,72 @@
 version: "2.9.0"
 feature: lldp-ssh
-description: "SSH CLI sources for LLDP — write-only (reads need block parser)"
+description: "SSH CLI sources for LLDP"
 
 attributes:
+  # #333/#334 get_lldp_neighbors(+detail) read side. Uses the existing
+  # parser: sections (unwired until now — see ssh_driver.py _parse_sections).
+  # Live-verified 2026-09-27 per the patch note ("show lldp remote-data",
+  # real capture). section_pattern/key_extract defaults match
+  # this command's real output ("Remote data, 1/1 - #1") verbatim — no
+  # override needed.
+  #
+  # local_port is the section key itself (e.g. "1/1"), not translated through
+  # key_map: ifindex — that remapping is SNMP-specific (walked OID-index →
+  # ifName lookup); SSH's own parsed text is already human-format, same
+  # pattern as get_interface_statistics's `name` (wire: ifdescr, source: if).
+  lldpremlocalportnum:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, key: true}
+
+  lldpremsysname:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "System name"}
+
+  lldpremsysdesc:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "System description"}
+
+  lldpremportdesc:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Port description"}
+
+  # SNMP's lldpremportid/lldpremchassisid return bare lowercase MAC strings
+  # (verified via live SNMP capture: "aa:bb:cc:dd:ee:ff" shape). SSH's text has a
+  # trailing " (subtype: macAddress)" annotation this command doesn't need —
+  # regex extracts just the MAC, case: lower matches SNMP's format exactly.
+  lldpremportid:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Port ID", regex: '^([0-9A-Fa-f:]+)', case: lower}
+
+  lldpremchassisid:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show lldp remote-data", parser: sections, field: "Chassis ID", regex: '^([0-9A-Fa-f:]+)', case: lower}
+
+  # NOT wired, deliberately — no data available from this command:
+  #   lldpremsyscapsupported / lldpremsyscapenabled (sys_capabilities /
+  #     sys_enabled_capabilities) — "show lldp remote-data" carries no
+  #     capabilities field at all in this capture. Needs a different command
+  #     (untried: "show lldp med remote-device detail") — separate item.
+  #   lldpxdot3remlinkaggstatus (aggregation_enabled) — SNMP's shape is a
+  #     bit_map-decoded list (lldp_agg_status: 0=aggCapable, 1=aggEnabled).
+  #     SSH's "Link Agg. status....agg. capable" is human text, not raw
+  #     bits — needs a value_map from every observed text phrase to the
+  #     matching list, and only one phrase ("agg. capable") has been
+  #     observed live so far. Needs more captures (esp. an "enabled" case)
+  #     before the value_map can be written without guessing.
+
   hm2lldpadminstatus:
     sources:
       ssh:
