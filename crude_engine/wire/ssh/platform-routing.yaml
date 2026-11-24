@@ -11,18 +11,27 @@ attributes:
         write: {command: "ip routing", level: config_interface}
 
   # Per-port table: show ip interface
+  # get_router.ports (#228 Rank1): sub_table pk port_ifindex had no SSH read → ports {}.
+  # Bind pk from col 0 (Interface name; type string — no to_port_name int()) and
+  # key_column: 0 on all cols → ifName row keys (sflow/ipsg pk-bind sibling). No fanout.
+  hm2agentswitchipinterfaceifindex:
+    type: string
+    sources:
+      ssh:
+        read: {command: "show ip interface", parser: table, key_column: 0, column: 0}
+
   hm2agentswitchipinterfaceipaddress:
     type: string
     sources:
       ssh:
-        read: {command: "show ip interface", parser: table, column: 1}
+        read: {command: "show ip interface", parser: table, key_column: 0, column: 1}
         write: {command: "ip address primary {value} {netmask}", level: config_interface}
 
   hm2agentswitchipinterfacenetmask:
     type: string
     sources:
       ssh:
-        read: {command: "show ip interface", parser: table, column: 2}
+        read: {command: "show ip interface", parser: table, key_column: 0, column: 2}
 
   hm2agentswitchipinterfaceroutingmode:
     sources:
