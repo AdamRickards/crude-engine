@@ -1,9 +1,10 @@
 {
-  "description": "Redacted method\u00d7protocol floors provenance for generate_floors_board.py (#195). Aggregates only \u2014 no host/IP keys. floor_source=gold only when release_matrix has a mops verdict=pass (device-proved); sanitized gold_floors.json alone does not set gold. offline from offline_gold_matrix row classes; mops/snmp/ssh from matrix verdicts (any fail\u2192fail; else any pass\u2192pass; else untested).",
+  "description": "Redacted method\u00d7protocol floors provenance for generate_floors_board.py (#195). Aggregates only \u2014 no host/IP keys. floor_source=gold only when release_matrix has a mops verdict=pass (device-proved); sanitized gold_floors.json alone does not set gold. offline from offline_gold_matrix row classes; mops/snmp/ssh from matrix verdicts (any fail\u2192fail; else any pass\u2192pass; else untested) SSH cells may be set to pass from named sidecar prove vs MOPS floor (Execute pack); release_matrix still has no ssh protocol keys.",
   "sources": {
     "release_matrix": "tests/release_matrix.json",
     "offline_gold_matrix": "tests/offline_gold_matrix.py DEFAULT classes folded at fixture build",
-    "rule_floor_source": "gold iff mops==pass from release_matrix (device-proved)"
+    "rule_floor_source": "gold iff mops==pass from release_matrix (device-proved)",
+    "ssh_sidecar_pass": "Named sidecar get_*.read vs MOPS floor on main 3106a94; pass only when exact/honest-empty match. close-format leftovers stay untested."
   },
   "methods": {
     "get_aca": {
@@ -25,14 +26,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_auto_disable": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_auto_disable_reasons": {
       "floor_source": "no-floor",
@@ -46,7 +47,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_config": {
       "floor_source": "gold",
@@ -67,14 +68,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_dai_global": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_device_monitor": {
       "floor_source": "gold",
@@ -88,7 +89,7 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_devsec_history": {
       "floor_source": "gold",
@@ -109,28 +110,28 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_dns": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_environment": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_facts": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_fan_status": {
       "floor_source": "gold",
@@ -158,7 +159,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_interface_statistics": {
       "floor_source": "gold",
@@ -186,21 +187,21 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ip_source_guard_bindings": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ip_source_guard_port": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ipv6_neighbors": {
       "floor_source": "gold",
@@ -235,14 +236,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_loop_protection": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_mac_address_table": {
       "floor_source": "gold",
@@ -256,63 +257,63 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_management_priority": {
       "floor_source": "gold",
       "offline": "empty",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_mrp": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_mrp_sub_ring": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ntp": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ntp_servers": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_ntp_stats": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_optics": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_poe": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_port_security": {
       "floor_source": "gold",
@@ -347,7 +348,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_route_to": {
       "floor_source": "gold",
@@ -368,7 +369,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_rstp_port": {
       "floor_source": "gold",
@@ -382,21 +383,21 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_session_config": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_sflow_poller": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_sflow_receiver": {
       "floor_source": "gold",
@@ -410,14 +411,14 @@
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_signal_contact": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_snmp_config": {
       "floor_source": "gold",
@@ -431,14 +432,14 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_snmp_trap_destinations": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_software": {
       "floor_source": "gold",
@@ -452,28 +453,28 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_syslog": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_system_health": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_system_info": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_tracking": {
       "floor_source": "no-floor",
@@ -487,7 +488,7 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vlan_egress": {
       "floor_source": "gold",
@@ -501,49 +502,49 @@
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vlans": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp_instances": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp_stats": {
       "floor_source": "gold",
       "offline": "untested",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_vrrp_tracking": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     },
     "get_watchdog_status": {
       "floor_source": "gold",
       "offline": "pass",
       "mops": "pass",
       "snmp": "pass",
-      "ssh": "untested"
+      "ssh": "pass"
     }
   }
 }

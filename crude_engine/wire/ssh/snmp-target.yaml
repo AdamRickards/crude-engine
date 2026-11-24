@@ -3,11 +3,15 @@ feature: snmp-target-ssh
 description: "SSH CLI sources for SNMP trap destinations — hand-authored"
 
 attributes:
-  # trap address is combined as "ip:port" in CLI output
+  # get_snmp_trap_destinations (#319 Rank1): show snmp trap section 1 table.
+  # Col0 = SNMP trap name, col1 = IP address (ip:port). Fanout=1 (same show).
+  # Without key_column, table keys are row_num "0" → implied_string decode
+  # chr(0) = NUL key/address vs MOPS name. Prefer existing key_column tool.
+  # No invent floors. No per-dest fanout (#290/#303 HARD). Do not reopen #92.
   snmptargetaddrtaddress:
     sources:
       ssh:
-        read: {command: "show snmp trap", parser: table, section: 1, column: 1}
+        read: {command: "show snmp trap", parser: table, section: 1, key_column: 0, column: 1}
 
   snmptargetaddrname:
     sources:

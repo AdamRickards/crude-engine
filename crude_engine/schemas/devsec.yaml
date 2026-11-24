@@ -131,10 +131,11 @@ attributes:
     wire: hm2devsecsenseiec61850mmsenabled
     source: diagnostic
   # Status history table (read-only)
+  # #363 Rank1: defaults keys cause/timestamp MUST match attr names (SCHEMA MUST).
   history_index:
     wire: hm2devsecstatusindex
     source: diagnostic
-  history_cause:
+  cause:
     wire: hm2devsecstatustrapcause
     source: diagnostic
     value_map:
@@ -159,6 +160,6 @@ attributes:
       '29': pml-disabled
       '31': secure-boot-disabled
       '32': dev-mode-enabled
-  history_timestamp:
+  timestamp:
     wire: hm2devsecstatustimestamp
     source: diagnostic
