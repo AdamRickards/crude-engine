@@ -74,6 +74,7 @@ for operation in ['create', 'read', 'upsert', 'delete', 'execute']:
 | [API_REFERENCE.md](docs/API_REFERENCE.md) | Full reference — return schemas, per-protocol sources, wire detail |
 | [SCHEMA_MODEL.md](docs/SCHEMA_MODEL.md) | Canonical schema contract — structural rules + shape rules |
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Three-gate model, layer rules, data flow |
+| [function-blocks/](docs/function-blocks/README.md) | Function-block (FBD-style) views of the gates and the `get_aca` method with typed pins — generated from the repo's declarations (`python3 scripts/generate_function_blocks.py`) |
 | [ENGINE_PRINCIPLES.md](docs/ENGINE_PRINCIPLES.md) | Operating principles — where new code goes |
 | [SCHEMA_PRIMITIVES.md](docs/SCHEMA_PRIMITIVES.md) | Every YAML key — what it does, which gate handles it |
 | [WIRE_SPEC.md](docs/WIRE_SPEC.md) | Wire YAML generation pipeline and format |
