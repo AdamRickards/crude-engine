@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  GENERATED FILE - do not edit by hand.
+  Generator : scripts/generate_function_blocks.py (engine 2.9.0)
+  Regenerate: python3 scripts/generate_function_blocks.py
+  Check     : python3 scripts/generate_function_blocks.py then git diff (or pass the check flag)
+  View      : system
+  Derived from: crude_engine/engine/interpreter.py, crude_engine/drivers/base.py, crude_engine/transport_registry.py, crude_engine/drivers/*.py (class bases), docs/ARCHITECTURE.md (gate headings), file counts under crude_engine/
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1328 1041" width="1328" height="1041" role="img" aria-labelledby="t d">
+<title id="t">crude-engine system view</title>
+<desc id="d">Function-block view of the three-gate model: engine, gate and driver functions with typed pins, protocol blocks feeding Gate 3.</desc>
+<defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2b6cb0"/></marker></defs>
+<rect width="1328" height="1041" fill="#ffffff"/>
+<rect x="721.9" y="70.0" width="219.4" height="249.0" rx="6" fill="none" stroke="#0f766e" stroke-width="1.4" stroke-dasharray="6,4"/>
+<text x="729.9" y="86.0" text-anchor="start" fill="#0f766e" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:bold;">GATE 1 · Schema Contract (interpreter.py)</text>
+<rect x="107.7" y="551.0" width="228.0" height="334.0" rx="6" fill="none" stroke="#6d28d9" stroke-width="1.4" stroke-dasharray="6,4"/>
+<text x="115.7" y="567.0" text-anchor="start" fill="#6d28d9" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:bold;">GATE 2 · Wire Contract (interpreter.py)</text>
+<rect x="835.8" y="551.0" width="226.1" height="307.0" rx="6" fill="none" stroke="#b45309" stroke-width="1.4" stroke-dasharray="6,4"/>
+<text x="843.8" y="567.0" text-anchor="start" fill="#b45309" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:bold;">GATE 3 · Encode/Decode + Transport (base.py)</text>
+<rect x="1034.5" y="70.0" width="279.7" height="386.0" rx="6" fill="none" stroke="#475569" stroke-width="1.4" stroke-dasharray="6,4"/>
+<text x="1042.5" y="86.0" text-anchor="start" fill="#475569" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:bold;">ENGINE PIPELINE (interpreter.py)</text>
+<path d="M230.1,132.5 L242.1,132.5 L242.1,149.5 L341.1,149.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M230.1,132.5 L632.9,132.5 L632.9,149.5 L731.9,149.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M931.3,132.5 L943.3,132.5 L943.3,194.0 L638.7,194.0 L638.7,277.5 L731.9,277.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M931.3,132.5 L951.3,132.5 L951.3,149.5 L1044.5,149.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M931.3,132.5 L951.3,132.5 L951.3,243.5 L1044.5,243.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M931.3,132.5 L951.3,132.5 L951.3,431.5 L1044.5,431.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M325.7,613.5 L337.7,613.5 L337.7,743.0 L36.0,743.0 L36.0,826.5 L117.7,826.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M620.9,149.5 L711.9,149.5 L711.9,132.5 L731.9,132.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M620.9,149.5 L1024.5,149.5 L1024.5,226.5 L1044.5,226.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M620.9,149.5 L1024.5,149.5 L1024.5,414.5 L1044.5,414.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M620.9,149.5 L1024.5,149.5 L1024.5,132.5 L1044.5,132.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M620.9,149.5 L711.9,149.5 L711.9,243.5 L731.9,243.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M1304.2,149.5 L1316.2,149.5 L1316.2,537.0 L101.7,537.0 L101.7,613.5 L117.7,613.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M1304.2,149.5 L1316.2,149.5 L1316.2,531.0 L97.7,531.0 L97.7,792.5 L117.7,792.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M1304.2,149.5 L1316.2,149.5 L1316.2,537.0 L829.8,537.0 L829.8,625.5 L845.8,625.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M1304.2,243.5 L1316.2,243.5 L1316.2,271.0 L1028.5,271.0 L1028.5,320.5 L1044.5,320.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M1304.2,337.5 L1316.2,337.5 L1316.2,531.0 L97.7,531.0 L97.7,613.5 L117.7,613.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M1304.2,337.5 L1316.2,337.5 L1316.2,537.0 L829.8,537.0 L829.8,765.5 L845.8,765.5" fill="none" stroke="#7a8699" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<path d="M729.9,642.5 L765.9,642.5 L765.9,625.5 L845.8,625.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M729.9,642.5 L765.9,642.5 L765.9,765.5 L845.8,765.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M729.9,748.5 L761.9,748.5 L761.9,625.5 L845.8,625.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M729.9,748.5 L761.9,748.5 L761.9,765.5 L845.8,765.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M729.9,854.5 L757.9,854.5 L757.9,625.5 L845.8,625.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<path d="M729.9,854.5 L757.9,854.5 L757.9,765.5 L845.8,765.5" fill="none" stroke="#2b6cb0" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="24.0" y="96.0" width="206.1" height="136.0" rx="3" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+<rect x="24.0" y="96.0" width="206.1" height="26.0" rx="3" fill="#475569"/>
+<text x="33.0" y="113.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">resolve_intent()</text>
+<rect x="21.0" y="129.5" width="6" height="6" fill="#1f2933"/>
+<text x="33.0" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="66.5" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="21.0" y="146.5" width="6" height="6" fill="#1f2933"/>
+<text x="33.0" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">method_name : </text>
+<text x="126.8" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">str</text>
+<rect x="21.0" y="163.5" width="6" height="6" fill="#1f2933"/>
+<text x="33.0" y="170.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?is_setter : </text>
+<text x="120.1" y="170.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">bool</text>
+<rect x="21.0" y="180.5" width="6" height="6" fill="#c53030"/>
+<text x="33.0" y="187.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?**kwargs : </text>
+<text x="113.4" y="187.5" text-anchor="start" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="21.0" y="197.5" width="6" height="6" fill="#1f2933"/>
+<text x="33.0" y="204.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">schemas : </text>
+<text x="100.0" y="204.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">YAML</text>
+<rect x="21.0" y="214.5" width="6" height="6" fill="#1f2933"/>
+<text x="33.0" y="221.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">context_maps : </text>
+<text x="133.5" y="221.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">YAML</text>
+<rect x="227.1" y="129.5" width="6" height="6" fill="#1f2933"/>
+<text x="221.1" y="136.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">ResolvedIntent</text>
+<rect x="341.1" y="96.0" width="279.8" height="102.0" rx="3" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+<rect x="341.1" y="96.0" width="279.8" height="26.0" rx="3" fill="#475569"/>
+<text x="350.1" y="113.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">execute_resolved()</text>
+<rect x="338.1" y="129.5" width="6" height="6" fill="#1f2933"/>
+<text x="350.1" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="383.6" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="338.1" y="146.5" width="6" height="6" fill="#1f2933"/>
+<text x="350.1" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">resolved : </text>
+<text x="423.8" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">ResolvedIntent</text>
+<rect x="338.1" y="163.5" width="6" height="6" fill="#1f2933"/>
+<text x="350.1" y="170.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">protocol : </text>
+<text x="423.8" y="170.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">str</text>
+<rect x="338.1" y="180.5" width="6" height="6" fill="#b7791f"/>
+<text x="350.1" y="187.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">transport : </text>
+<text x="430.5" y="187.5" text-anchor="start" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Any</text>
+<rect x="617.9" y="129.5" width="6" height="6" fill="#b7791f"/>
+<text x="611.9" y="136.5" text-anchor="end" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Any</text>
+<rect x="617.9" y="146.5" width="6" height="6" fill="#1f2933"/>
+<text x="611.9" y="153.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call : x5</text>
+<rect x="731.9" y="96.0" width="199.4" height="85.0" rx="3" fill="#ffffff" stroke="#0f766e" stroke-width="1.6"/>
+<rect x="731.9" y="96.0" width="199.4" height="26.0" rx="3" fill="#0f766e"/>
+<text x="740.9" y="113.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_gate1_validate()</text>
+<rect x="728.9" y="129.5" width="6" height="6" fill="#1f2933"/>
+<text x="740.9" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="774.4" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="728.9" y="146.5" width="6" height="6" fill="#1f2933"/>
+<text x="740.9" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">resolved : </text>
+<text x="814.6" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">ResolvedIntent</text>
+<rect x="728.9" y="163.5" width="6" height="6" fill="#c53030"/>
+<text x="740.9" y="170.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?trace : </text>
+<text x="801.2" y="170.5" text-anchor="start" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="928.3" y="129.5" width="6" height="6" fill="#1f2933"/>
+<text x="922.3" y="136.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">SchemaContext</text>
+<rect x="731.9" y="207.0" width="199.4" height="102.0" rx="3" fill="#ffffff" stroke="#0f766e" stroke-width="1.6"/>
+<rect x="731.9" y="207.0" width="199.4" height="26.0" rx="3" fill="#0f766e"/>
+<text x="740.9" y="224.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_gate1_exit()</text>
+<rect x="728.9" y="240.5" width="6" height="6" fill="#1f2933"/>
+<text x="740.9" y="247.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="774.4" y="247.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="728.9" y="257.5" width="6" height="6" fill="#b7791f"/>
+<text x="740.9" y="264.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">result : </text>
+<text x="801.2" y="264.5" text-anchor="start" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Any</text>
+<rect x="728.9" y="274.5" width="6" height="6" fill="#1f2933"/>
+<text x="740.9" y="281.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">schema_ctx : </text>
+<text x="828.0" y="281.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">SchemaContext</text>
+<rect x="728.9" y="291.5" width="6" height="6" fill="#c53030"/>
+<text x="740.9" y="298.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?trace : </text>
+<text x="801.2" y="298.5" text-anchor="start" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="928.3" y="240.5" width="6" height="6" fill="#b7791f"/>
+<text x="922.3" y="247.5" text-anchor="end" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Any</text>
+<rect x="1044.5" y="96.0" width="259.7" height="68.0" rx="3" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+<rect x="1044.5" y="96.0" width="259.7" height="26.0" rx="3" fill="#475569"/>
+<text x="1053.5" y="113.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_pipeline_ingress()</text>
+<rect x="1041.5" y="129.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="1087.0" y="136.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="1041.5" y="146.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">params : </text>
+<text x="1113.8" y="153.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">9 (1 untyped)</text>
+<rect x="1301.2" y="129.5" width="6" height="6" fill="#c53030"/>
+<text x="1295.2" y="136.5" text-anchor="end" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="1301.2" y="146.5" width="6" height="6" fill="#1f2933"/>
+<text x="1295.2" y="153.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call : x3</text>
+<rect x="1044.5" y="190.0" width="259.7" height="68.0" rx="3" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+<rect x="1044.5" y="190.0" width="259.7" height="26.0" rx="3" fill="#475569"/>
+<text x="1053.5" y="207.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_pipeline_egress()</text>
+<rect x="1041.5" y="223.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="230.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="1087.0" y="230.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="1041.5" y="240.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="247.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">params : </text>
+<text x="1113.8" y="247.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">7 (2 untyped)</text>
+<rect x="1301.2" y="223.5" width="6" height="6" fill="#c53030"/>
+<text x="1295.2" y="230.5" text-anchor="end" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="1301.2" y="240.5" width="6" height="6" fill="#1f2933"/>
+<text x="1295.2" y="247.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call : x1</text>
+<rect x="1044.5" y="284.0" width="259.7" height="68.0" rx="3" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+<rect x="1044.5" y="284.0" width="259.7" height="26.0" rx="3" fill="#475569"/>
+<text x="1053.5" y="301.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_egress_gather()</text>
+<rect x="1041.5" y="317.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="324.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="1087.0" y="324.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="1041.5" y="334.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="341.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">params : </text>
+<text x="1113.8" y="341.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">5 (4 untyped)</text>
+<rect x="1301.2" y="317.5" width="6" height="6" fill="#c53030"/>
+<text x="1295.2" y="324.5" text-anchor="end" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="1301.2" y="334.5" width="6" height="6" fill="#1f2933"/>
+<text x="1295.2" y="341.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call : x2</text>
+<rect x="1044.5" y="378.0" width="259.7" height="68.0" rx="3" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+<rect x="1044.5" y="378.0" width="259.7" height="26.0" rx="3" fill="#475569"/>
+<text x="1053.5" y="395.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_pipeline_crud()</text>
+<rect x="1041.5" y="411.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="418.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="1087.0" y="418.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="1041.5" y="428.5" width="6" height="6" fill="#1f2933"/>
+<text x="1053.5" y="435.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">params : </text>
+<text x="1113.8" y="435.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">8 (2 untyped)</text>
+<rect x="1301.2" y="411.5" width="6" height="6" fill="#c53030"/>
+<text x="1295.2" y="418.5" text-anchor="end" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="117.7" y="577.0" width="208.0" height="153.0" rx="3" fill="#ffffff" stroke="#6d28d9" stroke-width="1.6"/>
+<rect x="117.7" y="577.0" width="208.0" height="26.0" rx="3" fill="#6d28d9"/>
+<text x="126.7" y="594.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_gate2_resolve()</text>
+<rect x="114.7" y="610.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="617.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="160.2" y="617.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="114.7" y="627.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="634.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">attr_name : </text>
+<text x="207.1" y="634.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">str</text>
+<rect x="114.7" y="644.5" width="6" height="6" fill="#b7791f"/>
+<text x="126.7" y="651.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">attr_ref : </text>
+<text x="200.4" y="651.5" text-anchor="start" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Dict</text>
+<rect x="114.7" y="661.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="668.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">protocol : </text>
+<text x="200.4" y="668.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">str</text>
+<rect x="114.7" y="678.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="685.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?validate : </text>
+<text x="207.1" y="685.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">bool</text>
+<rect x="114.7" y="695.5" width="6" height="6" fill="#c53030"/>
+<text x="126.7" y="702.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?trace : </text>
+<text x="187.0" y="702.5" text-anchor="start" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="114.7" y="712.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="719.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">wire : </text>
+<text x="173.6" y="719.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">YAML</text>
+<rect x="322.7" y="610.5" width="6" height="6" fill="#1f2933"/>
+<text x="316.7" y="617.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">WireContext</text>
+<rect x="117.7" y="756.0" width="208.0" height="119.0" rx="3" fill="#ffffff" stroke="#6d28d9" stroke-width="1.6"/>
+<rect x="117.7" y="756.0" width="208.0" height="26.0" rx="3" fill="#6d28d9"/>
+<text x="126.7" y="773.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">_gate2_check_constraints()</text>
+<rect x="114.7" y="789.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="796.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="160.2" y="796.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="114.7" y="806.5" width="6" height="6" fill="#c53030"/>
+<text x="126.7" y="813.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">value : </text>
+<text x="180.2" y="813.5" text-anchor="start" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="114.7" y="823.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="830.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">wire_ctx : </text>
+<text x="200.4" y="830.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">WireContext</text>
+<rect x="114.7" y="840.5" width="6" height="6" fill="#1f2933"/>
+<text x="126.7" y="847.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">kwarg_name : </text>
+<text x="213.8" y="847.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">str</text>
+<rect x="114.7" y="857.5" width="6" height="6" fill="#c53030"/>
+<text x="126.7" y="864.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?trace : </text>
+<text x="187.0" y="864.5" text-anchor="start" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="322.7" y="789.5" width="6" height="6" fill="#1f2933"/>
+<text x="316.7" y="796.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">None</text>
+<rect x="369.7" y="577.0" width="360.2" height="80.0" rx="3" fill="#ffffff" stroke="#9a3412" stroke-width="1.6"/>
+<rect x="369.7" y="577.0" width="360.2" height="38.0" rx="3" fill="#9a3412"/>
+<text x="378.7" y="594.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">mops</text>
+<text x="378.7" y="607.0" text-anchor="start" fill="#e6edf3" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">engine_protocol: mops · port 443</text>
+<rect x="366.7" y="622.5" width="6" height="6" fill="#1f2933"/>
+<text x="378.7" y="629.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">defaults : </text>
+<text x="452.4" y="629.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">MOPS.yaml</text>
+<rect x="726.9" y="622.5" width="6" height="6" fill="#1f2933"/>
+<text x="720.9" y="629.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">transport : MOPSHIOS</text>
+<rect x="726.9" y="639.5" width="6" height="6" fill="#1f2933"/>
+<text x="720.9" y="646.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">driver : MOPSDriver</text>
+<rect x="369.7" y="683.0" width="360.2" height="80.0" rx="3" fill="#ffffff" stroke="#9a3412" stroke-width="1.6"/>
+<rect x="369.7" y="683.0" width="360.2" height="38.0" rx="3" fill="#9a3412"/>
+<text x="378.7" y="700.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">snmp</text>
+<text x="378.7" y="713.0" text-anchor="start" fill="#e6edf3" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">engine_protocol: snmp · port 161</text>
+<rect x="366.7" y="728.5" width="6" height="6" fill="#1f2933"/>
+<text x="378.7" y="735.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">defaults : </text>
+<text x="452.4" y="735.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">SNMP.yaml</text>
+<rect x="726.9" y="728.5" width="6" height="6" fill="#1f2933"/>
+<text x="720.9" y="735.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">transport : SNMPHIOS</text>
+<rect x="726.9" y="745.5" width="6" height="6" fill="#1f2933"/>
+<text x="720.9" y="752.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">driver : SNMPDriver</text>
+<rect x="369.7" y="789.0" width="360.2" height="80.0" rx="3" fill="#ffffff" stroke="#9a3412" stroke-width="1.6"/>
+<rect x="369.7" y="789.0" width="360.2" height="38.0" rx="3" fill="#9a3412"/>
+<text x="378.7" y="806.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">ssh</text>
+<text x="378.7" y="819.0" text-anchor="start" fill="#e6edf3" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">engine_protocol: ssh · port 22</text>
+<rect x="366.7" y="834.5" width="6" height="6" fill="#1f2933"/>
+<text x="378.7" y="841.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">overlay : </text>
+<text x="445.7" y="841.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">wire/ssh/*.yaml</text>
+<rect x="366.7" y="851.5" width="6" height="6" fill="#1f2933"/>
+<text x="378.7" y="858.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">defaults : </text>
+<text x="452.4" y="858.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">SSH.yaml</text>
+<rect x="726.9" y="834.5" width="6" height="6" fill="#1f2933"/>
+<text x="720.9" y="841.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">transport : SSHDriver</text>
+<rect x="726.9" y="851.5" width="6" height="6" fill="#1f2933"/>
+<text x="720.9" y="858.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">driver : SSHGatherDriver</text>
+<rect x="369.7" y="895.0" width="360.2" height="80.0" rx="3" fill="#ffffff" stroke="#9a3412" stroke-width="1.6"/>
+<rect x="369.7" y="895.0" width="360.2" height="38.0" rx="3" fill="#9a3412"/>
+<text x="378.7" y="912.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">offline</text>
+<text x="378.7" y="925.0" text-anchor="start" fill="#e6edf3" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">engine_protocol: mops</text>
+<rect x="366.7" y="940.5" width="6" height="6" fill="#1f2933"/>
+<text x="378.7" y="947.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">defaults : </text>
+<text x="452.4" y="947.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">MOPS.yaml</text>
+<rect x="726.9" y="940.5" width="6" height="6" fill="#1f2933"/>
+<text x="720.9" y="947.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">transport : OfflineHIOS</text>
+<rect x="726.9" y="957.5" width="6" height="6" fill="#c53030"/>
+<text x="720.9" y="964.5" text-anchor="end" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">driver : untyped</text>
+<rect x="845.8" y="577.0" width="206.1" height="114.0" rx="3" fill="#ffffff" stroke="#b45309" stroke-width="1.6"/>
+<rect x="845.8" y="577.0" width="206.1" height="38.0" rx="3" fill="#b45309"/>
+<text x="854.8" y="594.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">dispatch_batch()</text>
+<text x="854.8" y="607.0" text-anchor="start" fill="#e6edf3" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">overridden in 3 driver classes</text>
+<rect x="842.8" y="622.5" width="6" height="6" fill="#1f2933"/>
+<text x="854.8" y="629.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="888.3" y="629.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="842.8" y="639.5" width="6" height="6" fill="#1f2933"/>
+<text x="854.8" y="646.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">self : </text>
+<text x="901.7" y="646.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">BaseDriver</text>
+<rect x="842.8" y="656.5" width="6" height="6" fill="#b7791f"/>
+<text x="854.8" y="663.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">batch : </text>
+<text x="908.4" y="663.5" text-anchor="start" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">list</text>
+<rect x="842.8" y="673.5" width="6" height="6" fill="#c53030"/>
+<text x="854.8" y="680.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?index : </text>
+<text x="915.1" y="680.5" text-anchor="start" fill="#c53030" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;font-style:italic;">untyped</text>
+<rect x="1048.9" y="622.5" width="6" height="6" fill="#1f2933"/>
+<text x="1042.9" y="629.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">bool</text>
+<rect x="845.8" y="717.0" width="206.1" height="131.0" rx="3" fill="#ffffff" stroke="#b45309" stroke-width="1.6"/>
+<rect x="845.8" y="717.0" width="206.1" height="38.0" rx="3" fill="#b45309"/>
+<text x="854.8" y="734.0" text-anchor="start" fill="#ffffff" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:12px;font-weight:bold;">gather_and_decode()</text>
+<text x="854.8" y="747.0" text-anchor="start" fill="#e6edf3" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">overridden in 0 driver classes</text>
+<rect x="842.8" y="762.5" width="6" height="6" fill="#1f2933"/>
+<text x="854.8" y="769.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">EN : </text>
+<text x="888.3" y="769.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">call</text>
+<rect x="842.8" y="779.5" width="6" height="6" fill="#1f2933"/>
+<text x="854.8" y="786.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">self : </text>
+<text x="901.7" y="786.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">BaseDriver</text>
+<rect x="842.8" y="796.5" width="6" height="6" fill="#b7791f"/>
+<text x="854.8" y="803.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">wire_contexts : </text>
+<text x="962.0" y="803.5" text-anchor="start" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">list</text>
+<rect x="842.8" y="813.5" width="6" height="6" fill="#b7791f"/>
+<text x="854.8" y="820.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?value_maps : </text>
+<text x="948.6" y="820.5" text-anchor="start" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Dict</text>
+<rect x="842.8" y="830.5" width="6" height="6" fill="#b7791f"/>
+<text x="854.8" y="837.5" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">?extra_hints : </text>
+<text x="955.3" y="837.5" text-anchor="start" fill="#b7791f" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Dict</text>
+<rect x="1048.9" y="762.5" width="6" height="6" fill="#1f2933"/>
+<text x="1042.9" y="769.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:11px;font-weight:normal;">Dict[str, Any]</text>
+<text x="24.0" y="28.0" text-anchor="start" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:15px;font-weight:bold;">crude-engine 2.9.0 · system view (function blocks)</text>
+<text x="24.0" y="46.0" text-anchor="start" fill="#5f6b7a" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">Left pins = typed inputs, right pins = typed outputs. Solid blue wire = declared type match; dashed grey = call (EN) wire; yellow-red pins = loose/untyped.</text>
+<rect x="21.0" y="61.0" width="6" height="6" fill="#1f2933"/>
+<text x="32.0" y="68.0" text-anchor="start" fill="#5f6b7a" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">declared type</text>
+<rect x="130.2" y="61.0" width="6" height="6" fill="#b7791f"/>
+<text x="141.2" y="68.0" text-anchor="start" fill="#5f6b7a" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">declared but loose (bare list/dict/Any)</text>
+<rect x="397.7" y="61.0" width="6" height="6" fill="#c53030"/>
+<text x="408.7" y="68.0" text-anchor="start" fill="#5f6b7a" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">untyped (no declaration found)</text>
+<text x="24.0" y="1009.0" text-anchor="start" fill="#5f6b7a" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">YAML terminals read by blocks: schemas = schemas/*.yaml (46); wire = wire/*.yaml (118 + overlay wire/ssh/*.yaml (33)); steps = engine/steps.yaml (1); context_maps = engine/context_maps.yaml (1)</text>
+<text x="24.0" y="1027.0" text-anchor="start" fill="#5f6b7a" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:10px;font-weight:normal;">Parameters/returns with no annotation: 20 · declared but loose: 14 · Generated: python3 scripts/generate_function_blocks.py (do not edit by hand)</text>
+<text x="335.1" y="145.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">ResolvedIntent</text>
+<text x="725.9" y="145.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">ResolvedIntent</text>
+<text x="725.9" y="273.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">SchemaContext</text>
+<text x="1038.5" y="145.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">SchemaContext</text>
+<text x="1038.5" y="239.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">SchemaContext</text>
+<text x="1038.5" y="427.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">SchemaContext</text>
+<text x="111.7" y="822.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">WireContext</text>
+<text x="839.8" y="621.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">BaseDriver</text>
+<text x="839.8" y="761.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">BaseDriver</text>
+<text x="839.8" y="621.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">BaseDriver</text>
+<text x="839.8" y="761.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">BaseDriver</text>
+<text x="839.8" y="621.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">BaseDriver</text>
+<text x="839.8" y="761.5" text-anchor="end" fill="#1f2933" style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace;font-size:9.5px;font-weight:normal;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;">BaseDriver</text>
+</svg>
