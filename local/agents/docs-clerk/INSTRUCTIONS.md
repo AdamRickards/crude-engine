@@ -21,8 +21,9 @@ schema, protocol, or diagnostic step.
 ## End
 
 Named generators run. `python3 scripts/generate_status.py --check`,
-`python3 scripts/generate_floors_board.py --check`, and
-`python3 scripts/check_catalogue.py` are the receipts for catalogue/status/floors.
+`python3 scripts/generate_floors_board.py --check`,
+`python3 scripts/generate_function_blocks.py --check`, and
+`python3 scripts/check_catalogue.py` are the receipts for catalogue/status/floors/function-blocks.
 Hand-written files either still match the tree or got a factual fix.
 
 ## Tools (fixed code only)
@@ -32,14 +33,15 @@ Hand-written files either still match the tree or got a factual fix.
 - `python3 local/generator/generate_protocols.py`
 - `python3 scripts/generate_status.py` and `--check`
 - `python3 scripts/generate_floors_board.py` and `--check`
+- `python3 scripts/generate_function_blocks.py` and `--check`
 - `python3 scripts/check_catalogue.py`
 - Leftover generator (TEMP only): `python3 local/generator/batch_generate_MIB.py --isolated --outdir <TEMP>` (isolated venv; never `crude_engine/wire`)
 
 Σ Coverage visibility: `docs/FLOORS_BOARD.md` coverage rollup is generated from `floors_provenance.json` — Docs **renders only**, never originates status (`diagrams/resolution-loop.md`). Optional future Pages grid = same rule.
 
 Generated-only (never hand-edit): `docs/API_REFERENCE.md`,
-`docs/RELEASE_MATRIX.md`, `docs/status.html`, `docs/FLOORS_BOARD.md`. If they look wrong, fix the
-generator or the YAML they read.
+`docs/RELEASE_MATRIX.md`, `docs/status.html`, `docs/FLOORS_BOARD.md`,
+`docs/function-blocks/`. If they look wrong, fix the generator or the YAML they read.
 
 Hand-written to keep honest: `CLAUDE.md`, `docs/DIAGNOSTIC_PROCESS.md`,
 `docs/ARCHITECTURE.md`, `local/agents/README.md`, `docs/ROADMAP.md`.
